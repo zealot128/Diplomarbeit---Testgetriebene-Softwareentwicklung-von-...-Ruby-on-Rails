@@ -1,0 +1,101 @@
+\documentclass[10pt, a4paper]{scrartcl}
+\usepackage{a4wide}					%Platzintensiver
+\usepackage[german,ngerman]{babel}	%Deutsche Silbentrennung
+\usepackage[utf8]{inputenc}		%Damit kann man auch Umlaute direkt eintippen
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}	%including images
+\usepackage{fancyhdr}	%for editiable headers and footers
+\usepackage{setspace} 	%for 1,5times row space
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,bookmarksnumbered = true,linkcolor = black,plainpages = false,hypertexnames = false,citecolor = black] {hyperref}	
+			%clickable TOC
+\usepackage{multirow}	%linebreak in Table
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{colortbl}	%colorTables
+\usepackage{framed}   %begin{framed}
+\usepackage{longtable} %begin{longtable}
+\usepackage{makeidx}
+\usepackage{natbib}
+
+\include{parts/include-syntax-php}
+%	Eigenes PHP Syntax-HL
+
+
+
+\newcommand{\ownTitle}{Diplomarbeit}
+\newcommand{\ownTitleZ}{Testgetriebene Softwareentwicklung}
+\newcommand{\ownAutor}{Stefan Wienert, HTW Dresden}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEAD AND FOOTLINES 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\ #1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
+\lhead[ \leftmark   ]{\textbf{\ownTitle}}
+\rhead[\textbf{\ownTitleZ}]{\leftmark}
+\lfoot[\thepage    ]{\scriptsize \textcopyright2009, \ownAutor}
+\cfoot[]{}
+\rfoot[\scriptsize \textcopyright2009, \ownAutor]{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\footrulewidth}{0.5pt}
+\newcommand{\cbox}{\includegraphics[width=0.2cm]{material/cbox.png} \ }
+\definecolor{Gray}{rgb}{0.85,0.85,0.90}
+% \setcounter{tocdepth}{2}	%kleineres TOC
+\newcommand{\arr}{$ \Longrightarrow$}
+
+\makeindex 	%start Aufzeichnun eines Stichwortverzeichnisses
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%% Metainfos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title{\ownTitle}
+\author{\ownAutor}
+\pdfinfo{
+ /Title  (\ownTitle)
+ /Author (\ownAutor)
+ /Subject (\ownTitleZ)
+ /Keywords()
+}
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+ %\maketitle
+ \include{parts/00-frontpage}
+ \tableofcontents		%Inhaltsverzeichnis
+ \include{parts/01}
+ \include{parts/02}
+ \include{parts/03}
+ \include{parts/04}
+ \include{parts/99-appendix}
+\end{document}
+ 
+Vorlagen:
+\begin{longtable}{|l|l|}
+\hline
+\rowcolor{Gray}
+Falsch&Richtig\\
+\hline
+Studenten&Studierende\\
+\hline
+Abschlussprogramm&Degree Seeking Students\\
+\hline
+Doppeldiplom&Doppelabschluss[programm]\\
+\hline
+HTWD & HTW Dresden\\
+\caption{Deutsche Terminologie}
+\label{tb:dt}
+\end{longtable}
