@@ -2,5 +2,52 @@
 \label{sec:intro}
 \section{Motivation}
 
+Kurz nach der Firmengründung der pludoni GmbH absolvierte der Autor dort sein Pflichtpraktikum, und war bis zum heutigen Tag als Werkstudent tätig.
+Währenddessen nahmen Programmierer verschiedener Erfahrungsstufen und insbesondere auch Praktikanten an der Neu- und Weiterentwicklung der Software teil. Dies hat zur Folge, dass die Komplexität der Software inzwischen ein Level erreicht hat, dass das Maß an Regressionsfehlern\footnote{fehlerauslösender Quelltextänderungen} steigt. Eine weitere wahrscheinliche Ursache dieses Problems ist, neben der fehlenden Erfahrung der Praktikanten, das Fehlen von automatisierten Tests.
+Für ein neues Projekt, it-jobs-und-stellen.de, soll dies nun mit einem anderen Ansatz verlaufen. 
+
+Neben der Umstellung auf ein modernes Web-Framework, sollen nun Tests im Einklang zum Code erstellt werden, um auf Knopfdruck eine umfassende Information über den Systemzustand zu erhalten, wie sie ein manueller Test in der Gründlichkeit niemals erreichen kann.
 
 \section{Die pludoni GmbH}
+
+Die pludoni GmbH ist ein junges dynamisches Dresdner Unternehmen, dass sich zum Ziel gesetzt hat, lokale Job-Communitys aufzubauen und zu betreuen, sowie Tools für die Vereinfachung der Personalarbeit mittelständischer Unternehmen zu entwickeln. Einige Beispiele für diese Communitys sind zur Zeit ITsax.de, ITmitte.de und MINTsax.de\footnote{http://www.itsax.de/, http://www.itmitte.de, http://www.mintsax.de/}.
+
+\paragraph{Funktionsweise der Jobcommunitys}
+Die Jobcommunitys bestehen jeweils aus einer Anzahl meist mittelständischer Unternehmen einer Branche. Für ITsax.de ist das die IT-Branche. Neben diesem Branchenfokus sammeln sich auch nur Unternehmen einer spezifischen Region. Bei ITsax.de ist dies Mittel- und Ostsachsen, bei ITmitte.de z.B. Mitteldeutschland, d.h. Thüringen, Sachsen-Anhalt und Westsachsen. 
+Diese Unternehmen, die einen jährlichen Mitgliedsbeitrag an die pludoni GmbH zahlen, dürfen Ihre für die Region relevanten Jobangebote auf dem jeweiligen Portal einstellen. Was die Jobcommunitys von pludoni von der der Konkurrenz unterscheidet, ist das sogenannte \textbf{Empfehlungssystem}. 
+
+Viele der Personalchefs der beteiligten Firmen haben dieselbe Erfahrung gemacht, dass sie sehr guten Bewerbern absagen mussten, weil z.B. die Stelle schon vergeben wurde, die Fähigkeiten des Bewerbers nicht den Bedürfnissen des Unternehmens entsprachen, eine Einstellung verhinderte. Hier setzt pludoni mit seinen Jobcommunitys an, und stellt eine Infrastrukur zur gegenseiten Empfehlung dieser guten Bewerber bereit.  Ausgezeichnete Bewerber erhalten neben der Absage einen Empfehlungscode, mit dem sie sich auf dem Online-Jobportal bei einer der anderen Mitgliedsfirmen bewerben können. Die Software löst intern den Empfehlungscode auf und bestätigt dieser Firma nun, dass der Bewerber empfohlen wurde. 
+
+Dieses Empfehlungssystem überzeugt die beteiligten Unternehmen. Aktuell wurden im letzten Jahr z.B. auf ITmitte.de über 800 Bewerberungen über das Portal versendet, von denen mehr als die Hälfte (440) mit Empfehlungscodes versehen waren \citep{joerg_klukas_startseite_2011}. Dies motivierte mittlerweile 54 Firmen bei den drei pludoni Communitys teilzunehmen \citep{joerg_klukas_referenzen_2011}.
+
+\section{Arbeitsablauf in der pludoni GmbH}
+
+Da der pludoni GmbH gegenwärtig weniger Büroplätze zu Verfügung stehen, als sie Mitarbeiter hat, findet ein Großteil der Arbeit in Heim- oder Telearbeit statt.
+Zur persönlichen Abstimmung findet aber mindestens einmal pro Woche ein Meeting statt, in welcher sich 2-4 der Mitarbeiter treffen, um alte Aufgaben abzunehmen und neue zu diskutieren. Die Abnahme erfolgt dabei durch den Chef Jörg Klukas.
+
+Zentrales Kommunikationsmittel der pludoni GmbH ist, neben der E-Mail, die Online-Aufgaben- und Fehlerverwaltung, Redmine\footnote{http://www.redmine.org - ein webbasiertes Projektmanagement-Tool auf der Basis von Ruby on Rails. Redmine kann für Benutzer- und Projektverwaltung, Diskussionsforen, Wikis, zur Ticketverwaltung oder Dokumentenablage genutzt werden, \textit{Wikipedia}}. Dort werden alle Aufgaben und Fehler erfasst und an die zuständigen Personen verteilt. 
+Neben den technischen Aufgaben der Entwickler, werden auch nicht-technische Aufgaben der anderen Mitarbeiter verwaltet, wie z.B. die Gewinnung neuer Partner (Akquise) oder administrative Aufgaben. Für Redmine sprach, dass es:
+\begin{itemize}
+\item  eine einfache Bedienung,
+\item  einen hohen Funktionsumfang erweiterbar durch Plugins, wie z.B. auch Zeitabrechnung und Projektplanung,
+\item  ein E-Mail-Interface, welches über neue Tickets informiert, aber auch ein Antworten auf Tickets erlaubt,
+\item  eine Integration von SCM\footnote{Source-Code-Management. Versionsverwaltung}, Subversion und GIT \end{itemize}
+hat.
+
+Trotz dieses Tools ist eine Heimarbeit aber immer mit Nachteilen in der Kommunikation behaftet. Dies hat bei den Programmierern teils gravierende Auswirkungen auf die Produktivität. Einerseits, da mitunter Code-Teile anderer abwesender Programmierer benutzt werden müssen,  andererseits, dass gleiche Funktionalität doppelt implementiert wird, weil der Überblick fehlt. Auch deswegen ist es leicht, bei Arbeiten am Code neue Fehler einzuführen. 
+Für das kommende Projekt soll nun eine großflächige Testinfrastruktur erstellt werden, um das Regressionsrisiko zu minimieren und durch die Tests eine gute Quelltextdokumentation zu erhalten.
+
+\section{Projektbeschreibung und -ziele von IT-jobs-und-stellen.de}
+Für den praktischen Teil dieser Arbeit soll anhand der Entwicklung einer Ruby on Rails Anwendung die Testgetriebene Entwicklung erkundet werden.
+
+Als Ergänzung zu den lokalspezifischen Jobcommunitys mit strenger Mitgliederauswahl soll nun ein neues, allgemeines IT-Jobportal entwickelt werden. Die designierte Adresse wird IT-jobs-und-stellen.de sein (ITjobs).
+Ziel soll es sein, eine konkurrenzfähige Alternative zu den Branchenprima stepstone.de, monster.de und jobscout24 zu entwickeln. Folgende Kernfeatures sind bereitzustellen
+\begin{itemize}
+ \item Die Möglichkeit, Stellenanzeigen online zu erfassen oder mittels automatisierter XML-Schnittstelle zu importieren
+ \item Eine möglichst einfache Handhabung sowohl durch Kunden als auch Bewerber
+ \item Ein Bezahlsystem mit Einbindung eines 3rd Party Bezahldienstes zum Erwerb von Stellenanzeigen und Refreshs\footnote{Automatische Aktualisierung der Stellenanzeige und damit bessere Platzierung in den Suchergebnissen}
+ \item eine Integration von Social Media Communitys, insbesondere Facebook, LinkedIn und XING, um gleich den Lebenslauf generieren zu lassen
+ \item Eine hohe C0-Testabdeckung von mindestens 95\% als Grundlage für den TDD Prozess
+\end{itemize}
+
+Als Nebenziel soll eine fundierte, gut erweiterbare Basis gelegt werden, um damit langfristig auch die Codebasis der Jobcommunitys, welche zum gegenwärtigen Zeitpunkt auf PHP5 Drupal basieren, auszutauschen.

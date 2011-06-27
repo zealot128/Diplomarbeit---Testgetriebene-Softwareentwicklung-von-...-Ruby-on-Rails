@@ -21,14 +21,14 @@
 \usepackage{longtable} %begin{longtable}
 \usepackage{makeidx}
 \usepackage{natbib}
-
+\usepackage{epigraph}
 \include{parts/include-syntax-php}
 %	Eigenes PHP Syntax-HL
 
 
 
 \newcommand{\ownTitle}{Diplomarbeit}
-\newcommand{\ownTitleZ}{Testgetriebene Softwareentwicklung}
+\newcommand{\ownTitleZ}{Testgetriebene Entwicklung von Web-Serveranwendungen auf der Basis von Ruby on Rails}
 \newcommand{\ownAutor}{Stefan Wienert, HTW Dresden}
 
 
@@ -41,9 +41,9 @@
 \renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
 \lhead[ \leftmark   ]{\textbf{\ownTitle}}
 \rhead[\textbf{\ownTitleZ}]{\leftmark}
-\lfoot[\thepage    ]{\scriptsize \textcopyright2009, \ownAutor}
+\lfoot[\thepage    ]{\scriptsize \textcopyright2011, \ownAutor}
 \cfoot[]{}
-\rfoot[\scriptsize \textcopyright2009, \ownAutor]{\thepage}
+\rfoot[\scriptsize \textcopyright2011, \ownAutor]{\thepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Macros
@@ -70,12 +70,12 @@
  /Keywords()
 }
 \date{\today}
-
+\onehalfspacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
  %\maketitle
- \include{parts/00-frontpage}
- \tableofcontents		%Inhaltsverzeichnis
+ %\include{parts/00-frontpage}
+ %\tableofcontents		%Inhaltsverzeichnis
  \include{parts/01}
  \include{parts/02}
  \include{parts/03}
