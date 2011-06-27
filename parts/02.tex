@@ -12,6 +12,8 @@ Eine vollständige Einführung in Ruby zu geben, würde den Rahmen dieser Diplom
 % .... TODO
 
 \subsection{Einführung in Ruby}
+\marginline{\includegraphics[width=0.8\marginparwidth]{material/ruby.png}
+Ruby ist eine Multiparadigma-Sprache}
 Ruby ist eine Multiparadigma-Sprache, die Objektorientierung, Prozedurale, funktionale und nebenläufige Programmierung unterstützt. Im Gegensatz zu Java ist Ruby wie Smalltalk vollständig objektorientiert. So sind auch alle Datentypen wiederrum Objekte, was auch die primitiven Datentypen wie String und Integer umfasst. 
 % TODO Quelle
 
@@ -22,13 +24,24 @@ Ruby ist eine interpretierte Sprache, auch Skriptsprache genannt. Dies heisst, d
 
 Ruby nimmt für sich in Anspruch, eine Sprache für Menschen, und nicht für Maschinen zu sein.
 
-\epigraph{Ruby is simple in appearance, but is very complex inside, just like our human body}{Yukihiro Matsumoto}
+\setlength{\epigraphwidth}{\marginparwidth}
+\marginline{\epigraph{Ruby is simple in appearance, but is very complex inside, just like our human body}{Yukihiro Matsumoto}}
+\setlength{\epigraphwidth}{0.8\textwidth}
+
+Im Nachfolgenden einige Beispiele für die Verwendung von Ruby
+
+\begin{lstlisting}[language=Ruby,label=DescriptiveLabel,caption=Beispiele für Rubycode]
+ 
+puts "Hello World"
+if bla then
+#asdasd
+\end{lstlisting}
 
 
 \subsection{Diskussion}
 
 % TODO
-Der Vorteil dadurch, ist eine hohe Plattformunabhängigkeit und ein leichterer Buildprozess, da das Kompilieren entfällt. Allerdings hat dies in der Regel gravierende Geschwindigkeitsnachteile
+Der Vorteil davon, ist eine hohe Plattformunabhängigkeit und ein leichterer Buildprozess, da das Kompilieren entfällt. Allerdings hat dies in der Regel gravierende Geschwindigkeitsnachteile
 
 \epigraph{Sometimes people jot down pseudo-code on paper. If that pseudo-code runs directly on their computers, it's best, isn't it? Ruby tries to be like that, like pseudo-code that runs. }{Yukihiro Matsumoto}
 

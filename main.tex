@@ -1,5 +1,5 @@
 \documentclass[10pt, a4paper]{scrartcl}
-\usepackage{a4wide}					%Platzintensiver
+%\usepackage{a4wide}					%Platzintensiver
 \usepackage[german,ngerman]{babel}	%Deutsche Silbentrennung
 \usepackage[utf8]{inputenc}		%Damit kann man auch Umlaute direkt eintippen
 \usepackage{textcomp}
@@ -22,8 +22,20 @@
 \usepackage{makeidx}
 \usepackage{natbib}
 \usepackage{epigraph}
-\include{parts/include-syntax-php}
+%\include{parts/include-syntax-php}
 %	Eigenes PHP Syntax-HL
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\lstloadlanguages{Ruby}
+\lstset{%
+basicstyle=\ttfamily\color{black},
+commentstyle = \ttfamily\color{gray},
+keywordstyle=\ttfamily\color{blue},
+stringstyle=\color{red},
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false, 
+frame=single
+}
 
 
 
@@ -71,6 +83,8 @@
 }
 \date{\today}
 \onehalfspacing
+
+\setlength{\epigraphwidth}{.8\textwidth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
  %\maketitle
