@@ -14,7 +14,7 @@ Eine vollständige Einführung in Ruby zu geben, würde den Rahmen dieser Diplom
 \subsection{Einführung in Ruby}
 \marginline{\includegraphics[width=0.8\marginparwidth]{material/ruby.png}
 Ruby ist eine Multiparadigma-Sprache}
-Ruby ist eine Multiparadigma-Sprache, die Objektorientierung, Prozedurale, funktionale und nebenläufige Programmierung unterstützt. Im Gegensatz zu Java ist Ruby wie Smalltalk vollständig objektorientiert. So sind auch alle Datentypen wiederrum Objekte, was auch die primitiven Datentypen wie String und Integer umfasst. 
+Ruby ist eine Multiparadigma-Sprache, die Objektorientierung, prozedurale, funktionale und nebenläufige Programmierung unterstützt. Im Gegensatz zu Java ist Ruby wie Smalltalk vollständig objektorientiert. So sind auch alle Datentypen wiederrum Objekte, was auch die primitiven Datentypen wie String und Integer umfasst. 
 % TODO Quelle
 
 Ruby ist dynamisch stark typisiert, d.h. dass die Zuweisung des Typs einer Variable zur Laufzeit des Programms geschieht. Der Typ einer Variable ergibt sich damit aus ihrem Wert.
@@ -28,25 +28,127 @@ Ruby nimmt für sich in Anspruch, eine Sprache für Menschen, und nicht für Mas
 \marginline{\epigraph{Ruby is simple in appearance, but is very complex inside, just like our human body}{Yukihiro Matsumoto}}
 \setlength{\epigraphwidth}{0.8\textwidth}
 
-Im Nachfolgenden einige Beispiele für die Verwendung von Ruby
+Im Nachfolgenden einige Beispiele für die Verwendung von Ruby, insbesondere die "`Alles ist ein Objekt"'-Philosophie.
 
-\begin{lstlisting}[language=Ruby,label=DescriptiveLabel,caption=Beispiele für Rubycode]
+\begin{lstlisting}[language=Ruby,label=Ruby Beispiele,caption=Ruby Beispiele]
  
-puts "Hello World"
-if bla then
-#asdasd
+>> puts "Hello World"
+=> Hello World
+
+>> 2.even?
+=> true
+
+>> "hallo".upcase
+=> "HALLO"
+
+>> Date.today + 2
+=> #<Date: 2011-06-30>
+
+>> a = 4 + Math.sqrt(9)
+=> 7.0
+
+>> if (0..10).include? a
+>>   puts "a liegt zwischen 0 und 10"
+>> end
+=> a liegt zwischen 0 und 10
+
 \end{lstlisting}
 
+Desweiteren sei die sehr gute Unterstützung bei der bearbeitung von Strings hervorzuheben. Insbesondere die Regulären Ausdrücke sind denen von Perl beinahe gleichmächtig und fest in die Sprache eingebaut.
+
+\begin{lstlisting}
+>> match = "2011-06-20".match /(?<year>\d{4})-\d{2}-\d{2}/
+>> puts match[:year]
+=> 2011
+\end{lstlisting}
+
+Auch die Bearbeitung von Arrays und listenähnlichen Strukturen ist sehr bequem, dank der Verwendungsmöglichkeit von anonymen Funktionen, bei Ruby "`Blöcke"' genannt.
+
+\begin{lstlisting}
+>> [5,5,7,3].sort
+=> [3, 5, 5, 7]
+
+# Es kann auch eine benutzerdefinierte Sortierfunktion
+# angegeben werden
+>> [ "string",  "rails",  "ruby" ].sort_by{|item| item.length }
+=> ["ruby", "rails", "string"]
+
+# Die Quadratzahlen von 1 bis 5
+>> (1..5).map{|element| element * 2}
+=> [2, 4, 6, 8, 10]
+\end{lstlisting}
+Neben einem soliden objektorientierten System, bietet Ruby viele funktionale Aspekte um die Arbeit mit Arrays und Strings sehr einfach zu gestalten. Wichtig sei auch noch die Fähigkeit der Metaprogrammierung anzumerken.
+
+Im Gegensatz zu Java oder C\# dürfen Klassen zur Laufzeit um Funktionen erweitert, oder alte sogar überschrieben werden. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern.
+
+\begin{lstlisting}
+>> class String
+>>   def remove_whitespace
+>>     self.gsub(/\s+/, "")
+>>   end
+>> end
+
+>> "Dies ist ein Test".remove_whitespace
+=> "DiesisteinTest"
+
+\end{lstlisting}
+
+Diese Beispiele sollten als kurzer Einstieg in Ruby dienen, und einen Querschnitt durch die Besonderheiten der Sprache aufzeigen.
+
+Für eine weiter Vertiefung sei das Buch "`Programming Ruby 1.9"' empfohlen, das im Detail auf die neuste Version der Programmiersprache eingeht.
 
 \subsection{Diskussion}
 
-% TODO
-Der Vorteil davon, ist eine hohe Plattformunabhängigkeit und ein leichterer Buildprozess, da das Kompilieren entfällt. Allerdings hat dies in der Regel gravierende Geschwindigkeitsnachteile
+\paragraph{Ruby als Skriptsprache}
+Der Vorteil, der Übersetzung zur Laufzeit, ist eine hohe Plattformunabhängigkeit und ein leichterer Buildprozess, da das Kompilieren entfällt. Allerdings hat dies in der Regel gravierende Geschwindigkeitsnachteile. 
+Verfechter dynamischer Sprachen erklären weiterhin, dass diese ideal für Prototypische Implementierungen geeignet sind, da sich Anforderungen ständig ändern können. Weiterhin hätten Programme dynamischer Sprache eine potenziell hohe Wiederverwendbarkeit und eine höhere Lesbarkeit. 
+%TODO Benchmark, Diskussion zur Architektur
+%TODO Gegenbeispiele Groupon, Twitter
 
+Desweiteren bleiben Fehler, die der Compiler bereits entdeckt hätte, bis zur Ausführung oder schlimmstenfalls noch länger unentdeckt. Dazu gehören z.B. Tippfehler, bei denen der Wert einer nicht deklarierten Variable ausgelesen wird. Im Gegensatz zu z.B. PHP, wirft Ruby aber dann eine Exception.
+
+Auf das Testen hat dies eine direkte Auswirkung. Viele Quellen belegen, dass eine dynamisch typisierte Sprache mehr Tests benötigt, als eine statisch typisierte. 
+%TODO Quelle http://stackoverflow.com/questions/125367/dynamic-type-languages-versus-static-type-languages
+
+
+
+\paragraph{Metaprogrammierung}
+Die Fähigkeiten zur Metaprogrammierung von Ruby bieten vielerei Möglichkeiten um Probleme effektiv zu lösen, die andernfalls nur mit erheblichem Aufwand, oder gar nicht zu lösen sind. So verwendet das beliebte Objektrelationale Datenbankframework ActiveRecord Metaprogrammierung, um einfache SQL-Statements zu erstellen.
+\begin{lstlisting}
+>> Person.find_by_first_name("Stefan")
+  Person Load (0.2ms)  SELECT persons.* FROM persons
+    WHERE users.first_name = 'Stefan' LIMIT 1
+\end{lstlisting}
+
+Die Methode \texttt{find\_by\_first\_name} existiert nicht, und wird zur Laufzeit auf Basis des Namens gebaut.
+
+Auch das sehr beliebte Testframework Rspec, auf das wir später kurz eingehen werden, verwendet Metaprogrammierung, um Testfälle und Zusicherungen wie fast in der englischen Sprache zu formulieren.
+
+\begin{lstlisting}
+>> 4.should == 3
+RSpec::Expectations::ExpectationNotMetError: expected: 3
+\end{lstlisting}
+
+All diese Methoden können, richtig angewendet, zur Verbesserung der Lesbarkeit der Programme, und damit zur Erhöhrung der Wartbarkeit, führen.
+Falsch angewendet stellen sie jedoch eine Gefahr da. Beim Verwenden von externen Bibliotheken, oder in einem großen Entwicklerteam können dadurch kuriose Fehler auftreten die nur sehr schwer zu finden sind. Potenziell jedes Quelltextfile kann jede Klasse zur Laufzeit verändern, ohne dass es eine Warnung gibt. Umgehen kann man dieses Problem bestenfalls durch das konsequente Einordnen in Namensräume, bei Ruby Module genannt.
+%TODO Quelle?
+
+\paragraph{Schlussfolgerung}
+
+Die Verwendung von Ruby und anderen dynamischen Sprachen birgt durchaus Risiken, die zu beachten sind. Falls man diese Risiken im Kopf behält, und die Möglichkeiten der Sprache nutzt, um die Lesbarkeit zu verbessern, sind sie gerechtfertigt. Gerade bei der Entwicklung kleinerer Entwicklerteams oder Projekten mit engem Budget können dynamische Sprachen ihre Vorteile ausspielen, da sie eine eine schnellere Entwicklung ermöglicht. Im Gegensatz zu den meisten auf C basierten Sprachen, ist die Syntax von Ruby äußerst leserlich, da nur wenige Sonderzeichen verwendet werden. Auch biete Ruby mehr Funktionalität pro Programmzeile, da die Deklaration entfällt und es viel sogenannten syntaktischen Zucker gibt. Auch dies kann, richtig angewendet, der Lesbarkeit zuträglich sein.
+% TODO QUelle hier was?
 \epigraph{Sometimes people jot down pseudo-code on paper. If that pseudo-code runs directly on their computers, it's best, isn't it? Ruby tries to be like that, like pseudo-code that runs. }{Yukihiro Matsumoto}
 
 \subsection{Ruby on Rails}
 
+Für das Projekt IT-jobs-und-stellen.de soll das Webframework Ruby-on-Rails verwendet werden. 
+Dieses erlangte seit 2006 einer wachsenden Beliebtheit, was sich z.B. im Stellenmarkt widerspiegelt.
+%TODO Quelle http://www.businessinsider.com/heres-why-ruby-on-rails-is-hot-2011-5
+
+Viele professionelle Websites, die meist als Startup begannen, setzen bis heute auf Rails. Darunter z.B. Yellow Pages, die Gelben Seiten der USA, Github, eine sehr beliebte Community für OpenSource Programmierer,  Groupon, dem führenden Unternehmen bei Online-Gutscheinen und XING, einer deutschen Online-Community für Business-Kontakte.
+% TODO http://rubyonrails.org/applications
+
+Im Folgenden werden die Grundzüge von Ruby on Rails näher erläutert.
 
 
 \input{parts/02-1}
