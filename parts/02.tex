@@ -100,15 +100,15 @@ Für eine weiter Vertiefung sei das Buch "`Programming Ruby 1.9"' empfohlen, das
 \subsection{Diskussion}
 
 \paragraph{Ruby als Skriptsprache}
-Der Vorteil, der Übersetzung zur Laufzeit, ist eine hohe Plattformunabhängigkeit und ein leichterer Buildprozess, da das Kompilieren entfällt. Allerdings hat dies in der Regel gravierende Geschwindigkeitsnachteile. 
-Verfechter dynamischer Sprachen erklären weiterhin, dass diese ideal für Prototypische Implementierungen geeignet sind, da sich Anforderungen ständig ändern können. Weiterhin hätten Programme dynamischer Sprache eine potenziell hohe Wiederverwendbarkeit und eine höhere Lesbarkeit. 
-%TODO Benchmark, Diskussion zur Architektur
-%TODO Gegenbeispiele Groupon, Twitter
+Dynamisch typisierte Sprachen, wie Ruby, haben gegenüber klassischen statisch typisierte Sprachen einige Nachteile. Zu allererst wir oft der Geschwindigkeitsnachteil angesprochen, den der Prozess des Interpretierens und das fehlende statische Typsystem verursachen.
+Allerdings hat dies in der Regel gravierende Geschwindigkeitsnachteile. Der genaue Faktor variiert extrem, je nach Algorithmus. Ein beliebter Benchmark, shoutout.alioth, vergleicht beliebte Algorithmen der Informatik implementiert in verschiedenen Sprachen miteinander. So ergibt sich z.B. in der Gegenüberstellung von Ruby mit C ein 4-300 fache langsamere Ausführungszeit. Dem gegenüber steht allerdings jeweils nur die Hälfte bis $1/7$ der Menge an Code \citep{computer_language_benchmarks_game_ruby_2011}.
+
+Ein Vorteil des Interpretierens, also der Übersetzung zur Laufzeit, ist eine hohe Plattformunabhängigkeit und ein leichterer Buildprozess, da das Kompilieren entfällt. 
+Verfechter dynamischer Sprachen erklären weiterhin, dass diese sich ideal für prototypische Implementierungen eignen, da sich Anforderungen ständig ändern können. Weiterhin hätten Programme dynamischer Sprache eine potenziell hohe Wiederverwendbarkeit und eine höhere Lesbarkeit \citep{meijer_static_2005} \citep{ousterhout_scripting:_1998}.
 
 Desweiteren bleiben Fehler, die der Compiler bereits entdeckt hätte, bis zur Ausführung oder schlimmstenfalls noch länger unentdeckt. Dazu gehören z.B. Tippfehler, bei denen der Wert einer nicht deklarierten Variable ausgelesen wird. Im Gegensatz zu z.B. PHP, wirft Ruby aber dann eine Exception.
 
-Auf das Testen hat dies eine direkte Auswirkung. Viele Quellen belegen, dass eine dynamisch typisierte Sprache mehr Tests benötigt, als eine statisch typisierte. 
-%TODO Quelle http://stackoverflow.com/questions/125367/dynamic-type-languages-versus-static-type-languages
+Auf das Testen hat dies eine direkte Auswirkung. Viele Meinungen belegen, dass eine dynamisch typisierte Sprache mehr Tests benötigt, als eine statisch typisierte \citep{daniel_spiewak_dynamic_2010}. 
 
 
 
@@ -139,17 +139,76 @@ Die Verwendung von Ruby und anderen dynamischen Sprachen birgt durchaus Risiken,
 % TODO QUelle hier was?
 \epigraph{Sometimes people jot down pseudo-code on paper. If that pseudo-code runs directly on their computers, it's best, isn't it? Ruby tries to be like that, like pseudo-code that runs. }{Yukihiro Matsumoto}
 
+
 \subsection{Ruby on Rails}
 
 Für das Projekt IT-jobs-und-stellen.de soll das Webframework Ruby-on-Rails verwendet werden. 
 Dieses erlangte seit 2006 einer wachsenden Beliebtheit, was sich z.B. im Stellenmarkt widerspiegelt.
 %TODO Quelle http://www.businessinsider.com/heres-why-ruby-on-rails-is-hot-2011-5
-
+\marginline{\includegraphics[width=0.8\marginparwidth]{material/rails.png}}
 Viele professionelle Websites, die meist als Startup begannen, setzen bis heute auf Rails. Darunter z.B. Yellow Pages, die Gelben Seiten der USA, Github, eine sehr beliebte Community für OpenSource Programmierer,  Groupon, dem führenden Unternehmen bei Online-Gutscheinen und XING, einer deutschen Online-Community für Business-Kontakte.
 % TODO http://rubyonrails.org/applications
 
 Im Folgenden werden die Grundzüge von Ruby on Rails näher erläutert.
 
+\subsubsection{Konzepte von Rails}
+
+Rails ist ein Webframwork, das auf dem Model-View-Controller-Pattern basiert, welches eine 3-schichten Architektur darstellt. Jede Schicht hat fest definierte Aufgaben. Diese bilden normalerweise ein Dreigespann, bei Rails "`Ressource"` gennannt. Im folgenden werden die Schichten kurz erläutert, und am Beispiel einer Ressource "'Job"` 
+\begin{description}
+ \item[Model] In Klassen dieser Schicht werden Zugriffe auf die Persistenz vorgenommen. Meist geschieht dies durch Ausführung von SQL-Befehlen. Innerhalb von Rails ist dies aber meist nicht notwendig, da das ORM\footnote{Objektrelationale Framework} ActiveRecord häufig verwendete SQL-Befehle abstrahiert. Auch die Geschäftslogik soll per Definition zu großem Teil in dieser Schicht erfolgen.
+ 
+ Für einen Job ist das ein Modell, welches die Datenbanktabelle "'jobs"` anspricht, und z.B. die Attribute "'titel"`, "'datum"` und "'beschreibung"` besitzt. Dabei können auf diesem Level auch datenbankunabhängige Constraints definiert werden, z.B. dass ein Job nur dann gespeichert werden soll, wenn der titel mindestens 20 Zeichen lang ist, und das Datum mindestens das heutige ist.
+ % TODO Fat models thin controllers
+ \item[Controller] Klassen dieser Schicht vereinigen Methoden, die von außen per HTTP erreichbar sind. Diese Methoden kommunizieren mit den korrespondierenden Models und bestimmen, welche View im einzelnen ausgeliefert wird. Weitere Funktionen eines Controllers sind Authentifizierung und Autorisierung (Wer darf was).\\
+ Standardmäßig stellt Rails die CRUD\footnote{Create Read Update Delete}-Operationen bereit, welche in Form eines REST\footnote{Representational State Transfer die HTTP-Methoden GET, POST, PUT, DELETE werden in Kombination mit einem definierten URL-Schema direkt auf die Aktionen \texttt{Auflisten, Anzeigen, Bearbeiten, Löschen, Neu anlegen} gemappt.
+ \url{http://en.wikipedia.org/wiki/Representational_State_Transfer}}
+ \item[View] Eine View ist in der Regel ein Stück HTML Code welches einem Model zugeordnet ist, das bei einer bestimmten Aktion dem Clienten ausgeliefert wird. Neben HTML ist auch Javascript oder XML eine mögliche Auslieferungsform.\\
+ Für den Job wäre das eine View für die Liste aller Jobs, einen Job im Detail anzeigen sowie das Formular zum Anlegen und Bearbeiten eines Jobs.
+ \end{description}
+ \begin{figure}[h]
+ \centering
+ \includegraphics[width=0.7\textwidth]{./material/mvc-rails.png}
+ % mvc-rails.png: 500x472 pixel, 72dpi, 17.64x16.65 cm, bb=
+ % SOURCE  
+ \caption{MVC Modell von Rails}
+ \caption*{Quelle: \href{http://betterexplained.com/articles/intermediate-rails-understanding-models-views-and-controllers/}{betterexplained.com}}
+ \label{fig:mvcrails}
+\end{figure}
+In Abbildung \ref{fig:mvcrails} ist der Ablauf einer Anfrage an den Server dargestellt. Die Anfrage des Browsers an die Website \texttt{http://localhost/jobs/12} wird über den Webserver, z.B. Apache2, an die Railsanwendung gestellt. Innerhalb von Rails wird dieser Anforderungsstring anhand der Routen, die die Anwendung anbietet, gematcht. In unserem Falle würde \texttt{/jobs/12} auf den Controller jobs aufgelöst werden. Innerhalb dieses Controllers wird eine Methode (Aktion) show erwartet.
+Diese Methode wird nun ihrerseits eine Anfrage an das Model Job stellen, den Job mit der ID 12 aus der Datenbank zu holen. Danach wird ein HTML Template zur Detailanzeige des Jobs generiert.
+
+\setlength{\epigraphwidth}{\marginparwidth}
+\marginline{\epigraph{Ruby on Rails is a breakthrough in lowering the barriers of entry to programming. Powerful web applications that formerly might have taken weeks or months to develop can be produced in a matter of days.}{Tim O'Reilly, Founder of O'Reilly Media}}
+\setlength{\epigraphwidth}{0.8\textwidth}
+
+Neben diesem architektorischen Konzept verfolgt Rails noch andere Strategien, um das Entwickeln produktiver zu gestalten.
+\begin{description}
+ \item[Convention over Configuration] Rails ist so konzipiert, um als Framework komplett out-of-the-box zu funktionieren. Außer die Datenbankeinstellung wird keine Konfiguration im Vorderfeld benötigt. Diese Methodology zieht sich auch durch das Ökosystem durch. Die meisten externen Bibliotheken, bei Ruby Gems genannt, funktionieren bereits nach wenigen Kommandos. Dies macht das prototypische Entwickeln äußert effektiv. Weiterhin ist die Struktur eines Railsprojektes extrem fest definiert. So gibt es u.a. einen Ordner "'app"` mit den Model, Controller und View Dateien und einen Ordner "'test"`, der wiederrum in "'unit"`, "'functional"`, "'integration"` und "'performance"` unterteilt ist. So finden sich Railsprogrammierer auch in fremden Projekten sofort zurecht.
+ \item[Don't repeat yourself (DRY)] Hier ist das Ziel, die Duplikation soweit wie möglich zu reduzieren, und das ständige Auslagern und Refaktorisieren des Codes, um bei Änderungen nur an einer Stelle ansetzen zu müssen. Ein weiteres Beispiel ist die Definition der Spalten des ORMs. Im Gegensatz zu anderen ORM-Frameworks ist diese bei Rails nicht notwendig. Rails erstellt automatisch Getter und Setter für die in der Datenbank definierten Tabellenspalten.
+ \item[Codegeneratoren] Rails bietet viele Codegeneratoren an, um schnell benötigte Klassen und Datenbanktabellen anzulegen. Im Railsprojekt reicht z.B.:
+\begin{lstlisting}
+rails generate scaffold job title:string description:text \
+  start_date:datetime active:boolean user:references
+\end{lstlisting}
+  Damit wird das Model Job, eine Erstellung der Tabelle "'jobs"`, ein Controller "'jobs"` mit den REST-Standardaktionen und entsprechenden Beispielviews, sowie Testfälle für Unit- und Funktionale Tests angelegt. Weiterhin sei zu bemerken, dass durch die Anweisung user\:references eine Spalte user\_id angelegt wird und eine 1:n-Beziehung zum Modell "'user"` hergestellt wird.
+
+ \end{description}
+
+
+\subsubsection{Diskussion}
+
+\paragraph{Vorteile}
+
+\paragraph{Performance}
+%TODO Benchmark, Diskussion zur Architektur
+%TODO Gegenbeispiele Groupon, Twitter
+
+\paragraph{Rails und Tests}
+
+\paragraph{Weiterführende Informationen}
+% Rails for Zombies
+% rails lang
+% 
 
 \input{parts/02-1}
 \input{parts/02-2}
