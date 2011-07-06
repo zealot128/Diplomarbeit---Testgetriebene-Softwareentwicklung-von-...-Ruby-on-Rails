@@ -98,23 +98,33 @@ ReadWrite=true
 
 [item:bibo.bib]
 archive=true
-column=1
+column=6
 encoding=UTF-8
 highlight=BibTeX
-line=173
+line=224
 mode=BibTeX
 open=true
 order=2
 
 [item:main.tex]
 archive=true
-column=33
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=32
+line=94
 mode=LaTeX
 open=true
 order=0
+
+[item:material/mvc-rails.png]
+archive=true
+column=171082344
+encoding=
+highlight=
+line=0
+mode=
+open=false
+order=-1
 
 [item:parts/00-frontpage.tex]
 archive=true
@@ -128,10 +138,10 @@ order=1
 
 [item:parts/01.tex]
 archive=true
-column=74
+column=10
 encoding=UTF-8
 highlight=LaTeX
-line=31
+line=17
 mode=LaTeX
 open=true
 order=1
@@ -143,8 +153,8 @@ encoding=UTF-8
 highlight=LaTeX
 line=12
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=4
 
 [item:parts/02-2.tex]
 archive=true
@@ -153,15 +163,15 @@ encoding=UTF-8
 highlight=LaTeX
 line=3
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=5
 
 [item:parts/02.tex]
 archive=true
-column=33
+column=133
 encoding=UTF-8
 highlight=LaTeX
-line=14
+line=262
 mode=LaTeX
 open=true
 order=3
@@ -217,20 +227,20 @@ open=false
 order=-1
 
 [view-settings,view=0,item:bibo.bib]
-CursorColumn=1
-CursorLine=173
+CursorColumn=6
+CursorLine=224
 
 [view-settings,view=0,item:main.tex]
-CursorColumn=33
-CursorLine=32
+CursorColumn=0
+CursorLine=94
 
 [view-settings,view=0,item:parts/00-frontpage.tex]
 CursorColumn=15
 CursorLine=60
 
 [view-settings,view=0,item:parts/01.tex]
-CursorColumn=74
-CursorLine=31
+CursorColumn=10
+CursorLine=17
 
 [view-settings,view=0,item:parts/02-1.tex]
 CursorColumn=24
@@ -241,8 +251,8 @@ CursorColumn=34
 CursorLine=3
 
 [view-settings,view=0,item:parts/02.tex]
-CursorColumn=33
-CursorLine=14
+CursorColumn=133
+CursorLine=262
 
 [view-settings,view=0,item:parts/03.tex]
 CursorColumn=44
