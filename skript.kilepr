@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.0.85
-lastDocument=parts/00-frontpage.tex
+lastDocument=parts/02-1.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -41,7 +41,7 @@ Mode=LaTeX
 ReadWrite=true
 
 [document-settings,item:parts/01.tex]
-Bookmarks=27
+Bookmarks=26
 Encoding=UTF-8
 Highlighting=LaTeX
 Indentation Mode=1
@@ -96,6 +96,30 @@ Indentation Mode=1
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:parts/implementation.tex]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=LaTeX
+Indentation Mode=1
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:parts/projektbeschreibung.tex]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=LaTeX
+Indentation Mode=1
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:parts/tools.tex]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=LaTeX
+Indentation Mode=1
+Mode=LaTeX
+ReadWrite=true
+
 [item:bibo.bib]
 archive=true
 column=6
@@ -103,15 +127,15 @@ encoding=UTF-8
 highlight=BibTeX
 line=224
 mode=BibTeX
-open=true
+open=false
 order=2
 
 [item:main.tex]
 archive=true
-column=1
+column=20
 encoding=UTF-8
 highlight=LaTeX
-line=91
+line=5
 mode=LaTeX
 open=true
 order=0
@@ -128,33 +152,33 @@ order=-1
 
 [item:parts/00-frontpage.tex]
 archive=true
-column=0
+column=6
 encoding=UTF-8
 highlight=LaTeX
-line=34
+line=47
 mode=LaTeX
 open=true
-order=7
+order=6
 
 [item:parts/01.tex]
 archive=true
-column=10
+column=61
 encoding=UTF-8
 highlight=LaTeX
-line=17
+line=41
 mode=LaTeX
 open=true
 order=1
 
 [item:parts/02-1.tex]
 archive=true
-column=277
+column=232
 encoding=UTF-8
 highlight=LaTeX
-line=10
+line=82
 mode=LaTeX
 open=true
-order=4
+order=3
 
 [item:parts/02-2.tex]
 archive=true
@@ -164,17 +188,17 @@ highlight=LaTeX
 line=3
 mode=LaTeX
 open=true
-order=5
+order=4
 
 [item:parts/02.tex]
 archive=true
-column=74
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=298
+line=0
 mode=LaTeX
 open=true
-order=3
+order=2
 
 [item:parts/03.tex]
 archive=true
@@ -183,18 +207,18 @@ encoding=UTF-8
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=false
-order=2
+open=true
+order=10
 
 [item:parts/04.tex]
 archive=true
-column=0
+column=8
 encoding=UTF-8
 highlight=LaTeX
-line=2
+line=0
 mode=LaTeX
-open=false
-order=2
+open=true
+order=9
 
 [item:parts/99-appendix.tex]
 archive=true
@@ -204,7 +228,17 @@ highlight=LaTeX
 line=3
 mode=LaTeX
 open=true
-order=6
+order=5
+
+[item:parts/implementation.tex]
+archive=true
+column=0
+encoding=UTF-8
+highlight=LaTeX
+line=14
+mode=LaTeX
+open=true
+order=7
 
 [item:parts/include-syntax-php.tex]
 archive=true
@@ -215,6 +249,26 @@ line=0
 mode=
 open=false
 order=2
+
+[item:parts/projektbeschreibung.tex]
+archive=true
+column=193
+encoding=UTF-8
+highlight=LaTeX
+line=6
+mode=LaTeX
+open=false
+order=-1
+
+[item:parts/tools.tex]
+archive=true
+column=0
+encoding=UTF-8
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=true
+order=8
 
 [item:skript.kilepr]
 archive=true
@@ -231,37 +285,49 @@ CursorColumn=6
 CursorLine=224
 
 [view-settings,view=0,item:main.tex]
-CursorColumn=1
-CursorLine=91
+CursorColumn=20
+CursorLine=5
 
 [view-settings,view=0,item:parts/00-frontpage.tex]
-CursorColumn=0
-CursorLine=34
+CursorColumn=6
+CursorLine=47
 
 [view-settings,view=0,item:parts/01.tex]
-CursorColumn=10
-CursorLine=17
+CursorColumn=61
+CursorLine=41
 
 [view-settings,view=0,item:parts/02-1.tex]
-CursorColumn=277
-CursorLine=10
+CursorColumn=232
+CursorLine=82
 
 [view-settings,view=0,item:parts/02-2.tex]
 CursorColumn=34
 CursorLine=3
 
 [view-settings,view=0,item:parts/02.tex]
-CursorColumn=74
-CursorLine=298
+CursorColumn=0
+CursorLine=0
 
 [view-settings,view=0,item:parts/03.tex]
 CursorColumn=44
 CursorLine=0
 
 [view-settings,view=0,item:parts/04.tex]
-CursorColumn=0
-CursorLine=2
+CursorColumn=8
+CursorLine=0
 
 [view-settings,view=0,item:parts/99-appendix.tex]
 CursorColumn=0
 CursorLine=3
+
+[view-settings,view=0,item:parts/implementation.tex]
+CursorColumn=0
+CursorLine=14
+
+[view-settings,view=0,item:parts/projektbeschreibung.tex]
+CursorColumn=193
+CursorLine=6
+
+[view-settings,view=0,item:parts/tools.tex]
+CursorColumn=0
+CursorLine=0

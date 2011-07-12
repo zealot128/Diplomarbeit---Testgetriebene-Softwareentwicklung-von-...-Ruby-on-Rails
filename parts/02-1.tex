@@ -2,6 +2,9 @@
 
 \subsection{Warum testen}
 
+(Softwarefehler) \url{http://www.nfranze.de/download/Diplomarbeit_Nico_Franze.pdf}
+  Zusammenfassende Begriffsdefinition
+
 \subsection{Arten von Tests}
 
 \subsection{Testtools in Ruby}
@@ -46,7 +49,7 @@ Rails erledigt das Anlegen und Löschen von Testdaten selbständig. Diese werden
 \subsubsection{Cucumber}
 
 \section{Testgetriebene Entwicklung}
-Testgetriebene Entwicklung, im Englischen Test-Driven-Development (TDD) wurde erstmalig von Kent Beck 2003 im Detail erläutert. Zuvor war die Technik "`Test-First"' aber schon seit 1999 im Kontext von Extreme Programming (XP) veröffentlicht.
+Testgetriebene Entwicklung, im Englischen Test-Driven-Development (TDD) wurde erstmalig von Kent Beck 2003 im Detail erläutert. Zuvor war die Technik "`Test-First"' aber schon seit 1999 im Kontext von Extreme Programming (XP) bekannt.
 %TODO Quelle: "Extreme Programming". Computerworld. Retrieved January 11, 2011.
 %TODO Quelle: Beck, K. Test-Driven Development by Example, Addison Wesley, 2003
 Damit wurde aus der Entwicklungs-Methode "`Test-First"' ein Software-Entwicklungsprozess. 
@@ -64,12 +67,8 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
   % TODO http://www.agilecoachjournal.com/post/Test-Driven-Development.aspx
   
 \subsection{Ablauf}
+  Ziel ist es, vor der Implementation eines Codes, einen Unittest zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test besteht. Zum Schluss wird refaktorisiert, bei TDD auch als Designphase genutzt.
   
-  Der Basis-Ablauf wird von Kent Beck selbst als sehr leicht verstanden:
-  \begin{enumerate}
-   \item Man schreibe einen fehlschlagenden automatisierten Test, bevor man irgendeinen Code schreibt
-   \item Entferne Redundanzen
-  \end{enumerate}
   %TODO Abbildung mit Beschreibung
   Im Ganzen sind das also die Phasen:
   \begin{enumerate}
@@ -78,10 +77,10 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
    \item Green: Nachdem der Test fehlschlägt, implementiere nun den leichtesten Code, der den Test besteht\\
    Dies kann ausdrücklich auch eine Fake-Implementierung sein. Wichtig ist, dass diese Phase so schnell wie möglich verlassen wird.
    \item Refactor: Nachdem der Test bestanden wird, folgt nun die \textbf{wichtigste Phase}, die Refaktorisierungsphase.\\
-   Da wir bereits einen Test haben, der unser gewünschtes Systemverhalten widerspiegelt, können wir gefahrlos refaktorisieren, d.h. im Einzelfall Duplikation eleminieren. In dieser Phase findet das Design des Codes statt. Man macht sich Gedanken, wie wir die vorhanden Klassen optimal refaktorisieren können.
+   Da wir bereits einen Test haben, der unser gewünschtes Systemverhalten widerspiegelt, können wir gefahrlos refaktorisieren, d.h. im Einzelfall Duplikation eleminieren. In dieser Phase findet das Design des Codes statt. Man macht sich Gedanken, wie die vorhanden Klassen optimal refaktorisieren können, um Code-Smells zu eleminieren.
   \end{enumerate}
   
-  Jeder Unittest soll prinzipiell nur eine Eigenschaft testen, die Entwicklung erfolgt also in kleinen Schritten. Dies hat direkte Auswirkungen auf die zu entwickelnden Objekte und Methoden, die ebenfalls übersichtlich werden, und somit dem Funktionsbegriff, eine Methode für eine Aufgabe und erweitert eine Klasse für eine Aufgabe, gerecht werden.
+  Jeder Unittest soll prinzipiell nur eine Eigenschaft testen, die Entwicklung erfolgt also in kleinen Schritten. Dies hat direkte Auswirkungen auf die zu entwickelnden Objekte und Methoden, die ebenfalls übersichtlich werden sollen, und somit dem Funktionsbegriff, eine Methode für eine Aufgabe und erweitert eine Klasse für eine Aufgabe, gerecht werden.
   
   
   Das ganze lässt sich auch in den übergeordneten Prozess zum Entwickeln eines Features einordnen.
