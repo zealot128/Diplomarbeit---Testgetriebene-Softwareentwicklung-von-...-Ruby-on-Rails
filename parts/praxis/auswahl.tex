@@ -1,0 +1,24 @@
+\section{Auswahl der Entwicklungsstrategie und -Werkzeuge}
+\subsection{Auwahl einer Enticklungsstrategie}
+grundsätzlich ->
+        Outside In: Selenium, localization, Vorteile Beispiele
+          -> aufwändiger, Näher am Kunden
+
+Inside Out: basierend auf Unittests. Leichter
+    
+    Vorschlag einer Entwicklungsstrategie basierend auf BDD und TDD:
+    
+    \begin{enumerate}
+     \item Schreiben eines Cucumber Tests in Zusammenarbeit mit dem Stakeholder für einen notwendigen Test
+     \item Implementation der notwendigen Testschritte
+     \item Eigenverantwortliche Implementierung der Software mittels Unittests
+     \item Wenn der Cucumber-Test besteht, Abnahme durch Stakeholder
+    \end{enumerate}
+
+    Tägliches Messen des Code-Zustandes mittels Code-Metriken -> Continuous Integration
+
+\subsection{Auswahl der Entwicklungswerkzeuge}
+
+Modifikation der Werkzeuge fuer effektives TDD:
+      - Cucumber mit Selenium
+      - schneller Tests notwendig -> Parallele Tests und Selenium Grid

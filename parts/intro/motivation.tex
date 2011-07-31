@@ -1,6 +1,5 @@
 \section{Motivation}
 
-
 Kurz nach der Firmengründung der pludoni GmbH absolvierte der Autor dort sein Pflichtpraktikum, und war bis zum heutigen Tag als Werkstudent tätig.
 Währenddessen nahmen Programmierer verschiedener Erfahrungsstufen und insbesondere auch Praktikanten an der Neu- und Weiterentwicklung der Software teil. Dies hat zur Folge, dass die Komplexität der Software inzwischen ein Level erreicht hat, dass das Maß an Regressionsfehlern\footnote{fehlerauslösender Quelltextänderungen} steigt. Eine weitere wahrscheinliche Ursache dieses Problems ist, neben der fehlenden Erfahrung der Praktikanten, das Fehlen von automatisierten Tests.
 Für ein neues Projekt, it-jobs-und-stellen.de, soll dies nun mit einem anderen Ansatz verlaufen. 
@@ -35,24 +34,3 @@ hat.
 
 Trotz dieses Tools ist eine Heimarbeit aber immer mit Nachteilen in der Kommunikation behaftet. Dies hat bei den Programmierern teils gravierende Auswirkungen auf die Produktivität. Einerseits, da mitunter Code-Teile anderer abwesender Programmierer benutzt werden müssen,  andererseits, dass gleiche Funktionalität doppelt implementiert wird, weil der Überblick fehlt. Auch deswegen ist es leicht, bei Arbeiten am Code neue Fehler einzuführen. 
 Für das kommende Projekt soll nun eine großflächige Testinfrastruktur erstellt werden, um das Regressionsrisiko zu minimieren und durch die Tests eine gute Quelltextdokumentation zu erhalten.
-
-
-\subsection{Begriffsdefinitionen}
-\begin{description}
- \item[Test] ist eine, meist automatisierte, Prüfung des Programmverhaltens bei definierten Eingabeparametern
- 
- \item[Code-Qualität] beinhaltet die Qualitäten Lesbarkeit, Testbarkeit, Wartbarkeit, Erweiterbarkeit, Geringe Komplexität
- \item[Metrik] Eine Softwaremetrik ist eine statische oder dynamische Codeanalyse zur Generierung von statistischen Informationen über den Source-Code. Beispiele: Testabdeckung, Anzahl Codezeilen, Anzahl Bad Smells pro Codezeile.
- 
- \item[Testabdeckung] auch: Testfallabdeckung oder Code-Coverage. Eine dynamische Code-Metrik die angibt, welche Codezeilen durch keinen Test abgedeckt wurde. Es wird unterschieden in die Stufen C0, C1 und C2 mit steigender Komplexität der Messung.\\
- C0: Messung jeder Zeile, ob diese ausgeführt wurde\\
- C1: Messung jedes Zweigs jeder Zeile, ob dieser ausgeführt wurde\\
- C2: Messung jedes möglichen Codepfades, ob dieser ausgeführt wurde
- %TODO Quelle http://blog.abakas.com/2008/04/code-coverage-complexity.html
- \item[Bad Smell] oder Code-Smell. Ist ein Anzeichen für eine suboptimale Code-Stelle, die auch ein Hinweis auf ein größeres Design-Problem sein kann. Oft auch ein Kandidat für ein Refaktoring
- \item[TDD] Test-Driven-Development, bezeichnet den Prozess der Testgetriebenen Entwicklung
- \item[BDD] Behavior-Driven-Development (Verhaltensgetriebene Entwicklung). Prinzipiell eine Umformulierung von TDD zur Unterstützung der Businessprozesse 
- %\item[ATDD] Acceptance-Test-driven-development. Im Gegensatz zu Unittests beim reinen TDD, stehen die Akzeptanztests
-\end{description}
-
-
