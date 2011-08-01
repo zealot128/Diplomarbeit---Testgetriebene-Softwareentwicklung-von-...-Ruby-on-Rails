@@ -3,8 +3,7 @@ Für den praktischen Teil dieser Arbeit soll anhand der Entwicklung einer Ruby-o
 
 Als Ergänzung zu den lokalspezifischen Jobcommunitys mit strenger Mitgliederauswahl soll nun ein neues, allgemeines IT-Jobportal entwickelt werden. Der vorraussichtliche Name wird IT-Jobs-Und-Stellen.de\footnote{\url{http://www.it-jobs-und-stellen.de/}} sein.
 
-Ziel soll es sein, eine konkurrenzfähige Alternative zu den Branchenprima stepstone.de, monster.de und jobscout24\footnote{
-\url{http://www.stepstone.de} - \url{http://www.monster.de} - \url{http://www.jobscout24.de}} zu entwickeln. Folgende Kern-Anfordungen seien zu erfüllen
+Ziel soll es sein, eine konkurrenzfähige Alternative zu den Branchenprima stepstone.de, monster.de und jobscout24\footnote{\url{http://www.stepstone.de} - \url{http://www.monster.de} - \url{http://www.jobscout24.de}} zu entwickeln. Analog zu Abbildung \ref{fig:usecases} wurden die Anwendungsfälle wie folgt analysiert.
 
 
 \begin{figure}[htbp]
@@ -16,21 +15,30 @@ Ziel soll es sein, eine konkurrenzfähige Alternative zu den Branchenprima steps
 \end{figure}
 
 
-\subsection{Funktionale Anforderungen}
+\paragraph{Anwendungsfälle}
+Es gibt im zwei verschiedene Nutzertypen. Zum einen, ein Bewerber, der das Ziel hat einen Job zu suchen, zu finden und sich darauf zu bewerben. Zum anderen ein Mitarbeiter eines Kundenunternehmenes, der Jobs auf der Webseite schalten möchte.
+Verbal formuliert sind die Anwendungsfälle die folgenden:
 \begin{itemize}
- \item Stellenanzeigen online schalten mittels eines Formulars
- \item Import von Stellenanzeigen mittels XML-Schnittstelle
- \item Eine möglichst einfache Handhabung sowohl durch Kunden als auch Bewerber
- \item Ein Bezahlsystem mit Einbindung eines 3rd Party Bezahldienstes zum Erwerb von Stellenanzeigen und Refreshs\footnote{Automatische Aktualisierung der Stellenanzeige und damit bessere Platzierung in den Suchergebnissen}
- \item eine Integration von Social Media Communitys, insbesondere Facebook, LinkedIn und XING, mit dem Ziel, den Bewerbungsprozess zu vereinfachen, z.B. um Lebensläufe generieren zu lassen
+ \item Ein Bewerber kann die Webseite nach sichtbaren Stellenangeboten durchsuchen
+ \item Ein Bewerber kann die Detailanzeige einer Stelle betrachten
+ \item Ein Bewerber kann sich auf eine Stelle über das System bewerben. Dabei kann er auch eine Verbindung zu seinem Facebook oder LinkedIn Account herstellen, um so automatisch einen Lebenslauf generieren zu lassen.
+ \item Ein Kunde kann sich am Portal registrieren und dann anmelden, und wird so zum "`Arbeitgeber"'
+ \item Ein Arbeitgeber kann eine Stellenanzeige für ein Vielfaches von 30 Tagen schalten. Damit wird ein Bezahlvorgang über einen Drittanbieterportal (z.B. paypal) ausgelöst und bei Bestätigung die Stelle sichtbar geschaltet. Er kann dazu zwischen 5 verschiedenen Designs wählen, und Logo und Bild hinzufügen. 
+ \item Ein Arbeitgeber kann eine laufende Stelle erneuern (refresh), und so seine Platzierung verbessern. Dies ist möglich, weil die Aktualität einer Stelle Auswirkungen auf die Platzierung in den Suchergebnissen hat. Ein Refresh kostet Geld und löst somit wieder einen Bezahlvorgang aus
+ \item Ein Arbeitgeber kann Statistiken über seine geschalteten Stellenanzeigen einsehen. Dies beinhaltet die Anzahl der Zugriffe pro Tag, Anzahl der Bewerbungen je Stelle
+ \item Ein Arbeitgeber kann seine Stellen mittels eines XML-Feed-Imports automatisiert einlesen. Dazu bezahlt er einen Pauschalbetrag je Kalenderjahr. Das System holt nun alle 6h liest nun alle Stellen aus diesem Feed ein. Das Format ist eine Modifikation von RSS2.0  
 \end{itemize}
 
+
+
 \subsection{Nichtfunktionale Anforderungen}
+Folgende Rahmenbedingungen und zusätzliche Ziele wurden vereinbart.
 
 \begin{itemize}
  \item Eine hohe C0-Testabdeckung von mindestens 95\% als Grundlage für den TDD Prozess
  \item Eine hohe Erweiterbarkeit, um langfristig auch die bereits vorhandenen Jobcommunitys durch das neue System zu ersetzen, welche gegenwärtig auf Drupal 5 (PHP) basieren
  \item Eine moderne Suchfunktion durch einen Suchdaemon realisieren, z.B. Sphinx oder Lucene
- \item Softwarestack: Ruby 1.9.2 mit Ruby on Rails 3.1
+ \item Softwarestack: Ruby 1.9.2 mit Ruby on Rails 3.1, Javascript mit JQuery 1.6
+ \item Die Software soll eine möglichst einfache und eingängige Bedienung haben
 \end{itemize}
 

@@ -135,3 +135,44 @@ Die Verwendung von Ruby und anderen dynamischen Sprachen birgt durchaus Risiken,
 % TODO QUelle hier was?
 \epigraph{Sometimes people jot down pseudo-code on paper. If that pseudo-code runs directly on their computers, it's best, isn't it? Ruby tries to be like that, like pseudo-code that runs. }{Yukihiro Matsumoto}
 
+
+\subsection{Testframeworks für Ruby}
+\subsubsection{Test::Unit und Minitest}
+Test::Unit (Ruby 1.8.7) und Minitest (1.9.2) sind die Testbibliotheken, die Ruby standardmäßig mitbringt. Beide basieren auf dem xUnit-, bzw. SUnit-Design von Kent Beck, und sind für Nutzer von JUnit oder NUnit leicht nachvollziehbar. %TODO
+
+Für eine zu testende Klasse wird eine analoge Testklasse erstellt. Diese trägt per Definition denselben Namen wie die zu testende Klasse mit einem "`Test"' am Anfang. Um z.B. eine Klasse "`job"' zu testen, wird eine Datei \texttt{test\_job.rb} (Ruby Standard) oder \texttt{job\_test.rb} (Rails Standard) erstellt. Dort wiederrum wird eine Klasse mit Namen \texttt{TestJob} definiert. 
+
+Ein Beispieltest sieht z.B. so aus:
+\begin{lstlisting}
+require "job"
+
+class TestJob < Test::Unit::TestCase
+  def setup
+    @job = Job.create
+  end
+  
+  def teardown
+    Job.delete_all
+  end
+  
+  def test_job_exists
+    @job.title =  "Ruby on Rails Entwickler
+    @job.add_location_to_title( "Dresden")
+    
+    assert_equal( "Ruby on Rails Entwickler in Dresden",  Job.first.title)
+  end
+end
+\end{lstlisting}
+Unsere Klasse TestJob erbt von der TestUnit Basisklasse. Sie beinhaltet die Methoden "`setup"' und "`teardown"', die jeweils vor, respektive nach jedem einzelnen Testfall aufgerufen werden.
+In der Setup-Methode nehmen wir z.B. das Anlegen eines Jobs vor, in der Teardown Methode löschen wir alle Jobs in der Datenbank, um einen sauberen Test zu gewährleisten
+
+Danach können nun beliebig viele Testmethoden folgen, deren Namen mit \texttt{test\_} beginnen müssen.
+Jede Testmethode besteht in der Regel aus einer Initialisierung (kann in die setup-Methode ausgelagert werden), der Ausführung einer zu testenden Aktion und dem Prüfen der danach geltenden Eigenschaften mittels Assertions. Diese Zusicherungen sind Prädikate die oft Gleichheit oder Boolsche Rückgabewerte prüfen.
+
+%TODO Weitere Prädikate erwähnen
+
+Rails erledigt das Anlegen und Löschen von Testdaten selbständig. Diese werden als Fixtures bezeichnet und extern definiert. Alternativ ist der Einsatz sogenannter Factories möglich, um schnell Objekte mit bestimmten Eigenschaften zu erstellen. In jedem Fall setzt Rails die Datenbank nach jedem einzelnen Test zurück.
+
+
+\subsubsection{Rspec}
+

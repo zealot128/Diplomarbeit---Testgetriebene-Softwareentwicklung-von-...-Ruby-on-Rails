@@ -1,11 +1,15 @@
 \section{Aufbau der Arbeit}
 
+Diese Arbeit ist in 4 Teile mit insgesamt 11 Abschnitt gegliedert. Abschnitt 1 bis 3 haben einleitenden Charakter. In den darauffolgenden Abschnitten 4 bis 7 werden theoretische Grundlagen und Technologien, die für das die Aufgabenstellung relevant sind, näher beleuchtet. Dies beinhaltet eine Einführung in die Sprache Ruby, das Framework Ruby on Rails, sowie Automatisierte Softwaretest und den Prozess der Testgetriebenen Entwicklung.
+In den Abschnitten 8 bis 10 werden dann praktische Erfahrungen und Implemenationsdetails dargestellt. Im 11. und letzten Abschnitt wird ein Fazit gezogen und ein Ausblick für weitere Forschungstätigkeit zum Thema dargeboten.
+
 \subsection{Begriffsdefinitionen}
+Im folgenden werden einige oft-verwendete Begriffe näher erläutert.
 \begin{description}
- \item[Test] ist eine, meist automatisierte, Prüfung des Programmverhaltens bei definierten Eingabeparametern
- 
+ \item[Test] oder Testfall ist eine, meist automatisierte, Prüfung des Programmverhaltens bei definierten Eingabeparametern
+ \item[Test-Suite] ist eine Sammlung von mehreren Testfällen für eine Komponente oder das gesamte System
  \item[Code-Qualität] beinhaltet die Qualitäten Lesbarkeit, Testbarkeit, Wartbarkeit, Erweiterbarkeit, Geringe Komplexität
- \item[Metrik] Eine Softwaremetrik ist eine statische oder dynamische Codeanalyse zur Generierung von statistischen Informationen über den Source-Code. Beispiele: Testabdeckung, Anzahl Codezeilen, Anzahl Bad Smells pro Codezeile.
+ \item[Metrik] Eine Softwaremetrik ist das Ergebnis einer statischen oder dynamischen Codeanalyse zur Generierung von Informationen über den Source-Code. Beispiele: Testabdeckung, Anzahl Codezeilen, Anzahl Bad Smells pro Codezeile.
  
  \item[Testabdeckung] auch: Testfallabdeckung oder Code-Coverage. Eine dynamische Code-Metrik die angibt, welche Codezeilen durch keinen Test abgedeckt wurde. Es wird unterschieden in die Stufen C0, C1 und C2 mit steigender Komplexität der Messung.\\
  C0: Messung jeder Zeile, ob diese ausgeführt wurde\\
@@ -14,7 +18,6 @@
  %TODO Quelle http://blog.abakas.com/2008/04/code-coverage-complexity.html
  \item[Bad Smell] oder Code-Smell. Ist ein Anzeichen für eine suboptimale Code-Stelle, die auch ein Hinweis auf ein größeres Design-Problem sein kann. Oft auch ein Kandidat für ein Refaktoring
  \item[TDD] Test-Driven-Development, bezeichnet den Prozess der Testgetriebenen Entwicklung
- \item[BDD] Behavior-Driven-Development (Verhaltensgetriebene Entwicklung). Prinzipiell eine Umformulierung von TDD zur Unterstützung der Businessprozesse 
+ \item[BDD] Behavior-Driven-Development (Verhaltensgetriebene Entwicklung). Prinzipiell nur eine Umformulierung von TDD zur Ausrichtung auf Businessprozesse
  %\item[ATDD] Acceptance-Test-driven-development. Im Gegensatz zu Unittests beim reinen TDD, stehen die Akzeptanztests
 \end{description}
-
