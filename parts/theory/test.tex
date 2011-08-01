@@ -1,4 +1,17 @@
-\section{Softwaretests}
+\section{Automatisierte Softwaretests}
+
+Zum Prüfen der Korrektheit seiner Arbeit, macht jeder Programmierer mindestens manuelle Tests. Bei einer Webanwendung wäre dies konkret, den Webserver zu starten und mittels eines Browsers durch die Anwendung zu navigieren, Daten anzulegen und Ausgaben der Anwendung zu kontrollieren. Mit zunehmender Größe einer Anwendung wird es immer aufwändiger, die Software zu testen, da nach jedem Hinzufügen von Funktionalität eigentlich alle Aspekte wieder getestet werden müssen, um Regressionsfehler auszuschließen.
+
+Stattdessen werden automatisierte Softwaretests instrumentalisiert, um auf Knopfdruck alle bisher programmierten Tests auszuführen und so ein Bild über den Zustand der Anwendung zu erhalten.
+Ein solcher Test besteht in der Regel aus 4 Teilen:
+\begin{enumerate}
+ \item Initialisierung der Test-Umgebung und der Objekte
+ \item Ausführung der zu testenden Aktion, die den Systemzustand ändert
+ \item Spezifikation von Erwartungen (Assertions)
+ \item Aufräumen nicht mehr benötigter Objekte, File-Pointer, Sockets u.ä 
+\end{enumerate}
+
+
 
 \subsection{Warum testen}
 
@@ -7,11 +20,24 @@
 
 \subsection{Arten von Tests}
 
-\subsection{Testtools in Ruby}
-\subsubsection{Test::Unit und Minitest}
-Test::Unit (Ruby 1.8.7) und Minitest (1.9.2) sind die Testbibliotheken, die Ruby standardmäßig mitbringt. Beide basieren auf dem xUnit, bzw. SUnit Design von Kent Beck, und sind für Nutzer von JUnit oder NUnit leicht nachvollziehbar.
+\subsection{Eigenschaften erfolgreicher Tests}
 
-Für eine zu testende Klasse wird eine analoge Testklasse erstellt. Diese trägt per Definition denselben Namen wie die zu testende Klasse mit einem "`test"' am Anfang. Um z.B. eine Klasse "`job"' zu testen, wird eine Datei \texttt{test\_job.rb} (Ruby Standard) oder \texttt{job\_test.rb} (Rails Standard) erstellt. Dort wiederrum wird eine Klasse mit Namen \texttt{TestJob} definiert. 
+Das Vorhandensein von zahlreichen Tests reicht nicht, um das Testen erfolgreich abzuschließen. Zur Beurteilung der Brauchbarkeit einer Testsuite genügen die folgenden Kriterien \cite[S.272-279]{rappin_rails_2011} und \cite{beck_test_2002}.
+
+
+\begin{description}
+ \item[Unabhängigkeit (Independence)] Ein Test ist unabhängig, falls er nicht durch andere Tests beeinflusst wird. Auch die Reihenfolge, in der die Tests ausgeführt werden, darf auf das Ergebnis keinen Einfluss üben.
+ \item[Wiederholbarkeit (Repeatability] Ein Test wird als wiederholbar bezeichnet, wenn er mehrmals hintereinander ausgeführt werden kann, und dabei jedes mal dasselbe Ergebnis liefert. Problematisch sind dabei z.B. Datum und Zeit, sowie Zufallsfunktionen
+ \item[Klarheit (Clarity)] Ein Test ist klar, wenn sein Zweck sofort verständlich wird. Damit wird einerseits die Lesbarkeit gemeint. Anderseits schließt dies auch ein, ob der Test genau eine Eigenschaft testet und nicht redundant zu anderen Tests ist. Dies hat zur Folge, dass die Tests wartbarer werden und als Code Dokumenation dienen können.
+ \item[Präzise (Conciseness)] Ein Test ist präzise, wenn er so wenig Code und so wenige Objekte wie möglich benötigt, um sein Ziel zu erreichen. Eine Auswirkung ist, dass der Test schneller wird.
+ \item[Robustheit (Robustness)] Ein Test ist robust, wenn es eine direkte Korrelation zum zu testenden Code gibt: Ist der Code korrekt, so ist der Test erfolgreich. Ist der Code falsch, so schlägt der Test fehl. Nicht-robuste Tests werden auch "`zerbrechlich"' (brittle) genannt. Dazu zählen auch sogenannte tautologische Tests, die immer erfolgreich Verlaufen, und keine Aussage über den zugrunde liegenden Programmcode geben
+ \end{description}
+
+\subsection{Testframeworks für Ruby}
+\subsubsection{Test::Unit und Minitest}
+Test::Unit (Ruby 1.8.7) und Minitest (1.9.2) sind die Testbibliotheken, die Ruby standardmäßig mitbringt. Beide basieren auf dem xUnit-, bzw. SUnit-Design von Kent Beck, und sind für Nutzer von JUnit oder NUnit leicht nachvollziehbar. %TODO
+
+Für eine zu testende Klasse wird eine analoge Testklasse erstellt. Diese trägt per Definition denselben Namen wie die zu testende Klasse mit einem "`Test"' am Anfang. Um z.B. eine Klasse "`job"' zu testen, wird eine Datei \texttt{test\_job.rb} (Ruby Standard) oder \texttt{job\_test.rb} (Rails Standard) erstellt. Dort wiederrum wird eine Klasse mit Namen \texttt{TestJob} definiert. 
 
 Ein Beispieltest sieht z.B. so aus:
 \begin{lstlisting}
@@ -46,4 +72,3 @@ Rails erledigt das Anlegen und Löschen von Testdaten selbständig. Diese werden
 
 
 \subsubsection{Rspec}
-\subsubsection{Cucumber}
