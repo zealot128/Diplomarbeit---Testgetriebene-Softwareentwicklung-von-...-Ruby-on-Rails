@@ -156,12 +156,12 @@ order=2
 
 [item:main.tex]
 archive=true
-column=38
+column=31
 encoding=UTF-8
 highlight=LaTeX
-line=91
+line=72
 mode=LaTeX
-open=true
+open=false
 order=5
 
 [item:material/mvc-rails.png]
@@ -211,7 +211,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=20
 mode=LaTeX
-open=true
+open=false
 order=0
 
 [item:parts/include-syntax-php.tex]
@@ -226,32 +226,32 @@ order=2
 
 [item:parts/intro/aufbau.tex]
 archive=true
-column=104
+column=12
 encoding=UTF-8
 highlight=LaTeX
-line=9
+line=5
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:parts/intro/motivation.tex]
 archive=true
-column=82
+column=53
 encoding=UTF-8
 highlight=LaTeX
-line=35
+line=6
 mode=LaTeX
 open=true
-order=4
+order=0
 
 [item:parts/intro/projektbeschreibung.tex]
 archive=true
-column=0
+column=39
 encoding=UTF-8
 highlight=LaTeX
-line=44
+line=34
 mode=LaTeX
-open=true
+open=false
 order=6
 
 [item:parts/praxis/anwendung.tex]
@@ -261,7 +261,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:parts/praxis/auswahl.tex]
@@ -316,22 +316,22 @@ order=-1
 
 [item:parts/theory/tdd.tex]
 archive=true
-column=2
+column=188
 encoding=UTF-8
 highlight=LaTeX
-line=14
+line=1
 mode=LaTeX
 open=false
 order=7
 
 [item:parts/theory/test.tex]
 archive=true
-column=0
+column=190
 encoding=UTF-8
 highlight=LaTeX
-line=13
+line=4
 mode=LaTeX
-open=true
+open=false
 order=3
 
 [item:skript.kilepr]
@@ -349,8 +349,8 @@ CursorColumn=23
 CursorLine=71
 
 [view-settings,view=0,item:main.tex]
-CursorColumn=38
-CursorLine=91
+CursorColumn=31
+CursorLine=72
 
 [view-settings,view=0,item:parts/00-frontpage.tex]
 CursorColumn=6
@@ -365,16 +365,16 @@ CursorColumn=0
 CursorLine=20
 
 [view-settings,view=0,item:parts/intro/aufbau.tex]
-CursorColumn=104
-CursorLine=9
+CursorColumn=12
+CursorLine=5
 
 [view-settings,view=0,item:parts/intro/motivation.tex]
-CursorColumn=82
-CursorLine=35
+CursorColumn=53
+CursorLine=6
 
 [view-settings,view=0,item:parts/intro/projektbeschreibung.tex]
-CursorColumn=0
-CursorLine=44
+CursorColumn=39
+CursorLine=34
 
 [view-settings,view=0,item:parts/praxis/anwendung.tex]
 CursorColumn=0
@@ -401,9 +401,9 @@ CursorColumn=0
 CursorLine=136
 
 [view-settings,view=0,item:parts/theory/tdd.tex]
-CursorColumn=2
-CursorLine=14
+CursorColumn=188
+CursorLine=1
 
 [view-settings,view=0,item:parts/theory/test.tex]
-CursorColumn=0
-CursorLine=13
+CursorColumn=190
+CursorLine=4

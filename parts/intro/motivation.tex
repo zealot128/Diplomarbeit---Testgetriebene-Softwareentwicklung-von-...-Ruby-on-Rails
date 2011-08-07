@@ -1,4 +1,24 @@
-\section{Motivation}
+\section*{Glossar}
+Im folgenden werden einige oft-verwendete Begriffe näher erläutert.
+\begin{description}
+ \item[Test] oder Testfall ist eine, meist automatisierte, Prüfung des Programmverhaltens bei definierten Eingabeparametern
+ \item[Test-Suite] ist eine Sammlung von mehreren Testfällen für eine Komponente oder das gesamte System
+ \item[Code-Qualität] beinhaltet die Qualitäten Lesbarkeit, Testbarkeit, Wartbarkeit, Erweiterbarkeit, Geringe Komplexität
+ \item[Metrik] Eine Softwaremetrik ist das Ergebnis einer statischen oder dynamischen Codeanalyse zur Generierung von Informationen über den Source-Code. Beispiele: Testabdeckung, Anzahl Codezeilen, Anzahl Bad Smells pro Codezeile.
+ 
+ \item[Testabdeckung] auch: Testfallabdeckung oder Code-Coverage. Eine dynamische Code-Metrik die angibt, welche Codezeilen durch keinen Test abgedeckt wurde. Es wird unterschieden in die Stufen C0, C1 und C2 mit steigender Komplexität der Messung.\\
+ C0: Messung jeder Zeile, ob diese ausgeführt wurde\\
+ C1: Messung jedes Zweigs jeder Zeile, ob dieser ausgeführt wurde\\
+ C2: Messung jedes möglichen Codepfades, ob dieser ausgeführt wurde
+ %TODO Quelle http://blog.abakas.com/2008/04/code-coverage-complexity.html
+ \item[Bad Smell] oder Code-Smell. Ist ein Anzeichen für eine suboptimale Code-Stelle, die auch ein Hinweis auf ein größeres Design-Problem sein kann. Oft auch ein Kandidat für ein Refaktoring
+ \item[TDD] Test-Driven-Development, bezeichnet den Prozess der Testgetriebenen Entwicklung
+ \item[BDD] Behavior-Driven-Development (Verhaltensgetriebene Entwicklung). Prinzipiell nur eine Umformulierung von TDD zur Ausrichtung auf Businessprozesse
+ %\item[ATDD] Acceptance-Test-driven-development. Im Gegensatz zu Unittests beim reinen TDD, stehen die Akzeptanztests
+\end{description}
+
+\section{Einleitung}
+\subsection{Motivation}
 
 Kurz nach der Firmengründung der pludoni GmbH absolvierte der Autor dort sein Pflichtpraktikum, und war bis zum heutigen Tag als Werkstudent tätig.
 Während dieser Zeit nahmen Programmierer verschiedener Erfahrungsstufen und insbesondere auch Praktikanten an der Neu- und Weiterentwicklung der Webserver-Software teil. Dies hat zur Folge, dass die Komplexität der Software inzwischen ein Level erreicht hat, dass das Maß an Regressionsfehlern\footnote{fehlerauslösender Quelltextänderungen} stark anstieg. 
@@ -9,7 +29,7 @@ Für ein neues Projekt, it-jobs-und-stellen.de, soll dies nun mit einem anderen 
 
 Neben der Umstellung auf ein modernes Web-Framework, sollen nun Tests im Einklang zum Code erstellt werden, um auf Knopfdruck  umfassende Informationen über den Systemzustand zu erhalten, wie sie ein manueller Test in der Gründlichkeit und Schnelligkeit niemals erreichen kann. Die testgetriebene Entwicklung ist dabei ein populärer Entwicklungsprozess der eigentlich als Ziel hat, gut testbaren, d.h. gut wartbaren und lesbaren Code zu schreiben. Quasi nebenbei erhält man aber auch eine umfassende Test-Suite, und kommt so dem Schritt, funktionierende Software zu entwickeln, einen Schritt näher.
 
-\subsection{Die pludoni GmbH}
+\subsubsection{Die pludoni GmbH}
 
 Die pludoni GmbH ist ein junges dynamisches Dresdner Unternehmen, dass sich zum Ziel gesetzt hat, lokale Job-Communitys aufzubauen und zu betreuen, sowie Tools für die Vereinfachung der Personalarbeit mittelständischer Unternehmen zu entwickeln. Einige Beispiele für diese Communitys sind zur Zeit ITsax.de, ITmitte.de und MINTsax.de\footnote{http://www.itsax.de/, http://www.itmitte.de, http://www.mintsax.de/}.
 \marginline{\includegraphics[width=0.8\marginparwidth]{material/pludoni.png}\\pludoni GmbH}
@@ -37,7 +57,7 @@ Viele der Personalchefs der beteiligten Firmen haben dieselbe Erfahrung gemacht,
 
 Dieses Empfehlungssystem überzeugt die beteiligten Unternehmen. Aktuell wurden im letzten Jahr z.B. auf ITmitte.de über 800 Bewerberungen über das Portal versendet, von denen mehr als die Hälfte (440) mit Empfehlungscodes versehen waren \citep{joerg_klukas_startseite_2011}. Dies motivierte mittlerweile 54 Firmen bei den drei pludoni Communitys teilzunehmen \citep{joerg_klukas_referenzen_2011}.
 
-\subsection{Arbeitsablauf in der pludoni GmbH}
+\subsubsection{Arbeitsablauf in der pludoni GmbH}
 
 Da der pludoni GmbH gegenwärtig weniger Büroplätze zu Verfügung stehen, als sie Mitarbeiter hat, findet ein Großteil der Arbeit in Heim- oder Telearbeit statt.
 Zur persönlichen Abstimmung findet aber mindestens einmal pro Woche ein Meeting statt, in welcher sich 2-4 der Mitarbeiter treffen, um alte Aufgaben abzunehmen und neue zu diskutieren. Die Abnahme erfolgt dabei durch den Chef Jörg Klukas.

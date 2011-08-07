@@ -4,17 +4,31 @@ Testgetriebene Entwicklung, im Englischen Test-Driven-Development (TDD) wurde er
 %TODO Quelle: Beck, K. Test-Driven Development by Example, Addison Wesley, 2003
 Damit wurde aus der Entwicklungs-Methode "`Test-First"' ein Software-Entwicklungsprozess. 
 
-Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby on Rails typische Testwerkzeuge aufzeigen. \subsection{Motivation}
-  Das Erstellen einer gut abdeckenden Test-Suite für ein jedes größeres Softwareprojekt ist eine wichtige Vorraussetzungen um interne Qualitäten, wie Wartbarkeit und Zuverlässigkeit zu aktivieren. TDD soll nicht dazu dienen, die Software zu verifizieren. Dies ist aber ein positiver Nebeneffekt. Das Hauptziel ist es, den Code in Einklang mit dem Test zu schreiben, so dass der Test den Code antreibt (Test drives thes code). Der messbare Effekt davon, ist ein gut-testbarer Code, welcher in der Regel auch ein gut-wartbarer und verständlicher Code. Bad-Smells, wie God-Methode und geringe Kohäsion, werden schon im Keim erstickt werden, da sie selbst nur äußerst schwer zu testen sind.
+Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby on Rails typische Testwerkzeuge aufzeigen. 
+\subsection{Motivation}
+  Das Erstellen einer gut abdeckenden Test-Suite für ein jedes größeres Softwareprojekt ist eine wichtige Vorraussetzungen um interne Qualitäten, wie Wartbarkeit und Zuverlässigkeit zu aktivieren. TDD soll nicht dazu dienen, die Software zu verifizieren. Dies ist aber ein positiver Nebeneffekt. Das Hauptziel ist es, den Code in Einklang mit dem Test zu schreiben, so dass der Test den Code antreibt (Test drives thes code). Der messbare Effekt davon, ist ein gut-testbarer Code, welcher in der Regel auch ein gut-wartbarer und verständlicher Code ist. Bad-Smells, wie God-Methode und geringe Kohäsion, werden schon im Keim erstickt werden, da diese nur äußerst schwer zu testen sind.
+
+  \paragraph{Psychologische Aspekte und Aspekte des Projektmanagements}
   
+  Kent Beck beschreibt die Hauptmotivation für TDD, als das "`managing fear during programming"' Management von Angst. So hat Angst verschiedene Auswirkungen auf die Entwicklung. Sie mache zögerlich, führt zu weniger Kommunikation und Feedback und macht den Programmierer mürrisch \citep[S. xi]{beck_test_2002}.
+  
+  %Die Motivation für die Wahl von Test-getriebener Entwicklung als primäre Entwicklungsstrategie wird mit dem
+  
+  Falls TDD die Fehlerdichte signifikant verringern würde und nur Code entstünde, der getestet wurde, so hätte dies auch soziale Auswirkungen auf das Entwicklerteam \citep[S. x]{beck_test_2002}. 
+  \begin{enumerate}
+   \item Die Qualitätssicherung könnte von einer reaktivien, auf eine proaktive Arbeit umstellen.
+   \item Der Projektmanager kann den Ablauf der Entwicklung näher bestimmen, da weniger überraschende Regressionsfehler im Laufe der Entwicklung auftreten
+   \item Durch eine niedrige Fehlerdichte kann die Kontinuierliche Integration (Continuos Integration) möglich gemacht werden, und so der Kunde in den Entwicklungsprozess einbezogen werden
+  \end{enumerate}
+ . Zum 
   
   %Psychologische...
   % Zuversicht
-  TDD hat auch eine psychologische Motivation.
-  In Abbildung %TODO 
-  ist ein Einflussdiagramm zu sehen, welches vereinfacht Zusammenfänge darstellen soll. Ein direkter Pfeil zeigt eine direkte proportionale Abhängigkeit, ein Pfeil mit einem Kreis eine indirekt proportionale Abhängigkeit. In diesem Diagramm soll der Zusammenhang zwischen psychischen Druck auf den Programmier, Testen und Defekte visualisiert werden. Druck führt somit zu weniger Tests, weniger Tests zu mehr Fehlern und diese wiederrum zu höherem Druck. Dieser klassische Teufelskreis der Softwareentwicklung, der gerade zum Ende eines Entwicklungsprozesses auftritt, soll durch TDD effektiv verhindert werden. 
+  TDD hat auch eine psychologische Motivation für den individuellen Programmierer.
+  %In Abbildung %TODO 
+  %ist ein Einflussdiagramm zu sehen, welches vereinfacht Zusammenfänge darstellen soll. Ein direkter Pfeil zeigt eine direkte proportionale Abhängigkeit, ein Pfeil mit einem Kreis eine indirekt proportionale Abhängigkeit. In diesem Diagramm soll der Zusammenhang zwischen psychischen Druck auf den Programmier, Testen und Defekte visualisiert werden. Druck führt somit zu weniger Tests, weniger Tests zu mehr Fehlern und diese wiederrum zu höherem Druck. Dieser klassische Teufelskreis der Softwareentwicklung, der gerade zum Ende eines Entwicklungsprozesses auftritt, soll durch TDD effektiv verhindert werden. 
   % TODO Figure A.5 
-  TDD fördert die Entwicklung in kleinen Schritten, und ermöglicht durch bestande Tests kleine "`Belohnungen"' für den Programmierer. Dadurch ist es leichter einen gewissen Arbeitsrhythmus zu erhalten, was stellenweise dem "`Flow"'\footnote{Schaffen-, Tätigkeitssrausch}  ähnelt oder diesen strukturiert ergänzen kann.
+  TDD fördert die Entwicklung in kleinen Schritten, und ermöglicht durch bestande Tests kleine "`Belohnungen"' für den Programmierer. Dadurch ist es leichter einen gewissen Arbeitsrhythmus zu erhalten, was stellenweise dem "`Flow"'\footnote{Schaffen-, Tätigkeitssrausch}  ähnelt oder diesen strukturiert ergänzen kann \citep{roger_brown_test_2008}.
   % TODO http://www.agilecoachjournal.com/post/Test-Driven-Development.aspx
   
 \subsection{Ablauf}
@@ -74,9 +88,9 @@ def test_always_fail
   Date.mocks(:today).returns( 7.days.ago)
 end
   \end{lstlisting}
-  Der gezeigte Programmcode wird jedesmal fehlschlagen, da von einem Mock erwartet wird, dass er während des Tests genau einmal aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit Interna des Programmflusses zu testen.
+  Der gezeigte Programmcode wird jedesmal fehlschlagen, da von einem Mock erwartet wird, dass er während des Tests genau einmal aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit Interna des Programmflusses zu testen. 
 
-  %RSPEC Mock basiert
+
   
   \subsection{Vorteile von TDD}
   Produktiver, 
@@ -86,5 +100,7 @@ end
   
   
   \subsection{Nachteile von TDD}
-  %\subsection{Bewertung}
+  Es gibt bestimmte Programmieraufgaben, die nicht allein durch die testgetriebene Entwicklung implementiert werden können. So seinen Nebenläufigkeit oder Software Sicherheit genannt, in denen TDD als Zielgeber nicht ausreiche \citep[S. xii]{beck_test_2002}.
+  
+  Zudem stelle die Testgetriebene Entwicklung kein Ersatz für andere Arten von Tests, wie Performanz/Stress und Usability-Test \citep[S. 86]{beck_test_2002}.
   \subsection{Varianten: BehaviorDD, DesignDrivenTesting}

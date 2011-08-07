@@ -1,4 +1,52 @@
 \section{Code-Metriken}
-        \subsection{Notwendigkeit von Code Metriken}
-        \subsection{Überblick über Code-Metriken und Skalen}
-        \subsection{Testabdeckung}
+Eine Codemetrik ist eine Software-Metrik und Produkt-Metrik, und damit eine Maßzahl, die zum Vergleich dient und ein Qualitätsmerkmal für ein Stück Code oder ein Programm darstellt.
+
+\epigraph{A function whose inputs are software data and whose output is a single
+numerical value that can be interpreted as the degree to which software possesses a given attribute that affects its quality}{\cite{ieee_1998}}
+
+Dem Verwenden von Code-Metriken liegt der Wunsch zugrunde, komplexe Codeteile auf einfache Zahlen automatisiert analysieren zu lassen, um potenziell suboptimale Codestellen zu finden, welche Defekte verursachen könnten. Aus Business-Sicht stellen Code-Metriken eine Methode dar, Entwicklungsfortschritt zu messen und qualitativ zu beurteilen.
+\subsection{Überblick über Code-Metriken und Skalen}
+Hier seien nun einige der geläufigsten Code-Metriken vorgestellt.
+\paragraph{Lines of Code (LOC)} ist die am häufigsten verwendete, und die am leichtesten zu bestimmende Größe. Sie repräsentiert den Umfang eines Programmes. Diese Größe erhält dann eine größere Aussage, wenn man sie ins Verhältnis z.B. der Klasse oder eines Codefiles setzt. So kann man mit "`LOC / Klasse"' schon diejenigen Klassen finden, die wahrscheinlich zu komplex sind.
+
+\paragraph{Zyklomatische Komplexität}
+
+\paragraph{Kohäsion/Kopplung}
+
+\paragraph{Anzahl Bad Smells}
+\citep{mccabe_complexity_1976}
+
+% Code Smells https://github.com/kevinrutherford/reek/wiki/Code-Smells
+
+
+\subsection{Code-Metriken für Tests}
+Der Programmcode wird i.d.R. durch die geschriebenen Tests abgesichert. Die Tests allerdings haben ihrerseits keine Tests. Um also die Nützlichkeit der eigenen Tests zu bestimmen, kann man sich aber zumindest auf Code-Metriken stützen.
+Tests sind in erster Linie natürlich auch Code und können mit den oben genannten Metriken beurteilt werden. Zudem gibt es aber einige weitere exklusive Methoden, Qualität von Tests zu messen. 
+
+\subsubsection{Lines of Test / Lines of Code}
+        
+\subsubsection{Testausführungsabdeckung}
+Die Testabdeckung, im Englischen "`Code Coverage"' bezeichnet, misst den Grad inwieweit ein Programm getestet wurde. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"', und 0\% "`Das Programm wurde die die Tests überhaupt nicht berührt"' Dabei wird die vorhandene Test-Suite ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Es wird festgehalten, welche Anweisungen ausgeführt wurden. Allerdings gibt es 3 Abstufungen, diese Abdeckung zu beobachten (Mit steigender Komplexität des Messverfahrens):
+\begin{description}
+ \item[C0] (Statement Coverage) ist die am einfachsten zu bestimmende Abdeckung. Dabei wird geprüft, ob jede Zeile des Quellcodes während der Codeausführung mindestens einmal ausgeführt wurde
+ \item[C1] (Branch Coverage) prüft zusätzlich, ob jeder Zweig jeder Zeile ausgeführt wurde. Dies ist wichtig,falls man ternäre Ausdrücke\footnote{if-then-else in einer Zeile: int a = (1==1) ? 5 : 3} verwendet
+ \item[C2] (Path Coverage) prüft, ob jeder mögliche Codepfad durchlaufen wurde. Ein Codepfad sei eine einmalige Abfolge von Zweigen innerhalb einer Funktion von Eintritt bis Rücksprung \citep{steve_cornett_code_1996}. So werden z.B. bei 10 Bedingungen 1024 Pfade generiert, denen bei einer 100\% Abdeckung auch 1024 Tests entgegenstehen müssten.
+ \end{description}
+ Anmerkung: In der Literatur startet in einigen Fällen die Nummerierung bei C0 \citep{catherine_powell_abakas_2008}, in anderen Fällen aber bei C1 \citep{steve_cornett_code_1996}.
+ 
+ Für Ruby 1.8.7 gibt es das Tool rcov \footnote{\url{http://relevance.github.com/rcov/}}, für Ruby ab 1.9.1 simple-cov\footnote{\url{https://github.com/colszowka/simplecov}}, welche beide die C0 Testabdeckung bestimmen können. Zum aktuellen Zeitpunkt sind keine weiteren Tools bekannt, um C1 oder C2 Abdeckungen zu bestimmen.
+ \paragraph{Wieviel Testabdeckung ist sinnvoll oder notwendig}
+ 
+ Beim Messen der Abdeckung stellt man sich schnell die Frage, wieviel Testabdeckung notwendig ist. Zuerst sei die Art des Messverfahrens, also C0 bis C2, wichtig. je komplexer das Messen erfolgte, desto geringer kann also die Testabdeckung am Ende ausfallen \citep{catherine_powell_abakas_2008}.
+ 
+ Falls dem TDD-Prozess minutiös gefolgt wurde, so ist die C0 Testabdeckung immer 100\% \citep{beck_test_2002}. Für ein Rails Projekt sei es auch relativ leicht, 100\% oder nahe 100\% zu erreichen \citep{rappin_rails_2011}. Die Zahl "`100\%"' sei für sich genommen nutzlos, aber sie zu erreichen sei für den Prozess der Testgetriebenen Entwicklung nützlich \citep[S. 270]{rappin_rails_2011}. Vielen Autoren bringen zum Ausdruck, dass es von der Situation abhängt \citep{infoq_2007}. Test-Anfänger sollten sich zuerst überhaupt ans Testen gewöhnen, und erfahrene Entwickler sollte wissen, dass es keine einzige einfache Antwort auf diese Frage gebe \citep{infoq_2007}. Zudem gebe eine Hohe Abdeckung keinen Aufschluss darüber, dass gut getestet wurde. Aber eine niedrige Zahl zeigt deutlich auf Missstände hin.
+ Einem pragmatischen Ansatz von Savoia folgend, kann man aus dem Verhältnis der Cyclomatischen Komplexität mit der Testabdeckung eines Codestückes suboptimale Teile finden. Je mehr Verzweigung eine Methode hat, desto höher sollte ihre Testabdeckung sein \citep{alberto_savoia_code_2007}.
+ 
+ Zusammenfassend kann man sagen, dass es keine eindeutige Antwort gibt. Eine niedrige C0 Abdeckung von 50\% oder weniger zeigt allerdings deutliche Missstände beim Testverfahren an.
+ 
+ \subsubsection{Defect insertion}
+ Eine weiter Methode, um die Qualität von Testcode zu messen, ist die Defect insertion. Hierbei werden (automatisiert oder manuell) nacheinander alle Zeilen des Programmcodes geändert, und geprüft, ob danach ein Test fehlschlägt \citep{beck_test_2002}.
+ 
+ Für Ruby gibt es ein Tool, Heckle\footnote{\url{http://ruby.sadi.st/Heckle.html}}, welches dieses Verfahren implementiert. Im Detail wird aus "`if"' ein "`if not"', konstante Zahlen werden verändert, Funktionsaufrufe verändert, Zuweisungen verändert usw. \citep{ruby_sadists_confessions_2010}. Dabei wird immer eine Änderung (Mutation) vorgenommen, und dann alle Tests ausgeführt. Sollten dennoch in einer Mutation alle Tests bestehen, so ist die Prämisse der Autoren von Heckle, dass ein Test fehle.
+ 
+ \subsection{Notwendigkeit von Code Metriken}
