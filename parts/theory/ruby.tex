@@ -89,9 +89,9 @@ Im Gegensatz zu Java oder C\# dürfen Klassen zur Laufzeit um Funktionen erweite
 
 \end{lstlisting}
 
-Diese Beispiele sollten als kurzer Einstieg in Ruby dienen, und einen Querschnitt durch die Besonderheiten der Sprache aufzeigen.
+Diese Beispiele sollten als kurzer Einstieg in Ruby dienen, und einen Querschnitt durch die Besonderheiten der Sprache aufzuzeigen.
 
-Für eine weiter Vertiefung sei das Buch "`Programming Ruby 1.9"' empfohlen, das im Detail auf die neuste Version der Programmiersprache eingeht.
+Für eine weiter Vertiefung sei das Buch "`Programming Ruby 1.9"' empfohlen, das im Detail auf die neuste Version der Programmiersprache eingeht. %TODO Buch Quelle
 
 \subsection{Diskussion}
 
@@ -118,7 +118,7 @@ Die Fähigkeiten zur Metaprogrammierung von Ruby bieten vielerei Möglichkeiten 
 
 Die Methode \texttt{find\_by\_first\_name} existiert nicht, und wird zur Laufzeit auf Basis des Namens gebaut.
 
-Auch das sehr beliebte Testframework Rspec, auf das wir später kurz eingehen werden, verwendet Metaprogrammierung, um Testfälle und Zusicherungen wie fast in der englischen Sprache zu formulieren.
+Auch das sehr beliebte Testframework Rspec, auf das wir später kurz eingehen werden, verwendet Metaprogrammierung, um Testfälle und Zusicherungen wie fast in der englischen Sprache zu formulieren. Dazu werden sämtliche Objekte von Ruby um Funktionen erweitert.
 
 \begin{lstlisting}
 >> 4.should == 3
@@ -126,7 +126,7 @@ RSpec::Expectations::ExpectationNotMetError: expected: 3
 \end{lstlisting}
 
 All diese Methoden können, richtig angewendet, zur Verbesserung der Lesbarkeit der Programme, und damit zur Erhöhrung der Wartbarkeit, führen.
-Falsch angewendet stellen sie jedoch eine Gefahr da. Beim Verwenden von externen Bibliotheken, oder in einem großen Entwicklerteam können dadurch kuriose Fehler auftreten die nur sehr schwer zu finden sind. Potenziell jedes Quelltextfile kann jede Klasse zur Laufzeit verändern, ohne dass es eine Warnung gibt. Umgehen kann man dieses Problem bestenfalls durch das konsequente Einordnen in Namensräume, bei Ruby Module genannt.
+Falsch angewendet stellen sie jedoch eine Gefahr da. Beim Verwenden von externen Bibliotheken, oder in einem großen Entwicklerteam können dadurch kuriose Fehler auftreten die nur sehr schwer zu finden sind. Potenziell jedes Quelltextfile kann jede Klasse zur Laufzeit verändern, ohne dass es eine Warnung gibt. 
 %TODO Quelle?
 
 \paragraph{Schlussfolgerung}

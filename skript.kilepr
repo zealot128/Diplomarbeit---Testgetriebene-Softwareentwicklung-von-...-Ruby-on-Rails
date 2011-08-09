@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.0.85
-lastDocument=parts/theory/metriken.tex
+lastDocument=parts/praxis/auswahl.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -146,10 +146,10 @@ ReadWrite=true
 
 [item:bibo.bib]
 archive=true
-column=31
+column=25
 encoding=UTF-8
 highlight=BibTeX
-line=1
+line=78
 mode=BibTeX
 open=true
 order=3
@@ -266,13 +266,13 @@ order=1
 
 [item:parts/praxis/auswahl.tex]
 archive=true
-column=17
+column=174
 encoding=UTF-8
 highlight=LaTeX
-line=3
+line=53
 mode=LaTeX
-open=false
-order=2
+open=true
+order=6
 
 [item:parts/praxis/auswertung.tex]
 archive=true
@@ -286,10 +286,10 @@ order=3
 
 [item:parts/theory/metriken.tex]
 archive=true
-column=122
+column=18
 encoding=UTF-8
 highlight=LaTeX
-line=6
+line=38
 mode=LaTeX
 open=true
 order=4
@@ -306,20 +306,20 @@ order=-1
 
 [item:parts/theory/ruby.tex]
 archive=true
-column=771
+column=162
 encoding=UTF-8
 highlight=LaTeX
-line=133
+line=93
 mode=LaTeX
 open=true
 order=5
 
 [item:parts/theory/tdd.tex]
 archive=true
-column=346
+column=118
 encoding=UTF-8
 highlight=LaTeX
-line=30
+line=101
 mode=LaTeX
 open=true
 order=2
@@ -329,7 +329,7 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=35
+line=41
 mode=LaTeX
 open=true
 order=1
@@ -345,8 +345,8 @@ open=false
 order=-1
 
 [view-settings,view=0,item:bibo.bib]
-CursorColumn=31
-CursorLine=1
+CursorColumn=25
+CursorLine=78
 
 [view-settings,view=0,item:main.tex]
 CursorColumn=31
@@ -381,29 +381,29 @@ CursorColumn=0
 CursorLine=0
 
 [view-settings,view=0,item:parts/praxis/auswahl.tex]
-CursorColumn=17
-CursorLine=3
+CursorColumn=174
+CursorLine=53
 
 [view-settings,view=0,item:parts/praxis/auswertung.tex]
 CursorColumn=0
 CursorLine=0
 
 [view-settings,view=0,item:parts/theory/metriken.tex]
-CursorColumn=122
-CursorLine=6
+CursorColumn=18
+CursorLine=38
 
 [view-settings,view=0,item:parts/theory/rails.tex]
 CursorColumn=4
 CursorLine=171
 
 [view-settings,view=0,item:parts/theory/ruby.tex]
-CursorColumn=771
-CursorLine=133
+CursorColumn=162
+CursorLine=93
 
 [view-settings,view=0,item:parts/theory/tdd.tex]
-CursorColumn=346
-CursorLine=30
+CursorColumn=118
+CursorLine=101
 
 [view-settings,view=0,item:parts/theory/test.tex]
 CursorColumn=0
-CursorLine=35
+CursorLine=41

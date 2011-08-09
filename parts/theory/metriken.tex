@@ -7,23 +7,41 @@ numerical value that can be interpreted as the degree to which software possesse
 Dem Verwenden von Code-Metriken liegt der Wunsch zugrunde, komplexe Codeteile auf einfache Zahlen automatisiert beurteilen zu lassen, um potenziell suboptimale Codestellen zu finden, welche Defekte verursachen könnten. Aus Business-Sicht stellen Code-Metriken eine Methode dar, Entwicklungsfortschritt zu messen und qualitativ zu beurteilen.
 \subsection{Überblick über Code-Metriken und Skalen}
 Hier seien nun einige der geläufigsten Code-Metriken vorgestellt.
-\paragraph{Lines of Code (LOC)} ist eine häufig verwendete, und die am leichtesten zu bestimmende Größe. Sie repräsentiert den Umfang eines Programmes. Diese Größe erhält dann eine größere Aussage, wenn man sie ins Verhältnis z.B. der Klasse oder eines Codefiles setzt. So kann man mit "`LOC / Klasse"' schon diejenigen Klassen finden, die wahrscheinlich zu komplex sind.
+\paragraph{Lines of Code (LOC)} ist eine häufig verwendete, und die am leichtesten zu bestimmende Größe. Sie repräsentiert den Umfang eines Programmes. Diese Größe erhält dann eine größere Aussage, wenn man sie ins Verhältnis z.B. der Klasse oder eines Codefiles setzt. So kann man mit "`LOC / Klasse"' schon diejenigen Klassen finden, die wahrscheinlich zu komplex sind. Es werden alle Zeilen der Datei gezählt, die nicht leer und keine Kommentare sind. Kommentare wiederrum können als eigene Metrik verwendet werden, um den Grad der Quelltextdokumentation zu bestimmen.
 
-\paragraph{Zyklomatische Komplexität}
+\paragraph{Zyklomatische Komplexität (CC)} ist ein Indikator für die Komplexität auf Basis des Kontrollflussgraphen eines Programms. Gemessen wird die Anzahl der linear unabhängigen Programmpfade. Ein Programm ohne Bedingungen und Schleifen hätten eine CC von 1. Falls es eine Entscheidung gibt, z.B. ein IF, bzw. IF/ELSE, dann wäre CC=2. In einem normalen Programm ist die Zyklomatische Komplexität die Anzahl der Entscheidungspunkte + 1 \citep[S. 314]{mccabe_complexity_1976}.
 
-\paragraph{Kohäsion/Kopplung}
+Ein daraus abgeleitetes Testverfahren "`Basis Path Testing"' schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte, wie die Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) siehe dazu weiter unten.
 
-\paragraph{Anzahl Bad Smells}
-\citep{mccabe_complexity_1976}
 
-% Code Smells https://github.com/kevinrutherford/reek/wiki/Code-Smells
 
+\paragraph{Anzahl Bad Smells} ist eine aggregierte Metrik über alle suboptimale Codestellen. Da es viele verschiedene Bad Smells gibt, können ebensoviele Metriken davon abgeleitet werden. Für eine Übersicht genügt aber auch einfach die Summe. Welche Bad Smells für die Entwicklung entscheidend sind hängt von der gewählten Sprache, dem damit einhergehenden Programmierparadigma und manchmal auch den verwendeten Frameworks. Hier seien einige der häufig gebrauchten Smells für Ruby vorgestellt \citep{kevin_rutherford_code_2010}:
+
+\begin{description}
+ \item[Geringe Kohäsion] insb. "`Feature Envy"' (deutsch: Neid), ist für alle objektorientierten Programme anzuwenden. Eine Klasse weiß zuviel über die internen Strukturen einer anderen Klasse, und implementiert Funktionalität, die eigentlich in jene Klasse gehören würde. Im Beispiel würde diese Berechnung in die Klasse Checkout gehören.
+ \begin{lstlisting}
+    @checkout.total = @checkout.total_price * MWST
+ \end{lstlisting}
+ \item[Nichtssagender Name] gilt für alle Programmiersprachen. Falls Bezeichner weniger als 3 Zeichen lang sind, oder Funktionen den Namen "`do"' oder "`run"' haben. Ausnahmen könnte man z.B. für die Schleifenvariable $i$ rechtfertigen
+ \item[Gesetz von Demeter] bzw. die Verletzung desselben. Objekte sollten nur mit den Objekten in ihren unmittelbaren Nähe kommunizieren, und nicht etwa in Nachrichtenketten, wie z.B.:
+ \begin{lstlisting}
+  @job.user.address.street
+ \end{lstlisting}
+ Beim Law of Demeter ist eine solche Kette bis maximal 1 erlaubt.
+
+ \end{description}
+
+Diese Smells können mit dem Tool reek\footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}} festgestellt werden.
+% Code Smells 
+\paragraph{Duplikation} ist das Auftreten von gleichen oder ähnlichen Codeteilen an mehr als einer Stelle im Programm. Fortgeschritten Analysemethoden betrachten die Baumstruktur und finden ähnliche Teile unabhängig von Bezeichnernamen.
 
 \subsection{Code-Metriken für Tests}
+\label{sec:metrics}
 Der Programmcode wird i.d.R. durch die geschriebenen Tests abgesichert. Die Tests allerdings haben ihrerseits keine Tests. Um also die Nützlichkeit der eigenen Tests zu bestimmen, kann man sich aber zumindest auf Code-Metriken stützen.
 Tests sind in erster Linie natürlich auch Code und können mit den oben genannten Metriken beurteilt werden. Zudem gibt es aber einige weitere exklusive Methoden, Qualität von Tests zu messen. 
 
 \subsubsection{Lines of Test / Lines of Code}
+Neben den Lines of Code kann die gleiche Metrik auf die Test-Suite angewendet werden. Daraus ergibt sich ein Quotient der grob den Grad der Testabdeckung beschreibt. Sollte dieser deutlich kleiner als 1 sein, so ist dies ein Symptom für zu wenige Tests. Diese Zahl ist von dem Testframework und dem Programmframework stark abhängig. Gute Projekte sollten mehr Test Code, als Programmcode besitzen, um so die Zahl der Defekte gegen 0 zu reduzieren \citep{hunt_pragmatic_1999}[S. 238]. 
         
 \subsubsection{Testausführungsabdeckung}
 Die Testabdeckung, im Englischen "`Code Coverage"' bezeichnet, misst den Grad inwieweit ein Programm getestet wurde. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"', und 0\% "`Das Programm wurde die die Tests überhaupt nicht berührt"' Dabei wird die vorhandene Test-Suite ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Es wird festgehalten, welche Anweisungen ausgeführt wurden. Allerdings gibt es 3 Abstufungen, diese Abdeckung zu beobachten (Mit steigender Komplexität des Messverfahrens):
@@ -40,7 +58,7 @@ Die Testabdeckung, im Englischen "`Code Coverage"' bezeichnet, misst den Grad in
  Beim Messen der Abdeckung stellt man sich schnell die Frage, wieviel Testabdeckung notwendig ist. Zuerst sei die Art des Messverfahrens, also C0 bis C2, wichtig. je komplexer das Messen erfolgte, desto geringer kann also die Testabdeckung am Ende ausfallen \citep{catherine_powell_abakas_2008}.
  
  Falls dem TDD-Prozess minutiös gefolgt wurde, so ist die C0 Testabdeckung immer 100\% \citep{beck_test_2002}. Für ein Rails Projekt sei es auch relativ leicht, 100\% oder nahe 100\% zu erreichen \citep{rappin_rails_2011}. Die Zahl "`100\%"' sei für sich genommen nutzlos, aber sie zu erreichen sei für den Prozess der Testgetriebenen Entwicklung nützlich \citep[S. 270]{rappin_rails_2011}. Vielen Autoren bringen zum Ausdruck, dass es von der Situation abhängt \citep{infoq_2007}. Test-Anfänger sollten sich zuerst überhaupt ans Testen gewöhnen, und erfahrene Entwickler sollte wissen, dass es keine einzige einfache Antwort auf diese Frage gebe \citep{infoq_2007}. Zudem gebe eine Hohe Abdeckung keinen Aufschluss darüber, dass gut getestet wurde. Aber eine niedrige Zahl zeigt deutlich auf Missstände hin.
- Einem pragmatischen Ansatz von Savoia folgend, kann man aus dem Verhältnis der Cyclomatischen Komplexität mit der Testabdeckung eines Codestückes suboptimale Teile finden. Je mehr Verzweigung eine Methode hat, desto höher sollte ihre Testabdeckung sein \citep{alberto_savoia_code_2007}.
+ Einem pragmatischen Ansatz von Savoia folgend, kann man aus dem Verhältnis der Zyklomatischen Komplexität mit der Testabdeckung eines Codestückes suboptimale Teile finden. Je mehr Verzweigung eine Methode hat, desto höher sollte ihre Testabdeckung sein \citep{alberto_savoia_code_2007}.
  
  Zusammenfassend kann man sagen, dass es keine eindeutige Antwort gibt. Eine niedrige C0 Abdeckung von 50\% oder weniger zeigt allerdings deutliche Missstände beim Testverfahren an.
  
@@ -50,3 +68,9 @@ Die Testabdeckung, im Englischen "`Code Coverage"' bezeichnet, misst den Grad in
  Für Ruby gibt es ein Tool, Heckle\footnote{\url{http://ruby.sadi.st/Heckle.html}}, welches dieses Verfahren implementiert. Im Detail wird aus "`if"' ein "`if not"', konstante Zahlen werden verändert, Funktionsaufrufe verändert, Zuweisungen verändert usw. \citep{ruby_sadists_confessions_2010}. Dabei wird immer eine Änderung (Mutation) vorgenommen, und dann alle Tests ausgeführt. Sollten dennoch in einer Mutation alle Tests bestehen, so ist die Prämisse der Autoren von Heckle, dass ein Test fehle.
  
  \subsection{Notwendigkeit von Code Metriken}
+ 
+ Code-Metriken geben dem Programmierer automatisiert und schnell ein Feedback über die Qualität seiner Arbeit. Sie helfen dabei, Probleme frühzeitig zu erkennen und die Wartbarkeit durch gezielte Refaktorisierungen nachhaltig zu verbessern. Auch psychlogische Auswirkungen dürfen nicht unterschätzt werden. Alleine der Fakt, dass Codemetriken in einem Unternehmen regelmäßig verwendet werden, motiviert den Programmierer keinen sogenannten "`Big Ball of Mud"' zu schreiben. Insbesondere in kleinen Projektteams, die keine dedizierte Qualitätssicherung haben, sind Codemetriken als kostengünstiges Kontrollinstrument unerlässlich.
+ 
+ Für die Testgetriebene Software dient insbesondere die Testabdeckung als Kontrollinstrument, um zu prüfen, ob man sich diszipliniert an den Prozess hält. Für erfahrene Programmierer in TDD mag dies nicht notwendig sein, für alle anderen ist dies anfangs sehr wichtig.
+ 
+ Nach Erfahrungen in der pludoni GmbH sind Code-Metriken ein wichtiges Feedbackinstrument, und damit auch eine unmittelbare Belohnung für das Schreiben sauberen Codes. Wichtig ist, dass die Metriken regelmäßig berechnet werden, entweder als Cronjob oder nach jedem Einchecken in den Hauptentwicklungszweig der Versionsverwaltung.
