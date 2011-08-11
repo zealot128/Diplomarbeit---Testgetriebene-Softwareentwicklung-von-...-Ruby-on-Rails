@@ -11,7 +11,10 @@
 \usepackage{graphicx}	%including images
 \usepackage{fancyhdr}	%for editiable headers and footers
 \usepackage{setspace} 	%for 1,5times row space
-\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,bookmarksnumbered = true,linkcolor = black,plainpages = false,hypertexnames = false,citecolor = black] {hyperref}	
+
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0,0,.5}
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,bookmarksnumbered = true,linkcolor = darkblue,plainpages = false,hypertexnames = false,citecolor = black, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue] {hyperref}	
 			%clickable TOC
 \usepackage{multirow}	%linebreak in Table
 \usepackage{enumerate}
@@ -35,10 +38,11 @@ keywordstyle=\ttfamily\color{blue},
 stringstyle=\color{red},
 showspaces=false,               % show spaces adding particular underscores
 showstringspaces=false, 
-frame=single
+frame=single,
+breaklines=true
 }
 
-
+\usepackage[nottoc]{tocbibind}
 \newcommand{\ownTitle}{Diplomarbeit}
 \newcommand{\ownTitleZ}{Testgetriebene Entwicklung von Web-Serveranwendungen auf der Basis von Ruby on Rails}
 \newcommand{\ownAutor}{Stefan Wienert, HTW Dresden}
@@ -89,8 +93,18 @@ frame=single
 \begin{document}
  %\maketitle
  \include{parts/00-frontpage}
- \tableofcontents		%Inhaltsverzeichnis
+
+ 
+ 
+ \pagenumbering{roman}
+ \include{parts/intro/preambel}
+ 
+ \setcounter{page}{1}
+ \pagenumbering{arabic}
  \input{parts/gliederung}
+ 
+ \setcounter{page}{1}
+ \pagenumbering{Roman}
  \include{parts/99-appendix}
 \end{document}
  

@@ -1,0 +1,30 @@
+ \tableofcontents		%Inhaltsverzeichnis
+  \section*{Acknowledgment}
+ 
+ Der Autor möchte auch seinen Dank der Fakultät Informatik und Prof. Wiedemann für das zur Verfügung gestellte Büro, aussprechen. Der Bibliothek der HTW-Dresden und Prof. Nestler sei für das schnelle Bestellen von tagesaktueller Literatur zu danken.
+ 
+ Ich danke auch meiner Frau, die mich während des Schreibens unterstützt hat und bei der Erstellung der Grafiken Tipps gab. Für die orthografische Optimierung sei meinem guten Freund Stefan Koch gedankt.
+ 
+ Diese Arbeit entstand in Zusammenarbeit mit meiner Firma und unter Aufsicht von Jörg Klukas. Ich danke ihm für die Möglichkeit frei zu arbeiten und viele neue Dinge auszuprobieren und für das Vertrauen, dass er in mich gesteckt hat.
+ 
+ Besonderen Dank gilt meinem Betreuer, Prof. Fritzsche, der sich regelmäßig und ausführlich mit meiner Arbeit beschäftigte und wertvolle Hinweise erteilte.
+ \newpage
+ \section*{Glossar}
+Im folgenden werden einige oft-verwendete Begriffe näher erläutert.
+\begin{description}
+ \item[Test] oder Testfall ist eine, meist automatisierte, Prüfung des Programmverhaltens bei definierten Eingabeparametern
+ \item[Test-Suite] ist eine Sammlung von mehreren Testfällen für eine Komponente oder das gesamte System
+ \item[Code-Qualität] beinhaltet die Qualitäten Lesbarkeit, Testbarkeit, Wartbarkeit, Erweiterbarkeit, Geringe Komplexität
+ \item[Metrik] Eine Softwaremetrik ist das Ergebnis einer statischen oder dynamischen Codeanalyse zur Generierung von Informationen über den Source-Code. Beispiele: Testabdeckung, Anzahl Codezeilen, Anzahl Bad Smells pro Codezeile.
+ 
+ \item[Testabdeckung] auch: Testfallabdeckung oder Code-Coverage. Eine dynamische Code-Metrik die angibt, welche Codezeilen durch keinen Test abgedeckt wurde. Es wird unterschieden in die Stufen C0, C1 und C2 mit steigender Komplexität der Messung.\\
+ C0: Messung jeder Zeile, ob diese ausgeführt wurde\\
+ C1: Messung jedes Zweigs jeder Zeile, ob dieser ausgeführt wurde\\
+ C2: Messung jedes möglichen Codepfades, ob dieser ausgeführt wurde
+ %TODO Quelle http://blog.abakas.com/2008/04/code-coverage-complexity.html
+ \item[Bad Smell] oder Code-Smell. Ist ein Anzeichen für eine suboptimale Code-Stelle, die auch ein Hinweis auf ein größeres Design-Problem sein kann. Oft auch ein Kandidat für ein Refaktoring
+ \item[TDD] Test-Driven-Development, bezeichnet den Prozess der Testgetriebenen Entwicklung
+ \item[BDD] Behavior-Driven-Development (Verhaltensgetriebene Entwicklung). Prinzipiell nur eine Umformulierung von TDD zur Ausrichtung auf Businessprozesse
+ %\item[ATDD] Acceptance-Test-driven-development. Im Gegensatz zu Unittests beim reinen TDD, stehen die Akzeptanztests
+\end{description}
+\newpage
