@@ -1,7 +1,8 @@
 \section{Auswahl der Entwicklungsstrategie und -Werkzeuge}
 \subsection{Herausbildung einer Enticklungsstrategie für die Bedürfnisse der pludoni GmbH}
-Viele der gängigen Entwicklungsstrategien, wie V-Modell oder Rational Unified Process, finden ihre Anwendung in großen Projektteams. Für mittelgroße Projektteams gibt es seit ca. 10 Jahren die agilen Prozesse. Sie haben einen eher pragmatischen Ansatz, mit dem Ziel gemeinsam mit dem Kunden ein funktionierende Software zu bauen. Zu eigen machen sie sich dabei kurze Releasezyklen, welche regelmäßig Feedback geben. Damit wird der klassische GAU am Ende des Projektes, wenn die Wünsche des Kunden mit den tatsächlichen Umsetzungen doch nicht einher gehen, vermieden. Aber viele dieser Methoden, wie z.B. SCRUM, benötigen eine Schulung für das gesamte Team, die nicht immer finanzierbar ist. 
-Für die Arbeit von sehr kleinen Teams mit weniger als 4 Mitgliedern, wird nun eine neue Entwicklungsstrategie auf Basis der Testgetriebenen Entwicklung mit Ruby on Rails vorgestellt, die auf die Bedürfnisse der pludoni GmbH zugeschnitten ist.
+Viele der gängigen Entwicklungsstrategien, wie V-Modell oder Rational Unified Process, finden ihre Anwendung in großen Projektteams. Für mittelgroße Projektteams gibt es seit ca. 10 Jahren die agilen Prozesse. Sie haben einen eher pragmatischen Ansatz, mit dem Ziel gemeinsam mit dem Kunden eine funktionierende Software zu bauen. Zu eigen machen sie sich dabei kurze Releasezyklen, welche regelmäßig Feedback geben. Damit wird der klassische GAU am Ende des Projektes, wenn die Wünsche des Kunden mit den tatsächlichen Umsetzungen doch nicht einher gehen, vermieden. Aber viele dieser Methoden, wie z.B. SCRUM, benötigen eine Schulung für das gesamte Team, die nicht immer finanzierbar ist. 
+Für die Arbeit von sehr kleinen Teams mit weniger als 4 Mitgliedern, wird nun eine Entwicklungsstrategie auf Basis der Testgetriebenen Entwicklung mit Ruby on Rails vorgestellt, die auf die Bedürfnisse der pludoni GmbH zugeschnitten ist.
+
 Diese Bedürfnisse umfassen 
 \begin{itemize}
  \item kurze Feedbackzyklen von 1 Woche
@@ -21,10 +22,11 @@ Grundsätzlich verfolgt die pludoni GmbH in Zukunft eine \textbf{Outside-In} Ent
 \item Eigenverantwortlicher Entwurf und Implementierung der Software. Dabei sollen Unittests für die Implementierung von komplexen Funktionen verwendet werden, wo es nötig sein sollte. Diese Entwicklung erfolgt komplett testgetrieben.
 \item Wenn der Cucumber-Test besteht, Abnahme durch Stakeholder beim nächsten Meeting. Daraus folgt evtl. eine Anpassung der Testschritte (Schritt 3) oder ein neuer Test.
 \end{enumerate}
+Sollte es sich um ein von außen nicht-sichtbares oder nur schwer einsehbares Feature handeln, so kann der Cucumbertest weggelassen werden. Dies umfasst z.B. Hintergrundarbeiten wie Feedimport, Cache-Erneuerung und dergleichen.
 
-Ziel ist es, das bei Webanwendungen übliche wiederholte manuelle Ausprobieren mit dem Browser auf ein Minimum zu reduzieren. Jeglicher Vorgang, den der Kunde am Browser testet, lässt sich auch als ein Akzeptanztest formulieren. Ein automatisierter Test hat zudem den Vorteil zu einem späteren Zeitpunkt leicht wiederholt zu werden. 
+Ziel ist es, das bei Webanwendungen übliche wiederholte manuelle Ausprobieren mit dem Browser, auf ein Minimum zu reduzieren. Jeglicher Vorgang, den der Kunde am Browser testet, lässt sich auch als ein Akzeptanztest formulieren. Ein automatisierter Test hat zudem den Vorteil zu einem späteren Zeitpunkt leicht wiederholt zu werden. 
 
-Der Vorgang der Outside-In Entwicklung ist, dass er auf den Kunden ausgerichtet ist. Die Verwendung der Domänspezifischen Sprache Cucumber fördert zudem die Implementierung von Businessrelevanten Features gemeinsam mit dem Kunden zusammen. Das gesamte Vokabular orientiert sich an der Anforderungsanalyse und an Businessprozessen, die auch der möglicherweise nicht-technische Kunde verstehen kann.
+Der Vorteil der Outside-In Entwicklung ist, dass er auf den Kunden ausgerichtet ist. Die Verwendung der Domänspezifischen Sprache Cucumber fördert zudem die Implementierung von Businessrelevanten Features gemeinsam mit dem Kunden. Das gesamte Vokabular orientiert sich an der Anforderungsanalyse und an Businessprozessen, die auch der möglicherweise nicht-technische Kunde verstehen kann.
 
 Mit diesem Maßnahmenpaket lässt sich sicherstellen, dass das Produkt nach den Wünschen des Kunden entwickelt wird.
 
@@ -41,15 +43,14 @@ In großen Projekten ist es üblich, komplexe Testpläne zu erstellen. Anscheine
 
 \paragraph{Code-Metriken} Ein tägliches Messen des Code-Zustandes mittels Code-Metriken ermöglicht es den Programmierern, sich selbst und gegenseitig auf die Finger zu schauen. Sollte ein Programmierer nämlich äußerst schlechten Code abgeliefert haben, so macht die Code-Analyse dies sichtbar. Dies dient in erster Linie nicht, um den Programmierer zu maßregeln, sondern ihm dabei zu helfen, den TDD-Prozess zu lernen und seinen Programmierstil ständig zu verbessern. Die Erfahrungen zeigen, dass die Programmierer meist selbst unzufrieden mit schlechtem Code, den sie geschrieben haben, sind. Code-Metriken können dabei helfen, dem Programmierer schnell ein Feedback zu seinem Code zu geben, wie es ein Code-Audit durch Andere in der Geschwindigkeit und Effizienz nie könnte.
 
-
-
+\paragraph{Regelmäßige Paar-Programmierung} Die oben angesprochene Personalsituation der Telearbeit erschwert eine regelmäßige Paarprogrammierung (Pair-Programming [PP]). Nichtsdestotrotz sollten in regelmäßigen Abständen Features zu zweit entwickelt werden. Erfahrungsgemäß führt Pair-Programming zu besser dokumentierten Code, kann die Anzahl der Fehler verringern und zu einer höheren Arbeits-Effektivität führen \citep{hulkko_multiple_2005}. Insbesondere beim Lösen schwieriger Aufgaben und beim Anlernen neuer Teammitglieder ist Pair-Programming eine effektive Methode \citep{hulkko_multiple_2005}[S. 9].
 
 
 \subsection{Auswahl der Entwicklungswerkzeuge}
 
 Für die 
 
-\paragraph{Werkzeuge für Tests} Die formale Beschreibungssprache Cucumber dient als Schnittstelle für die vom Programmierer entwickelten Testschritte. Diese könnten in einem von vielen Testframeworks geschrieben werden. Die Entscheidung viel hierbei auf Minitest (Test::Unit für Ruby 1.9), da die Syntax und Prädikate denen von JUnit und NUnit sehr ähneln, und so den Übergang zu Ruby leichter machen. Da es auch das standard Testframework von Ruby on Rails ist, ist so eine gute Unterstützung durch gängige Werkzeuge garantiert.
+\paragraph{Werkzeuge für Tests} Die formale Beschreibungssprache Cucumber dient als Schnittstelle für die vom Programmierer entwickelten Testschritte. Diese könnten in einem von vielen Testframeworks geschrieben werden. Die Entscheidung viel hierbei auf Minitest (Test::Unit für Ruby 1.9), da die Syntax und Prädikate denen von JUnit und NUnit sehr ähneln, und so den Übergang zu Ruby leichter machen. Da es auch das Standard-Testframework von Ruby on Rails ist, ist so eine gute Unterstützung durch gängige Werkzeuge garantiert.
 
 Für die Simulation eines Browsers gibt es ebenfalls verschiedene Ansätze. Als Basis fungiert dabei Capybara, welches unterschiedliche Browsersimulationen abstrahiert. Damit lassen sich z.B. Selenium ansteuern, welches wiederrum Mozilla Firefox, Internet Explorer oder Google Chrome fernsteuern kann. Dies ist allerdings sehr langsam, da ein kompletter Browser gestartet und ferngesteuert wird. Daher ist die Nutzung von Selenium nur für das Testen von möglicherweise problematischen Interaktionen und das Testen von Javascript notwendig. Für alle anderen Fälle kann man auf RackTest zurückgreifen, welches extrem schnell eine Rack-Anwendung\footnote{Rack ist ein minimales Interface zwischen Webserver und Webanwendung -- Ruby on Rails ist eine solche Rack Anwendung} simuliert.
 Falls in Zukunft mehr Geschwindigkeit in der Testausführung, insbesondere bei den Selenium-Tests, gewünscht wird, so kann man auf Parallelisierung auf mehreren Computern zurückgreifen.
@@ -59,7 +60,10 @@ Für ein unmittelbares Feedback sind auch automatische Test-Runner erwünscht. H
 Durch spork lässt sich eine RoR-Anwendung starten und im Hintergrund halten, so dass eine erneute Testausführung deutlich schneller von statten geht, als wenn die komplette Anwendung neu geladen werden müsste.
 
     
-\paragraph{Werkzeuge für Code-Metriken}  metric-fu, simple-cov, ruby best practices
+\paragraph{Werkzeuge für Code-Metriken}  Für die Generierung von Code-Metriken dient das Ruby-Gem "`metric-fu"', welches seinerseits über verschiedene Code-Metriken Zusammenfassungen bildet und diese auch zeitlich darstellen kann. Darunter fallen z.B. die Zyklomatische Komplexität, den Grad der Duplikationen, verschiedene Code-Smells, Nutzung der Versionsverwaltung und Testabdeckung.
+
+Die Testabdeckung wird durch simple-cov berechnet, welches eine C0 Code Coverage bestimmt.
+
 
 --
 

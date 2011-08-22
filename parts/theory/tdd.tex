@@ -34,8 +34,18 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
 \subsection{Ablauf}
   Ziel ist es, vor der Implementation eines Codes, einen Unittest zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test besteht. Zum Schluss wird refaktorisiert, bei TDD auch als Designphase genutzt.
   
+  \begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.85\textwidth]{./diagrams/red-green-refactor.pdf}
+ % red-green-refactor.png: 884x602 pixel, 90dpi, 24.95x16.99 cm, bb=
+ \caption{Red-Green-Refactor: Der TDD Entwicklungszyklus}
+ 
+ \imgsource{Bildquelle: Der Autor}
+ \label{fig:redgreenrefactor}
+\end{figure}
+
   %TODO Abbildung mit Beschreibung
-  Im Ganzen sind das also die Phasen:
+  Im Detail sind das also folgende Phasen, vgl. Abbildung \ref{fig:redgreenrefactor}:
   \begin{enumerate}
    \item Schreibe einen Test von dem Feature, das als nächstes entwickelt werden möchte\\Oder von dem Test, der als nächstes auf der Liste steht
    \item Red: Führe alle Tests aus, um sicherzugehen, dass der Test fehlschlägt. Andernfalls ist der Test überflüssig.
@@ -58,7 +68,7 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
   
   Somit werden 2 Testebenen erstellt, die Akzeptanz- und die Unittests.
 
-  Im Prinzip soll jeder Änderung der Programmlogik ein fehlgeschlagener Test vorrausgehen. Auch bei der Behebung von Defekten, also dem Bugfixing, soll zuerst ein Test geschrieben werden, der genau das Verhalten des Bugs widerspiegelt, und erst dann gefixt werden.
+  Im Prinzip soll jeder Änderung der Programmlogik ein fehlgeschlagener Test vorausgehen. Auch bei der Behebung von Defekten, also dem Bugfixing, soll zuerst ein Test geschrieben werden, der genau das Verhalten des Bugs widerspiegelt, und erst dann gefixt werden.
   
     
   \subsection{Mocks und Stubs}
@@ -93,17 +103,21 @@ end
 
   
   \subsection{Vorteile von TDD}
-  Produktiver, 
-    da weniger manuelle Tests
-    weniger Debugger notwendig
+   
+  Die Test-Suite, die durch TDD entsteht, kann als zusätzliche Dokumentation dienen, die nie veraltet, im Gegensatz zu einer geschriebenen Dokumentation \citep{palermo_guidelines_2006}.
   
+  Die Software-Engineering Literatur ist sich einig, dass ein Bug teurer wird, je später er gefunden wird \citep{hunt_pragmatic_1999}[S. 238]. TDD hilft somit, einen Bug so frühzeitig wie möglich zu entdecken, und hat so das Potenzial, Budget einzusparen.
   
-  Die Software-Engineering Literatur ist sich einig, dass ein Bug teurer wird, je später er gefunden wird %TODO Source pragprog 238
-  TDD hilft somit, einen Bug so frühzeitig wie möglich zu entdecken, und hat so das Potenzial, viel Budget einzusparen
+  Softwaresysteme, die durch TDD entstehen, tendieren dazu deutlich besser designt, lose gekoppelt und besser wartbar zu sein \citep{beck_test_2002} \citep{palermo_guidelines_2006}, da Refaktorisierungen mit hoher Zuversicht durchgeführt werden können
   
+  Zusammenfassend führt TDD zu einer erhöhten Produktivität, da das Maß an manuellen Tests reduziert wird und Debuggen deutlich weniger wird \citep{palermo_guidelines_2006}.
   
-  \subsection{Nachteile von TDD}
+  \subsection{Nachteile und Grenzen von TDD}
   Es gibt bestimmte Programmieraufgaben, die nicht allein durch die testgetriebene Entwicklung implementiert werden können. So seinen Nebenläufigkeit oder Software Sicherheit genannt, in denen TDD als Zielgeber nicht ausreiche \citep[S. xii]{beck_test_2002}.
   
   Zudem stelle die Testgetriebene Entwicklung kein Ersatz für andere Arten von Tests, wie Performanz/Stress und Usability-Test \citep[S. 86]{beck_test_2002}.
-  \subsection{Varianten: BehaviorDD, DesignDrivenTesting}
+  \subsection{Behavior Driven Development}
+  
+  Eine oft erwähnte Variante von TDD ist die Verhaltensgetriebene Entwicklung (Behavior-Driven-Development -- BDD). Dabei dienen hier Akzeptanztests als treibende Kraft der Entwicklung. Diese beschreiben ein Verhalten (Behavior). Der Fokus liegt also nicht auf Implementationsdetails, sondern soll, in einer domainspezifischen Sprache, das Verhalten und die daraus resultierenden Erwartungen des Systems beschreiben.
+  
+  Dies drückt sich meist auch in dem Vokabular aus. Während bei klassischen Unit-Tests, und damit auch bei TDD, die Begriffsdomain  "`Zusicherungen"' (assertions) und "`Tests"' beinhaltet, so hat BDD stattdessen "`Erwartungen"' (expectations) und "`Spezifikationen"' (specs/specifiations), und verwendet oft das Modalverb "`sollte"' (should).

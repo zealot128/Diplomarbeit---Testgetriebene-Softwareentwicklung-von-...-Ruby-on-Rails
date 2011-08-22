@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="883.55835"
+   height="602.34741"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="red-green-refactor.svg"
+   inkscape:export-filename="/home/stefan/Desktop/diplom/Diplomarbeit---Testgetriebene-Softwareentwicklung-von-...-Ruby-on-Rails/diagrams/red-green-refactor.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient5068">
+      <stop
+         style="stop-color:#9a9a9a;stop-opacity:1;"
+         offset="0"
+         id="stop5070" />
+      <stop
+         id="stop5076"
+         offset="0.5"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         style="stop-color:#a2a2a2;stop-opacity:1;"
+         offset="1"
+         id="stop5072" />
+    </linearGradient>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible">
+      <path
+         id="path3986"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <linearGradient
+       id="linearGradient3934">
+      <stop
+         style="stop-color:#6b6868;stop-opacity:1;"
+         offset="0"
+         id="stop3936" />
+      <stop
+         style="stop-color:#b3b3b3;stop-opacity:0.93442625;"
+         offset="1"
+         id="stop3938" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3926">
+      <stop
+         id="stop3928"
+         offset="0"
+         style="stop-color:#339b00;stop-opacity:1;" />
+      <stop
+         style="stop-color:#2fde00;stop-opacity:1;"
+         offset="1"
+         id="stop3932" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3759">
+      <stop
+         style="stop-color:#fa4622;stop-opacity:1;"
+         offset="0"
+         id="stop3761" />
+      <stop
+         style="stop-color:#ff8c8c;stop-opacity:1;"
+         offset="1"
+         id="stop3763" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3759"
+       id="radialGradient3769"
+       cx="343.57144"
+       cy="236.09161"
+       fx="343.57144"
+       fy="236.09161"
+       r="118.35714"
+       gradientTransform="matrix(1.9055488,0.05592651,-0.02012929,0.68585256,-306.36836,56.223384)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3759-6"
+       id="radialGradient3769-4"
+       cx="343.57144"
+       cy="236.09161"
+       fx="343.57144"
+       fy="236.09161"
+       r="118.35714"
+       gradientTransform="matrix(2.3275689,0.02944392,-0.01295555,1.0241489,-453.05608,-14.546881)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3759-6">
+      <stop
+         style="stop-color:#fa4646;stop-opacity:1;"
+         offset="0"
+         id="stop3761-6" />
+      <stop
+         style="stop-color:#ff4545;stop-opacity:0.50819671;"
+         offset="1"
+         id="stop3763-0" />
+    </linearGradient>
+    <filter
+       id="filter3805"
+       inkscape:label="Drop shadow"
+       width="1.5"
+       height="1.5"
+       x="-0.25"
+       y="-0.25"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur3807"
+         in="SourceAlpha"
+         stdDeviation="2"
+         result="blur" />
+      <feColorMatrix
+         id="feColorMatrix3809"
+         result="bluralpha"
+         type="matrix"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.5 0 " />
+      <feOffset
+         id="feOffset3811"
+         in="bluralpha"
+         dx="4"
+         dy="4"
+         result="offsetBlur" />
+      <feMerge
+         id="feMerge3813">
+        <feMergeNode
+           id="feMergeNode3815"
+           in="offsetBlur" />
+        <feMergeNode
+           id="feMergeNode3817"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3759-1"
+       id="radialGradient3769-40"
+       cx="343.57144"
+       cy="236.09161"
+       fx="343.57144"
+       fy="236.09161"
+       r="118.35714"
+       gradientTransform="matrix(2.3275689,0.02944392,-0.01295555,1.0241489,-453.05608,-14.546881)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3759-1">
+      <stop
+         style="stop-color:#fa4646;stop-opacity:1;"
+         offset="0"
+         id="stop3761-1" />
+      <stop
+         style="stop-color:#ff4545;stop-opacity:0.50819671;"
+         offset="1"
+         id="stop3763-8" />
+    </linearGradient>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter3805-5"
+       inkscape:label="Drop shadow"
+       width="1.5"
+       height="1.5"
+       x="-0.25"
+       y="-0.25">
+      <feGaussianBlur
+         id="feGaussianBlur3807-7"
+         in="SourceAlpha"
+         stdDeviation="2"
+         result="blur" />
+      <feColorMatrix
+         id="feColorMatrix3809-8"
+         result="bluralpha"
+         type="matrix"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.5 0 " />
+      <feOffset
+         id="feOffset3811-5"
+         in="bluralpha"
+         dx="4"
+         dy="4"
+         result="offsetBlur" />
+      <feMerge
+         id="feMerge3813-1">
+        <feMergeNode
+           id="feMergeNode3815-6"
+           in="offsetBlur" />
+        <feMergeNode
+           id="feMergeNode3817-0"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <radialGradient
+       r="118.35714"
+       fy="236.09161"
+       fx="343.57144"
+       cy="236.09161"
+       cx="343.57144"
+       gradientTransform="matrix(2.3275689,0.02944392,-0.01295555,1.0241489,-453.05608,-14.546881)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient3848"
+       xlink:href="#linearGradient3926"
+       inkscape:collect="always" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3759-7"
+       id="radialGradient3769-6"
+       cx="343.57144"
+       cy="236.09161"
+       fx="343.57144"
+       fy="236.09161"
+       r="118.35714"
+       gradientTransform="matrix(2.3275689,0.02944392,-0.01295555,1.0241489,-453.05608,-14.546881)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3759-7">
+      <stop
+         style="stop-color:#fa4646;stop-opacity:1;"
+         offset="0"
+         id="stop3761-5" />
+      <stop
+         style="stop-color:#ff4545;stop-opacity:0.50819671;"
+         offset="1"
+         id="stop3763-4" />
+    </linearGradient>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter3805-4"
+       inkscape:label="Drop shadow"
+       width="1.5"
+       height="1.5"
+       x="-0.25"
+       y="-0.25">
+      <feGaussianBlur
+         id="feGaussianBlur3807-6"
+         in="SourceAlpha"
+         stdDeviation="2"
+         result="blur" />
+      <feColorMatrix
+         id="feColorMatrix3809-0"
+         result="bluralpha"
+         type="matrix"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.5 0 " />
+      <feOffset
+         id="feOffset3811-55"
+         in="bluralpha"
+         dx="4"
+         dy="4"
+         result="offsetBlur" />
+      <feMerge
+         id="feMerge3813-3">
+        <feMergeNode
+           id="feMergeNode3815-9"
+           in="offsetBlur" />
+        <feMergeNode
+           id="feMergeNode3817-1"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3934"
+       id="radialGradient3940"
+       cx="343.57144"
+       cy="238.79076"
+       fx="343.57144"
+       fy="238.79076"
+       r="177.53571"
+       gradientTransform="matrix(1,0,0,0.52926977,0,112.40603)"
+       gradientUnits="userSpaceOnUse" />
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend-0"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3986-9"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend-1"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3986-6"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+    <filter
+       id="filter5054"
+       inkscape:label="Drop shadow"
+       width="1.5"
+       height="1.5"
+       x="-0.25"
+       y="-0.25"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur5056"
+         in="SourceAlpha"
+         stdDeviation="1"
+         result="blur" />
+      <feColorMatrix
+         id="feColorMatrix5058"
+         result="bluralpha"
+         type="matrix"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.5 0 " />
+      <feOffset
+         id="feOffset5060"
+         in="bluralpha"
+         dx="3"
+         dy="2"
+         result="offsetBlur" />
+      <feMerge
+         id="feMerge5062">
+        <feMergeNode
+           id="feMergeNode5064"
+           in="offsetBlur" />
+        <feMergeNode
+           id="feMergeNode5066"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5068"
+       id="linearGradient5074"
+       x1="376.91293"
+       y1="367.71304"
+       x2="376.75668"
+       y2="424.8559"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5068-7"
+       id="linearGradient5074-5"
+       x1="376.91293"
+       y1="367.71304"
+       x2="376.75668"
+       y2="424.8559"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient5068-7"
+       osb:paint="gradient">
+      <stop
+         style="stop-color:#9a9a9a;stop-opacity:1;"
+         offset="0"
+         id="stop5070-1" />
+      <stop
+         id="stop5076-5"
+         offset="0.5"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         style="stop-color:#a2a2a2;stop-opacity:1;"
+         offset="1"
+         id="stop5072-5" />
+    </linearGradient>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter5054-2"
+       inkscape:label="Drop shadow"
+       width="1.5"
+       height="1.5"
+       x="-0.25"
+       y="-0.25">
+      <feGaussianBlur
+         id="feGaussianBlur5056-8"
+         in="SourceAlpha"
+         stdDeviation="1"
+         result="blur" />
+      <feColorMatrix
+         id="feColorMatrix5058-6"
+         result="bluralpha"
+         type="matrix"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.5 0 " />
+      <feOffset
+         id="feOffset5060-2"
+         in="bluralpha"
+         dx="3"
+         dy="2"
+         result="offsetBlur" />
+      <feMerge
+         id="feMerge5062-4">
+        <feMergeNode
+           id="feMergeNode5064-0"
+           in="offsetBlur" />
+        <feMergeNode
+           id="feMergeNode5066-4"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5068-7"
+       id="linearGradient5102"
+       x1="376.91293"
+       y1="367.71304"
+       x2="376.75668"
+       y2="424.8559"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient5104">
+      <stop
+         style="stop-color:#9a9a9a;stop-opacity:1;"
+         offset="0"
+         id="stop5106" />
+      <stop
+         id="stop5108"
+         offset="0.5"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         style="stop-color:#a2a2a2;stop-opacity:1;"
+         offset="1"
+         id="stop5110" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5068-7"
+       id="linearGradient5112"
+       x1="376.91293"
+       y1="367.71304"
+       x2="376.75668"
+       y2="424.8559"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient5114">
+      <stop
+         style="stop-color:#9a9a9a;stop-opacity:1;"
+         offset="0"
+         id="stop5116" />
+      <stop
+         id="stop5118"
+         offset="0.5"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         style="stop-color:#a2a2a2;stop-opacity:1;"
+         offset="1"
+         id="stop5120" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5068-7"
+       id="linearGradient5186"
+       x1="274.15652"
+       y1="473.67163"
+       x2="458.07629"
+       y2="473.67163"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       id="filter5264"
+       inkscape:label="In and Out"
+       inkscape:menu="Shadows and Glows"
+       inkscape:menu-tooltip="Inner colorized shadow, outer black shadow"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur5266"
+         stdDeviation="5"
+         result="result91" />
+      <feComposite
+         id="feComposite5268"
+         in2="result91"
+         in="SourceGraphic"
+         operator="over"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix5270" />
+      <feGaussianBlur
+         id="feGaussianBlur5272"
+         result="result0"
+         in="fbSourceGraphicAlpha"
+         stdDeviation="4" />
+      <feOffset
+         id="feOffset5274"
+         dx="5"
+         dy="5"
+         result="result4" />
+      <feComposite
+         id="feComposite5276"
+         in2="result4"
+         in="fbSourceGraphic"
+         operator="xor"
+         result="result3" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="495.15214"
+     inkscape:cy="266.42438"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="950"
+     inkscape:window-x="0"
+     inkscape:window-y="39"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(103.16552,-116.78401)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.79999995;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)"
+       d="M 573.42706,581.92806 C 487.0821,704.45781 231.14053,687.31089 157.71278,571.92805"
+       id="path3960-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <g
+       transform="matrix(0.83922466,0,0,0.78645158,275.36782,269.39109)"
+       id="g3774-3">
+      <path
+         style="fill:#e6e6e6;fill-opacity:1;stroke:#e6e6e6;stroke-width:2.38315201;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 254.83549,388.69959 -1.89222,179.6361 296.56093,2.29359 -0.71582,-184.0029 z"
+         id="path6381-6"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path5793-5"
+         d="m 244.57067,380.38986 0.58353,182.4499 298.23079,1.56061 -2.29838,-184.31033 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.38315201;stroke-miterlimit:4;stroke-dasharray:none" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.79999995;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)"
+       d="m 484.28571,228.07647 c 67.61878,14.51657 97.67207,44.58586 122.75519,76.08651 29.38769,36.90653 47.16144,78.9722 38.67339,148.1992"
+       id="path3960"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csc" />
+    <g
+       transform="matrix(0.83922466,0,0,0.72695857,198.22497,-150.82569)"
+       id="g3774">
+      <path
+         style="fill:#e6e6e6;fill-opacity:1;stroke:#e6e6e6;stroke-width:2.38315201;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 254.83549,388.69959 -1.89222,179.6361 296.56093,2.29359 -0.71582,-184.0029 z"
+         id="path6381"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path5793"
+         d="m 244.57067,380.38986 0.58353,182.4499 298.23079,1.56061 -2.29838,-184.31033 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.38315201;stroke-miterlimit:4;stroke-dasharray:none" />
+    </g>
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.00884151;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 426.99383,124.22413 c -3.81982,-10.15182 -16.71806,-8.63447 -17.52132,1.13761 l 11.23621,54.77426 c 1.78384,5.10762 14.681,5.97791 15.87023,-3.99451 l -7.67842,-37.48659 -2.55288,0.89565 7.50397,35.92479 c 0.58629,4.52453 -7.46276,9.11583 -10.94877,2.47751 l -10.70302,-52.22682 c 0.22373,-5.51612 8.74269,-9.10969 11.89225,-1.20757 z"
+       id="path7100"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4675"
+       y="146.6479"
+       x="442.85715"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="146.6479"
+         x="442.85715"
+         id="tspan4677"
+         sodipodi:role="line">Wähle einen neues Feature </tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="166.6479"
+         x="442.85715"
+         sodipodi:role="line"
+         id="tspan4876">oder einen neuen Test </tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="186.6479"
+         x="442.85715"
+         sodipodi:role="line"
+         id="tspan4878">von der Liste</tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="206.6479"
+         x="442.85715"
+         sodipodi:role="line"
+         id="tspan4874">         Schreibe einen Test, </tspan><tspan
+         id="tspan4679"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="226.6479"
+         x="442.85715"
+         sodipodi:role="line">           der <tspan
+   style="font-weight:bold;-inkscape-font-specification:TeXGyreBonum Bold"
+   id="tspan4880">fehlschlägt</tspan>!</tspan></text>
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.00884151;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 509.85096,568.48218 c -3.81982,-10.15182 -16.71806,-8.63447 -17.52132,1.13761 l 11.23621,54.77426 c 1.78384,5.10762 14.681,5.97791 15.87023,-3.99451 l -7.67842,-37.48659 -2.55288,0.89565 7.50397,35.92479 c 0.58629,4.52453 -7.46276,9.11583 -10.94877,2.47751 l -10.70302,-52.22682 c 0.22373,-5.51612 8.74269,-9.10969 11.89225,-1.20757 z"
+       id="path7100-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4675-8"
+       y="598.04883"
+       x="527.14288"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         id="tspan4679-8"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="598.04883"
+         x="527.14288"
+         sodipodi:role="line">Schreibe gerade genug  </tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="618.04883"
+         x="527.14288"
+         sodipodi:role="line"
+         id="tspan4770"> Code, damit der Test </tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="637.86316"
+         x="527.14288"
+         sodipodi:role="line"
+         id="tspan4776"> besteht</tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="658.04883"
+         x="527.14288"
+         sodipodi:role="line"
+         id="tspan5341">Dies schließt <tspan
+   style="font-weight:bold"
+   id="tspan5375">Fake-</tspan></tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="678.04883"
+         x="527.14288"
+         sodipodi:role="line"
+         id="tspan5343">  Implementierungen </tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="698.2345"
+         x="527.14288"
+         sodipodi:role="line"
+         id="tspan5345">  ausdrücklich mit ein!</tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="718.2345"
+         x="527.14288"
+         sodipodi:role="line"
+         id="tspan5282" /></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:url(#radialGradient3769);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter3805)"
+       id="path2989"
+       sodipodi:cx="343.57144"
+       sodipodi:cy="238.79076"
+       sodipodi:rx="117.85714"
+       sodipodi:ry="62.142857"
+       d="m 461.42858,238.79076 c 0,34.32055 -52.76644,62.14285 -117.85714,62.14285 -65.0907,0 -117.85714,-27.8223 -117.85714,-62.14285 0,-34.32056 52.76644,-62.14286 117.85714,-62.14286 65.0907,0 117.85714,27.8223 117.85714,62.14286 z"
+       transform="translate(20,0)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ff8080"
+       id="path3767"
+       sodipodi:cx="225"
+       sodipodi:cy="243.07646"
+       sodipodi:rx="6.4285712"
+       sodipodi:ry="0.71428573"
+       d="m 231.42857,243.07646 c 0,0.22844 -0.9834,0.44311 -2.64575,0.57753 L 225,243.07646 z"
+       sodipodi:start="0"
+       sodipodi:end="0.94166976" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:87.00000048%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#cccccc;fill-opacity:1;stroke:none;font-family:Sans"
+       x="366.7486"
+       y="232.36218"
+       id="text3819"
+       sodipodi:linespacing="87%"><tspan
+         sodipodi:role="line"
+         x="366.7486"
+         y="232.36218"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:87.00000048%;text-anchor:middle;fill:#ffffff;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold"
+         id="tspan3946">Rot</tspan><tspan
+         sodipodi:role="line"
+         x="366.7486"
+         y="267.48526"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:87.00000048%;text-anchor:middle;fill:#cccccc;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         id="tspan3950">(red)</tspan></text>
+    <path
+       transform="translate(259.2857,277.85714)"
+       sodipodi:type="arc"
+       style="fill:#ff8080"
+       id="path3767-1"
+       sodipodi:cx="225"
+       sodipodi:cy="243.07646"
+       sodipodi:rx="6.4285712"
+       sodipodi:ry="0.71428573"
+       d="m 231.42857,243.07646 c 0,0.22844 -0.9834,0.44311 -2.64575,0.57753 L 225,243.07646 z"
+       sodipodi:start="0"
+       sodipodi:end="0.94166976" />
+    <path
+       transform="translate(259.2857,277.85714)"
+       sodipodi:type="arc"
+       style="fill:url(#radialGradient3848);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter3805-5)"
+       id="path2989-9"
+       sodipodi:cx="343.57144"
+       sodipodi:cy="238.79076"
+       sodipodi:rx="117.85714"
+       sodipodi:ry="62.142857"
+       d="m 461.42858,238.79076 c 0,34.32055 -52.76644,62.14285 -117.85714,62.14285 -65.0907,0 -117.85714,-27.8223 -117.85714,-62.14285 0,-34.32056 52.76644,-62.14286 117.85714,-62.14286 65.0907,0 117.85714,27.8223 117.85714,62.14286 z" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:93.99999976%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="603.5415"
+       y="505.93365"
+       id="text3819-2"
+       sodipodi:linespacing="94%"><tspan
+         sodipodi:role="line"
+         id="tspan3821-4"
+         x="603.5415"
+         y="505.93365"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:93.99999976%;text-anchor:middle;fill:#ffd5d5;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold">Grün</tspan><tspan
+         sodipodi:role="line"
+         x="603.5415"
+         y="543.88275"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:93.99999976%;text-anchor:middle;fill:#ffd5d5;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         id="tspan3952">(green)</tspan><tspan
+         sodipodi:role="line"
+         x="603.5415"
+         y="581.48273"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:93.99999976%;text-anchor:middle;fill:#ffd5d5;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         id="tspan3954" /></text>
+    <g
+       transform="matrix(0.83922466,0,0,0.71952195,-307.48932,286.25895)"
+       id="g3774-3-0">
+      <path
+         style="fill:#e6e6e6;fill-opacity:1;stroke:#e6e6e6;stroke-width:2.38315201;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 254.83549,388.69959 -1.89222,179.6361 296.56093,2.29359 -0.71582,-184.0029 z"
+         id="path6381-6-9"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path5793-5-7"
+         d="m 244.57067,380.38986 0.58353,182.4499 298.23079,1.56061 -2.29838,-184.31033 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.38315201;stroke-miterlimit:4;stroke-dasharray:none" />
+    </g>
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.0558362;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 126.16562,561.41802 c -0.56046,-11.3025 -13.94415,-13.97328 -17.88429,-4.54383 l -6.34854,57.94844 c 0.14399,5.64189 12.76014,10.67977 17.15051,1.17662 l 4.35629,-39.65524 -2.84007,0.0617 -4.02936,38.05018 c -0.86622,4.67606 -10.38812,6.62299 -11.7427,-1.08767 l 6.0639,-55.24995 c 1.99446,-5.39706 11.66593,-6.20257 12.27839,2.65229 z"
+       id="path7100-0-8"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc" />
+    <path
+       transform="translate(-196.42858,269.28571)"
+       sodipodi:type="arc"
+       style="fill:url(#radialGradient3940);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter3805-4)"
+       id="path2989-0"
+       sodipodi:cx="343.57144"
+       sodipodi:cy="238.79076"
+       sodipodi:rx="117.85714"
+       sodipodi:ry="62.142857"
+       d="m 461.42858,238.79076 c 0,34.32055 -52.76644,62.14285 -117.85714,62.14285 -65.0907,0 -117.85714,-27.8223 -117.85714,-62.14285 0,-34.32056 52.76644,-62.14286 117.85714,-62.14286 65.0907,0 117.85714,27.8223 117.85714,62.14286 z" />
+    <path
+       transform="translate(-102.14287,410.71428)"
+       sodipodi:type="arc"
+       style="fill:#ff8080"
+       id="path3767-4"
+       sodipodi:cx="225"
+       sodipodi:cy="243.07646"
+       sodipodi:rx="6.4285712"
+       sodipodi:ry="0.71428573"
+       d="m 231.42857,243.07646 c 0,0.22844 -0.9834,0.44311 -2.64575,0.57753 L 225,243.07646 z"
+       sodipodi:start="0"
+       sodipodi:end="0.94166976" />
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="151.16646"
+       y="500.21933"
+       id="text3819-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="151.16646"
+         y="500.21933"
+         style="font-size:22px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ffffff;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold"
+         id="tspan3924">Refaktorisieren</tspan><tspan
+         sodipodi:role="line"
+         x="151.16646"
+         y="527.97461"
+         style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ffffff;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         id="tspan3944">(refactor)</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.79999995;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)"
+       d="m 120.56991,440.49949 c -8.94286,-87.32837 30.02016,-158.30752 125.7143,-184.28572"
+       id="path3960-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4675-8-0"
+       y="589.47742"
+       x="-90.000023"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="589.47742"
+         x="-90.000023"
+         sodipodi:role="line"
+         id="tspan4776-2"><tspan
+   style="font-weight:bold"
+   id="tspan5278">Verbessere</tspan> den Code,</tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="609.66309"
+         x="-90.000023"
+         sodipodi:role="line"
+         id="tspan4858">  solange es sinnvoll ist</tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="629.66309"
+         x="-90.000023"
+         sodipodi:role="line"
+         id="tspan4860">Führe die Tests immer </tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="649.66309"
+         x="-90.000023"
+         sodipodi:role="line"
+         id="tspan4868">  wieder aus, um die Refak-</tspan><tspan
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="669.66309"
+         x="-90.000023"
+         sodipodi:role="line"
+         id="tspan4872">  torisierungen abzusichern</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient5074);fill-opacity:1;stroke:none;filter:url(#filter5054);font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold"
+       x="298.57144"
+       y="418.07648"
+       id="text4882"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4884"
+         x="298.57144"
+         y="418.07648"
+         style="fill:url(#linearGradient5074);fill-opacity:1">TDD</tspan><tspan
+         sodipodi:role="line"
+         x="298.57144"
+         y="498.07648"
+         style="fill:url(#linearGradient5074);fill-opacity:1"
+         id="tspan5078" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter5054-2);font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+       x="321.73666"
+       y="458.43991"
+       id="text4882-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4884-2"
+         x="321.73666"
+         y="458.43991"
+         style="font-size:32px;font-weight:normal;fill:#000000;fill-opacity:1;-inkscape-font-specification:TeXGyreBonum">Zyklus</tspan><tspan
+         sodipodi:role="line"
+         x="321.73666"
+         y="498.43991"
+         style="font-size:32px;font-weight:normal;fill:#000000;fill-opacity:1;-inkscape-font-specification:TeXGyreBonum"
+         id="tspan5078-1" /></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;filter:url(#filter5264)"
+       id="path5234"
+       sodipodi:cx="373.57144"
+       sodipodi:cy="425.21933"
+       sodipodi:rx="120.71429"
+       sodipodi:ry="84.285713"
+       d="m 494.28573,425.21933 c 0,46.54971 -54.04563,84.28571 -120.71429,84.28571 -66.66866,0 -120.71429,-37.736 -120.71429,-84.28571 0,-46.54971 54.04563,-84.28571 120.71429,-84.28571 66.66866,0 120.71429,37.736 120.71429,84.28571 z" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5347"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion5349"><rect
+           id="rect5351"
+           width="37.142857"
+           height="57.142857"
+           x="530"
+           y="598.07648" /></flowRegion><flowPara
+         id="flowPara5353"></flowPara></flowRoot>  </g>
+</svg>

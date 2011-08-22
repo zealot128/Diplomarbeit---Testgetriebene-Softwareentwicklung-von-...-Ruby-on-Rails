@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.0.85
-lastDocument=main.tex
+lastDocument=parts/theory/ruby.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -167,7 +167,7 @@ archive=true
 column=1
 encoding=UTF-8
 highlight=LaTeX
-line=104
+line=51
 mode=LaTeX
 open=true
 order=6
@@ -219,7 +219,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=22
 mode=LaTeX
-open=true
+open=false
 order=7
 
 [item:parts/include-syntax-php.tex]
@@ -259,7 +259,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=29
 mode=LaTeX
-open=true
+open=false
 order=8
 
 [item:parts/intro/projektbeschreibung.tex]
@@ -284,10 +284,10 @@ order=1
 
 [item:parts/praxis/auswahl.tex]
 archive=true
-column=174
+column=251
 encoding=UTF-8
 highlight=LaTeX
-line=53
+line=41
 mode=LaTeX
 open=true
 order=5
@@ -324,10 +324,10 @@ order=-1
 
 [item:parts/theory/ruby.tex]
 archive=true
-column=162
+column=17
 encoding=UTF-8
 highlight=LaTeX
-line=93
+line=178
 mode=LaTeX
 open=true
 order=4
@@ -368,7 +368,7 @@ CursorLine=78
 
 [view-settings,view=0,item:main.tex]
 CursorColumn=1
-CursorLine=104
+CursorLine=51
 
 [view-settings,view=0,item:parts/00-frontpage.tex]
 CursorColumn=6
@@ -403,8 +403,8 @@ CursorColumn=0
 CursorLine=0
 
 [view-settings,view=0,item:parts/praxis/auswahl.tex]
-CursorColumn=174
-CursorLine=53
+CursorColumn=251
+CursorLine=41
 
 [view-settings,view=0,item:parts/praxis/auswertung.tex]
 CursorColumn=0
@@ -419,8 +419,8 @@ CursorColumn=4
 CursorLine=171
 
 [view-settings,view=0,item:parts/theory/ruby.tex]
-CursorColumn=162
-CursorLine=93
+CursorColumn=17
+CursorLine=178
 
 [view-settings,view=0,item:parts/theory/tdd.tex]
 CursorColumn=118
