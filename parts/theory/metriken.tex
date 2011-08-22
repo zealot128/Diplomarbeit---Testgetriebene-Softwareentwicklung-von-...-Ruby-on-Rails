@@ -9,7 +9,20 @@ Dem Verwenden von Code-Metriken liegt der Wunsch zugrunde, komplexe Codeteile au
 Hier seien nun einige der geläufigsten Code-Metriken vorgestellt.
 \paragraph{Lines of Code (LOC)} ist eine häufig verwendete, und die am leichtesten zu bestimmende Größe. Sie repräsentiert den Umfang eines Programmes. Diese Größe erhält dann eine größere Aussage, wenn man sie ins Verhältnis z.B. der Klasse oder eines Codefiles setzt. So kann man mit "`LOC / Klasse"' schon diejenigen Klassen finden, die wahrscheinlich zu komplex sind. Es werden alle Zeilen der Datei gezählt, die nicht leer und keine Kommentare sind. Kommentare wiederrum können als eigene Metrik verwendet werden, um den Grad der Quelltextdokumentation zu bestimmen.
 
-\paragraph{Zyklomatische Komplexität (CC)} ist ein Indikator für die Komplexität auf Basis des Kontrollflussgraphen eines Programms. Gemessen wird die Anzahl der linear unabhängigen Programmpfade. Ein Programm ohne Bedingungen und Schleifen hätten eine CC von 1. Falls es eine Entscheidung gibt, z.B. ein IF, bzw. IF/ELSE, dann wäre CC=2. In einem normalen Programm ist die Zyklomatische Komplexität die Anzahl der Entscheidungspunkte + 1 \citep[S. 314]{mccabe_complexity_1976}.
+\paragraph{Zyklomatische Komplexität (CC)} ist ein Indikator für die Komplexität auf Basis des Kontrollflussgraphen eines Programms. Gemessen wird die Anzahl der linear unabhängigen Programmpfade. Sie ist für einen Graphen definiert durch:
+
+\shadebox{
+  $$    M = E - N + 2P $$
+  \begin{center}
+\begin{tabular}{ll}
+   E & Anzahl der Kanten \\
+   N & Anzahl der Knoten  \\
+   P & Anzahl der verbundenen Komponenten \\
+  \end{tabular}  \end{center}
+
+}
+
+In einem normalen Programm ist die Zyklomatische Komplexität die Anzahl der Entscheidungspunkte + 1 \citep[S. 314]{mccabe_complexity_1976}.
 
 Ein daraus abgeleitetes Testverfahren "`Basis Path Testing"' schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte, wie die Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) siehe dazu weiter unten.
 
