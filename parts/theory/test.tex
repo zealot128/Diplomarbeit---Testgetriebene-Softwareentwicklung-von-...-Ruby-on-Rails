@@ -2,7 +2,7 @@
 
 Zum Prüfen der Korrektheit seiner Arbeit macht jeder Programmierer mindestens manuelle Tests. Bei einer Webanwendung hieße dies konkret, den Webserver zu starten und mittels eines Browsers durch die Anwendung zu navigieren, Daten anzulegen und Ausgaben der Anwendung zu kontrollieren. Mit zunehmender Größe einer Anwendung wird es immer aufwändiger, die Software zu testen, da nach jedem Hinzufügen von Funktionalität eigentlich alle Aspekte wieder getestet werden müssen, um Regressionsfehler auszuschließen.
 
-Stattdessen werden automatisierte Softwaretests instrumentalisiert, um auf Knopfdruck alle bisher programmierten Tests auszuführen und so ein Bild über den Zustand der Anwendung zu erhalten.
+Stattdessen werden automatisierte Softwaretests instrumentalisiert, um auf Knopfdruck alle bisher programmierten Tests auszuführen und so ein Bild über den Zustand der Anwendung zu erhalten. So ist Automatisiertes Testen dem manuellem Testen in kürzester Zeit zeitlich überlegen \citep{rappin_rails_2011}.
 Ein solcher Test besteht in der Regel aus 4 Teilen:
 \begin{enumerate}
  \item Initialisierung der Test-Umgebung und der Objekte
@@ -14,13 +14,27 @@ Ein solcher Test besteht in der Regel aus 4 Teilen:
 
 
 \subsection{Warum testen}
+Tests dienen in erster Linie dazu, das Vorhandensein bzw. Nichtvorhandensein von Software-Fehlern zu belegen \citep{goodliffe_code_2006}.
 
-* (Softwarefehler) \url{http://www.nfranze.de/download/Diplomarbeit_Nico_Franze.pdf}
+Getester Code gilt im Allgemeinen als robuster, korrekter und leichter zu warten \citep{rappin_rails_2011}. Im Umkehrschluss bedeutet dies, drastisch formuliert, dass ungetestete Software vorherbestimmt ist, Fehler zu haben \citep{goodliffe_code_2006}.
+
+Die meisten Programmierer finden Testen besser als Debuggen. Testen führt zu einer Minimierung der Debugphase undmacht den Software Entwicklungsprozess für Programmierer attraktiver und für Projektleiter leichter zu planen \citep{orsini_rails_2007}.
+
+
 
 * Beck
 
 \subsection{Arten von Tests}
 Tests können nach verschiedenen Gesichtspunkten eingeteilt werden. In vielen Fällen ist die Einordnung sehr schwammig, und Tests können zu mehreren Kategorien eingeteilt werden.
+\begin{figure}[hp]
+ \centering
+ \includegraphics[width=\textwidth]{./diagrams/testarten.pdf}
+ % testarten.pdf: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
+ \imgsource{Bildquelle: Der Author}
+ \caption{Einteilung der Tests}
+ \label{fig:testArten}
+\end{figure}
+
 \paragraph{Einteilung nach Sichtbarkeit des Quellcodes} Tests werden in \textbf{Whitebox} und \textbf{Blackbox}-Tests eingeteilt. Whitebox-Tests finden mit Wissen über den zugrundeliegenden Code statt. Blackboxtests dagegen ignorieren den inneren Aufbau der Klassen und Testen entweder nur Schnittstellen oder das Gesamtsystem, fokussieren also Aktionen und Rückmeldungen des Systems.
 Ein Spezialfall sind die sogenannten \textbf{Greybox}-Tests, die insbesondere bei der Testgetriebenen Entwicklung auftreten. Da der Test zuerst entwickelt wird, ist noch kein Wissen über den Zielquellcode vorhanden.
 
