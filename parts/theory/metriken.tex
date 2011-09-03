@@ -78,7 +78,7 @@ Die Testabdeckung, im Englischen "`Code Coverage"' bezeichnet, misst den Grad in
  \subsubsection{Defect insertion}
  Eine weiter Methode, um die Qualität von Testcode zu messen, ist die Defect insertion. Hierbei werden (automatisiert oder manuell) nacheinander alle Zeilen des Programmcodes geändert, und geprüft, ob danach ein Test fehlschlägt \citep{beck_test_2002}.
  
- Für Ruby gibt es ein Tool, Heckle\footnote{\url{http://ruby.sadi.st/Heckle.html}}, welches dieses Verfahren implementiert. Im Detail wird aus "`if"' ein "`if not"', konstante Zahlen werden verändert, Funktionsaufrufe verändert, Zuweisungen verändert usw. \citep{ruby_sadists_confessions_2010}. Dabei wird immer eine Änderung (Mutation) vorgenommen, und dann alle Tests ausgeführt. Sollten dennoch in einer Mutation alle Tests bestehen, so ist die Prämisse der Autoren von Heckle, dass ein Test fehle.
+ Für Ruby gibt es ein Tool, Heckle\footnote{\url{http://ruby.sadi.st/Heckle.html}}, welches dieses Verfahren implementiert. Im Detail wird aus Bedingungen negiert, konstante Zahlen und Funktionsaufrufe verändert, Zuweisungen verändert usw. \citep{ruby_sadists_confessions_2010}. Dabei wird immer eine Änderung (Mutation) vorgenommen, und dann alle Tests ausgeführt. Sollten dennoch in einer Mutation alle Tests bestehen, so ist die Prämisse der Autoren von Heckle, dass ein Test fehle.
  
  \subsection{Notwendigkeit von Code Metriken}
  
