@@ -2,7 +2,7 @@
 
 Ruby ist eine Programmiersprache, die ab 1993 von Yukihiro Matsumoto entwickelt wurde. Dabei ließ er sich von seinen Lieblingsprogrammiersprachen Perl, Smalltalk, Eiffel, Ada und Lisp inspirieren, um eine neue Programmiersprache zu entwickeln, die sowohl funktionale und imperative Programmierung ermöglicht \citep{ruby_visual_identity_team_about_2011}. 
 
-Eine vollständige Einführung in Ruby zu geben, würde den Rahmen dieser Diplomarbeit sprengen, weswegen ich mich auf die Herausstellung der Hauptmerkmale und Unterschiede zu anderen Sprachen konzentrieren werde, und was die Auswirkungen auf das Testgeschehen sind.
+Eine vollständige Einführung in Ruby zu geben würde den Rahmen dieser Diplomarbeit sprengen, weswegen ich mich auf die Herausstellung der Hauptmerkmale und Unterschiede zu anderen Sprachen konzentrieren werde, und was die Auswirkungen auf das Testgeschehen sind.
 
 %Dem geneigten Leser seien zum Selbststudium 
 % http://tryruby.org/
@@ -11,14 +11,14 @@ Eine vollständige Einführung in Ruby zu geben, würde den Rahmen dieser Diplom
 \subsection{Einführung in Ruby}
 \marginline{\includegraphics[width=0.8\marginparwidth]{material/ruby.png}
 Ruby ist eine Multiparadigma-Sprache}
-Ruby ist eine Multiparadigma-Sprache, die Objektorientierung, prozedurale, funktionale und nebenläufige Programmierung unterstützt. Im Gegensatz zu Java ist Ruby wie Smalltalk vollständig objektorientiert. So sind auch alle Datentypen wiederrum Objekte, was auch die primitiven Datentypen wie String und Integer umfasst. 
+Ruby ist eine Multiparadigma-Sprache, die Objektorientierung, prozedurale, funktionale und nebenläufige Programmierung unterstützt. Im Gegensatz zu Java ist Ruby objektorientiert. So sind auch alle Datentypen wiederrum Objekte, was auch die primitiven Datentypen wie String und Integer umfasst. 
 
-Ruby ist dynamisch stark typisiert, d.h. dass die Zuweisung des Typs einer Variable zur Laufzeit des Programms geschieht. Der Typ einer Variable ergibt sich damit aus ihrem Wert.
+Ruby ist dynamisch stark typisiert, d.h. dass die Zuweisung des Typs einer Variable zur Laufzeit des Programms geschieht. Der Typ einer Variable ergibt sich damit aus ihrem beinhalteten Objekt. Durch die starke Typisierung ist es aber nicht möglich, invalide Operationen auf inkompatible getypte Daten auszuführen, beispielsweise eine Addition von Integer mit String.
 
 Ruby ist eine interpretierte Sprache, auch Skriptsprache genannt. Dies heisst, dass der Programmcode zur Laufzeit analysiert und ausgeführt wird. 
 % TODO Quelle!!
 
-Ruby nimmt für sich in Anspruch, eine Sprache für Menschen, und nicht für Maschinen zu sein. Dies drückt sich durch eine Syntax, die oft laut als englische Sprache gelesen werden kann. 
+Ruby nimmt für sich in Anspruch, eine Sprache für Menschen, und nicht für Maschinen zu sein. Dies drückt sich durch eine Syntax, die oft laut als englische Sprache gelesen werden kann, aus. Auch hält Ruby eine Vielzahl von redundanten Keywords bereit (Syntaktischer Zucker), um dem Programmierer mehrere Wege zur Lösung seines Problems zu ermöglichen.
 
 \setlength{\epigraphwidth}{\marginparwidth}
 \marginline{\epigraph{Ruby is simple in appearance, but is very complex inside, just like our human body}{Yukihiro Matsumoto}}
@@ -27,10 +27,6 @@ Ruby nimmt für sich in Anspruch, eine Sprache für Menschen, und nicht für Mas
 Im Nachfolgenden einige Beispiele für die Verwendung von Ruby, insbesondere die "`Alles ist ein Objekt"'-Philosophie.
 
 \begin{lstlisting}[language=Ruby,label=Ruby Beispiele,caption=Ruby Beispiele]
- 
->> puts "Hello World"
-=> Hello World
-
 >> 2.even?
 => true
 
@@ -49,20 +45,20 @@ Im Nachfolgenden einige Beispiele für die Verwendung von Ruby, insbesondere die
 => a liegt zwischen 0 und 10
 
 \end{lstlisting}
+In den ersten beiden Beispielen sieht man, dass Integer und String Objekte sind, und über Memberfunktionen verfügen. Im ersten Beispiel wird geprüft, ob die Zahl gerade ist. Dabei existiert eine Konvention, dass boolsche Methoden mit einem Fragezeichen am Ende notiert werden. Im Dritten Beispiel wird eine Klassenmethode "`today"' auf die Klasse "`Date"' ausgeführt, welche ein Datumsobjekt konstruiert und zurückliefert. Da auch die Nutzung von Operatoren letzendlich in Methodenaufrufe gemappt werden, wird die Methode "`.+(2)"' auf dieses Objekt ausgeführt, und liefert ein neues Datumsobjekt, welches sich um 2 Tage unterscheidet, zurück.
+Im Vierten Beispiel wird der Einsatz von Variablen demonstriert. 
+Das letzte Beispiel zeigt den Einsatz von Kontrollstrukturen. Als Besonderheit seien hier auf die Range "`(0..10)"', die ein Intervall für den Integerzahlenbereich von 0 bis einschließlich 10 liefert. Die Methode "`.include?(a)"' tests nun, ob die Variable "`a"' in diesem Intervall existiert. Bei Eindeutigkeit können die Klammern eines Methodenaufrufes weggelassen werden.
 
-Desweiteren sei die sehr gute Unterstützung bei der Bearbeitung von Strings hervorzuheben. Insbesondere die Regulären Ausdrücke sind denen von Perl beinahe gleichmächtig und fest in die Sprache als Syntaxelement eingebaut.
+Weiterhin erlaubt Ruby die Arbeit mit Lambdas, also anonymen Funktionen. Eine beliebte Verwendungsmöglichkeit ist die Bearbeitung von Arrays und listenähnlichen Strukturen.
 
-\begin{lstlisting}
->> match = "2011-06-20".match /(?<year>\d{4})-\d{2}-\d{2}/
->> puts match[:year]
-=> 2011
-\end{lstlisting}
+\begin{lstlisting}[language=Ruby,label=Ruby Beispiel: Lambdas,caption=Ruby Beispiel: Lambdas]
+>> adder = lambda { |a,b|  a + b }
+>> adder.call(1,2)
+=> 3
 
-Auch die Bearbeitung von Arrays und listenähnlichen Strukturen ist sehr bequem, dank der Verwendungsmöglichkeit von anonymen Funktionen, bei Ruby "`Blöcke"' genannt.
-
-\begin{lstlisting}
->> [5,5,7,3].sort
-=> [3, 5, 5, 7]
+# Sortiere nach Standardvergleichsoperator
+>> [4,5,7,3].sort()
+=> [3, 4, 5, 7]
 
 # Es kann auch eine benutzerdefinierte Sortierfunktion
 # angegeben werden
@@ -80,9 +76,10 @@ Neben einem soliden objektorientierten System, bietet Ruby viele funktionale Asp
 TODO
 %TODO
 
-Im Gegensatz zu Java oder C\# dürfen Klassen zur Laufzeit um Funktionen erweitert, oder alte sogar überschrieben werden. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern.
 
-\begin{lstlisting}
+Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern.
+
+\begin{lstlisting}[language=Ruby,label=Ruby Beispiel offene Klassen,caption=Ruby Beispiel offene Klassen]
 >> class String
 >>   def remove_whitespace
 >>     self.gsub(/\s+/, "")
@@ -102,28 +99,28 @@ Für eine weiter Vertiefung sei das Buch "`Programming Ruby 1.9"' empfohlen, das
 
 \paragraph{Ruby als Skriptsprache}
 Dynamisch typisierte Sprachen, wie Ruby, haben gegenüber klassischen statisch typisierte Sprachen einige Nachteile. Zu allererst wir oft der Geschwindigkeitsnachteil angesprochen, den der Prozess des Interpretierens und das fehlende statische Typsystem verursachen.
-Allerdings hat dies in der Regel gravierende Geschwindigkeitsnachteile. Der genaue Faktor variiert extrem, je nach Algorithmus. Ein beliebter Benchmark, shoutout.alioth, vergleicht beliebte Algorithmen der Informatik implementiert in verschiedenen Sprachen miteinander. So ergibt sich z.B. in der Gegenüberstellung von Ruby mit C ein 4-300 fache langsamere Ausführungszeit. Dem gegenüber steht allerdings jeweils nur die Hälfte bis $1/7$ der Menge an Code \citep{computer_language_benchmarks_game_ruby_2011}.
+Allerdings hat dies in der Regel gravierende Geschwindigkeitsnachteile. Der genaue Faktor variiert extrem, je nach Algorithmus. Ein beliebter Benchmark, shootout.alioth, vergleicht beliebte Algorithmen der Informatik implementiert in verschiedenen Sprachen miteinander. So ergibt sich z.B. in der Gegenüberstellung von Ruby mit C ein 4-300 fache langsamere Ausführungszeit. Dem gegenüber steht allerdings jeweils nur die Hälfte bis $1/7$ der Menge an Code \citep{computer_language_benchmarks_game_ruby_2011}.
 
 Ein Vorteil des Interpretierens, also der Übersetzung zur Laufzeit, ist eine hohe Plattformunabhängigkeit und ein leichterer Buildprozess, da das Kompilieren entfällt. 
 Verfechter dynamischer Sprachen erklären weiterhin, dass diese sich ideal für prototypische Implementierungen eignen, da sich Anforderungen ständig ändern können. Weiterhin hätten Programme dynamischer Sprache eine potenziell hohe Wiederverwendbarkeit und eine höhere Lesbarkeit \citep{meijer_static_2005} \citep{ousterhout_scripting:_1998}.
 
-Desweiteren bleiben Fehler, die der Compiler bereits entdeckt hätte, bis zur Ausführung oder schlimmstenfalls noch länger unentdeckt. Dazu gehören z.B. Tippfehler, bei denen der Wert einer nicht deklarierten Variable ausgelesen wird. Im Gegensatz zu z.B. PHP, wirft Ruby aber dann eine Exception.
+Allerdings bleiben Fehler, die der Compiler bereits entdeckt hätte, bis zur Ausführung oder schlimmstenfalls noch länger unentdeckt. Dazu gehören z.B. Tippfehler, bei denen der Wert einer nicht deklarierten Variable ausgelesen wird. Im Gegensatz zu z.B. PHP, wirft Ruby aber dann eine Exception.
 
 Auf das Testen hat dies eine direkte Auswirkung. Viele Meinungen belegen, dass eine dynamisch typisierte Sprache mehr Tests benötigt, als eine statisch typisierte \citep{daniel_spiewak_dynamic_2010}. 
 
 
 
-\paragraph{Metaprogrammierung}
-Die Fähigkeiten zur Metaprogrammierung von Ruby bieten vielerei Möglichkeiten um Probleme effektiv zu lösen, die andernfalls nur mit erheblichem Aufwand, oder gar nicht zu lösen sind. So verwendet das beliebte Objektrelationale Datenbankframework ActiveRecord Metaprogrammierung, um einfache SQL-Statements zu erstellen.
+\paragraph{Generische Programmierung}
+Ruby ermöglicht es Programmcode zu schreiben, der wiederrum Programmcode schreibt. Dies ermöglicht es Probleme effektiv zu lösen, die andernfalls nur mit erheblichem Aufwand, oder gar nicht zu lösen sind. So verwendet das beliebte Objektrelationale Datenbankframework ActiveRecord dies, um einfache SQL-Statements zu erstellen. Ruby on Rails verwendet standardmäßig ActiveRecord als Schnittstelle zur Datenbank.
 \begin{lstlisting}
 >> Person.find_by_first_name("Stefan")
-  Person Load (0.2ms)  SELECT persons.* FROM persons
-    WHERE users.first_name = 'Stefan' LIMIT 1
+#  Person Load (0.2ms)  SELECT persons.* FROM persons
+#    WHERE users.first_name = 'Stefan' LIMIT 1
 \end{lstlisting}
 
 Die Methode \texttt{find\_by\_first\_name} existiert nicht, und wird zur Laufzeit auf Basis des Namens gebaut.
 
-Auch das sehr beliebte Testframework Rspec, auf das wir später kurz eingehen werden, verwendet Metaprogrammierung, um Testfälle und Zusicherungen wie fast in der englischen Sprache zu formulieren. Dazu werden sämtliche Objekte von Ruby um Funktionen erweitert.
+Auch das sehr beliebte Testframework Rspec, verwendet Metaprogrammierung, um Testfälle und Zusicherungen wie fast in der englischen Sprache zu formulieren. Dazu werden sämtliche Objekte von Ruby um Funktionen erweitert. Dies ist möglich, da die Klasse "`Objekt"', die Basisklasse (fast) aller Ruby-Klasse ist, um diese Methoden erweitert wurde.
 
 \begin{lstlisting}
 >> 4.should == 3
@@ -131,8 +128,6 @@ RSpec::Expectations::ExpectationNotMetError: expected: 3
 \end{lstlisting}
 
 All diese Methoden können, richtig angewendet, zur Verbesserung der Lesbarkeit der Programme, und damit zur Erhöhrung der Wartbarkeit, führen.
-Falsch angewendet stellen sie jedoch eine Gefahr da. Beim Verwenden von externen Bibliotheken, oder in einem großen Entwicklerteam können dadurch kuriose Fehler auftreten die nur sehr schwer zu finden sind. Potenziell jedes Quelltextfile kann jede Klasse zur Laufzeit verändern, ohne dass es eine Warnung gibt. 
-%TODO Quelle?
 
 \paragraph{Schlussfolgerung}
 
@@ -148,7 +143,7 @@ Test::Unit (Ruby 1.8.7) und Minitest (1.9.2) sind die Testbibliotheken, die Ruby
 Für eine zu testende Klasse wird eine analoge Testklasse erstellt. Diese trägt per Definition denselben Namen wie die zu testende Klasse mit einem "`Test"' am Anfang. Um z.B. eine Klasse "`job"' zu testen, wird eine Datei \texttt{test\_job.rb} (Ruby Standard) oder \texttt{job\_test.rb} (Rails Standard) erstellt. Dort wiederrum wird eine Klasse mit Namen \texttt{TestJob} definiert. 
 
 Ein Beispieltest sieht z.B. so aus:
-\begin{lstlisting}
+\begin{lstlisting}[language=Ruby,label=Testen mit Test::Unit,caption=Testen mit Test::Unit in Ruby]
 require "job"
 
 class TestJob < Test::Unit::TestCase
@@ -161,7 +156,7 @@ class TestJob < Test::Unit::TestCase
   end
   
   def test_job_exists
-    @job.title =  "Ruby on Rails Entwickler
+    @job.title =  "Ruby on Rails in Entwickler"
     @job.add_location_to_title( "Dresden")
     
     assert_equal( "Ruby on Rails Entwickler in Dresden",  Job.first.title)
@@ -179,5 +174,21 @@ Jede Testmethode besteht in der Regel aus einer Initialisierung (kann in die set
 Rails erledigt das Anlegen und Löschen von Testdaten selbständig. Diese werden als Fixtures bezeichnet und extern definiert. Alternativ ist der Einsatz sogenannter Factories möglich, um schnell Objekte mit bestimmten Eigenschaften zu erstellen. In jedem Fall setzt Rails die Datenbank nach jedem einzelnen Test zurück.
 
 
-\subsubsection{Rspec}
+\subsubsection{Cucumber}
 
+Cucumber ist ein relativ neues Framework (2008), um mittels einer domainspezifischen Sprache verständliche automatisierte Tests zu schreiben. Dabei gibt es 2 Ebenen. In der obersten werden Tests in Englisch, Deutsch oder einer anderen der mehr als 30 unterstützten Sprachen spezifiziert. In der darunterliegenden werden diese Schritte in echten Testcode implementiert. Im Folgenden sei ein Trivialbeispiel einer Anwendung, die Addieren unterstützt gezeigt.
+
+\lstinputlisting[label=Cucumber: Additionsfeature in Deutsch,caption=Cucumber: Additionsfeature in Deutsch]{listings/addition.feature}
+
+Wenn man nun die Datei mittels Cucumber ausführt, so wird darauf hingewiesen, dass die Testschritte noch nicht implementiert sind.
+Eine Beispielimplementation (ohne Verwendung einer GUI-Anwendung) der Testschritte wäre:
+
+\lstinputlisting[label=Cucumber: Implementierung der Additionstestschritte in Ruby,caption=Cucumber: Implementierung der Additionstestschritte in Ruby]{listings/steps.rb}
+
+Wie man sehen können werden die Testschritte über Regex gemacht. Jeder Schritt kann nun eine beliebige Implementierung besitzen. Meist ist es entweder eine Initialisierung, eine Aktion oder eine Erwartung, ausgedrückt durch die Schlüsselwörter "`Angenommen"', "`Wenn"' und "`Dann"', bzw. "`Given"', "`When"' und "`Then"' im Originaldialekt. Die Einteilung in klare Testschritte fördert die Wiederverwendbarkeit der Testschritte selbst.
+
+Der Vorteil von Cucumber ist nun, dass diese Feature-Datei zusammen mit dem Kunden durchgesprochen werden kann, und am Ende eine funktionale Validierung durchzuführen- Auch hilft es, nur diejenigen Features zu implementieren, die letztendlich einen Wert für das Geschäft haben werden. 
+ 
+In der Regel werden mit Cucumber Webanwendungen getestet. Dabei kann z.B. auch ein echter Browser ferngesteuert werden, um den Test so authentisch am echten Nutzungsprozess wie möglich zu orientieren. 
+
+Neben Ruby, wird auch die Implementierung der Testschritte in JVM und .NET-Sprachen unterstützt.

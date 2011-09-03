@@ -144,16 +144,15 @@ Twitter, die jeweils Rails verwenden.
 Rails bietet ausgezeichnete Vorraussetzungen zum Softwaretest. Dafür sprechen, dass...
 
 \begin{itemize}
- \item benötigte Bibliotheken bereits mitgliefert werden,
+ \item benötigte Bibliotheken bereits mitgliefert werden. Dies umfasst einen Test-Runner, vorkonfigurierte Test-Datenbanken (auf Basis von SQLite) und das Testframework Minitest,
  \item die Verwendung stark erleichtert wird, da Rails beim Nutzen der Codegeneratoren analoge Testdateien gleich mitgeneriert,
- \item das Rails Ökosystem eine Vielzahl von Testtools bereitstellt, u.a. Rspec (BDD\footnote{Behavior Driven Development - Siehe später}-Testframework), Rcov (Testabdeckung), diverse Mockbibliotheken (mocha, FlexMock, RR, Rspec Mocks), Tools zum Generieren und Bereitstellen von Testdaten (Fixtures, Factories, Faker) und Codemetriken (metric-fu)
- \item das Testen in der Rails Community einen sehr hohen Stellenwert hat, so dass die meisten Bibliotheken und Plugins getestet werden
- %TODO Quelle
+ \item neben den mitgelieferten Tools das Rails Ökosystem eine Vielzahl von Testtools bereitstellt, u.a. Rspec (BDD\footnote{Behavior Driven Development}-Testframework), Rcov (Testabdeckung), diverse Mockbibliotheken (mocha, FlexMock, RR, Rspec Mocks), Tools zum Generieren und Bereitstellen von Testdaten (Fixtures, Factories, Faker) und Codemetriken (metric-fu)
+ \item das Testen einen sehr hohen Stellenwert in der Ruby und Rails-Comumnity hat. Nahezu alle namhaften Ruby-Programmierer schreiben umfassende Tests \citep{devries_rails_2008}. Das Resultat ist, dass auch fast alle OpenSource Bibliotheken (Gems) bei Ruby eine "'solid suite of tests"` haben \citep{devries_rails_2008}. 
 \end{itemize}
 
 Dabei werden mehrere verschiedene Testarten unterstützt und definiert.
 \begin{description}
- \item[Unittests] oder Modeltests. Zielstellung: Hier wird die Logik einer Modelklasse untersucht\\
+ \item[Unittests] oder Modelltests (model test). Zielstellung: Hier wird die Logik einer Modelklasse untersucht\\
  Testziel: alle (komplexeren) Methoden die das Modell anbietet. Am Beispiel Job kann das die Aussage sein, wann ein Job gültig ist, d.h. welche Bedingungen für die einzelnen Attribute gelten sollen.\\
  Testart: Whitebox
  \item[Funktionale Tests] Untersuchungsgegenstand sind die Controller, also die Schnittstellen zum Nutzer. \\
@@ -169,4 +168,3 @@ Dabei werden mehrere verschiedene Testarten unterstützt und definiert.
  Beispiel: Es werden 1000 Jobs generiert und geprüft, ob die Anzeige schnell genug läuft\\
  Testart: Graybox
 \end{description}
-    

@@ -11,7 +11,6 @@
 \usepackage{graphicx}	%including images
 \usepackage{fancyhdr}	%for editiable headers and footers
 \usepackage{setspace} 	%for 1,5times row space
-
 \usepackage{color}
 \definecolor{darkblue}{rgb}{0,0,.5}
 \usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,bookmarksnumbered = true,linkcolor = darkblue,plainpages = false,hypertexnames = false,citecolor = black, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue] {hyperref}	
@@ -25,28 +24,34 @@
 \usepackage{makeidx}
 \usepackage[square]{natbib}
 \usepackage{epigraph}
-%\include{parts/include-syntax-php}
+
 %	Eigenes PHP Syntax-HL
 \usepackage{listings}
 \usepackage{caption}
 \usepackage[dvipsnames]{xcolor}
-\lstloadlanguages{Ruby}
-\lstset{%
-basicstyle=\ttfamily\footnotesize\color{black},
-commentstyle = \ttfamily\color{gray},
-keywordstyle=\ttfamily\color{blue},
-stringstyle=\color{red},
-showspaces=false,               % show spaces adding particular underscores
-showstringspaces=false, 
-frame=single,
-breaklines=true
-}
-
 \usepackage[nottoc]{tocbibind}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%% Metainfos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcommand{\ownTitle}{Diplomarbeit}
 \newcommand{\ownTitleZ}{Testgetriebene Entwicklung von Web-Serveranwendungen auf der Basis von Ruby on Rails}
 \newcommand{\ownAutor}{Stefan Wienert, HTW Dresden}
 
+\title{\ownTitle}
+\author{\ownAutor}
+\pdfinfo{
+ /Title  (\ownTitle)
+ /Author (\ownAutor)
+ /Subject (\ownTitleZ)
+ /Keywords()
+}
+\date{\today}
+\onehalfspacing
+
+\setlength{\epigraphwidth}{.8\textwidth}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,34 +66,14 @@ breaklines=true
 \cfoot[]{}
 \rfoot[\scriptsize \textcopyright2011, \ownAutor]{\thepage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Macros
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\footrulewidth}{0.5pt}
-\newcommand{\cbox}{\includegraphics[width=0.2cm]{material/cbox.png} \ }
 \definecolor{Gray}{rgb}{0.85,0.85,0.90}
-% \setcounter{tocdepth}{2}	%kleineres TOC
-\newcommand{\arr}{$ \Longrightarrow$}
 
+
+\include{custom_commands}
 \makeindex 	%start Aufzeichnun eines Stichwortverzeichnisses
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%% Metainfos
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\title{\ownTitle}
-\author{\ownAutor}
-\pdfinfo{
- /Title  (\ownTitle)
- /Author (\ownAutor)
- /Subject (\ownTitleZ)
- /Keywords()
-}
-\date{\today}
-\onehalfspacing
-
-\setlength{\epigraphwidth}{.8\textwidth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
  %\maketitle
@@ -96,16 +81,14 @@ breaklines=true
 
  
  
- \pagenumbering{roman}
+ \pagenumbering{Roman}
  \include{parts/intro/preambel}
  
  \setcounter{page}{1}
  \pagenumbering{arabic}
  \input{parts/gliederung}
- 
  %\setcounter{page}{1}
  %\pagenumbering{Roman}
  \include{parts/99-appendix}
 \end{document}
  
-
