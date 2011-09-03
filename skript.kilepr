@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.0.85
-lastDocument=parts/praxis/auswahl.tex
+lastDocument=parts/praxis/anwendung.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -144,6 +144,16 @@ Indentation Mode=1
 Mode=LaTeX
 ReadWrite=true
 
+[item:../diagrams/job-erm.png]
+archive=true
+column=7143541
+encoding=
+highlight=
+line=0
+mode=
+open=false
+order=-1
+
 [item:bibo.bib]
 archive=true
 column=25
@@ -156,13 +166,13 @@ order=3
 
 [item:main.tex]
 archive=true
-column=31
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=72
+line=110
 mode=LaTeX
-open=false
-order=5
+open=true
+order=10
 
 [item:material/mvc-rails.png]
 archive=true
@@ -191,8 +201,8 @@ encoding=UTF-8
 highlight=LaTeX
 line=47
 mode=LaTeX
-open=false
-order=6
+open=true
+order=9
 
 [item:parts/99-appendix.tex]
 archive=true
@@ -211,8 +221,8 @@ encoding=UTF-8
 highlight=LaTeX
 line=20
 mode=LaTeX
-open=false
-order=0
+open=true
+order=8
 
 [item:parts/include-syntax-php.tex]
 archive=true
@@ -256,22 +266,22 @@ order=6
 
 [item:parts/praxis/anwendung.tex]
 archive=true
+column=61
+encoding=UTF-8
+highlight=LaTeX
+line=133
+mode=LaTeX
+open=true
+order=7
+
+[item:parts/praxis/auswahl.tex]
+archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
 line=0
 mode=LaTeX
 open=false
-order=1
-
-[item:parts/praxis/auswahl.tex]
-archive=true
-column=174
-encoding=UTF-8
-highlight=LaTeX
-line=53
-mode=LaTeX
-open=true
 order=6
 
 [item:parts/praxis/auswertung.tex]
@@ -279,17 +289,17 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=5
 mode=LaTeX
-open=false
-order=3
+open=true
+order=6
 
 [item:parts/theory/metriken.tex]
 archive=true
-column=18
+column=61
 encoding=UTF-8
 highlight=LaTeX
-line=38
+line=29
 mode=LaTeX
 open=true
 order=4
@@ -306,10 +316,10 @@ order=-1
 
 [item:parts/theory/ruby.tex]
 archive=true
-column=162
+column=145
 encoding=UTF-8
 highlight=LaTeX
-line=93
+line=98
 mode=LaTeX
 open=true
 order=5
@@ -329,7 +339,7 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=41
+line=38
 mode=LaTeX
 open=true
 order=1
@@ -349,8 +359,8 @@ CursorColumn=25
 CursorLine=78
 
 [view-settings,view=0,item:main.tex]
-CursorColumn=31
-CursorLine=72
+CursorColumn=0
+CursorLine=110
 
 [view-settings,view=0,item:parts/00-frontpage.tex]
 CursorColumn=6
@@ -377,8 +387,8 @@ CursorColumn=39
 CursorLine=34
 
 [view-settings,view=0,item:parts/praxis/anwendung.tex]
-CursorColumn=0
-CursorLine=0
+CursorColumn=61
+CursorLine=133
 
 [view-settings,view=0,item:parts/praxis/auswahl.tex]
 CursorColumn=174
@@ -386,19 +396,19 @@ CursorLine=53
 
 [view-settings,view=0,item:parts/praxis/auswertung.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=5
 
 [view-settings,view=0,item:parts/theory/metriken.tex]
-CursorColumn=18
-CursorLine=38
+CursorColumn=61
+CursorLine=29
 
 [view-settings,view=0,item:parts/theory/rails.tex]
 CursorColumn=4
 CursorLine=171
 
 [view-settings,view=0,item:parts/theory/ruby.tex]
-CursorColumn=162
-CursorLine=93
+CursorColumn=145
+CursorLine=98
 
 [view-settings,view=0,item:parts/theory/tdd.tex]
 CursorColumn=118
@@ -406,4 +416,4 @@ CursorLine=101
 
 [view-settings,view=0,item:parts/theory/test.tex]
 CursorColumn=0
-CursorLine=41
+CursorLine=38
