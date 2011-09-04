@@ -153,21 +153,17 @@
 \def\PYZat{@}
 \def\PYZlb{[}
 \def\PYZrb{]}
+\makeatother
 
 
-\DefineVerbatimEnvironment{ruby}{Verbatim}{numbers=left,frame=single,stepnumber=1,numbersep=1pt,
+
+\DefineVerbatimEnvironment{ruby}{Verbatim}{numbers=left,frame=single,stepnumber=1,numbersep=1pt,fontsize=\relsize{-1},
 commandchars=\\\{\}}
 
-\newenvironment{codeenv}{
-%\begin{minipage}{\textwidth}
-\captionsetup{type=lstlisting}
-}{
-%\end{minipage}
-}
 
-%\newenvironment{fancycode}[2]{
-%  \begin{minipage}{\textwidth}
-%    \captionsetup{type=lstlisting}
-%    \caption{#1}
-%    \begin{Verbatim}[}
-%{\end{Verbatim}\end{minipage}}
+\newcommand{\codecaption}[1]{
+\captionsetup{type=lstlisting,position=top}
+\caption{#1}
+}
+ 
+

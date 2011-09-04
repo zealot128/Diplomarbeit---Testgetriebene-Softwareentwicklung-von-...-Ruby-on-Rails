@@ -26,7 +26,6 @@ Ruby nimmt für sich in Anspruch, eine Sprache für Menschen, und nicht für Mas
 
 Im Nachfolgenden einige Beispiele für die Verwendung von Ruby, insbesondere die "`Alles ist ein Objekt"'-Philosophie.
 
-\begin{codeenv}  
  \begin{ruby}[label=Interaktive Ruby Sitzung (IRB)]
   \PY{g+gp}{>> }\PY{l+m+mi}{2}\PY{o}{.}\PY{n}{even?}
   \PY{g+go}{=> true}
@@ -41,12 +40,7 @@ Im Nachfolgenden einige Beispiele für die Verwendung von Ruby, insbesondere die
   \PY{g+gp}{>> }\PY{k}{end}
   \PY{g+go}{=> a liegt zwischen 0 und 10}
  \end{ruby}
-\caption{Ruby Beispiele}
-\begin{verbatim}
- 
-\end{verbatim}
-
-\end{codeenv}
+\codecaption{Ruby Beispiele}
 
 In den ersten beiden Beispielen sieht man, dass Integer und String Objekte sind, und über Memberfunktionen verfügen. Im ersten Beispiel wird geprüft, ob die Zahl gerade ist. Dabei existiert eine Konvention, dass boolsche Methoden mit einem Fragezeichen am Ende notiert werden. Im Dritten Beispiel wird eine Klassenmethode "`today"' auf die Klasse "`Date"' ausgeführt, welche ein Datumsobjekt konstruiert und zurückliefert. Da auch die Nutzung von Operatoren letzendlich in Methodenaufrufe gemappt werden, wird die Methode "`.+(2)"' auf dieses Objekt ausgeführt, und liefert ein neues Datumsobjekt, welches sich um 2 Tage unterscheidet, zurück.
 Im Vierten Beispiel wird der Einsatz von Variablen demonstriert. 

@@ -1,0 +1,11 @@
+valid_job:
+  title: Rails Entwickler
+  email: info@stefanwienert.net
+  link: "http://www.example.com/jobs"
+  visible: true
+  ...
+invisible_job:
+  title: Rails Entwickler
+  visible: false
+  ...
+  
