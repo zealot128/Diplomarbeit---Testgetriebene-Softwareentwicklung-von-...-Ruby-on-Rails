@@ -62,6 +62,7 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
   
     
   \subsection{Mocks und Stubs}
+  \label{sec:mocks}
   Beim Testen im Allgemeinen und bei TDD im Besonderen wird das Testen durch externe Abhängigkeiten erschwert. Dies können z.B. Klassen sein, die noch gar nicht implementiert wurden, externe Ressourcen (Netzwerkzugriffe, Versenden von Mails) oder externe Prozessen (Bezahlen in einem Onlineshop) sein. In diesen Situationen ist es angebracht, auf sogenannte Mocks und Stubs zurückzugreifen.
   
   Ein Stub ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfalls ersetzt. Im Beispiel ein Bezahlprozess einer Bestellung.
