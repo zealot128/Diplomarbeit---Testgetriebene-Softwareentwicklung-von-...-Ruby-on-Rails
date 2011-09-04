@@ -26,25 +26,28 @@ Ruby nimmt für sich in Anspruch, eine Sprache für Menschen, und nicht für Mas
 
 Im Nachfolgenden einige Beispiele für die Verwendung von Ruby, insbesondere die "`Alles ist ein Objekt"'-Philosophie.
 
-\begin{lstlisting}[language=Ruby,label=Ruby Beispiele,caption=Ruby Beispiele]
->> 2.even?
-=> true
+\begin{codeenv}  
+ \begin{ruby}[label=Interaktive Ruby Sitzung (IRB)]
+  \PY{g+gp}{>> }\PY{l+m+mi}{2}\PY{o}{.}\PY{n}{even?}
+  \PY{g+go}{=> true}
+  \PY{g+gp}{>> }\PY{l+s+s2}{"}\PY{l+s+s2}{hallo}\PY{l+s+s2}{"}\PY{o}{.}\PY{n}{upcase}
+  \PY{g+go}{=> "HALLO"}
+  \PY{g+gp}{>> }\PY{n+no}{Date}\PY{o}{.}\PY{n}{today} \PY{o}{+} \PY{l+m+mi}{2}
+  \PY{g+go}{=> #<Date: 2011-06-30>}
+  \PY{g+gp}{>> }\PY{n}{a} \PY{o}{=} \PY{l+m+mi}{4} \PY{o}{+} \PY{n+no}{Math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{)}
+  \PY{g+go}{=> 7.0}
+  \PY{g+gp}{>> }\PY{k}{if} \PY{p}{(}\PY{l+m+mi}{0}\PY{o}{.}\PY{n}{.}\PY{l+m+mi}{10}\PY{p}{)}\PY{o}{.}\PY{n}{include?} \PY{n}{a}
+  \PY{g+gp}{>> }  \PY{n+nb}{puts} \PY{l+s+s2}{"}\PY{l+s+s2}{a liegt zwischen 0 und 10}\PY{l+s+s2}{"}
+  \PY{g+gp}{>> }\PY{k}{end}
+  \PY{g+go}{=> a liegt zwischen 0 und 10}
+ \end{ruby}
+\caption{Ruby Beispiele}
+\begin{verbatim}
+ 
+\end{verbatim}
 
->> "hallo".upcase
-=> "HALLO"
+\end{codeenv}
 
->> Date.today + 2
-=> #<Date: 2011-06-30>
-
->> a = 4 + Math.sqrt(9)
-=> 7.0
-
->> if (0..10).include? a
->>   puts "a liegt zwischen 0 und 10"
->> end
-=> a liegt zwischen 0 und 10
-
-\end{lstlisting}
 In den ersten beiden Beispielen sieht man, dass Integer und String Objekte sind, und über Memberfunktionen verfügen. Im ersten Beispiel wird geprüft, ob die Zahl gerade ist. Dabei existiert eine Konvention, dass boolsche Methoden mit einem Fragezeichen am Ende notiert werden. Im Dritten Beispiel wird eine Klassenmethode "`today"' auf die Klasse "`Date"' ausgeführt, welche ein Datumsobjekt konstruiert und zurückliefert. Da auch die Nutzung von Operatoren letzendlich in Methodenaufrufe gemappt werden, wird die Methode "`.+(2)"' auf dieses Objekt ausgeführt, und liefert ein neues Datumsobjekt, welches sich um 2 Tage unterscheidet, zurück.
 Im Vierten Beispiel wird der Einsatz von Variablen demonstriert. 
 Das letzte Beispiel zeigt den Einsatz von Kontrollstrukturen. Als Besonderheit seien hier auf die Range "`(0..10)"', die ein Intervall für den Integerzahlenbereich von 0 bis einschließlich 10 liefert. Die Methode "`.include?(a)"' tests nun, ob die Variable "`a"' in diesem Intervall existiert. Bei Eindeutigkeit können die Klammern eines Methodenaufrufes weggelassen werden.

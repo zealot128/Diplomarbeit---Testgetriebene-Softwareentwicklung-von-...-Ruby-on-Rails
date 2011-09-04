@@ -66,7 +66,7 @@ Finished in 0.043818 seconds.
 
 Es wurde also schon ein Testfall erfolgreich ausgeführt, nämlich ein Dummytestfall von Rails:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=ruby]
 test/unit/job_test.rb 
 require 'test_helper'
 
@@ -77,6 +77,22 @@ class JobTest < ActiveSupport::TestCase
   end
 end
 \end{lstlisting}
+
+\begin{ruby}[label={test/units/job\_test.rb}]
+\PY{c+c1}{#test/unit/job\PYZus{}test.rb }
+\PY{n+nb}{require} \PY{l+s+s1}{'test\PYZus{}helper'}
+
+\PY{k}{class} \PY{n+nc}{JobTest} \PY{o}{<} \PY{n+no}{ActiveSupport}\PY{o}{::}\PY{n+no}{TestCase}
+  \PY{c+c1}{# Replace this with your real tests.}
+  \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{the truth}\PY{l+s+s2}{"} \PY{k}{do}
+    \PY{n}{assert} \PY{k+kp}{true}
+  \PY{k}{end}
+\PY{k}{end}
+\end{ruby}
+\label{list:bla}
+\captionsetup{type=lstlisting}
+\caption{Listing Test}
+
 
 \paragraph{2. Testen auf Validierung}
 
@@ -96,20 +112,22 @@ class JobTest < ActiveSupport::TestCase
   end
 end
 \end{lstlisting}
+\tddred
 Zuerst instanziieren wir einen Job, und geben ihm explizit einen leeren Titel, um das Testziel nochmal herauszustellen. Danach sichern wir zu, dass eine Speicherung nicht erfolgt, also "`false"' ist.
 
 Nach Ausführung des Tests, schlägt dieser wie zu erwarten fehl.
 
 Unser nächstes Ziel ist es nun, mit so wenig Code wie möglich den Test bestehen zu lassen. Das können wir mittels der eingebauten wie schon erwähnten Validierungen:
 
+
 \begin{lstlisting}
 class Job < ActiveRecord::Base
   validates :title, :presence => true
 end
 \end{lstlisting}
-
-Nach erneuter Ausführung der Testsuite, besteht der Test nun. Jetzt folgt die Refaktorisierungsphase. Allerdings lässt sich der Programmcode, nicht weiter vereinfachen. Allerdings ist der Testcode ausdrücklich nicht von Refaktorisierungen befreit, und könnten z.B. so ansetzen.
-
+\tddgreen
+Nach erneuter Ausführung der Testsuite, besteht der Test nun. Jetzt folgt die Refaktorisierungsphase. Der Programmcode lässt sich nicht weiter vereinfachen. Aber der Testcode ist ausdrücklich nicht von Refaktorisierungen befreit, und eine Refaktorisierung wäre z.B.:
+\tddrefactor
 \begin{lstlisting}
 test "ein Job muss einen Titel haben" do
   job = Job.new :title => nil
@@ -127,16 +145,29 @@ test "ein Job muss eine gültige E-Mail haben" do
   assert !job.save
 end
 \end{lstlisting}
+\tddred
 Die Implementierung wäre dann:
 \begin{lstlisting}
 class Job < ActiveRecord::Base
   validates :email, :format => /^[\w\d_\-]+@[\w\d_\-]\.[\w\d]{2,3}$/
   ...
 \end{lstlisting}
+\tddgreen
+Eine Refaktorisierung ist aufgrund der Einfachheit der Beispiel hier nur gering möglich. Man könnte z.B. den regulären Ausdruck, der das Format der E-Mail Adresse beschreibt in eine neue Klasse oder zumindest eine Konstante auslagern. Wir wählen eine Konstante, die beim Laden von Rails bereitgestellt wird.
+\tddrefactor
+\begin{lstlisting}
+# config/initializers/regex.rb
+REGEX_EMAIL_FORMAT = /^[\w\d_\-]+@[\w\d_\-]\.[\w\d]{2,3}$/
+
+# app/models/job.rb
+class Job < ActiveRecord::Base
+  validates :email, :format => REGEX_EMAIL_FORMAT
+  ...
+\end{lstlisting}
+Ein erneutes Ausführen der Tests betätigt den Erfolg der Refaktorisierung.
 
 \paragraph{3. Refaktorisierungen der Testklasse}
-
-Nun fehlt aber noch ein positiv-Beispiel für einen gültigen Job zu definieren:
+Nun fehlt aber noch die Definition eines Positiv-Beispiel für einen gültigen Job.
 
 \begin{lstlisting}
 test "ein Job muss einen Titel haben" do
@@ -144,6 +175,7 @@ test "ein Job muss einen Titel haben" do
   assert_valid job
 end
 \end{lstlisting}
+\tddgreen
 Dieser Test besteht sofort, macht also genau genommen keine weitere Aussage über unser System. Nach der "`reinen"' Testgetriebenen Leere sollte dieser entfernt werden. Es ist allerdings eine gute Strategie, bei Validierungen mindestens ein Beispiel zu präsentieren, dass angenommen wird. Nichtsdestotrotz können wir nun Refaktorisieren. Insbesondere unsere Testfunktionen enthalten unnötige Redundanzien:
 
 \begin{lstlisting}
@@ -160,6 +192,7 @@ test "ein Job muss einen Titel haben" do
   assert_valid job
 end
 \end{lstlisting}
+\tddrefactor
 In allen drei Methoden wird ein Job instanziiert, und lediglich verschiedene Attribute überprüft. Auch haben unsere ersten beiden Tests keine gültige Aussage mehr, da der jeweilige Job sowieso nicht gültig ist, da jeweils das andere Attribut fehlt\footnote{Im ersten Test ist nicht nur der Titel nicht gesetzt, sondern auch die E-Mail entspricht nicht dem Format}. Es ist also höchste Zeit, die Tests zu refaktorisieren. Dies geschieht am Besten durch die Verwendung einer Testdaten-Generation, z.B. den eingebauten Fixtures, die Rails uns bei der Codegeneration schon mit generiert hatte. Dabei definieren wir zentralisiert unsere (gültigen) Testdaten, die von Rails vor jedem einzelnen Test in der Datenbank bereitgestellt werden:
 
 \begin{lstlisting}
@@ -199,8 +232,10 @@ test "ein Job muss eine gültige E-Mail haben" do
   assert !@job.save
 end
 \end{lstlisting}
+\tddrefactor
 Am Ende dieser Refaktorisierungen ist es notwendig, die Tests noch einmal auszuführen.
 Danach würde die Implementierung einer nächsten Teilanforderung sein. Was in diesem Abschnitt zu sehen war ist, dass die Testgetriebene Entwicklung das Arbeiten und Testen in kleinen Schritten favorisiert.
+\tddgreen
 
 \subsection{Implementierung von Controller-Tests (functional tests)}
 
@@ -224,6 +259,7 @@ class JobsControllerTest < ActionController::TestCase
   end
 end
 \end{lstlisting}
+\tddred
 Zuerst loggen wir jeglichen Nutzer aus, der eventuell eingeloggt war, dann laden wir das Fixture und führen einen simulierten HTTP Request auf die Detailansicht der Stellenanzeige aus (Die Aktion "`show"' mit der ID des Jobs).
 Nun erwarten wir, dass wir einen HTTP-Status Code 200 (success) erhalten, und dass der Controller eine Variable "`@jobs"' bereitstellt, die mit unserem Fixture identisch ist.
 
@@ -239,10 +275,12 @@ class JobsController < ApplicationController
   
 end
 \end{lstlisting}
+\tddgreen
 Das Laden des erstem Jobs aus unserer Datenbank genügt zum Erfüllen der Anforderungen, und ist ein schneller Weg, den Test bestehen zu lassen. Allerdings handelt es sich hierbei um eine Fake-Implementierung, da zwar unser Test erfüllt wird, aber die Anwendung nicht das macht, was man sich erhofft hat. Solche Zwischenschritte sind aber ausdrücklich vorgesehen, da das Ziel ist, so schnell wir möglich einen funktionierenden Test zu erhalten mit dem man arbeiten kann.
 
 Wenn wir nun weitere Tests schreiben, so wird es immer schwieriger, die Fake-Implementierung beizubehalten, und früher oder später wird eine korrekte Implementierung folgen. 
 Aber wir können auch die nun folgende Refaktorisierungsphase nutzen, um diesen Makel zu beseitigen:
+\tddrefactor
 \begin{lstlisting}
 # app/controllers/jobs_controller.rb
 def show
@@ -251,6 +289,7 @@ end
 \end{lstlisting}
 
 Nun wollen wir testen, ob ein Gast von einer nicht-sichtbaren Stellenanzeige weitergeleitet wird und einen Hinweis erhält.
+
 \begin{lstlisting}
 test "Gast Nutzer kann nicht-sichtbare Stellen nicht betrachten" do
   session[:user_id] = nil
@@ -262,6 +301,8 @@ test "Gast Nutzer kann nicht-sichtbare Stellen nicht betrachten" do
   assert flash[:notice].present?
 end
 \end{lstlisting}
+\tddred
+
 Wir laden unser zweites definiertes Fixture, dass eine unsichtbaren Stellenanzeige. Dieses mal erwarten wir einen HTTP Statuscode 301 (Redirect), und dass unser Controller eine Hinweisnachricht generiert.
 
 \begin{lstlisting}
@@ -272,11 +313,13 @@ def show
   end
 end
 \end{lstlisting}
+\tddgreen
 Falls der aktuelle Job nicht sichtbar ist, dann erfolgt eine Weiterleitung auf die Startseite und die Bereitstellung des Hinweistextes.
-
+\tddrefactor
 Da auch hier der Quelltext wieder sehr kurz ist, ist ein Refaktorisieren nicht notwendig.
 
 Nun möchten wir, dass ein Kunde dieser Anwendung, also ein Unternehmen seine Stellenanzeige betrachten kann, auch wenn diese unsichtbar ist, sei es aus Gründen der Archivierung als auch der Vorbereitung für eine Veröffentlichung.
+
 \begin{lstlisting}
 test "Ein Kunde darf aber seine unsichtbaren Jobs betrachten" do
   job = jobs(:invisible_job)
@@ -287,6 +330,7 @@ test "Ein Kunde darf aber seine unsichtbaren Jobs betrachten" do
   assert_response :success
 end
 \end{lstlisting}
+\tddred
 Über die globale Session Variable simulieren wir das Einloggen durch setzen der UserID in dieses Array. Die genaue Implementation hängt natürlich davon ab, wie man die Authentifizierung implementiert hat, oder welche Bibliothek man verwendet. In diesem Beispiel sei darauf hingewiesen, dass die Definition, ob ein Nutzer eingeloggt ist oder nicht, davon abhängt, ob in seiner Session-Variable eine UserID enthalten ist.
 
 \begin{lstlisting}
@@ -297,9 +341,11 @@ def show
   end
 end
 \end{lstlisting}
+\tddgreen
 Wir lösen diesen Test damit, dass wir in der Weiterleitungsbedingung prüfen, ob der betrachtende Nutzer und der Eigentümer des Jobs gleich sind.
 
 Nun können wir refaktorisieren. Was auffällt, ist z.B. dass unser Controller und die Klasse Job nicht lose gekoppelt sind, da die Bedingung zweimal auf Attribute des Jobs zurückgreift. Eine Lösung wäre die Auslagerung in die Modelklasse von Job:
+\tddrefactor
 \begin{lstlisting}
 # app/models/job.rb
 class Job < ActiveRecord::Base
@@ -317,9 +363,9 @@ def show
   end
 end
 \end{lstlisting}
-Ebenfalls wurde das syntaktische Element "`unless"' verwendet, welches ein sprechbares "`if not"' ist.
+Ebenfalls wurde das syntaktische Element "`unless"' verwendet, welches ein Alias für "`if not"' ist.
 Weiterhin könnte die Suche nach dem aktuell eingeloggten Nutzer in eine für alle Controller sichtbare Funktion ausgegliedert werden
-
+\tddrefactor
 \begin{lstlisting}
 
 # app/controllers/application_controller.rb
@@ -338,11 +384,69 @@ end
 \end{lstlisting}
 
 
+% Funktionale Tests sind in Rails häufig recht einfach gehalten, da das Ziel vergo
+\borderquote{Skinny Controller, Fat Model [...] Try to keep your controller actions and views as slim as possible.}{Jamis Buck, Programmierer bei 37signals}
+Funktionale Tests und deren Controllerimplementierungen sind häufig nischt länger als ein paar Zeilen. Qua Konventation des MVC-Patterns und Rails sollen komplexe Abläufe in den Modellen oder auch in Bibliotheken stattfinden. 
+Die Aspekte, die üblicherweise bei Controllern getestet werden, sind:
+\begin{itemize}
+ \item HTTP Statuscodes und Weiterleitungen,
+ \item das Vorhandensein von Statusmeldungen, gennant "`Flash"' Messages
+ \item dass ein bestimmtes Template geladen wird
+ \item dass Instanzvariablen gesetzt werden, die die View später darstellen sollen
+ \item falls man Viewtests mit einschließt, dann wird u.U. auch auf das Vorhandensein von bestimmten HTML-Elementen in der am Ende generierten View getestet. Z.B. möchte man wissen, ob das Überschriftenelement "`h1"' dem Job-Titel entspricht, wenn man dieDetailansicht eines Jobs aufruft.
+\end{itemize}
+
+
 
 \subsection{Testen von externen Abhängigkeiten}
+Fast alle Webapplikationen sind auf Kommunikation mit anderen Servern angewiesen. Als Beispiel seien die diversen APIs der sozialen Netzwerke genannt oder Webservices. Für die vorliegende Jobanwendung war gewünscht, ein Feedimport-Feature zu implementieren, sodass bestimmte Kunden ihre Stellenanzeigen automatisiert einlesen lassen könnten.
+
+Die genannten Partner stellen einen XML-Feed nach dem RSS 2.0 Format\footnote{Spezifikation des RSS 2.0 Formats: \url{http://cyber.law.harvard.edu/rss/rss.html}} bereit, der ein häufig verwendetes Format zum Austausch von Informationen ist, und durch eine Vielzahl von Werkzeugen und Content-Management-Systemen unterstützt wird.
+Dabei wird der Inhalt des Haupttextfeldes "`description"' um weitere Informationen in einem Subdialekt angereichert. 
+ 
+Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
+
+\begin{ruby}[label=beispiel\_job.xml, fontsize=\relsize{-2}]
+\PY{c+cp}{<?xml version="1.0" encoding="UTF-8"?>}
+\PY{n+nt}{<rss} \PY{n+na}{version=}\PY{l+s}{"2.0"}\PY{n+nt}{>}
+  \PY{n+nt}{<channel}\PY{n+nt}{>}
+    \PY{n+nt}{<title}\PY{n+nt}{>}RSS Feed für Jobangebote \PY{n+nt}{</title>}
+    \PY{n+nt}{<language}\PY{n+nt}{>}de\PY{n+nt}{</language>}
+    \PY{n+nt}{<item}\PY{n+nt}{>}
+      \PY{n+nt}{<title}\PY{n+nt}{>}Softwareentwickler Java/JEE (m/w)\PY{n+nt}{</title>}
+      \PY{n+nt}{<description}\PY{n+nt}{>}
+        \PY{c+cp}{<![CDATA[}
+\PY{c+cp}{        <!--}
+\PY{c+cp}{        <nummer>example\PYZus{}job\PYZus{}01</nummer>}
+\PY{c+cp}{        <tags>Java,Webentwickler,Softwareentwickler</tags>}
+\PY{c+cp}{        <ort>Dresden</ort>}
+\PY{c+cp}{        <kontakt>Max Mustermann bewerbung@example.com</kontakt>}
+\PY{c+cp}{        <link>http://www.example.com/jobs/512.html</link>}
+\PY{c+cp}{        -->}
+\PY{c+cp}{        Zur Verstärkung unseres Teams suchen wir zum nächstmöglichen}
+\PY{c+cp}{        Zeitpunkt einen Softwareentwickler Java/JEE (m/w) zur Festanstellung.<br />}
+\PY{c+cp}{        Ihre Aufgaben: ...}
+\PY{c+cp}{        ]]>}
+      \PY{n+nt}{</description>}
+      \PY{n+nt}{<link}\PY{n+nt}{>}http://www.example.com/jobs/512.html\PY{n+nt}{</link>}
+      \PY{n+nt}{<pubDate}\PY{n+nt}{>}Wed, 25 Mar 2011 13:30:00 +0100\PY{n+nt}{</pubDate>}
+      \PY{n+nt}{<guid}\PY{n+nt}{>}example\PYZus{}job\PYZus{}01\PY{n+nt}{</guid>}
+    \PY{n+nt}{</item>}
+  \PY{n+nt}{</channel>}
+\PY{n+nt}{</rss>}
+\end{ruby}
+\captionsetup{type=lstlisting}
+\caption{Feedimport Beispiel-XML Datei mit einem Job}
+Der RSS-Feed in dem oben genannten Beispiel enthält eine Stellenanzeige (item). Die description beinhaltet einen HTML-Kommentar, in dem nummer, tags, ort, kontakt und link für die Stellenanzeige definiert werden. Das ganze wurde mit einem Kommentar, und nicht mit einer Erweiterung der Syntax durch eine DDT oder XSD realisiert, da die Personen, die den Feed pflegen werden, in seltenen Fällen IT-Personal sind, sondern Personalmitarbeiter. Auch hat sich eine Eingliederung mittels DDTs und XSDs bei einigen der CMS der Kunden als problematisch herausgestellt.
+
+
+
+ 
+ 
  mittels Mocks und Stubs am Beispiel Feedimport
 
 \subsection{System und Akzeptanztests}
+Cucumber Outside-In Development
 
 
 \subsection{Testen von Javascript Ereignissen}

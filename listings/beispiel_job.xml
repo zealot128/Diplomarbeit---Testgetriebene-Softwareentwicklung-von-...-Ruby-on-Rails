@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>RSS Feed für Jobangebote </title>
+    <language>de</language>
+    <item>
+      <title>Softwareentwickler Java/JEE (m/w)</title>
+      <description>
+        <![CDATA[
+        <!--
+        <nummer>example_job_01</nummer>
+        <tags>Java,Webentwickler,Softwareentwickler</tags>
+        <ort>Dresden</ort>
+        <kontakt>Max Mustermann bewerbung@example.com</kontakt>
+        <link>http://www.example.com/jobs/512.html</link>
+        -->
+        Zur Verstärkung unseres Teams suchen wir zum nächstmöglichen
+        Zeitpunkt einen Softwareentwickler Java/JEE (m/w) zur Festanstellung.<br />
+        Ihre Aufgaben: ...
+        ]]>
+      </description>
+      <link>http://www.example.com/jobs/512.html</link>
+      <pubDate>Wed, 25 Mar 2011 13:30:00 +0100</pubDate>
+      <guid>example_job_01</guid>
+    </item>
+  </channel>
+</rss>

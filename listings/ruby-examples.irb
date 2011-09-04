@@ -1,0 +1,16 @@
+>> 2.even?
+=> true
+
+>> "hallo".upcase
+=> "HALLO"
+
+>> Date.today + 2
+=> #<Date: 2011-06-30>
+
+>> a = 4 + Math.sqrt(9)
+=> 7.0
+
+>> if (0..10).include? a
+>>   puts "a liegt zwischen 0 und 10"
+>> end
+=> a liegt zwischen 0 und 10
