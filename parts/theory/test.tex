@@ -3,13 +3,6 @@
 Zum Prüfen der Korrektheit seiner Arbeit macht jeder Programmierer mindestens manuelle Tests. Bei einer Webanwendung hieße dies konkret, den Webserver zu starten und mittels eines Browsers durch die Anwendung zu navigieren, Daten anzulegen und Ausgaben der Anwendung zu kontrollieren. Mit zunehmender Größe einer Anwendung wird es immer aufwändiger, die Software zu testen, da nach jedem Hinzufügen von Funktionalität eigentlich alle Aspekte wieder getestet werden müssen, um Regressionsfehler auszuschließen.
 
 Stattdessen werden automatisierte Softwaretests instrumentalisiert, um auf Knopfdruck alle bisher programmierten Tests auszuführen und so ein Bild über den Zustand der Anwendung zu erhalten. So ist Automatisiertes Testen dem manuellem Testen in kürzester Zeit zeitlich überlegen \citep{rappin_rails_2011}.
-Ein solcher Test besteht in der Regel aus 4 Teilen:
-\begin{enumerate}
- \item Initialisierung der Test-Umgebung und der Objekte
- \item Ausführung der zu testenden Aktion, die den Systemzustand ändert
- \item Spezifikation von Erwartungen (Assertions)
- \item Aufräumen nicht mehr benötigter Objekte, File-Pointer, Sockets u.ä 
-\end{enumerate}
 
 
 
@@ -54,6 +47,16 @@ Da die Testgetriebene Entwicklung in ihrer Reinform auf dem Unittest basiert, so
 Ziel des Unittests ist es, frühzeitig Fehler im Code zu finden. Der Unit, oder Modultest beschreibt das testen der atomaren Einheiten eines Programms. Dies können die Funktionen, oder bei einer objektorientierten Sprache, die Klassen sein. Unittests werden in strenger Isolation ausgeführt. Externe Abhängigkeiten wird durch ein Test Double simuliert. Dies ist notwendig um sicherzustellen, dass gefundende Fehler von dem betreffendem Modul verursacht wurden, und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen einfacher \citep{goodliffe_code_2006}.
 
 Unittests werden fast immer automatisiert ausgeführt. Verwendung finden dabei meist immer sogenannte Test-Frameworks. Eines der meist-verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test::Unit/MiniTest in Ruby, JUnit in Java oder NUnit in C\#.
+
+Ein solcher Test besteht in der Regel aus 4 Teilen:
+\begin{enumerate}
+ \item Initialisierung der Test-Umgebung und der Objekte
+ \item Ausführung der zu testenden Aktion, die den Systemzustand ändert
+ \item Spezifikation von Erwartungen (Assertions)
+ \item Aufräumen nicht mehr benötigter Objekte, File-Pointer, Sockets u.ä 
+\end{enumerate}
+
+
 % TODO http://en.wikipedia.org/wiki/Unit_testing
 \paragraph{Komponententest}
 Ziel des Komponententest ist es, verschiedene Units in Kombination als eine vollständige Komponente zu testen \citep{goodliffe_code_2006}.

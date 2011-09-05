@@ -10,28 +10,24 @@ Diese Bedürfnisse umfassen
  \item möglichst fehlerfreie Software
  \item Kontinuierliche Integration
  \item pragmatisches Testen, 100\% Testabdeckung ist nicht erforderlich. Wichtige Systemlogiken, wie Bezahlvorgang und Suche müssen dagegen getestet werden. Offensichtliche CRUD\footnote{Create Read Update Delete - Die 4 Standardmethoden, die auf Ressourcen ausgeführt werden können}-Methoden müssen nicht getestet werden
+ 
 \end{itemize}
 
-\subsubsection{Akzeptanztests mit dem Kunden zusammen}
+\subsubsection{Einteilung der Features in Kategorien}
+Grundsätzlich teilt die pludoni GmbH Features in zwei Kategorien ein:
 
-Grundsätzlich verfolgt die pludoni GmbH in Zukunft eine \textbf{Outside-In} Entwicklung, welche wie folgt verläuft
-\begin{enumerate}
-\item Ein Feature mit dem Kunden durchsprechen
-\item Schreiben eines Cucumber Tests in Zusammenarbeit mit dem Stakeholder für einen notwendigen Test
-\item Implementation der notwendigen Testschritte
-\item Eigenverantwortlicher Entwurf und Implementierung der Software. Dabei sollen Unittests für die Implementierung von komplexen Funktionen verwendet werden, wo es nötig sein sollte. Diese Entwicklung erfolgt komplett testgetrieben.
-\item Wenn der Cucumber-Test besteht, Abnahme durch Stakeholder beim nächsten Meeting. Daraus folgt evtl. eine Anpassung der Testschritte (Schritt 3) oder ein neuer Test.
+\begin{enumerate}[A.]
+ 
+ \item Features, welche in der Ansicht für Kunden und Besucher der Website sichtbar sind $\to$ Detailansichten, Listen, Bezahlvorgänge, ...
+ \item Features, welche nur dem Admin sichtbar sind, oder welche im Backend ausgeführt werden $\to$ Reporting, Statistiken, Indizierung der Datenbank, Cron-Scripte, Caching, ...
 \end{enumerate}
-Sollte es sich um ein von außen nicht-sichtbares oder nur schwer einsehbares Feature handeln, so kann der Cucumbertest weggelassen werden. Dies umfasst z.B. Hintergrundarbeiten wie Feedimport, Cache-Erneuerung und dergleichen.
 
+Features der \textbf{Kategorie A} sollen in Zukunft Akzeptanztestgetrieben entwickelt werden. Die Entwicklung verläuft nach dem Schema, dass in Abschnitt \ref{sec:attd} vorgestellt wurde. Die Akzeptanztests sollen in Cucumber geschrieben werden. Die Websiteinteraktion soll mithilfe von Rack:Test im Falle einer Rails-Anwendung, und mit Capybara andernfalls simuliert werden.
 Ziel ist es, das bei Webanwendungen übliche wiederholte manuelle Ausprobieren mit dem Browser, auf ein Minimum zu reduzieren. Jeglicher Vorgang, den der Kunde am Browser testet, lässt sich auch als ein Akzeptanztest formulieren. Ein automatisierter Test hat zudem den Vorteil zu einem späteren Zeitpunkt leicht wiederholt zu werden. 
 
-Der Vorteil der Outside-In Entwicklung ist, dass er auf den Kunden ausgerichtet ist. Die Verwendung der Domänspezifischen Sprache Cucumber fördert zudem die Implementierung von Businessrelevanten Features gemeinsam mit dem Kunden. Das gesamte Vokabular orientiert sich an der Anforderungsanalyse und an Businessprozessen, die auch der möglicherweise nicht-technische Kunde verstehen kann.
+Der Vorteil dieser Outside-In Entwicklung ist, dass er auf den Kunden ausgerichtet ist. Die Verwendung der domänspezifischen Sprache Cucumber fördert zudem die Implementierung von Business-relevanten Features gemeinsam mit dem Kunden. Das gesamte Vokabular orientiert sich an der Anforderungsanalyse und an Businessprozessen, die auch der möglicherweise nicht-technische Kunde verstehen kann.
 
-Mit diesem Maßnahmenpaket lässt sich sicherstellen, dass das Produkt nach den Wünschen des Kunden entwickelt wird.
-
-
-BILD: 2 ZYklen ineinander
+Für die von außen nicht-sichtbaren Features der \textbf{Kategorie B} sollen aus Kostengründen normale Unittests entwickelt nach der klassischen Testgetriebenen Entwicklung genügen. Die zusätzliche Abstraktionsebene der Akzeptanztests ist nicht notwendig.
 
 \subsubsection{Weitere Bestandteile der Entwicklungsstrategie}
 
@@ -48,26 +44,27 @@ In großen Projekten ist es üblich, komplexe Testpläne zu erstellen. Anscheine
 
 \subsection{Auswahl der Entwicklungswerkzeuge}
 
-Für die 
+Für die zukünftige Entwicklung vorrangig von Webanwendungen, werden folgende Werkzeuge berücksichtigt.
 
-\paragraph{Werkzeuge für Tests} Die formale Beschreibungssprache Cucumber dient als Schnittstelle für die vom Programmierer entwickelten Testschritte. Diese könnten in einem von vielen Testframeworks geschrieben werden. Die Entscheidung viel hierbei auf Minitest (Test::Unit für Ruby 1.9), da die Syntax und Prädikate denen von JUnit und NUnit sehr ähneln, und so den Übergang zu Ruby leichter machen. Da es auch das Standard-Testframework von Ruby on Rails ist, ist so eine gute Unterstützung durch gängige Werkzeuge garantiert.
+\paragraph{Werkzeuge für Tests} Die formale Beschreibungssprache \textbf{Cucumber} dient als Schnittstelle für die vom Programmierer entwickelten Testschritte. Diese könnten in einem von vielen Testframeworks geschrieben werden. Die Entscheidung viel hierbei auf Minitest (Test::Unit in Ruby 1.9), da die Syntax und Prädikate denen von JUnit und NUnit sehr ähneln, und so den Übergang zu Ruby leichter machen. Da es auch das Standard-Testframework von Ruby on Rails ist, ist so eine gute Unterstützung durch gängige Werkzeuge garantiert.
 
-Für die Simulation eines Browsers gibt es ebenfalls verschiedene Ansätze. Als Basis fungiert dabei Capybara, welches unterschiedliche Browsersimulationen abstrahiert. Damit lassen sich z.B. Selenium ansteuern, welches wiederrum Mozilla Firefox, Internet Explorer oder Google Chrome fernsteuern kann. Dies ist allerdings sehr langsam, da ein kompletter Browser gestartet und ferngesteuert wird. Daher ist die Nutzung von Selenium nur für das Testen von möglicherweise problematischen Interaktionen und das Testen von Javascript notwendig. Für alle anderen Fälle kann man auf RackTest zurückgreifen, welches extrem schnell eine Rack-Anwendung\footnote{Rack ist ein minimales Interface zwischen Webserver und Webanwendung -- Ruby on Rails ist eine solche Rack Anwendung} simuliert.
+Für die Simulation eines Browsers gibt es ebenfalls verschiedene Ansätze. Als Basis fungiert dabei \textbf{Capybara}, welches unterschiedliche Browsersimulationen abstrahiert. Damit lassen sich z.B. \textbf{Selenium} ansteuern, welches wiederrum Mozilla Firefox, Internet Explorer oder Google Chrome fernsteuern kann. Dies ist allerdings sehr langsam, da ein kompletter Browser gestartet und ferngesteuert wird. Daher ist die Nutzung von Selenium nur für das Testen von möglicherweise problematischen Interaktionen und das Testen von Javascript notwendig. Für alle anderen Fälle kann man auf RackTest zurückgreifen, welches extrem schnell eine Rack-Anwendung\footnote{Rack ist ein minimales Interface zwischen Webserver und Webanwendung -- Ruby on Rails ist eine solche Rack Anwendung} simuliert.
 Falls in Zukunft mehr Geschwindigkeit in der Testausführung, insbesondere bei den Selenium-Tests, gewünscht wird, so kann man auf Parallelisierung auf mehreren Computern zurückgreifen.
 
-Für ein unmittelbares Feedback sind auch automatische Test-Runner erwünscht. Hierbei gibt es z.B. autotest und guard. Diese Programme beobachten den Projektbaum, und führen bei Änderung der Dateien automatisch die relevanten Tests aus. Um die Geschwindigkeit, und damit den Feedbackzyklus zu verbessern, können diese Programme so gesteuert werden, dass sie nur den Testfall ausführen, an dem gerade gearbeitet wird. 
+Für ein unmittelbares Feedback sind auch automatische Test-Runner erwünscht. Hierbei gibt es z.B. \textbf{autotest} und \textbf{guard}. Diese Programme beobachten den Projektbaum, und führen bei Änderung der Dateien automatisch die relevanten Tests aus. Um die Geschwindigkeit, und damit den Feedbackzyklus zu verbessern, können diese Programme so gesteuert werden, dass sie nur den Testfall ausführen, an dem gerade gearbeitet wird. 
 
-Durch spork lässt sich eine RoR-Anwendung starten und im Hintergrund halten, so dass eine erneute Testausführung deutlich schneller von statten geht, als wenn die komplette Anwendung neu geladen werden müsste.
+Durch \textbf{spork} lässt sich eine RoR-Anwendung starten und im Hintergrund halten, so dass eine erneute Testausführung deutlich schneller von statten geht, als wenn die komplette Anwendung neu geladen werden müsste.
 
     
 \paragraph{Werkzeuge für Code-Metriken}  Für die Generierung von Code-Metriken dient das Ruby-Gem "`metric-fu"', welches seinerseits über verschiedene Code-Metriken Zusammenfassungen bildet und diese auch zeitlich darstellen kann. Darunter fallen z.B. die Zyklomatische Komplexität, den Grad der Duplikationen, verschiedene Code-Smells, Nutzung der Versionsverwaltung und Testabdeckung.
 
 Die Testabdeckung wird durch simple-cov berechnet, welches eine C0 Code Coverage bestimmt.
 
+\paragraph{Texteditoren} Innerhalb der Entwickler der pludoni GmbH besteht ein Konsens für die Verwendung von vim, da hier bereits eine große Basis an Plugins gesammelt wurde, die die Entwicklung von Webanwendungen und insbesondere Ruby on Rails erleichtern. Ein weiterer Vorteil ist es, dass vim ohne ein graphisches Interface auskommt, und so direkt von der Shell auf dem Webserver ausgeführt werden kann.
+Nichtsdestotrotz sei es zukünftigen Entwicklern freigestellt, eine IDE, wie Eclipse mit dem Plugin RadRails oder Netbeans zu verwenden.
 
---
-
-Zusammenfassung evtl ins Fazit oder Auswertung
+\subsection{Diskussion der Maßnahmen}
+TODO Zusammenfassung evtl ins Fazit oder Auswertung
 
 Viele dieser Maßnahmen dienen dazu, den Feedbackzyklus so kurz wie möglich zu halten. Für eine Testgetriebene Entwicklung ist es unerlässlich, dass die Testausführung schnell abläuft. Andernfalls, so die Erfahrung, führt dies zu einer verminderten Ausführungsrate, und ist damit hinderlich für die Entwicklung von sauberen Code.
 

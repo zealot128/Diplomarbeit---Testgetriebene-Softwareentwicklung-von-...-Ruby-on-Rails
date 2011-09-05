@@ -11,9 +11,13 @@ Eine vollständige Einführung in Ruby zu geben würde den Rahmen dieser Diploma
 \subsection{Einführung in Ruby}
 \marginline{\includegraphics[width=0.8\marginparwidth]{material/ruby.png}
 Ruby ist eine Multiparadigma-Sprache}
-Ruby ist eine Multiparadigma-Sprache, die Objektorientierung, prozedurale, funktionale und nebenläufige Programmierung unterstützt. Im Gegensatz zu Java ist Ruby objektorientiert. So sind auch alle Datentypen wiederrum Objekte, was auch die primitiven Datentypen wie String und Integer umfasst. 
+Ruby ist eine Multiparadigma-Sprache, die Objektorientierung, prozedurale und funktionale Programmierung unterstützt.
+\begin{description}
+ \item[Prozedural] Funktionen und Variablen können außerhalb von Klassen definiert werden, in dem sogenannten "`main"'-Objekt
+ \item[Objektorientierung] Alle Datentypen sind Objekte. Alle Variablen beinhalten Referenzen auf ein Objekt. Dies betrifft auch die primitiven Datentypen wie Integer und String
+ \item[Funktional] Anonyme Funktionen und Closures sind Sprachbestandteil. Alle Statements haben einen Rückgabewert. Innerhalb einer Funktion ist dies immer das letzte Statement, falls kein expliziter Rücksprungpunkt gesetzt wurde
+\end{description}
 
-Ruby ist dynamisch stark typisiert, d.h. dass die Zuweisung des Typs einer Variable zur Laufzeit des Programms geschieht. Der Typ einer Variable ergibt sich damit aus ihrem beinhalteten Objekt. Durch die starke Typisierung ist es aber nicht möglich, invalide Operationen auf inkompatible getypte Daten auszuführen, beispielsweise eine Addition von Integer mit String.
 
 Ruby ist eine interpretierte Sprache, auch Skriptsprache genannt. Dies heisst, dass der Programmcode zur Laufzeit analysiert und ausgeführt wird. 
 % TODO Quelle!!
@@ -66,15 +70,33 @@ Weiterhin erlaubt Ruby die Arbeit mit Lambdas, also anonymen Funktionen. Eine be
 >> (1..5).map{|element| element * 2}
 => [2, 4, 6, 8, 10]
 \end{lstlisting}
-Neben einem soliden objektorientierten System, bietet Ruby viele funktionale Aspekte, um die Arbeit mit Arrays und Strings sehr einfach zu gestalten. 
-
-\paragraph{Objektsystem}
-%Wichtig sei auch noch die Fähigkeit der Metaprogrammierung anzumerken.
-TODO
-%TODO
 
 
-Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern.
+\paragraph{Typ- und Objektsystem}
+Wie schon erwähnt, sind bei Ruby alle Datentypen ein Objekt. Dies schließt insbesondere Klassen und primitive Datentypen mit ein, wie wir wiefolgt sehen können
+\begin{lstlisting}
+>> 2.class 
+=> Fixnum
+>> Fixnum.class 
+=> Class
+>> Class.class 
+=> Class
+
+>> Fixnum.superclass
+=> Integer
+>> Fixnum.ancestors
+=> [Fixnum, Integer, Precision, Numeric, Comparable, Object, Kernel]
+\end{lstlisting}
+Das Literal "`2"' ist somit ein Objekt vom Typ Fixnum. Die Klasse Fixnum ist ihrerseits vom Typ "`class"'. Da Ruby sowohl (Einfach-)Ableitungen als auch sogenannte Includes oder Mixins unterstützt, kann eine Klasse auch eine Menge von Oberklassen haben. Die gezeigte Klasse Fixnum verfügt somit standardmäßig sogar über 7 Oberklassen.
+
+Ruby ist dynamisch stark typisiert, d.h. dass die Zuweisung des Typs einer Variable zur Laufzeit des Programms geschieht. Der Typ einer Variable ergibt sich damit aus ihrem beinhalteten Objekt. Durch die starke Typisierung ist es aber nicht möglich, invalide Operationen auf inkompatible getypte Daten auszuführen, beispielsweise eine Addition von Integer mit String. Rubys Typsystem ist "`Duck-typed"', d.h. dass die Semantiken eines Objekts nicht durch seine Klasse und Ableitungshierarchie, sondern seinen Methoden und Attributen bestimmt wird.\borderquote{"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."}{James Whitcomb Riley}
+
+Ruby verfügt über eine lexikalische und dynamische Bindung\footnote{
+\textbf{Static Scoping}: Variablen werden zur Compilezeit gebunden ohne den aufrufenden Code zu berücksichtigen\\
+\textbf{Dynamic Scoping}: Variablen-Bindung kann nur im Moment der Ausführung des Codes festgestellt werden}, letztere wird allerdings seltener verwendet. Im der Basissyntax verwendet Ruby statische Bindung. Es gibt eine im Ruby-Core enthaltene Bibliothek "`Dynamic"' zum dynamischen binden.
+
+
+\paragraph{Reflektion und Introspection} Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern. Ruby "`merkt"' sich allerdings die überschriebenen Methoden und ein Aufruf der überschriebenen Methoden ist stets mittels "`super"' möglich.
 
 \begin{lstlisting}[language=Ruby,label=Ruby Beispiel offene Klassen,caption=Ruby Beispiel offene Klassen]
 >> class String
@@ -90,7 +112,7 @@ Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern 
 
 Diese Beispiele sollten als kurzer Einstieg in Ruby dienen, und einen Querschnitt durch die Besonderheiten der Sprache aufzuzeigen.
 
-Für eine weiter Vertiefung sei das Buch "`Programming Ruby 1.9"' empfohlen, das im Detail auf die neuste Version der Programmiersprache eingeht. %TODO Buch Quelle
+Für eine weiter Vertiefung sei das Buch "`Programming Ruby 1.9"' empfohlen, das im Detail auf die neuste Version der Programmiersprache eingeht \citep{hunt_programming_2009}.
 
 \subsection{Diskussion}
 
