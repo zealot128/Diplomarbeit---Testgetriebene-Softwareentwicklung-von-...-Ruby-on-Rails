@@ -1,7 +1,7 @@
 \documentclass[10pt, a4paper]{scrartcl}
-%\usepackage{a4wide}					%Platzintensiver
+%\usepackage{a4wide}					% Weniger Zeilenrand
 \usepackage[german,ngerman]{babel}	%Deutsche Silbentrennung
-\usepackage[utf8]{inputenc}		%Damit kann man auch Umlaute direkt eintippen
+\usepackage[utf8]{inputenc}		%Damit kann man auch Umlaute direkt eintippen  \o/
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -13,23 +13,22 @@
 \usepackage{setspace} 	%for 1,5times row space
 \usepackage{color}
 \definecolor{darkblue}{rgb}{0,0,.5}
-\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,bookmarksnumbered = true,linkcolor = darkblue,plainpages = false,hypertexnames = false,citecolor = black, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue] {hyperref}	
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,bookmarksnumbered = true,linkcolor = black,plainpages = false,hypertexnames = false,citecolor = black, linkcolor=black, menucolor=black, pagecolor=black, urlcolor=darkblue] {hyperref}	
 			%clickable TOC
 \usepackage{multirow}	%linebreak in Table
-\usepackage{enumerate}
-\usepackage{float}
+\usepackage{enumerate}	% \begin{enumerate}[a.]     Custom Nummerierung
+\usepackage{float}	% Images mit Float
 \usepackage{colortbl}	%colorTables
-\usepackage{framed}   %begin{framed}
-\usepackage{longtable} %begin{longtable}
+\usepackage{framed}   		%begin{framed}
+\usepackage{longtable} 		%begin{longtable}
 \usepackage{makeidx}
-\usepackage[square]{natbib}
-\usepackage{epigraph}
+\usepackage[square]{natbib}  % natbib, aber Zitiert mit [..] anstatt (..)
+\usepackage{epigraph}		% Epigraph = stylische Zitatte
 
-%	Eigenes PHP Syntax-HL
-\usepackage{listings}
-\usepackage{caption}
+\usepackage{listings}	% Quellcode Listings und List of Listings
+\usepackage{caption}	% Modifizierung und setzen von custom captions
 \usepackage[dvipsnames]{xcolor}
-\usepackage[nottoc]{tocbibind}
+\usepackage[nottoc]{tocbibind}	% TOC Plugin -> ??
 \usepackage{relsize}
 
 
@@ -69,10 +68,11 @@
 
 \renewcommand{\footrulewidth}{0.5pt}
 \definecolor{Gray}{rgb}{0.85,0.85,0.90}
-
+\parskip 5pt       % sets spacing between paragraphs
+\parindent 0pt	   
 
 \include{custom_commands}
-\makeindex 	%start Aufzeichnun eines Stichwortverzeichnisses
+\makeindex 	%start Aufzeichnung eines Stichwortverzeichnisses
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,7 +93,13 @@
  \include{parts/99-appendix}
 \end{document}
  
+ 
+ 
 pygmentize  -f latex -l xml beispiel_job.xml 
 %\begin{lstlisting}[language=Ruby,label=Ruby Beispiele,caption=Ruby Beispiele]
  %\end{lstlisting}
 
+btw mit \nameref{sec:marker}  kannst du statt der nummer also "Abbildung 1" den Namen nehmen.
+Also falls du kapitel mit \label{sec:rails} hast kannst du:
+
+Siehe im abschnitt \ref{sec:rails} \nameref{sec:rails}

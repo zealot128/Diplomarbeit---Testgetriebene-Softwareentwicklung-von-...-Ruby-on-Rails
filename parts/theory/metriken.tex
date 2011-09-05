@@ -53,8 +53,23 @@ Diese Smells können mit dem Tool reek\footnote{\url{https://github.com/kevinrut
 Der Programmcode wird i.d.R. durch die geschriebenen Tests abgesichert. Die Tests allerdings haben ihrerseits keine Tests. Um also die Nützlichkeit der eigenen Tests zu bestimmen, kann man sich aber zumindest auf Code-Metriken stützen.
 Tests sind in erster Linie natürlich auch Code und können mit den oben genannten Metriken beurteilt werden. Zudem gibt es aber einige weitere exklusive Methoden, Qualität von Tests zu messen. 
 
-\subsubsection{Lines of Test / Lines of Code}
-Neben den Lines of Code kann die gleiche Metrik auf die Test-Suite angewendet werden. Daraus ergibt sich ein Quotient der grob den Grad der Testabdeckung beschreibt. Sollte dieser deutlich kleiner als 1 sein, so ist dies ein Symptom für zu wenige Tests. Diese Zahl ist von dem Testframework und dem Programmframework stark abhängig. Gute Projekte sollten mehr Test Code, als Programmcode besitzen, um so die Zahl der Defekte gegen 0 zu reduzieren \citep{hunt_pragmatic_1999}[S. 238]. 
+\subsubsection{Verhältnis von Lines of Test zu Lines of Code}
+Neben den Lines of Code kann auf dieselbe Weise die Anzahl der Codezeilen der Testklassen ermittelt werden. Daraus ermittelt sich das Verhältnis:
+
+\shadebox{
+  $$    R = \frac{\text{Lines of Code}}{\text{Lines of Test}}$$
+  \begin{center}
+\begin{tabular}{ll}
+
+   $R \ll 1$ & \small Falls es deutlich weniger Testzeile (LoT), als Codezeilen (LoC) geben sollte\\
+	     & \small so ist dies ein Indiz für zu wenige Tests\\
+   $R > 1$   &\small Eine große Anzahl an Tests ist zwar wünschenswert, aber dies macht\\
+	      & \small keine Aussage über den Vollständigkeit oder die Qualität der Tests   
+  \end{tabular}  \end{center}
+
+}
+
+Sollte dieser deutlich kleiner als 1 sein, so ist dies ein Symptom für zu wenige Tests. Diese Zahl ist von dem Testframework und dem Programmframework stark abhängig. Gute Projekte sollten mehr Test-Code, als Programmcode besitzen, um so die Zahl der Defekte gegen 0 zu reduzieren \citep{hunt_pragmatic_1999}[S. 238]. 
         
 \subsubsection{Testausführungsabdeckung}
 Die Testabdeckung, im Englischen "`Code Coverage"' bezeichnet, misst den Grad inwieweit ein Programm getestet wurde. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"', und 0\% "`Das Programm wurde die die Tests überhaupt nicht berührt"' Dabei wird die vorhandene Test-Suite ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Es wird festgehalten, welche Anweisungen ausgeführt wurden. Allerdings gibt es 3 Abstufungen, diese Abdeckung zu beobachten (Mit steigender Komplexität des Messverfahrens):

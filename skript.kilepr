@@ -3,8 +3,8 @@ def_graphic_ext=
 img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
-kileversion=2.1.0
-lastDocument=parts/theory/tdd.tex
+kileversion=2.0.85
+lastDocument=parts/praxis/anwendung_unittest.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -104,6 +104,14 @@ Indentation Mode=1
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:parts/outro/fazit.tex]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=LaTeX
+Indentation Mode=
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:parts/praxis/anwendung.tex]
 Bookmarks=
 Encoding=UTF-8
@@ -196,27 +204,37 @@ order=-1
 
 [item:bibo.bib]
 archive=true
-column=38
+column=27
 encoding=UTF-8
 highlight=BibTeX
-line=341
+line=376
 mode=BibTeX
 open=true
-order=8
+order=6
 
 [item:custom_commands.tex]
 archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=168
+line=3
 mode=LaTeX
 open=true
-order=5
+order=4
 
 [item:diagrams/red-green-refactor.png]
 archive=true
 column=0
+encoding=
+highlight=
+line=0
+mode=
+open=false
+order=-1
+
+[item:diagrams/tdd-flowchart.pdf]
+archive=true
+column=2097277
 encoding=
 highlight=
 line=0
@@ -236,10 +254,10 @@ order=-1
 
 [item:main.tex]
 archive=true
-column=0
+column=20
 encoding=UTF-8
 highlight=LaTeX
-line=82
+line=31
 mode=LaTeX
 open=true
 order=0
@@ -291,8 +309,8 @@ encoding=UTF-8
 highlight=LaTeX
 line=22
 mode=LaTeX
-open=false
-order=6
+open=true
+order=11
 
 [item:parts/include-syntax-php.tex]
 archive=true
@@ -326,13 +344,13 @@ order=0
 
 [item:parts/intro/preambel.tex]
 archive=true
-column=277
+column=80
 encoding=UTF-8
 highlight=LaTeX
-line=31
+line=33
 mode=LaTeX
 open=true
-order=6
+order=9
 
 [item:parts/intro/projektbeschreibung.tex]
 archive=true
@@ -341,8 +359,18 @@ encoding=UTF-8
 highlight=LaTeX
 line=34
 mode=LaTeX
-open=false
-order=6
+open=true
+order=10
+
+[item:parts/outro/fazit.tex]
+archive=true
+column=59
+encoding=UTF-8
+highlight=LaTeX
+line=3
+mode=LaTeX
+open=true
+order=12
 
 [item:parts/praxis/anwendung.tex]
 archive=true
@@ -351,7 +379,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=8
 mode=LaTeX
-open=true
+open=false
 order=4
 
 [item:parts/praxis/anwendung_functional.tex]
@@ -366,80 +394,80 @@ order=6
 
 [item:parts/praxis/anwendung_unittest.tex]
 archive=true
-column=33
-encoding=UTF-8
-highlight=LaTeX
-line=167
-mode=LaTeX
-open=false
-order=7
-
-[item:parts/praxis/auswahl.tex]
-archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=11
 mode=LaTeX
 open=true
 order=7
 
-[item:parts/praxis/auswertung.tex]
+[item:parts/praxis/auswahl.tex]
 archive=true
-column=19
+column=20
 encoding=UTF-8
 highlight=LaTeX
-line=23
+line=55
+mode=LaTeX
+open=true
+order=5
+
+[item:parts/praxis/auswertung.tex]
+archive=true
+column=54
+encoding=UTF-8
+highlight=LaTeX
+line=40
 mode=LaTeX
 open=true
 order=3
 
 [item:parts/theory/metriken.tex]
 archive=true
-column=37
+column=199
 encoding=UTF-8
 highlight=LaTeX
-line=48
+line=71
 mode=LaTeX
-open=false
-order=6
+open=true
+order=13
 
 [item:parts/theory/rails.tex]
 archive=true
-column=47
+column=167
 encoding=UTF-8
 highlight=LaTeX
-line=154
+line=148
 mode=LaTeX
-open=false
-order=10
+open=true
+order=14
 
 [item:parts/theory/ruby.tex]
 archive=true
-column=0
+column=174
 encoding=UTF-8
 highlight=LaTeX
-line=43
+line=114
 mode=LaTeX
-open=false
+open=true
 order=8
 
 [item:parts/theory/tdd.tex]
 archive=true
-column=72
+column=26
 encoding=UTF-8
 highlight=LaTeX
-line=95
+line=46
 mode=LaTeX
 open=true
 order=2
 
 [item:parts/theory/test.tex]
 archive=true
-column=6
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=56
+line=14
 mode=LaTeX
 open=true
 order=1
@@ -455,16 +483,16 @@ open=false
 order=-1
 
 [view-settings,view=0,item:bibo.bib]
-CursorColumn=38
-CursorLine=341
+CursorColumn=27
+CursorLine=376
 
 [view-settings,view=0,item:custom_commands.tex]
 CursorColumn=0
-CursorLine=168
+CursorLine=3
 
 [view-settings,view=0,item:main.tex]
-CursorColumn=0
-CursorLine=82
+CursorColumn=20
+CursorLine=31
 
 [view-settings,view=0,item:parts/00-frontpage.tex]
 CursorColumn=6
@@ -491,12 +519,16 @@ CursorColumn=0
 CursorLine=0
 
 [view-settings,view=0,item:parts/intro/preambel.tex]
-CursorColumn=277
-CursorLine=31
+CursorColumn=80
+CursorLine=33
 
 [view-settings,view=0,item:parts/intro/projektbeschreibung.tex]
 CursorColumn=39
 CursorLine=34
+
+[view-settings,view=0,item:parts/outro/fazit.tex]
+CursorColumn=59
+CursorLine=3
 
 [view-settings,view=0,item:parts/praxis/anwendung.tex]
 CursorColumn=0
@@ -507,33 +539,33 @@ CursorColumn=15
 CursorLine=151
 
 [view-settings,view=0,item:parts/praxis/anwendung_unittest.tex]
-CursorColumn=33
-CursorLine=167
+CursorColumn=0
+CursorLine=11
 
 [view-settings,view=0,item:parts/praxis/auswahl.tex]
-CursorColumn=0
-CursorLine=0
+CursorColumn=20
+CursorLine=55
 
 [view-settings,view=0,item:parts/praxis/auswertung.tex]
-CursorColumn=19
-CursorLine=23
+CursorColumn=54
+CursorLine=40
 
 [view-settings,view=0,item:parts/theory/metriken.tex]
-CursorColumn=37
-CursorLine=48
+CursorColumn=199
+CursorLine=71
 
 [view-settings,view=0,item:parts/theory/rails.tex]
-CursorColumn=47
-CursorLine=154
+CursorColumn=167
+CursorLine=148
 
 [view-settings,view=0,item:parts/theory/ruby.tex]
-CursorColumn=0
-CursorLine=43
+CursorColumn=174
+CursorLine=114
 
 [view-settings,view=0,item:parts/theory/tdd.tex]
-CursorColumn=72
-CursorLine=95
+CursorColumn=26
+CursorLine=46
 
 [view-settings,view=0,item:parts/theory/test.tex]
-CursorColumn=6
-CursorLine=56
+CursorColumn=0
+CursorLine=14
