@@ -2,7 +2,10 @@
 Testgetriebene Entwicklung, im Englischen Test-Driven-Development (TDD) wurde erstmalig von Kent Beck 2003 im Detail erläutert. Zuvor war die Technik "`Test-First"' aber schon seit 1999 im Kontext von Extreme Programming (XP) bekannt.
 %TODO Quelle: "Extreme Programming". Computerworld. Retrieved January 11, 2011.
 %TODO Quelle: Beck, K. Test-Driven Development by Example, Addison Wesley, 2003
-Damit wurde aus der Entwicklungs-Methode "`Test-First"' ein Software-Entwicklungsprozess. 
+
+Test-Driven-Development wird als
+$$ \text{TDD} := \text{Test-First} + \text{Refaktorisieren}$$
+beschrieben \citep{scott_ambler_introduction_2002}. So ist es Ziel, dass sich Test schreiben/Implementation und Refaktorisierungen, d.h. das konstante Verbessern des Systemdesigns und des Quellcodes, abwechseln. Damit wurde aus der Entwicklungs-Methode "`Test-First"' ein Software-Entwicklungsprozess. 
 
 Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby on Rails typische Testwerkzeuge aufzeigen. 
 \subsection{Motivation}
@@ -21,10 +24,9 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
    \item Durch eine niedrige Fehlerdichte kann die Kontinuierliche Integration (Continuos Integration) möglich gemacht werden, und so der Kunde in den Entwicklungsprozess einbezogen werden
   \end{enumerate}
  
-  TDD hat auch eine psychologische Motivation für den individuellen Programmierer.
   TDD fördert die Entwicklung in kleinen Schritten, und ermöglicht durch bestande Tests kleine "`Belohnungen"' für den Programmierer. Dadurch ist es leichter einen gewissen Arbeitsrhythmus zu erhalten, was stellenweise dem "`Flow"'\footnote{Schaffen-, Tätigkeitssrausch}  ähnelt oder diesen strukturiert ergänzen kann \citep{roger_brown_test_2008}.
   
-\subsection{Ablauf}
+\subsection{Ablauf TODO} % Bugfixes mit reinnehmen
   Ziel ist es, vor der Implementation eines Codes, einen Unittest zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test besteht. Zum Schluss wird refaktorisiert, bei TDD auch als Designphase genutzt.
   
   \begin{figure}[htbp]
@@ -49,7 +51,7 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
   Jeder Unittest soll prinzipiell nur eine Eigenschaft testen, die Entwicklung erfolgt also in kleinen Schritten. Dies hat direkte Auswirkungen auf die zu entwickelnden Objekte und Methoden, die ebenfalls übersichtlich werden sollen, und somit dem Funktionsbegriff, eine Methode für eine Aufgabe und erweitert eine Klasse für eine Aufgabe, gerecht werden.
   
   Das ganze lässt sich auch in den übergeordneten Prozess zum Entwickeln eines Features einordnen.
-  %RSPEC Buch macht das vor, Noch mal schauen, evtl alles Käse was ich hier geschrieben habe
+  %TODO RSPEC Buch macht das vor, Noch mal schauen, evtl alles Käse was ich hier geschrieben habe
   \begin{enumerate}
    \item Schreibe einen Integrations/Akzeptanztest um das aktuelle Feature zu implementieren
    \item Nach einer möglichen Überlegungs und Analysezeit, kann nun mit dem Implementierung der Teilschritt nach TDD Ablauf von oben verfahren werden
@@ -61,9 +63,43 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
   Im Prinzip soll jeder Änderung der Programmlogik ein fehlgeschlagener Test vorausgehen. Auch bei der Behebung von Defekten, also dem Bugfixing, soll zuerst ein Test geschrieben werden, der genau das Verhalten des Bugs widerspiegelt, und erst dann gefixt werden.
   
     
-  \subsection{Mocks und Stubs}
+ 
+
+\subsection{Prinzip des Emergent Design -- Evolutionäres Sofwaredesign}
+Ein Konzept von TDD ist das, des sich Herausbildenden Designs. Gegenüber traditionellen Entwicklungsansätzen erfolgt die Entwicklungsphase (Design) nicht als eigenständige Phase, sondern ist streng in den Entwicklungsprozess integriert. Immer wenn ein Zyklus beim Refaktorisieren angelangt ist, findet effektiv Design statt. Eine Entwicklung nach TDD sucht den minimalsten Code, der die Anforderungen (Tests) erfüllt. Analog dazu, will ein Emergentes Design die kleinste Menge an benötigten Design suchen, im Gegensatz zu einem Software-Design, das im Vorfeld bedacht wurde. Durch die vielen Iterationen und die darausfolgenden zahlreichen Refaktorisierungen tritt nach und nach das Design hervor, welches optimal für das System ist. 
+
+Ein Emergent Design kann auch ohne TDD verwendet werden. Allerdings ist dies ohne das Vorhandensein von einer guten Test-Suite ein risikoreiches Unterfangen.
+Mit seiner iterativen Herangehensweise passt TDD dagegen perfekt in den Entwicklungszyklus der Agilen Software Entwicklung.
+
+discovering and harvesting patterns in existing Code
+
+GoF Patterns
+
+idiomatische Patterns: Patterns, die nur für genau eine Applikation oder innerhalb eines Unternehmens optimal sind. z.B. Security 
+technical patterns
+
+domain patterns -> common business patterns
+
+emergent -> discover this
+
+traditional design -> too early, Business Process can change way faster, speculation without facts
+Frameworks sollten nicht designt werden, sondern sich aus Code ergeben
+
+http://www.thoughtworks.com/emergent-design
+
+im Gegensatz zu einer Ingenieurswissenschaftlichen Tätigkeit, das ... -> Iterativ
+% ward cummingham
+http://www.developerdotstar.com/mag/articles/reeves_design.html
+http://confreaks.net/videos/282-lsrc2010-real-software-engineering
+http://www.ibm.com/developerworks/java/library/j-eaed5/index.html
+
+because you think about every little component that goes into the system
+cheap to build, expensive to design
+BDUF (Big Design Upfront)
+
+ \subsection{Mocks und Stubs}
   \label{sec:mocks}
-  Beim Testen im Allgemeinen und bei TDD im Besonderen wird das Testen durch externe Abhängigkeiten erschwert. Dies können z.B. Klassen sein, die noch gar nicht implementiert wurden, externe Ressourcen (Netzwerkzugriffe, Versenden von Mails) oder externe Prozessen (Bezahlen in einem Onlineshop) sein. In diesen Situationen ist es angebracht, auf sogenannte Mocks und Stubs zurückzugreifen.
+  Beim Testen im Allgemeinen und bei TDD im Besonderen wird das Testen durch externe Abhängigkeiten erschwert. Dies können z.B. Klassen sein, die noch gar nicht implementiert wurden, externe Ressourcen (Netzwerkzugriffe, Versenden von Mails) oder externe Prozesse (Bezahlen in einem Onlineshop) sein. In diesen Situationen ist es angebracht, auf sogenannte Test-Doubles, meist Mocks und Stubs zurückzugreifen.
   
   Ein Stub ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfalls ersetzt. Im Beispiel ein Bezahlprozess einer Bestellung.
   \begin{lstlisting}
@@ -75,10 +111,8 @@ def test_report_failed_payment
   
   assert bestellung.errors.present?
 end
-
-
   \end{lstlisting}
-  Mit dem oben angegeben (Pseudo) Rubycode würde man z.B. mittels des Mock-Frameworks mocha ein Mockobjekt erzeugen, welches den (Fantasie-) Bezahlprozess nachahmt, und die Methode "`pay"' ersetzt, so dass sie immer "`false"' zurückgibt.
+  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock-Frameworks "`mocha"` ein Mockobjekt erzeugen, welches den Bezahlprozess nachahmt, und die Methode "`pay"' ersetzt, so dass sie immer "`false"' zurückgibt.
   So kann z.B. das Objekt Bestellung gefahrlos Bezahlungen auslösen. Der genaue Ablauf innerhalb des Bezahlprozesses ist die Bestellung unwichtig, lediglich der Rückgabewert, ob die Bezahlung erfolgreich war oder nicht.
   
   Als Ergänzung dazu gibt es Mocks. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst als Testfall. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich aufgerufen wurde.
@@ -90,8 +124,6 @@ def test_always_fail
 end
   \end{lstlisting}
   Der gezeigte Programmcode wird jedesmal fehlschlagen, da von einem Mock erwartet wird, dass er während des Tests genau einmal aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit Interna des Programmflusses zu testen. 
-
-
   
   \subsection{Vorteile von TDD}
    

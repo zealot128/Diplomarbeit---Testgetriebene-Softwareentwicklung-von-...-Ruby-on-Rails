@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=parts/intro/preambel.tex
+lastDocument=parts/theory/tdd.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -196,13 +196,13 @@ order=-1
 
 [item:bibo.bib]
 archive=true
-column=47
+column=38
 encoding=UTF-8
 highlight=BibTeX
-line=325
+line=341
 mode=BibTeX
-open=false
-order=1
+open=true
+order=8
 
 [item:custom_commands.tex]
 archive=true
@@ -326,10 +326,10 @@ order=0
 
 [item:parts/intro/preambel.tex]
 archive=true
-column=159
+column=277
 encoding=UTF-8
 highlight=LaTeX
-line=27
+line=31
 mode=LaTeX
 open=true
 order=6
@@ -379,17 +379,17 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=67
+line=0
 mode=LaTeX
-open=false
-order=5
+open=true
+order=7
 
 [item:parts/praxis/auswertung.tex]
 archive=true
 column=19
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=23
 mode=LaTeX
 open=true
 order=3
@@ -426,20 +426,20 @@ order=8
 
 [item:parts/theory/tdd.tex]
 archive=true
-column=355
+column=72
 encoding=UTF-8
 highlight=LaTeX
-line=48
+line=95
 mode=LaTeX
 open=true
 order=2
 
 [item:parts/theory/test.tex]
 archive=true
-column=287
+column=6
 encoding=UTF-8
 highlight=LaTeX
-line=52
+line=56
 mode=LaTeX
 open=true
 order=1
@@ -455,8 +455,8 @@ open=false
 order=-1
 
 [view-settings,view=0,item:bibo.bib]
-CursorColumn=47
-CursorLine=325
+CursorColumn=38
+CursorLine=341
 
 [view-settings,view=0,item:custom_commands.tex]
 CursorColumn=0
@@ -491,8 +491,8 @@ CursorColumn=0
 CursorLine=0
 
 [view-settings,view=0,item:parts/intro/preambel.tex]
-CursorColumn=159
-CursorLine=27
+CursorColumn=277
+CursorLine=31
 
 [view-settings,view=0,item:parts/intro/projektbeschreibung.tex]
 CursorColumn=39
@@ -512,11 +512,11 @@ CursorLine=167
 
 [view-settings,view=0,item:parts/praxis/auswahl.tex]
 CursorColumn=0
-CursorLine=67
+CursorLine=0
 
 [view-settings,view=0,item:parts/praxis/auswertung.tex]
 CursorColumn=19
-CursorLine=0
+CursorLine=23
 
 [view-settings,view=0,item:parts/theory/metriken.tex]
 CursorColumn=37
@@ -531,9 +531,9 @@ CursorColumn=0
 CursorLine=43
 
 [view-settings,view=0,item:parts/theory/tdd.tex]
-CursorColumn=355
-CursorLine=48
+CursorColumn=72
+CursorLine=95
 
 [view-settings,view=0,item:parts/theory/test.tex]
-CursorColumn=287
-CursorLine=52
+CursorColumn=6
+CursorLine=56
