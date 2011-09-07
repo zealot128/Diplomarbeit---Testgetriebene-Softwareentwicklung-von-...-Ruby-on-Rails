@@ -1,6 +1,7 @@
 *~
 main.pdf
 *.aux
+*.xdy
 *.glo
 *.idx
 *.log
