@@ -4,7 +4,7 @@
 \subsection{Motivation}
 
 Kurz nach der Firmengründung der pludoni GmbH absolvierte der Autor dort sein Pflichtpraktikum, und war bis zum heutigen Tag als Werkstudent tätig.
-Während dieser Zeit nahmen Programmierer verschiedener Erfahrungsstufen und insbesondere auch Praktikanten an der Neu- und Weiterentwicklung der Webserver-Software teil. Dies hat zur Folge, dass die Komplexität der Software inzwischen ein Level erreicht hat, dass das Maß an Regressionsfehlern\footnote{fehlerauslösender Quelltextänderungen} stark anstieg. 
+Während dieser Zeit nahmen Programmierer verschiedener Erfahrungsstufen und auch Praktikanten an der Neu- und Weiterentwicklung der Webserver-Software teil. Dies hat zur Folge, dass die Komplexität der Software inzwischen ein Level erreicht hat, dass das Maß an Regressionsfehlern\footnote{fehlerauslösender Quelltextänderungen} stark anstieg. 
 
 Da zum großen Teil keine automatisierten Softwaretests geschrieben wurden, lassen sich diese auch nur schwer aufspüren. Ein Versuch, nachträglich Softwaretests hinzuzufügen wurde evaluiert und als zu aufwändig befunden, da der Code in seinem jetzigen Zustand nur äußerst schwer zu testen ist. Gründe dafür sind suboptimale Codestrukturen (Spaghetticode) die schwer bis unmöglich zu testen sind. Hier müsste zuerst refaktorisiert werden, aber da keine Tests vorhanden sind, ist dies aufgrund der Regressionsfehler riskant. Ein Teufelskreis!
 
@@ -14,39 +14,41 @@ Neben der Umstellung auf ein modernes Web-Framework, sollen nun Tests im Einklan
 
 \subsubsection{Die pludoni GmbH}
 
-Die pludoni GmbH ist ein junges dynamisches Dresdner Unternehmen, dass sich zum Ziel gesetzt hat, lokale Job-Communitys aufzubauen und zu betreuen, sowie Tools für die Vereinfachung der Personalarbeit mittelständischer Unternehmen zu entwickeln. Einige Beispiele für diese Communitys sind zur Zeit ITsax.de, ITmitte.de und MINTsax.de\footnote{http://www.itsax.de/, http://www.itmitte.de, http://www.mintsax.de/}.
+Die pludoni GmbH ist ein junges dynamisches Dresdner Unternehmen, dass sich zum Ziel gesetzt hat, lokale Communitys zur gegenseitigen Fachkräfteempfehlung aufzubauen und zu betreuen, sowie Tools für die Vereinfachung der Personalarbeit mittelständischer Unternehmen zu entwickeln. Einige Beispiele für diese Communitys sind zur Zeit ITsax.de, ITmitte.de und MINTsax.de\footnote{http://www.itsax.de/, http://www.itmitte.de, http://www.mintsax.de/}.
 \marginline{\includegraphics[width=0.8\marginparwidth]{material/pludoni.png}\\pludoni GmbH}
-\paragraph{Funktionsweise der Jobcommunitys}
-Die Jobcommunitys bestehen jeweils aus einer Anzahl mittelständischer Unternehmen einer Branche. Für ITsax.de ist das die IT-Branche. Neben diesem Branchenfokus sammeln sich nur Unternehmen einer spezifischen Region. Bei ITsax.de ist dies Mittel- und Ostsachsen, bei ITmitte.de z.B. Mitteldeutschland, d.h. Thüringen, Sachsen-Anhalt und Westsachsen. 
+\paragraph{Funktionsweise der Communitys}
+Die Communitys bestehen jeweils aus einer Anzahl mittelständischer Unternehmen einer Branche, Bildungseinrichtungen sowie Vertetern von Städten und Vereinen. Für ITsax.de ist das die IT-Branche. Neben diesem Branchenfokus sammeln sich nur Unternehmen einer spezifischen Region. Bei ITsax.de ist dies Mittel- und Ostsachsen, bei ITmitte.de z.B. Mitteldeutschland, d.h. Thüringen, Sachsen-Anhalt und Westsachsen. 
 \begin{table}[htbp]
 \label{tb:dt}
-\caption{Übersicht über pludoni Communitys. Stand August 2011}
+\caption{Übersicht über pludoni Communitys. Stand September 2011}
 \begin{tabular}{|l|p{2.8cm}|p{5cm}|l|}
 \hline
 \rowcolor{Gray}
 Community & Branche & Region & Mitglieder \\\hline
-ITsax.de & IT, Software &  Sachsen (Fokus Süden und Osten) & 26\\\hline
-ITmitte.de & IT, Software &  Mitteldeutschland (Thüringen, Sachsen-Anhalt, NW-Sachsen) & 20 \\\hline
-MINTsax.de & Maschinenbau, Elektrotechnik &  Sachsen & 17\\\hline
+ITsax.de & IT, Software &  Sachsen (Fokus Süden und Osten) & 63\\\hline
+ITmitte.de & IT, Software &  Mitteldeutschland (Thüringen, Sachsen-Anhalt, Westsachsen) & 57 \\\hline
+MINTsax.de & Maschinenbau, Elektrotechnik &  Sachsen & 29\\\hline
 OFFICEsax.de & Vertrieb, Bürotätigkeiten &  Sachsen & in Vorb.\\\hline
 OFFICEmitte.de & Vertrieb, Bürotätigkeiten &  Mitteldeutschland & in Vorb.\\\hline
 \end{tabular}
 \end{table}
 
-Diese Unternehmen, die einen jährlichen Mitgliedsbeitrag an die pludoni GmbH zahlen, dürfen Ihre für die Region relevanten Jobangebote auf dem jeweiligen Portal einstellen. Was die Jobcommunitys von pludoni von der der Konkurrenz unterscheidet, ist das sogenannte \textbf{Empfehlungssystem}. 
+Diese Unternehmen, die einen jährlichen Mitgliedsbeitrag für das Community-Management\footnote{Ein Überblick über die Aufgaben eines Community-Managers finden Sie unter \url{http://www.pludoni.de/leistungen}} und Weiterentwicklung der Portale an die pludoni GmbH zahlen, dürfen Ihre für die Region relevanten Jobangebote auf dem jeweiligen Portal einstellen. Was die Communitys von pludoni von der dem bisherigen Online-Jobbörsen unterscheidet, ist das sogenannte \textbf{Empfehlungssystem}. 
 %TODO Bild
 
-Viele der Personalchefs der beteiligten Firmen haben dieselbe Erfahrung gemacht, dass sie sehr guten Bewerbern absagen mussten, weil z.B. die Stelle schon vergeben wurde, die Fähigkeiten des Bewerbers nicht den Bedürfnissen des Unternehmens entsprachen, eine Einstellung verhinderte. Hier setzt pludoni mit seinen Jobcommunitys an, und stellt eine Infrastrukur zur gegenseiten Empfehlung dieser guten Bewerber bereit.  Ausgezeichnete Bewerber erhalten neben der Absage einen Empfehlungscode, mit dem sie sich auf dem Online-Jobportal bei einer der anderen Mitgliedsfirmen bewerben können. Die Software löst intern den Empfehlungscode auf und bestätigt dieser Firma nun, dass der Bewerber empfohlen wurde. 
+Viele der Personalchefs der beteiligten Firmen haben dieselbe Erfahrung gemacht, dass sie sehr guten Bewerbern absagen mussten, weil z.B. die Stelle schon vergeben wurde, die Fähigkeiten des Bewerbers nicht den Bedürfnissen des Unternehmens entsprachen, eine Einstellung verhinderte. Hier setzt pludoni mit seinen Communitys an, und stellt eine Infrastrukur zur gegenseitigen Empfehlung dieser guten Bewerber bereit.  Ausgezeichnete Bewerber erhalten neben der Absage einen Empfehlungscode, mit dem sie sich auf dem Online-Jobportal bei einer der anderen Mitgliedsfirmen bewerben können. Die Software löst intern den Empfehlungscode auf und bestätigt dieser Firma nun, dass der Bewerber von einem anderen Unternehmen der Community empfohlen wurde. 
 
-Dieses Empfehlungssystem überzeugt die beteiligten Unternehmen. Aktuell wurden im letzten Jahr z.B. auf ITmitte.de über 800 Bewerberungen über das Portal versendet, von denen mehr als die Hälfte (440) mit Empfehlungscodes versehen waren \citep{joerg_klukas_startseite_2011}. Dies motivierte mittlerweile 54 Firmen bei den drei pludoni Communitys teilzunehmen \citep{joerg_klukas_referenzen_2011}.
+Dieses Empfehlungssystem überzeugt die beteiligten Unternehmen. Aktuell wurden im letzten Jahr z.B. auf ITmitte.de über 800 Bewerberungen über das Portal versendet, von denen mehr als die Hälfte (440) mit Empfehlungscodes versehen waren \citep{joerg_klukas_startseite_2011}. Dies motivierte mittlerweile über 150 Organisationen bei den drei pludoni Communitys teilzunehmen \citep{joerg_klukas_referenzen_2011}.
 
 \subsubsection{Arbeitsablauf in der pludoni GmbH}
-
-Da der pludoni GmbH gegenwärtig weniger Büroplätze zu Verfügung stehen, als sie Mitarbeiter hat, findet ein Großteil der Arbeit in Heim- oder Telearbeit statt.
-Zur persönlichen Abstimmung findet aber mindestens einmal pro Woche ein Meeting statt, in welcher sich 2-4 der Mitarbeiter treffen, um alte Aufgaben abzunehmen und neue zu diskutieren. Die Abnahme erfolgt dabei durch den Chef Jörg Klukas.
+\label{sec:arbeitsablauf}
+Die pludoni GmbH stellt sich dem Trend der Dezentralisierung von Arbeit, um einerseits Kundenwünsche zur individuellen Betreuung und andererseits Mitarbeiterwünsche nach flexiblen und familienfreundlichen Arbeitsplätzen gerecht zu werden. Ein Großteil der Arbeit findet somit vor Ort beim Kunden, oder in Heim/Telearbeit statt.
+Zur persönlichen Abstimmung findet aber mindestens einmal pro Woche ein Meeting statt, in welcher sich 2-4 der Mitarbeiter treffen, um alte Aufgaben abzunehmen und neue zu diskutieren. Die Abnahme erfolgt dabei durch den Teamleiter des Projekts oder dem Geschäftsführer Jörg Klukas.
 
 Zentrales Kommunikationsmittel der pludoni GmbH ist, neben der E-Mail, die Online-Aufgaben- und Fehlerverwaltung, Redmine\footnote{http://www.redmine.org - ein webbasiertes Projektmanagement-Tool auf der Basis von Ruby on Rails. Redmine kann für Benutzer- und Projektverwaltung, Diskussionsforen, Wikis, zur Ticketverwaltung oder Dokumentenablage genutzt werden, \textit{Wikipedia}}. Dort werden alle Aufgaben und Fehler erfasst und an die zuständigen Personen verteilt. 
 Neben den technischen Aufgaben der Entwickler, werden auch nicht-technische Aufgaben der anderen Mitarbeiter verwaltet, wie z.B. die Gewinnung neuer Partner (Akquise) oder administrative Aufgaben. 
 
-Trotz dieses Tools ist eine Heimarbeit aber immer mit Nachteilen in der Kommunikation behaftet. Dies hat bei den Programmierern teils gravierende Auswirkungen auf die Produktivität. Einerseits, da mitunter Code-Teile anderer abwesender Programmierer benutzt werden müssen,  andererseits, dass gleiche Funktionalität doppelt implementiert wird, weil der Überblick fehlt. Auch deswegen ist es leicht, bei Arbeiten am Code neue Fehler einzuführen. 
-Für das kommende Projekt soll nun eine großflächige Testinfrastruktur erstellt werden, um das Regressionsrisiko zu minimieren und durch die Tests eine gute Quelltextdokumentation zu erhalten.
+Trotz dieses Tools und Vorgehensweise ist die dezentrale Kollaboration aber immer mit Nachteilen in der Kommunikation behaftet. Dies hat bei den Programmierern teils gravierende Auswirkungen auf die Produktivität. Einerseits, da gleiche Funktionalität doppelt implementiert wird, weil der Überblick fehlt, und somit unnötigerweise neue Fehlerquellen eröffnet werden. Andererseits, weil aufgrund der zeitlich asynchronen Arbeitsleistungen Rückmeldungen der anderen Programmierer oder ein Code-Audit nicht immer gewährleistet werden und Regressionsfehler nicht abgeschätzt werden können, da nicht alle Module bekannt sind.
+
+
+Für das kommende Projekt soll nun eine großflächige Testinfrastruktur erstellt werden, um eine aktuelle Dokumentation des Quelltextes zu erhalten und die Code-Qualität verbessern und natürlich um das Risiko für Regressionsfehler zu minimieren.
