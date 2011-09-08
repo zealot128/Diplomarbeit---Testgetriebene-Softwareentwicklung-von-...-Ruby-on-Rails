@@ -1,7 +1,7 @@
 *~
 main.pdf
-diplomarbeit-tdd-und-rails-wienert.pdf
 *.aux
+*.xdy
 *.glo
 *.idx
 *.log

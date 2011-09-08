@@ -9,28 +9,7 @@
  
  Besonderen Dank gilt meinem Betreuer, Prof. Fritzsche, der sich regelmäßig und ausführlich mit meiner Arbeit beschäftigte und wertvolle Hinweise erteilte.
  \newpage
- \section*{Glossar}
-Im folgenden werden einige oft-verwendete Begriffe näher erläutert.
-\begin{description}
- \item[Software-Fehler] oder Defekt, ist ein unerwartetes Verhalten der Software, der zu einem Versagen der Software führen kann
- \item[Test] oder Testfall ist eine, meist automatisierte, Prüfung des Programmverhaltens bei definierten Eingabeparametern
- \item[Test-Suite] ist eine Sammlung von mehreren Testfällen für eine Komponente oder das gesamte System
- \item[Code-Qualität] beinhaltet die Qualitäten Lesbarkeit, Testbarkeit, Wartbarkeit, Erweiterbarkeit, Geringe Komplexität
- \item[Metrik] Eine Softwaremetrik ist das Ergebnis einer statischen oder dynamischen Codeanalyse zur Generierung von Informationen über den Source-Code. Beispiele: Testabdeckung, Anzahl Codezeilen, Anzahl Bad Smells pro Codezeile.
- 
- \item[Testabdeckung] auch: Testfallabdeckung. Eine dynamische Code-Metrik die angibt, welche Codezeilen durch keinen Test abgedeckt wurde. Es wird unterschieden in die Stufen C0, C1 und C2 mit steigender Komplexität der Messung.\\
- C0: Messung jeder Zeile, ob diese ausgeführt wurde\\
- C1: Messung jedes Zweigs jeder Zeile, ob dieser ausgeführt wurde\\
- C2: Messung jedes möglichen Codepfades, ob dieser ausgeführt wurde
- %TODO Quelle http://blog.abakas.com/2008/04/code-coverage-complexity.html
- \item[Bad Smell] oder Code-Smell. Ist ein Anzeichen für eine suboptimale Code-Stelle, die auch ein Hinweis auf ein größeres Design-Problem sein kann. Oft auch ein Kandidat für ein Refaktoring
- \item[TDD] Test-Driven-Development/Test-Driven-Design, bezeichnet den Prozess der Testgetriebenen Entwicklung
- \item[BDD] Behavior-Driven-Development (Verhaltensgetriebene Entwicklung). Umformulierung von TDD zur Ausrichtung auf Businessprozesse. Das Vokabular zielt auf die Spezifikation von Erwartungen im Systemverhalten, anstatt Definition nachträglicher Tests.
- \item[Entwurfsmuster] oder Design Patterns sind bewährte Vorlagen, um häufig wiederkehrende Probleme zu lösen. Weitere Informationen im Buch Design Patterns: Elements of Reusable Object-Oriented Software von Gamme, Helm, Johnson, Vlissides (Gang of Four).
- %\item[ATDD] Acceptance-Test-driven-development. Im Gegensatz zu Unittests beim reinen TDD, stehen die Akzeptanztests
-\item[RSS] RDF Site Summary, ist ein standardisierter XML-Dialekt zur maschinenlesbaren Verteilung und Veröffentlichung von Inhalten. Es existiert in den Versionen 0.9 bis 2.0.1, die sich nur in Details, wie z.B. Einbindung von Rich-Media (Podcasts, ..) und Namespaces unterscheiden
-  \item[Test Double] haben die Aufgabe, komplexe Objekte in einem isolierten Test zu simulieren, in dem statt komplexer Berechnungen oder externer Zugriffe konstante Werte geliefert werden. Vertreter dieser Test Doubles sind die Mocks und Stubs, siehe Abschnitt
- \ref{sec:mocks}
-  \item[RoR, Rails] ist eine gängige Kurzform für das Webframework Ruby on Rails
-\end{description}
+
+\input{parts/intro/glossar}
+
 \newpage
