@@ -1,15 +1,16 @@
 \section{Testgetriebene Entwicklung}
+\label{sec:tdd}
 Testgetriebene Entwicklung, im Englischen Test-Driven-Development (TDD) wurde erstmalig von Kent Beck 2003 im Detail erläutert. Zuvor war die Technik "`Test-First"' aber schon seit 1999 im Kontext von Extreme Programming (XP) bekannt.
 %TODO Quelle: "Extreme Programming". Computerworld. Retrieved January 11, 2011.
 %TODO Quelle: Beck, K. Test-Driven Development by Example, Addison Wesley, 2003
 
 Test-Driven-Development wird als
 $$ \text{TDD} := \text{Test-First} + \text{Refaktorisieren}$$
-beschrieben \citep{scott_ambler_introduction_2002}. So ist es Ziel, dass sich Test schreiben/Implementation und Refaktorisierungen, d.h. das konstante Verbessern des Systemdesigns und des Quellcodes, abwechseln. Damit wurde aus der Entwicklungs-Methode "`Test-First"' ein Software-Entwicklungsprozess. 
+beschrieben \citep{scott_ambler_introduction_2002}. So ist es Ziel, dass sich Test schreiben/Implementation und Refaktorisierungen, d.h. das konstante Verbessern des Systemdesigns und des Quellcodes, abwechseln. Mittlerweise werden die Begriffe Test-First Development und \glossar{TDD} synonym verwendet, allerdings gibt es manchmal Unterschiede in der Herangehensweise in Punkto Design der Software: TDD findet seine Anwendung, wenn nur eine vage Idee der Funktionalität einer Klasse besteht, während TFD kein Design oder Redesign der Klassen vorsieht \citep{stackoverflow_testing_2008}.
 
-Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby on Rails typische Testwerkzeuge aufzeigen. 
+Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und am Beispiel von \glossar{rails} typische Testwerkzeuge aufzeigen. 
 \subsection{Motivation}
-  Das Erstellen einer gut abdeckenden Test-Suite für ein jedes größeres Softwareprojekt ist eine wichtige Vorraussetzungen um interne Qualitäten, wie Wartbarkeit und Zuverlässigkeit zu aktivieren. TDD soll nicht dazu dienen, die Software zu verifizieren. Dies ist aber ein positiver Nebeneffekt. Das Hauptziel ist es, den Code in Einklang mit dem Test zu schreiben, so dass der Test den Code antreibt (Test drives thes code). Der messbare Effekt davon, ist ein gut-testbarer Code, welcher in der Regel auch ein gut-wartbarer und verständlicher Code ist. Bad-Smells, wie God-Methode und geringe Kohäsion, werden schon im Keim erstickt werden, da diese nur äußerst schwer zu testen sind.
+  Das Erstellen einer gut-abdeckten \glossar{Test-Suite} für ein jedes größeres Softwareprojekt ist eine wichtige Voraussetzungen um interne Qualitäten, wie Wartbarkeit und Zuverlässigkeit zu aktivieren. \glossar{TDD} soll nicht dazu dienen, die Software zu validieren. Dies ist aber ein positiver Nebeneffekt. Das Hauptziel ist es, den Code in Einklang mit dem Test zu schreiben, so dass der Test den Code antreibt (Test drives the code). Der messbare Effekt davon, ist ein gut-testbarer Code, welcher in der Regel auch ein gut-wartbarer und verständlicher Code ist. \glossarpl{smell}, wie God-Methode und geringe Kohäsion, werden schon im Keim erstickt werden, da diese nur äußerst schwer zu testen sind.
 
   \paragraph{Psychologische Aspekte und Aspekte des Projektmanagements}
   
@@ -24,7 +25,7 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
    \item Durch eine niedrige Fehlerdichte kann die Kontinuierliche Integration (Continuos Integration) möglich gemacht werden, und so der Kunde in den Entwicklungsprozess einbezogen werden
   \end{enumerate}
  
-  TDD fördert die Entwicklung in kleinen Schritten, und ermöglicht durch bestande Tests kleine "`Belohnungen"' für den Programmierer. Dadurch ist es leichter einen gewissen Arbeitsrhythmus zu erhalten, was stellenweise dem "`Flow"'\footnote{Schaffen-, Tätigkeitssrausch}  ähnelt oder diesen strukturiert ergänzen kann \citep{roger_brown_test_2008}.
+  TDD fördert die Entwicklung in kleinen Schritten, und ermöglicht durch bestandene Tests kleine "`Belohnungen"' für den Programmierer. Dadurch ist es leichter einen gewissen Arbeitsrhythmus zu erhalten, was stellenweise dem "`Flow"'\footnote{Schaffen-, Tätigkeitssrausch}  ähnelt oder diesen strukturiert ergänzen kann \citep{roger_brown_test_2008}.
   
 \subsection{Ablauf TODO} % Bugfixes mit reinnehmen
   Ziel ist es, vor der Implementation eines Codes, einen Unittest zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test besteht. Zum Schluss wird refaktorisiert, bei TDD auch als Designphase genutzt.
@@ -45,11 +46,11 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
    \item \textbf{Green}: Nachdem der Test fehlschlägt, implementiere nun den einfachsten Code, damit der Test besteht\\
    Dies kann ausdrücklich auch eine Fake-Implementierung sein, also z.B. die Rückgabe eines konstanten Wertes anstelle einer Berechnung. Wichtig ist, dass diese Phase so schnell wie möglich verlassen wird.
    \item \textbf{Refactor}: Nachdem der Test bestanden wird, folgt nun die \textbf{wichtigste Phase}, die Refaktorisierungsphase.\\
-   Da wir bereits einen Test haben, der unser gewünschtes Systemverhalten widerspiegelt, können wir gefahrlos refaktorisieren, d.h. meist Duplikation eleminieren. In dieser Phase findet das Design des Codes statt. Man macht sich Gedanken, wie die vorhanden Klassen optimal refaktorisieren können, um Code-Smells zu eleminieren, und welches Entwurfsmuster angewendet werden kann.
+   Da wir bereits einen Test haben, der unser gewünschtes Systemverhalten widerspiegelt, können wir gefahrlos \glossar{refaktorisieren}, d.h. meist Duplikation eliminieren. In dieser Phase findet das Design des Codes statt. Man macht sich Gedanken, wie die vorhanden Klassen optimal refaktorisiert werden können, um Code-Smells zu eliminieren, und welches Entwurfsmuster angewendet werden kann.
   \end{enumerate}
   
   
-  Ein genau spezifizierter Ablauf ist in Abbildung \ref{fig:tddflow} zu finden.
+  Ein genau spezifizierter Ablauf ist in Abbildung \ref{fig:tddflow} zu finden. Auch dort ist zu sehen, dass die Testerstellungs und Refaktorisierungsphase strikt getrennt sind. Innerhalb ersterer solle nur möglichst schnell ein funktionierender Test erstellt und zum Bestehen gebracht werden. Die eigentliche Arbeit findet dann innerhalb der Refaktorisierungsphase, in der die wahrscheinlich suboptimale Implementierung verbessert indem, indem iterativ Design hinzugefügt wird.
   \begin{figure}[hp]
  \centering
  \includegraphics[width=0.75\textwidth]{./diagrams/tdd-flowchart.pdf}
@@ -67,7 +68,7 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
   
   \subsection{ATDD -- Acceptance TDD}
   \label{sec:attd}
-  Die Akzeptanztest-getriebene Entwicklung ist eine Modifikation von TDD. Statt der Unittests, stehen hier die Akzeptanztests im Vordergrund
+  Die Akzeptanztest-getriebene Entwicklung ist eine Modifikation von \glossar{TDD}. Statt der Unittests, stehen hier die Akzeptanztests im Vordergrund
   
   Das ganze lässt sich auch in den übergeordneten Prozess zum Entwickeln eines Features einordnen.
   %TODO RSPEC Buch macht das vor, Noch mal schauen, evtl alles Käse was ich hier geschrieben habe
@@ -85,9 +86,6 @@ Im Folgenden werde ich diesen Prozess näher beleuchten und am Beispiel von Ruby
   
   Somit werden 2 Testebenen erstellt, die Akzeptanz- und die Unittests.
 
-  
-    
- 
 
 \subsection{Prinzip des Emergent Design -- Evolutionäres Sofwaredesign}
 Ein Konzept von TDD ist das, des sich Herausbildenden Designs. Gegenüber traditionellen Entwicklungsansätzen erfolgt die Entwicklungsphase (Design) nicht als eigenständige Phase, sondern ist streng in den Entwicklungsprozess integriert. Immer wenn ein Zyklus beim Refaktorisieren angelangt ist, findet effektiv Design statt. Eine Entwicklung nach TDD sucht den minimalsten Code, der die Anforderungen (Tests) erfüllt. Analog dazu, will ein Emergentes Design die kleinste Menge an benötigten Design suchen, im Gegensatz zu einem Software-Design, das im Vorfeld bedacht wurde. Durch die vielen Iterationen und die darausfolgenden zahlreichen Refaktorisierungen tritt nach und nach das Design hervor, welches optimal für das System ist. 
