@@ -45,7 +45,7 @@ Ein Spezialfall sind die sogenannten \textbf{Greybox}-Tests, die insbesondere be
 \subsection{Unittest}
 Da die \glossar{TDD} in ihrer Reinform auf dem Unittest basiert, soll diese Testgattung im Vorfeld etwas näher beleuchtet werden.
 
-Ziel des Unittests ist es, frühzeitig Fehler im Code zu finden. Der Unit, oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen, oder bei einer objektorientierten Sprache, die Klassen sein. Unittests werden in strenger Isolation ausgeführt. Externe Abhängigkeiten wird durch ein Test Double simuliert. Dies ist notwendig um sicherzustellen, dass gefundende Fehler von dem betreffendem Modul verursacht wurden, und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen einfacher \citep{goodliffe_code_2006}.
+Ziel des Unittests ist es, frühzeitig Fehler im Code zu finden. Der Unit, oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen, oder bei einer objektorientierten Sprache, die Klassen sein. Die Objekte unter Beobachtung (Objects under Test) werden beim Unittest werden in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double} simuliert. Dies ist notwendig um sicherzustellen, dass gefundende Fehler von dem betreffendem Modul verursacht wurden, und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen einfacher \citep{goodliffe_code_2006}.
 
 Ein Unittest kann auch nach dem Gesichtspunkt eingeteilt werden, wie eine Testvollständigkeit beurteilt wird und notwendige Testfälle generiert werden \citep{liggesmeyer_modultest_1990}:
 \begin{description}
@@ -54,7 +54,7 @@ Ein Unittest kann auch nach dem Gesichtspunkt eingeteilt werden, wie eine Testvo
  \item[Funktionaler Test] leitet aus den funktionalen Spezifikationen Testfälle her
 \end{description}
 
-Unittests werden fast immer automatisiert ausgeführt. Verwendung finden dabei meist immer sogenannte Test-Frameworks. Eines der meist-verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test::Unit/MiniTest in Ruby, JUnit in Java oder NUnit in C\#.
+Unittests werden fast immer automatisiert ausgeführt. Verwendung finden dabei meist immer sogenannte Test-Frameworks. Eine der meist-verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test::Unit/MiniTest in Ruby, JUnit in Java oder NUnit in C\#.
 
 Ein solcher Test besteht in der Regel aus 4 Teilen:
 \begin{enumerate}
@@ -64,8 +64,42 @@ Ein solcher Test besteht in der Regel aus 4 Teilen:
  \item Aufräumen nicht mehr benötigter Objekte, File-Pointer, Sockets, Leeren der Datenbank u.ä 
 \end{enumerate}
 
-% TODO http://en.wikipedia.org/wiki/Unit_testing
 \paragraph{Komponententest}
 Ziel des Komponententest ist es, verschiedene Units in Kombination als eine vollständige Komponente zu testen \citep{goodliffe_code_2006}.
 
+ \subsection{Test Doubles -- Mocks und Stubs}
+  \label{sec:mocks}
+  Beim isolierte Testen wird durch Abhängigkeiten aller Art erschwert. Dies können z.B. Klassen sein, die noch nicht implementiert wurden, externe Ressourcen (Netzwerkzugriffe, Versenden von Mails) oder externe unterliegende Prozesse (Bezahlen in einem Onlineshop, Datenbanken) sein. In diesen Situationen ist es angebracht, auf sogenannte Test-Doubles, meist Mocks und Stubs, zurückzugreifen.
+  
+  Ein \textbf{Stub} ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfalls ersetzt. Im Beispiel ein Bezahlprozess einer Bestellung.
+  \begin{lstlisting}
+def test_report_failed_payment
+  Payment.stubs(:pay).returns(false)
+  
+  bestellung = Bestellung.new()
+  bestellung.commit()
+  
+  assert bestellung.not_valid?
+end
+  \end{lstlisting}
+  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock-Frameworks "`mocha"`\footnote{\url{http://mocha.rubyforge.org/}} ein Stubobjekt erzeugen, welches den Bezahlprozess nachahmt, und die Methode "`pay"' ersetzt, so dass sie immer "`false"' zurückgibt, d.h. der extern Bezahlvorgang wird in diesem Test fehlschlagen, z.B. wenn der Benutzer falsche Zahlungsdaten angegeben hat. Auf diese Weise könne komplexe Operationen auf ihre Interfaces reduziert werden. Außerdem machen Stubs den Test i.d.R. schneller, da statt der potentiell komplexen und langsamen Operationen statische Werte geliefert werden.
+  
+  
+  Als Ergänzung dazu gibt es \textbf{Mocks}. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst als Testfall. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich aufgerufen wurde.
+  
+  Hier z.B. ein Mock um einen Netzwerkzugriff zu testen und abzufangen.
+  \begin{lstlisting}
+def test_always_fail
+  HTTP.expects(:get).with("http://www.google.com")
+end
+  \end{lstlisting}
+  Der gezeigte Test wird immer fehlschlagen, da von einem Mock erwartet wird, dass die nachgeahmte Funktion während des Tests genau einmal aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit Interna des Programmflusses zu testen. 
+
 \subsection{System- und Akzeptanztests}
+
+Der Unittest ist als Whitebox-Test auf Wissen über den Quelltext angewiesen, und der Zweck ist es, Fehlerfreiheit zu gewähren. Der \textbf{Systemtest} dagegen testet das gesamte integrierte System, meist aus der Sicht eines Anwenders, mit dem Ziel, die Software gegenüber den Anforderungen zu validieren. Diese Tests finden unter realen Bedingungen mit realen Daten statt und untersucht, meist sogar auf einer den Parametern der Produktionsumgebung nahe-kommende Hard- und Softwareumgebung.
+
+Der \textbf{Akzeptanztest} ist ein Spezialfall des Systemtests. Hier führt der Auftraggeber der Software den Test selbst durch. Er nutzt den Akzeptanztest, um zu entscheiden, ob er die Software akzeptiert, woher der Name rührt.
+Innerhalb des Kontextes der Agilen Programmierung, dem auch die Testgetriebene Software zuzurechnen ist, dienen Akzeptanztests, um den Fortschritt bei der Bearbeitung der "`Geschichten"' (user stories) zu überwachen.
+
+Für das Testen von Webserveranwendungen spielt die Simulation eines Browsers eine große Rolle, um die Tests unter möglichst realen Bedingungen durchzuführen. Hierbei bedient man sich der Fernsteuerung eines Browsern mittels einer Middleware, die es ermöglicht innerhalb eines Testfalls einen Webbrowser zu starten. Eine der bekanntesten dieser Middlewares ist das Framework \textbf{Selenium}\footnote{\url{http://seleniumhq.org/}}, welches Firefox, Internet Explorer und Google Chrome fernsteuern kann. Dies ermöglicht eine sehr detaillierte Testung auf Browserinkompatibilitäten, da es unter den Browsern gewisse Unterschiede in der Ausführung von Javascript und Darstellung von Elementen gibt. Dieses Tool wird u.a. von Google, Oracle und eBay zum Tests ihrer Anwendungen verwendet und weiterentwickelt \citep{selenium_hq_selenium_2010}.

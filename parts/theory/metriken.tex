@@ -74,9 +74,9 @@ Sollte dieser deutlich kleiner als 1 sein, so ist dies ein Symptom für zu wenig
 \subsubsection{Testausführungsabdeckung}
 Die Testabdeckung, im Englischen "`Code Coverage"' bezeichnet, misst den Grad inwieweit ein Programm getestet wurde. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"', und 0\% "`Das Programm wurde die die Tests überhaupt nicht berührt"' Dabei wird die vorhandene Test-Suite ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Es wird festgehalten, welche Anweisungen ausgeführt wurden. Allerdings gibt es 3 Abstufungen, diese Abdeckung zu beobachten (Mit steigender Komplexität des Messverfahrens):
 \begin{description}
- \item[C0] (Statement Coverage) ist die am einfachsten zu bestimmende Abdeckung. Dabei wird geprüft, ob jede Zeile des Quellcodes während der Codeausführung mindestens einmal ausgeführt wurde
- \item[C1] (Branch Coverage) prüft zusätzlich, ob jeder Zweig jeder Zeile ausgeführt wurde. Dies ist wichtig,falls man ternäre Ausdrücke\footnote{if-then-else in einer Zeile: int a = (1==1) ? 5 : 3} verwendet
- \item[C2] (Path Coverage) prüft, ob jeder mögliche Codepfad durchlaufen wurde. Ein Codepfad sei eine einmalige Abfolge von Zweigen innerhalb einer Funktion von Eintritt bis Rücksprung \citep{steve_cornett_code_1996}. So werden z.B. bei 10 Bedingungen 1024 Pfade generiert, denen bei einer 100\% Abdeckung auch 1024 Tests entgegenstehen müssten.
+ \item[C0] (Anweisungsüberdeckung, Statement Coverage) ist die am einfachsten zu bestimmende Abdeckung. Dabei wird geprüft, ob jede Zeile des Quellcodes während der Codeausführung mindestens einmal ausgeführt wurde
+ \item[C1] (Zweigüberdeckung, Branch Coverage) prüft zusätzlich, ob jeder Zweig jeder Zeile ausgeführt wurde. Dies ist wichtig,falls man ternäre Ausdrücke\footnote{if-then-else in einer Zeile: int a = (1==1) ? 5 : 3} verwendet
+ \item[C2] (Pfadüberdeckung, Path Coverage) prüft, ob jeder mögliche Codepfad durchlaufen wurde. Ein Codepfad sei eine einmalige Abfolge von Zweigen innerhalb einer Funktion von Eintritt bis Rücksprung \citep{steve_cornett_code_1996}. So werden z.B. bei 10 Bedingungen 1024 Pfade generiert, denen bei einer 100\% Abdeckung auch 1024 Tests entgegenstehen müssten.
  \end{description}
  Anmerkung: In der Literatur startet in einigen Fällen die Nummerierung bei C0 \citep{catherine_powell_abakas_2008}, in anderen Fällen aber bei C1 \citep{steve_cornett_code_1996}.
  

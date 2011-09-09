@@ -6,13 +6,12 @@
 
 \newglossaryentry{testrunner} {
   name={Test-Runner},
-  description= {oder Testtreiber (test runner) ist eine Software, um \glossarpl{test} aufzurufen und deren Ausführung zu überwachen und steuern}
+  description= {oder Testtreiber) ist eine Software, um \glossarpl{test} aufzurufen und deren Ausführung zu überwachen und steuern}
 }%TODO Fritzsche Check
 
 \newglossaryentry{testsuite} {
   name={Test-Suite},
-  description= {ist eine Sammlung von mehreren Testfällen für eine Komponente oder das gesamte System},
-parent=test
+  description= {ist eine Sammlung von mehreren Testfällen für eine Komponente oder das gesamte System}
 }%TODO Fritzsche Check
 
 \newglossaryentry{fehler} {
@@ -63,9 +62,9 @@ first={Software-Fehler}
   first = Ruby on Rails
 }
 
-\newglossaryentry{Test Double} {
-  name={Test Double},
-  plural={Test Doubles},
+\newglossaryentry{Test-Double} {
+  name={Test-Double},
+  plural={Test-Doubles},
   description = {haben die Aufgabe, komplexe Objekte in einem isolierten Test zu simulieren, in dem statt komplexer Berechnungen oder externer Zugriffe konstante Werte geliefert werden. Vertreter dieser Test Doubles sind die Mocks und Stubs, siehe Abschnitt
  \ref{sec:mocks}}
 }
@@ -79,7 +78,12 @@ first={Software-Fehler}
 }
 \newglossaryentry{Test-Umgebung} {
   name={Test-Umgebung},
-  description={ist eine spezielle Konfiguration der Hard- und Software, um Tests unter kontrollierten und bekannten Bedingungen auszuführen. Dies beinhaltet neben dem zu testenden Objekten (Obeject under Tes) auch sogenannte \glossarpl{Test Double} und den \glossar{testrunner}.}
+  description={ist eine spezielle Konfiguration der Hard- und Software, um Tests unter kontrollierten und bekannten Bedingungen auszuführen. Dies beinhaltet neben dem zu testenden Objekten (Object under Tes) auch sogenannte \glossarpl{Test-Double} und den \glossar{testrunner}.}
+}
+\newglossaryentry{gem} {
+  name={Gem},
+  plural={Gems},
+  description={mit in der Ruby-Gemeinschaft Gems (zu deutsch: Edelsteine) werden Bibliotheken Dritter bezeichnet, die in einem zentralem Repository lagern. Das bekannteste dieser Repositorys ist rubygems.org. Nahezu alle Ruby-Bibliotheken lassen sich hier finden und innerhalb von Sekunden mittels des Kommandozeilenwerkzeuges gem installieren. Beispielsweise ließe sich \glossar{rails} mittels \texttt{gem install rails} installieren.}
 }
 \newcommand{\glossar}[1]{$^\uparrow$\gls{#1}}
 
