@@ -1,0 +1,16 @@
+Project                 itjobs
+LOC                     1570.0
+LOT                     1750.0
+LOC/LOT                    0.9
+AVGComplexity              8.0
+H5Complexity              43.8
+DesignSmells              11.0
+DesignSmells/KLOC          7.0
+CodeSmells                53.0
+CodeSmells/KLOC           33.8
+LongMethod                23.0
+LowCohesion               18.0
+NestedIterators            9.0
+DataClump                  1.0
+LargeClass                 1.0
+SimulatedPolymorphism      1.0

@@ -1,0 +1,16 @@
+Project                 feedmerger
+LOC                      724.0
+LOT                      137.0
+LOC/LOT                    5.3
+AVGComplexity             10.5
+H5Complexity              26.9
+DesignSmells              11.0
+DesignSmells/KLOC         15.2
+CodeSmells                52.0
+CodeSmells/KLOC           71.8
+NestedIterators           23.0
+LongMethod                14.0
+LowCohesion                8.0
+ControlCouple              4.0
+ClassVariable              2.0
+SimulatedPolymorphism      1.0

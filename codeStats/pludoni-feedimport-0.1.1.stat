@@ -1,0 +1,16 @@
+Project                 pludoni-feedimport-0.1.1
+LOC                      571.0
+LOT                      865.0
+LOC/LOT                    0.7
+AVGComplexity             16.8
+H5Complexity               0.0
+DesignSmells               8.0
+DesignSmells/KLOC         14.0
+CodeSmells                28.0
+CodeSmells/KLOC           49.0
+LongMethod                13.0
+LowCohesion                7.0
+NestedIterators            4.0
+LargeClass                 2.0
+Duplication                1.0
+ClassVariable              1.0

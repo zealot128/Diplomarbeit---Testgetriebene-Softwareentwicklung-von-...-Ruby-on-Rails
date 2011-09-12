@@ -1,0 +1,17 @@
+Project                 pludonidb-0.1.0
+LOC                     1933.0
+LOT                        0.0
+LOC/LOT                    0.0
+AVGComplexity             13.7
+H5Complexity             113.2
+DesignSmells              25.0
+DesignSmells/KLOC         12.9
+CodeSmells               113.0
+CodeSmells/KLOC           58.5
+LongMethod                35.0
+LowCohesion               29.0
+UncommunicativeName       22.0
+NestedIterators           13.0
+ControlCouple              8.0
+Duplication                5.0
+LongParameterList          1.0

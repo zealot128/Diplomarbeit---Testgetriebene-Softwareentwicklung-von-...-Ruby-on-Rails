@@ -1,0 +1,16 @@
+Project                 railscasts
+LOC                      653.0
+LOT                      748.0
+LOC/LOT                    0.9
+AVGComplexity             11.0
+H5Complexity              34.6
+DesignSmells               2.0
+DesignSmells/KLOC          3.1
+CodeSmells                42.0
+CodeSmells/KLOC           64.3
+LowCohesion               17.0
+LongMethod                 9.0
+NestedIterators            9.0
+ControlCouple              4.0
+Duplication                2.0
+UncommunicativeName        1.0
