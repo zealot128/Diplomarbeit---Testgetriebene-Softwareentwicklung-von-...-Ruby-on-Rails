@@ -1,0 +1,14 @@
+Project                 Site-Structure-Analyzer
+LOC                      214.0
+LOT                        0.0
+LOC/LOT                    0.0
+AVGComplexity             14.8
+H5Complexity               0.0
+DesignSmells              11.0
+DesignSmells/KLOC         51.4
+CodeSmells                13.0
+CodeSmells/KLOC           60.7
+NestedIterators            7.0
+LowCohesion                3.0
+LongMethod                 2.0
+ClassVariable              1.0
