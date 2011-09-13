@@ -7,7 +7,7 @@ $$ \text{TDD} := \text{Test-First} + \text{Refaktorisieren}$$
 \borderquote{TDD is also good for geeks who form emotional attachments to code. }{\citeauthor{beck_test_2002}}
 beschrieben \citep{scott_ambler_introduction_2002}. So ist es Ziel, dass sich Test schreiben/Implementation und Refaktorisierungen, d.h. das konstante Verbessern des Systemdesigns und des Quellcodes, abwechseln. Mittlerweile werden die Begriffe Test-First Development und \glossar{TDD} synonym verwendet, allerdings gibt es manchmal Unterschiede in der Herangehensweise in Punkto Design der Software: TDD findet seine Anwendung, wenn nur eine vage Idee der Funktionalität einer Klasse besteht, während TFD kein Design oder Redesign der Klassen vorsieht \citep{stackoverflow_testing_2008}.
 
-\paragraph{Einordnung} Da bei der Testgetriebenen Entwicklung die funktionalen Anforderungen der treibende Faktor für die Implementation der Tests sind, können die dabei entstehenden Testfälle den funktionalen Tests zugeordnet werden. In der Sichtbarkeit des Quellcodes sind die Tests der Testgetriebenen Entwicklung ein Spezialfall: Sie sind weder reine Whitebox-, nocht Blackboxtests, sondern Greyboxtests, da der zugrundeliegende Quellcode zwar (noch) nicht bekannt ist, aber 
+% \paragraph{Einordnung} Da bei der Testgetriebenen Entwicklung die funktionalen Anforderungen der treibende Faktor für die Implementation der Tests sind, können die dabei entstehenden Testfälle den funktionalen Tests zugeordnet werden. In der Sichtbarkeit des Quellcodes sind die Tests der Testgetriebenen Entwicklung ein Spezialfall: Sie sind weder reine Whitebox-, nocht Blackboxtests, sondern Greyboxtests, da der zugrundeliegende Quellcode zwar (noch) nicht bekannt ist, aber 
 
 
 Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und am Beispiel von \glossar{rails} typische Testwerkzeuge aufzeigen. 
@@ -64,9 +64,22 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und am
 \end{figure}
 
 
-  Jeder Unittest soll prinzipiell nur eine Eigenschaft testen, die Entwicklung erfolgt also in kleinen Schritten. Dies hat direkte Auswirkungen auf die zu entwickelnden Objekte und Methoden, die ebenfalls übersichtlich werden sollen, und somit dem Funktionsbegriff, eine Methode für eine Aufgabe und erweitert eine Klasse für eine Aufgabe, gerecht werden.
+  Jeder Unittest soll prinzipiell nur eine Eigenschaft testen, die Entwicklung erfolgt also in kleinen Schritten. Dies hat direkte Auswirkungen auf die zu entwickelnden Objekte und Methoden, die ebenfalls übersichtlich werden sollen, und somit dem Objektbegriff, eine Klasse für eine Aufgabe, gerecht werden.
   
-  Im Prinzip soll jeder Änderung der Programmlogik ein fehlgeschlagener Test vorausgehen. Auch bei der Behebung von Defekten, also dem Bugfixing, soll zuerst ein Test geschrieben werden, der genau das Verhalten des Bugs widerspiegelt, und erst dann gefixt werden.
+    \begin{figure}[hbtp]
+ \centering
+ \includegraphics[width=\textwidth]{./diagrams/ablauf.png}
+ % ablauf.png: 955x263 pixel, 96dpi, 25.26x6.96 cm, bb=0 0 716 197
+ \caption{Entwicklungsablauf}
+ \caption*{(a) Traditionelle Entwicklung,  b) Testgetriebene Entwicklung}
+ \imgsource{Quelle: \citep{janzen_does_2008}}
+ \label{fig:devflow}
+\end{figure}
+\borderquote{It's about the design, not the tests.}{Kent Beck}
+  Aus der Sicht des gesamten Entwicklungsprozesses wird somit die klassische Design-Phase in die Implementation eingegliedert. In Abbildung \ref{fig:devflow} wird der klassische Entwickungsablauf dem Ablauf bei einem TDD-orientierten Ablauf verglichen. Demnach wird die (Fein-)Design Phase scheinbar aus dem Ablauf entfernt, und findet sich als Refaktorisierungsphase wieder. Wichtig zu bemerken ist außerdem, dass TDD keineswegs auf eine Analysephase/einen Grobentwurf oder finale (System)-Tests verzichtet, sondern nachwievor auf diese angewiesen ist. 
+  
+
+
   
   \subsection{Sonderfälle}
   
@@ -140,22 +153,24 @@ Ein Konzept von TDD ist das, des sich Herausbildenden Designs. Gegenüber tradit
 
 %http://www.thoughtworks.com/emergent-design
 
-Einige Software-Architekten (\citeauthor*{neal_ford_emergent_2010}, \citeauthor*{jack_reeves_three_1992} und \citeauthor{glenn_vanderburg_real_2010}) proklamieren, dass Software-Engineering eigentlich keine ordinäre Ingenieursdisziplin sei. Ingenieure sind für die Planung und das Design verantwortlich, welches in aller Regel im Vorfeld der Implementierung stattfindet. Das klassische Software-Engineering empfindet diesen Prozess nach, was sich z.B. in dem Wasserfallmodell äußert. Diese Autoren äußern nun, dass dies für die meisten Softwareprojekte nicht ideal sei, da sich die Businessanforderungen meist im Laufe einer Entwicklung ändern. Traditionelles Softwaredesign abstrahiere zu früh und spekuliere ohne die letztendlichen Fakten zu kennen. Traditionelle Ingenieurswissenschaftliche Diszplinen haben außerdem die Beschränkung, dass ein Build-Prozess äußerst teuer ist (man denke an Brücken oder Chips in Flugzeugsystemen), wohingegen dies bei Software in der Regel fast nichts koste. Dadurch kann die Software-Entwicklung ein iteratives Vorgehen nutzen \citep{neal_ford_emergent_2010}, \citep{glenn_vanderburg_real_2010}, \citep{jack_reeves_three_1992}. Statt eines großen Designs am Anfang (BDUF -- Big Design Upfront) soll das Design durch Entdeckung und Extrahieren aus dem Sourcecode gewonnen werden.
+Einige Software-Architekten (\citeauthor*{neal_ford_emergent_2010}, \citeauthor*{jack_reeves_three_1992} und \citeauthor{glenn_vanderburg_real_2010}) proklamieren, dass praktisches Software-Engineering eigentlich keine ordinäre Ingenieursdisziplin sei. Ingenieure sind für die Planung und das Design verantwortlich, welches in aller Regel im Vorfeld der Implementierung stattfindet. Das klassische Software-Engineering empfindet diesen Prozess nach, was sich z.B. in dem Wasserfallmodell äußert. Diese Autoren äußern nun, dass dies für die meisten Softwareprojekte nicht ideal sei, da sich die Businessanforderungen meist im Laufe einer Entwicklung ändern. Traditionelles Softwaredesign abstrahiere zu früh und spekuliere ohne die letztendlichen Fakten zu kennen. Traditionelle Ingenieurswissenschaftliche Diszplinen haben außerdem die Beschränkung, dass ein Build-Prozess äußerst teuer ist (man denke an Brücken oder Chips in Flugzeugsystemen), wohingegen dies bei Software in der Regel fast nichts koste. Dadurch kann die Software-Entwicklung ein iteratives Vorgehen nutzen \citep{neal_ford_emergent_2010}, \citep{glenn_vanderburg_real_2010}, \citep{jack_reeves_three_1992}. Statt eines großen Designs am Anfang (BDUF -- Big Design Upfront) soll das Design durch Entdeckung und Extrahieren aus dem Sourcecode gewonnen werden.
 
 
 Ein Emergent Design kann auch ohne TDD verwendet werden. Allerdings ist dies ohne das Vorhandensein von einer guten Test-Suite ein risikoreiches Unterfangen.
 Mit seiner iterativen Herangehensweise passen Emergent Design in Kombination mit TDD dagegen perfekt in den Entwicklungszyklus der Agilen Software Entwicklung.
 
 
+\subsection{Varianten}
 
 
-  \subsection{Behavior Driven Development}
+
+  \subsubsection{Behavior Driven Development}
   
   Eine oft erwähnte Variante von TDD ist die Verhaltensgetriebene Entwicklung (Behavior-Driven-Development -- BDD). Dabei dienen hier Akzeptanztests als treibende Kraft der Entwicklung. Diese beschreiben ein Verhalten (Behavior). Der Fokus liegt also nicht auf Implementationsdetails, sondern soll, in einer domainspezifischen Sprache, das Verhalten und die daraus resultierenden Erwartungen des Systems beschreiben.
   
   Dies drückt sich meist auch in dem Vokabular aus. Während bei klassischen Unit-Tests, und damit auch bei TDD, die Begriffsdomain  "`Zusicherungen"' (assertions) und "`Tests"' beinhaltet, so hat BDD stattdessen "`Erwartungen"' (expectations) und "`Spezifikationen"' (specs/specifiations), und verwendet oft das Modalverb "`sollte"' (should).
   
   % TODO Beispiel
-  \subsection{Design Driven Testing}
+ \subsubsection{Design Driven Testing}
   Design Driven Testing soll eine Umkehrung von Testgetriebener Software sein und wird Stephens und Rosenberg als Alternative dazu vorgeschlagen \citep{stephens_design_2010}. Sie kritisieren, dass TDD in Reinform betrieben, lediglich Unittests, aber keine Dokumentation oder höhere Tests höherer Levels produziert. Weiterhin monieren sie, dass TDD zu schwierig und aufwändig sei. Sie schlagen vor, stattdessen die Tests durch das Software-Design steuern zu lassen und sich auf komplexe Code-Abschnitte zu konzentrieren, anstatt wirklich jeden Code durch einen vorausgegangen Test entstehen zu lassen. Sie proklamieren die Nutzung von Akzeptanz- anstelle der Unittests. Code-Qualität soll durch ein gründliches vorheriges Design anstelle nachträglicher massiver Refaktorisierungen bewerkstelligt werden.
   DDT eignet sich für größere Teams, da Wert auf manuelle Tests gelegt wird und z.B. ein QA-Team eingebunden wird. Da das Projektteam von it-jobs-und-stellen.de ein sehr kleines ist, wird auf diesen Entwicklungsprozess nicht näher eingegangen.

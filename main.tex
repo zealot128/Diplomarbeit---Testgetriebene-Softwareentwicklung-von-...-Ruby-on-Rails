@@ -1,4 +1,14 @@
 \documentclass[10pt, a4paper]{scrartcl}
+% \documentclass[%
+%   paper=A4, % Stellt auf A4-Papier ein
+%   pagesize, % Diese Option reicht die Papiergröße an
+%             % alle Ausgabeformate weiter
+%   DIV=calc, % Errechnet einen guten Satzspiegel
+%   BCOR=1cm, % Weil bei mir immer 1cm in der Bindung
+%             % der Klemmmappe verschwindet
+%   smallheadings,% Für etwas kleinere Überschriften
+%   ngerman   % Neue Rechtschreibung, d.\,h. (Silbentrennung)
+% ]{scrbook}  % Eine Klasse für beidseitige Texte mit Kapiteln 
 %\usepackage{a4wide}					% Weniger Zeilenrand
 \usepackage[german,ngerman]{babel}	%Deutsche Silbentrennung
 \usepackage[utf8]{inputenc}		%Damit kann man auch Umlaute direkt eintippen  \o/
@@ -27,10 +37,11 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
 \usepackage{epigraph}		% Epigraph = stylische Zitatte
 \usepackage{listings}	% Quellcode Listings und List of Listings
 \usepackage{caption}	% Modifizierung und setzen von custom captions
-\usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames,table]{xcolor}
 \usepackage[nottoc]{tocbibind}	% TOC Plugin -> ??
 \usepackage{relsize}
 \usepackage{glossaries}
+\usepackage{marginnote}
 \makeglossary
 
 

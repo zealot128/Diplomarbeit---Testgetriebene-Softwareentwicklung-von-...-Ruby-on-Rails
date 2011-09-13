@@ -62,7 +62,7 @@
 
 \newcommand{\borderquote}[2]{
 \setlength{\epigraphwidth}{\marginparwidth}
-\marginline{\epigraph{#1}{#2}}
+\marginnote{\epigraph{#1}{#2}}
 \setlength{\epigraphwidth}{0.8\textwidth}
 }
 
@@ -164,3 +164,8 @@ commandchars=\\\{\}}
 }
  
 
+
+% TAble -- Zebrastreifen und 1.25 Row Abstand
+\rowcolors{1}{lightgray!50!white}{white}
+\colorlet{tableheadcolor}{gray!40}
+\renewcommand\arraystretch{1.25}% (MyValue=1.0 is for standard spacing)

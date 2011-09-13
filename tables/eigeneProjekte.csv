@@ -1,0 +1,13 @@
+"Project","itjobs","backlinks","feedmerger","SiteAnalyzer","feedimport","pludonidb"
+"Technologie","Rails3","Rails2","Rails3","Rails3","Ruby","Ruby"
+"extern/intern","intern","intern","intern","intern","intern","intern"
+"Testverfahren","TDD","manuell","manuell","manuell","TDD","manuell"
+"LOC",1570,1884,724,214,571,1933
+"LOT",1750,75,137,0,865,126
+"LOT/LOC",1.11,0.04,0.19,0.00,1.51,0.07
+"AVGCmplx",8.00,19.90,10.50,14.80,16.80,13.70
+"H5Cmplx",43.80,70.60,26.90,39.70,25.10,113.20
+"DesignSm",11,69,11,11,8,25
+"DesignSm/KLOC",7.00,36.60,15.20,51.40,14.00,12.90
+"CodeSm",53,152,52,13,28,113
+"CodeSm/KLOC",33.80,80.70,71.80,60.70,49.00,58.50
