@@ -13,7 +13,8 @@
 \usepackage{setspace} 	%for 1,5times row space
 \usepackage{color}
 \definecolor{darkblue}{rgb}{0,0,.5}
-\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,bookmarksnumbered = true,linkcolor = black,plainpages = false,hypertexnames = false,citecolor = black, linkcolor=black, menucolor=black, pagecolor=black, urlcolor=darkblue] {hyperref}	
+\usepackage[colorlinks,pdfpagelabels,pdfstartview=FitH,bookmarksopen=true,bookmarksnumbered=true,linkcolor= black,
+plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=black,urlcolor=darkblue]{hyperref}	
 			%clickable TOC
 \usepackage{multirow}	%linebreak in Table
 \usepackage{enumerate}	% \begin{enumerate}[a.]     Custom Nummerierung
@@ -24,7 +25,6 @@
 \usepackage{makeidx}
 \usepackage[square]{natbib}  % natbib, aber Zitiert mit [..] anstatt (..)
 \usepackage{epigraph}		% Epigraph = stylische Zitatte
-
 \usepackage{listings}	% Quellcode Listings und List of Listings
 \usepackage{caption}	% Modifizierung und setzen von custom captions
 \usepackage[dvipsnames]{xcolor}
@@ -76,13 +76,9 @@
 \include{custom_commands}
 \makeindex 	%start Aufzeichnung eines Stichwortverzeichnisses
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
- %\maketitle
  \include{parts/00-frontpage}
- 
-
  
  \pagenumbering{Roman}
  \include{parts/intro/preambel}
@@ -92,9 +88,12 @@
   \setcounter{page}{1}
   \pagenumbering{arabic}
  \input{parts/gliederung}
- %\setcounter{page}{1}
- %\pagenumbering{Roman}
  \include{parts/99-appendix}
+ 
+ \cite{*} 
+ \bibliographystyle{dinat}
+ \bibliography{bibo}
+
 \end{document}
  
  
