@@ -1,9 +1,12 @@
 \subsection{Implementierung von Unit-Tests (Modelltests)}    
+\label{sec:awunit}
 
-Ein Modell repräsentiert die Daten der Anwendung, und die Regeln, wie diese zu verändern sind. Bei Rails werden sie hauptsächlich dazu verwendet, um mit der zugrundeliegenden Datenbanktabelle zu interagieren. Per Konvention von Rails findet hier die Hauptarbeit, also die Business-Logik, statt.
+Ein Rails-Modell, wie in \ref{sec:railsconcepts} auf S. \pageref{sec:railsconcepts} beschrieben, repräsentiert die Daten der Anwendung, und die Regeln, wie diese zu verändern sind. Bei Rails werden sie hauptsächlich dazu verwendet, um mit der zugrundeliegenden Datenbanktabelle zu interagieren. Per Konvention von Rails findet hier die Hauptarbeit, also die Business-Logik, statt.
 
-Fast jeder Unittest bei Rails überprüft Validierungskritieren seines korrespondierenden Modells, d.h. wann eine Instanz dieses Modells gültig ist und damit gespeichert werden darf (man denke z.B. an Pflichtfelder für ein Modell "`Nutzer"` oder die Validierung des Formates seiner E-Mail-Adresse). Daneben sollten natürlich alle weiteren, selbstdefinierten, Methoden getestet werden.
-% TODO http://guides.rubyonrails.org/getting_started.html#the-mvc-architecture
+Fast jeder Unittest bei Rails beinhaltet das Testen auf Validierungskritieren seines korrespondierenden Modells, d.h. wann eine Instanz dieses Modells gültig ist und damit gespeichert werden darf (man denke z.B. an Pflichtfelder für ein Modell "`Nutzer"` oder die Validierung des Formates seiner E-Mail-Adresse). Weiterhin sollten natürlich alle weiteren, selbstdefinierten, Methoden getestet werden.
+
+%TODO ORM Glossar
+Diese Validierungen werden durch das ORM-Framework ActiveRecord, welches Rails standardmäßig nutzt, bereitgestellt. Bevor wir weiter auf die 
 
 \paragraph{1. Der Anfang}
 \begin{figure}[h]
@@ -15,10 +18,15 @@ Fast jeder Unittest bei Rails überprüft Validierungskritieren seines korrespon
   \label{fig:job-erm}
 \end{figure}
 
-Während der Analyse wurden die benötigten Attribute bestimmt. In Abbildung \ref{fig:job-erm} seien die Basisattribute der Tabelle dargestellt. Neben den einfachen Attributen, wie Title, Description und Link, existieren auch Referenzen auf andere Objekte (d.h. dies stellen Fremdschlüssel zu anderen Tabellen dar), wie z.B. Schlagwörter (Tags), ein Besitzer einer Stellenanzeige (User) und so weiter.
+Während der Analyse wurden die benötigten Attribute bestimmt. In Abbildung \ref{fig:job-erm} sei z.B. ein Fragment des Grobdesigns, in dem die Basisattribute der Tabelle dargestellt werden. Neben den einfachen Attributen, wie Title, Description und Link, existieren auch Referenzen auf andere Objekte (d.h. dies stellen Fremdschlüssel zu anderen Tabellen dar), wie z.B. Schlagwörter (Tags), ein Besitzer einer Stellenanzeige (User) und so weiter.
 
+Einer der häufigsten Wege, ein Modell und dessen Datenbankschema zu generieren, ist die Nutzung des mitgelieferten Codegenerators. Mittels des Kommandos:
 
-In der Regel erfolgt nun eine Generation der Testklasse und des Testmodells mittels der mitgelieferten Codegeneratoren. 
+\shadebox{  
+  rails generate model MODELLNAME spalte1:datentyp1 spalte2:datentyp2 ...
+}
+
+generieren wird ein Modell mit dem angegebenen Modellnamen. Dazu geben wir paarweise die gewünschten Spaltennamen und deren Datentypen an (string, text, datetime, references, integer, boolean, decimal, ...).
 \begin{lstlisting}
 ~/it-jobs$ rails generate model job title:string link:string \
     description:text user:references visible:boolean ...
@@ -31,16 +39,18 @@ In der Regel erfolgt nun eine Generation der Testklasse und des Testmodells mitt
       create      test/fixtures/jobs.yml
 
 \end{lstlisting}
-Mit der Anweisung uns ein Modell "'job"` mit den nachfolgenden Attributen zu generieren, hat Rails uns nun schon ein Stück Arbeit abgenommen. Es wurden erstellt:
+Mit der Anweisung uns ein Modell "'job"` mit den nachfolgenden Attributen zu generieren, hat Rails uns nun schon ein Stück Arbeit abgenommen. 
+
+Es wurden erstellt:
 \begin{itemize}
- \item Eine Migration (\verb|db/migrate/2011xxxxxx_create_jobs.rb|). Dies stellt eine datenbankunabhängige Repräsentation einer Änderung an der Struktur unserer Datenbank dar. In diesem ist es die Erstellung einer Tabelle "'jobs"` (beachte: Plural!)
- \item Die Modelklasse (\verb|app/models/job.rb|)
+ \item Eine Migration (\verb|db/migrate/2011xxxxxx_create_jobs.rb|). Dies stellt eine datenbankunabhängige Repräsentation einer Änderung an der Struktur unserer Datenbank dar. In diesem ist es die Erstellung einer Tabelle "'jobs"` (beachte: Plural!), mit den Spalten Titel, Link als String, Description als Textfeld, eine User\_ID als Referenz auf ein anderes Modell usw.
+ \item Die Modelklasse (\verb|app/models/job.rb|). Trotz unserer Definition der Spalten und deren Typen über die Kommandozeile, ist diese Klasse leer. Da wir ActiveRecord verwenden, definieren wir die Attribute, die unser Modell hat, nicht in der Modellklasse, sondern ausschließ in der Datenbank. Die Migration erspart uns die manuelle Arbeit, selbst in unserer Datenbank Spalten anzulegen. Bei Initialisierung eines Modells lädt ActiveRecord die Spalteninformationen aus der Datenbank, und generiert dafür Getter und Setter Methoden. 
  \item Die dazugehörige Testklasse (\verb|app/unit/job_test.rb|)
  \item und Fixtures-Datei (\verb|test/fixtures/jobs.yml|), zur Definition von Testdaten. 
 \end{itemize}
 
-
-Nach einer Erstellung der (SQLite)-Datenbank und Ausführung der Migration kann die Rails-Test-Suite nun auch schon ausgeführt werden:
+Die Migration liegt nun zwar vor, aber es existiert noch keine Datenbank und demnach auch noch keine Tabelle mit dem Namen "`jobs"'. Dazu weisen wir nun Rails an, alle offenen Migrationen auszuführen. Standardmäßig erstellt Rails dann selbstständig eine SQLite Datenbank unter "`db/development.sqlite3"'.
+Danach können wir die Rails-Test-Suite auch schon ausführen:
 
 \begin{lstlisting}
 $ rake db:migrate && rake test
@@ -80,7 +90,7 @@ Es wurde also schon ein Testfall erfolgreich ausgeführt, nämlich ein Dummytest
 
 \paragraph{2. Testen auf Validierung}
 
-Ein Feature von Rails umfassen die sogenannten Validierungen. Diese stellen sicher, dass eine Instanz eines Modells nur dann gespeichert ist, wenn es gewissen Kritieren entspricht. Viele der Validations sind vergleichbar mit den Datenbank-Constraints einiger Datenbanken. Rails nutzt diese standardmäßig nicht, da es auch andere Persistenzsysteme unterstützt, wie z.B. Key-Value-Store, sogenannte NoSQL Datenbanken. So stellt Rails die Konsistenz und referenzielle Integrität innerhalb der Applikationsschicht sicher.
+Ein Feature von Rails umfassen die sogenannten Validierungen. Diese stellen sicher, dass eine Instanz eines Modells nur dann gespeichert ist, wenn es gewissen Kritieren entspricht. Viele der Validations sind vergleichbar mit den Datenbank-Constraints einiger Datenbanken. Rails nutzt diese standardmäßig nicht, da es auch andere Persistenzsysteme unterstützt, wie z.B. Key-Value-Store oder sogenannte NoSQL Datenbanken. So stellt Rails die Konsistenz und referenzielle Integrität innerhalb der Applikationsschicht sicher.
 
 Nun möchten wir sicherstellen, dass eine Stellenanzeige nur dann gespeichert wird, wenn sie einen Titel beinhaltet. Der Test dazu würde wie folgt lauten:
 
@@ -97,9 +107,18 @@ Nun möchten wir sicherstellen, dass eine Stellenanzeige nur dann gespeichert wi
 \end{ruby}
 \codecaption{Test auf Vorhandensein eines Titels}
 \tddred
-Zuerst instanziieren wir einen Job, und geben ihm explizit einen leeren Titel, um das Testziel nochmal herauszustellen. Danach sichern wir zu, dass eine Speicherung nicht erfolgt, also "`false"' ist.
+Zuerst instanziieren wir einen Job, und geben ihm explizit einen leeren Titel, um das Testziel nochmal herauszustellen. Danach rufen wir die "`save"'-Methode auf, die prüft, ob alle Validierungskritierien erfolgt sind, und speichert das Objekt persistent in der Datenbank im Erfolgsfall. Dann gibt "`save"' ein "`true"' zurück, anderfalls, d.h. wenn die Validierung fehlschlug, "`false"'.
+Der Ablauf ist in der Abbildung \ref{fig:activerecordsave} noch einmal erläutert.
 
-Nach Ausführung des Tests, schlägt dieser wie zu erwarten fehl.
+\begin{figure}[hbp]
+ \centering
+ \includegraphics[width=0.8\textwidth]{./diagrams/activerecord-save.pdf}
+ % activerecord-save.pdf: 595x675 pixel, 72dpi, 20.99x23.81 cm, bb=0 0 595 675
+ \caption{Funktionsweise von save bei ActiveRecord Objekten}
+ \label{fig:activerecordsave}
+\end{figure}
+
+Da wir noch keine Validierungskritieren implementiert haben, schlägt dieser Test fehl, da das Objekt gespeichert wurde.
 
 Unser nächstes Ziel ist es nun, mit so wenig Code wie möglich den Test bestehen zu lassen. Das können wir mittels der eingebauten wie schon erwähnten Validierungen:
 
@@ -109,6 +128,7 @@ Unser nächstes Ziel ist es nun, mit so wenig Code wie möglich den Test bestehe
 \PY{k}{end}
 \end{ruby}
 \codecaption{Implementierung der Validierung in die Klasse Job}
+"`validates"' ist eine Funktion aus der ActiveRecord Bibliothek, die zwei Parameter entgegennimmt: Der erste ist die Spalte, auf der sich die Validierung bezieht, als Zweites folgt eine Liste an Validierungskritieren. Hier ist das Kritierum "`presence"', also das Vorhandensein eines nicht-leeren Attributs. Weitere Kritieren sind z.B. Format, Länge, Minimum, Maximum, oder selbst definierte Kriterien.
 
 \tddgreen
 Nach erneuter Ausführung der Testsuite, besteht der Test nun. Jetzt folgt die Refaktorisierungsphase. Der Programmcode lässt sich nicht weiter vereinfachen. Aber der Testcode ist ausdrücklich nicht von Refaktorisierungen befreit, und eine Refaktorisierung wäre z.B.:
@@ -199,7 +219,7 @@ In allen drei Methoden wird ein Job instanziiert, und lediglich verschiedene Att
 \codecaption{Fixtures Testdaten für zwei Jobs}
 
 Nun können wir diese Fixtures in unseren Tests verwenden, und das ganze in einer setup-Methode, die vor jedem Testfall aufgerufen wird, laden:
-
+\tddrefactor
 \begin{ruby}[label=test/unit/job\_test.rb]
 \PY{k}{class} \PY{n+nc}{JobTest} \PY{o}{<} \PY{n+no}{ActiveSupport}\PY{o}{::}\PY{n+no}{TestCase}
   \PY{n}{setup} \PY{k}{do}
@@ -223,7 +243,9 @@ Nun können wir diese Fixtures in unseren Tests verwenden, und das ganze in eine
 \codecaption{Finale Job-Test Klasse nach Refaktorisierung}
 
 
-\tddrefactor
+
 Am Ende dieser Refaktorisierungen ist es notwendig, die Tests noch einmal auszuführen.
-Danach würde die Implementierung einer nächsten Teilanforderung sein. Was in diesem Abschnitt zu sehen war ist, dass die Testgetriebene Entwicklung das Arbeiten und Testen in kleinen Schritten favorisiert.
 \tddgreen
+Danach würde die Implementierung einer nächsten Teilanforderung sein. 
+
+In diesem Abschnitt war zu sehen, dass die Testgetriebene Entwicklung das Arbeiten und Testen in kleinen Schritten favorisiert.

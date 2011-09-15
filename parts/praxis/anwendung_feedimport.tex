@@ -1,0 +1,53 @@
+\subsection{Testen von externen Abhängigkeiten}
+\label{sec:awmock}
+Fast alle Webapplikationen sind auf Kommunikation mit anderen Servern angewiesen. Als Beispiel seien die diversen APIs der sozialen Netzwerke genannt oder Webservices. Für die vorliegende Jobanwendung war gewünscht, ein Feedimport-Feature zu implementieren, sodass bestimmte Kunden ihre Stellenanzeigen automatisiert einlesen lassen könnten.
+
+Die genannten Partner stellen einen XML-Feed nach dem RSS 2.0 Format\footnote{Spezifikation des RSS 2.0 Formats: \url{http://cyber.law.harvard.edu/rss/rss.html}} bereit, der ein häufig verwendetes Format zum Austausch von Informationen ist, und durch eine Vielzahl von Werkzeugen und Content-Management-Systemen unterstützt wird.
+Dabei wird der Inhalt des Haupttextfeldes "`description"' um weitere Informationen in einem Subdialekt angereichert. 
+ 
+Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
+
+\begin{ruby}[label=beispiel\_job.xml, fontsize=\relsize{-2}]
+\PY{c+cp}{<?xml version="1.0" encoding="UTF-8"?>}
+\PY{n+nt}{<rss} \PY{n+na}{version=}\PY{l+s}{"2.0"}\PY{n+nt}{>}
+  \PY{n+nt}{<channel}\PY{n+nt}{>}
+    \PY{n+nt}{<title}\PY{n+nt}{>}RSS Feed für Jobangebote \PY{n+nt}{</title>}
+    \PY{n+nt}{<language}\PY{n+nt}{>}de\PY{n+nt}{</language>}
+    \PY{n+nt}{<item}\PY{n+nt}{>}
+      \PY{n+nt}{<title}\PY{n+nt}{>}Softwareentwickler Java/JEE (m/w)\PY{n+nt}{</title>}
+      \PY{n+nt}{<description}\PY{n+nt}{>}
+        \PY{c+cp}{<![CDATA[}
+\PY{c+cp}{        <!--}
+\PY{c+cp}{        <nummer>example\PYZus{}job\PYZus{}01</nummer>}
+\PY{c+cp}{        <tags>Java,Webentwickler,Softwareentwickler</tags>}
+\PY{c+cp}{        <ort>Dresden</ort>}
+\PY{c+cp}{        <kontakt>Max Mustermann bewerbung@example.com</kontakt>}
+\PY{c+cp}{        <link>http://www.example.com/jobs/512.html</link>}
+\PY{c+cp}{        -->}
+\PY{c+cp}{        Zur Verstärkung unseres Teams suchen wir zum nächstmöglichen}
+\PY{c+cp}{        Zeitpunkt einen Softwareentwickler Java/JEE (m/w) zur Festanstellung.<br />}
+\PY{c+cp}{        Ihre Aufgaben: ...}
+\PY{c+cp}{        ]]>}
+      \PY{n+nt}{</description>}
+      \PY{n+nt}{<link}\PY{n+nt}{>}http://www.example.com/jobs/512.html\PY{n+nt}{</link>}
+      \PY{n+nt}{<pubDate}\PY{n+nt}{>}Wed, 25 Mar 2011 13:30:00 +0100\PY{n+nt}{</pubDate>}
+      \PY{n+nt}{<guid}\PY{n+nt}{>}example\PYZus{}job\PYZus{}01\PY{n+nt}{</guid>}
+    \PY{n+nt}{</item>}
+  \PY{n+nt}{</channel>}
+\PY{n+nt}{</rss>}
+\end{ruby}
+\captionsetup{type=lstlisting}
+\caption{Feedimport Beispiel-XML Datei mit einem Job}
+Der RSS-Feed in dem oben genannten Beispiel enthält eine Stellenanzeige (item). Die description beinhaltet einen HTML-Kommentar, in dem nummer, tags, ort, kontakt und link für die Stellenanzeige definiert werden. Das ganze wurde mit einem Kommentar, und nicht mit einer Erweiterung der Syntax durch eine DDT oder XSD, realisiert, da sich eine Eingliederung der Syntaxelemente mittels DDTs und XSDs in einige der Systeme der Kunden als problematisch herausgestellt hat.
+
+Diese Art des Feedimports ist bereits in den Community-Job-Portalen in Funktion. Allerdings besitzt dieser, in PHP geschriebene Code, keinerlei automatisierte Tests, und war in der Vergangenheit schon oft die Ursache von Fehlern. So ist es notwendig, den Feedimport nun in Ruby als Bibliothek im Rahmen von IT-Jobs neu zu schreiben, und für die bereits laufenden Portale schnellstmöglich einzubauen. 
+Diese Bibliothek soll also unabhängig von Rails funktionieren, kann aber trotzdem dessen Validierungsfunktionen verwenden (Siehe Abschnitt \ref{sec:awunit}).
+
+Ziel diesen Abschnittes ist es, zu zeigen, wie das Einlesen eines externen XML-Feeds getestet werden kann. 
+
+\paragraph{Initialier Test}
+
+
+ 
+ 
+ mittels Mocks und Stubs am Beispiel Feedimport

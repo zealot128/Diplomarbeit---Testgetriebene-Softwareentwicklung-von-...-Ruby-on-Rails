@@ -1,74 +1,54 @@
 \section{Anwendung der Testgetriebenen Entwicklung}
+\label{sec:awtdd}
 
-In den nachfolgenden Abschnitten wird examplarisch an dem Objekt "`Job"', also einer Stellenanzeige, die Testgetriebene Entwicklung näher erläutert.
-    
-    
+In den nachfolgenden Abschnitten wird examplarisch an dem Objekt "`Job"', also der internen Repräsentation einer Stellenanzeige, die Testgetriebene Entwicklung mit praktischen Beispielen näher erläutert.
+Besonderes Augenmerk soll dabei auf den Entwicklungsfluss von TDD gelegt werden. Zu dessen Verdeutlichung ist am Dokumentenrand die jeweilige Phase innerhalb des TDD-Zyklus zufinden (Red, Green, Refactor), dem die im Text gezeigten Codeabschnitte zuzuordnen sind.
+
+Ziel dieses Kapitels wird es sein, einen Überblick über die Art und Weise zu erhalten, mit denen die verschiedenen Teilbereiche einer Webanwendung testgetrieben entwickelt werden können.
+Die ersten drei Abschnitte richten sich an zwei der Grundbausteine einer MVC\foonnote{Model View Control} %TODO Link
+Webanwendung, den Modell- und Controllertests. Im Dritten Abschnitt sehen wir, wie Test Doubles verwendet werden können, um Zugriffe auf externe Datenlieferanten zu simulieren. Danach betrachten wir die Anwendung aus Anwendersicht, und widmen wir uns der Implementierung von Akzeptanz- und Systemtests. % TODO Link
+Zum Schluss gibt es einen Ausblick auf das Testen von Javascript-Ereignissen.
 
 \input{parts/praxis/anwendung_unittest}
 \input{parts/praxis/anwendung_functional}
+\input{parts/praxis/anwendung_feedimport}
 
 
 
-\subsection{Testen von externen Abhängigkeiten}
-Fast alle Webapplikationen sind auf Kommunikation mit anderen Servern angewiesen. Als Beispiel seien die diversen APIs der sozialen Netzwerke genannt oder Webservices. Für die vorliegende Jobanwendung war gewünscht, ein Feedimport-Feature zu implementieren, sodass bestimmte Kunden ihre Stellenanzeigen automatisiert einlesen lassen könnten.
 
-Die genannten Partner stellen einen XML-Feed nach dem RSS 2.0 Format\footnote{Spezifikation des RSS 2.0 Formats: \url{http://cyber.law.harvard.edu/rss/rss.html}} bereit, der ein häufig verwendetes Format zum Austausch von Informationen ist, und durch eine Vielzahl von Werkzeugen und Content-Management-Systemen unterstützt wird.
-Dabei wird der Inhalt des Haupttextfeldes "`description"' um weitere Informationen in einem Subdialekt angereichert. 
- 
-Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
-
-\begin{ruby}[label=beispiel\_job.xml, fontsize=\relsize{-2}]
-\PY{c+cp}{<?xml version="1.0" encoding="UTF-8"?>}
-\PY{n+nt}{<rss} \PY{n+na}{version=}\PY{l+s}{"2.0"}\PY{n+nt}{>}
-  \PY{n+nt}{<channel}\PY{n+nt}{>}
-    \PY{n+nt}{<title}\PY{n+nt}{>}RSS Feed für Jobangebote \PY{n+nt}{</title>}
-    \PY{n+nt}{<language}\PY{n+nt}{>}de\PY{n+nt}{</language>}
-    \PY{n+nt}{<item}\PY{n+nt}{>}
-      \PY{n+nt}{<title}\PY{n+nt}{>}Softwareentwickler Java/JEE (m/w)\PY{n+nt}{</title>}
-      \PY{n+nt}{<description}\PY{n+nt}{>}
-        \PY{c+cp}{<![CDATA[}
-\PY{c+cp}{        <!--}
-\PY{c+cp}{        <nummer>example\PYZus{}job\PYZus{}01</nummer>}
-\PY{c+cp}{        <tags>Java,Webentwickler,Softwareentwickler</tags>}
-\PY{c+cp}{        <ort>Dresden</ort>}
-\PY{c+cp}{        <kontakt>Max Mustermann bewerbung@example.com</kontakt>}
-\PY{c+cp}{        <link>http://www.example.com/jobs/512.html</link>}
-\PY{c+cp}{        -->}
-\PY{c+cp}{        Zur Verstärkung unseres Teams suchen wir zum nächstmöglichen}
-\PY{c+cp}{        Zeitpunkt einen Softwareentwickler Java/JEE (m/w) zur Festanstellung.<br />}
-\PY{c+cp}{        Ihre Aufgaben: ...}
-\PY{c+cp}{        ]]>}
-      \PY{n+nt}{</description>}
-      \PY{n+nt}{<link}\PY{n+nt}{>}http://www.example.com/jobs/512.html\PY{n+nt}{</link>}
-      \PY{n+nt}{<pubDate}\PY{n+nt}{>}Wed, 25 Mar 2011 13:30:00 +0100\PY{n+nt}{</pubDate>}
-      \PY{n+nt}{<guid}\PY{n+nt}{>}example\PYZus{}job\PYZus{}01\PY{n+nt}{</guid>}
-    \PY{n+nt}{</item>}
-  \PY{n+nt}{</channel>}
-\PY{n+nt}{</rss>}
-\end{ruby}
-\captionsetup{type=lstlisting}
-\caption{Feedimport Beispiel-XML Datei mit einem Job}
-Der RSS-Feed in dem oben genannten Beispiel enthält eine Stellenanzeige (item). Die description beinhaltet einen HTML-Kommentar, in dem nummer, tags, ort, kontakt und link für die Stellenanzeige definiert werden. Das ganze wurde mit einem Kommentar, und nicht mit einer Erweiterung der Syntax durch eine DDT oder XSD, realisiert, da sich eine Eingliederung der Syntaxelemente mittels DDTs und XSDs bei einigen der CMS der Kunden als problematisch herausgestellt hat.
-
-
-
- 
- 
- mittels Mocks und Stubs am Beispiel Feedimport
 
 \subsection{System und Akzeptanztests}
+\label{sec:system}
 Cucumber Outside-In Development
 
 
 \subsection{Testen von Javascript Ereignissen}
-\subsubsection{Test im Rahmen von Integrationstest}
+
+Mit dem ständig zunehmenden Grad der Entwicklung von Javascript-Frameworks und den in den letzten Jahren zunehmenden Ausführungsgeschwindigkeiten von Javascript in den einzelnen Browsern, ist Javascript bei der Programmierung von modernen Webanwendung ein immer wichtigerer Teil geworden. Nutzer erwarten hoch-responsive Anwendungen, und das Aufkommen von Cloud-Computing propagiert die Ablösung traditioneller Desktop-Software durch Browserbasierte Anwendungen.
+
+
+
+
+* Anwendungen werden komplexer
+* Nutzer erwarten responsivere Anwendungen 
+* Nutzung von JS und insb. von Ajax
+* Problem: eingebaute simulierte Browser führen kein JS aus
+* Problem; trotzt Fortschritte noch Browserunterschiede
+* Lösung: Simulation eines echten Browser -> Aber: Einführung
+
+\paragraph{Test im Rahmen von Integrationstest}
 Systemtests mittels Selenium fuer vereinzeltes JS in Form von
 
-\subsubsection{Unittests mit Javascript}
-Unittests:  Jasmine fuer komplexe Objekte und Javascript Anwendungen
+* Capzbara
+* Selenium
 
+\paragraph{Dedizierte Unittests für Javascript} Falls eine Anwendung nicht nur einfache Ajax-Funktionen der Art "`Klicke Link -- Sende Anfrage an Server -- setzte fertiggenerierten HTML Code der Antwort direkt in den DOM ein"', sondern Funktionen, die klassische Desktopanwendungen nachbilden, gefordert sind, ist der Einsatz von eigenen Unittests für Javascript angebracht.
+Diese Art der Anwendungsgestaltung gewinnt zunehmend an Popularität, z.B. das aktuelle Twitter-Layout oder Google Mail machen nach dem initialen Laden der Webseite keine weitere komplette Seitenaktualisierung mehr. 
+Auch hier bieten sich einige Javascript Test-Frameworks an, z.B. JsUnit\footnote{http://www.jsunit.net/}, einem Vertreter der xUnit-Reihe, und Jasmine, einem Vertreter aus dem BDD-Kontext. % TODO Lin kBDD
 
+Bei IT-Jobs beschränkt sich der Einsatz von Javascript allerdings auf die erwähnten einfachen Funktionen.
 
-
-
-
+\paragraph{Diskussion} Das explizite Testen von Javascript ist zwar nicht Thema dieser Diplomarbeit, aber im Kontext der Entwicklung einer Webanwendung sollte Javascript nicht unerwähnt bleiben
+* nicht Thema
+* nur als Ausblick dienen
+* Lese-Empfehlungen 

@@ -92,37 +92,50 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und am
    \item Führe alle Tests aus
   \end{enumerate}.
   Somit wird sichergestellt, das jeder bisher gefundene Fehler durch einen Test abgesichert wird.
-  \paragraph{Spikes oder Spike Solution} In einigen Fällen ist es nicht ratsam, sofort mit einer testgetriebenen Entwicklung zu beginnen. Gerade wenn Prototypisierung, d.h. schnelle, erforschende, explorative Entwicklung mit dem ausschließlichen Ziel schnell ein lauffähiges Ergebnis zu erhalten, dann kann auf Tests verzichtet werden. Eine solches, isoliert entwickeltes Experiment wird im \glossar{TDD}-Jargon "`Spike"' (zu deutsch: Spitze, Nadel) genannt. Die Idee dahinter ist es zu Lernen, und der produzierte Code wird i.d.R. gelöscht und nach dem Lernprozess nach originärer TDD-Manier entwickelt. Dies soll auch die gewählte Metapher einer Nadel aufzeigen: Schnell eine Nadel durch ein Brett bringen \citep{shore_art_2007}. Ausführliche Informationen über das Wann und Wie eines Einsatzes von Spikes finden sie in dem Buch "`The Art of Agile Development"' \citep{shore_art_2007}. Der Autor hat sogar das betreffende Kapitel online verfügbar gemacht\footnote{\url{http://jamesshore.com/Agile-Book/spike_solutions.html}}.
+  \paragraph{Spikes oder Spike Solution} In einigen Fällen ist es nicht ratsam, sofort mit einer testgetriebenen Entwicklung zu beginnen. Gerade wenn Prototypisierung, d.h. schnelle, erforschende, explorative Entwicklung mit dem ausschließlichen Ziel schnell ein lauffähiges Ergebnis zu erhalten gewünscht ist, dann kann auf Tests verzichtet werden. Eine solches, isoliert entwickeltes Experiment wird im \glossar{TDD}-Jargon "`Spike"' (zu deutsch: Spitze, Nadel) genannt. Die Idee dahinter ist es zu Lernen, und der produzierte Code wird i.d.R. gelöscht und nach dem Lernprozess nach originärer TDD-Manier entwickelt. Dies soll auch die gewählte Metapher einer Nadel aufzeigen: Schnell eine Nadel durch ein Brett bringen \citep{shore_art_2007}. Ausführliche Informationen über das Wann und Wie eines Einsatzes von Spikes finden sie in dem Buch "`The Art of Agile Development"' \citep{shore_art_2007}. Der Autor hat sogar das betreffende Kapitel online verfügbar gemacht\footnote{\url{http://jamesshore.com/Agile-Book/spike_solutions.html}}.
 
   \paragraph{Testen von privaten Methoden und Variablen} Da die objektorienterte Modellierung das Konzept des Information Hiding und Kapselung vorsieht, soll der interne Aufbau einer Klasse nach außen nicht sichtbar sein. Da Tests aber von außen auf eine Klasse zugreifen, stellt dies ein Problem dar. In einigen Sprachen löst man sich dieses Problem mittels Reflections, um über Umwege auf private Felder zuzugreifen. Dies spielt allerdings nur für das nachträgliche Testen von Legacy-Anwendungen eine Rolle. TDD in der Reinform betrieben habe niemals spezfische Tests von privaten Methoden oder Feldern, da diese ausschließlich durch Refaktorisierung enstanden sein könnten \citep{caroli_agile_2008}.
  % http://agiletips.blogspot.com/2008/11/testing-private-methods-tdd-and-test.html 
  
   
   
+\subsection{Studien zu den Auswirkungen von TDD}
+
+Viele Studien belegen die positiven Effekte, die \glossar{TDD} für die Software-Entwicklung hat.
+
+% Code Qualität
+
+So zeigt eine Fallstudie, dass TDD zu größerer Produktqualität bei gleichzeitigt hoher Flexibilität führt, was ebenso in einer höheren Zufriedenheit bei den Programmiern führt \citep{hans_wasmus_evaluation_2007}.
+
+
+\marginnote{Empirische Untersuchung der Auswirkung auf Code-Qualität}Einer empirischen Studie von \citeauthor{madeyski_test-driven_2009} zufolge, sei TDD schwierg zu erlernen und in einigen Metriken (Klassen pro Methode, Development Speed, Anteil der bestandenen Akzeptanztests) nicht signifikant besser als traditionelle Test-Last-Methoden. Allerdings hatten die beteiligten TDD-geführten Projekte eine signifikant bessere Testabdeckung und geringere Kopplung unter den Klassen. Test-First sei letztendlich eine mächtige aber kontraintuitive Technik \citep{madeyski_test-driven_2009}.
+
+
+In dem Artikel des IEEE-Software-Journals stellen \citeauthor{janzen_does_2008} eine Studie vor, die akademische und industrielle Javaprojekte die testgetrieben durchgeführt wurden (Test-First), mit denen, bei denen hinterher getestet wurde (Test-Last), vergleicht. Demnach zeigen die Ergebnisse an, dass Programmierer, die einen Test-First Ansatz verfolgen, tendenziell Software in kleineren Einheiten die weniger komplex sind, schreiben, als solche die erst nach der Entwicklung testen \citep{janzen_does_2008}.
+
+\marginnote{Auswirkungen auf die Struktur -- Assignment Controllability}
+Einer Studie von \citeauthor{mueller_effect_2006} zufolge, führt Testen im Allgemeinen zu weniger Methoden und geringerer Kopplung. Der Autor stellt auch eine potenzielle Metrik vor, um statistisch signifikant Projekte, die nach TDD betrieben wurden, von traditionellen Projekten zu unterscheiden: Assignment Controllability\footnote{Dies ist ein Maß, inwieweit der lokale Zustand einer Klasse/Methode von außen durch Parameter beeinflusst werden kann} \citep{mueller_effect_2006}. Allerdings rät der Autor zu weiteren Untersuchungen und setzt auch keinen Grenzwert an, ab welchem Grad der Controllability ein Projekt als TDD-Projekt bezeichnet werden kann.
+
+% Verstaendnis
+\marginnote{Verständnis von TDD in der Industrie}
+Einer Umfrage unter 25 IT- und Entwicklungsleitern ergab, dass diese zwar die positiven Effekte unterstützen, aber nur 16\% TDD in der Praxis einsetzen, und nur 21\% Testvollständigkeit messen. Auch verstehen anscheinend etwa die Hälfte der Befragten den Begriff TDD falsch, nämlich als die reine Praxis Tests für alle denkbaren Problemfälle zu schreiben \citep{stelligent_inc_stelligent_2007}.
+
+Das unter den Entwicklungsleitern der Fortune 500 Firmen, die von sich selbst behaupten, TDD zu betreiben, einige von Fehlannahmen ausgehen, wird in dem oben genannten Artikel genannt \citep{janzen_does_2008}. So setzen diese TDD mit automatisierten Tests gleich, oder behaupten sogar TDD sei das Schreiben ALLER Testfälle vor der Implementationsphase, anstelle der eigentlich gedachten kurzen Entwicklungs-Iterationen \citep{janzen_does_2008}.
+
+% Auswirkungen auf Produktivit't und Bugs
+\marginnote{Auswirkungen auf die Produktivität}
+Einer Studie von Microsoft ergab, dass TDD-entwickelnde Teams eine 60\% -- 90\% geringere Fehlerdichte, aber eine 15\% -- 35\% längere Entwicklungszeit hätten, als nicht-TDD Entwickelnde \citep{nagappan_realizing_2008}.
+
+
+
+
+
   
-  \subsection{ATDD -- Acceptance TDD}
-  \label{sec:attd}
-  Die Akzeptanztest-getriebene Entwicklung ist eine Modifikation von \glossar{TDD}. Statt der Unittests, stehen hier die Akzeptanztests im Vordergrund
-  
-  Das ganze lässt sich auch in den übergeordneten Prozess zum Entwickeln eines Features einordnen.
-  %TODO RSPEC Buch macht das vor, Noch mal schauen, evtl alles Käse was ich hier geschrieben habe
-  \begin{enumerate}
-   \item Schreibe einen Akzeptanztest/Systemtest um das aktuelle Feature zu implementieren
-   \item Implementiere die Teilschritte, die notwendig sind, um den Akzeptanztest bestehen zu lassen. Verfahre bei der Implementation nach dem TDD Schema zur Implementierung der benötigten Units wie oben.
-    \begin{enumerate}
-     \item Schreibe einen Unittest
-     \item Prüfe, ob der Test fehlschlägt, andernfalls zurück zu 1.
-     \item Implementiere mit so wenig wie möglich so, dass der Test besteht
-     \item Refaktorisiere
-    \end{enumerate}
-   \item Nachdem der Akzeptanztest besteht, Prüfe etwaige Refaktorisierungen für die Anwendungsebene.   
-  \end{enumerate}
-  
-  Somit werden 2 Testebenen erstellt, die Akzeptanz- und die Unittests.
+
 
 
 \subsection{Prinzip des Emergent Design -- Evolutionäres Sofwaredesign}
-Ein Konzept von TDD ist das, des sich Herausbildenden Designs. Gegenüber traditionellen Entwicklungsansätzen erfolgt die Entwicklungsphase (Design) nicht als eigenständige Phase, sondern ist streng in den Entwicklungsprozess integriert. Immer wenn ein Zyklus beim Refaktorisieren angelangt ist, findet effektiv Design statt. Eine Entwicklung nach TDD sucht den minimalsten Code, der die Anforderungen (Tests) erfüllt. Analog dazu, will ein Emergentes Design die kleinste Menge an benötigten Design suchen, im Gegensatz zu einem Software-Design, das im Vorfeld bedacht wurde. Durch die vielen Iterationen und die darausfolgenden zahlreichen Refaktorisierungen tritt nach und nach das Design hervor, welches optimal für das System ist. 
+Ein Konzept das TDD ermöglicht, ist das des sich Herausbildenden Designs. Gegenüber traditionellen Entwicklungsansätzen erfolgt die Entwicklungsphase (Design) hierbei nicht als eigenständige Phase, sondern ist streng in den Entwicklungsprozess integriert. Immer wenn ein Zyklus beim Refaktorisieren angelangt ist, findet effektiv Design statt. Eine Entwicklung nach TDD sucht den minimalsten Code, der die Anforderungen (Tests) erfüllt. Analog dazu, will ein Emergentes Design die kleinste Menge an benötigten Design suchen, im Gegensatz zu einem Software-Design, das im Vorfeld bedacht wurde. Durch die vielen Iterationen und die darausfolgenden zahlreichen Refaktorisierungen tritt nach und nach das Design hervor, welches optimal für das System ist. 
 
 
 
@@ -153,15 +166,34 @@ Ein Konzept von TDD ist das, des sich Herausbildenden Designs. Gegenüber tradit
 
 %http://www.thoughtworks.com/emergent-design
 
-Einige Software-Architekten (\citeauthor*{neal_ford_emergent_2010}, \citeauthor*{jack_reeves_three_1992} und \citeauthor{glenn_vanderburg_real_2010}) proklamieren, dass praktisches Software-Engineering eigentlich keine ordinäre Ingenieursdisziplin sei. Ingenieure sind für die Planung und das Design verantwortlich, welches in aller Regel im Vorfeld der Implementierung stattfindet. Das klassische Software-Engineering empfindet diesen Prozess nach, was sich z.B. in dem Wasserfallmodell äußert. Diese Autoren äußern nun, dass dies für die meisten Softwareprojekte nicht ideal sei, da sich die Businessanforderungen meist im Laufe einer Entwicklung ändern. Traditionelles Softwaredesign abstrahiere zu früh und spekuliere ohne die letztendlichen Fakten zu kennen. Traditionelle Ingenieurswissenschaftliche Diszplinen haben außerdem die Beschränkung, dass ein Build-Prozess äußerst teuer ist (man denke an Brücken oder Chips in Flugzeugsystemen), wohingegen dies bei Software in der Regel fast nichts koste. Dadurch kann die Software-Entwicklung ein iteratives Vorgehen nutzen \citep{neal_ford_emergent_2010}, \citep{glenn_vanderburg_real_2010}, \citep{jack_reeves_three_1992}. Statt eines großen Designs am Anfang (BDUF -- Big Design Upfront) soll das Design durch Entdeckung und Extrahieren aus dem Sourcecode gewonnen werden.
+Einige Software-Architekten (\citeauthor*{neal_ford_emergent_2010}, \citeauthor*{jack_reeves_three_1992} und \citeauthor{glenn_vanderburg_real_2010}) proklamieren, dass praktisches Software-Engineering eigentlich keine ordinäre Ingenieursdisziplin sei. Ingenieure sind für die Planung und das Design verantwortlich, welches in aller Regel im Vorfeld der Implementierung stattfindet. Das klassische Software-Engineering empfindet diesen Prozess nach, was sich z.B. in dem Wasserfallmodell äußert. Diese Autoren äußern nun, dass dies für die meisten Softwareprojekte nicht ideal sei, da sich die Businessanforderungen meist im Laufe einer Entwicklung ändern. Traditionelles Softwaredesign abstrahiere zu früh und spekuliere ohne die letztendlichen Fakten zu kennen. Traditionelle Ingenieurswissenschaftliche Diszplinen hätten außerdem die Beschränkung, dass ein Build-Prozess äußerst teuer ist (man denke an Brücken oder Chips in Flugzeugsystemen), wohingegen dies bei Software in der Regel fast nichts koste. Dadurch kann die Software-Entwicklung ein iteratives Vorgehen nutzen \citep{neal_ford_emergent_2010}, \citep{glenn_vanderburg_real_2010}, \citep{jack_reeves_three_1992}. Statt eines großen Designs am Anfang (BDUF -- Big Design Upfront) soll das Design durch Entdeckung und Extrahieren aus dem Sourcecode gewonnen werden.
 
+Abstraktion erfolgt beim Emergent Design durch Refaktorisieren, dem Anwendungen von Entwufsmustern und dem Anwenden von sogenannten \textbf{Idiomatischen Mustern} (Idomatic Patterns). Im Gegensatz zu den klassischen Entwufsmustern sind diese Muster nicht allgemein und für jedes Projekt anwendbar, sondern spezifisch für das Projekt, die Sprache oder das Unternehmen. Dies umfassen z.B. wie Transaktionen, Sicherheit und Infrastruktur verwendet wird. Viele Frameworks seien eine Sammlung von idomatischen Mustern für eine bestimmte Aufgabe, und viele gute Frameworks seien aus alltäglichen Problemlösungen hervorgegangen, u.a. auch \glossar{rails} \citep{neal_ford_ibm_2010}.
 
-Ein Emergent Design kann auch ohne TDD verwendet werden. Allerdings ist dies ohne das Vorhandensein von einer guten Test-Suite ein risikoreiches Unterfangen.
+Ein Emergent Design kann auch ohne TDD in evolutionären Entwicklungsprozessen verwendet werden. Allerdings ist die Umsetzung ohne das Vorhandensein einer guten Test-Suite ein risikoreiches Unterfangen.
 Mit seiner iterativen Herangehensweise passen Emergent Design in Kombination mit TDD dagegen perfekt in den Entwicklungszyklus der Agilen Software Entwicklung.
 
 
 \subsection{Varianten}
-
+  \subsection{ATDD -- Acceptance TDD}
+  \label{sec:attd}
+  Die Akzeptanztest-getriebene Entwicklung ist eine Modifikation von \glossar{TDD}. Statt der Unittests, stehen hier die Akzeptanztests im Vordergrund
+  
+  Das ganze lässt sich auch in den übergeordneten Prozess zum Entwickeln eines Features einordnen.
+  %TODO RSPEC Buch macht das vor, Noch mal schauen, evtl alles Käse was ich hier geschrieben habe
+  \begin{enumerate}
+   \item Schreibe einen Akzeptanztest/Systemtest um das aktuelle Feature zu implementieren
+   \item Implementiere die Teilschritte, die notwendig sind, um den Akzeptanztest bestehen zu lassen. Verfahre bei der Implementation nach dem TDD Schema zur Implementierung der benötigten Units wie oben.
+    \begin{enumerate}
+     \item Schreibe einen Unittest
+     \item Prüfe, ob der Test fehlschlägt, andernfalls zurück zu 1.
+     \item Implementiere mit so wenig wie möglich so, dass der Test besteht
+     \item Refaktorisiere
+    \end{enumerate}
+   \item Nachdem der Akzeptanztest besteht, Prüfe etwaige Refaktorisierungen für die Anwendungsebene.   
+  \end{enumerate}
+  
+  Somit werden 2 Testebenen erstellt, die Akzeptanz- und die Unittests.
 
 
   \subsubsection{Behavior Driven Development}

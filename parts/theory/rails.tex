@@ -12,7 +12,7 @@ Viele professionelle Websites, die meist als Startup begannen, setzen bis heute 
 Im Folgenden werden die Grundzüge von Ruby on Rails näher erläutert.
 
 \subsubsection{Konzepte von Rails}
-
+\label{sec:railsconcepts}
 Rails ist ein Webframwork, das auf dem Model-View-Controller-Pattern basiert, welches eine 3-schichten Architektur darstellt. Jede Schicht hat fest definierte Aufgaben. Diese bilden normalerweise ein Dreigespann, bei Rails "`Ressource"` gennannt. Im folgenden werden die Schichten kurz erläutert, und am Beispiel einer Ressource "'Job"` 
 \begin{description}
  \item[Model] In Klassen dieser Schicht werden Zugriffe auf die Persistenzschicht vorgenommen. Meist geschieht dies durch Ausführung von SQL-Befehlen auf eine relationale Datenbank. Innerhalb von Rails ist dies aber meist nicht notwendig, da das ORM\footnote{Objektrelationale Framework} ActiveRecord häufig verwendete SQL-Befehle abstrahiert. Auch die Geschäftslogik soll per Definition zu großem Teil in dieser Schicht erfolgen.
@@ -79,7 +79,7 @@ Nach einem kurzen Überblick über Rails, sollen nun die Eigenschaften des Frame
 \paragraph{Vorteile}
 %TODO  a lot
 
-Dank der Modularität können als Persistenzgrundlage sowohl relationale Datenbank, wie MySQL, SQlite und Oracle, aber auch andere Formen, wie NoSQL-Datenbanken transparent verwendet werden. Dank einer einfach zu verstehenden Syntax, ist das Schreiben von SQL in 95\% der Fälle überflüssig und zudem auch sicherer. Hier ein Beispiel, wie das Anlegen und Auslesen einer Instanz "'Vertragsart"` erfolgt. Parallel dazu ls Kommentar die SQL Kommandos, die ActiveRecord im Hintergrund ausführt.
+Dank der Modularität können als Persistenzgrundlage sowohl relationale Datenbank, wie MySQL, SQlite und Oracle, aber auch andere Formen, wie NoSQL-Datenbanken transparent verwendet werden. Dank einer einfach zu verstehenden Syntax, ist das Schreiben von SQL in 95\% der Fälle überflüssig und zudem auch sicherer. Hier ein Beispiel, wie das Anlegen und Auslesen einer Instanz "'Vertragsart"` erfolgt. Parallel dazu als Kommentar die SQL Kommandos, die ActiveRecord im Hintergrund ausführt.
 \begin{lstlisting}
 c = ContractType.new
 c.name = "Vollzeit"

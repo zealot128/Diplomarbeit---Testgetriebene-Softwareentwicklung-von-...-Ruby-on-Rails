@@ -3,8 +3,8 @@ def_graphic_ext=
 img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
-kileversion=2.1.0
-lastDocument=parts/theory/tdd.tex
+kileversion=2.0.85
+lastDocument=parts/outro/fazit.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -212,23 +212,43 @@ order=-1
 
 [item:bibo.bib]
 archive=true
-column=23
+column=27
 encoding=UTF-8
 highlight=BibTeX
-line=451
+line=483
 mode=BibTeX
-open=true
+open=false
 order=3
 
 [item:custom_commands.tex]
 archive=true
-column=10
+column=24
 encoding=UTF-8
 highlight=LaTeX
-line=17
+line=169
 mode=LaTeX
 open=true
-order=8
+order=3
+
+[item:diagrams/ablauf.png]
+archive=true
+column=3000553999
+encoding=
+highlight=
+line=0
+mode=
+open=false
+order=-1
+
+[item:diagrams/cpm-lotloc.pdf]
+archive=true
+column=3000553999
+encoding=
+highlight=
+line=0
+mode=
+open=false
+order=-1
 
 [item:diagrams/red-green-refactor.png]
 archive=true
@@ -262,10 +282,10 @@ order=-1
 
 [item:main.tex]
 archive=true
-column=22
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=87
+line=90
 mode=LaTeX
 open=true
 order=0
@@ -347,7 +367,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=85
 mode=LaTeX
-open=true
+open=false
 order=6
 
 [item:parts/intro/motivation.tex]
@@ -382,13 +402,13 @@ order=10
 
 [item:parts/outro/fazit.tex]
 archive=true
-column=59
+column=34
 encoding=UTF-8
 highlight=LaTeX
-line=3
+line=5
 mode=LaTeX
-open=false
-order=12
+open=true
+order=4
 
 [item:parts/praxis/anwendung.tex]
 archive=true
@@ -427,7 +447,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=55
 mode=LaTeX
-open=true
+open=false
 order=9
 
 [item:parts/praxis/auswertung.tex]
@@ -447,7 +467,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=102
 mode=LaTeX
-open=true
+open=false
 order=7
 
 [item:parts/theory/rails.tex]
@@ -467,15 +487,15 @@ encoding=UTF-8
 highlight=LaTeX
 line=210
 mode=LaTeX
-open=true
+open=false
 order=5
 
 [item:parts/theory/tdd.tex]
 archive=true
-column=121
+column=202
 encoding=UTF-8
 highlight=LaTeX
-line=23
+line=155
 mode=LaTeX
 open=true
 order=1
@@ -487,7 +507,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=53
 mode=LaTeX
-open=true
+open=false
 order=4
 
 [item:skript.kilepr]
@@ -501,16 +521,16 @@ open=false
 order=-1
 
 [view-settings,view=0,item:bibo.bib]
-CursorColumn=23
-CursorLine=451
+CursorColumn=27
+CursorLine=483
 
 [view-settings,view=0,item:custom_commands.tex]
-CursorColumn=10
-CursorLine=17
+CursorColumn=24
+CursorLine=169
 
 [view-settings,view=0,item:main.tex]
-CursorColumn=22
-CursorLine=87
+CursorColumn=0
+CursorLine=90
 
 [view-settings,view=0,item:parts/00-frontpage.tex]
 CursorColumn=6
@@ -549,8 +569,8 @@ CursorColumn=95
 CursorLine=38
 
 [view-settings,view=0,item:parts/outro/fazit.tex]
-CursorColumn=59
-CursorLine=3
+CursorColumn=34
+CursorLine=5
 
 [view-settings,view=0,item:parts/praxis/anwendung.tex]
 CursorColumn=0
@@ -585,8 +605,8 @@ CursorColumn=413
 CursorLine=210
 
 [view-settings,view=0,item:parts/theory/tdd.tex]
-CursorColumn=121
-CursorLine=23
+CursorColumn=202
+CursorLine=155
 
 [view-settings,view=0,item:parts/theory/test.tex]
 CursorColumn=246
