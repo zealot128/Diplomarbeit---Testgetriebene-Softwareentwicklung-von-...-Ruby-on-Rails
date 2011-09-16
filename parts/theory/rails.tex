@@ -5,19 +5,18 @@
 Für das Projekt IT-jobs-und-stellen.de soll das Webframework Ruby-on-Rails verwendet werden. Rails wurde 2006 von der Firma 37signals unter der Leitung von David Heinemeier Hansson entwickelt und erlangte seitdem eine wachsende Popularität. Rails inspirierte viele andere Frameworks, wie z.B. cakePHP, Groovy on Grails, Symfony und ASP.NET MVC.
 
 \marginline{\includegraphics[width=0.8\marginparwidth]{material/rails.png}}
-Viele professionelle Websites, die meist als Startup begannen, setzen bis heute auf Rails. Darunter z.B. Yellow Pages, die Gelben Seiten der USA, Github, eine sehr beliebte Community für OpenSource Programmierer,  Groupon, dem führenden Unternehmen bei Online-Gutscheinen und XING, einer deutschen Online-Community für Business-Kontakte.
-% TODO http://rubyonrails.org/applications
+Viele professionelle Websites, die meist als Startup begannen, setzen bis heute auf Rails. Darunter z.B. Yellow Pages, die Gelben Seiten der USA, Github, eine sehr beliebte Community für OpenSource Programmierer,  Groupon, dem führenden Unternehmen bei Online-Gutscheinen und XING, einer deutschen Online-Community für Business-Kontakte \citep{ruby_on_rails_2011}.
 
-%TODO Quelle http://www.businessinsider.com/heres-why-ruby-on-rails-is-hot-2011-5
-Im Folgenden werden die Grundzüge von Ruby on Rails näher erläutert.
+
+Im Folgenden werden die Grundprinzipien und -konzepte von Ruby on Rails näher erläutert.
 
 \subsubsection{Konzepte von Rails}
 \label{sec:railsconcepts}
-Rails ist ein Webframwork, das auf dem Model-View-Controller-Pattern basiert, welches eine 3-schichten Architektur darstellt. Jede Schicht hat fest definierte Aufgaben. Diese bilden normalerweise ein Dreigespann, bei Rails "`Ressource"` gennannt. Im folgenden werden die Schichten kurz erläutert, und am Beispiel einer Ressource "'Job"` 
+Rails ist ein Applikationsframeworks für Webanwendungen, und basiert auf dem Model-View-Controller-Pattern, welches eine 3-Schichten Architektur darstellt. Jede Schicht hat fest definierte Aufgaben. Diese bilden normalerweise ein Dreigespann, bei Rails "`Ressource"` gennannt. Im folgenden werden die Schichten kurz erläutert, und am Beispiel einer Ressource "`Job"'
 \begin{description}
  \item[Model] In Klassen dieser Schicht werden Zugriffe auf die Persistenzschicht vorgenommen. Meist geschieht dies durch Ausführung von SQL-Befehlen auf eine relationale Datenbank. Innerhalb von Rails ist dies aber meist nicht notwendig, da das ORM\footnote{Objektrelationale Framework} ActiveRecord häufig verwendete SQL-Befehle abstrahiert. Auch die Geschäftslogik soll per Definition zu großem Teil in dieser Schicht erfolgen.
  
- Für einen Job ist das ein Modell, welches die Datenbanktabelle "'jobs"` anspricht, und z.B. die Attribute "'titel"`, "'datum"` und "'beschreibung"` besitzt. Dabei können auf diesem Level auch datenbankunabhängige Constraints definiert werden, z.B. dass ein Job nur dann gespeichert werden soll, wenn der Titel mindestens 20 Zeichen lang ist, und das Datum mindestens das heutige ist.
+ Für einen Job ist das ein Modell, welches die Datenbanktabelle "'jobs"` anspricht, und z.B. die Attribute "`titel"', "`datum"' und "`beschreibung"' besitzt. Dabei können auf diesem Level auch datenbankunabhängige Constraints definiert werden, z.B. dass ein Job nur dann gespeichert werden soll, wenn der Titel mindestens 20 Zeichen lang ist, und das Datum mindestens das heutige ist.
  \item[Controller] Klassen dieser Schicht vereinigen Methoden, die von außen per HTTP erreichbar sind. Diese Methoden kommunizieren mit den korrespondierenden Models und bestimmen, welche View im einzelnen ausgeliefert wird. Weitere Funktionen eines Controllers sind Authentifizierung und Autorisierung (Wer darf was).\\
  Standardmäßig stellt Rails die CRUD\footnote{Create Read Update Delete}-Operationen bereit, welche in Form eines REST\footnote{Representational State Transfer die HTTP-Methoden GET, POST, PUT, DELETE werden in Kombination mit einem definierten URL-Schema direkt auf die Aktionen \texttt{Auflisten, Anzeigen, Bearbeiten, Löschen, Neu anlegen} gemappt.
  \url{http://en.wikipedia.org/wiki/Representational_State_Transfer}}
@@ -54,20 +53,22 @@ Neben diesem architektorischen Konzept verfolgt Rails noch andere Strategien, um
   \end{description} 
  Rails macht das Arbeiten im Kontext dieser Architektur sehr einfach, und es gilt als die bevorzugte Methode in der Community, APIs zu bauen. 
  \item[Codegeneratoren] Rails bietet viele Codegeneratoren an, um schnell benötigte Klassen und Datenbanktabellen anzulegen. Im Railsprojekt reicht z.B.:
-\begin{lstlisting}
-rails generate scaffold job title:string description:text \
-  start_date:datetime active:boolean user:references
-\end{lstlisting}
-  Damit wird das Model Job, eine Erstellung der Tabelle "'jobs"`, ein Controller "'jobs"` mit den REST-Standardaktionen und entsprechenden Beispielviews, sowie Testfälle für Unit- und Funktionale Tests angelegt. Weiterhin sei zu bemerken, dass durch die Anweisung \texttt{user\:references} eine Spalte \texttt{user\_id} angelegt wird und eine 1:n-Beziehung zum Modell "'user"` hergestellt wird.
- \item[Full-Stack Webframework] Rails bringt out-of-the-box alles mit, was zur Webentwicklung benötigt wird. Im Gegensatz zu anderen Webframeworks wurde für Datenbankanbindung, Templatesystem, Javascriptframework, Testframework und Webserver-API bereits eine Vorauswahl getroffen. Im aktuellen Rails 3.1 sind dies ActiveRecord, ERB, JQuery, sowie Test::Unit und Rack. Die meisten dieser Teil-Frameworks lassen sich zwar leicht austauschen, Rails selbst aber proklamiert "'opinionated"`, also rechthaberisch/eigensinnig, zu sein, und den Entwickler Standards vorzugeben \citep{david_heinemeier_hansson_railsconf_2011}.
- \epigraph{Rails will have strong defaults. They might change over time but Rails will remain opinionated.}{David Heinemeier Hansson, Begründer von Rails}
+\begin{ruby}[label=test/test\_feed.rb]
+rails generate scaffold job title:string description:text \PY{l+s+se}{\PYZbs{}}
+  start\PYZus{}date:datetime active:boolean user:references
+\end{ruby}
+\codecaption{Nutzung der Codegeneratoren von der Kommandozeile}
+% label{fig:df19f5}
+  Damit wird das Model Job, eine Erstellung der Tabelle "`jobs"', ein Controller "`jobs"' mit den REST-Standardaktionen und entsprechenden Beispielviews, sowie Testfälle für Unit- und Funktionale Tests angelegt. Weiterhin sei zu bemerken, dass durch die Anweisung \texttt{user\:references} eine Spalte \texttt{user\_id} angelegt wird und eine 1:n-Beziehung zum Modell "`user"' hergestellt wird.
+ \item[Full-Stack Webframework] Rails bringt out-of-the-box alles mit, was zur Webentwicklung benötigt wird. Im Gegensatz zu anderen Webframeworks wurde für Datenbankanbindung, Templatesystem, Javascriptframework, Testframework und Webserver-API bereits eine Vorauswahl getroffen. Im aktuellen Rails 3.1 sind dies ActiveRecord, ERB, JQuery, sowie Test::Unit und Rack. Die meisten dieser Teil-Frameworks lassen sich zwar leicht austauschen, Rails selbst aber proklamiert "`opinionated"', also rechthaberisch/eigensinnig, zu sein, und den Entwickler Standards vorzugeben \citep{david_heinemeier_hansson_railsconf_2011}.
+ \borderquote{Rails will have strong defaults. They might change over time but Rails will remain opinionated.}{David Heinemeier Hansson, Begründer von Rails}
 \end{description}
 
 Eine Einführung und Programmierung in Rails soll nicht Bestandteil dieser Diplomarbeit werden. Für eine weitere Einarbeitung seien die folgende Quellen insbesondere empfohlen:
 \begin{description}
- \item[Rails for Zombies] Dies ist ein moderner, interaktiver Onlinekurs. Greg Pollack und das Team von RailsEnvy verpackt die Lektionen in humorige interaktive Lernerfahrungen. Jeweils eingeleitet durch ein Video muss der Teilnehmer Aufgaben direkt im Sourcecode lösen. Mithilfe dieses Kurses gelang es mir, meinen Arbeitskollegen einen guten Überblick über Rails zu verschaffen. Die Teilnahme ist kostenlos.\\
+ \item[Rails for Zombies] Dies ist ein moderner, interaktiver Onlinekurs. Greg Pollack und das Team von RailsEnvy verpackt die Lektionen in humorige interaktive Lernerfahrungen. Jeweils eingeleitet durch ein Video muss der Teilnehmer Aufgaben direkt im Sourcecode lösen. Die Teilnahme ist kostenlos.\\
  \url{http://railsforzombies.org/}
- \item[Agile Webdevelopment with Ruby on Rails] Das quasi-Standardwerk. Wird meist parallel mit einer neuen Rails-Version in einer neuen Auflage gedruckt, aktuell die Dritte \citep{ruby_agile_2009}.
+ \item[Agile Webdevelopment with Ruby on Rails] Das quasi-Standardwerk, u.a. geschrieben vom \glossar{rails}-Begründer David Hansson. Das Buch wird meist parallel mit einer neuen Rails-Version in einer neuen Auflage gedruckt, aktuell die Dritte \citep{ruby_agile_2009}.
  \item[Rails Guides] Die von Ruby-on-Rails herausgegebenen "'Rails Guides"` sind eine gut strukturierte, kostenlose Online-Dokumentation, die nahezu alle Aspekte von Rails beleuchten.\\
  \url{http://guides.rubyonrails.org/getting_started.html}
  \end{description}
@@ -80,65 +81,67 @@ Nach einem kurzen Überblick über Rails, sollen nun die Eigenschaften des Frame
 %TODO  a lot
 
 Dank der Modularität können als Persistenzgrundlage sowohl relationale Datenbank, wie MySQL, SQlite und Oracle, aber auch andere Formen, wie NoSQL-Datenbanken transparent verwendet werden. Dank einer einfach zu verstehenden Syntax, ist das Schreiben von SQL in 95\% der Fälle überflüssig und zudem auch sicherer. Hier ein Beispiel, wie das Anlegen und Auslesen einer Instanz "'Vertragsart"` erfolgt. Parallel dazu als Kommentar die SQL Kommandos, die ActiveRecord im Hintergrund ausführt.
-\begin{lstlisting}
-c = ContractType.new
-c.name = "Vollzeit"
-c.save
-=> false
-#  SQL (0.1ms)  BEGIN
-#  SQL (0.3ms)  SELECT 1 FROM `contract_types` 
-#     WHERE (`contract_types`.`name` = BINARY 'Vollzeit') LIMIT 1
-#  SQL (0.1ms)  ROLLBACK
->> c.errors
-=> {:name=>["Name bereits vorhanden. Der Name muss einmalig sein"]}
->> c.name = "Praktikum"
->> c.save
-=> true
-#  SQL (0.1ms)  BEGIN
-#  SQL (0.4ms)  SELECT 1 FROM `contract_types` 
-#     WHERE (`contract_types`.`name` = BINARY 'Praktikum') LIMIT 1
-#  SQL (0.4ms)  describe `contract_types`
-#  AREL (0.4ms)  INSERT INTO `contract_types` (`name`) VALUES ('Praktikum')
-#  SQL (7.1ms)  COMMIT
-\end{lstlisting}
+\begin{ruby}[label=365f7e]
+\PY{g+go}{c = ContractType.new}
+\PY{g+go}{c.name = "Vollzeit"}
+\PY{g+go}{c.save}
+\PY{g+go}{=> false}
+\PY{g+go}{#  SQL (0.1ms)  BEGIN}
+\PY{g+go}{#  SQL (0.3ms)  SELECT 1 FROM `contract\PYZus{}types` }
+\PY{g+go}{#     WHERE (`contract\PYZus{}types`.`name` = BINARY 'Vollzeit') LIMIT 1}
+\PY{g+go}{#  SQL (0.1ms)  ROLLBACK}
+\PY{g+gp}{>> }\PY{n}{c}\PY{o}{.}\PY{n}{errors}
+\PY{g+go}{=> \PYZob{}:name=>["Name bereits vorhanden. Der Name muss einmalig sein"]\PYZcb{}}
+\PY{g+gp}{>> }\PY{n}{c}\PY{o}{.}\PY{n}{name} \PY{o}{=} \PY{l+s+s2}{"}\PY{l+s+s2}{Praktikum}\PY{l+s+s2}{"}
+\PY{g+gp}{>> }\PY{n}{c}\PY{o}{.}\PY{n}{save}
+\PY{g+go}{=> true}
+\PY{g+go}{#  SQL (0.1ms)  BEGIN}
+\PY{g+go}{#  SQL (0.4ms)  SELECT 1 FROM `contract\PYZus{}types` }
+\PY{g+go}{#     WHERE (`contract\PYZus{}types`.`name` = BINARY 'Praktikum') LIMIT 1}
+\PY{g+go}{#  SQL (0.4ms)  describe `contract\PYZus{}types`}
+\PY{g+go}{#  AREL (0.4ms)  INSERT INTO `contract\PYZus{}types` (`name`) VALUES ('Praktikum')}
+\PY{g+go}{#  SQL (7.1ms)  COMMIT}
+\end{ruby}
+\codecaption{Abstraktion von SQL-Befehlen}
+% label{fig:365f7e}
+
 Hierbei ist auch schön zusehen, wie in Rails standardmäßig Transaktionen verwendet werden. Auch sieht man, wie eine Validierung funktioniert. Für das Modell VertragsArt wurde eine Einmaligkeit des Attributs name vereinbart. Dies prüft Rails vor dem Speichern und bricht das Speichern ab, falls eine Prüfung fehlschlug.
 
 Die Implementation dieser Prüfung ist denkbar einfach.
-\begin{lstlisting}
-class ContractType < ActiveRecord::Base
-  validates :name, :uniqueness => true, :presence => true
+\begin{ruby}[label=app/models/contract\_type.rb]
+\PY{k}{class} \PY{n+nc}{ContractType} \PY{o}{<} \PY{n+no}{ActiveRecord}\PY{o}{::}\PY{n+no}{Base}
+  \PY{n}{validates} \PY{l+s+ss}{:name}\PY{p}{,} \PY{l+s+ss}{:uniqueness} \PY{o}{=}\PY{o}{>} \PY{k+kp}{true}\PY{p}{,} \PY{l+s+ss}{:presence} \PY{o}{=}\PY{o}{>} \PY{k+kp}{true}
   
-  has_and_belongs_to_many :jobs
-end
-\end{lstlisting}
+  \PY{n}{has\PYZus{}and\PYZus{}belongs\PYZus{}to\PYZus{}many} \PY{l+s+ss}{:jobs}
+\PY{k}{end}
+\end{ruby}
+\codecaption{Nutzung von Validierungskritieren und DSL für Modellbeziehungen}
+% label{fig:340017}
+
 Wir vereinbaren so, dass das Attribut Name einmalig sein muss (uniqueness), und ausgefüllt sein muss (presence). Die andere Zeile mit has\_and\_belongs\_to\_many definiert eine n:m Beziehung mit dem Modell Job, d.h. ein Job hat mehrere Vertragsarten. Der Rest geschieht dann durch Metaprogrammierung.
 
-Mit minimalem Code lassen sich so komplexe Probleme abbilden. Dies macht Rails zu dem hochproduktivem Framework, als das es entwickelt wurde.
 \epigraph{I needed to be way more productive...}{David Heinemeier Hansson}
-%TODO Quote
+Mit minimalem Code lassen sich so komplexe Probleme abbilden. Dies macht Rails zu dem hochproduktivem Framework, als das es entwickelt wurde.
 
+
+\marginnote{Sicherheit}
 Rails bietet eine gute Ausgangsbasis um sichere Websoftware zu entwickeln. Das Verwenden eines Datenbankframeworks macht SQL-Injections unmöglich. 
-Cross-Site-Scripting
-Cross-Site-Request-Forgery und Session-Angriffe werden erschwert, da Session und Cookie Variablen standardmäßig verschlüsselt werden.
-Durch die Verwendung des
-
-% SQL Injection
-% Tower of Babel
+Cross-Site-Request-Forgery und Session-Angriffe werden erschwert, da Session und Cookie-Variablen standardmäßig verschlüsselt werden, und bei Nutzung der Formulargeneratoren ein CSRF-Token generiert wird, um Replay-Angriffe zu unterbinden.
 
 \paragraph{Nachteile}
 Interaktion mit Legacy-Software ist nicht immer möglich. ActiveRecord reserviert ein paar Spaltennamen, wie \texttt{type} und  class. Eine Benennung der Spalten sollte der Ruby-Namenskonvention entsprechen, also nur Buchstaben Zahlen und Unterstriche enthalten. Ansonsten können die Spalten nur über Umwege angesprochen werden.
 
-\paragraph{Performance} Oft wird angeführt, dass Ruby als Skriptsprache und Rails als darauf aufbauendes Framework eine schlechte Performance hat, und dadurch ungeeignet für große Webanwendungen ist.
+\marginnote{Performance} Oft wird angeführt, dass Ruby als Skriptsprache und Rails als darauf aufbauendes Framework eine schlechte Performance hat, und dadurch ungeeignet für große Webanwendungen ist.
 %TODO QUelle, wer sagt das?
 
 %TODO Benchmark, Diskussion zur Architektur
 
 Anderseits gibt es Anzeichen dafür, dass eine clevere Architektur und Caching für skalierende Anwendung entscheidender ist, als die letztendliche Ausführungszeit.
 
-Das dies möglich ist, zeigen z.B. Groupon, der führende Online-Coupon-Anbieter mit mehr als 50 Mio Abonnenten und 
-%TODO http://www.socialshopping.com/Groupon/news/Groupon-hits-50m-Subscribers-Shopping-site-sensation-201101210398/
-Twitter, die jeweils Rails verwenden.
-%TODO Quelle Rails applications
+Das dies möglich ist, zeigen z.B. Groupon, der führende Online-Coupon-Anbieter mit mehr als 50 Mio Abonnenten\footnote{\url{http://www.socialshopping.com/Groupon/news/Groupon-hits-50m-Subscribers-Shopping-site-sensation-201101210398/}} und Twitter, die jeweils Rails verwenden \citep{ruby_on_rails_2011}.
+
+\marginnote{Auswahl der Komponenten} Da Rails ein komplettes Webframework ist, wurden bei der Auswahl der einzelnen Komponenten bereits Entscheidungen getroffen. Erst jüngst gab es Kritik aus Teilen der Community, da ab der Version 3.1 "`CoffeeScript"' und "`SASS"' Bestandteil einer Rails-Distribution sind. Beide sind Zwischensprachen, die in Javascript respektive CSS kompilieren, und diese um Funktionalität erweitern. 
+% TODO Quelle
 
 \paragraph{Rails und Tests}
 Rails bietet ausgezeichnete Vorraussetzungen zum Softwaretest. Dafür sprechen, dass...

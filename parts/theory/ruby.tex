@@ -4,10 +4,6 @@ Ruby ist eine Programmiersprache, die ab 1993 von Yukihiro Matsumoto entwickelt 
 
 Eine vollständige Einführung in Ruby zu geben würde den Rahmen dieser Diplomarbeit sprengen, weswegen ich mich auf die Herausstellung der Hauptmerkmale und Unterschiede zu anderen Sprachen konzentrieren werde, und was die Auswirkungen auf das Testgeschehen sind.
 
-%Dem geneigten Leser seien zum Selbststudium 
-% http://tryruby.org/
-% .... TODO
-
 \subsection{Einführung in Ruby}
 \marginline{\includegraphics[width=0.8\marginparwidth]{material/ruby.png}
 Ruby ist eine Multiparadigma-Sprache}
@@ -49,41 +45,79 @@ Das letzte Beispiel zeigt den Einsatz von Kontrollstrukturen. Als Besonderheit s
 
 Weiterhin erlaubt Ruby die Arbeit mit Lambdas, also anonymen Funktionen. Eine beliebte Verwendungsmöglichkeit ist die Bearbeitung von Arrays und listenähnlichen Strukturen.
 
-\begin{lstlisting}[language=Ruby,label=Ruby Beispiel: Lambdas,caption=Ruby Beispiel: Lambdas]
->> adder = lambda { |a,b|  a + b }
->> adder.call(1,2)
-=> 3
+% SNIPPET: [language=Ruby,label=Ruby Beispiel: Lambdas,caption=Ruby Beispiel: Lambdas]
+% >> adder = lambda { |a,b|  a + b }                                                                                                         
+% >> adder.call(1,2)                                                                                                                         
+% => 3                                                                                                                                       
+%                                                                                                                                            
+% # Sortiere nach Standardvergleichsoperator                                                                                                 
+% >> [4,5,7,3].sort()                                                                                                                        
+% => [3, 4, 5, 7]                                                                                                                            
+%                                                                                                                                            
+% # Es kann auch eine benutzerdefinierte Sortierfunktion                                                                                     
+% # angegeben werden                                                                                                                         
+% >> [ "string",  "rails",  "ruby" ].sort_by{ |item| item.length }                                                                           
+% => ["ruby", "rails", "string"]                                                                                                             
+%                                                                                                                                            
+% # Die Quadratzahlen von 1 bis 5                                                                                                            
+% >> (1..5).map{|element| element * 2}                                                                                                       
+% => [2, 4, 6, 8, 10]                                                                                                                        
+%                                                                                                                                            
 
-# Sortiere nach Standardvergleichsoperator
->> [4,5,7,3].sort()
-=> [3, 4, 5, 7]
+\begin{ruby}[label=IRB]
+\PY{g+gp}{>> }\PY{n}{adder} \PY{o}{=} \PY{n+nb}{lambda} \PY{p}{\PYZob{}} \PY{o}{|}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{o}{|}  \PY{n}{a} \PY{o}{+} \PY{n}{b} \PY{p}{\PYZcb{}}
+\PY{g+gp}{>> }\PY{n}{adder}\PY{o}{.}\PY{n}{call}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+\PY{g+go}{=> 3}
 
-# Es kann auch eine benutzerdefinierte Sortierfunktion
-# angegeben werden
->> [ "string",  "rails",  "ruby" ].sort_by{ |item| item.length }
-=> ["ruby", "rails", "string"]
+\PY{g+go}{# Sortiere nach Standardvergleichsoperator}
+\PY{g+gp}{>> }\PY{o}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{3}\PY{o}{]}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{p}{)}
+\PY{g+go}{=> [3, 4, 5, 7]}
 
-# Die Quadratzahlen von 1 bis 5
->> (1..5).map{|element| element * 2}
-=> [2, 4, 6, 8, 10]
-\end{lstlisting}
+\PY{g+go}{# Es kann auch eine benutzerdefinierte Sortierfunktion}
+\PY{g+go}{# angegeben werden}
+\PY{g+gp}{>> }\PY{o}{[} \PY{l+s+s2}{"}\PY{l+s+s2}{string}\PY{l+s+s2}{"}\PY{p}{,}  \PY{l+s+s2}{"}\PY{l+s+s2}{rails}\PY{l+s+s2}{"}\PY{p}{,}  \PY{l+s+s2}{"}\PY{l+s+s2}{ruby}\PY{l+s+s2}{"} \PY{o}{]}\PY{o}{.}\PY{n}{sort\PYZus{}by}\PY{p}{\PYZob{}} \PY{o}{|}\PY{n}{item}\PY{o}{|} \PY{n}{item}\PY{o}{.}\PY{n}{length} \PY{p}{\PYZcb{}}
+\PY{g+go}{=> ["ruby", "rails", "string"]}
+
+\PY{g+go}{# Die Quadratzahlen von 1 bis 5}
+\PY{g+gp}{>> }\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{.}\PY{n}{.}\PY{l+m+mi}{5}\PY{p}{)}\PY{o}{.}\PY{n}{map}\PY{p}{\PYZob{}}\PY{o}{|}\PY{n}{element}\PY{o}{|} \PY{n}{element} \PY{o}{*} \PY{l+m+mi}{2}\PY{p}{\PYZcb{}}
+\PY{g+go}{=> [2, 4, 6, 8, 10]}
+\end{ruby}
+\codecaption{Ruby Beispiel: Blöcke}
+% label{fig:460d49}
+
 
 
 \paragraph{Typ- und Objektsystem}
 Wie schon erwähnt, sind bei Ruby alle Datentypen ein Objekt. Dies schließt insbesondere Klassen und primitive Datentypen mit ein, wie wir wiefolgt sehen können
-\begin{lstlisting}
->> 2.class 
-=> Fixnum
->> Fixnum.class 
-=> Class
->> Class.class 
-=> Class
+% SNIPPET: 
+% >> 2.class                                                                                                                                 
+% => Fixnum                                                                                                                                  
+% >> Fixnum.class                                                                                                                            
+% => Class                                                                                                                                   
+% >> Class.class                                                                                                                             
+% => Class                                                                                                                                   
+%                                                                                                                                            
+% >> Fixnum.superclass                                                                                                                       
+% => Integer                                                                                                                                 
+% >> Fixnum.ancestors                                                                                                                        
+% => [Fixnum, Integer, Precision, Numeric, Comparable, Object, Kernel]                                                                       
+%                                                                                                                                            
+\begin{ruby}[label=IRB]
+\PY{g+gp}{>> }\PY{l+m+mi}{2}\PY{o}{.}\PY{n}{class} 
+\PY{g+go}{=> Fixnum}
+\PY{g+gp}{>> }\PY{n+no}{Fixnum}\PY{o}{.}\PY{n}{class} 
+\PY{g+go}{=> Class}
+\PY{g+gp}{>> }\PY{n+no}{Class}\PY{o}{.}\PY{n}{class} 
+\PY{g+go}{=> Class}
 
->> Fixnum.superclass
-=> Integer
->> Fixnum.ancestors
-=> [Fixnum, Integer, Precision, Numeric, Comparable, Object, Kernel]
-\end{lstlisting}
+\PY{g+gp}{>> }\PY{n+no}{Fixnum}\PY{o}{.}\PY{n}{superclass}
+\PY{g+go}{=> Integer}
+\PY{g+gp}{>> }\PY{n+no}{Fixnum}\PY{o}{.}\PY{n}{ancestors}
+\PY{g+go}{=> [Fixnum, Integer, Precision, Numeric, Comparable, Object, Kernel]}
+\end{ruby}
+\codecaption{Klassenhierarchien}
+% label{fig:f37300}
+
 Das Literal "`2"' ist somit ein Objekt vom Typ Fixnum. Die Klasse Fixnum ist ihrerseits vom Typ "`class"'. Da Ruby sowohl (Einfach-)Ableitungen als auch sogenannte Includes oder Mixins unterstützt, kann eine Klasse auch eine Menge von Oberklassen haben. Die gezeigte Klasse Fixnum verfügt somit standardmäßig sogar über 7 Oberklassen.
 
 Ruby ist dynamisch stark typisiert, d.h. dass die Zuweisung des Typs einer Variable zur Laufzeit des Programms geschieht. Der Typ einer Variable ergibt sich damit aus ihrem beinhalteten Objekt. Durch die starke Typisierung ist es aber nicht möglich, invalide Operationen auf inkompatible getypte Daten auszuführen, beispielsweise eine Addition von Integer mit String. Rubys Typsystem ist "`Duck-typed"', d.h. dass die Semantiken eines Objekts nicht durch seine Klasse und Ableitungshierarchie, sondern seinen Methoden und Attributen bestimmt wird.\borderquote{"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."}{James Whitcomb Riley}
@@ -95,34 +129,57 @@ Ruby verfügt über eine lexikalische und dynamische Bindung\footnote{
 
 \paragraph{Reflektion und Introspection} Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern. Ruby "`merkt"' sich allerdings die überschriebenen Methoden und ein Aufruf der überschriebenen Methoden ist stets mittels "`super"' möglich.
 
-\begin{lstlisting}[language=Ruby,label=Ruby Beispiel offene Klassen,caption=Ruby Beispiel offene Klassen]
->> class String
->>   def remove_whitespace
->>     self.gsub(/\s+/, "")
->>   end
->> end
+% SNIPPET: [language=Ruby,label=Ruby Beispiel offene Klassen,caption=Ruby Beispiel offene Klassen]
+% >> class String                                                                                                                            
+% >>   def remove_whitespace                                                                                                                 
+% >>     self.gsub(/\s+/, "")                                                                                                                
+% >>   end                                                                                                                                   
+% >> end                                                                                                                                     
+%                                                                                                                                            
+% >> "Dies ist ein Test".remove_whitespace                                                                                                   
+% => "DiesisteinTest"                                                                                                                        
+%                                                                                                                                            
+%                                                                                                                                         
+\begin{ruby}[label=IRB]
+\PY{g+gp}{>> }\PY{k}{class} \PY{n+nc}{String}
+\PY{g+gp}{>> }  \PY{k}{def} \PY{n+nf}{remove\PYZus{}whitespace}
+\PY{g+gp}{>> }    \PY{n+nb}{self}\PY{o}{.}\PY{n}{gsub}\PY{p}{(}\PY{l+s+sr}{/}\PY{l+s+sr}{\PYZbs{}}\PY{l+s+sr}{s+}\PY{l+s+sr}{/}\PY{p}{,} \PY{l+s+s2}{"}\PY{l+s+s2}{"}\PY{p}{)}
+\PY{g+gp}{>> }  \PY{k}{end}
+\PY{g+gp}{>> }\PY{k}{end}
 
->> "Dies ist ein Test".remove_whitespace
-=> "DiesisteinTest"
+\PY{g+gp}{>> }\PY{l+s+s2}{"}\PY{l+s+s2}{Dies ist ein Test}\PY{l+s+s2}{"}\PY{o}{.}\PY{n}{remove\PYZus{}whitespace}
+\PY{g+go}{=> "DiesisteinTest"}
+\end{ruby}
+\codecaption{Ruby Beispiel offene Klassen}
+% label{fig:9bf48b}
 
-\end{lstlisting}
 \paragraph{Generische Programmierung und Aspekte der Metaprogrammierung}
 Metaprogrammierung umfasst die Analyse, Transformation und Generierung von Objektprogrammen durch Metaprogramme \citep{herrmann_2005}.  Dies ermöglicht es Probleme effektiv zu lösen, die andernfalls nur mit erheblichem Aufwand, oder gar nicht zu lösen sind.
 Ein beliebtes Idiom innerhalb der Ruby-Community ist es, verwendete Methoden auf Basis des Methodennamens zur Laufzeit zu erstellen (Generierung). So verwendet das beliebte Objektrelationale Datenbankframework ActiveRecord dies, um einfache SQL-Statements zu erstellen (Ruby on Rails verwendet standardmäßig ActiveRecord als Schnittstelle zur Datenbank.).
-\begin{lstlisting}
->> Person.find_by_first_name("Stefan")
-#  Person Load (0.2ms)  SELECT persons.* FROM persons
-#    WHERE users.first_name = 'Stefan' LIMIT 1
-\end{lstlisting}
+% SNIPPET: 
+% >> Person.find_by_first_name("Stefan")                                                                                                     
+% #  Person Load (0.2ms)  SELECT persons.* FROM persons                                                                                      
+% #    WHERE users.first_name = 'Stefan' LIMIT 1       
+\begin{ruby}[label=IRB]
+\PY{g+gp}{>> }\PY{n+no}{Person}\PY{o}{.}\PY{n}{find\PYZus{}by\PYZus{}first\PYZus{}name}\PY{p}{(}\PY{l+s+s2}{"}\PY{l+s+s2}{Stefan}\PY{l+s+s2}{"}\PY{p}{)}
+\PY{g+go}{#  Person Load (0.2ms)  SELECT persons.* FROM persons}
+\PY{g+go}{#    WHERE users.first\PYZus{}name = 'Stefan' LIMIT 1}
+\end{ruby}
+\codecaption{Demonstration von generischen}
+% label{fig:d0ee1e}
 
-Die Methode \texttt{find\_by\_first\_name} existiert nicht, und wird zur Laufzeit auf Basis des Namens gebaut.
+
+Die Methode \texttt{find\_by\_first\_name} existiert nicht, und wird zur Laufzeit auf Basis des Namens gebaut. Dies ist möglich, da Ruby sogennante Hooks (Callbacks) bereitstellt. Dies sind z.B. method\_missing, der aufgerufen wird, wenn ein nicht-existierende Funktion gerufen wird (wie in unserem Beispiel "`find\_by\_first\_name"'), oder "`method\_added"', der aufgerufen wird, wenn in einer Klasse eine Methode definiert wird\footnote{Einen guten Überblick über die Callbacks die Ruby bereitstellt, und was man damit kann, finden sie hier: \url{method_added}}.
 
 Ein weiteres Beispiel ist die Definition der relationalen Beziehungen zwischen den einzelnen Modellen innerhalb von \glossar{rails}.
-\begin{lstlisting}
-class Job < ActiveRecord::Base
-  belongs_to :user
-end 
-\end{lstlisting}
+\begin{ruby}[label=app/models/job.rb]
+\PY{k}{class} \PY{n+nc}{Job} \PY{o}{<} \PY{n+no}{ActiveRecord}\PY{o}{::}\PY{n+no}{Base}
+  \PY{n}{belongs\PYZus{}to} \PY{l+s+ss}{:user}
+\PY{k}{end}
+\end{ruby}
+\codecaption{Nutzung von Metaprogrammierung zur Erstellung von Objektbeziehungen}
+% label{fig:a7720a}
+
 Hiermit definieren wir, dass ein Job einem User gehört, es also eine 1:N (oder 1:1)-Beziehung zwischen beiden gibt. Die dafür benötigten Getter und Setter werden mittels des Methodenaufrufs "`belongs\_to"' in die Klasse Job geschrieben.
 
 Diese Beispiele sollten als kurzer Einstieg in Ruby dienen, und einen Querschnitt durch die Besonderheiten der Sprache aufzuzeigen.
@@ -144,20 +201,11 @@ Allerdings bleiben Fehler, die der Compiler bereits entdeckt hätte, bis zur Aus
 
 Auf das Testen hat dies eine direkte Auswirkung. Viele Meinungen belegen, dass eine dynamisch typisierte Sprache mehr Tests benötigt, als eine statisch typisierte \citep{daniel_spiewak_dynamic_2010}. 
 
-
-
-
-
-
 % 
 % All diese Methoden können, richtig angewendet, zur Verbesserung der Lesbarkeit der Programme, und damit zur Erhöhrung der Wartbarkeit, führen.
 % 
 % Auch das sehr beliebte Testframework Rspec, verwendet Metaprogrammierung, um Testfälle und Zusicherungen wie fast in der englischen Sprache zu formulieren. Dazu werden sämtliche Objekte von Ruby um Funktionen erweitert. Dies ist möglich, da die Klasse "`Objekt"', die Basisklasse (fast) aller Ruby-Klasse ist, um diese Methoden erweitert wurde.
 % 
-% \begin{lstlisting}
-% >> 4.should == 3
-% RSpec::Expectations::ExpectationNotMetError: expected: 3
-% \end{lstlisting}
 
 \paragraph{Schlussfolgerung}
 
@@ -173,26 +221,30 @@ Test::Unit (Ruby 1.8.7) und Minitest (1.9.2) sind die Testbibliotheken, die Ruby
 Für eine zu testende Klasse wird eine analoge Testklasse erstellt. Diese trägt per Definition denselben Namen wie die zu testende Klasse mit einem "`Test"' am Anfang. Um z.B. eine Klasse "`job"' zu testen, wird eine Datei \texttt{test\_job.rb} (Ruby Standard) oder \texttt{job\_test.rb} (Rails Standard) erstellt. Dort wiederrum wird eine Klasse mit Namen \texttt{TestJob} definiert. 
 
 Ein Beispieltest sieht z.B. so aus:
-\begin{lstlisting}[language=Ruby,label=Testen mit Test::Unit,caption=Testen mit Test::Unit in Ruby]
-require "job"
+% \begin{lstlisting}[language=Ruby,label=,caption=]
+\begin{ruby}[label=Testen mit Test::Unit]
+\PY{o}{[}\PY{n}{language}\PY{o}{=}\PY{n+no}{Ruby}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{n+no}{Testen} \PY{n}{mit} \PY{n+no}{Test}\PY{o}{::}\PY{n+no}{Unit}\PY{p}{,}\PY{n}{caption}\PY{o}{=}\PY{n+no}{Testen} \PY{n}{mit} \PY{n+no}{Test}\PY{o}{::}\PY{n+no}{Unit} \PY{k}{in} \PY{n+no}{Ruby}\PY{o}{]}
+\PY{n+nb}{require} \PY{l+s+s2}{"}\PY{l+s+s2}{job}\PY{l+s+s2}{"}
 
-class TestJob < Test::Unit::TestCase
-  def setup
-    @job = Job.create
-  end
+\PY{k}{class} \PY{n+nc}{TestJob} \PY{o}{<} \PY{n+no}{Test}\PY{o}{::}\PY{n+no}{Unit}\PY{o}{::}\PY{n+no}{TestCase}
+  \PY{k}{def} \PY{n+nf}{setup}
+    \PY{n+nv+vi}{@job} \PY{o}{=} \PY{n+no}{Job}\PY{o}{.}\PY{n}{create}
+  \PY{k}{end}
   
-  def teardown
-    Job.delete_all
-  end
+  \PY{k}{def} \PY{n+nf}{teardown}
+    \PY{n+no}{Job}\PY{o}{.}\PY{n}{delete\PYZus{}all}
+  \PY{k}{end}
   
-  def test_job_exists
-    @job.title =  "Ruby on Rails in Entwickler"
-    @job.add_location_to_title( "Dresden")
+  \PY{k}{def} \PY{n+nf}{test\PYZus{}job\PYZus{}exists}
+    \PY{n+nv+vi}{@job}\PY{o}{.}\PY{n}{title} \PY{o}{=}  \PY{l+s+s2}{"}\PY{l+s+s2}{Ruby on Rails in Entwickler}\PY{l+s+s2}{"}
+    \PY{n+nv+vi}{@job}\PY{o}{.}\PY{n}{add\PYZus{}location\PYZus{}to\PYZus{}title}\PY{p}{(} \PY{l+s+s2}{"}\PY{l+s+s2}{Dresden}\PY{l+s+s2}{"}\PY{p}{)}
     
-    assert_equal( "Ruby on Rails Entwickler in Dresden",  Job.first.title)
-  end
-end
-\end{lstlisting}
+    \PY{n}{assert\PYZus{}equal}\PY{p}{(} \PY{l+s+s2}{"}\PY{l+s+s2}{Ruby on Rails Entwickler in Dresden}\PY{l+s+s2}{"}\PY{p}{,}  \PY{n+no}{Job}\PY{o}{.}\PY{n}{first}\PY{o}{.}\PY{n}{title}\PY{p}{)}
+  \PY{k}{end}
+\PY{k}{end}
+\end{ruby}
+\codecaption{Testen mit Test::Unit in Ruby}
+
 Unsere Klasse TestJob erbt von der TestUnit Basisklasse. Sie beinhaltet die Methoden "`setup"' und "`teardown"', die jeweils vor, respektive nach jedem einzelnen Testfall aufgerufen werden.
 In der Setup-Methode nehmen wir z.B. das Anlegen eines Jobs vor, in der Teardown Methode löschen wir alle Jobs in der Datenbank, um einen sauberen Test zu gewährleisten
 
