@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+require "rubygems"
+require "open3"
+require "colorize"
+require "digest"
+
+env = "ruby"
+syntax = "ruby"
+
+
+
+
+filename = ARGV[0]
+regex = /\\begin\{lstlisting\}(.+?)\\end\{lstlisting\}/m
+listings = open(filename).read.scan(regex)
+listings.each do |listing|
+
+  lst = listing.first
+
+  label = Digest::SHA2.hexdigest(lst)[0..5]
+
+
+  stdin, stdout, stdr = Open3.popen3('pygmentize', "-l", syntax, "-f", "latex")
+  stdin.write lst
+  stdin.close
+
+  out = <<DOC
+
+  \\begin{#{env}}[label=app/models/job.rb]
+    #{stdout.read}
+  \\end{#{env}}
+  \\codecaption{Beschreibung}
+  % \label{fig:#{label}}
+DOC
+  snippet = lst.gsub(/[\s]+/, " ")[0..80]
+
+  puts "SNIPPET: #{snippet}...".green
+  puts out
+end
+
+
+
