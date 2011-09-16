@@ -9,18 +9,18 @@ gem "activesupport"
 gem "i18n"
 gem "rake"
 gem "echoe"
-
+gem 'simplecov'
 # for testing
 gem "shoulda"
 gem "mocha"
 gem "colorize"
 
+# :(
+
 # libraries needed
 gem "nokogiri"
 gem "httparty"
 gem "builder"
-
-
 
 gem "ansi"
 gem "turn", :git => "https://github.com/TwP/turn"

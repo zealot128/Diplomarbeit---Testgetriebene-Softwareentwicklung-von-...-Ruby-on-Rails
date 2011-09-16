@@ -1,4 +1,5 @@
-#require "turn"
+require 'simplecov'
+SimpleCov.start
 require "ansi"
 require "turn"
 require "mocha"
@@ -6,7 +7,8 @@ require "shoulda"
 require "active_support/all"
 require "builder"
 require "ostruct"
-#require "active_support/all"
+
+
 class ActiveSupport::TestCase
 
   def mock_feed(opts={})
