@@ -3,13 +3,35 @@ require "rubygems"
 require "open3"
 require "colorize"
 require "digest"
+require "active_support/all"
 
 
-env = "ruby"
-syntax = "ruby"
+require 'optparse'
+
+options = {
+  :env => "ruby",
+  :syntax => "ruby",
+  :label => 'test/test_feed.rb'
+}
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{__FILE__} [options]"
+
+  opts.on("-s", "--syntax LEXER", "Syntaxlexer fuer pygmentize") do |v|
+    options[:syntax] = v
+  end
+  opts.on("-e", "--env", "Latex-Environment zum Kapseln") do |v|
+    options[:env] = v
+  end
+  opts.on("-c", "--label", "Standard Label/Dateiname") do |v|
+    options[:label] = v
+  end
+end.parse!
+
+p options
 
 
-
+caption = options[:label].camelcase
+file_label   = options[:label].gsub("_", "\\_")
 
 filename = ARGV[0]
 regex = /\\begin\{lstlisting\}(.+?)\\end\{lstlisting\}/m
@@ -20,18 +42,24 @@ listings.each do |listing|
 
   label = Digest::SHA2.hexdigest(lst)[0..5]
 
-  stdin, stdout, stdr = Open3.popen3('pygmentize', "-l", syntax, "-f", "latex")
+  stdin, stdout, stdr = Open3.popen3('pygmentize', "-l", options[:syntax], "-f", "latex")
   stdin.write lst
   stdin.close
 
-  text =stdout.read.gsub(/.*begin{Verbatim}.*/,"").gsub('\end{Verbatim}',"")
+  error = stdr.read
+  text =stdout.read.gsub(/.*begin\{Verbatim\}.*/,"").gsub('\end{Verbatim}',"")
+  if error.length > 0
+    puts "ERROR with pygmentize:".red
+    puts error
+      exit
+  end
 
   out = <<DOC
 
-\\begin{#{env}}[label=app/models/job.rb]
+\\begin{#{options[:env]}}[label=#{file_label}]
 #{text.strip}
-\\end{#{env}}
-\\codecaption{Beschreibung}
+\\end{#{options[:env]}}
+\\codecaption{#{caption}}
 % \label{fig:#{label}}
 DOC
   snippet = lst
