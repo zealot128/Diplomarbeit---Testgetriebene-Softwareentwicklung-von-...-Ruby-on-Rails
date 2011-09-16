@@ -41,13 +41,254 @@ Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
 Der RSS-Feed in dem oben genannten Beispiel enthält eine Stellenanzeige (item). Die description beinhaltet einen HTML-Kommentar, in dem nummer, tags, ort, kontakt und link für die Stellenanzeige definiert werden. Das ganze wurde mit einem Kommentar, und nicht mit einer Erweiterung der Syntax durch eine DDT oder XSD, realisiert, da sich eine Eingliederung der Syntaxelemente mittels DDTs und XSDs in einige der Systeme der Kunden als problematisch herausgestellt hat.
 
 Diese Art des Feedimports ist bereits in den Community-Job-Portalen in Funktion. Allerdings besitzt dieser, in PHP geschriebene Code, keinerlei automatisierte Tests, und war in der Vergangenheit schon oft die Ursache von Fehlern. So ist es notwendig, den Feedimport nun in Ruby als Bibliothek im Rahmen von IT-Jobs neu zu schreiben, und für die bereits laufenden Portale schnellstmöglich einzubauen. 
-Diese Bibliothek soll also unabhängig von Rails funktionieren, kann aber trotzdem dessen Validierungsfunktionen verwenden (Siehe Abschnitt \ref{sec:awunit}).
+Diese Bibliothek soll also unabhängig von Rails funktionieren.
 
 Ziel diesen Abschnittes ist es, zu zeigen, wie das Einlesen eines externen XML-Feeds getestet werden kann. 
 
 \paragraph{Initialier Test}
 
+Bevor man anfängt zu implementieren, ist es sinnvoll sich Gedanken darum zu machen, was von den zu implementieren Objekten erwartet wird. Da wir letztendlich eine gewisse Menge von RSS-Feeds einlesen wollen, ist es angebracht, ein entsprechendes Objekt, z.B. "`ImportedFeed"' einzuführen.
 
- 
- 
- mittels Mocks und Stubs am Beispiel Feedimport
+Auch wenn wir noch nicht genau wissen, wie ein Feed funktioniert, so können wir doch zumindest annehmen, dass ein HTTP-Zugriff auf eine URL erfolgt, um den Feed vom Kunden abzuholen.
+
+Da wir unsere Tests nicht davon abhängig machen wollen, ob ein solcher Feed bereitsteht und sich stets im selben Zustand befindet, müssen wir diesen HTTP-Zugriff simulieren.
+
+\begin{lstlisting}
+require "test_helper"   # Stuff that we need for convenient tests
+require "imported_feed" # Object under Test
+
+class TestImportedFeed < ActiveSupport::TestCase
+
+  test "get an feed through httparty" do
+    HTTParty.expects(:get).with("http://www.example.com/feed.xml")
+    ImportedFeed.new("http://www.example.com/feed.xml")
+  end
+end
+\end{lstlisting}
+
+Hier definieren wir einen ersten Test für den ImportedFeed. Für die HTTP-Zugriffe wollen wir die Bibliothek HTTParty\footnote{https://github.com/jnunemaker/httparty} benutzen. In der ersten Zeile des Tests nutzen wir das Mock-Framework wie folgt: Wir legen eine Erwartung fest, dass innerhalb dieses Tests die Klassenmethode "`get"' der Klasse HTTParty aufgerufen wird, mit einem Parameter der die URL angibt.
+
+Dann rufen wir unsere (noch nicht existente) ImportedFeed Klasse mit dem einzulesenden Feed.
+\tddred
+
+Nach der Ausführung des Tests erhalten wir einen Fehler. 
+\begin{lstlisting}
+ NameError: uninitialized constant TestImportedFeed:ImportedFeed
+\end{lstlisting}
+In der reinen TDD-Lehre würde nun als erstes eine Behebung aller Fehler stattfinden, d.h. eine Implementierung der leeren Klasse ImportedFeed. Danach würden wir noch einen Fehler erhalten, da unser Konstruktur noch keinen Parameter entgegennimmt. Erst dann würde man sich den Testfehlschlägen widmen. Aus Platzgründen sind diese Schritte hier nicht explizit ausgeführt. Der Fehlschlag lautet dann:
+
+\begin{lstlisting}
+ Failure
+  not all expectations were satisfied
+  unsatisfied expectations:
+  - expected exactly once, not yet invoked: HTTParty.get('http://www.example.com/feed.xml')
+\end{lstlisting}
+Das Mockobjekt hat unseren Test fehlschlagen lassen, ohne dass wir selbst eine Assertion festgelegt hätten. Da wir bisher noch keine Implementation eines Netzwerkzugriffes durch HTTParty implementiert haben, schlägt der Test fehl.
+
+Die Implementierung wäre:
+\begin{lstlisting}
+require "httparty"
+
+class ImportedFeed
+  def initialize(url)
+    HTTParty.get(url)
+  end
+end
+\end{lstlisting}
+\tddgreen
+Die Funktion initialize stellt innerhalb von Ruby den Konstruktor dar. Dort rufen wir unseren Netzwerkzugriff auf, der allerdings durch unser definiertes Mock-Objekt abgefangen wird. Dies stellt die definierte Erwartung zufrieden, und der Test besteht.
+
+
+
+\paragraph{2. Komplexe Objekte durch Mocks zurückgeben}
+
+Wir haben zwar den Netzwerkzugriff abgefangen, geben aber nun keinerlei Antwort, d.h. ein XML-Dokument zurück. Für den nächsten Test müssen wir unsere Mockanweisung also modifizieren.
+
+\begin{lstlisting}
+  test "really get content from an feed" do
+    fake_response = OpenStruct.new
+    fake_response.code = 200  # HTTP OK!
+    fake_response.body = "<?xml version='1.0'?><Hallo/>"
+
+    HTTParty.expects(:get).with("http://www.example.com/feed.xml").returns(fake_response)
+
+    import = ImportedFeed.new(@url)
+    assert_match "Hallo", import.body
+  end 
+\end{lstlisting}
+Wir bilden das Antwortobjekt, das HTTParty normalerweise generieren würde, beschränken uns hierbei aber nur auf die für uns notwendigen Methoden von "`body"' und "`code"' (Dem HTTP-Status Code). Wir nutzen dazu die Klasse OpenStruct, die Getter und Setter für das Objekt beim Benutzen erstellt. Unserem Mock können wir dann anweisen, diese Antwort zurückzugeben.
+\tddred
+
+Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wurde, aber unser ImportedFeed noch kein Attribut "`body"' besitzt (Fehler), und dass dieser keine String beinhaltet.
+
+\begin{lstlisting}
+class ImportedFeed
+  attr_reader :body
+  def initialize(url)
+    response = HTTParty.get(url)
+    @body = response.body
+  end
+end  
+\end{lstlisting}
+\tddgreen
+Mitfhile des Makros "`attr\_reader"' generieren wir ein Attribut body und gleichzeitig einen Getter für den Zugriff von außen. Innerhalb unseres Konstruktors speichern wir den Body der HTTP-Antwort in diesem Attribut.
+
+\tddrefactor
+Da unser Testfall nun ziemlich lang geworden ist, und beide Testfälle ein Mock initialisieren, ist dies eine gute Gelegenheit, den Mock zentral zu definieren. Dazu nutzen wir z.B. eine Datei "`test\_helper.rb"', in der wir Anweisungen schreiben, die alle Testfälle nutzen können:
+
+\begin{lstlisting}
+class ActiveSupport::TestCase
+  def mock_feed(opts={})
+    options = {
+      :url => "http://example.com/feed.xml",
+      :code => 200,
+      :body => '<?xml version="1.0" encoding="UTF-8"?><Hallo>Hallo</Hallo>'
+    }.merge(opts)
+    response = OpenStruct.new
+    response.code = options[:code]
+    response.body = options[:body]
+    HTTParty.expects(:get).with(options[:url]).returns(response)
+  end
+end
+\end{lstlisting}
+Da Ruby offene Klassen unterstützt öffnen wir die Basisklasse der Testfälle und definieren eine neue Methode. Diese erhält einen Hash als Parameter, den wir mit unseren Standardwerten zusammenmergen. Diese Art der Parameterübergabe ist ein sehr gebräuchliches Idiom innerhalb der Ruby-Community.
+
+Der Aufruf unsere neuen Hilfsfunktion erfolgt dann mittels:
+\begin{lstlisting}
+  def setup
+    @url = "http://example.com/feed.xml"
+  end
+
+  test "get an feed through httparty" do
+    should "perform a get request when initializing" do
+      mock_feed :url => @url
+      ImportedFeed.new(@url)
+    end
+
+    test "really get content from an feed" do
+      mock_feed :url => @url, @body => "`Hallo"'
+      import = ImportedFeed.new(@url)
+      assert_match "Hallo", import.body
+    end
+\end{lstlisting}
+Als zusätzliche Maßnahmen haben wir die Definition der URL in eine gemeinsame Initialisierungsmethode gesetzt. 
+
+
+\paragraph{3. Validität} Unser Feed soll später feststellen können, ob er Fehler beinhaltet oder nicht, um dann ggf. eine E-Mail an den Verantwortlichen zu schreiben.
+
+\begin{lstlisting}
+test "have a valid method" do
+  mock_feed
+  import = ImportedFeed.new(@url)
+  assert import.respond_to?(:valid?)
+end 
+\end{lstlisting}
+Nun testen wir lediglich darauf, ob das ImportedFeed Objekt eine Methode oder ein Attribut mit dem Namen "`valid?"' besitzt.
+
+Um den Test zu bestehen, reicht es, eine leere Methode zu definieren:
+\begin{lstlisting}
+  ...
+  def valid?
+  end
+\end{lstlisting}
+\tddgreen
+
+Nun werden wir etwas konkreter, und erwarten, dass falls der kontaktierte Server einen Status-Code 404 (Dokument nicht gefunden -- Ein wahrscheinlicher Fehlerfall, falls das XML-Dokument verschoben wurde) erhalten.
+\begin{lstlisting}
+test "not validate if the user server reports a problem" do
+  mock_feed :code => 404
+  feed = ImportedFeed.new(@url)
+  assert !feed.valid?
+end
+\end{lstlisting}
+\tddred
+
+Implementieren können wir das so:
+\begin{lstlisting}
+class ImportedFeed
+  attr_reader :body, :status_code
+  def initialize(url)
+    response = HTTParty.get(url)
+    @status_code = response.code
+    @body = response.body
+  end
+  
+  def valid?  
+    @status_code == 200,
+  end
+end
+\end{lstlisting}
+\tddgreen
+Zu bemerken ist, dass wir den Funktionsrückgabewert nicht explizit mit "`return "' kennzeichnen müssen. Bei Ruby hat jeder Ausdruck einen Rückgabewert. Innerhalb einer Funktion ist dies das letzte Statement, falls nicht mit return spezifiziert.
+
+\paragraph{4. Testen auf Exceptions}
+
+Zum Abschluss dieses Kapitels möchten wir noch sicher gehen, dass unser ImportedFeed robust gegenüber Exceptions von Fremdbibliotheken ist. Auch dies können wir in einer Erwartung durch unser Mock-Objekt spezifizieren.
+
+\begin{lstlisting}
+test "should be resistent to any thrown errors from library" do
+  HTTParty.expects(:get).raises( ArgumentError)
+
+  feed = nil
+  assert_nothing_raised(ArgumentError) do
+    feed = ImportedFeed.new(@url)
+  end
+  assert !feed.valid?
+
+end
+\end{lstlisting}
+\tddred
+Durch die Zusicherung "`assert\_nothing\_raised(exception, message, block)"' testen wir, dass innerhalb des übergebenen Blocks keine Exception vom Typ exception (Hier: "`ArgumentError"') geworfen wird. Wir möchten in diesem Fall sichergehen, dass unser Feed als nicht-valide markiert wird. 
+
+\begin{lstlisting}
+class ImportedFeed
+  attr_reader :body, :status_code
+   def initialize(url)
+    response = HTTParty.get(url)
+    @status_code = response.code
+    @body = response.body    
+    @error_thrown = false
+  rescue Exception => e
+    @error_thrown = true
+  end
+  def valid?
+    !@error_thrown   and @status_code == 200
+  end
+\end{lstlisting}
+\tddgreen
+Alle Exceptions die innerhalb des Konstruktors geworfen werden, werden abgefangen, und das neue Attribut @error\_thrown auf true gesetzt. Dies kann dann unsere valid Funktion verwenden.
+
+\tddrefactor
+
+Unser Konstruktor ist nun schon relativ lang geworden, und hat inzwischen schon mehrere Aufgaben: Abruf eines Feeds und setzten der HTTP-Antwort. Jede unserer Methoden sollte eine klar umrissene Aufgabe haben. Dies erreichen wir nun durch das Auslagern in eine neue (private) Funktion.
+
+\begin{lstlisting}
+ class ImportedFeed
+  attr_reader :body, :status_code
+   def initialize(url)
+    get_feed(url)
+    @error_thrown = false
+  rescue Exception => e
+    @error_thrown = true
+  end
+  def valid?
+    !@error_thrown   and @status_code == 200
+  end
+
+  private
+  def get_feed(url)
+    response = HTTParty.get(url)
+    @status_code = response.code
+    @body = response.body    
+  end
+end     
+\end{lstlisting}
+Diese private Methode hat nun keine eigenen Tests, ist aber aus einer Refaktorisierung hervorgegangen, und damit innerhalb von TDD ein erlaubter Schritt (Das scheinbare Dilemma des Testens privater Methoden wurde bereit auf S. \pageref{sec:tddspecialcircumstances} erläutert).
+
+
+In diesem Abschnitt wurden einige Spezialfälle beim Umsetzen von TDD praktisch erläutert. Dies waren:
+\begin{itemize}
+ \item Einsatz von Mocks zur Entkoppelung von externen Datenquellen und Spezifizierung von Erwartungen (Expectations)
+ \item Nutzung von privaten Methoden bei der Refaktorisierung 
+ \item Tests mit Exceptions
+\end{itemize}
