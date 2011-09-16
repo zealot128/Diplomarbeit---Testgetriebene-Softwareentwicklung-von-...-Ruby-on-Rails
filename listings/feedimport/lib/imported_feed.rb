@@ -2,10 +2,11 @@ require "httparty"
 require "nokogiri"
 
 class ImportedFeed
-  attr_reader :body, :doc, :status_code
+  attr_reader :body, :doc, :status_code, :items
 
   def initialize(url)
     get_feed(url)
+    parse_feed
     @error_thrown = false
   rescue Exception => e
     @error_thrown = true
@@ -15,9 +16,12 @@ class ImportedFeed
     response = HTTParty.get(url)
     @status_code = response.code
     @body = response.body
-    @doc = Nokogiri.XML(@body)
   end
 
+  def parse_feed
+    @doc = Nokogiri.XML(@body)
+    @items = @doc.search("item")
+  end
 
   def valid?
     [

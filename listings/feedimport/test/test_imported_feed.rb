@@ -88,16 +88,36 @@ class TestImportedFeed < ActiveSupport::TestCase
 
     should "be resistent to any thrown errors from library" do
       HTTParty.expects(:get).raises( ArgumentError)
-
       feed = nil
       assert_nothing_raised(ArgumentError, "Raised Error! Our App is crashed") do
         feed = ImportedFeed.new(@url)
       end
       assert !feed.valid?
-
-
     end
 
+  end
+
+  context "getting the items" do
+    setup do
+      @content = make_feed do |xml|
+        xml.item do
+          xml.title "Hallo Welt"
+        end
+        xml.item do
+          xml.title "Hallo Welt2"
+        end
+      end
+    end
+    should "have a helper method for generating a feed" do
+      assert_match /<title>\s*Hallo Welt/, @content
+    end
+
+    should "search for the items" do
+      mock_feed :body => @content
+      feed = ImportedFeed.new(@url)
+
+      assert_equal 2, feed.items.count
+    end
   end
 
 

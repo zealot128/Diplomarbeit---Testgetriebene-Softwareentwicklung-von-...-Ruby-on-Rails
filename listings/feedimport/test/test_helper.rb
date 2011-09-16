@@ -22,11 +22,12 @@ class ActiveSupport::TestCase
     HTTParty.expects(:get).with(options[:url]).returns(response)
   end
 
-  def make_feed
+  def make_feed()
     builder = Builder::XmlMarkup.new( :indent=>2)
     builder.instruct!
     builder.rss do
       builder.channel do
+        yield(builder) if block_given?
       end
     end
     builder.target!
