@@ -1,12 +1,10 @@
-class TestImportedFeed < ActiveRecord::Test
+# encoding: UTF-8
+require "test_helper"
 
-  test "Import eines Feeds soll eine HTTP Anfrage auslösen" do
-    HTTParty.expects(:get).with("http://www.example.com/feed.xml")
-    # Wir erwarten, dass innerhalb dieses Tests
-    #     HTTParty.get("http://www.example.com/feed.xml")
-    # aufgerufen werden
+class TestImportedFeed < Test::Unit::TestCase
 
-    ImportedFeed.new("http://www.example.com/feed.xml")
+  should "fail" do
+    assert false
   end
-
 end
+
