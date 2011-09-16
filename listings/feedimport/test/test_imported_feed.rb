@@ -83,7 +83,18 @@ class TestImportedFeed < ActiveSupport::TestCase
         </channel>
       </rss>'
       feed = ImportedFeed.new(@url)
+      assert feed.valid?
+    end
+
+    should "be resistent to any thrown errors from library" do
+      HTTParty.expects(:get).raises( ArgumentError)
+
+      feed = nil
+      assert_nothing_raised(ArgumentError, "Raised Error! Our App is crashed") do
+        feed = ImportedFeed.new(@url)
+      end
       assert !feed.valid?
+
 
     end
 
