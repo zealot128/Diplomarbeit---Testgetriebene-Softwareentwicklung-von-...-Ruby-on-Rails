@@ -1,10 +1,13 @@
 # encoding: UTF-8
-require "test_helper"
+require "test_helper"   # Stuff that we need for convenient tests
+require "imported_feed" # Object under Test
+require "test/unit"
 
-class TestImportedFeed < Test::Unit::TestCase
+class TestImportedFeed < ActiveSupport::TestCase
 
-  should "fail" do
-    assert false
+  should "get an feed through httparty" do
+    HTTParty.expects(:get).with("http://www.example.com")
+
+    ImportedFeed.new("http://www.example.com")
   end
 end
-

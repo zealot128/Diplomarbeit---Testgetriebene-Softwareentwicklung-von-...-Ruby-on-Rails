@@ -1,13 +1,26 @@
 # A sample Gemfile
 source "http://rubygems.org"
 
-# gem "rails"
+# for testing/demo
 gem "whenever"
 gem "ZenTest"
-gem "shoulda"
-gem "httparty"
-gem "mocha"
-gem "rr"
 gem "wirble"
-gem "minitest"
-gem "turn"
+gem "activesupport"
+gem "i18n"
+gem "rake"
+gem "echoe"
+
+# for testing
+gem "shoulda"
+gem "mocha"
+gem "colorize"
+
+# libraries needed
+gem "nokogiri"
+gem "httparty"
+gem "builder"
+
+
+
+gem "ansi"
+gem "turn", :git => "https://github.com/TwP/turn"

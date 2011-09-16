@@ -1,0 +1,10 @@
+CHANGELOG
+Gemfile
+Gemfile.lock
+Guardfile
+Rakefile
+config/schedule.rb
+lib/imported_feed.rb
+test/test_helper.rb
+test/test_imported_feed.rb
+Manifest
