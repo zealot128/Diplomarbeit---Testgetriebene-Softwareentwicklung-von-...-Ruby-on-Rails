@@ -1,6 +1,6 @@
 pdf:
 	- pdflatex -synctex=1 -interaction=nonstopmode 'main.tex' | grep -i error
-	- bibtex main.tex
+	- bibtex main
 	- makeglossaries main
 	- pdflatex -synctex=1 -interaction=nonstopmode 'main.tex' | grep -i error
 	pdflatex -synctex=1 -interaction=nonstopmode 'main.tex' | grep -i error
