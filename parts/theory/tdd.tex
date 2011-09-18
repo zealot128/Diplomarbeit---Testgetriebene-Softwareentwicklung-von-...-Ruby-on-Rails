@@ -95,7 +95,7 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und am
   Somit wird sichergestellt, das jeder bisher gefundene Fehler durch einen Test abgesichert wird.
   \paragraph{Spikes oder Spike Solution} In einigen Fällen ist es nicht ratsam, sofort mit einer testgetriebenen Entwicklung zu beginnen. Gerade wenn Prototypisierung, d.h. schnelle, erforschende, explorative Entwicklung mit dem ausschließlichen Ziel schnell ein lauffähiges Ergebnis zu erhalten gewünscht ist, dann kann auf Tests verzichtet werden. Eine solches, isoliert entwickeltes Experiment wird im \glossar{TDD}-Jargon "`Spike"' (zu deutsch: Spitze, Nadel) genannt. Die Idee dahinter ist es zu Lernen, und der produzierte Code wird i.d.R. gelöscht und nach dem Lernprozess nach originärer TDD-Manier entwickelt. Dies soll auch die gewählte Metapher einer Nadel aufzeigen: Schnell eine Nadel durch ein Brett bringen \citep{shore_art_2007}. Ausführliche Informationen über das Wann und Wie eines Einsatzes von Spikes finden sie in dem Buch "`The Art of Agile Development"' \citep{shore_art_2007}. Der Autor hat sogar das betreffende Kapitel online verfügbar gemacht\footnote{\url{http://jamesshore.com/Agile-Book/spike_solutions.html}}.
 
-  \paragraph{Testen von privaten Methoden und Variablen} Da die objektorienterte Modellierung das Konzept des Information Hiding und Kapselung vorsieht, soll der interne Aufbau einer Klasse nach außen nicht sichtbar sein. Da Tests aber von außen auf eine Klasse zugreifen, stellt dies ein Problem dar. In einigen Sprachen löst man sich dieses Problem mittels Reflections, um über Umwege auf private Felder zuzugreifen. Dies spielt allerdings nur für das nachträgliche Testen von Legacy-Anwendungen eine Rolle. TDD in der Reinform betrieben habe niemals spezfische Tests von privaten Methoden oder Feldern, da diese ausschließlich durch Refaktorisierung enstanden sein könnten \citep{caroli_agile_2008}.
+  \paragraph{Testen von privaten Methoden/Attributen} Da die objektorienterte Modellierung das Konzept des Information Hiding und Kapselung vorsieht, soll der interne Aufbau einer Klasse nach außen nicht sichtbar sein. Da Tests aber von außen auf eine Klasse zugreifen, stellt dies ein Problem dar. In einigen Sprachen löst man sich dieses Problem mittels Reflections, um über Umwege auf private Felder zuzugreifen. Dies spielt allerdings nur für das nachträgliche Testen von Legacy-Anwendungen eine Rolle. TDD in der Reinform betrieben habe niemals spezfische Tests von privaten Methoden oder Feldern, da diese ausschließlich durch Refaktorisierung enstanden sein könnten \citep{caroli_agile_2008}.
  % http://agiletips.blogspot.com/2008/11/testing-private-methods-tdd-and-test.html 
  
   
@@ -176,34 +176,34 @@ Mit seiner iterativen Herangehensweise passen Emergent Design in Kombination mit
 
 
 \subsection{Varianten}
-  \subsection{ATDD -- Acceptance TDD}
-  \label{sec:attd}
-  Die Akzeptanztest-getriebene Entwicklung ist eine Modifikation von \glossar{TDD}. Statt der Unittests, stehen hier die Akzeptanztests im Vordergrund
+\subsubsection{ATDD -- Acceptance TDD}
+\label{sec:attd}
+
+Die Akzeptanztest-getriebene Entwicklung ist eine Modifikation von \glossar{TDD}. Statt der Unittests, stehen hier die Akzeptanztests im Vordergrund
   
-  Das ganze lässt sich auch in den übergeordneten Prozess zum Entwickeln eines Features einordnen.
+Das ganze lässt sich auch in den übergeordneten Prozess zum Entwickeln eines Features einordnen.
   %TODO RSPEC Buch macht das vor, Noch mal schauen, evtl alles Käse was ich hier geschrieben habe
+\begin{enumerate}
+ \item Schreibe einen Akzeptanztest/Systemtest um das aktuelle Feature zu implementieren
+ \item Implementiere die Teilschritte, die notwendig sind, um den Akzeptanztest bestehen zu lassen. Verfahre bei der Implementation nach dem TDD Schema zur Implementierung der benötigten Units wie oben.
   \begin{enumerate}
-   \item Schreibe einen Akzeptanztest/Systemtest um das aktuelle Feature zu implementieren
-   \item Implementiere die Teilschritte, die notwendig sind, um den Akzeptanztest bestehen zu lassen. Verfahre bei der Implementation nach dem TDD Schema zur Implementierung der benötigten Units wie oben.
-    \begin{enumerate}
-     \item Schreibe einen Unittest
-     \item Prüfe, ob der Test fehlschlägt, andernfalls zurück zu 1.
-     \item Implementiere mit so wenig wie möglich so, dass der Test besteht
-     \item Refaktorisiere
-    \end{enumerate}
-   \item Nachdem der Akzeptanztest besteht, Prüfe etwaige Refaktorisierungen für die Anwendungsebene.   
+   \item Schreibe einen Unittest
+   \item Prüfe, ob der Test fehlschlägt, andernfalls zurück zu 1.
+   \item Implementiere mit so wenig wie Code möglich, so dass der Test besteht
+   \item Refaktorisiere
   \end{enumerate}
+ \item Nachdem der Akzeptanztest besteht, Prüfe etwaige Refaktorisierungen für die Anwendungsebene.   
+\end{enumerate}
   
-  Somit werden 2 Testebenen erstellt, die Akzeptanz- und die Unittests.
+Somit werden 2 Testebenen erstellt, die Akzeptanz- und die Unittests.
 
 
-  \subsubsection{Behavior Driven Development}
+\subsubsection{Behavior Driven Development}
   
-  Eine oft erwähnte Variante von TDD ist die Verhaltensgetriebene Entwicklung (Behavior-Driven-Development -- BDD). Dabei dienen hier Akzeptanztests als treibende Kraft der Entwicklung. Diese beschreiben ein Verhalten (Behavior). Der Fokus liegt also nicht auf Implementationsdetails, sondern soll, in einer domainspezifischen Sprache, das Verhalten und die daraus resultierenden Erwartungen des Systems beschreiben.
+Die Behavior-Driven-Development ist eine Variation der Testgetriebenen Entwicklung, die die Kommunikation mit dem Kunden priorisiert. Sie sucht ein gemeinsames Vokabular für Business und Technologieinteressen.
   
-  Dies drückt sich meist auch in dem Vokabular aus. Während bei klassischen Unit-Tests, und damit auch bei TDD, die Begriffsdomain  "`Zusicherungen"' (assertions) und "`Tests"' beinhaltet, so hat BDD stattdessen "`Erwartungen"' (expectations) und "`Spezifikationen"' (specs/specifiations), und verwendet oft das Modalverb "`sollte"' (should).
+Während bei klassischen Unit-Tests, und damit auch bei TDD, die Begriffe  "`Zusicherungen"' (assertions) und "`Tests"' beinhaltet, so hat BDD stattdessen "`Erwartungen"' (expectations) und "`Spezifikationen"' (specs/specifiations), und verwendet oft das Modalverb "`sollte"' (should).
   
-  % TODO Beispiel
- \subsubsection{Design Driven Testing}
-  Design Driven Testing soll eine Umkehrung von Testgetriebener Software sein und wird Stephens und Rosenberg als Alternative dazu vorgeschlagen \citep{stephens_design_2010}. Sie kritisieren, dass TDD in Reinform betrieben, lediglich Unittests, aber keine Dokumentation oder höhere Tests höherer Levels produziert. Weiterhin monieren sie, dass TDD zu schwierig und aufwändig sei. Sie schlagen vor, stattdessen die Tests durch das Software-Design steuern zu lassen und sich auf komplexe Code-Abschnitte zu konzentrieren, anstatt wirklich jeden Code durch einen vorausgegangen Test entstehen zu lassen. Sie proklamieren die Nutzung von Akzeptanz- anstelle der Unittests. Code-Qualität soll durch ein gründliches vorheriges Design anstelle nachträglicher massiver Refaktorisierungen bewerkstelligt werden.
-  DDT eignet sich für größere Teams, da Wert auf manuelle Tests gelegt wird und z.B. ein QA-Team eingebunden wird. Da das Projektteam von it-jobs-und-stellen.de ein sehr kleines ist, wird auf diesen Entwicklungsprozess nicht näher eingegangen.
+\subsubsection{Design Driven Testing}
+Design Driven Testing soll eine Umkehrung von Testgetriebener Software sein und wird Stephens und Rosenberg als Alternative dazu vorgeschlagen \citep{stephens_design_2010}. Sie kritisieren, dass TDD in Reinform betrieben, lediglich Unittests, aber keine Dokumentation oder höhere Tests höherer Levels produziert. Weiterhin monieren sie, dass TDD zu schwierig und aufwändig sei. Sie schlagen vor, stattdessen die Tests durch das Software-Design steuern zu lassen und sich auf komplexe Code-Abschnitte zu konzentrieren, anstatt wirklich jeden Code durch einen vorausgegangen Test entstehen zu lassen. Sie proklamieren die Nutzung von Akzeptanz- anstelle der Unittests. Code-Qualität soll durch ein gründliches vorheriges Design anstelle nachträglicher massiver Refaktorisierungen bewerkstelligt werden.
+DDT eignet sich für größere Teams, da Wert auf manuelle Tests gelegt wird und z.B. ein QA-Team eingebunden wird. Da das Projektteam von it-jobs-und-stellen.de ein sehr kleines ist, wird auf diesen Entwicklungsprozess nicht näher eingegangen.

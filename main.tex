@@ -94,6 +94,11 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
  \pagenumbering{Roman}
  \include{parts/intro/preambel}
  \include{parts/intro/glossar}
+ 
+% Table -- Zebrastreifen und 1.25 Row Abstand
+\rowcolors{1}{lightgray!50!white}{white}
+\colorlet{tableheadcolor}{gray!40}
+\renewcommand\arraystretch{1.25}% (MyValue=1.0 is for standard spacing)
 
   \newpage
   \setcounter{page}{1}
