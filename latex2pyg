@@ -63,9 +63,11 @@ listings.each do |listing|
 % \label{fig:#{label}}
 DOC
   snippet = lst
+  snippet = snippet.split("\n").map{|i| "% #{i}"}.join("\n").strip
 
-  puts "SNIPPET: #{snippet}".green
-  puts out
+  puts "% -------------------------------"
+  puts "% SNIPPET: \n#{snippet}".green
+  puts out.strip
 end
 
 
