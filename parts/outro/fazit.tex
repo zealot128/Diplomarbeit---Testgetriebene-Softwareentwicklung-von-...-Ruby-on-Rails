@@ -1,10 +1,23 @@
 \section{Fazit}
 
+Die im Rahmen dieser Diplomarbeit entwickelte Web-Anwendung ist zum gegenwärtigen Zeitpunkt noch nicht fertiggestellt. Aufgrund einer Repriorisierung innerhalb der Firma, wird diese vorraussichtlich 2012 weiter entwickelt werden. Gleichwohl kann die Entwicklung als Erfolg gewertet werden, da alle Qualitäts-Kennzahlen einen wesentlichen Unterschied gegenüber den bisherigen Projekten aufzeigt. Im Großen ist dies der Testgetriebenen Entwicklung und der ständigen Beobachtung der Code-Metriken zu verdanken. Dank der Testgetriebenen Entwicklung enstand relativ lose gekoppelter Code und ein feinmaschiges Testnetzt, dank dessen Empfehlungen aus den Code-Metriken leicht umgesetzt werden konnten.
+
+Allerdings hat sich gezeigt, dass die Umstellung auf eine Testgetriebene Entwicklung nicht von heute auf morgen stattfinden kann. Das 
+konstante Testen-Vor-Implementieren bedarfs inbesondere in der Anfangsphase einer hohen Disziplin, da es zu leicht ist, in das traditionelle Schema zurückzufallen. Auch das Schreiben der Tests sollte gelernt werden. In dieser Arbeit wurden Tests lediglich in ihrer Quantität untersucht. Dies ist aber absolut nicht ausreichend für eine Beurteilung der Testvollständigkeit oder ein Beweis für eine Korrektheit des untersuchten Programmes. 
+
+Die Erfahrung und bisherige Studien haben aber gezeigt, dass durch den konsequenten Einsatz der Testgetriebenen Entwicklung im Schnitt deutlich besserer Code hinsichtlich der Komplexität/Umfangs produziert wird, und auch die Testung selbst stark vereinfacht wird, da Code und Test gemeinsam entstehen, und nicht im Nachhinnein.
+
+Die Testgetriebene Entwicklung ist allerdings kein Allheilmittel ("`Silver Bullet"') für alle Probleme der Software-Entwickler. Der Einsatz von TDD erfordert vom Programmierer ein hohes Maß an Eigenverantwortung und ein hohes Wissen über Software-Design, um Refaktorisierungen sinnvoll durchführen zu können. TDD kann auch nicht davor schützen, ein falsches Produkt zu entwickeln, da die Anforderungen falsch verstanden wurden. Auch benötigt TDD auf Kurze Sicht betrachtet mehr Zeit bei der Entwicklung, dafür kann es auf lange Sicht Zeit beim Debuggen sparen, da die Tests schnell Anhaltspunkte über Ursachen von Problemen geben.
+Die Effektivität einer Testgetriebenen Entwicklung ist auch maßgeblich von den vorhanden Werkzeugen innerhalb der Programmiersprache und Framework abhängig. So verfügen die weit-verbreiteten Sprachen über ein Vielzahl von Werkzeugen, die den Prozess unterstützen, z.B. Code-Metriken, parallelisierbare Test-Runner oder hochentwickelte Test-Frameworks.
+
+Nichtsdestotrotz ist TDD eine Technik, die es nach Ansicht des Autors wert ist, von jedem Programmierer gelernt zu werden. Bisherige Studien und Erfahrungen zeigen fast überwiegend positive Auswirkungen von TDD. Die Technik ist zwar schnell beschrieben ("`Red"' "`Green "' "`Refactor"'), allerdings bedarf es viel Übung diesen Zyklus beizubehalten, und scheinbar schwierig zu testende Probleme anzugehen.
+
 \subsection{Ausblick}
-Weitere Arbeiten an IT-jobs-und-stellen.de in 2012 geplant.
+Wie erwähnt ist die Entwicklung der Anwendung noch nicht abgeschlossen, und wird zu gegebener Zeit vom Autor fortgesetzt. In diesem Zusammenhang werden dann öfter Akzeptanztest als treibende Kraft eingesetzt werden, und deren Auswirkungen untersucht werden.
 
-Rspec als Testframework evaluieren
+Der hier gezeigte Ansatz eines Benchmarks der Code-Qualität innerhalb der Ruby/Rails-Community kann so ausgebaut werden, dass weitere Parameter untersucht und deutlich mehr Projekte einfließen, um so letztendlich repräsentative Kennzahlen zu erhalten, was eine gute Code-Qualität für Railsanwendungen ausmacht. Dazu wird in Zukunft ein Benchmarking-Tool entwickelt, welcher die Messungen halbautomatisch vornehmen wird. Leider ist die Situation bei den Metrik-Werkzeugen nicht optimal; viele Werkzeuge funktionieren nur in der älteren Ruby Version 1.8.7. Allerdings nutzen viele der aktuellen Anwendungen bereits Features, die nur die Ruby Version 1.9.x unterstützt. Hier wäre eine teilweise Neuentwicklung einiger Messwerkzeuge sinnvoll.
 
-Testmetrik erweitern. Weitere Railsprojekte benchmarken. Testabdeckung in der Rails-Community
+Interessant wäre die Effektivität von TDD in Abhängigkeit von der eigenen Erfahrung mit dieser Technik zu untersuchen, um daraus Schlußfolgerungen zu ziehen, wie lange ein Programmierer im Durschnitt benötigt, um effektiv testgetrieben zu entwickeln. Ebenfalls wären Studien über die psychologische Auswirkungen von TDD interessant, da erfahrene TDD-Entwickler zwar gefühlsmäßig wissen, dass TDD einen Fluss erzeugt und richtig angewendet Spaß macht, aber dies nicht anhand von empirischen Zahlen belegen können
 
-Virtualisierung der Entwicklungsumgebung um globalen Zustand zu minimieren, a la "`On my machine it works"'
+Innerhalb der pludoni GmbH werden außerdem zukünftige Ruby Projekte mittels TDD durchgeführt um weitere Erfahrungen zu sammeln. Falls diese als Fallstudie für die Wissenschaft interessant sein sollten, so werden diese veröffentlicht.
+

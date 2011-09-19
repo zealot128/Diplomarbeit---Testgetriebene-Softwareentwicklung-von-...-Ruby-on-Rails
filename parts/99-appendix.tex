@@ -108,40 +108,6 @@ end
 
 Nun werden automatisch alle Cucumber-Features getestet. Falls Selenium verwendet wird, dann wird der Firefox im Hintergrund gestartet, ohne dass dies sichtbar wird.
 
-\section{Nutzung von deutschen Schlüsselwörtern für Cucumber Features}
-
-In dieser Diplomarbeit wurde die deutsche Modifikation für Cucumber verwendet. Da Cucumber in erster Linie als Kommunikationsmittel zum Kunden dient, ist es hilfreich, die Features in dessen Sprache zu schreiben.
-
-Dazu die Datei \texttt{features/support/i18n.yml} anlegen.
-
-\begin{lstlisting}[name=cucumber-lang,caption=features/support/i18n.yml,label=cucumber-lang]
-# encoding: UTF-8
-"de":
-  name: German
-  native: Deutsch
-  feature: Funktionalität|Feature
-  background: Grundlage
-  scenario: Szenario
-  scenario_outline: Szenariogrundriss
-  examples: Beispiele
-  given: "*|Angenommen|Gegeben sei"
-  when: "*|Wenn"
-  then: "*|Dann"
-  and: "*|Und"
-  but: "*|Aber"
-\end{lstlisting}
-
-Dazu einen Loader programmieren, der die Sprachdatei vor der Ausführung von Cucumber lädt.
-
-\begin{lstlisting}[caption=features/support/i18n\_loader.rb]
-# Include custom "german" language File for Cucumber
-AfterConfiguration do |config|
-  languages = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/i18n.yml'))
-  Gherkin::I18n::LANGUAGES["de"] = Gherkin::I18n::LANGUAGES["de"].merge(languages["de"])
-end
-\end{lstlisting}
-
-
 
 \newpage
 \listoffigures

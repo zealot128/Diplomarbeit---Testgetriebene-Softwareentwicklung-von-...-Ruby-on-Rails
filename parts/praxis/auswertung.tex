@@ -1,6 +1,9 @@
 \section{Auswertung}
 
-* Fortschritt in der Entwicklung
+In diesem Abschnitt wollen wir nun verschiedene Resultate des Projekts IT-Jobs im Bezug auf Code-Qualität untersuchen und vergleichen.
+
+Zuerst werden verschiedene Metriken, welche im Verlauf der Entwicklung regelmäßig festgehalten wurden, näher betrachten. Im weiteren Teil vergleichen wir die erreichten Maßzahlen mit denen früherer Projekte der pludoni GmbH und einiger bekannter OpenSource Ruby-Projekte, um die Ergebnisse besser einordnen zu können.
+
 
 \input{parts/praxis/auswertung_itjobs}
 \input{parts/praxis/auswertung_benchmark}
@@ -10,45 +13,45 @@
 
 
 
-
-\subsection{Eigenschaften erfolgreicher Tests -- IN ARBEIT!!}
-
-TODO Ueberarbeitung und merging mit MSDNA Tipps und eigene Erfahrungen
-%TODO 
-
-Das Vorhandensein von zahlreichen Tests reicht nicht, um das Testen erfolgreich abzuschließen. Zur Beurteilung der Brauchbarkeit einer Testsuite genügen die folgenden Kriterien \cite[S.272-279]{rappin_rails_2011}.
-
-
-
-\begin{description}
- \item[Unabhängigkeit (Independence)] Ein Test ist unabhängig, falls er nicht durch andere Tests beeinflusst wird. Auch die Reihenfolge, in der die Tests ausgeführt werden, darf auf das Ergebnis keinen Einfluss üben. Siehe auch \citep{beck_test_2002}.
- \item[Wiederholbarkeit (Repeatability] Ein Test wird als wiederholbar bezeichnet, wenn er mehrmals hintereinander ausgeführt werden kann, und dabei jedes mal dasselbe Ergebnis liefert. Problematisch sind dabei z.B. Datum und Zeit, sowie Zufallsfunktionen
- \item[Klarheit (Clarity)] Ein Test ist klar, wenn sein Zweck sofort verständlich wird. Damit wird einerseits die Lesbarkeit gemeint. Anderseits schließt dies auch ein, ob der Test genau eine Eigenschaft testet und nicht redundant zu anderen Tests ist. Dies hat zur Folge, dass die Tests wartbarer werden und als Code Dokumenation dienen können.
- \item[Präzise (Conciseness)] Ein Test ist präzise, wenn er so wenig Code und so wenige Objekte wie möglich benötigt, um sein Ziel zu erreichen. Eine Auswirkung ist, dass der Test schneller wird.
- \item[Robustheit (Robustness)] Ein Test ist robust, wenn es eine direkte Korrelation zum zu testenden Code gibt: Ist der Code korrekt, so ist der Test erfolgreich. Ist der Code falsch, so schlägt der Test fehl. Nicht-robuste Tests werden auch "`zerbrechlich"' (brittle) genannt. Dazu zählen auch sogenannte tautologische Tests, die immer erfolgreich Verlaufen, und keine Aussage über den zugrunde liegenden Programmcode geben
- \end{description}
-
-% Einige dieser Punkte können durch Metriken überprüft werden. Dazu mehr im Abschnitt \ref{sec:metrics}.
-%  Code Craft S 144
-
-  
-  \subsection{Vorteile von TDD}
-   
-  Die Test-Suite, die durch TDD entsteht, kann als zusätzliche Dokumentation dienen, die nie veraltet, im Gegensatz zu einer geschriebenen Dokumentation \citep{palermo_guidelines_2006}.
-  
-  Die Software-Engineering Literatur ist sich einig, dass ein Bug teurer wird, je später er gefunden wird \citep{hunt_pragmatic_1999}[S. 238]. TDD hilft somit, einen Bug so frühzeitig wie möglich zu entdecken, und hat so das Potenzial, Budget einzusparen.
-  
-  Softwaresysteme, die durch TDD entstehen, tendieren dazu deutlich besser designt, lose gekoppelt und besser wartbar zu sein \citep{beck_test_2002} \citep{palermo_guidelines_2006}, da Refaktorisierungen mit hoher Zuversicht durchgeführt werden können
-  
-  Zusammenfassend führt TDD zu einer erhöhten Produktivität, da das Maß an manuellen Tests reduziert wird und Debuggen deutlich weniger wird \citep{palermo_guidelines_2006}.
-  
-  \subsection{Nachteile und Grenzen von TDD}
-  Es gibt bestimmte Programmieraufgaben, die nicht allein durch die testgetriebene Entwicklung implementiert werden können. So seinen Nebenläufigkeit oder Software Sicherheit genannt, in denen TDD als Zielgeber nicht ausreiche \citep[S. xii]{beck_test_2002}.
-  
-  Zudem stelle die Testgetriebene Entwicklung kein Ersatz für andere Arten von Tests, wie Performanz/Stress und Usability-Test \citep[S. 86]{beck_test_2002}.
-    % TODO Beispiel oder besser noch in die Auswertung
-    
-%     Darach’s Challenge
+% 
+% \subsection{Eigenschaften erfolgreicher Tests -- IN ARBEIT!!}
+% 
+% TODO Ueberarbeitung und merging mit MSDNA Tipps und eigene Erfahrungen
+% %TODO 
+% 
+% Das Vorhandensein von zahlreichen Tests reicht nicht, um das Testen erfolgreich abzuschließen. Zur Beurteilung der Brauchbarkeit einer Testsuite genügen die folgenden Kriterien \cite[S.272-279]{rappin_rails_2011}.
+% 
+% 
+% 
+% \begin{description}
+%  \item[Unabhängigkeit (Independence)] Ein Test ist unabhängig, falls er nicht durch andere Tests beeinflusst wird. Auch die Reihenfolge, in der die Tests ausgeführt werden, darf auf das Ergebnis keinen Einfluss üben. Siehe auch \citep{beck_test_2002}.
+%  \item[Wiederholbarkeit (Repeatability] Ein Test wird als wiederholbar bezeichnet, wenn er mehrmals hintereinander ausgeführt werden kann, und dabei jedes mal dasselbe Ergebnis liefert. Problematisch sind dabei z.B. Datum und Zeit, sowie Zufallsfunktionen
+%  \item[Klarheit (Clarity)] Ein Test ist klar, wenn sein Zweck sofort verständlich wird. Damit wird einerseits die Lesbarkeit gemeint. Anderseits schließt dies auch ein, ob der Test genau eine Eigenschaft testet und nicht redundant zu anderen Tests ist. Dies hat zur Folge, dass die Tests wartbarer werden und als Code Dokumenation dienen können.
+%  \item[Präzise (Conciseness)] Ein Test ist präzise, wenn er so wenig Code und so wenige Objekte wie möglich benötigt, um sein Ziel zu erreichen. Eine Auswirkung ist, dass der Test schneller wird.
+%  \item[Robustheit (Robustness)] Ein Test ist robust, wenn es eine direkte Korrelation zum zu testenden Code gibt: Ist der Code korrekt, so ist der Test erfolgreich. Ist der Code falsch, so schlägt der Test fehl. Nicht-robuste Tests werden auch "`zerbrechlich"' (brittle) genannt. Dazu zählen auch sogenannte tautologische Tests, die immer erfolgreich Verlaufen, und keine Aussage über den zugrunde liegenden Programmcode geben
+%  \end{description}
+% 
+% % Einige dieser Punkte können durch Metriken überprüft werden. Dazu mehr im Abschnitt \ref{sec:metrics}.
+% %  Code Craft S 144
+% 
+%   
+%   \subsection{Vorteile von TDD}
+%    
+%   Die Test-Suite, die durch TDD entsteht, kann als zusätzliche Dokumentation dienen, die nie veraltet, im Gegensatz zu einer geschriebenen Dokumentation \citep{palermo_guidelines_2006}.
+%   
+%   Die Software-Engineering Literatur ist sich einig, dass ein Bug teurer wird, je später er gefunden wird \citep{hunt_pragmatic_1999}[S. 238]. TDD hilft somit, einen Bug so frühzeitig wie möglich zu entdecken, und hat so das Potenzial, Budget einzusparen.
+%   
+%   Softwaresysteme, die durch TDD entstehen, tendieren dazu deutlich besser designt, lose gekoppelt und besser wartbar zu sein \citep{beck_test_2002} \citep{palermo_guidelines_2006}, da Refaktorisierungen mit hoher Zuversicht durchgeführt werden können
+%   
+%   Zusammenfassend führt TDD zu einer erhöhten Produktivität, da das Maß an manuellen Tests reduziert wird und Debuggen deutlich weniger wird \citep{palermo_guidelines_2006}.
+%   
+%   \subsection{Nachteile und Grenzen von TDD}
+%   Es gibt bestimmte Programmieraufgaben, die nicht allein durch die testgetriebene Entwicklung implementiert werden können. So seinen Nebenläufigkeit oder Software Sicherheit genannt, in denen TDD als Zielgeber nicht ausreiche \citep[S. xii]{beck_test_2002}.
+%   
+%   Zudem stelle die Testgetriebene Entwicklung kein Ersatz für andere Arten von Tests, wie Performanz/Stress und Usability-Test \citep[S. 86]{beck_test_2002}.
+%     % TODO Beispiel oder besser noch in die Auswertung
+%     
+% %     Darach’s Challenge
 % Darach Ennis has thrown down a gauntlet for extending the reach of TDD. He says:
 % For example, there are a lot of fallacies blowing around various engineering orga-
 % nizations and amongst various engineers that this book could help to dispell and

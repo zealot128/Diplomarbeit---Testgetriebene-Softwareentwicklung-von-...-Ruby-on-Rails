@@ -26,7 +26,7 @@ Während der Entwicklung wurden in regelmäßigen Abständen Code-Metriken festg
  \label{fig:itjobsLoc}
 \end{figure}
 
-In Abbildung \ref{fig:itjobsLoc} ist der Verlauf der Codezeilen und der Testzeilen abgebildet. Während in den ersten Tagen der Entwicklung, wegen dem Einsatzes von Codegeneratoren und einer langsamen Gewöhnung an den TDD Ablauf, noch weniger Testcode als Programmcode geschrieben wurde, verlaufen die Linien ab dann nahezu proportional. Einen Ausreißer stellen die mit "`i."' markierte Codezeilen dar: Hier ist eine Fehlkonfiguration der Statistikberechnung die Ursache dafür, dass Fremdcode mitgezählt wurde, der nicht Teil der Anwendung war. Eine andere interessante Erkenntnis ist, dass zwar die Lines Of Test monoton steigend ist, die Lines Of Code dagegen durch Refaktorisierungen abgefallen sind (z.B. mit "`ii."' markierte Stellen). Die hohe Testdichte hat eine Refaktoriserung ermöglicht, und in diesen Phasen konnte effektiv Design zu dem System hinzugefügt werden.
+In Abbildung \ref{fig:itjobsLoc} ist der Verlauf der Codezeilen und der Testzeilen abgebildet. Während in den ersten Tagen der Entwicklung, wegen dem Einsatzes von Codegeneratoren und einer langsamen Gewöhnung an den TDD Ablauf, noch weniger Testcode als Programmcode geschrieben wurde, verlaufen die Linien ab dann nahezu proportional. Einen Ausreißer stellen die mit i. markierte Codezeilen dar: Hier ist eine Fehlkonfiguration der Statistikberechnung die Ursache dafür, dass Fremdcode mitgezählt wurde, der nicht Teil der Anwendung war. Eine andere interessante Erkenntnis ist, dass zwar die Lines Of Test monoton steigend ist, die Lines Of Code dagegen durch Refaktorisierungen abgefallen sind (z.B. mit ii. markierte Stellen). Die hohe Testdichte hat eine Refaktoriserung ermöglicht, und in diesen Phasen konnte effektiv Design zu dem System hinzugefügt werden.
 
 
 \begin{figure}[htbp]
@@ -36,9 +36,17 @@ In Abbildung \ref{fig:itjobsLoc} ist der Verlauf der Codezeilen und der Testzeil
  \caption{C0 Testabdeckung über den Verlauf der Entwicklung}
  \label{fig:itjobsCoverage}
 \end{figure}
-In Abbildung \ref{fig:itjobsCoverage} ist der Verlauf der Testausführungsabdeckung über den Verlauf der Entwicklung abgebildet. Insbesondere in den ersten Tagen gab es einige Probleme, die davon verursacht wurden, dass das Tool mit dem die Abdeckung gemessen wurde, "`rcov"' nicht kompatibel mit der aktuellen Ruby Version 1.9.2 ist. RCov lieferte deshalb falsche Werte liefert. Später erfolgte eine Umstellung auf SimpleCov (bereits in Abschnitt \ref{sec:devtools} vorgestellt). Ab dann lag die Testabdeckung innerhalb von 90\% und 100\%.
+In Abbildung \ref{fig:itjobsCoverage} ist der Verlauf der Testausführungsabdeckung über den Verlauf der Entwicklung abgebildet. Insbesondere in den ersten Tagen gab es einige Probleme, die davon verursacht wurden, dass das Tool mit dem die Abdeckung gemessen wurde, "`rcov"' nicht kompatibel mit der aktuellen Ruby Version 1.9.2 ist. RCov lieferte deshalb falsche Werte liefert. Später erfolgte eine Umstellung auf SimpleCov (bereits in Abschnitt \ref{sec:devtools} vorgestellt). Ab dann lag die Testabdeckung innerhalb von 90\% bis 100\%.
 
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=\textwidth]{./diagrams/itjobs-smells.png}
+ % itjobs-coverage.pdf: 862x487 pixel, 72dpi, 30.41x17.18 cm, bb=
+ \caption{Verlauf der verschiedenen Klassen an Code-Smells über den Entwicklungszeitraum}
+ \label{fig:itjobsSmells}
+\end{figure}
 
+Ein Indikator für die Code-Qualität sind die Anzahl und Arten von Code-Smells. Diese wurden ebenfalls über den Entwicklungszeitraum gemessen und sind in Abbildung \ref{fig:itjobsSmells} dargestellt. Insgesamt betrachtet, stiegen diese mit zunehmender Codemenge langsam an. Dank der Messung durch Code-Metriken konnte einige suboptimale Stellen nach einer gewissen Zeit refaktorisiert werden. So ist das wiederkehrende Muster, dass die Anzahl der Vorkommen eines Codesmells erst anstieg, und nach einigen Tagen wieder abfiel. Das Ergebnis gilt als positiv zu bewerten, da die Menge an Code-Smells langsamer anstieg, als die dazugehörige Menge an Code (LOC, vgl. Abbildung \ref{fig:itjobsLoc}). Die Code-Smells wurden mit dem Werkzeug Reek gemessen, und die Definition der Code-Smells sowie Informationen über das jeweilige Messverfahren entnehmen sie bitte \citep{kevin_rutherford_code_2010}.
 
 \subsubsection*{Diskussion}
 Falls das Projekt in einem reinen TDD-Vorgehen entwickelt worden wäre, dann hätte die Testabdeckung 100\% betragen müssen. Ist war aber nicht immer der Fall. Gründe hierfür sind:
@@ -46,5 +54,6 @@ Falls das Projekt in einem reinen TDD-Vorgehen entwickelt worden wäre, dann hä
  \item Nutzung von Codegeneratoren. Bei der Erstellung der Gerüste und der Programmierung einfacher Administrationsinterfaces waren nicht immer Testfälle mitgeneriert worden. Stellenweise wurde dieser generierte Code später neu in TDD geschrieben, allerdings nicht in allen Fällen
  \item Vorher waren schon einige Erfahrung mit Rails vorhanden. Allerdings sind in der neusten Version von Rails einige Features dazu gekommen, und wurden nun einige Bibliotheken verwendet, die vorher noch nicht bekannt waren. Aus der Unkenntnis entstand so viel Code, der eigentlich zum Experimentieren mit diesen neuen Features gedacht war. Diese Spikes (siehe Abschnitt \ref{sec:tddspecialcircumstances}) dienen dem Erkunden neuer Funktionalitäten und dem Prototypisieren. Diese sollten normalerweise nicht in den Hauptzweig der Entwicklung mit eingecheckt werden. In zukünftigen Projekten, die nach dem Prinzip der kontinuierlichen Integration stattfinden werden (siehe Abschnitt \ref{sec:auswahlWeitere}), wird ein Einchecken dieser Spikephasen in den Hauptzweig der Entwicklung nicht erfolgen.
  \item Trotz bisheriger Erfahrungen mit Ruby und Rails waren nur wenig Erfahrungen zum Thema Testen und Testgetriebene Entwicklung vorhanden. Insbesondere die Nutzung von \glossarpl{Test-Double} musste erst gelernt werden, da ohne eine solche bestimmte Testszenarien schwierig bis überhaupt nicht zu testen sind.
- 
 \end{itemize}
+
+Trotzdem ermöglichte die vorhande Testdichte eine sichere Ausgangsbasis für ständige Refaktorisierungen. Ein Ergebnis dessen ist, dass die Anzahl der Code-Smells im akzeptablen Rahmen geblieben ist. Eine gewisse Menge an Komplexität lässt sich nicht vermeiden, und Code-Smells können hier nur ein Indikator sein. In vielen Fällen muss direkt am Code entschieden werden, ob ein gewisser Code-Smell für eine gewisse Stelle relevant ist oder nicht.
