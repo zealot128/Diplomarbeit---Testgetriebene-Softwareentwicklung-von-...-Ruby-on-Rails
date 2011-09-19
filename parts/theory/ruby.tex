@@ -255,10 +255,13 @@ Jede Testmethode besteht in der Regel aus einer Initialisierung (kann in die set
  \item[assert(a)] Prüft, ob a wahr ist
  \item[assert\_raise(exception, \&block)] Prüft, ob innerhalb des übergebenen Codestückes eine Exception vom Typ exception geworfen wird
 \end{description}
+%TODO Mehr Assertions und konkreter erklaeren, was sind a und b. Semantik: Falls Eingabe gleich (was bedeutet gleichheit)
 Natürlich lassen sich beliebige weitere Zusicherungen definieren. \glossar{rails} z.B. definiert Zusicherungen, um zu testen, ob ein Objekt eine gültige Instanz hinsichtlich der definierten Validierungen ist (zum Thema Validierungen später mehr).
 
 \paragraph{Testdatengenerierung}
-Nachdem Testdaten einmal in zentraler Form definiert wurden, erledigt \glossar{rails} das Bereitstellen dieser selbständig. Diese Art der Testdatenbereitstellung wird als Fixtures bezeichnet. Alternativ ist der Einsatz sogenannter Factories möglich, um schnell Objekte mit bestimmten Eigenschaften zu erstellen. In jedem Fall setzt Rails die Datenbank nach jedem einzelnen Test zurück, oder kapselt Tests innerhalb von Transaktionen, insofern die verwendete Datenbank dies unterstützt.
+Nachdem Testdaten einmal in zentraler Form definiert wurden, erledigt \glossar{rails} das Management, d.h. Laden und Löschen dieser selbständig. Diese Art der Testdatenbereitstellung wird als Fixtures bezeichnet. Alternativ ist der Einsatz sogenannter Factories möglich, um schnell Objekte mit bestimmten Eigenschaften zu erstellen. In jedem Fall setzt Rails die Datenbank nach jedem einzelnen Test zurück, oder kapselt Tests innerhalb von Transaktionen, insofern die verwendete Datenbank dies unterstützt.
+%TODO Abschnitt ueberarbeiten 
+% laedt definierte Objekte, andere Eigenschaften??  Wie waehlt man Testdaten aus??
 
 Zur Generierung von größeren Mengen an zufälligen Daten einer bestimmten Domän (z.B. für Stresstests) existieren Lösungen. Mittels der \glossarpl{gem} "`populator"' und "`faker"' lassen sich beispielsweise eine beliebige Menge an gültig-anscheinenden Personendaten (Name, Vorname, Adresse, E-Mail-Adresse, Passwort,...) oder Blind-Texte generieren\footnote{Eine sehr gute Erklärung der Nutzung ist im Railscast \#128 zu finden \url{http://railscasts.com/episodes/126-populating-a-database}}.
 
