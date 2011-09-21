@@ -96,7 +96,7 @@ end
   Der gezeigte Test wird immer fehlschlagen, da von einem Mock erwartet wird, dass die nachgeahmte Funktion während des Tests genau einmal aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit Interna des Programmflusses zu testen. 
 
 \subsection{System- und Akzeptanztests}
-
+\label{sec:acceptance}
 Der Unittest ist als Whitebox-Test auf Wissen über den Quelltext angewiesen, und der Zweck ist es, Fehlerfreiheit zu gewähren. Der \textbf{Systemtest} dagegen testet das gesamte integrierte System, meist aus der Sicht eines Anwenders, mit dem Ziel, die Software gegenüber den Anforderungen zu validieren. Diese Tests finden unter realen Bedingungen mit realen Daten statt und untersucht, meist sogar auf einer den Parametern der Produktionsumgebung nahe-kommende Hard- und Softwareumgebung.
 
 Der \textbf{Akzeptanztest} ist ein Spezialfall des Systemtests. Hier führt der Auftraggeber der Software den Test selbst durch. Er nutzt den Akzeptanztest, um zu entscheiden, ob er die Software akzeptiert, woher der Name rührt.
