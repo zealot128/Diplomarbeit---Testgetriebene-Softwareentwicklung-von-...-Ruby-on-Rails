@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=parts/gliederung.tex
+lastDocument=parts/intro/glossar.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -54,7 +54,7 @@ Encoding=UTF-8
 Highlighting=LaTeX
 Indentation Mode=1
 Mode=LaTeX
-ReadWrite=false
+ReadWrite=true
 
 [document-settings,item:parts/gliederung.tex]
 Bookmarks=
@@ -344,13 +344,13 @@ order=-1
 
 [item:main.tex]
 archive=true
-column=18
+column=1
 encoding=UTF-8
 highlight=LaTeX
-line=88
+line=95
 mode=LaTeX
-open=false
-order=0
+open=true
+order=8
 
 [item:material/mvc-rails.png]
 archive=true
@@ -384,20 +384,20 @@ order=8
 
 [item:parts/99-appendix.tex]
 archive=true
-column=0
+column=210
 encoding=UTF-8
 highlight=LaTeX
-line=109
+line=112
 mode=LaTeX
-open=false
-order=8
+open=true
+order=1
 
 [item:parts/gliederung.tex]
 archive=true
-column=7
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=12
+line=11
 mode=LaTeX
 open=true
 order=0
@@ -427,9 +427,9 @@ archive=true
 column=23
 encoding=UTF-8
 highlight=LaTeX
-line=61
+line=62
 mode=LaTeX
-open=false
+open=true
 order=4
 
 [item:parts/intro/motivation.tex]
@@ -474,13 +474,13 @@ order=6
 
 [item:parts/praxis/anwendung.tex]
 archive=true
-column=0
+column=94
 encoding=UTF-8
 highlight=LaTeX
-line=15
+line=7
 mode=LaTeX
-open=false
-order=6
+open=true
+order=2
 
 [item:parts/praxis/anwendung_akzeptanz.tex]
 archive=true
@@ -504,23 +504,23 @@ order=9
 
 [item:parts/praxis/anwendung_functional.tex]
 archive=true
-column=15
+column=137
 encoding=UTF-8
 highlight=LaTeX
-line=151
+line=149
 mode=LaTeX
-open=false
-order=6
+open=true
+order=7
 
 [item:parts/praxis/anwendung_unittest.tex]
 archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=7
 mode=LaTeX
-open=false
-order=7
+open=true
+order=3
 
 [item:parts/praxis/auswahl.tex]
 archive=true
@@ -574,13 +574,13 @@ order=13
 
 [item:parts/theory/rails.tex]
 archive=true
-column=0
+column=128
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=14
 mode=LaTeX
-open=false
-order=8
+open=true
+order=5
 
 [item:parts/theory/ruby.tex]
 archive=true
@@ -604,13 +604,13 @@ order=1
 
 [item:parts/theory/test.tex]
 archive=true
-column=0
+column=22
 encoding=UTF-8
 highlight=LaTeX
-line=25
+line=98
 mode=LaTeX
-open=false
-order=11
+open=true
+order=6
 
 [item:skript.kilepr]
 archive=true
@@ -631,20 +631,20 @@ CursorColumn=0
 CursorLine=0
 
 [view-settings,view=0,item:main.tex]
-CursorColumn=18
-CursorLine=88
+CursorColumn=1
+CursorLine=95
 
 [view-settings,view=0,item:parts/00-frontpage.tex]
 CursorColumn=6
 CursorLine=47
 
 [view-settings,view=0,item:parts/99-appendix.tex]
-CursorColumn=0
-CursorLine=109
+CursorColumn=210
+CursorLine=112
 
 [view-settings,view=0,item:parts/gliederung.tex]
-CursorColumn=7
-CursorLine=12
+CursorColumn=0
+CursorLine=11
 
 [view-settings,view=0,item:parts/include-syntax-php.tex]
 CursorColumn=16
@@ -656,7 +656,7 @@ CursorLine=10
 
 [view-settings,view=0,item:parts/intro/glossar.tex]
 CursorColumn=23
-CursorLine=61
+CursorLine=62
 
 [view-settings,view=0,item:parts/intro/motivation.tex]
 CursorColumn=0
@@ -675,8 +675,8 @@ CursorColumn=269
 CursorLine=7
 
 [view-settings,view=0,item:parts/praxis/anwendung.tex]
-CursorColumn=0
-CursorLine=15
+CursorColumn=94
+CursorLine=7
 
 [view-settings,view=0,item:parts/praxis/anwendung_akzeptanz.tex]
 CursorColumn=65
@@ -687,12 +687,12 @@ CursorColumn=27
 CursorLine=47
 
 [view-settings,view=0,item:parts/praxis/anwendung_functional.tex]
-CursorColumn=15
-CursorLine=151
+CursorColumn=137
+CursorLine=149
 
 [view-settings,view=0,item:parts/praxis/anwendung_unittest.tex]
 CursorColumn=0
-CursorLine=1
+CursorLine=7
 
 [view-settings,view=0,item:parts/praxis/auswahl.tex]
 CursorColumn=279
@@ -715,8 +715,8 @@ CursorColumn=107
 CursorLine=102
 
 [view-settings,view=0,item:parts/theory/rails.tex]
-CursorColumn=296
-CursorLine=17
+CursorColumn=128
+CursorLine=14
 
 [view-settings,view=0,item:parts/theory/ruby.tex]
 CursorColumn=82
@@ -727,5 +727,5 @@ CursorColumn=43
 CursorLine=77
 
 [view-settings,view=0,item:parts/theory/test.tex]
-CursorColumn=0
-CursorLine=25
+CursorColumn=22
+CursorLine=98
