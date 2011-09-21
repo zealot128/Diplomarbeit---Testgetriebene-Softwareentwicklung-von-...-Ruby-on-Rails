@@ -3,8 +3,8 @@ def_graphic_ext=
 img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
-kileversion=2.1.0
-lastDocument=parts/intro/glossar.tex
+kileversion=2.0.85
+lastDocument=parts/praxis/anwendung_unittest.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -22,7 +22,7 @@ Encoding=UTF-8
 Highlighting=BibTeX
 Indentation Mode=1
 Mode=BibTeX
-ReadWrite=false
+ReadWrite=true
 
 [document-settings,item:custom_commands.tex]
 Bookmarks=
@@ -244,13 +244,13 @@ order=-1
 
 [item:bibo.bib]
 archive=true
-column=0
+column=26
 encoding=UTF-8
 highlight=BibTeX
-line=98
+line=562
 mode=BibTeX
-open=false
-order=3
+open=true
+order=5
 
 [item:custom_commands.tex]
 archive=true
@@ -349,7 +349,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=95
 mode=LaTeX
-open=true
+open=false
 order=8
 
 [item:material/mvc-rails.png]
@@ -389,7 +389,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=112
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:parts/gliederung.tex]
@@ -399,7 +399,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=11
 mode=LaTeX
-open=true
+open=false
 order=0
 
 [item:parts/include-syntax-php.tex]
@@ -430,7 +430,7 @@ highlight=LaTeX
 line=62
 mode=LaTeX
 open=true
-order=4
+order=0
 
 [item:parts/intro/motivation.tex]
 archive=true
@@ -454,13 +454,13 @@ order=4
 
 [item:parts/intro/projektbeschreibung.tex]
 archive=true
-column=150
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=1
+line=35
 mode=LaTeX
-open=false
-order=10
+open=true
+order=2
 
 [item:parts/outro/fazit.tex]
 archive=true
@@ -479,7 +479,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=7
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:parts/praxis/anwendung_akzeptanz.tex]
@@ -509,28 +509,28 @@ encoding=UTF-8
 highlight=LaTeX
 line=149
 mode=LaTeX
-open=true
+open=false
 order=7
 
 [item:parts/praxis/anwendung_unittest.tex]
 archive=true
-column=0
+column=358
 encoding=UTF-8
 highlight=LaTeX
-line=7
+line=5
 mode=LaTeX
 open=true
-order=3
+order=7
 
 [item:parts/praxis/auswahl.tex]
 archive=true
-column=279
+column=796
 encoding=UTF-8
 highlight=LaTeX
-line=40
+line=53
 mode=LaTeX
-open=false
-order=3
+open=true
+order=1
 
 [item:parts/praxis/auswertung.tex]
 archive=true
@@ -579,38 +579,38 @@ encoding=UTF-8
 highlight=LaTeX
 line=14
 mode=LaTeX
-open=true
+open=false
 order=5
 
 [item:parts/theory/ruby.tex]
 archive=true
-column=82
+column=24
 encoding=UTF-8
 highlight=LaTeX
-line=251
-mode=LaTeX
-open=false
-order=12
-
-[item:parts/theory/tdd.tex]
-archive=true
-column=43
-encoding=UTF-8
-highlight=LaTeX
-line=77
-mode=LaTeX
-open=false
-order=1
-
-[item:parts/theory/test.tex]
-archive=true
-column=22
-encoding=UTF-8
-highlight=LaTeX
-line=98
+line=280
 mode=LaTeX
 open=true
 order=6
+
+[item:parts/theory/tdd.tex]
+archive=true
+column=96
+encoding=UTF-8
+highlight=LaTeX
+line=217
+mode=LaTeX
+open=true
+order=4
+
+[item:parts/theory/test.tex]
+archive=true
+column=145
+encoding=UTF-8
+highlight=LaTeX
+line=85
+mode=LaTeX
+open=true
+order=3
 
 [item:skript.kilepr]
 archive=true
@@ -623,8 +623,8 @@ open=false
 order=-1
 
 [view-settings,view=0,item:bibo.bib]
-CursorColumn=0
-CursorLine=98
+CursorColumn=26
+CursorLine=562
 
 [view-settings,view=0,item:custom_commands.tex]
 CursorColumn=0
@@ -667,8 +667,8 @@ CursorColumn=27
 CursorLine=1
 
 [view-settings,view=0,item:parts/intro/projektbeschreibung.tex]
-CursorColumn=150
-CursorLine=1
+CursorColumn=0
+CursorLine=35
 
 [view-settings,view=0,item:parts/outro/fazit.tex]
 CursorColumn=269
@@ -691,12 +691,12 @@ CursorColumn=137
 CursorLine=149
 
 [view-settings,view=0,item:parts/praxis/anwendung_unittest.tex]
-CursorColumn=0
-CursorLine=7
+CursorColumn=358
+CursorLine=5
 
 [view-settings,view=0,item:parts/praxis/auswahl.tex]
-CursorColumn=279
-CursorLine=40
+CursorColumn=796
+CursorLine=53
 
 [view-settings,view=0,item:parts/praxis/auswertung.tex]
 CursorColumn=0
@@ -719,13 +719,13 @@ CursorColumn=128
 CursorLine=14
 
 [view-settings,view=0,item:parts/theory/ruby.tex]
-CursorColumn=82
-CursorLine=251
+CursorColumn=24
+CursorLine=280
 
 [view-settings,view=0,item:parts/theory/tdd.tex]
-CursorColumn=43
-CursorLine=77
+CursorColumn=96
+CursorLine=217
 
 [view-settings,view=0,item:parts/theory/test.tex]
-CursorColumn=22
-CursorLine=98
+CursorColumn=145
+CursorLine=85
