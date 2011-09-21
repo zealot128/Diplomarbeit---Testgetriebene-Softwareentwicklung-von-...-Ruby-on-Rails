@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=parts/theory/metriken.tex
+lastDocument=parts/gliederung.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -22,7 +22,7 @@ Encoding=UTF-8
 Highlighting=BibTeX
 Indentation Mode=1
 Mode=BibTeX
-ReadWrite=true
+ReadWrite=false
 
 [document-settings,item:custom_commands.tex]
 Bookmarks=
@@ -54,7 +54,7 @@ Encoding=UTF-8
 Highlighting=LaTeX
 Indentation Mode=1
 Mode=LaTeX
-ReadWrite=true
+ReadWrite=false
 
 [document-settings,item:parts/gliederung.tex]
 Bookmarks=
@@ -244,10 +244,10 @@ order=-1
 
 [item:bibo.bib]
 archive=true
-column=24
+column=0
 encoding=UTF-8
 highlight=BibTeX
-line=528
+line=98
 mode=BibTeX
 open=false
 order=3
@@ -349,7 +349,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=88
 mode=LaTeX
-open=true
+open=false
 order=0
 
 [item:material/mvc-rails.png]
@@ -387,20 +387,20 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=115
+line=109
 mode=LaTeX
-open=true
+open=false
 order=8
 
 [item:parts/gliederung.tex]
 archive=true
-column=8
+column=7
 encoding=UTF-8
 highlight=LaTeX
-line=22
+line=12
 mode=LaTeX
 open=true
-order=5
+order=0
 
 [item:parts/include-syntax-php.tex]
 archive=true
@@ -414,10 +414,10 @@ order=12
 
 [item:parts/intro/aufbau.tex]
 archive=true
-column=51
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=3
+line=10
 mode=LaTeX
 open=false
 order=8
@@ -429,7 +429,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=61
 mode=LaTeX
-open=true
+open=false
 order=4
 
 [item:parts/intro/motivation.tex]
@@ -439,7 +439,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=6
 mode=LaTeX
-open=true
+open=false
 order=9
 
 [item:parts/intro/preambel.tex]
@@ -459,17 +459,17 @@ encoding=UTF-8
 highlight=LaTeX
 line=1
 mode=LaTeX
-open=true
+open=false
 order=10
 
 [item:parts/outro/fazit.tex]
 archive=true
-column=213
+column=269
 encoding=UTF-8
 highlight=LaTeX
-line=10
+line=7
 mode=LaTeX
-open=true
+open=false
 order=6
 
 [item:parts/praxis/anwendung.tex]
@@ -529,7 +529,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=40
 mode=LaTeX
-open=true
+open=false
 order=3
 
 [item:parts/praxis/auswertung.tex]
@@ -537,19 +537,19 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=14
+line=13
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:parts/praxis/auswertung_benchmark.tex]
 archive=true
-column=15
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=42
+line=25
 mode=LaTeX
-open=true
+open=false
 order=7
 
 [item:parts/praxis/auswertung_itjobs.tex]
@@ -564,12 +564,12 @@ order=-1
 
 [item:parts/theory/metriken.tex]
 archive=true
-column=62
+column=107
 encoding=UTF-8
 highlight=LaTeX
-line=104
+line=102
 mode=LaTeX
-open=true
+open=false
 order=13
 
 [item:parts/theory/rails.tex]
@@ -589,7 +589,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=251
 mode=LaTeX
-open=true
+open=false
 order=12
 
 [item:parts/theory/tdd.tex]
@@ -599,7 +599,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=77
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:parts/theory/test.tex]
@@ -609,7 +609,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=25
 mode=LaTeX
-open=true
+open=false
 order=11
 
 [item:skript.kilepr]
@@ -623,8 +623,8 @@ open=false
 order=-1
 
 [view-settings,view=0,item:bibo.bib]
-CursorColumn=24
-CursorLine=528
+CursorColumn=0
+CursorLine=98
 
 [view-settings,view=0,item:custom_commands.tex]
 CursorColumn=0
@@ -640,19 +640,19 @@ CursorLine=47
 
 [view-settings,view=0,item:parts/99-appendix.tex]
 CursorColumn=0
-CursorLine=115
+CursorLine=109
 
 [view-settings,view=0,item:parts/gliederung.tex]
-CursorColumn=8
-CursorLine=22
+CursorColumn=7
+CursorLine=12
 
 [view-settings,view=0,item:parts/include-syntax-php.tex]
 CursorColumn=16
 CursorLine=15
 
 [view-settings,view=0,item:parts/intro/aufbau.tex]
-CursorColumn=51
-CursorLine=3
+CursorColumn=0
+CursorLine=10
 
 [view-settings,view=0,item:parts/intro/glossar.tex]
 CursorColumn=23
@@ -671,8 +671,8 @@ CursorColumn=150
 CursorLine=1
 
 [view-settings,view=0,item:parts/outro/fazit.tex]
-CursorColumn=213
-CursorLine=10
+CursorColumn=269
+CursorLine=7
 
 [view-settings,view=0,item:parts/praxis/anwendung.tex]
 CursorColumn=0
@@ -700,19 +700,19 @@ CursorLine=40
 
 [view-settings,view=0,item:parts/praxis/auswertung.tex]
 CursorColumn=0
-CursorLine=14
+CursorLine=13
 
 [view-settings,view=0,item:parts/praxis/auswertung_benchmark.tex]
-CursorColumn=15
-CursorLine=42
+CursorColumn=0
+CursorLine=25
 
 [view-settings,view=0,item:parts/praxis/auswertung_itjobs.tex]
 CursorColumn=0
 CursorLine=47
 
 [view-settings,view=0,item:parts/theory/metriken.tex]
-CursorColumn=62
-CursorLine=104
+CursorColumn=107
+CursorLine=102
 
 [view-settings,view=0,item:parts/theory/rails.tex]
 CursorColumn=296
