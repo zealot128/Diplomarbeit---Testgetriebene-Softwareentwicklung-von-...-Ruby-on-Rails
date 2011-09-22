@@ -4,7 +4,7 @@ Zum Prüfen der Richtigkeit seiner Arbeit macht jeder Programmierer mindestens m
 
 Stattdessen werden automatisierte Softwaretests instrumentalisiert, um auf Knopfdruck alle bisher programmierten Tests auszuführen und so ein Bild über den Zustand der Anwendung zu erhalten. So ist automatisiertes Testen dem manuellem Testen, das auch Ad-Hoc-Testen genannt wird, in kürzester Zeit zeitlich überlegen \citep{rappin_rails_2011}.
 
-Dynamische Testverfahren, also Tests die Programmcode ausführen und Ergebnisse beobachten, haben gemeinsam, dass sie stichpunktartig testen, damit die Korrektheit des Programmes nicht beweisen können und stattdessen den Programmcodes mit konkreten Eingabewerten ausführen \cite{liggesmeyer_modultest_1990}[S. 49]. Diese Stichproben werden als \textbf{Testdaten} bezeichnet, die optimalerweise repräsentativ, fehlersensitiv, redundanzarm und ökonomisch sind \citep{liggesmeyer_modultest_1990}[S. 51].
+Dynamische Testverfahren, also Tests die Programmcode ausführen und Ergebnisse beobachten, haben gemeinsam, dass sie stichpunktartig testen, damit die Korrektheit des Programmes nicht beweisen können und stattdessen den Programmcodes mit konkreten Eingabewerten ausführen \citep[S. 49]{liggesmeyer_modultest_1990}. Diese Stichproben werden als \textbf{Testdaten} bezeichnet, die optimalerweise repräsentativ, fehlersensitiv, redundanzarm und ökonomisch sind \citep[S. 51]{liggesmeyer_modultest_1990}.
 
 Neben den dynamischen Tests, gibt es statische Analyseverfahren, wie formale Verifikation, symbolische Testverfahren oder statische Analysen. Einige statische Anaylsen werden später im Abschnitt \ref{sec:metrics} vorgestellt. Andere statische Testverfahren sind nicht Gegenstand dieser Diplomarbeit.
 
@@ -26,7 +26,7 @@ Tests können nach verschiedenen Gesichtspunkten eingeteilt werden. In vielen ko
  \label{fig:testArten}
 \end{figure}
 
-\paragraph{Einteilung nach Sichtbarkeit des Quellcodes} Tests werden in \textbf{Whitebox} und \textbf{Blackbox}-Tests eingeteilt. 
+\paragraph{Einteilung nach Sichtbarkeit des Quellcodes} Tests werden in \textbf{Whitebox} und \textbf{Blackbox}-Tests eingeteilt.
 Whitebox-Tests finden mit Wissen über den zugrundeliegenden Code statt. Ziel eines Whitebox-basierten Testverfahrens ist es, soviele Codeabschnitt wie möglich zu testen.\\
 Blackboxtests dagegen ignorieren den inneren Aufbau der Klassen und testen entweder nur Schnittstellen oder das Gesamtsystem, und beobachten Rückmeldungen des Systems auf bestimmte Aktionen. Das Ziel eines Blackbox-basierten Tests, ist die Korrektheit der Software gegenüber den Spezifikationen zu bestimmen.\\
 Ein Spezialfall sind die sogenannten \textbf{Greybox}-Tests, die insbesondere bei der Testgetriebenen Entwicklung auftreten. Da der Test zuerst entwickelt wird, ist noch kein Wissen über den Zielquellcode vorhanden, der Entwickler aber natürlich Einblick in den Quellcode hat.
@@ -62,7 +62,7 @@ Ein solcher Test besteht in der Regel aus 4 Teilen \citep{rappin_rails_2011} \ci
  \item Initialisierung der Test-Umgebung und der Objekte. Man arrangiert einen Kontext, der notwendig ist, um den zu Code ausführen zu können.
  \item Ausführung der zu testenden Aktion, die den Systemzustand ändert
  \item Prüfen der spezifizierten Erwartungen durch Zusicherungen (Assertions): prüfen, ob das System under Test/Object under Test sich wie erwartet verhalten hat.
- \item Aufräumen nicht mehr benötigter Objekte, File-Pointer, Sockets, Leeren der Datenbank u.ä 
+ \item Aufräumen nicht mehr benötigter Objekte, File-Pointer, Sockets, Leeren der Datenbank u.ä
 \end{enumerate}
 Als Faustregel für übersichtliche und nachvollziehbare Tests, gilt das Arrange-Act-Assert Konzept: Dabei werden die oben genannten Phasen als Arrange (1. u. 4.), Act (2.), Assert (3.) oder auch Given-When-Then (Angenommen, Wenn, Dann) bezeichnet \citep[Karte 46]{langr_agile_2011}. Nicht immer sind alle drei bzw. vier Teile notwendig.
 
@@ -72,23 +72,23 @@ Ziel des Komponententest ist es, verschiedene Units in Kombination als eine voll
  \subsection{Test Doubles -- Mocks und Stubs}
   \label{sec:mocks}
   Das isolierte Testen wird durch Abhängigkeiten aller Art erschwert. Dies können z.B. Klassen sein, die noch nicht implementiert wurden, externe Ressourcen (Netzwerkzugriffe, Versenden von Mails) oder andere unterliegende Prozesse (Bezahlen in einem Onlineshop, Datenbanken) sein. In diesen Situationen ist es angebracht, auf sogenannte Test-Doubles zurückzugreifen. Diese werden u.a. in Mocks und Stubs eingeteilt.
-  
+
   Ein \textbf{Stub} ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfalls ersetzt. Im Beispiel ist dies der Bezahlprozess einer Bestellung. %TODO SyntaxHL
   \begin{lstlisting}
 def test_report_failed_payment
   Payment.stubs(:pay).returns(true)
-  
+
   bestellung = Bestellung.new()
   bestellung.abschliessen()
-  
+
   assert bestellung.successful?
 end
   \end{lstlisting}
-  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock-Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stubobjekt erzeugen, welches den Bezahlprozess nachahmt, und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess für unseren aktuellen Test keine Auswirkungen hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\  
-  Außerdem machen Stubs den Test meist schneller, da statt der potentiell komplexen und langsamen Operationen statische Werte geliefert werden.  
-  
+  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock-Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stubobjekt erzeugen, welches den Bezahlprozess nachahmt, und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess für unseren aktuellen Test keine Auswirkungen hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
+  Außerdem machen Stubs den Test meist schneller, da statt der potentiell komplexen und langsamen Operationen statische Werte geliefert werden.
+
   Als Ergänzung dazu gibt es \textbf{Mocks}. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst aber als eine Zusicherung. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich innerhalb des Tests aufgerufen wurde.
-  
+
   Hier z.B. ein Mock um einen Netzwerkzugriff zu testen und abzufangen. %TODO SyntaxHL
   \begin{lstlisting}
 def test_always_fail
@@ -96,7 +96,7 @@ def test_always_fail
   HTTP.get("http://www.example.com")
 end
   \end{lstlisting}
-  Der gezeigte Test würde nun fehlschlagen, da von einem Mock erwartet wird, dass die nachgeahmte Funktion während des Tests genau einmal mit den genannten Parametern aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit Interna des Programmflusses zu testen. 
+  Der gezeigte Test würde nun fehlschlagen, da von einem Mock erwartet wird, dass die nachgeahmte Funktion während des Tests genau einmal mit den genannten Parametern aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit Interna des Programmflusses zu testen.
 
 \subsection{System- und Akzeptanztests}
 \label{sec:acceptance}

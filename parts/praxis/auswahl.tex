@@ -1,29 +1,29 @@
 \section{Auswahl der Entwicklungsmethodik und -Werkzeuge}
 \subsection{Herausbildung eines Entwicklungsvorgehensmodell für die Bedürfnisse der pludoni GmbH}
-Viele der gängigen Vorgehensmodelle, wie V-Modell\footnote{\url{http://v-modell.iabg.de/}} oder Rational Unified Process\footnote{\url{http://www.ibm.com/software/awdtools/rup/}}, finden ihre Anwendung in großen Projektteams. Für mittelgroße Projektteams gibt es seit ca. 10 Jahren die agilen Prozesse. Sie haben einen eher pragmatischen Ansatz, mit dem Ziel gemeinsam mit dem Kunden eine funktionierende Software zu bauen. Zu eigen machen sie sich dabei kurze Releasezyklen, welche regelmäßig Feedback geben. Damit wird der klassische GAU am Ende des Projektes, wenn die Wünsche des Kunden mit den tatsächlichen Umsetzungen doch nicht einher gehen, vermieden. Aber viele dieser Methoden, wie z.B. SCRUM\footnote{\url{http://www.scrumalliance.org/pages/what_is_scrum}}, benötigen eine Schulung für das gesamte Team, die nicht immer finanzierbar ist. 
+Viele der gängigen Vorgehensmodelle, wie V-Modell\footnote{\url{http://v-modell.iabg.de/}} oder Rational Unified Process\footnote{\url{http://www.ibm.com/software/awdtools/rup/}}, finden ihre Anwendung in großen Projektteams. Für mittelgroße Projektteams gibt es seit ca. 10 Jahren die agilen Prozesse. Sie haben einen eher pragmatischen Ansatz, mit dem Ziel gemeinsam mit dem Kunden eine funktionierende Software zu bauen. Zu eigen machen sie sich dabei kurze Releasezyklen, welche regelmäßig Feedback geben. Damit wird der klassische GAU am Ende des Projektes, wenn die Wünsche des Kunden mit den tatsächlichen Umsetzungen doch nicht einher gehen, vermieden. Aber viele dieser Methoden, wie z.B. SCRUM\footnote{\url{http://www.scrumalliance.org/pages/what_is_scrum}}, benötigen eine Schulung für das gesamte Team, die nicht immer finanzierbar ist.
 Für die Arbeit von sehr kleinen Teams mit weniger als 4 Mitgliedern, wird nun eine Entwicklungsstrategie auf Basis der Testgetriebenen Entwicklung mit Ruby on Rails vorgestellt, die auf die Bedürfnisse der pludoni GmbH zugeschnitten ist.
 
-Diese Bedürfnisse umfassen 
+Diese Bedürfnisse umfassen
 \begin{itemize}
  \item kurze Feedbackzyklen von 1 Woche
  \item Arbeit meist aus der Ferne ohne direkte Kommunikation mit den anderen Teammitgliedern. Daraus folgt ein äußerst selbstständiger Arbeitsstil
  \item möglichst fehlerfreie Software
  \item Kontinuierliche Integration
  \item pragmatisches Testen, 100\% Testabdeckung ist nicht erforderlich. Wichtige Systemlogiken, wie Bezahlvorgang und Suche müssen dagegen getestet werden. Offensichtliche CRUD\footnote{Create Read Update Delete - Die 4 Standardmethoden, die auf Ressourcen ausgeführt werden können}-Methoden müssen nicht getestet werden
- 
+
 \end{itemize}
 
 \subsubsection{Einteilung der Features in Kategorien}
 Grundsätzlich teilt die pludoni GmbH Features in zwei Kategorien ein:
 
 \begin{enumerate}[A.]
- 
+
  \item Features, welche in der Ansicht für Kunden und Besucher der Website sichtbar sind $\to$ Detailansichten, Listen, Bezahlvorgänge, ...
  \item Features, welche nur dem Admin sichtbar sind, oder welche im Backend ausgeführt werden $\to$ Reporting, Statistiken, Indizierung der Datenbank, Cron-Scripte, Caching, ...
 \end{enumerate}
 
 Features der \textbf{Kategorie A} sollen in Zukunft Akzeptanztestgetrieben entwickelt werden. Die Entwicklung verläuft nach dem Schema, dass in Abschnitt \ref{sec:attd} vorgestellt wurde. Die Akzeptanztests sollen in Cucumber geschrieben werden, und mittels Capybara auf simulierten Browsern ausgeführt werden (vgl. Abschnitt \ref{sec:cucumber}).
-Ziel ist es, das bei Webanwendungen übliche wiederholte manuelle Ausprobieren mit dem Browser, auf ein Minimum zu reduzieren. Jeglicher Vorgang, den der Kunde am Browser testet, lässt sich auch als ein Akzeptanztest formulieren. Ein automatisierter Test hat zudem den Vorteil zu einem späteren Zeitpunkt leicht wiederholt zu werden. 
+Ziel ist es, das bei Webanwendungen übliche wiederholte manuelle Ausprobieren mit dem Browser, auf ein Minimum zu reduzieren. Jeglicher Vorgang, den der Kunde am Browser testet, lässt sich auch als ein Akzeptanztest formulieren. Ein automatisierter Test hat zudem den Vorteil zu einem späteren Zeitpunkt leicht wiederholt zu werden.
 
 Der Vorteil dieser Outside-In Entwicklung ist, dass er auf den Kunden ausgerichtet ist. Die Verwendung der domänspezifischen Sprache Cucumber fördert zudem die Implementierung von Business-relevanten Features gemeinsam mit dem Kunden. Das gesamte Vokabular orientiert sich an der Anforderungsanalyse und an Businessprozessen, die auch der Kunde, der meist keinen technischen Hintergrund besitzt, verstehen kann.
 
@@ -40,7 +40,7 @@ In großen Projekten ist es üblich, komplexe Testpläne zu erstellen. Anscheine
 
 \paragraph{Code-Metriken} Ein tägliches Messen des Code-Zustandes mittels Code-Metriken ermöglicht es den Programmierern, sich selbst und gegenseitig auf die Finger zu schauen. Sollte ein Programmierer nämlich schlechten Code im Hinblick auf Komplexität und \glossarpl{smell} abliefern, so macht die Code-Analyse dies sichtbar. Dies dient in erster Linie nicht, um den Programmierer zu maßregeln, sondern ihm dabei zu helfen, den \glossar{TDD}-Prozess zu lernen und seinen Programmierstil ständig zu verbessern. Die Erfahrungen zeigen, dass die Programmierer meist selbst unzufrieden mit schlechtem Code, den sie geschrieben haben, sind. Code-Metriken können dabei helfen, dem Programmierer schnell ein Feedback zu seinem Code zu geben, wie es ein Code-Audit durch Andere in der Geschwindigkeit und Effizienz nie könnte.
 
-\paragraph{Regelmäßige Paar-Programmierung} Die Paarprogrammierung (Pair-Programming) ist eine Maßnahme aus dem Katalog von Extreme Programming, bei der zwei Programmierer zusammen an einem Computer arbeiten. Sie wechseln sich beim Programmieren ab. Die Wichtigkeit der Paarprogrammierung für ein inkrementelles Design wurde in Abschnitt \ref{sec:tddEmergent} diskutiert.\\ Aber auch beim Lösen schwieriger Aufgaben und beim Anlernen neuer Teammitglieder ist die Paarprogramming eine effektive Methode \citep{hulkko_multiple_2005}[S. 9]. Erfahrungsgemäß führt sie zu besser dokumentierten Code, kann die Anzahl der Fehler verringern und zu einer höheren Arbeits-Effektivität führen \citep{hulkko_multiple_2005}.
+\paragraph{Regelmäßige Paar-Programmierung} Die Paarprogrammierung (Pair-Programming) ist eine Maßnahme aus dem Katalog von Extreme Programming, bei der zwei Programmierer zusammen an einem Computer arbeiten. Sie wechseln sich beim Programmieren ab. Die Wichtigkeit der Paarprogrammierung für ein inkrementelles Design wurde in Abschnitt \ref{sec:tddEmergent} diskutiert.\\ Aber auch beim Lösen schwieriger Aufgaben und beim Anlernen neuer Teammitglieder ist die Paarprogramming eine effektive Methode \citep[S. 9]{hulkko_multiple_2005}. Erfahrungsgemäß führt sie zu besser dokumentierten Code, kann die Anzahl der Fehler verringern und zu einer höheren Arbeits-Effektivität führen \citep{hulkko_multiple_2005}.
 Die in Abschnitt \ref{sec:arbeitsablauf} angesprochene Dezentralisierung der Zusammenarbeit erschwert eine regelmäßige Paarprogrammierung. Nichtsdestotrotz sollten in regelmäßigen Abständen Features zu zweit in wechselnder Zusammensetzung entwickelt werden.
 
 %TODO nochwas? von XP klauen? :)
@@ -55,11 +55,11 @@ Für die zukünftige Entwicklung vorrangig von Webanwendungen, werden folgende W
 Für die Simulation eines Browsers gibt es ebenfalls verschiedene Ansätze. Als Basis fungiert dabei \textbf{Capybara}, welches unterschiedliche Browsersimulationen abstrahiert. Damit lassen sich z.B. \textbf{Selenium} ansteuern, welches wiederrum Mozilla Firefox, Internet Explorer oder Google Chrome fernsteuern kann. Dies ist allerdings sehr langsam, da ein kompletter Browser gestartet und ferngesteuert wird. Daher ist die Nutzung von Selenium nur für das Testen von möglicherweise problematischen Interaktionen und das Testen von Javascript notwendig. Für alle anderen Fälle kann man auf RackTest zurückgreifen, welches extrem schnell eine Rack-Anwendung\footnote{Rack ist ein minimales Interface zwischen Webserver und Webanwendung -- Ruby on Rails ist eine solche Rack Anwendung} simuliert.
 Falls in Zukunft mehr Geschwindigkeit in der Testausführung, insbesondere bei den Selenium-Tests, gewünscht wird, so kann man auf Parallelisierung auf mehreren Computern zurückgreifen.
 
-Für ein unmittelbares Feedback sind auch automatische Test-Runner erwünscht. Hierbei gibt es z.B. \textbf{autotest} und \textbf{guard}. Diese Programme beobachten den Projektbaum, und führen bei Änderung der Dateien automatisch die relevanten Tests aus. Um die Geschwindigkeit, und damit den Feedbackzyklus zu verbessern, können diese Programme so gesteuert werden, dass sie nur den Testfall ausführen, an dem gerade gearbeitet wird. 
+Für ein unmittelbares Feedback sind auch automatische Test-Runner erwünscht. Hierbei gibt es z.B. \textbf{autotest} und \textbf{guard}. Diese Programme beobachten den Projektbaum, und führen bei Änderung der Dateien automatisch die relevanten Tests aus. Um die Geschwindigkeit, und damit den Feedbackzyklus zu verbessern, können diese Programme so gesteuert werden, dass sie nur den Testfall ausführen, an dem gerade gearbeitet wird.
 
 Durch \textbf{spork} lässt sich eine RoR-Anwendung starten und im Hintergrund halten, so dass eine erneute Testausführung deutlich schneller von statten geht, als wenn die komplette Anwendung neu geladen werden müsste.
 
-    
+
 \paragraph{Werkzeuge für Code-Metriken}  Für die Generierung von Code-Metriken dient das Ruby-Gem "`metric-fu"', welches seinerseits über verschiedene Code-Metriken Zusammenfassungen bildet und diese auch zeitlich darstellen kann. Darunter fallen z.B. die Zyklomatische Komplexität, den Grad der Duplikationen, verschiedene Code-Smells, Nutzung der Versionsverwaltung und Testabdeckung.
 
 Die Testabdeckung wird durch simple-cov berechnet, welches eine C0 Code Coverage bestimmt.
@@ -72,4 +72,4 @@ Nichtsdestotrotz sei es zukünftigen Entwicklern freigestellt, eine IDE, wie Ecl
 
 Viele dieser Maßnahmen dienen dazu, den Feedbackzyklus so kurz wie möglich zu halten. Für eine Testgetriebene Entwicklung ist es unerlässlich, dass die Testausführung schnell abläuft. Andernfalls, so die Erfahrung, führt dies zu einer verminderten Ausführungsrate, und ist damit hinderlich für die Entwicklung von sauberen Code.
 
-Durch die gewählte Entwicklungsstrategie kann sogar die Anforderungsanalyse und Abnahme testgetrieben durchgeführt werden. 
+Durch die gewählte Entwicklungsstrategie kann sogar die Anforderungsanalyse und Abnahme testgetrieben durchgeführt werden.

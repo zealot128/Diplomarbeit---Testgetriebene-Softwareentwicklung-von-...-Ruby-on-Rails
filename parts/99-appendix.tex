@@ -10,7 +10,7 @@ Für ein effektives Test-Setup wurden folgende Testtools benutzt
 \end{description}
 
 \subsection*{Installation}
-Es muss bereits installiert sein: firefox, xvfb, Rails > 3.0 
+Es muss bereits installiert sein: firefox, xvfb, Rails > 3.0
 \begin{enumerate}
  \item In das Gemfile folgendes eintragen:
  \begin{lstlisting}[caption=RAILS\_ROOT/Gemfile]
@@ -29,7 +29,7 @@ end
 
  \end{lstlisting}
  Danach folgendes ausführen:
- 
+
  \begin{verbatim}
 bundle install
 rails g cucumber:install
@@ -52,9 +52,9 @@ group "cucumber" do
     watch(%r{^features/support/.+$})                      { 'features' }
     watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
   end
-end 
+end
 \end{lstlisting}
-\item In der Datei \texttt{config/cucumber.yml} die Option \texttt{--drb} für "`default"' und "`wip"' setzen. 
+\item In der Datei \texttt{config/cucumber.yml} die Option \texttt{--drb} für "`default"' und "`wip"' setzen.
 
 
 \item Die Datei \texttt{features/support/env.rb} anpassen, um sie mit Spork kompatibel zu machen
@@ -67,7 +67,7 @@ Test::Unit.run = true
 Spork.prefork do
   ENV["RAILS_ENV"] ||= "test"
   require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
-  require 'cucumber/formatter/unicode' 
+  require 'cucumber/formatter/unicode'
   require 'cucumber/rails'
   require 'test/unit/testresult'
   ActionController::Base.allow_rescue = false
@@ -94,12 +94,12 @@ end
  \begin{verbatim}
   Xvfb :99 -ac
  \end{verbatim}
- 
+
  \item Aktuelle Shell auf diesen Displayport einstellen
  \begin{verbatim}
   export DISPLAY=:99
  \end{verbatim}
- 
+
  \item Guard starten
  \begin{verbatim}
   guard -g cucumber
@@ -119,11 +119,11 @@ Das Vorhandensein von zahlreichen Tests reicht nicht aus, um die Qualität der T
  \item[Präzise (Conciseness)] Ein Test ist präzise, wenn er so wenig Code und so wenige Objekte wie möglich benötigt, um sein Ziel zu erreichen \citep{palermo_guidelines_2006} \citep{rappin_rails_2011}. Eine Auswirkung ist, dass der Test schneller wird.
  \item[Robustheit (Robustness)] Ein Test ist robust, wenn es eine direkte Korrelation zum zu testenden Code gibt: Ist der Code korrekt, so ist der Test erfolgreich. Ist der Code falsch, so schlägt der Test fehl. Nicht-robuste Tests werden auch "`zerbrechlich"' (brittle) genannt. Dazu zählen auch sogenannte tautologische Tests, die immer erfolgreich Verlaufen, und keine Aussage über den zugrunde liegenden Programmcode geben
  \item[Schnelligkeit] Gute Tests sollten schnell sein, da die Test-Suite ansonsten deutlich seltener ausgeführt würd \citep{langr_agile_2011} \citep{palermo_guidelines_2006} \citep{nagappan_realizing_2008}. Siehe auch Präzision.
- \item[Zeitliche Nähe] Gute Tests entstehen in zeitlicher Nähe zu dem zugrunde liegenden Programmstück \cite{langr_agile_2011}. Innerhalb von TDD ist dieses Kritierium immer erfüllt.
+ \item[Zeitliche Nähe] Gute Tests entstehen in zeitlicher Nähe zu dem zugrunde liegenden Programmstück \citep{langr_agile_2011}. Innerhalb von TDD ist dieses Kritierium immer erfüllt.
  \end{description}
- 
+
 % Microsoft Vorgehensweise:
-% 
+%
 % Start TDD from the beginning of projects. Do not stop in the middle and claim it
 % doesn’t work. Do not start TDD late in the project cycle when the design has already
 % been decided and majority of the code has been written. TDD is best done
@@ -164,9 +164,9 @@ Das Vorhandensein von zahlreichen Tests reicht nicht aus, um die Qualität der T
 
 % Check morale of the team at the beginning and end of the project. Conduct periodical
 % and informal surveys to gauge developers’ opinions on the TDD process and on their
-% willingness to apply it in the future. 
- 
-% 
+% willingness to apply it in the future.
+
+%
 % % Einige dieser Punkte können durch Metriken überprüft werden. Dazu mehr im Abschnitt \ref{sec:metrics}.
 % %  Code Craft S 144
 

@@ -6,29 +6,29 @@ Extreme Programming ist eine Agile Software-Entwicklungs Methodik, welche das Zi
 
 Diese als Testgetrieben Entwicklung oder Test-Driven-Design bekannte Entwicklungstechnik basiert auf der Wiederholung von sehr kurzen Entwicklungszyklen, jeder nur wenige Minuten lang. Dabei ist es das Ziel, dass sich Test schreiben/Implementation und Refaktorisierungen, d.h. das konstante Verbessern des Systemdesigns und des Quellcodes, abwechseln. Mittlerweile werden die Begriffe Test-First Development und \glossar{TDD} oft synonym verwendet, allerdings gibt es manchmal Unterschiede in der Herangehensweise in Punkto Design der Software: TDD findet seine Anwendung, wenn nur eine vage Idee der Funktionalität einer Klasse besteht, während TFD kein Design oder Redesign der Klassen vorsieht, sondern dieses bereits im Vorfeld der Entwicklung stattfand \citep{stackoverflow_testing_2008}.
 
-Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und danach am Beispiel von Ruby/\glossar{rails} typische Testwerkzeuge aufzeigen. 
+Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und danach am Beispiel von Ruby/\glossar{rails} typische Testwerkzeuge aufzeigen.
 \subsection{Motivation}
   Das Erstellen einer gut-abdeckenden \glossar{testsuite} ist für ein jedes größeres Softwareprojekt eine wichtige Voraussetzungen um interne Qualitäten, wie Wartbarkeit und Zuverlässigkeit zu aktivieren. \glossar{TDD} soll nicht dazu dienen, die Software zu validieren und die Umsetzung der funktionalen Anforderungen zu belegen. Das Hauptziel ist es nämlich, den Code in Einklang mit dem Test zu schreiben, so dass der Test den Code antreibt (Test drives the code), und letztendlich Design auf diese Art zum System hinzuzufügen. Die Auswirkung davon sei ein gut-testbarer Code, welcher in der Regel auch ein gut-wartbarer und verständlicher Code ist \citep{beck_test_2002}. \glossarpl{smell}, wie God-Methode und geringe Kohäsion, zu programmieren, wird alleine dadurch schon erschwert, da diese nur äußerst schwer zu testen sind.
 
   \paragraph{Psychologische Aspekte und Aspekte des Projektmanagements}
-  
+
   Kent Beck beschreibt die Hauptmotivation für TDD, als das "`managing fear during programming"' Management von Angst. So hat Angst verschiedene Auswirkungen auf die Entwicklung. Sie mache zögerlich, führe zu weniger Kommunikation und damit Feedback und mache den Programmierer "`mürrisch"' \citep[S. xi]{beck_test_2002}.
-  
+
   TDD fördert die Entwicklung in kleinen Schritten, und ermöglicht durch bestandene Tests kleine "`Belohnungen"' für den Programmierer. Dadurch ist es leichter einen gewissen Arbeitsrhythmus zu erhalten, was zu dem \textbf{Flow}\footnote{Schaffen-, Tätigkeitssrausch} führen kann\citep{roger_brown_test_2008} und damit eine effektivere Entwicklung ermöglicht.
   %Die Motivation für die Wahl von Test-getriebener Entwicklung als primäre Entwicklungsstrategie wird mit dem
-  
-  Falls TDD die Fehlerdichte signifikant verringern würde und nur Code entstünde, der getestet wurde, so hätte dies wohl auch soziale Auswirkungen auf die Software-Entwicklung\citep[S. x]{beck_test_2002}. 
+
+  Falls TDD die Fehlerdichte signifikant verringern würde und nur Code entstünde, der getestet wurde, so hätte dies wohl auch soziale Auswirkungen auf die Software-Entwicklung\citep[S. x]{beck_test_2002}.
   \begin{enumerate}
    \item Die Qualitätssicherung könnte von einer reaktiven, auf eine proaktive Arbeit umstellen.
    \item Der Projektmanager kann den Ablauf der Entwicklung besser planen, da weniger überraschende Regressionsfehler im Laufe der Entwicklung auftreten
    \item Durch eine niedrige Fehlerdichte kann die Kontinuierliche Integration (Continuos Integration) möglich gemacht werden, und so der Kunde in den Entwicklungsprozess einbezogen werden
   \end{enumerate}
- 
-  
-  
+
+
+
 \subsection{Ablauf}
   Ziel ist es, vor der Implementation eines Codes, einen Unittest (vgl. Abschnitt \ref{sec:testUnit}) zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test besteht. Als Letztes folgt die Refaktorisierung, bei TDD als Designphase genutzt. Danach beginnt der Kreislauf von neuem.
-  
+
   \begin{figure}[htbp]
  \centering
  \includegraphics[width=0.85\textwidth]{./diagrams/red-green-refactor.pdf}
@@ -45,8 +45,8 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und da
    \item \textbf{Refactor}: Nachdem der Test bestanden wird, folgt nun die \textbf{wichtigste Phase}, die Refaktorisierungsphase.\\
    Da wir bereits einen Test haben, der unser gewünschtes Systemverhalten widerspiegelt, können wir gefahrlos \glossar{refaktorisieren}, d.h. Design iterativ zum System hinzufügen und Duplikation zu eliminieren. Nun macht sich der Programmierer Gedanken, wie die vorhanden Klassen optimal refaktorisiert werden können, um \glossarpl{smell} zu eliminieren, und welches Entwurfsmuster ggf. angewendet werden kann.
   \end{enumerate}
-  
-  
+
+
   Ein genau spezifizierter Ablauf ist in Abbildung \ref{fig:tddflow} zu finden. Auch dort ist zu sehen, dass die Testerstellungs- und Refaktorisierungsphase strikt getrennt sind. Innerhalb ersterer solle nur möglichst schnell ein funktionierender Test erstellt und zum Bestehen gebracht werden. Die eigentliche Arbeit findet dann innerhalb der Refaktorisierungsphase statt, in der die wahrscheinlich suboptimale Implementierung verbessert wird, indem iterativ Design hinzugefügt wird.
   \begin{figure}[hp]
  \centering
@@ -58,7 +58,7 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und da
 
 
   Jeder Unittest soll prinzipiell nur eine Eigenschaft testen, die Entwicklung erfolgt also in sehr kleinen Schritten. Dies hat direkte Auswirkungen auf die zu entwickelnden Objekte und Methoden, die dadurch ebenfalls übersichtlich werden sollen, und somit dem Objektbegriff, eine Klasse für eine Aufgabe, gerecht werden.
-  
+
     \begin{figure}[hbtp]
  \centering
  \includegraphics[width=\textwidth]{./diagrams/ablauf.png}
@@ -69,16 +69,16 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und da
  \label{fig:devflow}
 \end{figure}
 \borderquote{It's about the design, not the tests.}{Kent Beck}
- TDD ist nur eine Entwicklungsmethodik. Der äußere Software-Entwicklungsprozess kann variieren und z.B. ein iterativer oder agiler Entwicklungsprozess sein. TDD lässt sich in einen solchen leicht einbetten, insofern der Prozess es erlaubt, das Design während der Entwicklung ändern zu lassen, und nicht schon vor den Iterationen festgelegt wird. Somit schreibt TDD nicht vor, wie eine Analyse oder ein vorhergegangener Grobentwurf, bzw. Architekturentscheidungen zustandegekommen sind. 
- 
+ TDD ist nur eine Entwicklungsmethodik. Der äußere Software-Entwicklungsprozess kann variieren und z.B. ein iterativer oder agiler Entwicklungsprozess sein. TDD lässt sich in einen solchen leicht einbetten, insofern der Prozess es erlaubt, das Design während der Entwicklung ändern zu lassen, und nicht schon vor den Iterationen festgelegt wird. Somit schreibt TDD nicht vor, wie eine Analyse oder ein vorhergegangener Grobentwurf, bzw. Architekturentscheidungen zustandegekommen sind.
+
  Innerhalb einer Iteration oder eines Durchlaufes des gewählten Vorgehensmodells, wird TDD an der Stelle des Design und der Entwicklung eingebettet, wie in Abbildung \ref{fig:devflow} dargestellt. Scheinbar wird so die (Fein-)-Design-Phase aus dem Ablauf entfernt. Stattdessen findet sie sich aber in Form der Refaktorisierung wieder.
-     
-  
+
+
   \subsection{Sonderfälle}
   \label{sec:tddspecialcircumstances}
-  
+
   Der oben gezeigt Ablauf ist für den Normalfall, dem Entwickeln eines neuen Features, gedacht. Für einige gesonderte Problemstellungen im Programmieralltag existieren ebenso gewisse Abläufe.
-  
+
   \paragraph{Fehlerbehebung} Falls trotz der Verwendung von \glossar{TDD} Fehler in der Software gefunden werden, so erfolgt:
   \begin{enumerate}
    \item Schreibe einen Test, der den Fehler auslöst bzw. nachbildet
@@ -90,8 +90,8 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und da
 
   \paragraph{Testen von privaten Methoden/Attributen} Da die objektorienterte Modellierung das Konzept des Information Hiding und der Kapselung vorsieht, soll der interne Aufbau einer Klasse nach außen nicht sichtbar sein. Dies erreicht man mit den privaten Methoden und Attributen, die nur von Klasseneigenen Methoden benutzt werden dürfen. Da Tests aber von außen auf eine Klasse zugreifen, stellt dies scheinbar ein Problem dar. In einigen Sprachen löst man sich dieses Problem mittels Reflections, um über Umwege auf private Felder zuzugreifen. \\
   Dies spielt allerdings nur für das nachträgliche Testen von Legacy-Anwendungen eine Rolle. TDD in der Reinform betrieben sieht keine dedizierten Tests von privaten Methoden oder Attributen vor, da diese ausschließlich durch Refaktorisierung enstanden sein könnten \citep{caroli_agile_2008}. Die Tests der privaten Methoden erfolgt also nur implizit über das Testen der öffentlich-sichtbaren Methoden.
-  
-  
+
+
 \subsection{Studien zu den Auswirkungen von TDD}
 
 Viele Studien belegen, dass \glossar{TDD} positive Auswirkungen auf die Software-Entwicklung.
@@ -124,7 +124,7 @@ Eine Studie von Microsoft ergab, dass TDD-entwickelnde Teams eine 60\% -- 90\% g
 \subsection{Prinzip des Emergent Design -- Inkrementelles Sofwaredesign}
 \label{sec:tddEmergent}
 
-Ein Konzept, das TDD effektiv macht, ist das sich Herausbildende Design (Emergent Design). Gegenüber traditionellen Entwicklungsansätzen erfolgt der Entwurf (Design) hierbei nicht als eigenständige Phase im Prozess, sondern ist streng in die Implementation integriert. Immer wenn ein Zyklus beim Refaktorisieren angelangt ist, findet nämlich effektiv Design statt. Eine Entwicklung nach TDD sucht den minimalsten Code, der die Anforderungen (Tests) erfüllt. Analog dazu, will ein Emergentes Design die kleinste Menge an benötigten Design suchen, die die Anwendung benötigt. Durch die vielen Iterationen und die darausfolgenden zahlreichen Refaktorisierungen tritt nach und nach das Design hervor, welches optimal für das System ist. 
+Ein Konzept, das TDD effektiv macht, ist das sich Herausbildende Design (Emergent Design). Gegenüber traditionellen Entwicklungsansätzen erfolgt der Entwurf (Design) hierbei nicht als eigenständige Phase im Prozess, sondern ist streng in die Implementation integriert. Immer wenn ein Zyklus beim Refaktorisieren angelangt ist, findet nämlich effektiv Design statt. Eine Entwicklung nach TDD sucht den minimalsten Code, der die Anforderungen (Tests) erfüllt. Analog dazu, will ein Emergentes Design die kleinste Menge an benötigten Design suchen, die die Anwendung benötigt. Durch die vielen Iterationen und die darausfolgenden zahlreichen Refaktorisierungen tritt nach und nach das Design hervor, welches optimal für das System ist.
 
 %TODO Emergent Design braucht evtl noch etwas mehr ermergentes Design :)
 
@@ -134,7 +134,7 @@ Ein Konzept, das TDD effektiv macht, ist das sich Herausbildende Design (Emergen
 
 %GoF Patterns
 
-%idiomatische Patterns: Patterns, die nur für genau eine Applikation oder innerhalb eines Unternehmens optimal sind. z.B. Security 
+%idiomatische Patterns: Patterns, die nur für genau eine Applikation oder innerhalb eines Unternehmens optimal sind. z.B. Security
 %technical patterns
 
 %domain patterns -> common business patterns
@@ -158,7 +158,7 @@ Ein Konzept, das TDD effektiv macht, ist das sich Herausbildende Design (Emergen
 Einige Software-Architekten (\citeauthor*{neal_ford_emergent_2010}, \citeauthor*{jack_reeves_three_1992} und \citeauthor{glenn_vanderburg_real_2010}) stellen fest, dass praktisches Software-Engineering eigentlich keine klassische Ingenieursdisziplin sei. Ingenieure sind für die Planung und das Design verantwortlich, welches in aller Regel im Vorfeld der Implementierung stattfindet. Das klassische Software-Engineering empfindet diesen Prozess nach, und erstellt ein Design im Vorfeld der Entwicklung. Diese Autoren äußern nun, dass dies für die meisten Softwareprojekte nicht ideal sei, da sich die Businessanforderungen fast immer im Laufe einer Entwicklung ändern. Traditionelles Softwaredesign abstrahiere zu früh und spekuliere ohne die letztendlichen Fakten zu kennen. Die ingenieurswissenschaftliche Diszplinen hätten außerdem die Beschränkung, dass ein Build-Prozess äußerst teuer ist (man denke den Bau einer Brücke oder die Entwicklung von Flugzeugen), wohingegen Softwareentwicklung diese Beschränkung nicht besitzt, da ein Build meist (fast) nichts koste. Dadurch kann die Software-Entwicklung ein iteratives Vorgehen nutzen \citep{neal_ford_emergent_2010}, \citep{glenn_vanderburg_real_2010}, \citep{jack_reeves_three_1992}. Statt eines großen Designs am Anfang\footnote{(BDUF -- Big Design Upfront)} soll das Design durch Entdeckung und Extrahieren aus dem Sourcecode gewonnen werden.
 
 \marginnote{Wie findet Abstraktion statt?}
-Beim inkrementellen Design wird jedes Design-Artefakt, ob nun Methode, Klasse, Namespace oder sogar Architektur, nur deshalb erstellt, um ein bestimmtes, aktuelles Problem zu lösen. Dieses Design tendiert dazu, sich in Schüben zu entwickeln: Meist ändert man nur kleine Dinge, bis man durch eine Idee einen Durchbruch (Breakthrough) erzielt, und eine größe Abstraktion durchführt\citep{shore_art_2007} \cite{evans_domain_driven_2003}. Dies kann in allen drei Abstraktionsleveln, Methode, Klasse oder Architektur stattfinden.\\
+Beim inkrementellen Design wird jedes Design-Artefakt, ob nun Methode, Klasse, Namespace oder sogar Architektur, nur deshalb erstellt, um ein bestimmtes, aktuelles Problem zu lösen. Dieses Design tendiert dazu, sich in Schüben zu entwickeln: Meist ändert man nur kleine Dinge, bis man durch eine Idee einen Durchbruch (Breakthrough) erzielt, und eine größe Abstraktion durchführt\citep{shore_art_2007} \citep{evans_domain_driven_2003}. Dies kann in allen drei Abstraktionsleveln, Methode, Klasse oder Architektur stattfinden.\\
 Falls man Paar-Programmierung anwende, so ist es die Aufgabe des passiven Teilnehmers über das Design zu reflektieren und Refaktoriserungen zu überdenken. Auf diese Weise können Durchbrüche auf Methoden-Level mehrmals pro Stunde stattfinden.\\
 Während der Entwicklung, sollte der passive Teilnehmer der Paarprogrammierung ebenfalls darüber nachdenken, ob Ähnlichkeiten Ähnlichkeiten anderer Klassen zu der aktuell Entwickelten existieren. Falls er Redundanzien sieht, so solle er diese in einem passenden Refaktorisierungszyklus zur Diskussion bringen. Beide Teilnehmer diskutieren dann mögliche Abstraktionen. Durchbrüche dieser Art können mehrmals pro Tag stattfinden (abhängig vom bereits vorhanden Design).\\
 Ähnliches gilt dann im Architekturlevel, allerdings finden hier Durchbrüche nur alle paar Monate statt. Als Grundregel sollte man , beim Einführen neuer Architekturelemente, so konversativ wie möglich sein \citep{shore_art_2007}.
@@ -170,9 +170,9 @@ Ein Emergent Design kann auch ohne TDD in iterativen Entwicklungsprozessen verwe
 \label{sec:attd}
 
 Oftmals ist eine Dokumentation und automatisierte Prüfung der Anforderungen durch Akzeptanztests gewünscht. Hier findet die Akzeptanztest-getriebene Entwicklung als Modifikation von \glossar{TDD} ihre Anwendung. Statt der Unittests, stehen hier die Akzeptanztests im Vordergrund (vgl. \ref{sec:acceptance} zum Thema Akzeptanztests).
-  
+
 Die Entwicklung von Unittests lässt sich aber einbetten, wodurch man nun zwei Testebenen erhält \citep[S. 285]{chelimsky_rspec_2010}:
-  
+
 \begin{enumerate}
  \item Schreibe einen Akzeptanztest/Systemtest für ein Szenario des Feature
  \item Prüfe, ob der Akzeptanztest fehlschlägt
@@ -185,13 +185,13 @@ Die Entwicklung von Unittests lässt sich aber einbetten, wodurch man nun zwei T
   \end{enumerate}
  \item Nachdem der Akzeptanztest besteht, prüfe etwaige (klassenübergreifende) Refaktorisierungen
 \end{enumerate}
-  
+
 Somit werden 2 Testebenen erstellt, die der Akzeptanz- und der Unittests. Das Ganze wird auch als Outside-In Entwicklung bezeichnet \citep{chelimsky_rspec_2010}.
 
 \subsubsection{Behavior Driven Development}
 
 Bei der Behaviour-Driven-Development (BDD) geht es um die Implementierung einer Anwendung durch Beschreibung ihres Verhaltens \textbf{aus Sicht des Kunden} \citep[S. 138]{chelimsky_rspec_2010}. Im Grunde enstehen neue Funktionen auch hier durch vorhergegangene Tests. Allerdings bezieht sich das Vokular weniger auf die Domän "`Test"', sondern sucht ein gemeinsames Vokabular für Kunden und Programmierer.
-  
+
 Die Begriffe aus der Testgetriebenen Entwicklung werden innerhalb von BDD wie folgt verwendet \citep[S. 151]{chelimsky_rspec_2010}:
 \begin{itemize}
  \item Zusicherung (assertion) $\to$ Erwartung (expectation), ausgedrückt meist durch das Modalverb "`sollte"' (\texttt{should})
@@ -200,7 +200,7 @@ Die Begriffe aus der Testgetriebenen Entwicklung werden innerhalb von BDD wie fo
  \item Test $\to$ Spezifikation (spec)
 \end{itemize}
 BDD ist demnach eine Umformulierung von TDD, um sie besser in moderne agile Prozesse einzubetten, da diese ein ähnliches Vokular nutzen.
-  
+
 \subsubsection{Design Driven Testing}
 Design Driven Testing soll eine Umkehrung von Testgetriebener Software sein und wird \citeauthor*{stephens_design_2010} als Alternative dazu vorgeschlagen \citep{stephens_design_2010}. Sie kritisieren, dass TDD in Reinform betrieben, lediglich Unittests, aber keine Dokumentation oder Tests höherer Ebenen produziert (Integrations- oder Akzeptanztests). Weiterhin monieren sie, dass TDD zu schwierig und aufwändig sei. Sie schlagen vor, stattdessen die Tests durch das Software-Design steuern zu lassen und sich auf komplexe Code-Abschnitte zu konzentrieren, anstatt wirklich jeden Code durch einen vorausgegangen Test entstehen zu lassen. Sie empfehlen die Nutzung von Akzeptanz- anstelle der Unittests. Code-Qualität soll durch ein gründliches vorheriges Design anstelle nachträglicher massiver Refaktorisierungen bewerkstelligt werden.
 DDT eignet sich für größere Teams, da Wert auf manuelle Tests gelegt wird und z.B. ein QA-Team eingebunden wird. Da das Entwicklerteam der pludoni GmbH ein sehr Kleines ist, wird auf diesen Entwicklungsprozess nicht näher eingegangen.

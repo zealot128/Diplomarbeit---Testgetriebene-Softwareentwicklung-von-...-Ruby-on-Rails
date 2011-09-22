@@ -7,4 +7,8 @@ latex:
 	- cp main.pdf pdf/diplomarbeit-tdd-und-rails-wienert`date --rfc-3339=date`.pdf
 todo:
 	ack-grep TODO
+special:
+	- ack-grep \cite | grep '}\['
+	ack-grep \cite{
+
 
