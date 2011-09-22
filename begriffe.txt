@@ -1,3 +1,16 @@
+that is absolute fantastic, that we have so dug into testing...
+i
+
+
+Ruby has laid the way in having a test-infected culture around the language
+-- Nathaniel Talbott
+
+
+its often misunderstood as a verification tool,
+its often hidden from the business
+BDD grew out from those problems, talk differently think differently
+TDD is a best practice in the ruby community
+
 
 Automatisierter Browser
 Simulierter Browser
