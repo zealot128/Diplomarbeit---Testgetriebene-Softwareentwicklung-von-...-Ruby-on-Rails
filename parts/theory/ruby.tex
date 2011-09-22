@@ -2,7 +2,7 @@
 
 Ruby ist eine Programmiersprache, die von 1993 von Yukihiro Matsumoto bis heute entwickelt wurde. Dabei ließ er sich von seinen Lieblingsprogrammiersprachen Perl, Smalltalk, Eiffel, Ada und Lisp inspirieren, um eine neue Programmiersprache zu entwickeln, die sowohl funktionale, objektorientierte als auch prozedurale Programmierung ermöglicht \citep{ruby_visual_identity_team_about_2011}. 
 
-Eine vollständige Einführung in Ruby zu geben würde den Rahmen dieser Diplomarbeit sprengen. Stattdessen wird ein Querschnitt durch die Sprache angelegt und die Hauptmerkmale und Unterschiede zu anderen Sprachen herausgestellt werden. Auch werden Auswirkungen auf das Testen diskutiert und mögliche Testwerkzeuge vorgestellt.
+Eine vollständige Einführung in Ruby zu geben würde den Rahmen dieser Diplomarbeit sprengen. Stattdessen legen wir einen Querschnitt durch die Sprache an und stellen die Hauptmerkmale und Unterschiede zu anderen Sprachen heraus. Auch werden Auswirkungen auf das Testen diskutiert und mögliche Testwerkzeuge vorgestellt.
 
 \subsection{Einführung in Ruby}
 \marginline{\includegraphics[width=0.8\marginparwidth]{material/ruby.png}
@@ -84,7 +84,7 @@ Weiterhin erlaubt Ruby die Arbeit mit Lambdas, also anonymen Funktionen. Eine be
 \end{ruby}
 \codecaption{Ruby Beispiel: Blöcke}
 Das erste Beispiel zeigt, wie Funktionsausdrücke in Variablen gespeichert werden können, um später aufgerufen zu werden. Hier wird eine Addierfunktion definiert und aufgerufen.\\
-Das Zweite Beispiel zeigt, wie Arrays verwendet werden, und durch eine bereits eingebaute Methode \texttt{sort} sortiert werden können. Falls die enthaltenen Objekte nicht trivial verglichen werden können, ermöglicht die Methode \texttt{sort\_by} des dritten Beispiels die Angabe einer benutzerdefinierten Sortierfunktion, hier z.B. die Sortierung nach der Länge eines Strings.\\
+Das zweite Beispiel zeigt, wie Arrays verwendet werden, und durch eine bereits eingebaute Methode \texttt{sort} sortiert werden können. Falls die enthaltenen Objekte nicht trivial verglichen werden können, ermöglicht die Methode \texttt{sort\_by} des dritten Beispiels die Angabe einer benutzerdefinierten Sortierfunktion, hier z.B. die Sortierung nach der Länge eines Strings.\\
 Im letzten Beispiel wird demonstriert, wie die Funktion \texttt{map} verwendet wird, die eine beliebige Funktion auf alle Elemente der Liste ausführt. Hier quadrieren wir alle Elemente unserer Liste und erhalten die quadrierte Liste als Rückgabewert von Map (Die originale Liste bleibt dabei unverändert).
 
 
@@ -122,14 +122,15 @@ Wie schon erwähnt, sind bei Ruby alle Datentypen ein Objekt. Dies schließt ins
 
 Das Literal \texttt{2} ist somit ein Objekt vom Typ \texttt{Fixnum}. Die Klasse Fixnum ist ihrerseits vom Typ \texttt{Class}. Da Ruby sowohl (Einfach-)Ableitungen als auch sogenannte Includes bzw. Mixins unterstützt, kann eine Klasse auch eine Menge von "`Vorfahren"' haben. Die gezeigte Klasse \texttt{Fixnum} verfügt somit standardmäßig sogar über 7 Oberklassen.
 
-Ruby ist dynamisch stark typisiert. Das bedeutet, dass die Prüfung des Typs einer Variable zur Laufzeit stattfindet. Der Typ einer Variable ergibt sich damit aus ihrem aktuell beinhalteten Objekt. Durch die starke Typisierung ist es aber nicht möglich, invalide Operationen auf typ-inkompatible Objekte auszuführen, beispielsweise eine Addition von Integer mit String. Rubys Typsystem ist "`Duck-typed"', d.h. dass die Semantiken eines Objekts nicht durch seine Klasse und Ableitungshierarchie, sondern seine Methoden und Attributen bestimmt wird.\borderquote{"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."}{James Whitcomb Riley}
+Ruby ist \textbf{dynamisch stark} typisiert. \textit{Dynamisch} bedeutet, dass die Prüfung des Typs einer Variable zur Laufzeit stattfindet und sich dieser Typ ausschließlich aus dem aktuell beinhalteten Objekt ergibt. Durch die \textit{starke} Typisierung ist es aber nicht möglich, invalide Operationen auf typ-inkompatible Objekte auszuführen, beispielsweise eine Addition von Integer mit String. \\
+Rubys Typsystem ist "`Duck-typed"', d.h. dass die Semantiken eines Objekts nicht durch seine Klasse und Ableitungshierarchie, sondern seine Methoden und Attributen bestimmt wird.\borderquote{"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."}{James Whitcomb Riley}
 
 Ruby verfügt über lexikalische und dynamische Bindung\footnote{
 \textbf{Static Scoping}: Variablen werden zur Compilezeit gebunden ohne den aufrufenden Code zu berücksichtigen\\
-\textbf{Dynamic Scoping}: Variablen-Bindung kann nur im Moment der Ausführung des Codes festgestellt werden}, letztere wird allerdings seltener verwendet. Im der Basissyntax verwendet Ruby statische Bindung. Es existiert eine im Ruby-Core enthaltene Bibliothek \texttt{Dynamic} zum dynamischen binden, falls dies gewünscht sein sollte.
+\textbf{Dynamic Scoping}: Variablen-Bindung kann nur im Moment der Ausführung des Codes festgestellt werden}, letztere wird allerdings seltener verwendet. In der Basissyntax verwendet Ruby statische Bindung. Es existiert eine im Ruby-Core enthaltene Bibliothek \texttt{Dynamic} zum dynamischen binden, falls dies gewünscht sein sollte.
 
 
-\paragraph{Reflektion und Introspection} Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern. Ruby "`merkt"' sich allerdings die überschriebenen Methoden und ein Aufruf der überschriebenen Methoden ist stets mittels \texttt{super} möglich.
+\paragraph{Reflektion und Introspection} Sprachen mit Reflektion erlauben es ihre Strukturen zur Laufzeit zu analysieren und zu verändern. So können in Ruby z.B. Objekte Informationen über ihre vorhandenen Instanzvariablen oder Methoden abfragen. Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern. 
 
 % SNIPPET: [language=Ruby,label=Ruby Beispiel offene Klassen,caption=Ruby Beispiel offene Klassen]
 % >> class String                                                                                                                            
@@ -157,7 +158,7 @@ Ruby verfügt über lexikalische und dynamische Bindung\footnote{
 
 \paragraph{Generische Programmierung und Aspekte der Metaprogrammierung}
 Metaprogrammierung umfasst die Analyse, Transformation und Generierung von Objektprogrammen durch Metaprogramme \citep{herrmann_2005}.  Sie ermöglicht es, Probleme effektiv zu lösen, die andernfalls nur mit erheblichem Aufwand, oder gar nicht zu lösen sind.\\
-Ein beliebtes Idiom innerhalb der Ruby-Community ist es, verwendete Methoden auf Basis des Methodennamens zur Laufzeit zu erstellen (Generierung). Dies verwendet z.B. das beliebte \glossar{ORM}-Datenbankframework ActiveRecord, um einfache SQL-Statements anhand des Funktionsnamens zu erstellen (Ruby on Rails verwendet standardmäßig ActiveRecord als Schnittstelle zur Datenbank).
+Ein beliebtes Idiom innerhalb der Ruby-Community ist es, verwendete Methoden auf Basis des Methodennamens zur Laufzeit zu erstellen (Generierung). Dies verwendet z.B. das beliebte ORM\footnote{\glossar{ORM}}-Datenbankframework ActiveRecord, um einfache SQL-Statements anhand des Funktionsnamens zu erstellen (Ruby on Rails verwendet standardmäßig ActiveRecord als Schnittstelle zur Datenbank).
 % SNIPPET: 
 % >> Person.find_by_first_name("Stefan")                                                                                                     
 % #  Person Load (0.2ms)  SELECT persons.* FROM persons                                                                                      
@@ -171,7 +172,7 @@ Ein beliebtes Idiom innerhalb der Ruby-Community ist es, verwendete Methoden auf
 % label{fig:d0ee1e}
 
 
-Die Methode \texttt{find\_by\_first\_name} existiert nicht, und wird zur Laufzeit auf Basis des Namens gebaut. Dies ist möglich, da Ruby sogennante Hooks (Callbacks) bereitstellt. Der Hook \texttt{ method\_missing} z.B., wird immer dann aufgerufen, wenn eine nicht-existierende Funktion aufgerufen wurde (wie in unserem Beispiel \texttt{find\_by\_first\_name}). Hier können wir nun die neue Methode auf Basis des gewünschten Funktionsnamens zur Laufzeit erstellen, oder andernfalls selbst eine Exception werfen. Ein weiterer Hook ist z.B. auch \texttt{method\_added}, der aufgerufen wird, wenn in einer Klasse eine Methode definiert wird\footnote{Einen guten Überblick über die Callbacks die Ruby bereitstellt, und was man damit kann, finden sie hier: \url{http://www.khelll.com/blog/ruby/ruby-callbacks/}}. Auf diese Weise sind z.B. die Modifikatoren \texttt{private} und \texttt{public} implementiert.
+Die Methode \texttt{find\_by\_first\_name} existiert nicht, und wird zur Laufzeit auf Basis des Namens gebaut. Dies ist möglich, da Ruby sogennante Hooks (Callbacks) bereitstellt. Der Hook \texttt{method\_missing} z.B. wird immer dann aufgerufen, wenn eine nicht-existierende Funktion aufgerufen wurde (wie in unserem Beispiel \texttt{find\_by\_first\_name}). Hier können wir nun die neue Methode auf Basis des gewünschten Funktionsnamens zur Laufzeit erstellen, oder andernfalls selbst eine Exception werfen. Ein weiterer Hook ist z.B. auch \texttt{method\_added}, der aufgerufen wird, wenn in einer Klasse eine Methode definiert wird\footnote{Einen guten Überblick über die Callbacks die Ruby bereitstellt, und was man damit kann, finden sie hier: \url{http://www.khelll.com/blog/ruby/ruby-callbacks/}}. Auf diese Weise sind z.B. die Modifikatoren \texttt{private} und \texttt{public} implementiert.
 
 Ein weiteres Beispiel ist die Definition der relationalen Beziehungen zwischen den einzelnen Modellen innerhalb von \glossar{rails} (Ebenfalls unter der Verwendung von ActiveRecord).
 \begin{ruby}[label=app/models/job.rb]
@@ -192,12 +193,12 @@ Für eine weitere Vertiefung sei das Buch "`Programming Ruby 1.9"' empfohlen, da
 \subsection{Diskussion}
 
 % Typunsicherheit, Geschwindigkeitsnachteil
-\marginnote{Geschwindigkeitsverlust durch dynamische Typisierung}
+\marginnote{Dynamische Typisierung und Performanz}
 Dynamisch-typisierte Sprachen, wie Ruby, haben gegenüber statisch-typisierten Sprachen einige Nachteile. Oft wird der Geschwindigkeitsnachteil angesprochen, den der Prozess des Interpretierens und die dynamische Typisierung verursachen. 
 Der genaue Faktor variiert allerdings je nach Algorithmus und Implementierung, stark. Ein beliebter Benchmark, "`shootout.alioth"', vergleicht beliebte Algorithmen der Informatik, implementiert in verschiedenen Sprachen, miteinander. So ergibt sich z.B. in der Gegenüberstellung von Ruby mit C ein 4-fach bis 300-fach langsamere Ausführungszeit. Dem gegenüber steht allerdings nur die Hälfte bis $1/7$ der Menge an benötigtem Code \citep{computer_language_benchmarks_game_ruby_2011}. \\
 Wichtig ist auch die verwendete Laufzeitumgebung. Neben der Referenzimplementierung von Matsumotu (Ruby MRI), existieren noch JRuby, eine Implementierung auf Basis der Java Virtuellen Maschine, und Rubinius. Die letzten beiden unterstützen auch eine sogenannte Just-in-time (JIT)-Kompilierung zur Verbesserung der Performanz bei längerer Ausführungszeit des Programms. Desweiteren gibt es gerade im Bereich Laufzeitoptimierung viel Bewegung innerhalb der Ruby-Implementierungen, und fast alle Ruby-Implementierungen nehmen stetig an Geschwindigkeit zu \citep{antonio_cangiano_great_2010}.
 
-\marginnote{Fehlende Typsicherheit}
+\marginnote{... und fehlende Typsicherheit}
 Allerdings bleiben Fehler, die der Compiler bereits entdeckt hätte, bis zur Ausführung oder schlimmstenfalls noch länger unentdeckt. Dazu gehören z.B. Tippfehler, bei denen der Wert einer nicht deklarierten Variable ausgelesen wird. Im Gegensatz zu z.B. PHP, wirft Ruby aber dann eine Exception.\\
 Auf das Testen hat dies eine direkte Auswirkung. Viele Meinungen belegen, dass eine dynamisch typisierte Sprache mehr Tests benötigt, als eine statisch typisierte \citep{daniel_spiewak_dynamic_2010}. 
 
@@ -213,85 +214,11 @@ Verfechter dynamischer Sprachen erklären weiterhin, dass diese sich ideal für 
 % Auch das sehr beliebte Testframework Rspec, verwendet Metaprogrammierung, um Testfälle und Zusicherungen wie fast in der englischen Sprache zu formulieren. Dazu werden sämtliche Objekte von Ruby um Funktionen erweitert. Dies ist möglich, da die Klasse "`Objekt"', die Basisklasse (fast) aller Ruby-Klasse ist, um diese Methoden erweitert wurde.
 % 
 
+
+
+
+\borderquote{Sometimes people jot down pseudo-code on paper. If that pseudo-code runs directly on their computers, it's best, isn't it? Ruby tries to be like that, like pseudo-code that runs.}{Yukihiro Matsumoto}
 \paragraph{Schlussfolgerung}
+Die Verwendung von Ruby und anderen dynamischen Sprachen birgt durchaus Risiken, die zu beachten sind. Falls man sich dieser Risiken bewusst ist, und die Möglichkeiten der Sprache nutzt, um die Lesbarkeit zu verbessern, sind sie gerechtfertigt. Gerade bei der Entwicklung mit kleinen Entwicklerteams und Projekten mit engem Budget können dynamische Sprachen ihre Vorteile ausspielen, da sie eine schnellere Entwicklung ermöglichen. Im Gegensatz zu den meisten auf Syntax von C basierenden Sprachen (z.B. Java oder C\#), ist die Syntax von Ruby äußerst leserlich, da nur wenige Sonderzeichen verwendet werden. Auch ist Ruby sehr ausdrucksstark, weil die Deklaration entfällt, es viel sogenannten syntaktischen Zucker gibt und das flexible Objektsystem viele Möglichkeiten eröffnet. Alles dies kann, richtig angewendet, der Lesbarkeit zuträglich sein.
 
 
-\epigraph{Sometimes people jot down pseudo-code on paper. If that pseudo-code runs directly on their computers, it's best, isn't it? Ruby tries to be like that, like pseudo-code that runs. }{Yukihiro Matsumoto}
-Die Verwendung von Ruby und anderen dynamischen Sprachen birgt durchaus Risiken, die zu beachten sind. Falls man sich dieser Risiken bewusst ist, und die Möglichkeiten der Sprache nutzt, um die Lesbarkeit zu verbessern, sind sie gerechtfertigt. Gerade bei der Entwicklung mit kleinen Entwicklerteams und Projekten mit engem Budget können dynamische Sprachen ihre Vorteile ausspielen, da sie eine schnellere Entwicklung ermöglichen. Im Gegensatz zu den meisten auf Syntax von C basierenden Sprachen (z.B. Java oder C\#), ist die Syntax von Ruby äußerst leserlich, da nur wenige Sonderzeichen verwendet werden. Auch ist Ruby sehr ausdrucksstark, weil die Deklaration entfällt und es viel sogenannten syntaktischen Zucker gibt. Alles dies kann, richtig angewendet, der Lesbarkeit zuträglich sein.
-
-
-
-\subsection{Testframeworks für Ruby}
-\subsubsection{Test::Unit und Minitest}
-Test::Unit (Ruby 1.8.7) und Minitest (1.9.2) sind die Testbibliotheken, die Ruby standardmäßig mitbringt. Beide basieren auf dem xUnit-, bzw. SUnit-Design von Kent Beck, und sind für Nutzer von z.B. JUnit oder NUnit leicht nachvollziehbar. 
-
-Für eine zu testende Klasse wird analoge eine Testklasse erstellt. Diese trägt per Definition denselben Namen wie die zu testende Klasse mit einem \texttt{Test} am Anfang. Um z.B. eine Klasse \texttt{Job} zu testen, wird eine Datei \texttt{job\_test.rb}  erstellt. Dort wiederrum wird eine Klasse mit Namen \texttt{TestJob} definiert. 
-
-Eine solche Testklasse kann wie folgt aussehen:
-% \begin{lstlisting}[language=Ruby,label=,caption=]
-\begin{ruby}[label=Testen mit Test::Unit]
-\PY{o}{[}\PY{n}{language}\PY{o}{=}\PY{n+no}{Ruby}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{n+no}{Testen} \PY{n}{mit} \PY{n+no}{Test}\PY{o}{::}\PY{n+no}{Unit}\PY{p}{,}\PY{n}{caption}\PY{o}{=}\PY{n+no}{Testen} \PY{n}{mit} \PY{n+no}{Test}\PY{o}{::}\PY{n+no}{Unit} \PY{k}{in} \PY{n+no}{Ruby}\PY{o}{]}
-\PY{n+nb}{require} \PY{l+s+s2}{"}\PY{l+s+s2}{job}\PY{l+s+s2}{"}
-
-\PY{k}{class} \PY{n+nc}{TestJob} \PY{o}{<} \PY{n+no}{Test}\PY{o}{::}\PY{n+no}{Unit}\PY{o}{::}\PY{n+no}{TestCase}
-  \PY{k}{def} \PY{n+nf}{setup}
-    \PY{n+nv+vi}{@job} \PY{o}{=} \PY{n+no}{Job}\PY{o}{.}\PY{n}{create}
-  \PY{k}{end}
-  
-  \PY{k}{def} \PY{n+nf}{teardown}
-    \PY{n+no}{Job}\PY{o}{.}\PY{n}{delete\PYZus{}all}
-  \PY{k}{end}
-  
-  \PY{k}{def} \PY{n+nf}{test\PYZus{}job\PYZus{}exists}
-    \PY{n+nv+vi}{@job}\PY{o}{.}\PY{n}{title} \PY{o}{=}  \PY{l+s+s2}{"}\PY{l+s+s2}{Ruby on Rails in Entwickler}\PY{l+s+s2}{"}
-    \PY{n+nv+vi}{@job}\PY{o}{.}\PY{n}{add\PYZus{}location\PYZus{}to\PYZus{}title}\PY{p}{(} \PY{l+s+s2}{"}\PY{l+s+s2}{Dresden}\PY{l+s+s2}{"}\PY{p}{)}
-    
-    \PY{n}{assert\PYZus{}equal}\PY{p}{(} \PY{l+s+s2}{"}\PY{l+s+s2}{Ruby on Rails Entwickler in Dresden}\PY{l+s+s2}{"}\PY{p}{,}  \PY{n+no}{Job}\PY{o}{.}\PY{n}{first}\PY{o}{.}\PY{n}{title}\PY{p}{)}
-  \PY{k}{end}
-\PY{k}{end}
-\end{ruby}
-\codecaption{Testen mit Test::Unit in Ruby}
-
-Unsere Klasse \texttt{TestJob} erbt von der TestUnit-Basisklasse. Sie beinhaltet die besonderen Methoden \texttt{setup} und \texttt{teardown}, die jeweils vor, bzw. nach jedem einzelnen Testfall aufgerufen werden.
-In der Setup-Methode nehmen wir z.B. das Anlegen eines Jobs vor, in der Teardown Methode löschen wir alle Jobs in der Datenbank, um einen sauberen Test zu gewährleisten (Isolation).
-
-Danach können nun beliebig viele Testmethoden folgen, deren Namen mit \texttt{test\_} beginnen müssen.
-Jede Testmethode besteht in der Regel aus einer Initialisierung (kann in die setup-Methode ausgelagert werden), der Ausführung einer zu testenden Aktion und dem Prüfen der danach geltenden Eigenschaften mittels Assertions. Assertions, also zu Deutsch Zusicherungen, sind vom Testframework bereitgestellt Funktionen, die übergebene Parameter auf gewisse Eigenschaften testen und daraus einen Testerfolg oder Fehlschlag ableiten. Sollte eine Assertion innerhalb eines Tests fehlschlagen, so gilt der gesamte Testfall als fehlgeschlagen. \\
-Einige dieser Zusicherungen sind z.B.:
-\begin{description}
- \item[assert(statement)] Prüft, ob der angegebene Ausdruck wahr ist (In Ruby sind alle Ausdrücke, außer \texttt{false} und \texttt{nil} wahr)
- \item[assert\_equal(expected, actually)] prüft, ob die beiden Statements gleich sind, hinsichtlich des \texttt{==}-Operators\footnote{Viele eingebaute Klassen prüfen auf Strukturgleichheit. Eigene Objekte werden ansonsten auf Adressengleichheit getestet. Man kann allerdings eine eigene Vergleichsoperation durch die Implementation der Instanzmethode \texttt{.==()} definieren}
- 
- \item[assert\_raise(exception, \&block)] Prüft, ob innerhalb des übergebenen Codeblocks eine Exception vom Typ exception geworfen wird
- \item[assert\_match(regexp, string)] Prüft, dass der Ausdruck vom Typ String dem spezifizierten regulären Ausdruck matcht
-\end{description}
-%TODO Mehr Assertions und konkreter erklaeren, was sind a und b. Semantik: Falls Eingabe gleich (was bedeutet gleichheit)
-Natürlich lassen sich beliebige weitere Zusicherungen definieren. \glossar{rails} z.B. definiert Zusicherungen, um zu testen, ob ein Objekt eine gültige Instanz hinsichtlich der definierten Validierungen ist (zum Thema Validierungen später mehr).
-
-\paragraph{Testdatengenerierung}
-Nachdem Testdaten einmal in zentraler Form definiert wurden, erledigt \glossar{rails} das Management, d.h. Laden und Löschen dieser, selbständig. Diese Art der Testdatenbereitstellung wird bei Rails als \textbf{Fixtures} bezeichnet. Rails setzt selbstständig die Datenbank nach jedem einzelnen Test zurück, oder kapselt die Tests innerhalb von Transaktionen, insofern die verwendete Datenbank dies unterstützt.
-%TODO Abschnitt ueberarbeiten 
-%TODO Wie macht man Testdaten? Wie waehlt man die Aus? muss in ein anderes Kapitel denke ich
-% laedt definierte Objekte, andere Eigenschaften??  Wie waehlt man Testdaten aus??
-% Globale Daten -> schlecht
-
-Zur Generierung von größeren Mengen an zufälligen Daten einer bestimmten Domän (z.B. für Stresstests) existieren ebenfalls Lösungen. Mittels der \glossarpl{gem} "`populator"' und "`faker"' lassen sich beispielsweise eine beliebige Menge an gültig-anscheinenden Personendaten (Name, Vorname, Adresse, E-Mail-Adresse, Passwort,...) oder Blind-Texten generieren\footnote{Eine sehr gute Erklärung der Nutzung ist im Railscast \#128 zu finden \url{http://railscasts.com/episodes/126-populating-a-database}}.
-
-
-\subsubsection{Cucumber}
-\label{sec:cucumber}
-Cucumber ist ein relativ neues Framework (2008), um mittels einer domainspezifischen Sprache verständliche automatisierte Tests zu schreiben. Dabei gibt es 2 Ebenen: In der obersten werden Testschritte in Englisch, Deutsch oder einer anderen der mehr als 30 unterstützten Sprachen spezifiziert. In der darunterliegenden werden diese Schritte in echten Testcode implementiert. \\
-Im Folgenden sei ein Trivialbeispiel einer Anwendung, die Addieren unterstützt gezeigt.
-\lstinputlisting[label=Cucumber: Additionsfeature in Deutsch,caption=Cucumber: Additionsfeature in Deutsch]{listings/addition.feature}
-%TODO SyntaxHL
-Wenn man nun die Datei mittels Cucumber ausführt, so wird darauf hingewiesen, dass die Testschritte noch nicht implementiert sind.
-
-Eine Beispielimplementation (ohne Verwendung einer GUI-Anwendung) der Testschritte wäre:
-\lstinputlisting[label=Cucumber: Implementierung der Additionstestschritte in Ruby,caption=Cucumber: Implementierung der Additionstestschritte in Ruby]{listings/steps.rb}
-%TODO SyntaxHL
-
-Wie man sehen kann, werden die Testschritte über die definierten regulären Ausdrücke gematcht. Jeder Schritt kann nun eine beliebige Implementierung besitzen. Meist ist es entweder eine Initialisierung, eine Aktion oder eine Erwartung, ausgedrückt durch die Schlüsselwörter \texttt{Angenommen}, \texttt{Wenn} und \texttt{Dann}, bzw. \texttt{Given}, \texttt{When} und \texttt{Then} im englischen Originaldialekt. Die Einteilung in klare Testschritte fördert die Wiederverwendbarkeit der Testschritte in anderen Szenarien.
-
-Der Vorteil von Cucumber ist nun, dass diese Feature-Datei zusammen mit dem Kunden durchgesprochen werden kann, und am Ende eine funktionale Validierung durchzuführen. \\ 
-Cucumber ist von der Syntax so generisch, dass damit beliebige Anwendungen getestet werden, da keine Annahmen über die darunterliegende Implementierung der Testschritte gemacht wird. Eine Möglichkeit, besonders im Zusammenhang mit \glossar{rails}, ist das Testen von Webanwendungen. Dabei kann z.B. auch ein echter Browser automatisiert bzw. simuliert werden, um den Test so authentisch am echten Nutzungsprozess wie möglich zu orientieren. \\
-Neben Ruby wird auch die Implementierung der Testschritte in JVM und .NET-Sprachen unterstützt.

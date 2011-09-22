@@ -3,7 +3,7 @@
 
 Nun wollen wir am Beispiel einer Suche nach Stellenanzeigen die Entwicklung von Akzeptanztests und damit die Akzeptanztestgetriebene Softwareentwicklung (vgl. Abschnitt \ref{sec:attd} betrachten.
 
-Zum Einsatz kommt dabei die für Systemtests entwickelte domainspezifische Sprache Cucumber, die Bereits in Abschnitt \ref{sec:cucumber} vorgestellt wurde.
+Zum Einsatz kommt dabei die für Systemtests entwickelte domainspezifische Sprache Cucumber in Verbindung mit der Browser-Steuerung Capybara, die beide bereits in Abschnitt \ref{sec:cucumber} vorgestellt wurde. 
 
 Ein Cucumber-Verzeichnis ist qua Konvention immer gleich aufgebaut. In Abbildung \ref{fig:cucumberDir} ist der Verzeichnisbaum, wie er in den Beispielen dieses Kapitels benutzt wird, zu sehen. Innerhalb unseres Projektverzeichnisses existiert ein Unterverzeichnis "`features"' in dem alle Feature-Dateien mit der Endung "`.feature"' lagern. Ebenfalls existiert ein Unterverzeichnis "`step\_definitions"', das die Implementation der Testschritte beinhaltet, sowie ein Verzeichnis "`support"', für z.B. Standardmethoden, Aktionen die vor jedem Feature-Durchlauf ausgeführt werden, oder die Definition der Browser-Engine. Cucumber lädt automatisch alle Ruby-Dateien in den beiden Verzeichnissen.
 
@@ -88,17 +88,10 @@ Dann /^sehen wir "([^"]*)"$/ do |arg1|
 end
 \end{lstlisting}
 
-\begin{figure}[htbp]
- \centering
- \includegraphics[width=\linewidth]{./diagrams/cucumber.pdf}
- % cucumber.pdf: 595x842 pixel, 72dpi, 20.99x29.70 cm, bb=
- \caption{Ablauf beim Akzeptanztest mit Cucumber und Capybara}
- \label{fig:cucumber}
-\end{figure}
 
 
-Bevor wir also beginnen können das Feature zu entwickeln, müssen wir erst die Testschritte implementieren. Cucumber hat uns schon ein paar Codeschnipsel generiert, mit denen wir unsere eigenen Testschritte implementieren können. Deren Implementierung ist i.d.R davon abhängig, welche zugrunde liegende Methode man verwendet, einen Browser zu simulieren, und welches Test-Framework für Zusicherungen benutzt wird. Wir haben uns für Capybara entschieden, welches sehr flexibel bei der Wahl der Browser-Engine ist, und für die Definition der Zusicherungen für das schon bekannte Test::Unit. Der Ablauf des Akzeptanztest ist in Abbildung \ref{fig:cucumber} abgebildet. 
-Die Anweisungen des Akzeptanztests werden auf die definierten Testschritte gemappt, die Cucumber dann sequentiell ausführt. 
+
+Bevor wir also beginnen können das Feature zu entwickeln, müssen wir erst die Testschritte implementieren. Cucumber hat uns schon ein paar Codeschnipsel generiert, mit denen wir unsere eigenen Testschritte implementieren können. 
 
 Hier zuerst die Basis-Testschritte, die für fast jedes Feature benötigt werden. Falls wir die englische Testschrittdefinition nutzen, entfällt dieser Schritt, da Capybara bereits häufig gebrauchte Testschritte mitliefert.
 

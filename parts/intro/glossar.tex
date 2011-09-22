@@ -6,13 +6,13 @@
 
 \newglossaryentry{testrunner} {
   name={Test-Runner},
-  description= {oder Testtreiber) ist eine Software, um \glossarpl{test} aufzurufen und deren Ausführung zu überwachen und steuern}
-}%TODO Fritzsche Check
+  description= {oder Testtreiber) ist eine Software, um \glossarpl{test} aufzurufen und deren Ausführung zu überwachen und zu steuern}
+}
 
 \newglossaryentry{testsuite} {
   name={Test-Suite},
-  description= {ist eine Sammlung von mehreren Testfällen für eine Komponente oder das gesamte System}
-}%TODO Fritzsche Check
+  description= {ist eine Gruppe von mehreren Testfällen für eine Komponente oder das für gesamte System}
+}
 
 \newglossaryentry{fehler} {
   name={Software-Fehler},
@@ -23,7 +23,7 @@ first={Software-Fehler}
 \newglossaryentry{quality} {
   name={Code-Qualität},
   description= {beinhaltet die Software-Qualitäten Lesbarkeit, Testbarkeit, Wartbarkeit, Erweiterbarkeit, Geringe Komplexität},
-}% TODO Vorlesung Fritzsche?
+}
 
 \newglossaryentry{metriken} {
   name={Code-Metriken},
@@ -50,9 +50,8 @@ first={Software-Fehler}
 }
 \newglossaryentry{smell}{
   name={Bad Smell},
-  description={oder Code-Smell. Ist ein Anzeichen für eine suboptimale Code-Stelle, die auch ein Hinweis auf ein größeres Design-Problem sein kann. Oft auch ein Kandidat für ein Refaktoring},
+  description={oder Code-Smell. Ist ein Anzeichen für eine suboptimale Code-Stelle, die auch ein Hinweis auf ein größeres Design-Problem sein kann. Oft auch ein Kandidat für ein Refaktoring. Informationen zu Smells und deren Refaktorisierung sind im Buch von M.Fowler zu finden \citep{fowler_refactoring_1999}},
   plural={Bad Smells}
-%TODO Verweis auf Fowler
 }
 \newglossaryentry{ORM}{
   name={ORM},
@@ -97,6 +96,14 @@ first={Software-Fehler}
   plural={Gems},
   description={mit in der Ruby-Gemeinschaft Gems (zu deutsch: Edelsteine) werden Bibliotheken Dritter bezeichnet, die in einem zentralem Repository lagern. Das bekannteste dieser Repositorys ist rubygems.org. Nahezu alle Ruby-Bibliotheken lassen sich hier finden und innerhalb von Sekunden mittels des Kommandozeilenwerkzeuges gem installieren. Beispielsweise ließe sich \glossar{rails} mittels \texttt{gem install rails} installieren.}
 }
+
+\newglossaryentry{DSL} {
+  name={DSL},
+  plural={DSLs},
+  description={Eine Domain spezifische Sprache ist eine auf eine spezielle Problemdomän ausgerichtete Programmier- oder Spezifikationssprache. Vertreter sind z.B. SQL, die Statistsprache R oder die Hardwarebeschreibungssprache VHDL. Sie stehen damit die Allzweck-Programmiersprachen gegenüber.},
+  first={Domain-Specific-Language (DSL)}
+}
+
 
 \newglossaryentry{CRM} {
   name={CRM},

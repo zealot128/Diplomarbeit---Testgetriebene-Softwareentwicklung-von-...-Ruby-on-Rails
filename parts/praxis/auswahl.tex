@@ -22,27 +22,28 @@ Grundsätzlich teilt die pludoni GmbH Features in zwei Kategorien ein:
  \item Features, welche nur dem Admin sichtbar sind, oder welche im Backend ausgeführt werden $\to$ Reporting, Statistiken, Indizierung der Datenbank, Cron-Scripte, Caching, ...
 \end{enumerate}
 
-Features der \textbf{Kategorie A} sollen in Zukunft Akzeptanztestgetrieben entwickelt werden. Die Entwicklung verläuft nach dem Schema, dass in Abschnitt \ref{sec:attd} vorgestellt wurde. Die Akzeptanztests sollen in Cucumber geschrieben werden. Die Websiteinteraktion soll mithilfe von Rack:Test im Falle einer Rails-Anwendung, und mit Capybara andernfalls simuliert werden.
+Features der \textbf{Kategorie A} sollen in Zukunft Akzeptanztestgetrieben entwickelt werden. Die Entwicklung verläuft nach dem Schema, dass in Abschnitt \ref{sec:attd} vorgestellt wurde. Die Akzeptanztests sollen in Cucumber geschrieben werden, und mittels Capybara auf simulierten Browsern ausgeführt werden (vgl. Abschnitt \ref{sec:cucumber}).
 Ziel ist es, das bei Webanwendungen übliche wiederholte manuelle Ausprobieren mit dem Browser, auf ein Minimum zu reduzieren. Jeglicher Vorgang, den der Kunde am Browser testet, lässt sich auch als ein Akzeptanztest formulieren. Ein automatisierter Test hat zudem den Vorteil zu einem späteren Zeitpunkt leicht wiederholt zu werden. 
 
 Der Vorteil dieser Outside-In Entwicklung ist, dass er auf den Kunden ausgerichtet ist. Die Verwendung der domänspezifischen Sprache Cucumber fördert zudem die Implementierung von Business-relevanten Features gemeinsam mit dem Kunden. Das gesamte Vokabular orientiert sich an der Anforderungsanalyse und an Businessprozessen, die auch der Kunde, der meist keinen technischen Hintergrund besitzt, verstehen kann.
 
-Für die von außen nicht-sichtbaren Features der \textbf{Kategorie B} sollen aus Kostengründen normale Unittests entwickelt nach der klassischen Testgetriebenen Entwicklung genügen. Die zusätzliche Abstraktionsebene der Akzeptanztests ist nicht notwendig.
+Für die von außen nicht-sichtbaren Features der \textbf{Kategorie B} sollen aus Kostengründen normale Unittests, entwickelt nach der klassischen Testgetriebenen Entwicklung, genügen. Die zusätzliche Abstraktionsebene der Akzeptanztests ist nicht notwendig.
 
 \subsubsection{Weitere Bestandteile der Entwicklungsstrategie}
 \label{sec:auswahlWeitere}
 
-Der oben genannte Teil bezieht sich in erster Linie auf den Kunden. Weitere Praktiken, die für den Programmieralltag wichtig sind, umfassen:
+Der oben genannte Ablauf bezieht sich in erster Linie auf die Erfüllung der funktionalen Anforderungen. Weitere Praktiken, die für den Programmieralltag wichtig sind, umfassen:
 
 \paragraph{Kontinuierliche Integration} Die Verwendung einer Versionsverwaltung, z.B. \textbf{git}\footnote{\url{http://git-scm.com/}}, ist allgemein für Software-Projekte obligatorisch. Bei der Kontinuierlichen Integration wollen wir sicherstellen, dass der Hauptzweig unserer Entwicklung stets ein lauffähigs Produkt enthält, und das laufende Änderungen so oft wie möglich integriert werden sollen. Das Vorhandensein einer großen Test-Suite ermöglicht es, diese beim Einchecken in den Hauptzweig immer komplett auszuführen, um so sicherstellen, dass auf dort stets eine lauffähige Version zu finden ist.
 
 In großen Projekten ist es üblich, komplexe Testpläne zu erstellen. Anscheinend sind aber automatisierte Tests, die bei jeden Einchecken durchgeführt werden, effektiver als rein formale Testpläne \citep[S. 238]{hunt_pragmatic_1999}.
 
-\paragraph{Code-Metriken} Ein tägliches Messen des Code-Zustandes mittels Code-Metriken ermöglicht es den Programmierern, sich selbst und gegenseitig auf die Finger zu schauen. Sollte ein Programmierer nämlich schlechten Code im Hinblick auf Komplexität und Code-Smells abliefern, so macht die Code-Analyse dies sichtbar. Dies dient in erster Linie nicht, um den Programmierer zu maßregeln, sondern ihm dabei zu helfen, den TDD-Prozess zu lernen und seinen Programmierstil ständig zu verbessern. Die Erfahrungen zeigen, dass die Programmierer meist selbst unzufrieden mit schlechtem Code, den sie geschrieben haben, sind. Code-Metriken können dabei helfen, dem Programmierer schnell ein Feedback zu seinem Code zu geben, wie es ein Code-Audit durch Andere in der Geschwindigkeit und Effizienz nie könnte.
+\paragraph{Code-Metriken} Ein tägliches Messen des Code-Zustandes mittels Code-Metriken ermöglicht es den Programmierern, sich selbst und gegenseitig auf die Finger zu schauen. Sollte ein Programmierer nämlich schlechten Code im Hinblick auf Komplexität und \glossarpl{smell} abliefern, so macht die Code-Analyse dies sichtbar. Dies dient in erster Linie nicht, um den Programmierer zu maßregeln, sondern ihm dabei zu helfen, den \glossar{TDD}-Prozess zu lernen und seinen Programmierstil ständig zu verbessern. Die Erfahrungen zeigen, dass die Programmierer meist selbst unzufrieden mit schlechtem Code, den sie geschrieben haben, sind. Code-Metriken können dabei helfen, dem Programmierer schnell ein Feedback zu seinem Code zu geben, wie es ein Code-Audit durch Andere in der Geschwindigkeit und Effizienz nie könnte.
 
-\paragraph{Regelmäßige Paar-Programmierung} Die Paarprogrammierung (Pair-Programming) ist eine Maßnahme aus dem Katalog von Extreme Programming, bei der zwei Programmierer zusammen an einem Computer arbeiten.  Insbesondere beim Lösen schwieriger Aufgaben und beim Anlernen neuer Teammitglieder ist Pair-Programming eine effektive Methode \citep{hulkko_multiple_2005}[S. 9]. Erfahrungsgemäß führt Pair-Programming zu besser dokumentierten Code, kann die Anzahl der Fehler verringern und zu einer höheren Arbeits-Effektivität führen \citep{hulkko_multiple_2005}.
-Die in Abschnitt \ref{sec:arbeitsablauf} angesprochene Dezentralisierung der Zusammenarbeit erschwert eine regelmäßige Paarprogrammierung. Nichtsdestotrotz sollten in regelmäßigen Abständen Features zu zweit entwickelt werden.
+\paragraph{Regelmäßige Paar-Programmierung} Die Paarprogrammierung (Pair-Programming) ist eine Maßnahme aus dem Katalog von Extreme Programming, bei der zwei Programmierer zusammen an einem Computer arbeiten. Sie wechseln sich beim Programmieren ab. Die Wichtigkeit der Paarprogrammierung für ein inkrementelles Design wurde in Abschnitt \ref{sec:tddEmergent} diskutiert.\\ Aber auch beim Lösen schwieriger Aufgaben und beim Anlernen neuer Teammitglieder ist die Paarprogramming eine effektive Methode \citep{hulkko_multiple_2005}[S. 9]. Erfahrungsgemäß führt sie zu besser dokumentierten Code, kann die Anzahl der Fehler verringern und zu einer höheren Arbeits-Effektivität führen \citep{hulkko_multiple_2005}.
+Die in Abschnitt \ref{sec:arbeitsablauf} angesprochene Dezentralisierung der Zusammenarbeit erschwert eine regelmäßige Paarprogrammierung. Nichtsdestotrotz sollten in regelmäßigen Abständen Features zu zweit in wechselnder Zusammensetzung entwickelt werden.
 
+%TODO nochwas? von XP klauen? :)
 
 \subsection{Auswahl der Entwicklungswerkzeuge}
 \label{sec:devtools}
@@ -67,7 +68,7 @@ Die Testabdeckung wird durch simple-cov berechnet, welches eine C0 Code Coverage
 Nichtsdestotrotz sei es zukünftigen Entwicklern freigestellt, eine IDE, wie Eclipse mit dem Plugin RadRails oder Netbeans zu verwenden.
 
 \subsection{Diskussion der Maßnahmen}
-TODO Zusammenfassung evtl ins Fazit oder Auswertung
+% TODO Zusammenfassung evtl ins Fazit oder Auswertung
 
 Viele dieser Maßnahmen dienen dazu, den Feedbackzyklus so kurz wie möglich zu halten. Für eine Testgetriebene Entwicklung ist es unerlässlich, dass die Testausführung schnell abläuft. Andernfalls, so die Erfahrung, führt dies zu einer verminderten Ausführungsrate, und ist damit hinderlich für die Entwicklung von sauberen Code.
 

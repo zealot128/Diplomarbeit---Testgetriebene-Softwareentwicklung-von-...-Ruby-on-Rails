@@ -4,11 +4,12 @@ Eine Codemetrik ist eine Maßzahl, die zum Vergleich dient und ein Qualitätsmer
 \epigraph{A function whose inputs are software data and whose output is a single
 numerical value that can be interpreted as the degree to which software possesses a given attribute that affects its quality}{\cite{ieee_1998}}
 
-Dem Verwenden von Code-Metriken liegt der Wunsch zugrunde, komplexe Codeteile auf einfache Zahlen automatisiert beurteilen zu lassen, um potenziell suboptimale Codestellen zu finden, welche Defekte verursachen könnten. Aus Business-Sicht stellen Code-Metriken eine Methode dar, Entwicklungsfortschritt zu messen und qualitativ zu beurteilen.
+Dem Verwenden von Code-Metriken liegt der Wunsch zugrunde, komplexe Codeteile auf einfache Zahlen automatisiert beurteilen zu lassen, um potenziell suboptimale Codestellen schnell zu finden, welche möglicherweise in Zukunft Defekte verursachen könnten. Aus Business-Sicht stellen Code-Metriken auch eine Methode dar, Entwicklungsfortschritt zu messen und zu beurteilen.
 \subsection{Überblick über Code-Metriken und Skalen}
 Hier seien nun einige der geläufigsten Code-Metriken vorgestellt.
-\paragraph{Lines of Code (LOC)} ist eine häufig verwendete, und die am leichtesten zu bestimmende Größe. Sie repräsentiert den Umfang eines Programmes. Diese Größe erhält dann eine größere Aussage, wenn man sie ins Verhältnis z.B. der Klasse oder eines Codefiles setzt. So kann man mit "`LOC / Klasse"' schon diejenigen Klassen finden, die wahrscheinlich zu komplex sind. \\
-Es werden alle Zeilen einer Datei gezählt, die nicht leer und keine Kommentare sind. Kommentare wiederrum können als eigene Metrik verwendet werden, um den Grad der Quelltextdokumentation zu bestimmen.
+\paragraph{Lines of Code (LOC)} ist eine häufig verwendete, und die am leichtesten zu bestimmende Größe. Sie repräsentiert den Umfang eines Programmes. Es werden alle Zeilen einer Datei gezählt, die nicht leer und keine Kommentare sind. Kommentare wiederrum können als eigene Metrik verwendet werden, um den Grad der Quelltextdokumentation zu bestimmen.
+
+Diese Größe erhält eine größere Aussage, wenn man sie ins Verhältnis z.B. der Klasse oder eines Codefiles setzt. So kann man mit "`LOC / Klasse"' schon diejenigen Klassen finden, die wahrscheinlich zu komplex sind. \\
 
 \paragraph{Zyklomatische Komplexität} ist ein Indikator für die Komplexität auf Basis des Kontrollflussgraphen eines Programms. Gemessen wird die Anzahl der linear unabhängigen Programmpfade. Sie ist für einen Graphen definiert durch:
 
@@ -25,12 +26,13 @@ Es werden alle Zeilen einer Datei gezählt, die nicht leer und keine Kommentare 
 
 In einem normalen Programm ist die Zyklomatische Komplexität die Anzahl der Entscheidungspunkte + 1 \citep[S. 314]{mccabe_complexity_1976}.
 
-Ein daraus abgeleitetes Testverfahren "`Basis Path Testing"' schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte, wie die Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) siehe dazu weiter unten.
+Ein daraus abgeleitetes Testverfahren "`Basis Path Testing"' schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte, wie die Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) (Mehr zu Testabdeckung im nächsten Unterabschnitt).
 
-\paragraph{Anzahl Bad Smells} ist eine aggregierte Metrik über alle suboptimale Codestellen. Da es viele verschiedene Bad Smells gibt, können ebensoviele Metriken davon abgeleitet werden. Für eine Übersicht genügt aber auch einfach die Summe. Welche Bad Smells für die Entwicklung entscheidend sind hängt von der gewählten Sprache, dem damit einhergehenden Programmierparadigma und manchmal auch den verwendeten Frameworks. Hier seien einige der häufig gebrauchten Smells für Ruby vorgestellt \citep{kevin_rutherford_code_2010}:
+\paragraph{Anzahl Bad Smells} ist eine aggregierte Metrik über Anzahl und Vorkommen von suboptimale Codestellen (\glossarpl{smell}). Diese Code-Smells sind meist ein oberflächliches Symptom für ein möglicherweise tieferliegendes Designproblem. Ob ein konkreter Smell relevant ist, muss im Einzelfall entschieden werden. Für eine grobe Übersicht genügt aber z.B. auch einfach die Summe, oder die Anzahl der Codesmells relativ zur Codemenge (Smells pro Tausend LOC). Welche Bad Smells für die Entwicklung entscheidend sind hängt von der gewählten Sprache, dem damit einhergehenden Programmierparadigma und manchmal auch den verwendeten Frameworks. Einige für Ruby relevante Smells sind z.B. (Nach \citep{kevin_rutherford_code_2010}):
 
 \begin{description}
- \item[Geringe Kohäsion] insb. "`Feature Envy"' (deutsch: Neid), ist für alle objektorientierten Programme anzuwenden. Eine Klasse weiß zuviel über die internen Strukturen einer anderen Klasse, und implementiert Funktionalität, die eigentlich in jene Klasse gehören würde. Im Beispiel würde diese Berechnung in die Klasse Checkout gehören.
+ \item[Geringe Kohäsion] Ist ein Oberbegriff für verschiedene andere Smells anzuwenden bei objektorientierten Programmen. Einer davon ist z.B.. "`Feature Envy"' (deutsch: Neid). Eine Klasse weiß zuviel über die internen Strukturen einer anderen Klasse, und implementiert Funktionalität, die eigentlich in jene Klasse gehören sollten. \\
+ Im Beispiel würde die Berechnung eines Gesamtpreises z.B. in die Klasse \texttt{Checkout} gehören.
  \begin{lstlisting}
     @checkout.total = @checkout.total_price * MWST
  \end{lstlisting}
@@ -40,12 +42,11 @@ Ein daraus abgeleitetes Testverfahren "`Basis Path Testing"' schlägt vor, dass 
   @job.user.address.street
  \end{lstlisting}
  Beim Law of Demeter ist eine solche Kette bis maximal Länge 1 erlaubt.
-
+ \item[Duplikation] Offensichtliche Ähnlichkeiten zwischen Programmstücken (oder sogar Deckungsgleichheit bei Anwendung von Copy \& Paste). Fortgeschrittene Analysemethoden betrachten den Abstrakten Syntaxbaum, und können so strukturelle Ähnlichkeiten feststellen
  \end{description}
 
 Diese Smells können mit dem Tool reek\footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}} festgestellt werden.
-% Code Smells 
-\paragraph{Duplikation} ist das Auftreten von gleichen oder ähnlichen Codeteilen an mehr als einer Stelle im Programm. Fortgeschritten Analysemethoden betrachten die Baumstruktur und finden ähnliche Teile unabhängig von Bezeichnernamen.
+Weitere Informationen zu Smells und deren Beseitigung finden sie in dem Buch "`Refactoring"' von M. Fowler \citep{fowler_refactoring_1999}.
 
 \subsection{Code-Metriken für Tests}
 \label{sec:metrics}
@@ -90,10 +91,11 @@ Die Testabdeckung, misst den Grad inwieweit ein Programm getestet wurde. Die Ang
  
  \subsubsection{Mutations/Pertubationstests -- Defect insertion}
  \label{sec:mutation}
- Eine weiter Methode, um die Qualität von Testcode zu messen, ist der Mutationstest. Dies ist ein diversifizierendes, fehlerbasiertes Testverfahren \citep{liggesmeyer_modultest_1990}. Hierbei werden (automatisiert oder manuell) nacheinander alle Zeilen des Programmcodes geändert, und geprüft, ob danach ein Test fehlschlägt \citep{beck_test_2002}.
+ Eine weitere Methode, um die Qualität von Testcode zu messen, ist der Mutationstest. Dies ist ein diversifizierendes, fehlerbasiertes Testverfahren \citep{liggesmeyer_modultest_1990}. Hierbei werden (automatisiert oder manuell) nacheinander alle Zeilen des Programmcodes geändert, und geprüft, ob danach ein Test fehlschlägt \citep{beck_test_2002}.
  
  Für Ruby gibt es ein Werkzeug, "`Heckle"`\footnote{\url{http://ruby.sadi.st/Heckle.html}}, welches dieses Verfahren implementiert. Im Detail werden Bedingungen negiert, konstante Zahlen und Funktionsaufrufe verändert, Zuweisungen verändert usw. \citep{ruby_sadists_confessions_2010}. Dabei wird immer eine Änderung (Mutation) vorgenommen, und dann alle Tests ausgeführt. Sollten dennoch in einer Mutation kein Test fehlschlagen, dass ein Test fehle, so ist die Annahme des Testverfahrens.
  
+ Um hieraus eine Metrik zu gewinnen, können die Anzahl der Mutationen gemessen werden, bei denen der Test nicht fehlschlug.  
  \subsection{Notwendigkeit von Code Metriken}
  
  Code-Metriken geben dem Programmierer automatisiert und schnell ein Feedback über die Qualität seiner Arbeit. Sie helfen dabei, Probleme frühzeitig zu erkennen und die Wartbarkeit durch gezielte Refaktorisierungen nachhaltig zu verbessern. Auch psychlogische Auswirkungen dürfen nicht unterschätzt werden. Alleine der Fakt, dass Codemetriken in einem Unternehmen regelmäßig verwendet werden, motiviert den Programmierer keinen sogenannten "`Big Ball of Mud"'\footnote{Ein Antipattern, in dem ein System keinerlei offensichtliche Architektur zu haben scheint} zu schreiben. Insbesondere in kleinen Projektteams, die keine dedizierte Qualitätssicherung haben, sind Codemetriken als kostengünstiges Kontrollinstrument unerlässlich. Studien zeigen, dass der konsequente Einsatz von Code-Metriken und Analysebenchmarks die Fehlerdichte und Entwicklungskosten stark verringen kann \citep[S.10f]{baggen_standardized_2011}.

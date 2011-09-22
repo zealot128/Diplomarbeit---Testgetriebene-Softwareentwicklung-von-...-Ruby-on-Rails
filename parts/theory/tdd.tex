@@ -1,26 +1,20 @@
 \section{Testgetriebene Entwicklung}
 \label{sec:tdd}
-Testgetriebene Entwicklung, im Englischen Test-Driven-Development (TDD) wurde erstmalig von Kent Beck 2002 im Detail erläutert \citep{beck_test_2002}. Zuvor war die Technik "`Test-First"' aber schon seit 1999 im Kontext von Extreme Programming (XP) bekannt.
- Sie ist eine der Kernpraktiken von Extreme Programming, ohne die viele der anderen dort formulierten Praktiken nur sehr schwer zu nutzen sind. %TODO XP?
- 
-\marginnote{Begriffe TDD und TFD}
-Test-Driven-Development wird als
-$$ \text{TDD} := \text{Test-First} + \text{Refaktorisieren}$$
-\borderquote{TDD is also good for geeks who form emotional attachments to code. }{\citeauthor{beck_test_2002}}
-beschrieben \citep{scott_ambler_introduction_2002}. So ist es Ziel, dass sich Test schreiben/Implementation und Refaktorisierungen, d.h. das konstante Verbessern des Systemdesigns und des Quellcodes, abwechseln. Mittlerweile werden die Begriffe Test-First Development und \glossar{TDD} synonym verwendet, allerdings gibt es manchmal Unterschiede in der Herangehensweise in Punkto Design der Software: TDD findet seine Anwendung, wenn nur eine vage Idee der Funktionalität einer Klasse besteht, während TFD kein Design oder Redesign der Klassen vorsieht \citep{stackoverflow_testing_2008}.
 
-% \paragraph{Einordnung} Da bei der Testgetriebenen Entwicklung die funktionalen Anforderungen der treibende Faktor für die Implementation der Tests sind, können die dabei entstehenden Testfälle den funktionalen Tests zugeordnet werden. In der Sichtbarkeit des Quellcodes sind die Tests der Testgetriebenen Entwicklung ein Spezialfall: Sie sind weder reine Whitebox-, nocht Blackboxtests, sondern Greyboxtests, da der zugrundeliegende Quellcode zwar (noch) nicht bekannt ist, aber 
 
+Extreme Programming ist eine Agile Software-Entwicklungs Methodik, welche das Ziel hat, die Qualität der Software zu verbessern und flexibel auf Änderungen in den Anforderungen zu reagieren. Dazu implementiert sie einige Kernpraktiken. Eine Wesentliche, auf der viele der anderen Praktiken gründen, ist die "`Test-First"'-Praktik, die ab 2002 durch Kent Beck als Test-Driven-Development bekannt geworden ist \citep{beck_test_2002}.\borderquote{TDD is also good for geeks who form emotional attachments to code. }{\citeauthor{beck_test_2002}}
+
+Diese als Testgetrieben Entwicklung oder Test-Driven-Design bekannte Entwicklungstechnik basiert auf der Wiederholung von sehr kurzen Entwicklungszyklen, jeder nur wenige Minuten lang. Dabei ist es das Ziel, dass sich Test schreiben/Implementation und Refaktorisierungen, d.h. das konstante Verbessern des Systemdesigns und des Quellcodes, abwechseln. Mittlerweile werden die Begriffe Test-First Development und \glossar{TDD} oft synonym verwendet, allerdings gibt es manchmal Unterschiede in der Herangehensweise in Punkto Design der Software: TDD findet seine Anwendung, wenn nur eine vage Idee der Funktionalität einer Klasse besteht, während TFD kein Design oder Redesign der Klassen vorsieht, sondern dieses bereits im Vorfeld der Entwicklung stattfand \citep{stackoverflow_testing_2008}.
 
 Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und danach am Beispiel von Ruby/\glossar{rails} typische Testwerkzeuge aufzeigen. 
 \subsection{Motivation}
-  Das Erstellen einer gut-abdeckenden \glossar{testsuite} ist für ein jedes größeres Softwareprojekt eine wichtige Voraussetzungen um interne Qualitäten, wie Wartbarkeit und Zuverlässigkeit zu aktivieren. \glossar{TDD} soll nicht dazu dienen, die Software auf Korrektheit zu untersuchen\footnote{TODO Kent Beck Verification und ISO 9000:2005 3.8.5} oder die Umsetzung der funktionalen Anforderungen zu belegen. Das Hauptziel ist es nämlich, den Code in Einklang mit dem Test zu schreiben, so dass der Test den Code antreibt (Test drives the code), und letztendlich Design auf diese Art zum System hinzugefügt werden soll. Der Effekt davon sei ein gut-testbarer Code, welcher in der Regel auch ein gut-wartbarer und verständlicher Code ist \citep{beck_test_2002}. \glossarpl{smell}, wie God-Methode und geringe Kohäsion, zu programmieren, wird alleine dadurch schon erschwert, da diese nur äußerst schwer zu testen sind.
+  Das Erstellen einer gut-abdeckenden \glossar{testsuite} ist für ein jedes größeres Softwareprojekt eine wichtige Voraussetzungen um interne Qualitäten, wie Wartbarkeit und Zuverlässigkeit zu aktivieren. \glossar{TDD} soll nicht dazu dienen, die Software zu validieren und die Umsetzung der funktionalen Anforderungen zu belegen. Das Hauptziel ist es nämlich, den Code in Einklang mit dem Test zu schreiben, so dass der Test den Code antreibt (Test drives the code), und letztendlich Design auf diese Art zum System hinzuzufügen. Die Auswirkung davon sei ein gut-testbarer Code, welcher in der Regel auch ein gut-wartbarer und verständlicher Code ist \citep{beck_test_2002}. \glossarpl{smell}, wie God-Methode und geringe Kohäsion, zu programmieren, wird alleine dadurch schon erschwert, da diese nur äußerst schwer zu testen sind.
 
   \paragraph{Psychologische Aspekte und Aspekte des Projektmanagements}
   
-  Kent Beck beschreibt die Hauptmotivation für TDD, als das "`managing fear during programming"' Management von Angst. So hat Angst verschiedene Auswirkungen auf die Entwicklung. Sie mache zögerlich, führe zu weniger Kommunikation und Feedback und mache den Programmierer "`mürrisch"' \citep[S. xi]{beck_test_2002}.
+  Kent Beck beschreibt die Hauptmotivation für TDD, als das "`managing fear during programming"' Management von Angst. So hat Angst verschiedene Auswirkungen auf die Entwicklung. Sie mache zögerlich, führe zu weniger Kommunikation und damit Feedback und mache den Programmierer "`mürrisch"' \citep[S. xi]{beck_test_2002}.
   
-  TDD fördert die Entwicklung in kleinen Schritten, und ermöglicht durch bestandene Tests kleine "`Belohnungen"' für den Programmierer. Dadurch ist es leichter einen gewissen Arbeitsrhythmus zu erhalten, was zu dem \textbf{Flow}\footnote{Schaffen-, Tätigkeitssrausch} führen kann\citep{roger_brown_test_2008}.
+  TDD fördert die Entwicklung in kleinen Schritten, und ermöglicht durch bestandene Tests kleine "`Belohnungen"' für den Programmierer. Dadurch ist es leichter einen gewissen Arbeitsrhythmus zu erhalten, was zu dem \textbf{Flow}\footnote{Schaffen-, Tätigkeitssrausch} führen kann\citep{roger_brown_test_2008} und damit eine effektivere Entwicklung ermöglicht.
   %Die Motivation für die Wahl von Test-getriebener Entwicklung als primäre Entwicklungsstrategie wird mit dem
   
   Falls TDD die Fehlerdichte signifikant verringern würde und nur Code entstünde, der getestet wurde, so hätte dies wohl auch soziale Auswirkungen auf die Software-Entwicklung\citep[S. x]{beck_test_2002}. 
@@ -33,7 +27,7 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und da
   
   
 \subsection{Ablauf}
-  Ziel ist es, vor der Implementation eines Codes, einen Unittest zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test besteht. Alls Drittes folgt die Refaktorisierung, bei TDD als Designphase genutzt.
+  Ziel ist es, vor der Implementation eines Codes, einen Unittest (vgl. Abschnitt \ref{sec:testUnit}) zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test besteht. Als Letztes folgt die Refaktorisierung, bei TDD als Designphase genutzt. Danach beginnt der Kreislauf von neuem.
   
   \begin{figure}[htbp]
  \centering
@@ -78,11 +72,7 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und da
  TDD ist nur eine Entwicklungsmethodik. Der äußere Software-Entwicklungsprozess kann variieren und z.B. ein iterativer oder agiler Entwicklungsprozess sein. TDD lässt sich in einen solchen leicht einbetten, insofern der Prozess es erlaubt, das Design während der Entwicklung ändern zu lassen, und nicht schon vor den Iterationen festgelegt wird. Somit schreibt TDD nicht vor, wie eine Analyse oder ein vorhergegangener Grobentwurf, bzw. Architekturentscheidungen zustandegekommen sind. 
  
  Innerhalb einer Iteration oder eines Durchlaufes des gewählten Vorgehensmodells, wird TDD an der Stelle des Design und der Entwicklung eingebettet, wie in Abbildung \ref{fig:devflow} dargestellt. Scheinbar wird so die (Fein-)-Design-Phase aus dem Ablauf entfernt. Stattdessen findet sie sich aber in Form der Refaktorisierung wieder.
- 
-    
-
-
-  
+     
   
   \subsection{Sonderfälle}
   \label{sec:tddspecialcircumstances}
@@ -131,19 +121,14 @@ Eine Studie von Microsoft ergab, dass TDD-entwickelnde Teams eine 60\% -- 90\% g
 
 
 
+\subsection{Prinzip des Emergent Design -- Inkrementelles Sofwaredesign}
+\label{sec:tddEmergent}
 
+Ein Konzept, das TDD effektiv macht, ist das sich Herausbildende Design (Emergent Design). Gegenüber traditionellen Entwicklungsansätzen erfolgt der Entwurf (Design) hierbei nicht als eigenständige Phase im Prozess, sondern ist streng in die Implementation integriert. Immer wenn ein Zyklus beim Refaktorisieren angelangt ist, findet nämlich effektiv Design statt. Eine Entwicklung nach TDD sucht den minimalsten Code, der die Anforderungen (Tests) erfüllt. Analog dazu, will ein Emergentes Design die kleinste Menge an benötigten Design suchen, die die Anwendung benötigt. Durch die vielen Iterationen und die darausfolgenden zahlreichen Refaktorisierungen tritt nach und nach das Design hervor, welches optimal für das System ist. 
 
-  
-
-
-
-\subsection{Prinzip des Emergent Design -- Evolutionäres Sofwaredesign}
 %TODO Emergent Design braucht evtl noch etwas mehr ermergentes Design :)
-Ein Konzept hinter TDD ist das sich Herausbildende Design (Emergent Design). Gegenüber traditionellen Entwicklungsansätzen erfolgt der Entwurf (Design) hierbei nicht als eigenständige Phase im Prozess, sondern ist streng in die Implementation integriert. Immer wenn ein Zyklus beim Refaktorisieren angelangt ist, findet nämlich effektiv Design statt. Eine Entwicklung nach TDD sucht den minimalsten Code, der die Anforderungen (Tests) erfüllt. Analog dazu, will ein Emergentes Design die kleinste Menge an benötigten Design suchen, die die Anwendung benötigt. Durch die vielen Iterationen und die darausfolgenden zahlreichen Refaktorisierungen tritt nach und nach das Design hervor, welches optimal für das System ist. 
 
 %Dies stehe im Gegensatz zu einem klSoftware-Design, das im Vorfeld bedacht wurde
-
-
 
 %discovering and harvesting patterns in existing Code
 
@@ -158,7 +143,6 @@ Ein Konzept hinter TDD ist das sich Herausbildende Design (Emergent Design). Geg
 %traditional design -> too early, Business Process can change way faster, speculation without facts
 %Frameworks sollten nicht designt werden, sondern sich aus Code ergeben
 
-
 %im Gegensatz zu einer Ingenieurswissenschaftlichen Tätigkeit, das ... -> Iterativ
 % ward cummingham
 %http://www.developerdotstar.com/mag/articles/reeves_design.html
@@ -169,14 +153,17 @@ Ein Konzept hinter TDD ist das sich Herausbildende Design (Emergent Design). Geg
 %cheap to build, expensive to design
 %BDUF (Big Design Upfront)
 
-
 %http://www.thoughtworks.com/emergent-design
 
-Einige Software-Architekten (\citeauthor*{neal_ford_emergent_2010}, \citeauthor*{jack_reeves_three_1992} und \citeauthor{glenn_vanderburg_real_2010}) proklamieren, dass praktisches Software-Engineering eigentlich keine ordinäre Ingenieursdisziplin sei. Ingenieure sind für die Planung und das Design verantwortlich, welches in aller Regel im Vorfeld der Implementierung stattfindet. Das klassische Software-Engineering empfindet diesen Prozess nach, was sich z.B. in dem Wasserfallmodell äußert. Diese Autoren äußern nun, dass dies für die meisten Softwareprojekte nicht ideal sei, da sich die Businessanforderungen meist im Laufe einer Entwicklung ändern. Traditionelles Softwaredesign abstrahiere zu früh und spekuliere ohne die letztendlichen Fakten zu kennen. Die ingenieurswissenschaftliche Diszplinen hätten außerdem die Beschränkung, dass ein Build-Prozess äußerst teuer ist (man denke den Bau einer Brücke oder die Entwicklung von Flugzeugen), wohingegen dies bei Software in der Regel fast nichts koste. Dadurch kann die Software-Entwicklung ein iteratives Vorgehen nutzen \citep{neal_ford_emergent_2010}, \citep{glenn_vanderburg_real_2010}, \citep{jack_reeves_three_1992}. Statt eines großen Designs am Anfang (BDUF -- Big Design Upfront) soll das Design durch Entdeckung und Extrahieren aus dem Sourcecode gewonnen werden.
+Einige Software-Architekten (\citeauthor*{neal_ford_emergent_2010}, \citeauthor*{jack_reeves_three_1992} und \citeauthor{glenn_vanderburg_real_2010}) stellen fest, dass praktisches Software-Engineering eigentlich keine klassische Ingenieursdisziplin sei. Ingenieure sind für die Planung und das Design verantwortlich, welches in aller Regel im Vorfeld der Implementierung stattfindet. Das klassische Software-Engineering empfindet diesen Prozess nach, und erstellt ein Design im Vorfeld der Entwicklung. Diese Autoren äußern nun, dass dies für die meisten Softwareprojekte nicht ideal sei, da sich die Businessanforderungen fast immer im Laufe einer Entwicklung ändern. Traditionelles Softwaredesign abstrahiere zu früh und spekuliere ohne die letztendlichen Fakten zu kennen. Die ingenieurswissenschaftliche Diszplinen hätten außerdem die Beschränkung, dass ein Build-Prozess äußerst teuer ist (man denke den Bau einer Brücke oder die Entwicklung von Flugzeugen), wohingegen Softwareentwicklung diese Beschränkung nicht besitzt, da ein Build meist (fast) nichts koste. Dadurch kann die Software-Entwicklung ein iteratives Vorgehen nutzen \citep{neal_ford_emergent_2010}, \citep{glenn_vanderburg_real_2010}, \citep{jack_reeves_three_1992}. Statt eines großen Designs am Anfang\footnote{(BDUF -- Big Design Upfront)} soll das Design durch Entdeckung und Extrahieren aus dem Sourcecode gewonnen werden.
 
-Abstraktion erfolgt beim Emergent Design durch Refaktorisieren, dem Anwendungen von Entwufsmustern und dem Anwenden von sogenannten \textbf{Idiomatischen Mustern} (Idomatic Patterns). Im Gegensatz zu den klassischen Entwufsmustern sind diese Muster nicht allgemein und für jedes Projekt anwendbar, sondern spezifisch für das Projekt, die Sprache oder das Unternehmen. Dies umfassen z.B. wie Transaktionen, Sicherheit und Infrastruktur verwendet wird. Viele Frameworks seien eine Sammlung von idomatischen Mustern für eine bestimmte Aufgabe, und viele gute Frameworks seien aus alltäglichen Problemlösungen hervorgegangen, u.a. auch \glossar{rails} \citep{neal_ford_ibm_2010}.
+\marginnote{Wie findet Abstraktion statt?}
+Beim inkrementellen Design wird jedes Design-Artefakt, ob nun Methode, Klasse, Namespace oder sogar Architektur, nur deshalb erstellt, um ein bestimmtes, aktuelles Problem zu lösen. Dieses Design tendiert dazu, sich in Schüben zu entwickeln: Meist ändert man nur kleine Dinge, bis man durch eine Idee einen Durchbruch (Breakthrough) erzielt, und eine größe Abstraktion durchführt\citep{shore_art_2007} \cite{evans_domain_driven_2003}. Dies kann in allen drei Abstraktionsleveln, Methode, Klasse oder Architektur stattfinden.\\
+Falls man Paar-Programmierung anwende, so ist es die Aufgabe des passiven Teilnehmers über das Design zu reflektieren und Refaktoriserungen zu überdenken. Auf diese Weise können Durchbrüche auf Methoden-Level mehrmals pro Stunde stattfinden.\\
+Während der Entwicklung, sollte der passive Teilnehmer der Paarprogrammierung ebenfalls darüber nachdenken, ob Ähnlichkeiten Ähnlichkeiten anderer Klassen zu der aktuell Entwickelten existieren. Falls er Redundanzien sieht, so solle er diese in einem passenden Refaktorisierungszyklus zur Diskussion bringen. Beide Teilnehmer diskutieren dann mögliche Abstraktionen. Durchbrüche dieser Art können mehrmals pro Tag stattfinden (abhängig vom bereits vorhanden Design).\\
+Ähnliches gilt dann im Architekturlevel, allerdings finden hier Durchbrüche nur alle paar Monate statt. Als Grundregel sollte man , beim Einführen neuer Architekturelemente, so konversativ wie möglich sein \citep{shore_art_2007}.
 
-Ein Emergent Design kann auch ohne TDD in iterative Entwicklungsprozessen verwendet werden. Allerdings ist die Umsetzung ohne das Vorhandensein einer guten Test-Suite ein risikoreiches Unterfangen.
+Ein Emergent Design kann auch ohne TDD in iterativen Entwicklungsprozessen verwendet werden. Allerdings ist die Umsetzung ohne das Vorhandensein einer guten Test-Suite ein risikoreiches Unterfangen. TDD sieht bereits eine Refaktoriserungsphase vor, und, zusammen mit einer Paarprogrammierung, bietet es damit perfekte Vorraussetzungen für ein inkrementelles Design.
 
 \subsection{Varianten}
 \subsubsection{ATDD -- Acceptance TDD}

@@ -1,5 +1,5 @@
 \section{Automatisierte dynamische Softwaretests}
-
+\label{sec:test}
 Zum Prüfen der Richtigkeit seiner Arbeit macht jeder Programmierer mindestens manuelle Tests. Bei einer Webanwendung hieße dies konkret, den Webserver zu starten und mittels eines Browsers durch die Anwendung zu navigieren, Daten anzulegen und Ausgaben der Anwendung zu kontrollieren. Mit zunehmender Größe einer Anwendung wird es immer aufwändiger, die Software zu testen, da nach jedem Hinzufügen von Funktionalität eigentlich alle Aspekte wieder getestet werden müssten, um Regressionsfehler auszuschließen.
 
 Stattdessen werden automatisierte Softwaretests instrumentalisiert, um auf Knopfdruck alle bisher programmierten Tests auszuführen und so ein Bild über den Zustand der Anwendung zu erhalten. So ist automatisiertes Testen dem manuellem Testen, das auch Ad-Hoc-Testen genannt wird, in kürzester Zeit zeitlich überlegen \citep{rappin_rails_2011}.
@@ -48,6 +48,7 @@ Ein Spezialfall sind die sogenannten \textbf{Greybox}-Tests, die insbesondere be
  \item[Diversifizierender Test] Testet verschiedene Versionen eines Programmes gegeneinander. Dies beinhaltet z.B. Mutationentest, der später im Abschnitt \ref{sec:mutation} \textit{\nameref{sec:mutation}} als Möglichkeit zur Beurteilung von Tests erläutert wird.
 \end{description}
 \subsection{Unittest}
+\label{sec:testUnit}
 Da die Testgetriebene Entwicklung in ihrer Reinform auf dem Unittest basiert, soll diese Testgattung im Vorfeld etwas näher beleuchtet werden.
 
 Ziel des Unittests ist es, frühzeitig Fehler im Code zu finden. Der Unit-, oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen, oder bei einer objektorientierten Sprache, die Klassen sein. Die Objekte unter Beobachtung (Objects under Test) werden beim Unittest in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double} simuliert. Dies ist notwendig um sicherzustellen, dass gefundende Fehler von dem betreffendem Modul verursacht wurden, und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen einfacher \citep{goodliffe_code_2006}.
