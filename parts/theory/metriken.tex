@@ -1,11 +1,11 @@
-\section{Code-Metriken}
+\chapter{Code-Metriken}
 Eine Codemetrik ist eine Maßzahl, die zum Vergleich dient und ein Qualitätsmerkmal für ein Stück Code oder ein Programm darstellt. Sie ist wird den Software-Metriken und Produkt-Metriken zugeordnet.
 
 \epigraph{A function whose inputs are software data and whose output is a single
 numerical value that can be interpreted as the degree to which software possesses a given attribute that affects its quality}{\citep{ieee_1998}}
 
 Dem Verwenden von Code-Metriken liegt der Wunsch zugrunde, komplexe Codeteile auf einfache Zahlen automatisiert beurteilen zu lassen, um potenziell suboptimale Codestellen schnell zu finden, welche möglicherweise in Zukunft Defekte verursachen könnten. Aus Business-Sicht stellen Code-Metriken auch eine Methode dar, Entwicklungsfortschritt zu messen und zu beurteilen.
-\subsection{Überblick über Code-Metriken und Skalen}
+\section{Überblick über Code-Metriken und Skalen}
 Hier seien nun einige der geläufigsten Code-Metriken vorgestellt.
 \paragraph{Lines of Code (LOC)} ist eine häufig verwendete, und die am leichtesten zu bestimmende Größe. Sie repräsentiert den Umfang eines Programmes. Es werden alle Zeilen einer Datei gezählt, die nicht leer und keine Kommentare sind. Kommentare wiederrum können als eigene Metrik verwendet werden, um den Grad der Quelltextdokumentation zu bestimmen.
 
@@ -48,12 +48,12 @@ Ein daraus abgeleitetes Testverfahren "`Basis Path Testing"' schlägt vor, dass 
 Diese und weitere Smells können mit dem Tool reek\footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}} festgestellt werden.\\
 Weitere Informationen zu Smells und deren Beseitigung finden sie in dem Buch "`Refactoring"' von M. Fowler \citep{fowler_refactoring_1999}.
 
-\subsection{Code-Metriken für Tests}
+\section{Code-Metriken für Tests}
 \label{sec:metrics}
 Tests haben (auch) die Aufgabe, ein Programm oder Codestück auf Korrektheit\footnote{Korrektheit gegenüber den Spezifikationen, keine mathematische Korrektheit} zu untersuchen. Die Tests allerdings haben ihrerseits meistens keine Tests. Um ein Mittel zu haben, Tests zumindest in ihrer Nützlichkeit zu untersuchen, existieren auch hier verschiedene Code-Metriken.\\
 Tests sind in erster Linie natürlich auch Code und können mit den oben genannten Metriken beurteilt werden. Zudem gibt es aber einige weitere exklusive Methoden, Qualität von Tests zu beurteilen.
 
-\subsubsection{Verhältnis von Lines of Test zu Lines of Code}
+\subsection{Verhältnis von Lines of Test zu Lines of Code}
 Neben den Lines of Code kann auf dieselbe (einfache) Weise die Anzahl der Codezeilen der Testklassen ermittelt werden. Daraus ermittelt sich das Verhältnis:
 
 \shadebox{
@@ -71,7 +71,7 @@ Neben den Lines of Code kann auf dieselbe (einfache) Weise die Anzahl der Codeze
 
 Sollte dieser deutlich kleiner als 1 sein, so ist dies ein Symptom für zu wenige Tests. Diese Zahl ist von dem Testframework und dem Programmframework stark abhängig. Gute Projekte sollten (deutlich) mehr Test-Code, als Programmcode besitzen \citep[S. 238]{hunt_pragmatic_1999}.
 
-\subsubsection{Testausführungsabdeckung}
+\subsection{Testausführungsabdeckung}
 Die Testabdeckung, misst den Grad, inwieweit ein Programm durch die Tests berührt wurde. Dabei wird die vorhandene Test-Suite ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"', und 0\% "`Das Programm wurde durch die Tests überhaupt nicht berührt"'  Es wird festgehalten, welche Anweisungen, Zweige oder sogar Programmpfade ausgeführt wurden. Diese 3 Abstufungen, sind im Detail;
 \begin{description}
  \item[C0] (Anweisungsüberdeckung, Statement Coverage) ist die am einfachsten zu bestimmende Abdeckung. Dabei wird geprüft, ob jede Zeile des Quellcodes während der Codeausführung mindestens einmal ausgeführt wurde
@@ -90,14 +90,14 @@ Die Testabdeckung, misst den Grad, inwieweit ein Programm durch die Tests berüh
 
  Zusammenfassend kann man sagen, dass es keine eindeutige Antwort gibt. Eine niedrige C0-Abdeckung von 50\% oder weniger zeigt allerdings deutliche Missstände beim Testverfahren an.
 
- \subsubsection{Mutations/Pertubationstests -- Defect insertion}
+ \subsection{Mutations/Pertubationstests -- Defect insertion}
  \label{sec:mutation}
  Eine weitere Methode, um die Qualität von Testcode zu bestimmen, ist der Mutationstest. Dies ist ein diversifizierendes, fehlerbasiertes Testverfahren \citep{liggesmeyer_modultest_1990}. Hierbei werden (automatisiert oder manuell) nacheinander Anweisungen des Programmcodes geändert, und geprüft, ob danach ein Test fehlschlägt \citep{beck_test_2002}. Sollte nämlich kein Test fehlgeschlagen sein, dann seien die Tests zu oberflächlich.
 
  Für Ruby gibt es ein Werkzeug, \textbf{Heckle}\footnote{\url{http://ruby.sadi.st/Heckle.html}}, welches dieses Verfahren implementiert. Im Detail werden Bedingungen negiert, konstante Zahlen und Funktionsaufrufe verändert, Zuweisungen verändert usw. \citep{ruby_sadists_confessions_2010}. Dabei wird immer eine Änderung (Mutation) vorgenommen, und dann alle Tests ausgeführt. Sollten dennoch in einer Mutation kein Test fehlschlagen, dass ein Test fehle, so ist die Annahme des Testverfahrens.
 
  Um hieraus eine Metrik zu gewinnen, kann die Anzahl der Mutationen gemessen werden, bei denen der Test nicht fehlschlug. Im Verhältnis zu den Klassen gesetzt lassen sich auf diese Weise diejenigen Klassen finden, die zu oberflächlich getestet wurden.
- \subsection{Notwendigkeit von Code Metriken}
+ \section{Notwendigkeit von Code Metriken}
 
  Code-Metriken geben dem Programmierer automatisiert und schnell ein Feedback über die Qualität seiner Arbeit. Sie helfen dabei, Probleme frühzeitig zu erkennen und die Wartbarkeit durch gezielte Refaktorisierungen nachhaltig zu verbessern. Auch psychlogische Auswirkungen dürfen nicht unterschätzt werden. Alleine der Fakt, dass Codemetriken in einem Unternehmen regelmäßig verwendet werden, motiviert den Programmierer keinen sogenannten "`Big Ball of Mud"'\footnote{Ein Antipattern, in dem ein System keinerlei offensichtliche Architektur zu haben scheint} zu schreiben. Insbesondere in kleinen Projektteams, die keine dedizierte Qualitätssicherung haben, sind Codemetriken als kostengünstiges Kontrollinstrument unerlässlich. Studien zeigen, dass der konsequente Einsatz von Code-Metriken und Analysebenchmarks die Fehlerdichte und Entwicklungskosten stark verringen kann \citep[S.10f]{baggen_standardized_2011}.
 

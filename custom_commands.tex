@@ -54,6 +54,12 @@
 {ö}{{\"o}}1
 }
 
+\newcommand{\randbem}[1]{
+  \marginpar[{\fontsize{9}{10}\selectfont \raggedleft{#1}]
+  {\fontsize{9}{10}\selectfont \raggedright{#1}}
+    
+} 
+
 \newcommand{\bordergraphic}[1]{
   \marginline{\includegraphics[width=0.8\marginparwidth]{#1}}}
 \newcommand{\tddred}{\bordergraphic{diagrams/red.png}}
@@ -62,9 +68,13 @@
 
 \newcommand{\borderquote}[2]{
 \setlength{\epigraphwidth}{\marginparwidth}
-\marginnote{\epigraph{#1}{#2}}
+\marginpar{\epigraph{#1}{#2}}
 \setlength{\epigraphwidth}{0.8\textwidth}
 }
+
+% \newcommand{\borderquote}[2]{
+% \marginnote{#1}
+% }
 
 
 \usepackage{fancyvrb}

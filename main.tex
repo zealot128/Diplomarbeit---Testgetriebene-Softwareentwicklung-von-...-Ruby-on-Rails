@@ -18,18 +18,19 @@
 		twoside,
 		openright,
 		parskip,
-		tocbasic,
- 		draft,    		% DEBUG modus
+% 		tocbasic,
+  		final,    		% DEBUG modus
+% draft,
+		appendixprefix,
+	headsepline,%         Linie nach Kopfzeile.
+	footsepline,%         Linie vor Fusszeile.
+% 	bibtotocnumbered,%    Literaturverzeichnis im Inhaltsverzeichnis nummeriert einfügen. 		
 % 		chapterprefix,%       Kapitel anschreiben als Kapitel
 ]{scrreprt}
-
-
-
 
 \usepackage[ngerman, german]{babel}
 %Deutsche Trennungen, Anführungsstriche und mehr:
 % \usepackage{german, ngerman}
-
 
 \usepackage[utf8]{inputenc}		%Damit kann man auch Umlaute direkt eintippen  \o/
 \usepackage{textcomp}
@@ -90,14 +91,14 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% HEAD AND FOOTLINES 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagestyle{fancy}
-\renewcommand{\sectionmark}[1]{\markboth{\thesection\ #1}{}}
-\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
-\lhead[ \leftmark   ]{\textbf{\ownTitle}}
-\rhead[\textbf{\ownTitleZ}]{\leftmark}
-\lfoot[\thepage    ]{\scriptsize \textcopyright2011, \ownAutor}
-\cfoot[]{}
-\rfoot[\scriptsize \textcopyright2011, \ownAutor]{\thepage}
+\pagestyle{headings}
+% \renewcommand{\sectionmark}[1]{\markboth{\thesection\ #1}{}}
+% \renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
+% \lhead[ \leftmark   ]{\textbf{\ownTitle}}
+% \rhead[\textbf{\ownTitleZ}]{\leftmark}
+% \lfoot[\thepage    ]{\scriptsize \textcopyright2011, \ownAutor}
+% \cfoot[]{}
+% \rfoot[\scriptsize \textcopyright2011, \ownAutor]{\thepage}
 
 
 \include{custom_commands}
@@ -106,7 +107,7 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
 
 %%%%%%%%%%%%%%%%%%%%%% STYLINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\footrulewidth}{0.5pt}
-
+\let\cleardoublepage\clearpage
 \parskip 5pt       % sets spacing between paragraphs
 \parindent 0pt	   
 
@@ -125,16 +126,16 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
 \definecolor{Gray}{rgb}{0.85,0.85,0.90}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{hyphenat}
+\usepackage[T1]{fontenc}
+
+
 \hyphenation{De-zi-mal-trenn-zeichen In-stal-la-ti-ons-as-sis-tent
 Com-mu-ni-ty
 Soft-ware-Ent-wick-lung
+Aus-für-lich
+Um-for-mu-lie-rung
+Test-fall-ab-deck-ung
 }
-
-
-
-
-
-
 
 
 

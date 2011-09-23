@@ -1,5 +1,5 @@
-\section{Auswahl der Entwicklungsmethodik und -Werkzeuge}
-\subsection{Herausbildung eines Entwicklungsmodells für die Bedürfnisse der pludoni GmbH}
+\chapter{Auswahl der Entwicklungsmethodik und -Werkzeuge}
+\section{Herausbildung eines Entwicklungsmodells für die Bedürfnisse der pludoni GmbH}
 Viele der gängigen Vorgehensmodelle, wie \textit{V-Modell}\footnote{\url{http://v-modell.iabg.de/}} oder \textit{Rational Unified Process}\footnote{\url{http://www.ibm.com/software/awdtools/rup/}}, finden ihre Anwendung in großen Projektteams. Für mittelgroße Projektteams gibt es seit ca. 10 Jahren die \textit{agilen Vorgehensmodelle}. Sie haben einen eher pragmatischen Ansatz, mit dem Ziel gemeinsam mit dem Kunden eine funktionierende Software zu bauen. Zu eigen machen sie sich dabei kurze Releasezyklen, welche regelmäßig Feedback geben. Damit wird der klassische GAU am Ende des Projektes, wenn die Wünsche des Kunden mit den tatsächlichen Umsetzungen doch nicht einher gehen, vermieden. Aber viele dieser Methoden, wie z.B. \textit{SCRUM}\footnote{\url{http://www.scrumalliance.org/pages/what_is_scrum}}, benötigen eine Schulung für das gesamte Team, die nicht immer finanzierbar ist.\\
 Für die Arbeit von sehr kleinen Teams mit weniger als 4 Mitgliedern, wird nun eine Entwicklungsstrategie auf Basis der Testgetriebenen Entwicklung mit Ruby on Rails vorgestellt, die auf die Bedürfnisse der pludoni GmbH zugeschnitten ist.
 
@@ -13,7 +13,7 @@ Diese Bedürfnisse umfassen
 
 \end{itemize}
 
-\subsubsection{Einteilung der Features in Kategorien}
+\subsection{Einteilung der Features in Kategorien}
 Grundsätzlich teilt die pludoni GmbH Features in zwei Kategorien ein:
 
 \begin{enumerate}[A.]
@@ -29,7 +29,7 @@ Der Vorteil dieser Outside-In Entwicklung ist, dass er auf den Kunden ausgericht
 
 Für die von außen nicht-sichtbaren Features der \textbf{Kategorie B} sollen aus Kostengründen normale Unittests, entwickelt nach der klassischen Testgetriebenen Entwicklung, genügen. Die zusätzliche Abstraktionsebene der Akzeptanztests ist nicht notwendig.
 
-\subsubsection{Praktiken}
+\subsection{Praktiken}
 \label{sec:auswahlWeitere}
 
 Der oben genannte Ablauf bezieht sich in erster Linie auf die Erfüllung der funktionalen Anforderungen. Weitere Praktiken, die für den Programmieralltag wichtig sind, umfassen:
@@ -45,7 +45,7 @@ Die in Abschnitt \ref{sec:arbeitsablauf} angesprochene Dezentralisierung der Zus
 
 %TODO nochwas? von XP klauen? :)
 
-\subsection{Auswahl der Entwicklungswerkzeuge}
+\section{Auswahl der Entwicklungswerkzeuge}
 \label{sec:devtools}
 
 Für die zukünftige Entwicklung vorrangig von Webanwendungen, werden folgende Werkzeuge berücksichtigt.
@@ -67,7 +67,7 @@ Die Testabdeckung wird durch \textbf{simple-cov} berechnet, welches eine C0 Code
 % \paragraph{Texteditoren} Innerhalb der Entwickler der pludoni GmbH besteht ein Konsens für die Verwendung von \textbf{vim}, da hier bereits eine große Basis an Plugins gesammelt wurde, die die Entwicklung von Webanwendungen und insbesondere Ruby on Rails erleichtern. Ein weiterer Vorteil ist es, dass vim ohne ein graphisches Interface auskommt, und so direkt von der Shell auf dem Webserver ausgeführt werden kann.\\
 % Nichtsdestotrotz sei es zukünftigen Entwicklern freigestellt, eine IDE, wie Eclipse mit dem Plugin RadRails oder Netbeans zu verwenden.
 
-\subsection{Diskussion}
+\section{Diskussion}
 
 Viele dieser Maßnahmen dienen dazu, den Feedbackzyklus so kurz wie möglich zu halten. Für eine Testgetriebene Entwicklung ist es unerlässlich, dass die Testausführung schnell abläuft, d.h. dass der Programmierer innerhalb weniger Sekunden ein Feedback erhält. Andernfalls, so die Erfahrung, führt dies zu einer verminderten Ausführungsrate, und ist damit hinderlich für die Entwicklung von sauberen Code. Dazu ist es notwendig, dass die Tests so modular und unabhängig sind, um einzeln ausgeführt werden zu können, und dass bei zunehmender Größe des Projekts eine vollständige Testausführung, insbesondere der relativ langsamen Akzeptanztests, nur durch den Integrationsserver (Kontinuierliche Integration) vorgenommen wird.
 
