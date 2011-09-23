@@ -18,15 +18,18 @@
 		twoside,
 		openright,
 		parskip,
-% 		draft,
-		chapterprefix,%       Kapitel anschreiben als Kapitel
+		tocbasic,
+ 		draft,    		% DEBUG modus
+% 		chapterprefix,%       Kapitel anschreiben als Kapitel
 ]{scrreprt}
 
-\usepackage{moreverb}
 
+
+
+\usepackage[ngerman, german]{babel}
 %Deutsche Trennungen, Anführungsstriche und mehr:
-\usepackage{german, ngerman}
-\usepackage[german]{babel}
+% \usepackage{german, ngerman}
+
 
 \usepackage[utf8]{inputenc}		%Damit kann man auch Umlaute direkt eintippen  \o/
 \usepackage{textcomp}
@@ -96,15 +99,45 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
 \cfoot[]{}
 \rfoot[\scriptsize \textcopyright2011, \ownAutor]{\thepage}
 
-\renewcommand{\footrulewidth}{0.5pt}
-\definecolor{Gray}{rgb}{0.85,0.85,0.90}
-\parskip 5pt       % sets spacing between paragraphs
-\parindent 0pt	   
 
 \include{custom_commands}
 \makeindex 	%start Aufzeichnung eines Stichwortverzeichnisses
- \fontsize{12}{15}
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%% STYLINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\footrulewidth}{0.5pt}
+
+\parskip 5pt       % sets spacing between paragraphs
+\parindent 0pt	   
+
+
+\usepackage{bookman}  % 118 pages, sehr sauber
+% \usepackage{newcent}  % 116 pages, nice aber etwas zu kraeftig
+% \usepackage{lmodern}  % 109 pages, standardmaessig
+% \usepackage{boisik}    % 113 pages, gewagt aber sehr detailiert, etwas ungerade 
+% \usepackage{palatino}    % 111 pages, Arial'y sehr langweilig in den Ueberschriften
+% \usepackage{cmbright}    % 111 pages, Wie ein modernes Buch. Gut fuer ne Doku oder so
+ \usepackage{charter}    % 109 pages, Wie ein modernes Buch. Gut fuer ne Doku oder so
+\fontsize{12}{15}
+
+
+
+\definecolor{Gray}{rgb}{0.85,0.85,0.90}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyphenat}
+\hyphenation{De-zi-mal-trenn-zeichen In-stal-la-ti-ons-as-sis-tent
+Com-mu-ni-ty
+Soft-ware-Ent-wick-lung
+}
+
+
+
+
+
+
+
+
+
 \begin{document}
  \include{parts/00-frontpage}
  
