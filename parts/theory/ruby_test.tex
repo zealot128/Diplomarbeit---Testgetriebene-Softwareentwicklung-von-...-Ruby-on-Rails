@@ -1,5 +1,6 @@
 
 \section{Testframeworks für Ruby}
+\epigraph{Ruby has laid the way in having a test-infected culture around the language}{Nathaniel Talbott (Entwickler von Test/Unit)}
 
 Rails liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit mit. In der Version 1.9.x bringt Ruby das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest ist Cucumber, welches eine Business-readable \glossar{DSL}\footnote{Eine Domain-Spezifische-Sprache, welche durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen.
 \subsection{Test/Unit}
@@ -7,7 +8,7 @@ Test/Unit basiert auf dem xUnit-, bzw. SUnit-Design von Kent Beck, und ist für 
 
 Für eine zu testende Klasse wird analog eine Testklasse erstellt. Diese trägt per Definition denselben Namen wie die zu testende Klasse mit einem \texttt{Test} am Anfang. Um z.B. eine Klasse \texttt{Job} zu testen, wird eine Datei \texttt{job\_test.rb}  erstellt. Dort wiederrum wird eine Klasse mit Namen \texttt{TestJob} definiert. 
 
-\borderquote{Ruby has laid the way in having a test-infected culture around the language}{Nathaniel Talbott (Entwickler von Test/Unit)}
+
 Eine solche Testklasse kann wie folgt aussehen:
 \begin{ruby}[label=Testen mit Test/Unit]
 \PY{n+nb}{require} \PY{l+s+s2}{"}\PY{l+s+s2}{job}\PY{l+s+s2}{"}

@@ -118,7 +118,8 @@ Wir haben zwar den Netzwerkzugriff abgefangen, geben aber nun keinerlei Antwort,
     \PY{n}{fake\PYZus{}response}\PY{o}{.}\PY{n}{code} \PY{o}{=} \PY{l+m+mi}{200}  \PY{c+c1}{# HTTP OK!}
     \PY{n}{fake\PYZus{}response}\PY{o}{.}\PY{n}{body} \PY{o}{=} \PY{l+s+s2}{"}\PY{l+s+s2}{<?xml version='1.0'?><Hallo/>}\PY{l+s+s2}{"}
 
-    \PY{n+no}{HTTParty}\PY{o}{.}\PY{n}{expects}\PY{p}{(}\PY{l+s+ss}{:get}\PY{p}{)}\PY{o}{.}\PY{n}{with}\PY{p}{(}\PY{l+s+s2}{"}\PY{l+s+s2}{http://www.example.com/feed.xml}\PY{l+s+s2}{"}\PY{p}{)}\PY{o}{.}\PY{n}{returns}\PY{p}{(}\PY{n}{fake\PYZus{}response}\PY{p}{)}
+    \PY{n+no}{HTTParty}\PY{o}{.}\PY{n}{expects}\PY{p}{(}\PY{l+s+ss}{:get}\PY{p}{)}\PY{o}{.}\PY{n}{with}\PY{p}{(}\PY{l+s+s2}{"}\PY{l+s+s2}{http://www.example.com/feed.xml}\PY{l+s+s2}{"}\PY{p}{)}\PY{o}{.}
+      \PY{n}{returns}\PY{p}{(}\PY{n}{fake\PYZus{}response}\PY{p}{)}
 
     \PY{n}{import} \PY{o}{=} \PY{n+no}{ImportedFeed}\PY{o}{.}\PY{n}{new}\PY{p}{(}\PY{n+nv+vi}{@url}\PY{p}{)}
     \PY{n}{assert\PYZus{}match} \PY{l+s+s2}{"}\PY{l+s+s2}{Hallo}\PY{l+s+s2}{"}\PY{p}{,} \PY{n}{import}\PY{o}{.}\PY{n}{body}

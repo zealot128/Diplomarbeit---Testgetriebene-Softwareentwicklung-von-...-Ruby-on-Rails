@@ -1,6 +1,8 @@
 \section{Implementierung von Controller-Tests (functional tests)}
+\epigraph{Skinny Controller, Fat Model [...] Try to keep your controller actions and views as slim as possible.}{Jamis Buck, Programmierer bei 37signals}
+%TODO Syntax HL dieses ganze Kapitel
 
-Neben den Unittests stellt Ruby on Rails eine weitere Testart nativ bereit. Technisch gesehen handelt es sich bei diesen Functional Tests aber auch um Unittests, da deren Testobjekt ein Controller ist. 
+Neben den Unittests stellt Ruby on Rails eine weitere Testart nativ bereit. Technisch gesehen handelt es sich bei diesen Functional Tests aber auch um Unittests, da deren Testobjekt eine Klasse, der Controller, ist. 
 Ein Controller hat bei Ruby on Rails die Aufgabe, Anfragen für bestimmte Routen, also Web-Adressen, anzunehmen, die Arbeit an eine Modelklasse auszulagern, und eine View aufzurufen, die letztendlich HTML-Code generiert.
 
 Im ersten Beispiel wollen wir testen, dass ein Gast-Nutzer, also z.B. ein Bewerber, eine sichtbare Stellenanzeige aufrufen darf (visible = true). Hierbei verwenden wir wieder unser oben definiertes Fixture für einen gültigen Job.
@@ -146,8 +148,8 @@ end
 
 
 % Funktionale Tests sind in Rails häufig recht einfach gehalten, da das Ziel vergo
-\borderquote{Skinny Controller, Fat Model [...] Try to keep your controller actions and views as slim as possible.}{Jamis Buck, Programmierer bei 37signals}
-Funktionale Tests und deren Controllerimplementierungen sind häufig nischt länger als ein paar Zeilen. Qua Konventation des \glossar{MVC}-Patterns und Rails sollen komplexe Abläufe in den Modellen oder auch in Bibliotheken stattfinden. 
+
+Funktionale Tests und deren Controllerimplementierungen sind häufig nicht länger als ein paar Zeilen. Qua Konventation des \glossar{MVC}-Patterns und Rails sollen komplexe Abläufe in den Modellen oder auch in Bibliotheken stattfinden. 
 Die Aspekte, die üblicherweise bei Controllern getestet werden, sind:
 \begin{itemize}
  \item HTTP Statuscodes und Weiterleitungen,

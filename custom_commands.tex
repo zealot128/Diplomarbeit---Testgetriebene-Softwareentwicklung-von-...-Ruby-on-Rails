@@ -55,9 +55,8 @@
 }
 
 \newcommand{\randbem}[1]{
-  \marginpar[{\fontsize{9}{10}\selectfont \raggedleft{#1}]
+  \marginpar[\fontsize{9}{10}\selectfont \raggedleft{#1}]
   {\fontsize{9}{10}\selectfont \raggedright{#1}}
-    
 } 
 
 \newcommand{\bordergraphic}[1]{
@@ -68,7 +67,7 @@
 
 \newcommand{\borderquote}[2]{
 \setlength{\epigraphwidth}{\marginparwidth}
-\marginpar{\epigraph{#1}{#2}}
+\marginpar{\fontsize{9}{10} \epigraph{#1}{#2}}
 \setlength{\epigraphwidth}{0.8\textwidth}
 }
 

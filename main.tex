@@ -16,14 +16,14 @@
 		a4paper,
 		12pt,
 		twoside,
-		openright,
+% 		openright,    % Chapter beginnen auf rechter Seite
 		parskip,
 % 		tocbasic,
   		final,    		% DEBUG modus
 % draft,
 		appendixprefix,
-	headsepline,%         Linie nach Kopfzeile.
-	footsepline,%         Linie vor Fusszeile.
+% 	headsepline,%         Linie nach Kopfzeile.
+% 	footsepline,%         Linie vor Fusszeile.
 % 	bibtotocnumbered,%    Literaturverzeichnis im Inhaltsverzeichnis nummeriert einfügen. 		
 % 		chapterprefix,%       Kapitel anschreiben als Kapitel
 ]{scrreprt}
@@ -54,7 +54,7 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
 \usepackage{framed}   		%begin{framed}
 \usepackage{longtable} 		%begin{longtable}
 \usepackage{makeidx}
-\usepackage[square]{natbib}  % natbib, aber Zitiert mit [..] anstatt (..)
+\usepackage[square,sort&compress,comma,numbers]{natbib}  % natbib, aber Zitiert mit [..] anstatt (..)
 \usepackage{epigraph}		% Epigraph = stylische Zitatte
 \usepackage{listings}	% Quellcode Listings und List of Listings
 \usepackage{caption}	% Modifizierung und setzen von custom captions
@@ -132,14 +132,19 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
 \hyphenation{De-zi-mal-trenn-zeichen In-stal-la-ti-ons-as-sis-tent
 Com-mu-ni-ty
 Soft-ware-Ent-wick-lung
+Soft-ware
 Aus-für-lich
 Um-for-mu-lie-rung
 Test-fall-ab-deck-ung
+Test-Unit
+Test/Unit
 }
 
 
-
+% \listfiles  DEBUG
 \begin{document}
+
+
  \include{parts/00-frontpage}
  
  \pagenumbering{Roman}
@@ -158,8 +163,12 @@ Test-fall-ab-deck-ung
  \include{parts/99-appendix}
  
 %  \cite{*} 
- \bibliographystyle{dinat}
+ \bibliographystyle{alphadin}    % Verbos
+%  \bibliographystyle{alphadin}     %
+
+\begin{raggedright}
  \bibliography{bibo}
+\end{raggedright} 
 
 \end{document}
  
