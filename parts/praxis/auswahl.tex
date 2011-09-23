@@ -1,6 +1,6 @@
 \section{Auswahl der Entwicklungsmethodik und -Werkzeuge}
-\subsection{Herausbildung eines Entwicklungsvorgehensmodell für die Bedürfnisse der pludoni GmbH}
-Viele der gängigen Vorgehensmodelle, wie V-Modell\footnote{\url{http://v-modell.iabg.de/}} oder Rational Unified Process\footnote{\url{http://www.ibm.com/software/awdtools/rup/}}, finden ihre Anwendung in großen Projektteams. Für mittelgroße Projektteams gibt es seit ca. 10 Jahren die agilen Prozesse. Sie haben einen eher pragmatischen Ansatz, mit dem Ziel gemeinsam mit dem Kunden eine funktionierende Software zu bauen. Zu eigen machen sie sich dabei kurze Releasezyklen, welche regelmäßig Feedback geben. Damit wird der klassische GAU am Ende des Projektes, wenn die Wünsche des Kunden mit den tatsächlichen Umsetzungen doch nicht einher gehen, vermieden. Aber viele dieser Methoden, wie z.B. SCRUM\footnote{\url{http://www.scrumalliance.org/pages/what_is_scrum}}, benötigen eine Schulung für das gesamte Team, die nicht immer finanzierbar ist.
+\subsection{Herausbildung eines Entwicklungsmodells für die Bedürfnisse der pludoni GmbH}
+Viele der gängigen Vorgehensmodelle, wie \textit{V-Modell}\footnote{\url{http://v-modell.iabg.de/}} oder \textit{Rational Unified Process}\footnote{\url{http://www.ibm.com/software/awdtools/rup/}}, finden ihre Anwendung in großen Projektteams. Für mittelgroße Projektteams gibt es seit ca. 10 Jahren die \textit{agilen Vorgehensmodelle}. Sie haben einen eher pragmatischen Ansatz, mit dem Ziel gemeinsam mit dem Kunden eine funktionierende Software zu bauen. Zu eigen machen sie sich dabei kurze Releasezyklen, welche regelmäßig Feedback geben. Damit wird der klassische GAU am Ende des Projektes, wenn die Wünsche des Kunden mit den tatsächlichen Umsetzungen doch nicht einher gehen, vermieden. Aber viele dieser Methoden, wie z.B. \textit{SCRUM}\footnote{\url{http://www.scrumalliance.org/pages/what_is_scrum}}, benötigen eine Schulung für das gesamte Team, die nicht immer finanzierbar ist.\\
 Für die Arbeit von sehr kleinen Teams mit weniger als 4 Mitgliedern, wird nun eine Entwicklungsstrategie auf Basis der Testgetriebenen Entwicklung mit Ruby on Rails vorgestellt, die auf die Bedürfnisse der pludoni GmbH zugeschnitten ist.
 
 Diese Bedürfnisse umfassen
@@ -9,7 +9,7 @@ Diese Bedürfnisse umfassen
  \item Arbeit meist aus der Ferne ohne direkte Kommunikation mit den anderen Teammitgliedern. Daraus folgt ein äußerst selbstständiger Arbeitsstil
  \item möglichst fehlerfreie Software
  \item Kontinuierliche Integration
- \item pragmatisches Testen, 100\% Testabdeckung ist nicht erforderlich. Wichtige Systemlogiken, wie Bezahlvorgang und Suche müssen dagegen getestet werden. Offensichtliche CRUD\footnote{Create Read Update Delete - Die 4 Standardmethoden, die auf Ressourcen ausgeführt werden können}-Methoden müssen nicht getestet werden
+ \item pragmatisches Testen, 100\% Testabdeckung ist nicht erforderlich. Wichtige Systemlogiken, wie Bezahlvorgang und Suche müssen dagegen getestet werden. Offensichtliche \glossar{CRUD}-Operationen müssen nicht getestet werden
 
 \end{itemize}
 
@@ -29,7 +29,7 @@ Der Vorteil dieser Outside-In Entwicklung ist, dass er auf den Kunden ausgericht
 
 Für die von außen nicht-sichtbaren Features der \textbf{Kategorie B} sollen aus Kostengründen normale Unittests, entwickelt nach der klassischen Testgetriebenen Entwicklung, genügen. Die zusätzliche Abstraktionsebene der Akzeptanztests ist nicht notwendig.
 
-\subsubsection{Weitere Bestandteile der Entwicklungsstrategie}
+\subsubsection{Praktiken}
 \label{sec:auswahlWeitere}
 
 Der oben genannte Ablauf bezieht sich in erster Linie auf die Erfüllung der funktionalen Anforderungen. Weitere Praktiken, die für den Programmieralltag wichtig sind, umfassen:
@@ -50,26 +50,25 @@ Die in Abschnitt \ref{sec:arbeitsablauf} angesprochene Dezentralisierung der Zus
 
 Für die zukünftige Entwicklung vorrangig von Webanwendungen, werden folgende Werkzeuge berücksichtigt.
 
-\paragraph{Werkzeuge für Tests} Die formale Beschreibungssprache \textbf{Cucumber} dient als Schnittstelle für die vom Programmierer entwickelten Testschritte. Diese könnten in einem von vielen Testframeworks geschrieben werden. Die Entscheidung viel hierbei auf Minitest (Test::Unit in Ruby 1.9), da die Syntax und Prädikate denen von JUnit und NUnit sehr ähneln, und so den Übergang zu Ruby leichter machen. Da es auch das Standard-Testframework von Ruby on Rails ist, ist so eine gute Unterstützung durch gängige Werkzeuge garantiert.
+\paragraph{Werkzeuge für Tests} Die Spezifikationssprache \textbf{Cucumber} dient als Schnittstelle zwischen dem Kunden und die vom vom Programmierer entwickelten Testschritte. Diese könnten in einem von vielen Testframeworks geschrieben werden. Die Entscheidung viel hierbei auf Test/Unit, da die Syntax und Prädikate denen von JUnit und NUnit sehr ähneln, und so den Übergang zu Ruby leichter machen. Da es auch das Standard-Testframework von Ruby on Rails ist, ist so eine gute Unterstützung durch gängige Werkzeuge garantiert.
 
-Für die Simulation eines Browsers gibt es ebenfalls verschiedene Ansätze. Als Basis fungiert dabei \textbf{Capybara}, welches unterschiedliche Browsersimulationen abstrahiert. Damit lassen sich z.B. \textbf{Selenium} ansteuern, welches wiederrum Mozilla Firefox, Internet Explorer oder Google Chrome fernsteuern kann. Dies ist allerdings sehr langsam, da ein kompletter Browser gestartet und ferngesteuert wird. Daher ist die Nutzung von Selenium nur für das Testen von möglicherweise problematischen Interaktionen und das Testen von Javascript notwendig. Für alle anderen Fälle kann man auf RackTest zurückgreifen, welches extrem schnell eine Rack-Anwendung\footnote{Rack ist ein minimales Interface zwischen Webserver und Webanwendung -- Ruby on Rails ist eine solche Rack Anwendung} simuliert.
+Für die Simulation eines Browsers gibt es ebenfalls verschiedene Ansätze. Als Basis fungiert dabei \textbf{Capybara}, welches unterschiedliche Browsersimulationen abstrahiert. Damit lassen sich z.B. \textbf{Selenium} ansteuern, welches wiederrum Mozilla Firefox, Internet Explorer oder Google Chrome fernsteuern kann. Dies ist allerdings sehr langsam, da ein kompletter Browser gestartet und ferngesteuert wird. Daher ist die Nutzung von Selenium nur für das Testen von möglicherweise problematischen Interaktionen und das Testen von Javascript notwendig. Für alle anderen Fälle kann man auf \textbf{RackTest} zurückgreifen, welches extrem schnell eine Rack-Anwendung\footnote{Rack ist ein minimales Interface zwischen Webserver und Webanwendung -- Ruby on Rails ist eine solche Rack Anwendung} startet und testet.
 Falls in Zukunft mehr Geschwindigkeit in der Testausführung, insbesondere bei den Selenium-Tests, gewünscht wird, so kann man auf Parallelisierung auf mehreren Computern zurückgreifen.
 
 Für ein unmittelbares Feedback sind auch automatische Test-Runner erwünscht. Hierbei gibt es z.B. \textbf{autotest} und \textbf{guard}. Diese Programme beobachten den Projektbaum, und führen bei Änderung der Dateien automatisch die relevanten Tests aus. Um die Geschwindigkeit, und damit den Feedbackzyklus zu verbessern, können diese Programme so gesteuert werden, dass sie nur den Testfall ausführen, an dem gerade gearbeitet wird.
 
-Durch \textbf{spork} lässt sich eine RoR-Anwendung starten und im Hintergrund halten, so dass eine erneute Testausführung deutlich schneller von statten geht, als wenn die komplette Anwendung neu geladen werden müsste.
+Durch \textbf{spork} lässt sich eine \glossar{rails}-Anwendung starten und im Hintergrund halten, so dass eine erneute Testausführung deutlich schneller von statten geht, als wenn die komplette Anwendung neu geladen werden müsste.
 
 
-\paragraph{Werkzeuge für Code-Metriken}  Für die Generierung von Code-Metriken dient das Ruby-Gem "`metric-fu"', welches seinerseits über verschiedene Code-Metriken Zusammenfassungen bildet und diese auch zeitlich darstellen kann. Darunter fallen z.B. die Zyklomatische Komplexität, den Grad der Duplikationen, verschiedene Code-Smells, Nutzung der Versionsverwaltung und Testabdeckung.
+\paragraph{Werkzeuge für Code-Metriken}  Für die Generierung von \glossar{metriken} dient das Ruby-Gem \textbf{metric-fu}, welches seinerseits über verschiedene Code-Metriken Zusammenfassungen bildet und diese auch in der zeitlichen Entwicklung darstellt. Darunter fallen z.B. die Zyklomatische Komplexität, den Grad der Duplikationen, verschiedene Code-Smells, Nutzung der Versionsverwaltung und Testabdeckung.
 
-Die Testabdeckung wird durch simple-cov berechnet, welches eine C0 Code Coverage bestimmt.
+Die Testabdeckung wird durch \textbf{simple-cov} berechnet, welches eine C0 Code Coverage bestimmt.
 
-\paragraph{Texteditoren} Innerhalb der Entwickler der pludoni GmbH besteht ein Konsens für die Verwendung von vim, da hier bereits eine große Basis an Plugins gesammelt wurde, die die Entwicklung von Webanwendungen und insbesondere Ruby on Rails erleichtern. Ein weiterer Vorteil ist es, dass vim ohne ein graphisches Interface auskommt, und so direkt von der Shell auf dem Webserver ausgeführt werden kann.
-Nichtsdestotrotz sei es zukünftigen Entwicklern freigestellt, eine IDE, wie Eclipse mit dem Plugin RadRails oder Netbeans zu verwenden.
+% \paragraph{Texteditoren} Innerhalb der Entwickler der pludoni GmbH besteht ein Konsens für die Verwendung von \textbf{vim}, da hier bereits eine große Basis an Plugins gesammelt wurde, die die Entwicklung von Webanwendungen und insbesondere Ruby on Rails erleichtern. Ein weiterer Vorteil ist es, dass vim ohne ein graphisches Interface auskommt, und so direkt von der Shell auf dem Webserver ausgeführt werden kann.\\
+% Nichtsdestotrotz sei es zukünftigen Entwicklern freigestellt, eine IDE, wie Eclipse mit dem Plugin RadRails oder Netbeans zu verwenden.
 
-\subsection{Diskussion der Maßnahmen}
-% TODO Zusammenfassung evtl ins Fazit oder Auswertung
+\subsection{Diskussion}
 
-Viele dieser Maßnahmen dienen dazu, den Feedbackzyklus so kurz wie möglich zu halten. Für eine Testgetriebene Entwicklung ist es unerlässlich, dass die Testausführung schnell abläuft. Andernfalls, so die Erfahrung, führt dies zu einer verminderten Ausführungsrate, und ist damit hinderlich für die Entwicklung von sauberen Code.
+Viele dieser Maßnahmen dienen dazu, den Feedbackzyklus so kurz wie möglich zu halten. Für eine Testgetriebene Entwicklung ist es unerlässlich, dass die Testausführung schnell abläuft, d.h. dass der Programmierer innerhalb weniger Sekunden ein Feedback erhält. Andernfalls, so die Erfahrung, führt dies zu einer verminderten Ausführungsrate, und ist damit hinderlich für die Entwicklung von sauberen Code. Dazu ist es notwendig, dass die Tests so modular und unabhängig sind, um einzeln ausgeführt werden zu können, und dass bei zunehmender Größe des Projekts eine vollständige Testausführung, insbesondere der relativ langsamen Akzeptanztests, nur durch den Integrationsserver (Kontinuierliche Integration) vorgenommen wird.
 
-Durch die gewählte Entwicklungsstrategie kann sogar die Anforderungsanalyse und Abnahme testgetrieben durchgeführt werden.
+Um sich mit der testgetriebenen Entwicklung vertraut zu machen, dienen die Paarprogrammierungen als Lernmethode und die Code-Metriken als Kontrollinstrument. Die Erfahrung wird zeigen, wie lange eine regelmäßige Kontrolle und Nachbesserung erforderlich ist, bis die Testgetriebene Entwicklung vollständig angenommen wird. Ab einen solchen Zeitpunkt, kann z.B. der Einsatz der Code-Metriken reduziert werden.

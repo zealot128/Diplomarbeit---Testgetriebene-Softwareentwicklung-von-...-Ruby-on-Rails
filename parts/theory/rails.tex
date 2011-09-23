@@ -18,7 +18,7 @@ Rails ist ein Applikationsframework für Webanwendungen, und basiert auf dem \gl
  
  Für einen Job ist das ein Modell, welches die Datenbanktabelle "`jobs"' anspricht, und z.B. die Attribute "`titel"', "`datum"' und "`beschreibung"' besitzt. Dabei können auf diesem Level auch datenbankunabhängige Constraints, die \textbf{Validierungen} definiert werden, z.B. dass ein Job nur dann gespeichert werden soll, wenn der Titel mindestens 20 Zeichen lang ist, und das Datum mindestens das heutige ist.
  \item[Controller] Klassen dieser Schicht vereinigen Methoden, die von außen per HTTP erreichbar sind. Diese Methoden kommunizieren mit den korrespondierenden Models und bestimmen, welche View im einzelnen ausgeliefert wird. Weitere Funktionen eines Controllers sind Authentifizierung und Autorisierung\footnote{Authentifizierung: Wer ist der Nutzer?\\Authorisierung: Was darf der Nutzer}.\\
- Standardmäßig stellt Rails die CRUD\footnote{Create Read Update Delete}-Operationen bereit, welche in Form eines REST Schemas angesprochen werden (Mehr zu REST später).
+ Standardmäßig stellt Rails die \glossar{CRUD}-Operationen bereit, welche in Form eines REST Schemas angesprochen werden (Mehr zu REST später).
 %  \footnote{Representational State Transfer die HTTP-Methoden GET, POST, PUT, DELETE werden in Kombination mit einem definierten URL-Schema direkt auf die Aktionen \texttt{Auflisten, Anzeigen, Bearbeiten, Löschen, Neu anlegen} gemappt.
 %  \url{http://en.wikipedia.org/wiki/Representational_State_Transfer}}
  \item[View] Eine View ist in der Regel ein Stück HTML-Code welches einem Model zugeordnet ist, das bei einer bestimmten Aktion dem Clienten ausgeliefert wird. Neben HTML ist auch Javascript oder XML eine mögliche Auslieferungsform.\\
@@ -43,7 +43,7 @@ Neben diesem architektonischen Konzept verfolgt Rails noch andere Strategien, um
  \item[Don't repeat yourself (DRY)] Hier ist das Ziel, die Duplikation soweit wie möglich zu reduzieren, um bei Änderungen nur an einer Stelle ansetzen zu müssen. Ein Beispiel ist die Definition der Attribute der Objekte durch das \glossar{ORM}. Im Gegensatz zu anderen ORM-Frameworks ist dies bei Rails nicht notwendig. Rails erstellt automatisch Getter und Setter für die in der Datenbank definierten Tabellenspalten. Hintergrund ist, dass die Definition über Name und Typ der Attribute bereits in der Datenbank vorliegt, und eine Wiederholung im Quellcode dem DRY-Prinzip widerspräche.
  \item[REST] Representational State Transfer ist eine Software-Architektur für HTTP-Web-Services. Dabei werden neben den Standard HTTP-Methoden GET und POST auch die selten benutzen Verben DELETE und PUT verwendet, um Aktionen auf eine Ressource zu definieren. Das Ziel ist ein sehr einfaches Design der URLs. 
  
- Eine Verwendung der CRUD-Operationen mittels Rails würde am Beispiel einer Ressource \texttt{jobs} wie folgt aussehen:
+ Eine Verwendung der \glossar{CRUD}-Operationen mittels Rails würde am Beispiel einer Ressource \texttt{jobs} wie folgt aussehen:
   \begin{description}
   \item[GET /jobs.html] Auflisten aller Jobs, Ausgabe als HTML Format
   \item[GET /jobs/12.xml] Job mit der ID 12 anzeigen, Formatiere als XML

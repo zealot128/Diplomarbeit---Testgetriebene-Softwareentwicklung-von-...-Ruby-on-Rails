@@ -53,8 +53,8 @@ Wir wollen Rails nun mitteilen, dass es die Migration anwenden soll, um damit di
 
 Rails stellt uns mittels des Kommandozeilenwerkzeugs \textbf{rake} eine Schnittstelle zu unserer Anwendung bereit, mit der wir meist Wartungsaufgabe ausführen können. Rake erwartet die Angabe eines Tasks, und optional die Angabe einer Umgebungsvariable für die Rails-Umgebung, in der der Test ausgeführt werden soll\footnote{Jede Umgebung verfügt normalerweise über eine eigene Datenbank. standardmäßig befinden wir uns in der "`Development"'-Umgebung}.
 
-\shadebox{  
-  rake \textit{TASK} \[RAILS\_ENV=production\]
+\shadebox{  \centering
+  rake \textit{TASK} [RAILS\_ENV=production]
 }
 
 Dazu weisen wir nun Rails an, alle offenen Migrationen auszuführen. Standardmäßig erstellt Rails dann selbstständig eine SQLite Datenbank unter \texttt{db/development.sqlite3}.
@@ -96,8 +96,7 @@ Es wurde also schon ein Testfall erfolgreich ausgeführt, nämlich ein Dummytest
 \PY{k}{end}
 \end{ruby}
 \label{list:bla}
-\captionsetup{type=lstlisting}
-\caption{Listing Test}
+\codecaption{Standardtest generiert durch Rails}
 
 
 \paragraph{2. Testen auf Validierung}
