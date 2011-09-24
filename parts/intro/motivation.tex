@@ -1,9 +1,19 @@
 
 
 \chapter{Einleitung}
+
+Das \randbem{Testgetriebene Entwicklung...}Hauptthema dieser Diplomarbeit, die Testgetriebene Entwicklung, ist vielen Programmierern vom Namen her bekannt. Ungeachtet dessen, das  viele Studien über die (positiven) Auswirkungen von \glossar{TDD} existieren, so wird sie trotzdem relativ selten eingesetzt, und es existieren große Vorbehalte, wie z.B. dass es Zeitverschwendung sei, oder dass Programmierer fälschlicherweise annehmen, sie könnten die Komplexität überschauen\footnote{\url{http://tamasgyorfi.wordpress.com/tag/excuses-to-tdd/}}.\\
+Diese, stellenweise mythenumrankte Technik, hat innerhalb des Entwicklerteams der pludoni GmbH ein großes Interesse geweckt, und wird aus diesem nun näher untersucht.
+
+Die \randbem{...von Webserveranwendungen...}pludoni GmbH benötigt für ihre Services gut-funktionierende und effizient\hyp{}entwickelte Webserveranwendungen. Das Framwork Ruby on Rails scheint dafür wie geschaffen, und erste kleinere Erfahrungen waren durchaus positiv. Durch eine vielbestätigte effektive Entwicklung, ist Rails ideal für den Einsatz in kleinen Teams, wie das Entwicklerteam der pludoni GmbH eines ist.
+
+Dieses Framework \randbem{...auf Basis von Ruby on Rails} ist das zweite große Thema dieser Diplomarbeit. Rails und Testen passen anscheinend sehr gut zusammen, da das Testen im Allgemeinen in der Ruby-Community einen sehr hohen Stellenwert hat. Außerdem existiert eine Vielzahl von Testwerkzeugen und die meisten bekannten Bibliotheken verfügen über ausgiebige Tests. Damit passen die Testgetriebene Entwicklung und Ruby (on Rails) perfekt zusammen. 
+
+Um die Auswirkungen der Testgetriebenen Entwicklung besser nachzuvollziehen können, benötigt man ein Messinstrument. Dafür sind in diesem Kontext der Webentwicklung die Code-Metriken geeignet. Sie können einen groben Überblick über den Zustand des Quellcodes geben. Daher sind sie ideal, inbesondere in der Lernphase der Testgetriebenen Entwicklung Feedback zu geben.
+
+Wie das Zusammenspiel von Ruby (on Rails), der Testgetriebenen Entwicklung und der Einsatz von Code-Metriken praktisch erfolgen, wird in dieser Arbeit im Detail betrachtet mit eigenen praktischen Erfahrungen belegt.
+
 \section{Motivation}
-% TODO : Schwerpunkte nennen, Spezifikationssprache, Ruby, Rails, TDD. Passt fuer diese Art Projekt, Warum Ruby? interessant weil
-% Begruendung Gut fuer kleine Teams, IT-jobs/pludoni  sind klein
 
 Kurz nach der Firmengründung der pludoni GmbH absolvierte der Autor dort sein Pflichtpraktikum, und war bis zum heutigen Tag als Werkstudent tätig.
 Während dieser Zeit nahmen Programmierer verschiedener Erfahrungsstufen und auch Praktikanten an der Neu- und Weiterentwicklung der Webserver-Software teil. Dies hat zur Folge, dass die Komplexität der Software inzwischen ein Level erreicht hat, dass das Maß an Regressionsfehlern\footnote{fehlerauslösender Quelltextänderungen} stark anstieg. 
@@ -12,7 +22,8 @@ Da zum großen Teil keine automatisierten Softwaretests geschrieben wurden, lass
 
 Für ein neues Projekt, it-jobs-und-stellen.de, soll dies nun mit einem anderen Ansatz verlaufen. 
 
-Neben der Umstellung auf ein modernes Web-Framework, sollen nun Tests im Einklang zum Code erstellt werden, um auf Knopfdruck  umfassende Informationen über den Systemzustand zu erhalten, wie sie ein manueller Test in der Gründlichkeit und Schnelligkeit niemals erreichen kann. Die testgetriebene Entwicklung ist dabei ein populärer Entwicklungsprozess der eigentlich als Ziel hat, gut testbaren, d.h. gut wartbaren und lesbaren Code zu schreiben. Quasi nebenbei erhält man aber auch eine umfassende Test-Suite, und kommt so dem Schritt, funktionierende Software zu entwickeln, einen Schritt näher.
+Neben der Umstellung auf ein modernes Web-Framework, sollen nun Tests im Einklang zum Code erstellt werden, um auf Knopfdruck  umfassende Informationen über den Systemzustand zu erhalten, wie sie ein manueller Test in der Gründlichkeit und Schnelligkeit niemals erreichen kann. Außerdem erhoffen wir uns davon eine nachhaltige Verbesserung der Code-Qualität, um in Zukunft flexibel auf Änderungen reagieren zu können.
+
 
 \subsection{Die pludoni GmbH}
 
@@ -37,7 +48,7 @@ OFFICEmitte.de & Vertrieb, Bürotätigkeiten &  Mitteldeutschland & in Vorb.\\\h
 
 
 
-Diese Unternehmen, die einen jährlichen Mitgliedsbeitrag für das Community-Management\footnote{Ein Überblick über die Aufgaben eines Community-Managers finden Sie unter \url{http://www.pludoni.de/leistungen}} und Weiterentwicklung der Portale an die pludoni GmbH zahlen, dürfen Ihre für die Region relevanten Jobangebote auf dem jeweiligen Portal einstellen. Was die Communitys von pludoni von der dem bisherigen Online-Jobbörsen unterscheidet, ist das sogenannte \textbf{Empfehlungssystem}. 
+Diese Unternehmen, die einen jährlichen Mitgliedsbeitrag für das Community\hyp{}Management\footnote{Ein Überblick über die Aufgaben eines Community-Managers finden Sie unter \url{http://www.pludoni.de/leistungen}} und Weiterentwicklung der Portale an die pludoni GmbH zahlen, dürfen Ihre für die Region relevanten Jobangebote auf dem jeweiligen Portal einstellen. Was die Communitys von pludoni von der dem bisherigen Online-Jobbörsen unterscheidet, ist das sogenannte \textbf{Empfehlungssystem}. 
 
 \begin{figure}[htbp]
  \centering

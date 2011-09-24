@@ -2,9 +2,9 @@
 \label{sec:awmock}
 Fast alle Webapplikationen sind auf Kommunikation mit anderen Servern angewiesen. Als Beispiel seien die diversen APIs der sozialen Netzwerke genannt oder Webservices. Für die vorliegende Jobanwendung war gewünscht, ein Feedimport-Feature zu implementieren, sodass bestimmte Kunden ihre Stellenanzeigen automatisiert einlesen lassen könnten.
 
-Die genannten Partner stellen einen XML-Feed nach dem RSS 2.0 Format\footnote{Spezifikation des RSS 2.0 Formats: \url{http://cyber.law.harvard.edu/rss/rss.html}} bereit, der ein häufig verwendetes Format zum Austausch von Informationen ist, und durch eine Vielzahl von Werkzeugen und Content-Management-Systemen unterstützt wird.
-Dabei wird der Inhalt des Haupttextfeldes "`description"' um weitere Informationen in einem Subdialekt angereichert. 
- 
+Die genannten Partner stellen einen XML-Feed nach dem \glossar{RSS} 2.0 Format\footnote{Spezifikation des RSS 2.0 Formats: \url{http://cyber.law.harvard.edu/rss/rss.html}} bereit, der ein häufig verwendetes Format zum Austausch von Informationen ist, und durch eine Vielzahl von Werkzeugen und \glossar{CRM} unterstützt wird.
+Dabei wird der Inhalt des Haupttextfeldes "`description"' um weitere Informationen in einem Subdialekt angereichert.
+
 Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
 
 \begin{ruby}[label=beispiel\_job.xml, fontsize=\relsize{-2}]
@@ -40,10 +40,10 @@ Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
 \caption{Feedimport Beispiel-XML Datei mit einem Job}
 Der RSS-Feed in dem oben genannten Beispiel enthält eine Stellenanzeige (item). Die description beinhaltet einen HTML-Kommentar, in dem nummer, tags, ort, kontakt und link für die Stellenanzeige definiert werden. Das ganze wurde mit einem Kommentar, und nicht mit einer Erweiterung der Syntax durch eine DDT oder XSD, realisiert, da sich eine Eingliederung der Syntaxelemente mittels DDTs und XSDs in einige der Systeme der Kunden als problematisch herausgestellt hat.
 
-Diese Art des Feedimports ist bereits in den Community-Job-Portalen in Funktion. Allerdings besitzt dieser, in PHP geschriebene Code, keinerlei automatisierte Tests, und war in der Vergangenheit schon oft die Ursache von Fehlern. So ist es notwendig, den Feedimport nun in Ruby als Bibliothek im Rahmen von IT-Jobs neu zu schreiben, und für die bereits laufenden Portale schnellstmöglich einzubauen. 
+Diese Art des Feedimports ist bereits in den Community-Job-Portalen in Funktion. Allerdings besitzt dieser, in PHP geschriebene Code, keinerlei automatisierte Tests, und war in der Vergangenheit schon oft die Ursache von Fehlern. So ist es notwendig, den Feedimport nun in Ruby als Bibliothek im Rahmen von IT-Jobs neu zu schreiben, und für die bereits laufenden Portale schnellstmöglich einzubauen.
 Diese Bibliothek soll also unabhängig von Rails funktionieren.
 
-Ziel diesen Abschnittes ist es, zu zeigen, wie das Einlesen eines externen XML-Feeds getestet werden kann. 
+Ziel diesen Abschnittes ist es, zu zeigen, wie das Einlesen eines externen XML-Feeds getestet werden kann.
 
 \paragraph{1. Initialier Test}
 
@@ -76,7 +76,7 @@ Hier definieren wir einen ersten Test für den ImportedFeed. Für die HTTP-Zugri
 Dann rufen wir unsere (noch nicht existente) ImportedFeed Klasse mit dem einzulesenden Feed.
 \tddred
 
-Nach der Ausführung des Tests erhalten wir einen Fehler. 
+Nach der Ausführung des Tests erhalten wir einen Fehler.
 \begin{lstlisting}
  NameError: uninitialized constant TestImportedFeed:ImportedFeed
 \end{lstlisting}
@@ -192,7 +192,7 @@ Der Aufruf unsere neuen Hilfsfunktion erfolgt dann mittels:
 \end{ruby}
 \codecaption{Feed Test IIb nach Refaktorisierung}
 
-Als zusätzliche Maßnahmen haben wir die Definition der URL in eine gemeinsame Initialisierungsmethode gesetzt. 
+Als zusätzliche Maßnahmen haben wir die Definition der URL in eine gemeinsame Initialisierungsmethode gesetzt.
 
 
 \paragraph{3. Validität} Unser Feed soll später feststellen können, ob er Fehler beinhaltet oder nicht, um dann ggf. eine E-Mail an den Verantwortlichen zu schreiben.
@@ -242,8 +242,8 @@ Implementieren können wir das so:
     \PY{n+nv+vi}{@status\PYZus{}code} \PY{o}{=} \PY{n}{response}\PY{o}{.}\PY{n}{code}
     \PY{n+nv+vi}{@body} \PY{o}{=} \PY{n}{response}\PY{o}{.}\PY{n}{body}
   \PY{k}{end}
-  
-  \PY{k}{def} \PY{n+nf}{valid?}  
+
+  \PY{k}{def} \PY{n+nf}{valid?}
     \PY{n+nv+vi}{@status\PYZus{}code} \PY{o}{==} \PY{l+m+mi}{200}\PY{p}{,}
   \PY{k}{end}
 \PY{k}{end}
@@ -275,7 +275,7 @@ Zum Abschluss dieses Kapitels möchten wir noch sicher gehen, dass unser Importe
 % label{fig:0d6ebd}
 
 \tddred
-Durch die Zusicherung "`assert\_nothing\_raised(exception, message, block)"' testen wir, dass innerhalb des übergebenen Blocks keine Exception vom Typ exception (Hier: "`ArgumentError"') geworfen wird. Wir möchten in diesem Fall auch sichergehen, dass unser Feed als nicht-valide markiert wird. 
+Durch die Zusicherung "`assert\_nothing\_raised(exception, message, block)"' testen wir, dass innerhalb des übergebenen Blocks keine Exception vom Typ exception (Hier: "`ArgumentError"') geworfen wird. Wir möchten in diesem Fall auch sichergehen, dass unser Feed als nicht-valide markiert wird.
 
 \begin{ruby}[label=lib/imported\_job.rb]
 \PY{k}{class} \PY{n+nc}{ImportedFeed}
@@ -283,7 +283,7 @@ Durch die Zusicherung "`assert\_nothing\_raised(exception, message, block)"' tes
    \PY{k}{def} \PY{n+nf}{initialize}\PY{p}{(}\PY{n}{url}\PY{p}{)}
     \PY{n}{response} \PY{o}{=} \PY{n+no}{HTTParty}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{url}\PY{p}{)}
     \PY{n+nv+vi}{@status\PYZus{}code} \PY{o}{=} \PY{n}{response}\PY{o}{.}\PY{n}{code}
-    \PY{n+nv+vi}{@body} \PY{o}{=} \PY{n}{response}\PY{o}{.}\PY{n}{body}    
+    \PY{n+nv+vi}{@body} \PY{o}{=} \PY{n}{response}\PY{o}{.}\PY{n}{body}
     \PY{n+nv+vi}{@error\PYZus{}thrown} \PY{o}{=} \PY{k+kp}{false}
   \PY{k}{rescue} \PY{n+no}{Exception} \PY{o}{=}\PY{o}{>} \PY{n}{e}
     \PY{n+nv+vi}{@error\PYZus{}thrown} \PY{o}{=} \PY{k+kp}{true}
@@ -319,7 +319,7 @@ Unser Konstruktor ist nun schon relativ lang geworden, und hat inzwischen schon 
   \PY{k}{def} \PY{n+nf}{get\PYZus{}feed}\PY{p}{(}\PY{n}{url}\PY{p}{)}
     \PY{n}{response} \PY{o}{=} \PY{n+no}{HTTParty}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{url}\PY{p}{)}
     \PY{n+nv+vi}{@status\PYZus{}code} \PY{o}{=} \PY{n}{response}\PY{o}{.}\PY{n}{code}
-    \PY{n+nv+vi}{@body} \PY{o}{=} \PY{n}{response}\PY{o}{.}\PY{n}{body}    
+    \PY{n+nv+vi}{@body} \PY{o}{=} \PY{n}{response}\PY{o}{.}\PY{n}{body}
   \PY{k}{end}
 \PY{k}{end}
 \end{ruby}
@@ -332,6 +332,6 @@ Diese private Methode hat nun keine eigenen Tests, ist aber aus einer Refaktoris
 In diesem Abschnitt wurden einige Spezialfälle beim Umsetzen von TDD praktisch erläutert. Dies waren:
 \begin{itemize}
  \item Einsatz von Mocks zur Entkoppelung von externen Datenquellen und Spezifizierung von Erwartungen (Expectations)
- \item Nutzung von privaten Methoden bei der Refaktorisierung 
+ \item Nutzung von privaten Methoden bei der Refaktorisierung
  \item Tests mit Exceptions
 \end{itemize}

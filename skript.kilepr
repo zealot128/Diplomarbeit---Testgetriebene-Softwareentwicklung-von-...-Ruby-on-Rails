@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=parts/theory/tdd.tex
+lastDocument=parts/praxis/anwendung_feedimport.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -267,7 +267,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=35
 mode=LaTeX
-open=true
+open=false
 order=10
 
 [item:diagrams/ablauf.png]
@@ -352,13 +352,23 @@ order=-1
 
 [item:main.tex]
 archive=true
-column=0
+column=39
 encoding=UTF-8
 highlight=LaTeX
-line=79
+line=119
 mode=LaTeX
 open=true
 order=9
+
+[item:material/empfehlungscode.png]
+archive=true
+column=2
+encoding=
+highlight=
+line=0
+mode=
+open=false
+order=-1
 
 [item:material/mvc-rails.png]
 archive=true
@@ -385,10 +395,10 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=14
 mode=LaTeX
-open=false
-order=8
+open=true
+order=17
 
 [item:parts/99-appendix.tex]
 archive=true
@@ -407,8 +417,8 @@ encoding=UTF-8
 highlight=LaTeX
 line=7
 mode=LaTeX
-open=false
-order=8
+open=true
+order=13
 
 [item:parts/include-syntax-php.tex]
 archive=true
@@ -442,73 +452,73 @@ order=0
 
 [item:parts/intro/motivation.tex]
 archive=true
-column=0
+column=80
 encoding=UTF-8
 highlight=LaTeX
-line=6
+line=50
 mode=LaTeX
-open=false
-order=9
+open=true
+order=12
 
 [item:parts/intro/preambel.tex]
 archive=true
-column=27
+column=165
 encoding=UTF-8
 highlight=LaTeX
-line=1
+line=20
 mode=LaTeX
 open=false
 order=4
 
 [item:parts/intro/projektbeschreibung.tex]
 archive=true
-column=0
+column=109
 encoding=UTF-8
 highlight=LaTeX
-line=35
+line=29
 mode=LaTeX
-open=false
-order=1
+open=true
+order=18
 
 [item:parts/outro/fazit.tex]
 archive=true
-column=0
+column=32
 encoding=UTF-8
 highlight=LaTeX
-line=1
+line=20
 mode=LaTeX
 open=true
 order=7
 
 [item:parts/praxis/anwendung.tex]
 archive=true
-column=16
+column=386
+encoding=UTF-8
+highlight=LaTeX
+line=18
+mode=LaTeX
+open=true
+order=16
+
+[item:parts/praxis/anwendung_akzeptanz.tex]
+archive=true
+column=17
 encoding=UTF-8
 highlight=LaTeX
 line=1
 mode=LaTeX
-open=false
-order=2
-
-[item:parts/praxis/anwendung_akzeptanz.tex]
-archive=true
-column=210
-encoding=UTF-8
-highlight=LaTeX
-line=5
-mode=LaTeX
-open=false
-order=7
+open=true
+order=15
 
 [item:parts/praxis/anwendung_feedimport.tex]
 archive=true
-column=0
+column=54
 encoding=UTF-8
 highlight=LaTeX
-line=2
+line=4
 mode=LaTeX
-open=false
-order=15
+open=true
+order=14
 
 [item:parts/praxis/anwendung_functional.tex]
 archive=true
@@ -532,10 +542,10 @@ order=9
 
 [item:parts/praxis/auswahl.tex]
 archive=true
-column=19
+column=58
 encoding=UTF-8
 highlight=LaTeX
-line=1
+line=12
 mode=LaTeX
 open=true
 order=6
@@ -562,30 +572,30 @@ order=11
 
 [item:parts/praxis/auswertung_itjobs.tex]
 archive=true
-column=0
+column=81
 encoding=UTF-8
 highlight=LaTeX
-line=47
+line=38
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=19
 
 [item:parts/theory/metriken.tex]
 archive=true
-column=0
+column=607
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=89
 mode=LaTeX
 open=true
 order=11
 
 [item:parts/theory/rails.tex]
 archive=true
-column=17
+column=108
 encoding=UTF-8
 highlight=LaTeX
-line=2
+line=16
 mode=LaTeX
 open=true
 order=3
@@ -612,17 +622,17 @@ order=5
 
 [item:parts/theory/tdd.tex]
 archive=true
-column=109
+column=386
 encoding=UTF-8
 highlight=LaTeX
-line=3
+line=44
 mode=LaTeX
 open=true
-order=12
+order=10
 
 [item:parts/theory/test.tex]
 archive=true
-column=148
+column=54
 encoding=UTF-8
 highlight=LaTeX
 line=53
@@ -649,12 +659,12 @@ CursorColumn=0
 CursorLine=35
 
 [view-settings,view=0,item:main.tex]
-CursorColumn=0
-CursorLine=79
+CursorColumn=39
+CursorLine=119
 
 [view-settings,view=0,item:parts/00-frontpage.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=14
 
 [view-settings,view=0,item:parts/99-appendix.tex]
 CursorColumn=0
@@ -677,32 +687,32 @@ CursorColumn=135
 CursorLine=52
 
 [view-settings,view=0,item:parts/intro/motivation.tex]
-CursorColumn=0
-CursorLine=6
+CursorColumn=80
+CursorLine=50
 
 [view-settings,view=0,item:parts/intro/preambel.tex]
-CursorColumn=27
-CursorLine=1
+CursorColumn=165
+CursorLine=20
 
 [view-settings,view=0,item:parts/intro/projektbeschreibung.tex]
-CursorColumn=0
-CursorLine=35
+CursorColumn=109
+CursorLine=29
 
 [view-settings,view=0,item:parts/outro/fazit.tex]
-CursorColumn=0
-CursorLine=1
+CursorColumn=32
+CursorLine=20
 
 [view-settings,view=0,item:parts/praxis/anwendung.tex]
-CursorColumn=16
-CursorLine=1
+CursorColumn=386
+CursorLine=18
 
 [view-settings,view=0,item:parts/praxis/anwendung_akzeptanz.tex]
-CursorColumn=210
-CursorLine=5
+CursorColumn=17
+CursorLine=1
 
 [view-settings,view=0,item:parts/praxis/anwendung_feedimport.tex]
-CursorColumn=0
-CursorLine=2
+CursorColumn=54
+CursorLine=4
 
 [view-settings,view=0,item:parts/praxis/anwendung_functional.tex]
 CursorColumn=6
@@ -713,8 +723,8 @@ CursorColumn=19
 CursorLine=123
 
 [view-settings,view=0,item:parts/praxis/auswahl.tex]
-CursorColumn=19
-CursorLine=1
+CursorColumn=58
+CursorLine=12
 
 [view-settings,view=0,item:parts/praxis/auswertung.tex]
 CursorColumn=22
@@ -725,16 +735,16 @@ CursorColumn=8
 CursorLine=103
 
 [view-settings,view=0,item:parts/praxis/auswertung_itjobs.tex]
-CursorColumn=0
-CursorLine=47
+CursorColumn=81
+CursorLine=38
 
 [view-settings,view=0,item:parts/theory/metriken.tex]
-CursorColumn=0
-CursorLine=0
+CursorColumn=607
+CursorLine=89
 
 [view-settings,view=0,item:parts/theory/rails.tex]
-CursorColumn=17
-CursorLine=2
+CursorColumn=108
+CursorLine=16
 
 [view-settings,view=0,item:parts/theory/ruby.tex]
 CursorColumn=16
@@ -745,9 +755,9 @@ CursorColumn=0
 CursorLine=3
 
 [view-settings,view=0,item:parts/theory/tdd.tex]
-CursorColumn=109
-CursorLine=3
+CursorColumn=386
+CursorLine=44
 
 [view-settings,view=0,item:parts/theory/test.tex]
-CursorColumn=148
+CursorColumn=54
 CursorLine=53

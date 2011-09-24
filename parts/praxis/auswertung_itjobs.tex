@@ -1,7 +1,7 @@
 \section{Entwicklungsstand ITjobs}
 Zum Zeitpunkt der Beendigung dieser Arbeit sind folgende Teilmodule abgeschlossen:
 \begin{itemize}
- \item Modul: Statischer Content. Blog und statische Seiten, sowie die Möglichkeit variablen Inhalt auf beliebigen Seiten innerhalb der Sidebar darzustellen
+ \item Modul: \glossar{CRM}. Blog und statische Seiten, sowie die Möglichkeit variablen Inhalt auf beliebigen Seiten innerhalb der Sidebar darzustellen
  \item Modul: Job, Basis. Implementation des Datenbankschemas für Jobs, und die Möglichkeit Jobs über das Interface anzulegen
  \item Modul: Feedimport. Möglichkeit, Jobs mittels einer XML-Schnittstelle in das System einzuspielen. E-Mail Benachrichtigung im Fehlerfalle an den Inhaber der XML-Feeds
 \end{itemize}
@@ -13,10 +13,10 @@ Noch offen für eine zukünftige Entwicklung sind:
 
 Während der Arbeiten an IT-Jobs wurden andere Aufgaben priorisiert, und deswegen der Abgabetermin für das System nach 2012 verlegt. Nichtsdestotrotz soll IT-Jobs als Basistechnologie und Referenzprojekt für weitere Rails-Anwendungen dienen, und die Entwicklung kann insgesamt als Erfolg bewertet werden, auch wenn sie zum gegenwärtigen Zeitpunkt noch nicht abgeschlossen ist.
 
-An der Entwicklung beteiligt waren 2 Programmierer, einschließlich des Autors. Beiden Programmierern gelang es, sich mit der Testgetriebenen Entwicklung und mit Rails vertraut zu machen und wertvolle Erfahrungen zu sammeln. 
+An der Entwicklung beteiligt waren 2 Programmierer, einschließlich des Autors. Beiden Programmierern gelang es, sich mit der Testgetriebenen Entwicklung und mit Rails vertraut zu machen und wertvolle Erfahrungen zu sammeln.
 
 \subsection*{Code-Qualität und Testabdeckung}
-Während der Entwicklung wurden in regelmäßigen Abständen Code-Metriken festgehalten, und können nun so über den Verlauf der Entwicklung dargestellt werden. 
+Während der Entwicklung wurden in regelmäßigen Abständen Code-Metriken festgehalten, und können nun so über den Verlauf der Entwicklung dargestellt werden.
 
 \begin{figure}[htbp]
  \centering
@@ -33,10 +33,10 @@ In Abbildung \ref{fig:itjobsLoc} ist der Verlauf der Codezeilen und der Testzeil
  \centering
  \includegraphics[width=\textwidth]{./diagrams/itjobs-coverage.pdf}
  % itjobs-coverage.pdf: 862x487 pixel, 72dpi, 30.41x17.18 cm, bb=
- \caption{C0 Testabdeckung über den Verlauf der Entwicklung}
+ \caption{C0-Testabdeckung über den Verlauf der Entwicklung}
  \label{fig:itjobsCoverage}
 \end{figure}
-In Abbildung \ref{fig:itjobsCoverage} ist der Verlauf der Testausführungsabdeckung über den Verlauf der Entwicklung abgebildet. Insbesondere in den ersten Tagen gab es einige Probleme, die davon verursacht wurden, dass das Tool mit dem die Abdeckung gemessen wurde, "`rcov"' nicht kompatibel mit der aktuellen Ruby Version 1.9.2 ist. RCov lieferte deshalb falsche Werte liefert. Später erfolgte eine Umstellung auf SimpleCov (bereits in Abschnitt \ref{sec:devtools} vorgestellt). Ab dann lag die Testabdeckung innerhalb von 90\% bis 100\%.
+In Abbildung \ref{fig:itjobsCoverage} ist der Verlauf der \glossar{Testabdeckung} über den Verlauf der Entwicklung abgebildet. Insbesondere in den ersten Tagen gab es einige Probleme, die davon verursacht wurden, dass das Tool mit dem die Abdeckung gemessen wurde, "`rcov"' nicht kompatibel mit der aktuellen Ruby Version 1.9.2 ist. RCov lieferte deshalb falsche Werte liefert. Später erfolgte eine Umstellung auf SimpleCov (bereits in Abschnitt \ref{sec:devtools} vorgestellt). Ab dann lag die Testabdeckung innerhalb von 90\% bis 100\%.
 
 \begin{figure}[htbp]
  \centering

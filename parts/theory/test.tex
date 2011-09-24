@@ -12,7 +12,7 @@ Neben den \textbf{dynamischen Tests}, gibt es statische Analyseverfahren, wie fo
 Weshalb sollte überhaupt Zeit dafür aufgewendet werden, um Software zu Testen?\\
 Aus funktionaler Sicht dienen Tests in erster Linie dazu, das Vorhandensein bzw. Nichtvorhandensein von Software-Fehlern zu belegen \citep{goodliffe_code_2006}.\\
 Aber das Testen hat auch weitere Auswirkungen auf die Software-Entwicklung: Testen führe zu einer Minimierung der Debugphase und mache die Software\hyp{}Entwicklung für Programmierer attraktiver und für Projektleiter leichter zu planen \citep{orsini_rails_2007} und insgesamt preiswerter \citep[S.13]{liggesmeyer_modultest_1990}.\\
-Außerdem gilt getester Code im Allgemeinen als robuster, korrekter und leichter zu warten \citep{rappin_rails_2011}. Im Umkehrschluss bedeutet dies, dass ungetestete Software mit sehr hoher Wahrscheinlichkeit Fehler beinhaltet \citep{goodliffe_code_2006}.
+Außerdem gilt getester Code im Allgemeinen als robuster, korrekter und leichter zu warten \citep{rappin_rails_2011}. Im Umkehrschluss bedeutet dies, dass ungetestete Software mit sehr hoher Wahrscheinlichkeit \glossar{fehler} beinhaltet \citep{goodliffe_code_2006}.
 
 %TODO Kent Beck?
 
@@ -51,7 +51,7 @@ Ein Spezialfall sind die sogenannten \textbf{Greybox}-Tests, die insbesondere be
 \label{sec:testUnit}
 Da die Testgetriebene Entwicklung in ihrer Reinform auf dem Unittest basiert, soll diese Testgattung im Vorfeld etwas näher beleuchtet werden.
 
-Ziel des Unittests ist es, frühzeitig Fehler im Code zu finden. Der Unit-, oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen, oder bei einer objektorientierten Sprache, die Klassen sein. Die Objekte unter Beobachtung (Objects under Test) werden beim Unittest in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double} simuliert. Dies ist notwendig um sicherzustellen, dass gefundende Fehler von dem betreffendem Modul verursacht wurden, und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen einfacher \citep{goodliffe_code_2006,liggesmeyer_modultest_1990}.
+Ziel des Unittests ist es, frühzeitig \glossar{fehler} im Code zu finden. Der Unit-, oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen, oder bei einer objektorientierten Sprache, die Klassen sein. Die Objekte unter Beobachtung (Objects under Test) werden beim Unittest in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double} simuliert. Dies ist notwendig um sicherzustellen, dass gefundende Fehler von dem betreffendem Modul verursacht wurden, und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen einfacher \citep{goodliffe_code_2006,liggesmeyer_modultest_1990}.
 
 
 
@@ -59,7 +59,7 @@ Unittests werden fast immer durch sog. \glossar{testrunner} automatisiert ausgef
 
 Ein solcher Test besteht in der Regel aus 4 Teilen \citep{rappin_rails_2011} \citep[Karte 46]{langr_agile_2011}:
 \begin{enumerate}
- \item Initialisierung der Test-Umgebung und der Objekte. Man arrangiert einen Kontext, der notwendig ist, um den zu Code ausführen zu können.
+ \item Initialisierung der \glossar{Test-Umgebung} und der Objekte. Man arrangiert einen Kontext, der notwendig ist, um den zu Code ausführen zu können.
  \item Ausführung der zu testenden Aktion, die den Systemzustand ändert
  \item Prüfen der spezifizierten Erwartungen durch Zusicherungen (Assertions): prüfen, ob das System under Test/Object under Test sich wie erwartet verhalten hat.
  \item Aufräumen nicht mehr benötigter Objekte, File-Pointer, Sockets, Leeren der Datenbank u.ä
@@ -73,29 +73,52 @@ Ziel des Komponententest ist es, verschiedene Units in Kombination als eine voll
   \label{sec:mocks}
   Das isolierte Testen wird durch Abhängigkeiten aller Art erschwert. Dies können z.B. Klassen sein, die noch nicht implementiert wurden, externe Ressourcen (Netzwerkzugriffe, Versenden von Mails) oder andere unterliegende Prozesse (Bezahlen in einem Onlineshop, Datenbanken) sein. In diesen Situationen ist es angebracht, auf sogenannte Test-Doubles zurückzugreifen. Diese werden u.a. in Mocks und Stubs eingeteilt.
 
-  Ein \textbf{Stub} ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfalls ersetzt. Im Beispiel ist dies der Bezahlprozess einer Bestellung. %TODO SyntaxHL
-  \begin{lstlisting}
-def test_report_failed_payment
-  Payment.stubs(:pay).returns(true)
+  Ein \textbf{Stub} ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfalls ersetzt. Im Beispiel ist dies der Bezahlprozess einer Bestellung.
+% -------------------------------
+% SNIPPET: 
+%                                                                                                                                                                                                                                            
+% def test_report_failed_payment                                                                                                                                                                                                             
+%   Payment.stubs(:pay).returns(true)                                                                                                                                                                                                        
+%                                                                                                                                                                                                                                            
+%   bestellung = Bestellung.new()                                                                                                                                                                                                            
+%   bestellung.abschliessen()                                                                                                                                                                                                                
+%                                                                                                                                                                                                                                            
+%   assert bestellung.successful?                                                                                                                                                                                                            
+% end                                                                                                                                                                                                                                        
+%                                                                                                                                                                                                                                            
+\begin{ruby}[label=test\_bestellung.rb]
+\PY{k}{def} \PY{n+nf}{test\PYZus{}report\PYZus{}failed\PYZus{}payment}
+  \PY{n+no}{Payment}\PY{o}{.}\PY{n}{stubs}\PY{p}{(}\PY{l+s+ss}{:pay}\PY{p}{)}\PY{o}{.}\PY{n}{returns}\PY{p}{(}\PY{k+kp}{true}\PY{p}{)}
 
-  bestellung = Bestellung.new()
-  bestellung.abschliessen()
+  \PY{n}{bestellung} \PY{o}{=} \PY{n+no}{Bestellung}\PY{o}{.}\PY{n}{new}\PY{p}{(}\PY{p}{)}
+  \PY{n}{bestellung}\PY{o}{.}\PY{n}{abschliessen}\PY{p}{(}\PY{p}{)}
 
-  assert bestellung.successful?
-end
-  \end{lstlisting}
+  \PY{n}{assert} \PY{n}{bestellung}\PY{o}{.}\PY{n}{successful?}
+\PY{k}{end}
+\end{ruby}
+\codecaption{Beispiel für den Einsatz eines Stubs in einem Bestellprozess}
+
   Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock-Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stubobjekt erzeugen, welches den Bezahlprozess nachahmt, und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess für unseren aktuellen Test keine Auswirkungen hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
   Außerdem machen Stubs den Test meist schneller, da statt der potentiell komplexen und langsamen Operationen statische Werte geliefert werden.
 
   Als Ergänzung dazu gibt es \textbf{Mocks}. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst aber als eine Zusicherung. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich innerhalb des Tests aufgerufen wurde.
 
-  Hier z.B. ein Mock um einen Netzwerkzugriff zu testen und abzufangen. %TODO SyntaxHL
-  \begin{lstlisting}
-def test_always_fail
-  HTTP.expects(:get).with("http://www.google.com")
-  HTTP.get("http://www.example.com")
-end
-  \end{lstlisting}
+  Hier z.B. ein Mock um einen Netzwerkzugriff zu testen und abzufangen. 
+% SNIPPET: 
+%                                                                                                                                                                                                                                            
+% def test_always_fail                                                                                                                                                                                                                       
+%   HTTP.expects(:get).with("http://www.google.com")                                                                                                                                                                                         
+%   HTTP.get("http://www.example.com")                                                                                                                                                                                                       
+% end                                                                                                                                                                                                                                        
+%                                                                                                                                                                                                                                            
+\begin{ruby}[label=test\_http.rb]
+\PY{k}{def} \PY{n+nf}{test\PYZus{}always\PYZus{}fail}
+  \PY{n+no}{HTTP}\PY{o}{.}\PY{n}{expects}\PY{p}{(}\PY{l+s+ss}{:get}\PY{p}{)}\PY{o}{.}\PY{n}{with}\PY{p}{(}\PY{l+s+s2}{"}\PY{l+s+s2}{http://www.google.com}\PY{l+s+s2}{"}\PY{p}{)}
+  \PY{n+no}{HTTP}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{l+s+s2}{"}\PY{l+s+s2}{http://www.example.com}\PY{l+s+s2}{"}\PY{p}{)}
+\PY{k}{end}
+\end{ruby}
+\codecaption{Beispiel für den Einsatz eines Mocks zum Test eines Netzwerkzugriffes}
+
   Der gezeigte Test würde nun fehlschlagen, da von einem Mock erwartet wird, dass die nachgeahmte Funktion während des Tests genau einmal mit den genannten Parametern aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit Interna des Programmflusses zu testen.
 
 \section{System- und Akzeptanztests}
@@ -104,7 +127,6 @@ Der Unittest ist als Whitebox-Test auf Wissen über den Quelltext angewiesen, un
 
 Der \textbf{Akzeptanztest} ist ein Spezialfall des Systemtests. Hier führt der Auftraggeber der Software den Test selbst durch. Er nutzt den Akzeptanztest, um zu entscheiden, ob er die Software akzeptiert, woher der Name rührt.
 Innerhalb des Kontextes der \textit{Agilen Software-Entwicklung}, dem auch die Testgetriebene Software zuzurechnen ist, dienen Akzeptanztests, um den Fortschritt bei der Bearbeitung der "`Geschichten"' (\textit{user stories}) zu überwachen.
-%TODO Agile Software Entwicklung? und XP irgendwo erklaeren?
 
 Für das Testen von Webserveranwendungen spielt die Simulation und Automatisierung von Browsern eine große Rolle. \textbf{Simulierte Browser} sind meist kleine schnelle HTTP-Clienten, die auf Skripting und Fernsteuerung optimiert sind, und dabei auf viele Features von realen Browsern verzichtet, z.B. Ausführung von Javascript und Rendering des HTMLs. \\
 \textbf{Automatisierte Browser} dagegen ermöglichen Tests unter möglichst realen Bedingungen. Hierbei bedient man sich meist einer Middleware, die es ermöglicht, innerhalb eines Testfalls einen Webbrowser zu starten und fernzusteuern. Eine der bekanntesten dieser Middlewares ist das Framework \textbf{Selenium}\footnote{\url{http://seleniumhq.org/}}, welches Firefox, Internet Explorer und Google Chrome fernsteuern kann. Dies ermöglicht eine sehr detaillierte Testung auf Browserinkompatibilitäten, da es unter den Browsern gewisse Unterschiede in der Ausführung von Javascript und Darstellung von Elementen gibt. Dieses Tool wird u.a. von Google, Oracle und eBay zum Tests ihrer Anwendungen verwendet und weiterentwickelt \citep{selenium_hq_selenium_2010}.
