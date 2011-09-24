@@ -1,9 +1,10 @@
-% Shadowbox
+% FullRef:   siehe \ref{sec:bla}   -> siehe 7 - "Kapitelname"
+\newcommand{\fullref}[1]{\ref{#1} -- "`\textit{\nameref{#1}}"'}
 
+% Shadowbox
 \xdefinecolor{B4}{cmyk}{.25,.05.5,0,0}
 \xdefinecolor{B4}{rgb}{0.9,0.9,1}
 \xdefinecolor{S10}{cmyk}{0 ,0, 0,.1}
-
 \usepackage{tikz}
 \usetikzlibrary{shadows}
 \newcommand{\shadebox}[1]{%
@@ -11,53 +12,23 @@
 \noindent%
 \begin{tikzpicture}%
 \node at (0,0) [
-   anchor=north west, 
+   anchor=north west,
     rounded corners,
    minimum width={\linewidth-1ex},
    draw=B4,
    fill=B4
-  ] 
+  ]
 {\parbox{0.9\linewidth}{#1}};
 \end{tikzpicture}\vspace{1\baselineskip}}
 
 
-
-
-\newcommand{\cbox}{\includegraphics[width=0.2cm]{material/cbox.png} \ }
-\newcommand{\imgsource}[1]{\captionsetup{font={footnotesize,bf,it}}
- \caption*{#1}}
-
-% \setcounter{tocdepth}{2}	%kleineres TOC
-\newcommand{\arr}{$ \Longrightarrow$}
-
-
-% Listings fuer Ruby
-
-\lstloadlanguages{Ruby}
-\lstset{%
-  basicstyle=\ttfamily\footnotesize\color{black},
-  commentstyle = \ttfamily\color{gray},
-  keywordstyle=\ttfamily\color{blue},
-  stringstyle=\color{red},
-  showspaces=false,               % show spaces adding particular underscores
-  showstringspaces=false, 
-  frame=single,
-  breaklines=true
-}
-\lstset{literate=%
-{Ö}{{\"O}}1
-{Ä}{{\"A}}1
-{Ü}{{\"U}}1
-{ß}{{\ss}}2
-{ü}{{\"u}}1
-{ä}{{\"a}}1
-{ö}{{\"o}}1
-}
-
+%%%%%%%%%%%%%%%%%
+% Makros fuer den Einsatz von Dingens am Rand
+%%%%%%%%%%%%%%%%%
 \newcommand{\randbem}[1]{
   \marginpar[\fontsize{9}{10}\selectfont \raggedleft{#1}]
   {\fontsize{9}{10}\selectfont \raggedright{#1}}
-} 
+}
 
 \newcommand{\bordergraphic}[1]{
   \marginline{\includegraphics[width=0.8\marginparwidth]{#1}}}
@@ -71,14 +42,50 @@
 \setlength{\epigraphwidth}{0.8\textwidth}
 }
 
+
+\newcommand{\cbox}{\includegraphics[width=0.2cm]{material/cbox.png} \ }
+% Einheitliche Bildquelle als zusaetzliches Label
+\newcommand{\imgsource}[1]{\captionsetup{font={footnotesize,bf,it}} \caption*{#1}}
+
+% %%% Tiefe des Inhaltsverzeichnis  beschraenken
+% \setcounter{tocdepth}{2}	%kleineres TOC
+
+% Langer Pfeil fuer den Fließtext
+\newcommand{\arr}{$ \Longrightarrow$}
+
+
+% Standard-Listings fuer Ruby laden
+\lstloadlanguages{Ruby}
+\lstset{%
+  basicstyle=\ttfamily\footnotesize\color{black},
+  commentstyle = \ttfamily\color{gray},
+  keywordstyle=\ttfamily\color{blue},
+  stringstyle=\color{red},
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,
+  frame=single,
+  breaklines=true
+}
+% Umlaute in Listings ermoeglichen
+\lstset{literate=%
+{Ö}{{\"O}}1
+{Ä}{{\"A}}1
+{Ü}{{\"U}}1
+{ß}{{\ss}}2
+{ü}{{\"u}}1
+{ä}{{\"a}}1
+{ö}{{\"o}}1
+}
+
+
 % \newcommand{\borderquote}[2]{
 % \marginnote{#1}
 % }
 
-
+%%%%%%%%%%%%
+% Makros fuer Hihglighting mittels Pygments
 \usepackage{fancyvrb}
 \makeatletter
-
 \def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
     \let\PY@ul=\relax \let\PY@tc=\relax%
     \let\PY@bc=\relax \let\PY@ff=\relax}
@@ -88,7 +95,6 @@
 \def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
     \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
 \def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
-
 \def\PY@tok@gd{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
 \def\PY@tok@gu{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
 \def\PY@tok@gt{\def\PY@tc##1{\textcolor[rgb]{0.00,0.25,0.82}{##1}}}
@@ -162,7 +168,6 @@
 \makeatother
 
 
-
 \DefineVerbatimEnvironment{ruby}{Verbatim}{numbers=left,frame=single,stepnumber=1,numbersep=1pt,fontsize=\relsize{-1},
 commandchars=\\\{\}}
 
@@ -171,6 +176,6 @@ commandchars=\\\{\}}
 \captionsetup{type=lstlisting,position=top}
 \caption{#1}
 }
- 
+
 
 

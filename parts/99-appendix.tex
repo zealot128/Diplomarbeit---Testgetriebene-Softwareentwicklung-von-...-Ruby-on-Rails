@@ -1,4 +1,67 @@
 \appendix
+
+\chapter{Eigenschaften erfolgreicher Tests}
+
+Das Vorhandensein von zahlreichen Tests reicht nicht aus, um die Qualität der Tests zu beuteilen. Stattdessen existieren einige Qualitätskriterien, um Tests auf ihre Sinnhafigkeit und Wartbarkeit zu untersuchen:
+
+\begin{description}
+ \item[Unabhängigkeit (Independence) und Isolation] Ein Test ist unabhängig, falls er nicht durch andere Tests beeinflusst wird. Auch die Reihenfolge, in der die Tests ausgeführt werden, darf auf das Ergebnis keinen Einfluss üben. Siehe auch \citep{beck_test_2002}, \citep{palermo_guidelines_2006} sowie \citep[Karte 45]{langr_agile_2011}.
+ \item[Wiederholbarkeit (Repeatability] Ein Test wird als wiederholbar bezeichnet, wenn er mehrmals hintereinander ausgeführt werden kann, und dabei jedes mal dasselbe Ergebnis liefert \citep[Karte 45]{langr_agile_2011} \citep{rappin_rails_2011}. Problematisch sind dabei z.B. Datum und Zeit, sowie Zufallsfunktionen
+ \item[Klarheit (Clarity)] Ein Test ist klar, wenn sein Zweck sofort verständlich wird \citep{rappin_rails_2011}, \citep{palermo_guidelines_2006}. Damit wird einerseits die Lesbarkeit gemeint. Anderseits schließt dies auch ein, ob der Test genau eine Eigenschaft testet und nicht redundant zu anderen Tests ist. Dies hat zur Folge, dass die Tests wartbarer werden und als Code Dokumenation dienen können.
+ \item[Präzise (Conciseness)] Ein Test ist präzise, wenn er so wenig Code und so wenige Objekte wie möglich benötigt, um sein Ziel zu erreichen \citep{palermo_guidelines_2006} \citep{rappin_rails_2011}. Eine Auswirkung ist, dass der Test schneller wird.
+ \item[Robustheit (Robustness)] Ein Test ist robust, wenn es eine direkte Korrelation zum zu testenden Code gibt: Ist der Code korrekt, so ist der Test erfolgreich. Ist der Code falsch, so schlägt der Test fehl. Nicht-robuste Tests werden auch "`zerbrechlich"' (brittle) genannt. Dazu zählen auch sogenannte tautologische Tests, die immer erfolgreich Verlaufen, und keine Aussage über den zugrunde liegenden Programmcode geben
+ \item[Schnelligkeit] Gute Tests sollten schnell sein, da die Test-Suite ansonsten deutlich seltener ausgeführt würd \citep{langr_agile_2011} \citep{palermo_guidelines_2006} \citep{nagappan_realizing_2008}. Siehe auch Präzision.
+ \item[Zeitliche Nähe] Gute Tests entstehen in zeitlicher Nähe zu dem zugrunde liegenden Programmstück \citep{langr_agile_2011}. Innerhalb von TDD ist dieses Kritierium immer erfüllt.
+ \end{description}
+
+% Microsoft Vorgehensweise:
+%
+% Start TDD from the beginning of projects. Do not stop in the middle and claim it
+% doesn’t work. Do not start TDD late in the project cycle when the design has already
+% been decided and majority of the code has been written. TDD is best done
+% incrementally and continuously.
+% For a team new to TDD, introduce automated build test integration towards the second
+% third of the development phase—not too early but not too late. If this is a “Greenfield”
+% project, adding the automated build test towards the second third of the development
+% schedule allows the team to adjust to and become familiar with TDD. Prior to the
+% automated build test integration, each developer should run all the test cases on their
+% own machine.
+% Convince the development team to add new tests every time a problem is found, no
+% matter when the problem is found. By doing so, the unit test suites improve during the
+% development and test phases.
+% Get the test team involved and knowledgeable about the TDD approach. The test team
+% should not accept new development release if the unit tests are failing.
+% Hold a thorough review of an initial unit test plan, setting an ambitious goal of having
+% the highest possible (agreed upon) code coverage targets.
+% Constantly running the unit tests cases in a daily automatic build (or continuous
+% integration); tests run should become the heartbeat of the system as well as a means to
+% track progress of the development. This also gives a level of confidence to the team
+% when new features are added.
+
+% Encourage fast unit test execution and efficient unit test design. Test execution speed is
+% very important since when all the tests are integrated, the complete execution can
+% become quite long for a reasonably-sized project and when using constant test
+% executions. Tests results are important early and often; they provide feedback on the
+% current state of the system. Further, the faster the execution of the tests the more likely
+% developers themselves will run the tests without waiting for the automated build tests
+% results. Such constant execution of tests by developers may also result in faster unit
+% tests additions and fixes.
+
+% Share unit tests. Developers’ sharing their unit tests, as an essential practice of TDD,
+% helps identify integration issues early on.
+
+% Track the project using measurements. Count the number of test cases, code coverage,
+% bugs found and fixed, source code count, test code count, and trend across time, to
+% identify problems and to determine if TDD is working for you.
+
+% Check morale of the team at the beginning and end of the project. Conduct periodical
+% and informal surveys to gauge developers’ opinions on the TDD process and on their
+% willingness to apply it in the future.
+
+%
+% % Einige dieser Punkte können durch Metriken überprüft werden. Dazu mehr im Abschnitt \ref{sec:metrics}.
+% %  Code Craft S 144
+
 \chapter{Nutzung von Cucumber in Verbindung mit Selenium für Firefox und Guard ohne X-Server}
 Für ein effektives Test-Setup wurden folgende Testtools benutzt
 \begin{description}
@@ -107,69 +170,6 @@ end
 
 Nun werden automatisch alle Cucumber-Features getestet. Falls Selenium verwendet wird, dann wird der Firefox im Hintergrund gestartet, ohne dass dies sichtbar wird.
 
-\chapter{Eigenschaften erfolgreicher Tests}
-
-Das Vorhandensein von zahlreichen Tests reicht nicht aus, um die Qualität der Tests zu beuteilen. Stattdessen existieren einige Qualitätskriterien, um Tests auf ihre Sinnhafigkeit und Wartbarkeit zu untersuchen:
-
-\begin{description}
- \item[Unabhängigkeit (Independence) und Isolation] Ein Test ist unabhängig, falls er nicht durch andere Tests beeinflusst wird. Auch die Reihenfolge, in der die Tests ausgeführt werden, darf auf das Ergebnis keinen Einfluss üben. Siehe auch \citep{beck_test_2002}, \citep{palermo_guidelines_2006} sowie \citep[Karte 45]{langr_agile_2011}.
- \item[Wiederholbarkeit (Repeatability] Ein Test wird als wiederholbar bezeichnet, wenn er mehrmals hintereinander ausgeführt werden kann, und dabei jedes mal dasselbe Ergebnis liefert \citep[Karte 45]{langr_agile_2011} \citep{rappin_rails_2011}. Problematisch sind dabei z.B. Datum und Zeit, sowie Zufallsfunktionen
- \item[Klarheit (Clarity)] Ein Test ist klar, wenn sein Zweck sofort verständlich wird \citep{rappin_rails_2011}, \citep{palermo_guidelines_2006}. Damit wird einerseits die Lesbarkeit gemeint. Anderseits schließt dies auch ein, ob der Test genau eine Eigenschaft testet und nicht redundant zu anderen Tests ist. Dies hat zur Folge, dass die Tests wartbarer werden und als Code Dokumenation dienen können.
- \item[Präzise (Conciseness)] Ein Test ist präzise, wenn er so wenig Code und so wenige Objekte wie möglich benötigt, um sein Ziel zu erreichen \citep{palermo_guidelines_2006} \citep{rappin_rails_2011}. Eine Auswirkung ist, dass der Test schneller wird.
- \item[Robustheit (Robustness)] Ein Test ist robust, wenn es eine direkte Korrelation zum zu testenden Code gibt: Ist der Code korrekt, so ist der Test erfolgreich. Ist der Code falsch, so schlägt der Test fehl. Nicht-robuste Tests werden auch "`zerbrechlich"' (brittle) genannt. Dazu zählen auch sogenannte tautologische Tests, die immer erfolgreich Verlaufen, und keine Aussage über den zugrunde liegenden Programmcode geben
- \item[Schnelligkeit] Gute Tests sollten schnell sein, da die Test-Suite ansonsten deutlich seltener ausgeführt würd \citep{langr_agile_2011} \citep{palermo_guidelines_2006} \citep{nagappan_realizing_2008}. Siehe auch Präzision.
- \item[Zeitliche Nähe] Gute Tests entstehen in zeitlicher Nähe zu dem zugrunde liegenden Programmstück \citep{langr_agile_2011}. Innerhalb von TDD ist dieses Kritierium immer erfüllt.
- \end{description}
-
-% Microsoft Vorgehensweise:
-%
-% Start TDD from the beginning of projects. Do not stop in the middle and claim it
-% doesn’t work. Do not start TDD late in the project cycle when the design has already
-% been decided and majority of the code has been written. TDD is best done
-% incrementally and continuously.
-% For a team new to TDD, introduce automated build test integration towards the second
-% third of the development phase—not too early but not too late. If this is a “Greenfield”
-% project, adding the automated build test towards the second third of the development
-% schedule allows the team to adjust to and become familiar with TDD. Prior to the
-% automated build test integration, each developer should run all the test cases on their
-% own machine.
-% Convince the development team to add new tests every time a problem is found, no
-% matter when the problem is found. By doing so, the unit test suites improve during the
-% development and test phases.
-% Get the test team involved and knowledgeable about the TDD approach. The test team
-% should not accept new development release if the unit tests are failing.
-% Hold a thorough review of an initial unit test plan, setting an ambitious goal of having
-% the highest possible (agreed upon) code coverage targets.
-% Constantly running the unit tests cases in a daily automatic build (or continuous
-% integration); tests run should become the heartbeat of the system as well as a means to
-% track progress of the development. This also gives a level of confidence to the team
-% when new features are added.
-
-% Encourage fast unit test execution and efficient unit test design. Test execution speed is
-% very important since when all the tests are integrated, the complete execution can
-% become quite long for a reasonably-sized project and when using constant test
-% executions. Tests results are important early and often; they provide feedback on the
-% current state of the system. Further, the faster the execution of the tests the more likely
-% developers themselves will run the tests without waiting for the automated build tests
-% results. Such constant execution of tests by developers may also result in faster unit
-% tests additions and fixes.
-
-% Share unit tests. Developers’ sharing their unit tests, as an essential practice of TDD,
-% helps identify integration issues early on.
-
-% Track the project using measurements. Count the number of test cases, code coverage,
-% bugs found and fixed, source code count, test code count, and trend across time, to
-% identify problems and to determine if TDD is working for you.
-
-% Check morale of the team at the beginning and end of the project. Conduct periodical
-% and informal surveys to gauge developers’ opinions on the TDD process and on their
-% willingness to apply it in the future.
-
-%
-% % Einige dieser Punkte können durch Metriken überprüft werden. Dazu mehr im Abschnitt \ref{sec:metrics}.
-% %  Code Craft S 144
-
-
 
 
 \newpage
@@ -178,3 +178,9 @@ Das Vorhandensein von zahlreichen Tests reicht nicht aus, um die Qualität der T
 \addcontentsline{toc}{chapter}{Quellcode-Listings}
 \lstlistoflistings
 %\listoflistings
+
+
+%  \cite{*} 
+\bibliographystyle{alphadin}    % Verbos
+
+%  \bibliographystyle{natbib}     %

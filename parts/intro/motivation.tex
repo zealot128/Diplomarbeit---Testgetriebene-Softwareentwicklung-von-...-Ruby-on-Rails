@@ -35,10 +35,18 @@ OFFICEmitte.de & Vertrieb, Bürotätigkeiten &  Mitteldeutschland & in Vorb.\\\h
 \end{tabular}
 \end{table}
 
-Diese Unternehmen, die einen jährlichen Mitgliedsbeitrag für das Community-Management\footnote{Ein Überblick über die Aufgaben eines Community-Managers finden Sie unter \url{http://www.pludoni.de/leistungen}} und Weiterentwicklung der Portale an die pludoni GmbH zahlen, dürfen Ihre für die Region relevanten Jobangebote auf dem jeweiligen Portal einstellen. Was die Communitys von pludoni von der dem bisherigen Online-Jobbörsen unterscheidet, ist das sogenannte \textbf{Empfehlungssystem}. 
-%TODO Bild
 
-Viele der Personalchefs der beteiligten Firmen haben dieselbe Erfahrung gemacht, dass sie sehr guten Bewerbern absagen mussten, weil z.B. die Stelle schon vergeben wurde, die Fähigkeiten des Bewerbers nicht den Bedürfnissen des Unternehmens entsprachen, eine Einstellung verhinderte. Hier setzt pludoni mit seinen Communitys an, und stellt eine Infrastrukur zur gegenseitigen Empfehlung dieser guten Bewerber bereit.  Ausgezeichnete Bewerber erhalten neben der Absage einen Empfehlungscode, mit dem sie sich auf dem Online-Jobportal bei einer der anderen Mitgliedsfirmen bewerben können. Die Software löst intern den Empfehlungscode auf und bestätigt dieser Firma nun, dass der Bewerber von einem anderen Unternehmen der Community empfohlen wurde. 
+
+Diese Unternehmen, die einen jährlichen Mitgliedsbeitrag für das Community-Management\footnote{Ein Überblick über die Aufgaben eines Community-Managers finden Sie unter \url{http://www.pludoni.de/leistungen}} und Weiterentwicklung der Portale an die pludoni GmbH zahlen, dürfen Ihre für die Region relevanten Jobangebote auf dem jeweiligen Portal einstellen. Was die Communitys von pludoni von der dem bisherigen Online-Jobbörsen unterscheidet, ist das sogenannte \textbf{Empfehlungssystem}. 
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.8\textwidth]{./material/empfehlungscode.png}
+ % empfehlungscode.png: 762x463 pixel, 72dpi, 26.88x16.33 cm, bb=0 0 762 463
+ \caption{Funktionsweise des Empfehlungscodes}
+ \label{fig:empfehlung}
+\end{figure}
+Viele der Personalmitarbeiter der beteiligten Firmen haben dieselbe Erfahrung gemacht, dass sie sehr guten Bewerbern absagen mussten, weil z.B. die Stelle schon vergeben wurde, die Fähigkeiten des Bewerbers nicht den Bedürfnissen des Unternehmens entsprachen, eine Einstellung verhinderte. Hier setzt pludoni mit seinen Communitys an, und stellt eine Infrastrukur zur gegenseitigen Empfehlung dieser guten Bewerber bereit.  Ausgezeichnete Bewerber erhalten neben der Absage einen Empfehlungscode, mit dem sie sich auf dem Online-Jobportal bei einer der anderen Mitgliedsfirmen bewerben können, vgl. Abbildung \ref{fig:empfehlung}. Die Software löst intern den Empfehlungscode auf und bestätigt dieser Firma nun, dass der Bewerber von einem anderen Unternehmen der Community empfohlen wurde. 
 
 Dieses Empfehlungssystem überzeugt die beteiligten Unternehmen. Aktuell wurden im letzten Jahr z.B. auf ITmitte.de über 800 Bewerberungen über das Portal versendet, von denen mehr als die Hälfte (440) mit Empfehlungscodes versehen waren \citep{joerg_klukas_startseite_2011}. Dies motivierte mittlerweile über 150 Organisationen bei den drei pludoni Communitys teilzunehmen \citep{joerg_klukas_referenzen_2011}.
 
@@ -47,7 +55,7 @@ Dieses Empfehlungssystem überzeugt die beteiligten Unternehmen. Aktuell wurden 
 Die pludoni GmbH stellt sich dem Trend der Dezentralisierung von Arbeit, um einerseits Kundenwünsche zur individuellen Betreuung und andererseits Mitarbeiterwünsche nach flexiblen und familienfreundlichen Arbeitsplätzen gerecht zu werden. Ein Großteil der Arbeit findet somit vor Ort beim Kunden, oder in Heim/Telearbeit statt.
 Zur persönlichen Abstimmung findet aber mindestens einmal pro Woche ein Meeting statt, in welcher sich 2-4 der Mitarbeiter treffen, um alte Aufgaben abzunehmen und neue zu diskutieren. Die Abnahme erfolgt dabei durch den Teamleiter des Projekts oder dem Geschäftsführer Jörg Klukas.
 
-Zentrales Kommunikationsmittel der pludoni GmbH ist, neben der E-Mail, die Online-Aufgaben- und Fehlerverwaltung, Redmine\footnote{http://www.redmine.org - ein webbasiertes Projektmanagement-Tool auf der Basis von Ruby on Rails. Redmine kann für Benutzer- und Projektverwaltung, Diskussionsforen, Wikis, zur Ticketverwaltung oder Dokumentenablage genutzt werden, \textit{Wikipedia}}. Dort werden alle Aufgaben und Fehler erfasst und an die zuständigen Personen verteilt. 
+Zentrales Kommunikationsmittel der pludoni GmbH ist, neben der E-Mail, die Online-Aufgaben- und Fehlerverwaltung, Redmine\footnote{\url{http://www.redmine.org} -- ein webbasiertes Projektmanagement-Tool auf der Basis von Ruby on Rails. Redmine kann für Benutzer- und Projektverwaltung, Diskussionsforen, Wikis, zur Ticketverwaltung oder Dokumentenablage genutzt werden, \textit{Wikipedia}}. Dort werden alle Aufgaben und Fehler erfasst und an die zuständigen Personen verteilt. 
 Neben den technischen Aufgaben der Entwickler, werden auch nicht-technische Aufgaben der anderen Mitarbeiter verwaltet, wie z.B. die Gewinnung neuer Partner (Akquise) oder administrative Aufgaben. 
 
 Trotz dieses Tools und Vorgehensweise ist die dezentrale Kollaboration aber immer mit Nachteilen in der Kommunikation behaftet. Dies hat bei den Programmierern teils gravierende Auswirkungen auf die Produktivität. Einerseits, da gleiche Funktionalität doppelt implementiert wird, weil der Überblick fehlt, und somit unnötigerweise neue Fehlerquellen eröffnet werden. Andererseits, weil aufgrund der zeitlich asynchronen Arbeitsleistungen Rückmeldungen der anderen Programmierer oder ein Code-Audit nicht immer gewährleistet werden und Regressionsfehler nicht abgeschätzt werden können, da nicht alle Module bekannt sind.

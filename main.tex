@@ -1,17 +1,3 @@
-% %\documentclass[10pt, a4paper]{scrartcl}
-%  \documentclass[%
-%   twoside,
-%    paper=A4, % Stellt auf A4-Papier ein
-%    pagesize, % Diese Option reicht die Papiergröße an
-% %             % alle Ausgabeformate weiter
-%    DIV=calc, % Errechnet einen guten Satzspiegel
-%    %BCOR=1cm, % Weil bei mir immer 1cm in der Bindung
-% %             % der Klemmmappe verschwindet
-%    smallheadings,% Für etwas kleinere Überschriften
-%    ngerman   % Neue Rechtschreibung, d.\,h. (Silbentrennung)
-%  ]{scrbook}  % Eine Klasse für beidseitige Texte mit Kapiteln 
-% %\usepackage{a4wide}					% Weniger Zeilenrand
-
 \documentclass[
 		a4paper,
 		12pt,
@@ -27,10 +13,9 @@
 % 	bibtotocnumbered,%    Literaturverzeichnis im Inhaltsverzeichnis nummeriert einfügen. 		
 % 		chapterprefix,%       Kapitel anschreiben als Kapitel
 ]{scrreprt}
+\usepackage{draftcopy}  % TODO Draft
 
 \usepackage[ngerman, german]{babel}
-%Deutsche Trennungen, Anführungsstriche und mehr:
-% \usepackage{german, ngerman}
 
 \usepackage[utf8]{inputenc}		%Damit kann man auch Umlaute direkt eintippen  \o/
 \usepackage{textcomp}
@@ -63,7 +48,7 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
 \usepackage{relsize}
 \usepackage{glossaries}
 \usepackage{marginnote}
-\makeglossary
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
@@ -84,7 +69,6 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
 }
 \date{\today}
 \onehalfspacing
-
 \setlength{\epigraphwidth}{.8\textwidth}
 
 
@@ -92,20 +76,13 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
 %% HEAD AND FOOTLINES 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagestyle{headings}
-% \renewcommand{\sectionmark}[1]{\markboth{\thesection\ #1}{}}
-% \renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
-% \lhead[ \leftmark   ]{\textbf{\ownTitle}}
-% \rhead[\textbf{\ownTitleZ}]{\leftmark}
-% \lfoot[\thepage    ]{\scriptsize \textcopyright2011, \ownAutor}
-% \cfoot[]{}
-% \rfoot[\scriptsize \textcopyright2011, \ownAutor]{\thepage}
-
+\definecolor{Gray}{rgb}{0.85,0.85,0.90}
 
 \include{custom_commands}
 \makeindex 	%start Aufzeichnung eines Stichwortverzeichnisses
+\makeglossary  	%start Aufzeichnung eines Glossars
 
-
-%%%%%%%%%%%%%%%%%%%%%% STYLINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% STYLINGS & FONTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\footrulewidth}{0.5pt}
 \let\cleardoublepage\clearpage
 \parskip 5pt       % sets spacing between paragraphs
@@ -121,10 +98,6 @@ plainpages=false,hypertexnames=false,citecolor=black,linkcolor=black,menucolor=b
  \usepackage{charter}    % 109 pages, Wie ein modernes Buch. Gut fuer ne Doku oder so
 \fontsize{12}{15}
 
-
-
-\definecolor{Gray}{rgb}{0.85,0.85,0.90}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{hyphenat}
 \usepackage[T1]{fontenc}
 
@@ -143,18 +116,17 @@ Test/Unit
 
 % \listfiles  DEBUG
 \begin{document}
-
-
  \include{parts/00-frontpage}
+ \newpage
  
  \pagenumbering{Roman}
  \include{parts/intro/preambel}
  \include{parts/intro/glossar}
  
-% Table -- Zebrastreifen und 1.25 Row Abstand
-\rowcolors{1}{lightgray!50!white}{white}
-\colorlet{tableheadcolor}{gray!40}
-\renewcommand\arraystretch{1.25}% (MyValue=1.0 is for standard spacing)
+  % Table -- Zebrastreifen und 1.25 Row Abstand
+  \rowcolors{1}{lightgray!50!white}{white}
+  \colorlet{tableheadcolor}{gray!40}
+  \renewcommand\arraystretch{1.25}% (MyValue=1.0 is for standard spacing)
 
   \newpage
   \setcounter{page}{1}
@@ -162,16 +134,11 @@ Test/Unit
  \input{parts/gliederung}
  \include{parts/99-appendix}
  
-%  \cite{*} 
- \bibliographystyle{alphadin}    % Verbos
-%  \bibliographystyle{alphadin}     %
-
 \begin{raggedright}
  \bibliography{bibo}
 \end{raggedright} 
 
-\end{document}
- 
+\end{document} 
  
  
 pygmentize  -f latex -l xml beispiel_job.xml 
