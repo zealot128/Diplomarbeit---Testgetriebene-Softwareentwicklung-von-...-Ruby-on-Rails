@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=parts/praxis/anwendung_feedimport.tex
+lastDocument=parts/intro/glossar.tex
 masterDocument=
 name=Skript-Vorlage
 pkg_extIsRegExp=false
@@ -352,10 +352,10 @@ order=-1
 
 [item:main.tex]
 archive=true
-column=39
+column=66
 encoding=UTF-8
 highlight=LaTeX
-line=119
+line=58
 mode=LaTeX
 open=true
 order=9
@@ -442,10 +442,10 @@ order=8
 
 [item:parts/intro/glossar.tex]
 archive=true
-column=135
+column=74
 encoding=UTF-8
 highlight=LaTeX
-line=52
+line=103
 mode=LaTeX
 open=true
 order=0
@@ -462,13 +462,13 @@ order=12
 
 [item:parts/intro/preambel.tex]
 archive=true
-column=165
+column=238
 encoding=UTF-8
 highlight=LaTeX
-line=20
+line=10
 mode=LaTeX
-open=false
-order=4
+open=true
+order=21
 
 [item:parts/intro/projektbeschreibung.tex]
 archive=true
@@ -562,20 +562,20 @@ order=2
 
 [item:parts/praxis/auswertung_benchmark.tex]
 archive=true
-column=8
+column=52
 encoding=UTF-8
 highlight=LaTeX
-line=103
+line=77
 mode=LaTeX
-open=false
-order=11
+open=true
+order=20
 
 [item:parts/praxis/auswertung_itjobs.tex]
 archive=true
-column=81
+column=31
 encoding=UTF-8
 highlight=LaTeX
-line=38
+line=0
 mode=LaTeX
 open=true
 order=19
@@ -659,8 +659,8 @@ CursorColumn=0
 CursorLine=35
 
 [view-settings,view=0,item:main.tex]
-CursorColumn=39
-CursorLine=119
+CursorColumn=66
+CursorLine=58
 
 [view-settings,view=0,item:parts/00-frontpage.tex]
 CursorColumn=0
@@ -683,16 +683,16 @@ CursorColumn=0
 CursorLine=1
 
 [view-settings,view=0,item:parts/intro/glossar.tex]
-CursorColumn=135
-CursorLine=52
+CursorColumn=74
+CursorLine=103
 
 [view-settings,view=0,item:parts/intro/motivation.tex]
 CursorColumn=80
 CursorLine=50
 
 [view-settings,view=0,item:parts/intro/preambel.tex]
-CursorColumn=165
-CursorLine=20
+CursorColumn=238
+CursorLine=10
 
 [view-settings,view=0,item:parts/intro/projektbeschreibung.tex]
 CursorColumn=109
@@ -731,12 +731,12 @@ CursorColumn=22
 CursorLine=1
 
 [view-settings,view=0,item:parts/praxis/auswertung_benchmark.tex]
-CursorColumn=8
-CursorLine=103
+CursorColumn=52
+CursorLine=77
 
 [view-settings,view=0,item:parts/praxis/auswertung_itjobs.tex]
-CursorColumn=81
-CursorLine=38
+CursorColumn=31
+CursorLine=0
 
 [view-settings,view=0,item:parts/theory/metriken.tex]
 CursorColumn=607
