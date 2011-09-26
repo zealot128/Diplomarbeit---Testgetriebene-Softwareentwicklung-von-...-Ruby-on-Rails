@@ -127,7 +127,7 @@ Hier zuerst die Basis-Testschritt\index{Cucumber!Testschritt}e, die für fast je
 \end{ruby}
 \codecaption{Implementierung der Testschritte zur Interaktion mit einem Browser}
 
-Der erste Testschritt\index{Cucumber!Testschritt} gibt unserem simulierten Browser die Anweisung, die Startseite zu besuchen. Der Zweite Testschritt spezifiziert  einen Testschritt mit 2 variablen Texten, die an unseren Block mit übergeben werden. Wir möchten, dass der erste Begriff in "`..."' als Text in ein Formularelement mit dem Bezeichner des zweiten Begriffes eingetragen wird.
+Der erste Testschritt\index{Cucumber!Testschritt} gibt unserem simulierten Browser\index{Browser!Simulierter} die Anweisung, die Startseite zu besuchen. Der Zweite Testschritt spezifiziert  einen Testschritt mit 2 variablen Texten, die an unseren Block mit übergeben werden. Wir möchten, dass der erste Begriff in "`..."' als Text in ein Formularelement mit dem Bezeichner des zweiten Begriffes eingetragen wird.
 Der Dritte implementiert den Klick auf einen HTML-Button mit dem angegebenen Inhalt. 
 Während die ersten 3 Schritte Aktionen ausführen, hat der 4. eine andere Funktion: Er spezifiert eine Zusicherung, dass auch unserer aktuellen Webseite irgendwo ein gewisser Inhalt steht.
 
@@ -298,4 +298,4 @@ Nun können wir die neu implementierte Funktion in unserem Controller\index{Ruby
 
 \paragraph{Ausblick}
 Nun haben wir ein erstes Szenario mit Cucumber\index{Cucumber} implementiert. Da wir schon ein paar Testschritt\index{Cucumber!Testschritt}e implementiert haben, ist die Entwicklung von weiteren Szenarien leichter. 
-Die Tests wurden bisher durch einen simulierten Browser RackTest ausgeführt. Da wir Capybara\index{Capybara} als Abstraktion des Browsers genutzt haben, wäre eine Umstellung auf eine reale Browserumgebung, z.B: Firefox oder Chrome, kein Problem. Deren Ausführung ist zwar deutlich langsamer als bei RackTest, dafür findet hier der Test unter realen Bedingungen, nämlich in einem Browser, wie ihn auch später Nutzer der Web-Anwendung besitzen.
+Die Tests wurden bisher durch einen simulierten Browser\index{Browser!Simulierter} RackTest ausgeführt. Da wir Capybara\index{Capybara} als Abstraktion des Browsers genutzt haben, wäre eine Umstellung auf eine reale Browserumgebung, z.B: Firefox oder Chrome, kein Problem. Deren Ausführung ist zwar deutlich langsamer als bei RackTest, dafür findet hier der Test unter realen Bedingungen, nämlich in einem Browser, wie ihn auch später Nutzer der Web-Anwendung besitzen.
