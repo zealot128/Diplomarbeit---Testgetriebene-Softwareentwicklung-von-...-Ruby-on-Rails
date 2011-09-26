@@ -72,7 +72,7 @@ Ziel des Komponententest ist es, verschiedene Units in Kombination als eine voll
  \section{Test Doubles -- Mocks und Stubs}
   \label{sec:mocks}
 
-  Ein \textbf{Stub} ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfalls ersetzt. Im Beispiel ist dies der Bezahlprozess einer Bestellung.
+  Ein \textbf{Stub\index{Test-Double!Stub}} ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfalls ersetzt. Im Beispiel ist dies der Bezahlprozess einer Bestellung.
 % -------------------------------
 % SNIPPET:
 %
@@ -97,8 +97,8 @@ Ziel des Komponententest ist es, verschiedene Units in Kombination als eine voll
 \end{ruby}
 \codecaption{Beispiel für den Einsatz eines Stubs in einem Bestellprozess}
 
-  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock\index{Test-Double!Mock}-Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stubobjekt erzeugen, welches den Bezahlprozess nachahmt, und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess für unseren aktuellen Test keine Auswirkungen hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
-  Außerdem machen Stubs den Test meist schneller, da statt der potentiell komplexen und langsamen Operationen statische Werte geliefert werden.
+  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock\index{Test-Double!Mock}-Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stub\index{Test-Double!Stub}objekt erzeugen, welches den Bezahlprozess nachahmt, und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess für unseren aktuellen Test keine Auswirkungen hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
+  Außerdem machen Stub\index{Test-Double!Stub}s den Test meist schneller, da statt der potentiell komplexen und langsamen Operationen statische Werte geliefert werden.
 
   Als Ergänzung dazu gibt es \textbf{Mock\index{Test-Double!Mock}s}. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst aber als eine Zusicherung. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich innerhalb des Tests aufgerufen wurde.
 
