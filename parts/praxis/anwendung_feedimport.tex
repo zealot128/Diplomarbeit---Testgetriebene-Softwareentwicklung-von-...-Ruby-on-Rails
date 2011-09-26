@@ -71,7 +71,7 @@ Da wir unsere Tests nicht davon abhängig machen wollen, ob ein solcher Feed ber
 
 
 
-Hier definieren wir einen ersten Test für den ImportedFeed. Für die HTTP-Zugriffe wollen wir die Bibliothek HTTParty\footnote{https://github.com/jnunemaker/httparty} benutzen. In der ersten Zeile des Tests nutzen wir das Mock-Framework wie folgt: Wir legen eine Erwartung fest, dass innerhalb dieses Tests die Klassenmethode "`get"' der Klasse HTTParty aufgerufen wird, mit einem Parameter der die URL angibt.
+Hier definieren wir einen ersten Test für den ImportedFeed. Für die HTTP-Zugriffe wollen wir die Bibliothek HTTParty\footnote{https://github.com/jnunemaker/httparty} benutzen. In der ersten Zeile des Tests nutzen wir das Mock\index{Test-Double!Mock}-Framework wie folgt: Wir legen eine Erwartung fest, dass innerhalb dieses Tests die Klassenmethode "`get"' der Klasse HTTParty aufgerufen wird, mit einem Parameter der die URL angibt.
 
 Dann rufen wir unsere (noch nicht existente) ImportedFeed Klasse mit dem einzulesenden Feed.
 \tddred
@@ -88,7 +88,7 @@ In der reinen TDD-Lehre würde nun als erstes eine Behebung aller Fehler stattfi
   unsatisfied expectations:
   - expected exactly once, not yet invoked: HTTParty.get('http://www.example.com/feed.xml')
 \end{lstlisting}
-Das Mockobjekt hat unseren Test fehlschlagen lassen, ohne dass wir selbst eine Assertion festgelegt hätten. Da wir bisher noch keine Implementation eines Netzwerkzugriffes durch HTTParty implementiert haben, schlägt der Test fehl.
+Das Mock\index{Test-Double!Mock}objekt hat unseren Test fehlschlagen lassen, ohne dass wir selbst eine Assertion festgelegt hätten. Da wir bisher noch keine Implementation eines Netzwerkzugriffes durch HTTParty implementiert haben, schlägt der Test fehl.
 
 Die Implementierung wäre:
 \begin{ruby}[label=lib/imported\_feed.rb]
@@ -104,13 +104,13 @@ Die Implementierung wäre:
 % label{fig:bf345c}
 
 \tddgreen
-Die Funktion initialize stellt innerhalb von Ruby\index{Ruby} den Konstruktor dar. Dort rufen wir unseren Netzwerkzugriff auf, der allerdings durch unser definiertes Mock-Objekt abgefangen wird. Dies stellt die definierte Erwartung zufrieden, und der Test besteht.
+Die Funktion initialize stellt innerhalb von Ruby\index{Ruby} den Konstruktor dar. Dort rufen wir unseren Netzwerkzugriff auf, der allerdings durch unser definiertes Mock\index{Test-Double!Mock}-Objekt abgefangen wird. Dies stellt die definierte Erwartung zufrieden, und der Test besteht.
 
 
 
 \paragraph{2. Komplexe Objekte durch Mocks zurückgeben}
 
-Wir haben zwar den Netzwerkzugriff abgefangen, geben aber nun keinerlei Antwort, d.h. ein XML-Dokument zurück. Für den nächsten Test müssen wir unsere Mockanweisung also modifizieren.
+Wir haben zwar den Netzwerkzugriff abgefangen, geben aber nun keinerlei Antwort, d.h. ein XML-Dokument zurück. Für den nächsten Test müssen wir unsere Mock\index{Test-Double!Mock}anweisung also modifizieren.
 
 \begin{ruby}[label=test/test\_imported\_feed.rb]
 \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{really get content from an feed}\PY{l+s+s2}{"} \PY{k}{do}
@@ -128,7 +128,7 @@ Wir haben zwar den Netzwerkzugriff abgefangen, geben aber nun keinerlei Antwort,
 \codecaption{Feed Test II}
 % label{fig:fc3e79}
 
-Wir bilden das Antwortobjekt, das HTTParty normalerweise generieren würde, beschränken uns hierbei aber nur auf die für uns notwendigen Methoden von "`body"' und "`code"' (Dem HTTP-Status Code). Wir nutzen dazu die Klasse OpenStruct, die Getter und Setter für das Objekt beim Benutzen erstellt. Unserem Mock können wir dann anweisen, diese Antwort zurückzugeben.
+Wir bilden das Antwortobjekt, das HTTParty normalerweise generieren würde, beschränken uns hierbei aber nur auf die für uns notwendigen Methoden von "`body"' und "`code"' (Dem HTTP-Status Code). Wir nutzen dazu die Klasse OpenStruct, die Getter und Setter für das Objekt beim Benutzen erstellt. Unserem Mock\index{Test-Double!Mock} können wir dann anweisen, diese Antwort zurückzugeben.
 \tddred
 
 Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wurde, aber unser ImportedFeed noch kein Attribut "`body"' besitzt (Fehler), und dass dieser keine String beinhaltet.
@@ -149,7 +149,7 @@ Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wur
 Mitfhile des Makros "`attr\_reader"' generieren wir ein Attribut body und gleichzeitig einen Getter für den Zugriff von außen. Innerhalb unseres Konstruktors speichern wir den Body der HTTP-Antwort in diesem Attribut.
 
 \tddrefactor
-Da unser Testfall nun ziemlich lang geworden ist, und beide Testfälle ein Mock initialisieren, ist dies eine gute Gelegenheit, den Mock zentral zu definieren. Dazu nutzen wir z.B. eine Datei "`test\_helper.rb"', in der wir Anweisungen schreiben, die alle Testfälle nutzen können:
+Da unser Testfall nun ziemlich lang geworden ist, und beide Testfälle ein Mock\index{Test-Double!Mock} initialisieren, ist dies eine gute Gelegenheit, den Mock zentral zu definieren. Dazu nutzen wir z.B. eine Datei "`test\_helper.rb"', in der wir Anweisungen schreiben, die alle Testfälle nutzen können:
 
 \begin{ruby}[label=test/test\_helper.rb]
 \PY{k}{class} \PY{n+nc}{ActiveSupport}\PY{o}{::}\PY{n+no}{TestCase}
@@ -166,7 +166,7 @@ Da unser Testfall nun ziemlich lang geworden ist, und beide Testfälle ein Mock 
   \PY{k}{end}
 \PY{k}{end}
 \end{ruby}
-\codecaption{Zentrale Implementierung des Mocks in der Test Helper}
+\codecaption{Zentrale Implementierung des Mock\index{Test-Double!Mock}s in der Test Helper}
 % label{fig:13b997}
 
 Da Ruby\index{Ruby} offene Klassen unterstützt öffnen wir die Basisklasse der Testfälle und definieren eine neue Methode. Diese erhält einen Hash als Parameter, den wir mit unseren Standardwerten zusammenmergen. Diese Art der Parameterübergabe ist ein sehr gebräuchliches Idiom innerhalb der Ruby-Community.
@@ -257,7 +257,7 @@ Zu bemerken ist, dass wir den Funktionsrückgabewert nicht explizit mit "`return
 
 \paragraph{4. Testen auf Exceptions}
 
-Zum Abschluss dieses Kapitels möchten wir noch sicher gehen, dass unser ImportedFeed robust gegenüber Exceptions von Fremdbibliotheken ist. Auch dies können wir in einer Erwartung durch unser Mock-Objekt spezifizieren.
+Zum Abschluss dieses Kapitels möchten wir noch sicher gehen, dass unser ImportedFeed robust gegenüber Exceptions von Fremdbibliotheken ist. Auch dies können wir in einer Erwartung durch unser Mock\index{Test-Double!Mock}-Objekt spezifizieren.
 
 \begin{ruby}[label=test/test\_imported\_job.rb]
 \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{should be resistent to any thrown errors from library}\PY{l+s+s2}{"} \PY{k}{do}
@@ -331,7 +331,7 @@ Diese private Methode hat nun keine eigenen Tests, ist aber aus einer Refaktoris
 
 In diesem Abschnitt wurden einige Spezialfälle beim Umsetzen von TDD praktisch erläutert. Dies waren:
 \begin{itemize}
- \item Einsatz von Mocks zur Entkoppelung von externen Datenquellen und Spezifizierung von Erwartungen (Expectations)
+ \item Einsatz von Mock\index{Test-Double!Mock}s zur Entkoppelung von externen Datenquellen und Spezifizierung von Erwartungen (Expectations)
  \item Nutzung von privaten Methoden bei der Refaktorisierung
  \item Tests mit Exceptions
 \end{itemize}

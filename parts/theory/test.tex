@@ -97,12 +97,12 @@ Ziel des Komponententest ist es, verschiedene Units in Kombination als eine voll
 \end{ruby}
 \codecaption{Beispiel für den Einsatz eines Stubs in einem Bestellprozess}
 
-  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock-Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stubobjekt erzeugen, welches den Bezahlprozess nachahmt, und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess für unseren aktuellen Test keine Auswirkungen hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
+  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock\index{Test-Double!Mock}-Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stubobjekt erzeugen, welches den Bezahlprozess nachahmt, und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess für unseren aktuellen Test keine Auswirkungen hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
   Außerdem machen Stubs den Test meist schneller, da statt der potentiell komplexen und langsamen Operationen statische Werte geliefert werden.
 
-  Als Ergänzung dazu gibt es \textbf{Mocks}. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst aber als eine Zusicherung. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich innerhalb des Tests aufgerufen wurde.
+  Als Ergänzung dazu gibt es \textbf{Mock\index{Test-Double!Mock}s}. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst aber als eine Zusicherung. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich innerhalb des Tests aufgerufen wurde.
 
-  Hier z.B. ein Mock um einen Netzwerkzugriff zu testen und abzufangen.
+  Hier z.B. ein Mock\index{Test-Double!Mock} um einen Netzwerkzugriff zu testen und abzufangen.
 % SNIPPET:
 %
 % def test_always_fail
@@ -118,7 +118,7 @@ Ziel des Komponententest ist es, verschiedene Units in Kombination als eine voll
 \end{ruby}
 \codecaption{Beispiel für den Einsatz eines Mocks zum Test eines Netzwerkzugriffes}
 
-  Der gezeigte Test würde nun fehlschlagen, da von einem Mock erwartet wird, dass die nachgeahmte Funktion während des Tests genau einmal mit den genannten Parametern aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit Interna des Programmflusses zu testen.
+  Der gezeigte Test würde nun fehlschlagen, da von einem Mock\index{Test-Double!Mock} erwartet wird, dass die nachgeahmte Funktion während des Tests genau einmal mit den genannten Parametern aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit Interna des Programmflusses zu testen.
 
 \section{System- und Akzeptanztests}
 \label{sec:acceptance}
