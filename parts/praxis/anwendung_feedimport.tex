@@ -80,7 +80,7 @@ Nach der Ausführung des Tests erhalten wir einen Fehler.
 \begin{lstlisting}
  NameError: uninitialized constant TestImportedFeed:ImportedFeed
 \end{lstlisting}
-In der reinen TDD-Lehre würde nun als erstes eine Behebung aller Fehler stattfinden, d.h. eine Implementierung der leeren Klasse ImportedFeed. Danach würden wir noch einen Fehler erhalten, da unser Konstruktur noch keinen Parameter entgegennimmt. Erst dann würde man sich den Testfehlschlägen widmen. Aus Platzgründen sind diese Schritte hier nicht explizit ausgeführt. Der Fehlschlag lautet dann:
+In der reinen TDD\index{TDD}-Lehre würde nun als erstes eine Behebung aller Fehler stattfinden, d.h. eine Implementierung der leeren Klasse ImportedFeed. Danach würden wir noch einen Fehler erhalten, da unser Konstruktur noch keinen Parameter entgegennimmt. Erst dann würde man sich den Testfehlschlägen widmen. Aus Platzgründen sind diese Schritte hier nicht explizit ausgeführt. Der Fehlschlag lautet dann:
 
 \begin{lstlisting}
  Failure
@@ -329,7 +329,7 @@ Unser Konstruktor ist nun schon relativ lang geworden, und hat inzwischen schon 
 Diese private Methode hat nun keine eigenen Tests, ist aber aus einer Refaktorisierung\index{Refaktorisierung} hervorgegangen, und damit innerhalb von TDD ein erlaubter Schritt (Das scheinbare Dilemma des Testens privater Methoden wurde bereit auf S. \pageref{sec:tddspecialcircumstances} erläutert).
 
 
-In diesem Abschnitt wurden einige Spezialfälle beim Umsetzen von TDD praktisch erläutert. Dies waren:
+In diesem Abschnitt wurden einige Spezialfälle beim Umsetzen von TDD\index{TDD} praktisch erläutert. Dies waren:
 \begin{itemize}
  \item Einsatz von Mock\index{Test-Double!Mock}s zur Entkoppelung von externen Datenquellen und Spezifizierung von Erwartungen (Expectations)
  \item Nutzung von privaten Methoden bei der Refaktorisierung\index{Refaktorisierung}

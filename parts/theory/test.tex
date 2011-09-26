@@ -29,7 +29,7 @@ Tests können nach verschiedenen Gesichtspunkten eingeteilt werden. In vielen ko
 \paragraph{Einteilung nach Sichtbarkeit des Quellcodes} Tests werden in \textbf{Whitebox} und \textbf{Blackbox}-Tests eingeteilt.
 Whitebox-Tests finden mit Wissen über den zugrundeliegenden Code statt. Ziel eines Whitebox-basierten Testverfahrens ist es, soviele Codeabschnitt wie möglich zu testen.\\
 Blackboxtests dagegen ignorieren den inneren Aufbau der Klassen und testen entweder nur Schnittstellen oder das Gesamtsystem, und beobachten Rückmeldungen des Systems auf bestimmte Aktionen. Das Ziel eines Blackbox-basierten Tests, ist die Korrektheit der Software gegenüber den Spezifikationen zu bestimmen.\\
-Ein Spezialfall sind die sogenannten \textbf{Greybox}-Tests, die insbesondere bei der Testgetriebenen Entwicklung auftreten. Da der Test zuerst entwickelt wird, ist noch kein Wissen über den Zielquellcode vorhanden, der Entwickler aber natürlich Einblick in den Quellcode hat.
+Ein Spezialfall sind die sogenannten \textbf{Greybox}-Tests, die insbesondere bei der Testgetriebene\index{TDD}n Entwicklung auftreten. Da der Test zuerst entwickelt wird, ist noch kein Wissen über den Zielquellcode vorhanden, der Entwickler aber natürlich Einblick in den Quellcode hat.
 
 \paragraph{Einteilung nach Testziel} (nach \citep[S. 238ff]{hunt_pragmatic_1999})
 \begin{description}
@@ -49,7 +49,7 @@ Ein Spezialfall sind die sogenannten \textbf{Greybox}-Tests, die insbesondere be
 \end{description}
 \section{Unittest}
 \label{sec:testUnit}
-Da die Testgetriebene Entwicklung in ihrer Reinform auf dem Unittest\index{Test!Unittest} basiert, soll diese Testgattung im Vorfeld etwas näher beleuchtet werden.
+Da die Testgetriebene\index{TDD} Entwicklung in ihrer Reinform auf dem Unittest\index{Test!Unittest} basiert, soll diese Testgattung im Vorfeld etwas näher beleuchtet werden.
 
 Ziel des Unittest\index{Test!Unittest}s ist es, frühzeitig \glossar{fehler} im Code zu finden. Der Unit-, oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen, oder bei einer objektorientierten Sprache, die Klassen sein. Die Objekte unter Beobachtung (Objects under Test) werden beim Unittest in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double}\index{Test-Double} simuliert. Dies ist notwendig um sicherzustellen, dass gefundende Fehler von dem betreffendem Modul verursacht wurden, und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen einfacher \citep{goodliffe_code_2006,liggesmeyer_modultest_1990}.
 
@@ -125,7 +125,7 @@ Ziel des Komponententest ist es, verschiedene Units in Kombination als eine voll
 Der Unittest\index{Test!Unittest} ist als Whitebox-Test auf Wissen über den Quelltext angewiesen, und sein Zweck ist es, Fehlerfreiheit zu gewähren. Der \textbf{Systemtest} dagegen testet, meist aus der Sicht eines Anwenders, das gesamte integrierte System. Er hat das Ziel, die Software gegenüber den Anforderungen zu validieren. Diese Tests finden unter realen Bedingungen mit realen Daten statt, meist sogar auf einer den Parametern der Produktionsumgebung nahe-kommende Hard- und Softwareumgebung.
 
 Der \textbf{Akzeptanztest\index{Test!Akzeptanztest}} ist ein Spezialfall des Systemtests. Hier führt der Auftraggeber der Software den Test selbst durch. Er nutzt den Akzeptanztest, um zu entscheiden, ob er die Software akzeptiert, woher der Name rührt.
-Innerhalb des Kontextes der \textit{Agilen Software-Entwicklung}, dem auch die Testgetriebene Software zuzurechnen ist, dienen Akzeptanztest\index{Test!Akzeptanztest}s, um den Fortschritt bei der Bearbeitung der "`Geschichten"' (\textit{user stories}) zu überwachen.
+Innerhalb des Kontextes der \textit{Agilen Software-Entwicklung}, dem auch die Testgetriebene\index{TDD} Software zuzurechnen ist, dienen Akzeptanztest\index{Test!Akzeptanztest}s, um den Fortschritt bei der Bearbeitung der "`Geschichten"' (\textit{user stories}) zu überwachen.
 
 Für das Testen von Webserveranwendungen spielt die Simulation und Automatisierung von Browsern eine große Rolle. \textbf{Simulierte Browser} sind meist kleine schnelle HTTP-Clienten, die auf Skripting und Fernsteuerung optimiert sind, und dabei auf viele Features von realen Browsern verzichtet, z.B. Ausführung von Javascript\index{Javascript} und Rendering des HTMLs. \\
 \textbf{Automatisierte Browser} dagegen ermöglichen Tests unter möglichst realen Bedingungen. Hierbei bedient man sich meist einer Middleware, die es ermöglicht, innerhalb eines Testfalls einen Webbrowser zu starten und fernzusteuern. Eine der bekanntesten dieser Middlewares ist das Framework \textbf{Selenium\index{Selenium}}\footnote{\url{http://seleniumhq.org/}}, welches Firefox, Internet Explorer und Google Chrome fernsteuern kann. Dies ermöglicht eine sehr detaillierte Testung auf Browserinkompatibilitäten, da es unter den Browsern gewisse Unterschiede in der Ausführung von Javascript\index{Javascript} und Darstellung von Elementen gibt. Dieses Tool wird u.a. von Google, Oracle und eBay zum Tests ihrer Anwendungen verwendet und weiterentwickelt \citep{selenium_hq_selenium_2010}.

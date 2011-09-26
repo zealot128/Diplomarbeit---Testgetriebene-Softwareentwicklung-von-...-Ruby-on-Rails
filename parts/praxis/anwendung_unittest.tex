@@ -195,7 +195,7 @@ Nun fehlt aber noch die Definition eines Positiv-Beispiel für einen gültigen J
 \PY{k}{end}
 \end{ruby}
 \tddgreen
-Dieser Test besteht sofort, macht also genau genommen keine weitere Aussage über unser System. Nach der "`reinen"' Testgetriebenen Leere sollte dieser entfernt werden. Es ist allerdings eine gute Strategie, bei Validierungen mindestens ein Beispiel zu präsentieren, dass angenommen wird. Nichtsdestotrotz können wir nun Refaktorisieren. Insbesondere unsere Testfunktionen enthalten unnötige Redundanzien:
+Dieser Test besteht sofort, macht also genau genommen keine weitere Aussage über unser System. Nach der "`reinen"' Testgetriebene\index{TDD}n Leere sollte dieser entfernt werden. Es ist allerdings eine gute Strategie, bei Validierungen mindestens ein Beispiel zu präsentieren, dass angenommen wird. Nichtsdestotrotz können wir nun Refaktorisieren. Insbesondere unsere Testfunktionen enthalten unnötige Redundanzien:
 
 \begin{ruby}[label=test/unit/job\_test.rb]
 \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{ein Job muss einen Titel haben}\PY{l+s+s2}{"} \PY{k}{do}
@@ -259,4 +259,4 @@ Am Ende dieser Refaktorisierung\index{Refaktorisierung}en ist es notwendig, die 
 \tddgreen
 Danach würde die Implementierung einer nächsten Teilanforderung sein. 
 
-In diesem Abschnitt war zu sehen, dass die Testgetriebene Entwicklung das Arbeiten und Testen in kleinen Schritten favorisiert.
+In diesem Abschnitt war zu sehen, dass die Testgetriebene\index{TDD} Entwicklung das Arbeiten und Testen in kleinen Schritten favorisiert.
