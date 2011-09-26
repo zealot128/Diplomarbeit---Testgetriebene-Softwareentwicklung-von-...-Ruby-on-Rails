@@ -100,7 +100,6 @@ Viele Studien belegen, dass \glossar{TDD} positive Auswirkungen auf die Software
 So zeigt eine Fallstudie, dass TDD zu größerer Produktqualität bei gleichzeitigt hoher Flexibilität führt, was ebenso in einer höheren Zufriedenheit bei den Programmiern führt \citep{hans_wasmus_evaluation_2007}.
 
 
-Einer \randbem{Auswirkung auf die Code-Qualität}empirischen Studie zufolge, sei TDD schwierg zu erlernen und in einigen Metriken (Klassen pro Methode, Development Speed, Anteil der bestandenen Akzeptanztest\index{Test!Akzeptanztest}s) nicht signifikant besser als traditionelle Test-Last-Methoden. Allerdings hatten die beteiligten TDD-geführten Projekte eine signifikant bessere Testabdeckung und geringere Kopplung unter den Klassen. Test-First sei letztendlich eine mächtige aber kontraintuitive Technik \citep{madeyski_test-driven_2009}.
 
 
 In dem Artikel des IEEE-Software-Journals stellen Janzen und Saiedian eine Studie vor, die akademische und industrielle Javaprojekte die testgetrieben durchgeführt wurden (Test-First), mit denen, bei denen hinterher getestet wurde (Test-Last), vergleicht. Demnach zeigen die Ergebnisse an, dass Programmierer, die einen Test-First Ansatz verfolgen, tendenziell Software in kleineren Einheiten die weniger komplex sind, schreiben, als solche die erst nach der Entwicklung testen \citep{janzen_does_2008}.
@@ -162,13 +161,10 @@ Ein Emergent Design kann auch ohne TDD in iterativen Entwicklungsprozessen verwe
 \subsection{ATDD -- Acceptance TDD}
 \label{sec:attd}
 
-Oftmals ist eine Dokumentation und automatisierte Prüfung der Anforderungen durch Akzeptanztest\index{Test!Akzeptanztest}s gewünscht. Hier findet die Akzeptanztest-getriebene Entwicklung als Modifikation von \glossar{TDD} ihre Anwendung. Statt der Unittest\index{Test!Unittest}s, stehen hier die Akzeptanztests im Vordergrund (vgl. \ref{sec:acceptance} zum Thema Akzeptanztests).
 
 Die Entwicklung von Unittest\index{Test!Unittest}s lässt sich aber einbetten, wodurch man nun zwei Testebenen erhält \citep[S. 285]{chelimsky_rspec_2010}:
 
 \begin{enumerate}
- \item Schreibe einen Akzeptanztest\index{Test!Akzeptanztest}/Systemtest für ein Szenario des Feature
- \item Prüfe, ob der Akzeptanztest\index{Test!Akzeptanztest} fehlschlägt
  \item Implementiere das Feature. Da die Features teilweise komplex sind, verfahre nun nach dem TDD-Schema, um benötigte Klassen zu entwickeln, die notwendig sind, um das Feature zu realisieren:
   \begin{enumerate}
    \item Schreibe einen Unittest\index{Test!Unittest}
@@ -176,10 +172,9 @@ Die Entwicklung von Unittest\index{Test!Unittest}s lässt sich aber einbetten, w
    \item Implementiere mit so wenig wie Code möglich, so dass der Test besteht
    \item Refaktorisiere
   \end{enumerate}
- \item Nachdem der Akzeptanztest\index{Test!Akzeptanztest} besteht, prüfe etwaige (klassenübergreifende) Refaktorisierungen
 \end{enumerate}
 
-Somit werden 2 Testebenen erstellt, die der Akzeptanz- und der Unittest\index{Test!Unittest}s. Das Ganze wird auch als Outside-In Entwicklung bezeichnet \citep{chelimsky_rspec_2010}.
+Somit werden 2 Testebenen erstellt, die der Akzeptanz\index{Test!Akzeptanztest}- und der Unittest\index{Test!Unittest}s. Das Ganze wird auch als Outside-In Entwicklung bezeichnet \citep{chelimsky_rspec_2010}.
 
 \subsection{Behavior Driven Development}
 \label{ref:tddBdd}
@@ -195,5 +190,4 @@ Die Begriffe aus der Testgetriebenen Entwicklung werden innerhalb von BDD wie fo
 BDD ist demnach eine Umformulierung von TDD, um sie besser in moderne agile Prozesse einzubetten, da diese ein ähnliches Vokular nutzen.
 
 \subsection{Design Driven Testing}
-Design Driven Testing soll eine Umkehrung von Testgetriebener Software sein und wird als Alternative dazu vorgeschlagen \citep{stephens_design_2010}. Sie kritisieren, dass TDD in Reinform betrieben, lediglich Unittest\index{Test!Unittest}s, aber keine Dokumentation oder Tests höherer Ebenen produziert (Integrations- oder Akzeptanztest\index{Test!Akzeptanztest}s). Weiterhin monieren sie, dass TDD zu schwierig und aufwändig sei. Sie schlagen vor, stattdessen die Tests durch das Software-Design steuern zu lassen und sich auf komplexe Code-Abschnitte zu konzentrieren, anstatt wirklich jeden Code durch einen vorausgegangen Test entstehen zu lassen. Sie empfehlen die Nutzung von Akzeptanz- anstelle der Unittests. Code-Qualität soll durch ein gründliches vorheriges Design anstelle nachträglicher massiver Refaktorisierungen bewerkstelligt werden.
 DDT eignet sich für größere Teams, da Wert auf manuelle Tests gelegt wird und z.B. ein QA-Team eingebunden wird. Da das Entwicklerteam der pludoni GmbH ein sehr Kleines ist, wird auf diesen Entwicklungsprozess nicht näher eingegangen.
