@@ -30,7 +30,7 @@ def ask(frage)
 end
 
 def preview(line, pattern)
-  puts excerpt(line, pattern).gsub(pattern, pattern.dup.light_yellow)
+  puts excerpt(line, pattern).gsub(pattern, pattern.dup.magenta.underline)
 end
 
 def user_confirmed(index_line)
@@ -49,20 +49,24 @@ files.each do |file|
   changed = false
   text.each_line do |line|
 
-    if line.match options[:pattern]
+    if line.match(options[:pattern])
+      if line.include? index_line
+        puts "found, but already be there ... skipping"
+        next
+      end
       puts "Zeile: #{i}"
       preview(line, options[:pattern])
       if user_confirmed(index_line)
         changed = true
         line.sub! options[:pattern], options[:pattern] + index_line
-        puts line
+        puts excerpt(line, index_line).dup.light_white
       end
     end
     out << line
     i=i+1
   end
   if changed
-    b = File.open(file, "w+") {|f| f.write{out.join}}
+    b = File.open(file, "w+") {|f| f.write(out.join)}
     puts "file written #{b}"
   end
 

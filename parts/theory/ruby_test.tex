@@ -2,7 +2,7 @@
 \section{Testframeworks für Ruby}
 \epigraph{Ruby has laid the way in having a test-infected culture around the language}{Nathaniel Talbott (Entwickler von Test/Unit)}
 
-Rails liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit mit. In der Version 1.9.x bringt Ruby das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest ist Cucumber, welches eine Business-readable \glossar{DSL}\footnote{Eine Domain-Spezifische-Sprache, welche durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen.
+Rails liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit mit. In der Version 1.9.x bringt Ruby\index{Ruby} das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest ist Cucumber, welches eine Business-readable \glossar{DSL}\footnote{Eine Domain-Spezifische-Sprache, welche durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen.
 \subsection{Test/Unit}
 Test/Unit basiert auf dem xUnit-, bzw. SUnit-Design von Kent Beck, und ist für Nutzer von z.B. JUnit oder NUnit leicht nachvollziehbar. 
 
@@ -39,7 +39,7 @@ Danach können nun beliebig viele Testmethoden folgen, deren Namen mit \texttt{t
 Jede Testmethode besteht in der Regel aus einer Initialisierung, der Ausführung einer zu testenden Aktion und dem Prüfen der danach geltenden Eigenschaften mittels Assertions. Diese Assertions, also zu Deutsch Zusicherungen, sind vom Testframework bereitgestellt Funktionen, die übergebene Parameter auf gewisse Eigenschaften testen und daraus einen Testerfolg oder Fehlschlag ableiten. Sollte eine Assertion innerhalb eines Tests fehlschlagen, so gilt der gesamte Testfall als fehlgeschlagen. \\
 Einige dieser Zusicherungen sind z.B.:
 \begin{description}
- \item[\texttt{assert(statement)}] Prüft, ob der angegebene Ausdruck wahr ist (In Ruby sind alle Ausdrücke, außer \texttt{false} und \texttt{nil} wahr)
+ \item[\texttt{assert(statement)}] Prüft, ob der angegebene Ausdruck wahr ist (In Ruby\index{Ruby} sind alle Ausdrücke, außer \texttt{false} und \texttt{nil} wahr)
  \item[\texttt{assert\_equal(expected, actually)}] prüft, ob die beiden Statements gleich sind, hinsichtlich des \texttt{==}-Operators\footnote{Viele eingebaute Klassen prüfen auf Strukturgleichheit. Eigene Objekte werden ansonsten auf Adressengleichheit getestet. Man kann allerdings eine eigene Vergleichsoperation durch die Implementation der Instanzmethode \texttt{.==()} definieren}
  
  \item[\texttt{assert\_raise(exception, \&block)}] Prüft, ob innerhalb des übergebenen Codeblocks eine Exception vom Typ exception geworfen wird
@@ -94,7 +94,7 @@ Jeder dieser Testschritte kann nun eine beliebige Implementierung besitzen. Meis
 
 Der Vorteil von Cucumber ist nun, dass diese Feature-Datei zusammen mit dem Kunden durchgesprochen werden kann, und dass man damit an Ende eine funktionale Validierung gegenüber der Spezifikation automatisiert durchführen kann. \\ 
 Cucumber ist von der Syntax so generisch, dass damit beliebige Anwendungen getestet werden, da keine Annahmen über die darunterliegende Implementierung der Testschritte gemacht wird.
-Neben Ruby wird auch die Implementierung der Testschritte in Java und C\# unterstützt.
+Neben Ruby\index{Ruby} wird auch die Implementierung der Testschritte in Java und C\# unterstützt.
 
 \paragraph{Testen von Webanwendungen}
 Eine Einsatzmöglichkeit von Cucumber, besonders im Zusammenhang mit \glossar{rails}, ist das Testen von Webanwendungen. Dabei ist es üblich, einen Browser zu automatisieren bzw. simulieren (vgl. Abschnitt \ref{sec:acceptance}), um den Test so authentisch am echten Nutzungsprozess wie möglich zu orientieren. 
