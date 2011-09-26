@@ -33,7 +33,7 @@ Eine solche Testklasse kann wie folgt aussehen:
 \codecaption{Testen mit Test/Unit in Ruby}
 
 Unsere Klasse \texttt{TestJob} erbt von der \texttt{TestUnit}-Basisklasse. Sie beinhaltet die besonderen Methoden \texttt{setup} und \texttt{teardown}, die jeweils vor, bzw. nach jedem einzelnen Testfall\index{Test} aufgerufen werden.
-In der \texttt{setup}-Methode nehmen wir z.B. das Anlegen eines Jobs vor, in der Teardown Methode löschen wir alle Jobs in der Datenbank, um einen sauberen Test \index{Test}zu gewährleisten (Isolation).
+In der \texttt{setup}-Methode nehmen wir z.B. das Anlegen eines Jobs vor, in der Teardown Methode löschen wir alle Jobs in der Datenbank\index{Datenbank}, um einen sauberen Test \index{Test}zu gewährleisten (Isolation).
 
 Danach können nun beliebig viele Testmethoden folgen, deren Namen mit \texttt{test\_} beginnen müssen.
 Jede Testmethode besteht in der Regel aus einer Initialisierung, der Ausführung einer zu testenden Aktion und dem Prüfen der danach geltenden Eigenschaften mittels Assertions. Diese Assertions, also zu Deutsch Zusicherungen, sind vom Testframework bereitgestellt Funktionen, die übergebene Parameter auf gewisse Eigenschaften testen und daraus einen Testerfolg oder Fehlschlag ableiten. Sollte eine Assertion innerhalb eines Tests fehlschlagen, so gilt der gesamte Testfall\index{Test} als fehlgeschlagen. \\
@@ -48,7 +48,7 @@ Einige dieser Zusicherungen sind z.B.:
 Natürlich lassen sich beliebige weitere Zusicherungen definieren. \glossar{rails} z.B. definiert Zusicherungen, um zu testen, ob ein Objekt eine gültige Instanz hinsichtlich der definierten Validierung\index{Ruby-on-Rails!Validierung}en ist (Validierungen wurden bereits im Abschnitt \ref{sec:railsconcepts} erläutert).
 
 \paragraph{Testdatengenerierung}
-Nachdem Testdaten\index{Test!Testdaten} (vgl. Abschnitt \ref{sec:test}) einmal in zentraler Form definiert wurden, erledigt \glossar{rails} das Management, d.h. Laden und Löschen dieser, selbständig. Diese Art der Testdatenbereitstellung wird bei Rails \textbf{Fixtures} bezeichnet. Rails setzt selbstständig die Datenbank nach jedem einzelnen Test \index{Test}auf die Fixtures zurück oder kapselt die Tests innerhalb von Transaktionen, insofern die verwendete Datenbank dies unterstützt.\\
+Nachdem Testdaten\index{Test!Testdaten} (vgl. Abschnitt \ref{sec:test}) einmal in zentraler Form definiert wurden, erledigt \glossar{rails} das Management, d.h. Laden und Löschen dieser, selbständig. Diese Art der Testdatenbereitstellung wird bei Rails \textbf{Fixtures} bezeichnet. Rails setzt selbstständig die Datenbank\index{Datenbank} nach jedem einzelnen Test \index{Test}auf die Fixtures zurück oder kapselt die Tests innerhalb von Transaktionen, insofern die verwendete Datenbank dies unterstützt.\\
 
 Zur Generierung von größeren Mengen an zufälligen Daten einer bestimmten Domän (z.B. für Stresstests) existieren ebenfalls Lösungen. Mittels der \glossarpl{gem}\index{Gem} "`populator"' und "`faker"' lassen sich beispielsweise eine beliebige Menge an gültig-anscheinenden Personendaten (Name, Vorname, Adresse, E-Mail-Adresse, Passwort,...) oder Blind-Texten generieren\footnote{Eine sehr gute Erklärung zur Nutzung beider Gems ist im Railscast \#128 zu finden \url{http://railscasts.com/episodes/126-populating-a-database}}.
 

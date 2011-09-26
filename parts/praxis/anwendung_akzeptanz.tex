@@ -218,7 +218,7 @@ Jetzt folgt die Implementierung der Suche im Jobs-Controller\index{Ruby-on-Rails
 \end{ruby}
 \codecaption{JobsController am Ende der Testphase}
 
-Im Jobs-Controller\index{Ruby-on-Rails!Controller} implementieren wir die Bereitstellung der Jobs mittels einer Datenbankabfrage. Dabei nutzen wir die Datenbankfunktion von ActiveRecord\index{ActiveRecord} und führen eine partielle Match-Suche der Suchparameter über die Tabellenspalte "`title"' aus. ActiveRecord übernimmt das sichere Escapen des übergeben Strings selbstständig in den dafür vorgesehenen Platzhalter "`?"'. Das Ergebnis speichern wir in der Instanzvariable @jobs und stellen es so der View zur Verfügung.
+Im Jobs-Controller\index{Ruby-on-Rails!Controller} implementieren wir die Bereitstellung der Jobs mittels einer Datenbank\index{Datenbank}abfrage. Dabei nutzen wir die Datenbankfunktion von ActiveRecord\index{ActiveRecord} und führen eine partielle Match-Suche der Suchparameter über die Tabellenspalte "`title"' aus. ActiveRecord übernimmt das sichere Escapen des übergeben Strings selbstständig in den dafür vorgesehenen Platzhalter "`?"'. Das Ergebnis speichern wir in der Instanzvariable @jobs und stellen es so der View zur Verfügung.
 
 
 Damit nun der Test \index{Test}besteht, muss als letztes noch eine View\index{Ruby-on-Rails!View} implementiert werden, die (zumindest) die Titel aller in der Suche gefundenen Jobs ausgibt, hier z.B. als Überschrift.
