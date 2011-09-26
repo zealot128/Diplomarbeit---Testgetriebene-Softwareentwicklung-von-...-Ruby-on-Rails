@@ -29,10 +29,9 @@ In einem normalen Programm ist die Zyklomatische Komplexität die Anzahl der Ent
 
 Ein daraus abgeleitetes Testverfahren "`Basis Path Testing"' schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte, wie die Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) (Mehr zu Testabdeckung\index{Test!Testabdeckung} im nächsten Unterabschnitt).
 
-\paragraph{Anzahl Bad Smells} ist eine aggregierte Metrik über Anzahl und Vorkommen von suboptimale Codestellen (\glossarpl{smell}). Diese Code-Smells sind meist ein oberflächliches Symptom für ein möglicherweise tieferliegendes Designproblem. Ob ein konkreter Smell relevant ist, muss im Einzelfall entschieden werden. Für eine grobe Übersicht genügt aber z.B. auch einfach die Summe, oder die Anzahl der Codesmells relativ zur Codemenge (Smells pro Tausend LOC). Welche Bad Smells für die Entwicklung entscheidend sind hängt von der gewählten Sprache, dem damit einhergehenden Programmierparadigma und manchmal auch den verwendeten Frameworks. Einige für Ruby\index{Ruby} relevante Smells sind z.B. (Nach \citep{kevin_rutherford_code_2010}):
 
 \begin{description}
- \item[Geringe Kohäsion] Ist ein Oberbegriff für verschiedene andere Smells anzuwenden bei objektorientierten Programmen. Einer davon ist z.B.. "`Feature Envy"' (deutsch: Neid). Eine Klasse weiß zuviel über die internen Strukturen einer anderen Klasse, und implementiert Funktionalität, die eigentlich in jene Klasse gehören sollten. \\
+ \item[Geringe Kohäsion] Ist ein Oberbegriff für verschiedene andere Smell\index{Code-Smell}s anzuwenden bei objektorientierten Programmen. Einer davon ist z.B.. "`Feature Envy"' (deutsch: Neid). Eine Klasse weiß zuviel über die internen Strukturen einer anderen Klasse, und implementiert Funktionalität, die eigentlich in jene Klasse gehören sollten. \\
  Im Beispiel würde die Berechnung eines Gesamtpreises z.B. in die Klasse \texttt{Checkout} gehören.
  \begin{lstlisting}
     @checkout.total = @checkout.total_price * MWST
@@ -46,8 +45,8 @@ Ein daraus abgeleitetes Testverfahren "`Basis Path Testing"' schlägt vor, dass 
  \item[Duplikation] Offensichtliche Ähnlichkeiten zwischen Programmstücken (oder sogar Deckungsgleichheit bei Anwendung von Copy \& Paste). Fortgeschrittene Analysemethoden betrachten den Abstrakten Syntaxbaum, und können so strukturelle Ähnlichkeiten feststellen
  \end{description}
 
-Diese und weitere Smells können mit dem Tool reek\footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}} festgestellt werden.\\
-Weitere Informationen zu Smells und deren Beseitigung finden sie in dem Buch "`Refactoring"' von M. Fowler \citep{fowler_refactoring_1999}.
+Diese und weitere Smell\index{Code-Smell}s können mit dem Tool reek\footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}} festgestellt werden.\\
+Weitere Informationen zu Smell\index{Code-Smell}s und deren Beseitigung finden sie in dem Buch "`Refactoring"' von M. Fowler \citep{fowler_refactoring_1999}.
 
 \section{Code-Metriken für Tests}
 \label{sec:metrics}
@@ -73,7 +72,7 @@ Neben den Lines of Code kann auf dieselbe (einfache) Weise die Anzahl der Codeze
 Sollte dieser deutlich kleiner als 1 sein, so ist dies ein Symptom für zu wenige Tests. Diese Zahl ist von dem Testframework und dem Programmframework stark abhängig. Gute Projekte sollten (deutlich) mehr Test-Code, als Programmcode besitzen \citep[S. 238]{hunt_pragmatic_1999}.
 
 \subsection{Testausführungsabdeckung}
-Die Testabdeckung\index{Test!Testabdeckung}, misst den Grad, inwieweit ein Programm durch die Tests berührt wurde. Dabei wird die vorhandene Test-Suite ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"', und 0\% "`Das Programm wurde durch die Tests überhaupt nicht berührt"'  Es wird festgehalten, welche Anweisungen, Zweige oder sogar Programmpfade ausgeführt wurden. Diese 3 Abstufungen, sind im Detail;
+Die Testabdeckung\index{Test!Testabdeckung}, misst den Grad, inwieweit ein Programm durch die Tests berührt wurde. Dabei wird die vorhandene Test-Suite\index{Test!Test-Suite} ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"', und 0\% "`Das Programm wurde durch die Tests überhaupt nicht berührt"'  Es wird festgehalten, welche Anweisungen, Zweige oder sogar Programmpfade ausgeführt wurden. Diese 3 Abstufungen, sind im Detail;
 \begin{description}
  \item[C0] (Anweisungsüberdeckung, Statement Coverage) ist die am einfachsten zu bestimmende Abdeckung. Dabei wird geprüft, ob jede Zeile des Quellcodes während der Codeausführung mindestens einmal ausgeführt wurde
  \item[C1] (Zweigüberdeckung, Branch Coverage) prüft zusätzlich, ob jeder Zweig jeder Zeile ausgeführt wurde. Dies ist wichtig,falls man ternäre Ausdrücke\footnote{if-then-else in einer Zeile: int a = (1==1) ? 5 : 3} verwendet

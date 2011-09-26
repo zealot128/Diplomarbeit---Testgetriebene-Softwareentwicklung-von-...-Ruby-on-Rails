@@ -17,7 +17,6 @@ Eine vollständige Metrik wie oben an IT-Jobs, war in vielen Fällen nicht mögl
  \item[CSmell] Anzahl der Code-Smells nach Reek. Diese beinhalten: Geringe Kohäsion, Duplikation, Control-Couple, Unkommunikativer Name von Methoden/Variablen/Parameter, verschachtelte Iteratoren, u.v.m  \footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}}
  \item[CSmell/KLOC] Anzahl der Code-Smells nach Reek pro tausend Codezeilen
 \end{description}
-%Die Tools Roodi und Reek messen beide gewisse \glossarpl{smell}, die sich zum Teil überdecken.
 
 
 
@@ -31,7 +30,7 @@ Bisherige Projekte der pludoni GmbH und des Autors basierend auf Ruby\index{Ruby
 \begin{description}
  \item[feedimport] Ist die fertiggestellte Bibliothek, die im Rahmen der Entwicklung von IT-Jobs ausgelagert wurde, um den Community-Portalen bereits jetzt zur Verfügung zu stehen. Die Grundzüge wurden in Abschnitt \ref{sec:awmock} vorgestellt.
  \item[feedmerger] Eine Rails\index{Ruby-on-Rails}-Anwendung\footnote{ Als OpenSource unter \url{https://github.com/zealot128/WenShanWenHai} zu finden.} zur Verwalten, Cachen, Filtern und Zusammenfügen von RSS und Atom-Feeds.
- \item[pludonidb] Ist eine auf ActiveRecord basierende Bibliothek zur Anbindung der Datenbanken der Communityportale an Ruby-Skripte. Beinhaltet außerdem weitere Hilfsfunktionen für Berechnung von Tag-Wolken, Häufigkeiten u.ä.
+ \item[pludonidb] Ist eine auf ActiveRecord\index{ActiveRecord} basierende Bibliothek zur Anbindung der Datenbanken der Communityportale an Ruby-Skripte. Beinhaltet außerdem weitere Hilfsfunktionen für Berechnung von Tag-Wolken, Häufigkeiten u.ä.
  \item[backlinks] Backlink und SEO-Success-Control ist eine Rails-2.3 Anwendung, zum Messen der sogenannten Backlinks\footnote{Backlinks sind Links anderer Webseiten auf die eigenen. In den Communityportalen sind die Mitglieder vertraglich verpflichtet, einen Backlink auf die Communityportale anzulegen.} der Communitymitglieder und der Platzierung für relevante Sucheingaben in den großen Suchmaschinen (konkret: Welchen Platz hatte ein Communityportal an einem bestimmten Tag für "`it jobs dresden"', usw.). Details dazu sind im Praktikumsbericht des Autors zu finden. %TODO Verweis auf meinen Praktikumsbericht
  
  \item[SiteAnalyzer (SAnalyzer)] ist ein Werkzeuge zur Analyse von kompletten Websites/Webdomains, mit dem Ziel tote Links zu finden, alle Seiten auf HTML-Gültigkeit zu prüfen, und insgesamt die Link-Architektur zu analysieren\footnote{Auch dieses Projekt ist als OpenSource verfügbar: \url{https://github.com/zealot128/Site-Structure-Analyzer}}. 
@@ -153,8 +152,8 @@ Bei den externen Projekten war der Bugtracker-Anwendung Chiliproject/Redmine die
  \caption{Vergleich der Anzahl Smells pro KLOC}
  \label{fig:cpm-smells}
 \end{figure}
-Die Abbildung \ref{fig:cpm-smells} zeigt zwei verschiedene Arten von Smells: Einerseits durch Reek gemessen (Rot) und andererseits durch Roodi gemessen (Blau). Zu bemerken sei, dass IT-Jobs eine deutlich geringere Code-Smell-Dichte (1/2 Median) besitzt. Auch der Feedimport ist noch im Rahmen und leicht unter dem Schnitt. Dagegen hat das interne Projekt Backlinks die höchste Dichte an Code-Smells. Interessanterweise hat dieses Projekt auch so gut wie gar keine automatisierten Tests, was eine nachträgliche Refaktorisierung\index{Refaktorisierung} sehr erschwert. Für das Projekt Feedimport existiert allerdings eine gute Testabdeckung\index{Test!Testabdeckung}, und so ließen sich leicht weitere Refaktorisierungen durchführen, sollte das gewünscht sein. \\
-Actionpack verfügt unter den externen Projekten die höchste Smell-Dichte, trotz der großen Menge an Tests und der relativ geringen Komplexität. Da Actionpack auf das umfangreichste Projekt unter den untersuchten ist, wäre hier ein guter Ansatzpunkt für weitere Untersuchungen in der Sinnhaftigkeit gewissen Code-Smells. Die mit Abstand größte Code-Smell hierbei war Geringe Kohäsion bzw. starke Kopplung unter den Klassen. Eventuell lassen sich einige der Smells bei großen Modulen nicht vermeiden, da diese zwangsweise untereinander gekoppelt sein müssen.
+Die Abbildung \ref{fig:cpm-smells} zeigt zwei verschiedene Arten von Smell\index{Code-Smell}s: Einerseits durch Reek gemessen (Rot) und andererseits durch Roodi gemessen (Blau). Zu bemerken sei, dass IT-Jobs eine deutlich geringere Code-Smell-Dichte (1/2 Median) besitzt. Auch der Feedimport ist noch im Rahmen und leicht unter dem Schnitt. Dagegen hat das interne Projekt Backlinks die höchste Dichte an Code-Smells. Interessanterweise hat dieses Projekt auch so gut wie gar keine automatisierten Tests, was eine nachträgliche Refaktorisierung\index{Refaktorisierung} sehr erschwert. Für das Projekt Feedimport existiert allerdings eine gute Testabdeckung\index{Test!Testabdeckung}, und so ließen sich leicht weitere Refaktorisierungen durchführen, sollte das gewünscht sein. \\
+Actionpack verfügt unter den externen Projekten die höchste Smell\index{Code-Smell}-Dichte, trotz der großen Menge an Tests und der relativ geringen Komplexität. Da Actionpack auf das umfangreichste Projekt unter den untersuchten ist, wäre hier ein guter Ansatzpunkt für weitere Untersuchungen in der Sinnhaftigkeit gewissen Code-Smells. Die mit Abstand größte Code-Smell hierbei war Geringe Kohäsion bzw. starke Kopplung unter den Klassen. Eventuell lassen sich einige der Smells bei großen Modulen nicht vermeiden, da diese zwangsweise untereinander gekoppelt sein müssen.
 
 
 

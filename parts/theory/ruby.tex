@@ -161,7 +161,7 @@ Ruby\index{Ruby} verfügt über lexikalische und dynamische Bindung\footnote{
 
 \paragraph{Generische Programmierung und Aspekte der Metaprogrammierung}
 Metaprogrammierung umfasst die Analyse, Transformation und Generierung von Objektprogrammen durch Metaprogramme \citep{herrmann_2005}.  Sie ermöglicht es, Probleme effektiv zu lösen, die andernfalls nur mit erheblichem Aufwand, oder gar nicht zu lösen sind.\\
-Ein beliebtes Idiom innerhalb der Ruby-Community ist es, verwendete Methoden auf Basis des Methodennamens zur Laufzeit zu erstellen (Generierung). Dies verwendet z.B. das beliebte ORM\footnote{\glossar{ORM}}-Datenbankframework ActiveRecord, um einfache SQL-Statements anhand des Funktionsnamens zu erstellen (Ruby on Rails\index{Ruby-on-Rails} verwendet standardmäßig ActiveRecord als Schnittstelle zur Datenbank).
+Ein beliebtes Idiom innerhalb der Ruby-Community ist es, verwendete Methoden auf Basis des Methodennamens zur Laufzeit zu erstellen (Generierung). Dies verwendet z.B. das beliebte ORM\footnote{\glossar{ORM}}-Datenbankframework ActiveRecord\index{ActiveRecord}, um einfache SQL-Statements anhand des Funktionsnamens zu erstellen (Ruby on Rails\index{Ruby-on-Rails} verwendet standardmäßig ActiveRecord als Schnittstelle zur Datenbank).
 % SNIPPET: 
 % >> Person.find_by_first_name("Stefan")                                                                                                     
 % #  Person Load (0.2ms)  SELECT persons.* FROM persons                                                                                      
@@ -177,7 +177,7 @@ Ein beliebtes Idiom innerhalb der Ruby-Community ist es, verwendete Methoden auf
 
 Die Methode \texttt{find\_by\_first\_name} existiert nicht, und wird zur Laufzeit auf Basis des Namens gebaut. Dies ist möglich, da Ruby\index{Ruby} sogennante Hooks (Callbacks) bereitstellt. Der Hook \texttt{method\_missing} z.B. wird immer dann aufgerufen, wenn eine nicht-existierende Funktion aufgerufen wurde (wie in unserem Beispiel \texttt{find\_by\_first\_name}). Hier können wir nun die neue Methode auf Basis des gewünschten Funktionsnamens zur Laufzeit erstellen, oder andernfalls selbst eine Exception werfen. Ein weiterer Hook ist z.B. auch \texttt{method\_added}, der aufgerufen wird, wenn in einer Klasse eine Methode definiert wird\footnote{Einen guten Überblick über die Callbacks die Ruby bereitstellt, und was man damit kann, finden sie hier: \url{http://www.khelll.com/blog/ruby/ruby-callbacks/}}. Auf diese Weise sind z.B. die Modifikatoren \texttt{private} und \texttt{public} implementiert.
 
-Ein weiteres Beispiel ist die Definition der relationalen Beziehungen zwischen den einzelnen Modellen innerhalb von \glossar{rails} (Ebenfalls unter der Verwendung von ActiveRecord).
+Ein weiteres Beispiel ist die Definition der relationalen Beziehungen zwischen den einzelnen Modellen innerhalb von \glossar{rails} (Ebenfalls unter der Verwendung von ActiveRecord\index{ActiveRecord}).
 \begin{ruby}[label=app/models/job.rb]
 \PY{k}{class} \PY{n+nc}{Job} \PY{o}{<} \PY{n+no}{ActiveRecord}\PY{o}{::}\PY{n+no}{Base}
   \PY{n}{belongs\PYZus{}to} \PY{l+s+ss}{:user}

@@ -5,7 +5,7 @@ Ein Rails\index{Ruby-on-Rails}-Modell, wie in \ref{sec:railsconcepts} auf S. \pa
 
 Fast jeder Unittest\index{Test!Unittest} bei Rails\index{Ruby-on-Rails} beinhaltet das Testen auf Validierungskritieren seines korrespondierenden Modells, d.h. wann eine Instanz dieses Modells gültig ist und damit gespeichert werden darf (man denke z.B. an Pflichtfelder für ein Modell "`Nutzer"` oder die Validierung des Formates seiner E-Mail-Adresse). Weiterhin sollten natürlich alle weiteren, selbstdefinierten, Methoden getestet werden.
 
-Diese Validierungen werden durch das \glossar{ORM}-Framework ActiveRecord, welches Rails\index{Ruby-on-Rails} standardmäßig nutzt, bereitgestellt. Bevor wir weiter auf die 
+Diese Validierungen werden durch das \glossar{ORM}-Framework ActiveRecord\index{ActiveRecord}, welches Rails\index{Ruby-on-Rails} standardmäßig nutzt, bereitgestellt. Bevor wir weiter auf die 
 
 \paragraph{1. Der Anfang}
 \begin{figure}[htbp]
@@ -38,12 +38,12 @@ generieren wird ein Modell mit dem angegebenen Modellnamen. Dazu geben wir paarw
       create      test/fixtures/jobs.yml
 
 \end{lstlisting}
-Mit der Anweisung uns ein Modell \texttt{job} mit den nachfolgenden Attributen zu generieren, hat Rails\index{Ruby-on-Rails} uns nun schon ein Stück Arbeit abgenommen. Dabei delegiert der Codegenerator \texttt{model} nun die Arbeit an den Codegenerator für ein ActiveRecord-Model (erkennbar an dem \texttt{invoke active\_record}). Dieser wiederrum generiert 2 Dateien und ruft seinerseits einen Codegenerator zum Generieren der Tests auf (\texttt{invoke test\_unit})
+Mit der Anweisung uns ein Modell \texttt{job} mit den nachfolgenden Attributen zu generieren, hat Rails\index{Ruby-on-Rails} uns nun schon ein Stück Arbeit abgenommen. Dabei delegiert der Codegenerator \texttt{model} nun die Arbeit an den Codegenerator für ein ActiveRecord\index{ActiveRecord}-Model (erkennbar an dem \texttt{invoke active\_record}). Dieser wiederrum generiert 2 Dateien und ruft seinerseits einen Codegenerator zum Generieren der Tests auf (\texttt{invoke test\_unit})
 
 Es wurden erstellt:
 \begin{itemize}
  \item Eine Migration (\verb|db/migrate/2011xxxxxx_create_jobs.rb|). Dies stellt eine datenbankunabhängige Repräsentation einer Änderung an der Struktur unserer Datenbank dar. In diesem ist es die Erstellung einer Tabelle \texttt{jobs} (beachte: Plural!), mit den Spalten Titel, Link als String, Description als Textfeld, eine User\_ID als Referenz auf ein anderes Modell usw.
- \item Die Modelklasse (\verb|app/models/job.rb|). Trotz unserer Definition der Spalten und deren Typen über die Kommandozeile, ist diese Klasse leer. Da wir ActiveRecord verwenden, definieren wir die Attribute, die unser Modell hat, nicht in der Modellklasse, sondern ausschließ in der Datenbank. Die Migration erspart uns die manuelle Arbeit, selbst in unserer Datenbank Spalten anzulegen. Bei Initialisierung eines Modells lädt ActiveRecord die Spalteninformationen aus der Datenbank, und generiert dafür Getter und Setter Methoden. 
+ \item Die Modelklasse (\verb|app/models/job.rb|). Trotz unserer Definition der Spalten und deren Typen über die Kommandozeile, ist diese Klasse leer. Da wir ActiveRecord\index{ActiveRecord} verwenden, definieren wir die Attribute, die unser Modell hat, nicht in der Modellklasse, sondern ausschließ in der Datenbank. Die Migration erspart uns die manuelle Arbeit, selbst in unserer Datenbank Spalten anzulegen. Bei Initialisierung eines Modells lädt ActiveRecord die Spalteninformationen aus der Datenbank, und generiert dafür Getter und Setter Methoden. 
  \item Die dazugehörige Testklasse (\verb|app/unit/job_test.rb|)
  \item und Fixtures-Datei (\verb|test/fixtures/jobs.yml|), zur Definition von Testdaten. 
 \end{itemize}
@@ -69,7 +69,7 @@ $ rake db:migrate
 ==  CreateJobs: migrated (0.0021s) ================
 \end{lstlisting}
 
-Danach können wir die Rails\index{Ruby-on-Rails}-Test-Suite mithile eines weitere Rake-Tasks auch schon ausführen. Dieser Rake-Task legt selbsständig eine Testdatenbank an, führt offene Migrationen darauf aus und führt dann alle vorhanden Tests aus.
+Danach können wir die Rails\index{Ruby-on-Rails}-Test-Suite\index{Test!Test-Suite} mithile eines weitere Rake-Tasks auch schon ausführen. Dieser Rake-Task legt selbsständig eine Testdatenbank an, führt offene Migrationen darauf aus und führt dann alle vorhanden Tests aus.
 
 \begin{lstlisting}
 $ rake test
@@ -139,7 +139,7 @@ Unser nächstes Ziel ist es nun, mit so wenig Code wie möglich den Test bestehe
 \PY{k}{end}
 \end{ruby}
 \codecaption{Implementierung der Validierung in die Klasse Job}
-\texttt{validates} ist eine Funktion aus der ActiveRecord Bibliothek, die zwei Parameter entgegennimmt: Der erste ist die Spalte, auf der sich die Validierung bezieht, als Zweites folgt eine Liste an Validierungskritieren. Hier ist das Kritierum \texttt{presence}, also das Vorhandensein eines nicht-leeren Attributs. Weitere Kritieren sind z.B. Format, Länge, Minimum, Maximum, oder selbst definierte Kriterien.
+\texttt{validates} ist eine Funktion aus der ActiveRecord\index{ActiveRecord} Bibliothek, die zwei Parameter entgegennimmt: Der erste ist die Spalte, auf der sich die Validierung bezieht, als Zweites folgt eine Liste an Validierungskritieren. Hier ist das Kritierum \texttt{presence}, also das Vorhandensein eines nicht-leeren Attributs. Weitere Kritieren sind z.B. Format, Länge, Minimum, Maximum, oder selbst definierte Kriterien.
 
 \tddgreen
 Nach erneuter Ausführung der Testsuite, besteht der Test nun. Jetzt folgt die Refaktorisierung\index{Refaktorisierung}sphase. Der Programmcode lässt sich nicht weiter vereinfachen. Aber der Testcode ist ausdrücklich nicht von Refaktorisierungen befreit, und eine Refaktorisierung wäre z.B.:
