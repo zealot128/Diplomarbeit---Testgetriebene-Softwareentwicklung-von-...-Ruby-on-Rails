@@ -1,0 +1,11 @@
+headings_flag		1
+heading_prefix		"\n  \\hfill -- \\textbf{\\Large "
+heading_suffix		"} -- \\hfill \\nopagebreak\n"
+symhead_positive	"Symboles"
+symhead_negative	"symboles"
+delim_0			" \\dotfill\\ "
+delim_1			" \\dotfill\\ "
+delim_2			" \\dotfill\\ "
+
+encap_prefix "\\\footnotesize{\\"
+encap_suffix "}}\\normalsize"
