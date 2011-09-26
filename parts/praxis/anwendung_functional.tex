@@ -1,9 +1,9 @@
-\section{Implementierung von Controller-Tests (functional tests)}
-\epigraph{Skinny Controller, Fat Model [...] Try to keep your controller actions and views as slim as possible.}{Jamis Buck, Programmierer bei 37signals}
+\section{Implementierung von Controller\index{Rails!Controller}-Tests (functional tests)}
+\epigraph{Skinny Controller\index{Rails!Controller}, Fat Model [...] Try to keep your controller actions and views as slim as possible.}{Jamis Buck, Programmierer bei 37signals}
 
 
-Neben den Unittest\index{Test!Unittest}s stellt Ruby on Rails\index{Ruby-on-Rails} eine weitere Testart nativ bereit. Technisch gesehen handelt es sich bei diesen Functional Tests aber auch um Unittests, da deren Testobjekt eine Klasse, der Controller, ist. 
-Ein Controller hat bei Ruby on Rails\index{Ruby-on-Rails} die Aufgabe, Anfragen für bestimmte Routen, also Web-Adressen, anzunehmen, die Arbeit an eine Modelklasse auszulagern, und eine View aufzurufen, die letztendlich HTML-Code generiert.
+Neben den Unittest\index{Test!Unittest}s stellt Ruby on Rails\index{Ruby-on-Rails} eine weitere Testart nativ bereit. Technisch gesehen handelt es sich bei diesen Functional Tests aber auch um Unittests, da deren Testobjekt eine Klasse, der Controller\index{Rails!Controller}, ist. 
+Ein Controller\index{Rails!Controller} hat bei Ruby on Rails\index{Ruby-on-Rails} die Aufgabe, Anfragen für bestimmte Routen, also Web-Adressen, anzunehmen, die Arbeit an eine Modelklasse auszulagern, und eine View\index{Rails!View} aufzurufen, die letztendlich HTML-Code generiert.
 
 Im ersten Beispiel wollen wir testen, dass ein Gast-Nutzer, also z.B. ein Bewerber, eine sichtbare Stellenanzeige aufrufen darf (\texttt{visible = true}). Hierbei verwenden wir wieder unser oben definiertes Fixture für einen gültigen Job.
 % SNIPPET: 
@@ -41,7 +41,7 @@ Im ersten Beispiel wollen wir testen, dass ein Gast-Nutzer, also z.B. ein Bewerb
 
 \tddred
 Zuerst loggen wir jeglichen Nutzer aus, der eventuell eingeloggt war, dann laden wir das Fixture und führen einen simulierten HTTP Request auf die Detailansicht der Stellenanzeige aus (Die Aktion \texttt{show} mit der ID des Jobs).
-Nun erwarten wir, dass wir einen HTTP-Status Code 200 (Erfolg) erhalten, und dass der Controller eine Variable \texttt{@jobs} bereitstellt, die mit unserem Fixture identisch ist.
+Nun erwarten wir, dass wir einen HTTP-Status Code 200 (Erfolg) erhalten, und dass der Controller\index{Rails!Controller} eine Variable \texttt{@jobs} bereitstellt, die mit unserem Fixture identisch ist.
 
 Die Implementation dieser Anforderung könnte wie folgt umgesetzt werden:
 % -------------------------------
@@ -117,7 +117,7 @@ Nun wollen wir testen, ob ein Gast von einer nicht-sichtbaren Stellenanzeige wei
 
 \tddred
 
-Wir laden unser zweites definiertes Fixture, dass eine unsichtbaren Stellenanzeige. Dieses mal erwarten wir einen HTTP Statuscode 301 (Redirect/Weiterleitung), und dass unser Controller eine Hinweisnachricht generiert.
+Wir laden unser zweites definiertes Fixture, dass eine unsichtbaren Stellenanzeige. Dieses mal erwarten wir einen HTTP Statuscode 301 (Redirect/Weiterleitung), und dass unser Controller\index{Rails!Controller} eine Hinweisnachricht generiert.
 
 % -------------------------------
 % SNIPPET: 
@@ -191,7 +191,7 @@ Nun möchten wir, dass ein Kunde dieser Anwendung, also ein Unternehmen seine St
 \tddgreen
 Wir lösen diesen Test damit, dass wir in der Weiterleitungsbedingung prüfen, ob der betrachtende Nutzer und der Eigentümer des Jobs gleich sind.
 
-Nun können wir refaktorisieren. Was auffällt, ist z.B. dass unser Controller und die Klasse Job nicht lose gekoppelt sind, da die Bedingung zweimal auf Attribute des Jobs zurückgreift. Eine Lösung wäre die Auslagerung in die Modelklasse von Job:
+Nun können wir refaktorisieren. Was auffällt, ist z.B. dass unser Controller\index{Rails!Controller} und die Klasse Job nicht lose gekoppelt sind, da die Bedingung zweimal auf Attribute des Jobs zurückgreift. Eine Lösung wäre die Auslagerung in die Modelklasse von Job:
 \tddrefactor
 % SNIPPET: 
 %                                                                                                                                                                    
@@ -230,7 +230,7 @@ Nun können wir refaktorisieren. Was auffällt, ist z.B. dass unser Controller u
 \codecaption{JobsController: Anwendung der Refaktoriserung}
 
 Ebenfalls wurde das syntaktische Element \texttt{unless} verwendet, welches ein Alias für \texttt{if not} ist.
-Weiterhin könnte die Suche nach dem aktuell eingeloggten Nutzer in eine für alle Controller sichtbare Funktion ausgegliedert werden
+Weiterhin könnte die Suche nach dem aktuell eingeloggten Nutzer in eine für alle Controller\index{Rails!Controller} sichtbare Funktion ausgegliedert werden
 \tddrefactor
 
 % SNIPPET: 
@@ -273,14 +273,14 @@ Weiterhin könnte die Suche nach dem aktuell eingeloggten Nutzer in eine für al
 
 
 \paragraph{Zusammenfassung}
-Funktionale Tests und deren Controller-Implementierungen sind häufig nicht länger als ein paar Zeilen. Qua Konventation des \glossar{MVC}-Patterns und Rails\index{Ruby-on-Rails} sollen komplexe Abläufe in den Modellen oder auch in Bibliotheken stattfinden. 
-Die Aspekte, die üblicherweise bei Controllern getestet werden, sind:
+Funktionale Tests und deren Controller\index{Rails!Controller}-Implementierungen sind häufig nicht länger als ein paar Zeilen. Qua Konventation des \glossar{MVC}-Patterns und Rails\index{Ruby-on-Rails} sollen komplexe Abläufe in den Modell\index{Rails!Modell}en oder auch in Bibliotheken stattfinden. 
+Die Aspekte, die üblicherweise bei Controller\index{Rails!Controller}n getestet werden, sind:
 \begin{itemize}
  \item HTTP Statuscodes und Weiterleitungen,
  \item das Vorhandensein von Statusmeldungen, gennant "`Flash"'-Messages
  \item dass ein bestimmtes Template geladen wird
- \item dass Instanzvariablen gesetzt werden, die die View später darstellen sollen
- \item falls man Viewtests mit einschließt, dann wird u.U. auch auf das Vorhandensein von bestimmten HTML-Elementen in der am Ende generierten View getestet. Z.B. möchte man wissen, ob das Überschriftenelement \texttt{h1} dem Job-Titel entspricht, wenn die Detailansicht eines Jobs aufgerufen wird.
+ \item dass Instanzvariablen gesetzt werden, die die View\index{Rails!View} später darstellen sollen
+ \item falls man View\index{Rails!View}tests mit einschließt, dann wird u.U. auch auf das Vorhandensein von bestimmten HTML-Elementen in der am Ende generierten View getestet. Z.B. möchte man wissen, ob das Überschriftenelement \texttt{h1} dem Job-Titel entspricht, wenn die Detailansicht eines Jobs aufgerufen wird.
 \end{itemize}
 
-Intern nutzen Controller-Tests viele Stub\index{Test-Double!Stub}s, um HTTP-Anfragen und Antworten durch eigene TestKlassen zu ersetzen. Sie sind damit sehr schnell, testen aber nicht alle Aspekte einer HTTP-Anfrage an die Anwendung (z.B. Cookie oder Routing). Auch ist das Testen von mehreren Controllern, um z.B. einen Ablauf wie Einloggen $\to$ Bestellen nachzubilden, in einem Functional-Test nicht vorgesehen.
+Intern nutzen Controller\index{Rails!Controller}-Tests viele Stub\index{Test-Double!Stub}s, um HTTP-Anfragen und Antworten durch eigene TestKlassen zu ersetzen. Sie sind damit sehr schnell, testen aber nicht alle Aspekte einer HTTP-Anfrage an die Anwendung (z.B. Cookie oder Routing). Auch ist das Testen von mehreren Controllern, um z.B. einen Ablauf wie Einloggen $\to$ Bestellen nachzubilden, in einem Functional-Test nicht vorgesehen.
