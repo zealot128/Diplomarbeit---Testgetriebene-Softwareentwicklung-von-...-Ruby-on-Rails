@@ -142,7 +142,7 @@ Unser nächstes Ziel ist es nun, mit so wenig Code wie möglich den Test bestehe
 \texttt{validates} ist eine Funktion aus der ActiveRecord Bibliothek, die zwei Parameter entgegennimmt: Der erste ist die Spalte, auf der sich die Validierung bezieht, als Zweites folgt eine Liste an Validierungskritieren. Hier ist das Kritierum \texttt{presence}, also das Vorhandensein eines nicht-leeren Attributs. Weitere Kritieren sind z.B. Format, Länge, Minimum, Maximum, oder selbst definierte Kriterien.
 
 \tddgreen
-Nach erneuter Ausführung der Testsuite, besteht der Test nun. Jetzt folgt die Refaktorisierungsphase. Der Programmcode lässt sich nicht weiter vereinfachen. Aber der Testcode ist ausdrücklich nicht von Refaktorisierungen befreit, und eine Refaktorisierung wäre z.B.:
+Nach erneuter Ausführung der Testsuite, besteht der Test nun. Jetzt folgt die Refaktorisierung\index{Refaktorisierung}sphase. Der Programmcode lässt sich nicht weiter vereinfachen. Aber der Testcode ist ausdrücklich nicht von Refaktorisierungen befreit, und eine Refaktorisierung wäre z.B.:
 \tddrefactor
 \begin{ruby}[label=test/unit/job\_test.rb]
 \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{ein Job muss einen Titel haben}\PY{l+s+s2}{"} \PY{k}{do}
@@ -169,7 +169,7 @@ Die Implementierung wäre dann:
 \PY{k}{end}
 \end{ruby}
 \tddgreen
-Eine Refaktorisierung ist aufgrund der Einfachheit der Beispiel hier nur gering möglich. Man könnte z.B. den regulären Ausdruck, der das Format der E-Mail Adresse beschreibt in eine neue Klasse oder zumindest eine Konstante auslagern. Wir wählen eine Konstante, die beim Laden von Rails\index{Ruby-on-Rails} bereitgestellt wird.
+Eine Refaktorisierung\index{Refaktorisierung} ist aufgrund der Einfachheit der Beispiel hier nur gering möglich. Man könnte z.B. den regulären Ausdruck, der das Format der E-Mail Adresse beschreibt in eine neue Klasse oder zumindest eine Konstante auslagern. Wir wählen eine Konstante, die beim Laden von Rails\index{Ruby-on-Rails} bereitgestellt wird.
 \tddrefactor
 \begin{ruby}[label=config/initializers/job.rb und app/models/job.rb]
 \PY{c+c1}{# config/initializers/regex.rb}
@@ -182,7 +182,7 @@ Eine Refaktorisierung ist aufgrund der Einfachheit der Beispiel hier nur gering 
 \PY{k}{end}
 \end{ruby}
 \codecaption{Auslagerung des Regulären Ausdrucks in einen Initalisierer}
-Ein erneutes Ausführen der Tests betätigt den Erfolg der Refaktorisierung.
+Ein erneutes Ausführen der Tests betätigt den Erfolg der Refaktorisierung\index{Refaktorisierung}.
 
 \paragraph{3. Refaktorisierungen der Testklasse}
 Nun fehlt aber noch die Definition eines Positiv-Beispiel für einen gültigen Job.
@@ -255,7 +255,7 @@ Nun können wir diese Fixtures in unseren Tests verwenden, und das ganze in eine
 
 
 
-Am Ende dieser Refaktorisierungen ist es notwendig, die Tests noch einmal auszuführen.
+Am Ende dieser Refaktorisierung\index{Refaktorisierung}en ist es notwendig, die Tests noch einmal auszuführen.
 \tddgreen
 Danach würde die Implementierung einer nächsten Teilanforderung sein. 
 
