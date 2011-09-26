@@ -2,7 +2,7 @@
 \section{Testframeworks für Ruby}
 \epigraph{Ruby has laid the way in having a test-infected culture around the language}{Nathaniel Talbott (Entwickler von Test/Unit)}
 
-Rails\index{Ruby-on-Rails} liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit\index{Test/Unit-Framwork} mit. In der Version 1.9.x bringt Ruby\index{Ruby} das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest\index{Test!Akzeptanztest} ist Cucumber, welches eine Business-readable \glossar{DSL}\footnote{Eine Domain-Spezifische-Sprache, welche durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen.
+Rails\index{Ruby-on-Rails} liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit\index{Test/Unit-Framwork} mit. In der Version 1.9.x bringt Ruby\index{Ruby} das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest\index{Test!Akzeptanztest} ist Cucumber\index{Cucumber}, welches eine Business-readable \glossar{DSL}\footnote{Eine Domain-Spezifische-Sprache, welche durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen.
 \subsection{Test/Unit}
 Test/Unit\index{Test/Unit-Framwork} basiert auf dem xUnit-, bzw. SUnit-Design von Kent Beck, und ist für Nutzer von z.B. JUnit oder NUnit leicht nachvollziehbar. 
 
@@ -56,7 +56,7 @@ Zur Generierung von größeren Mengen an zufälligen Daten einer bestimmten Dom�
 
 \subsection{Cucumber}
 \label{sec:cucumber}
-Cucumber ist ein relativ neues Framework (2008), um mittels einer domainspezifischen Sprache  (\glossar{DSL}) verständliche automatisierte Tests zu schreiben. Dabei gibt es 2 Ebenen: In der oberen werden \textit{Testschritte} in Englisch, Deutsch oder einer anderen der mehr als 30 unterstützten Sprachen spezifiziert. In der darunterliegenden werden diese Schritte in echten Testcode implementiert. \\
+Cucumber\index{Cucumber} ist ein relativ neues Framework (2008), um mittels einer domainspezifischen Sprache  (\glossar{DSL}) verständliche automatisierte Tests zu schreiben. Dabei gibt es 2 Ebenen: In der oberen werden \textit{Testschritte} in Englisch, Deutsch oder einer anderen der mehr als 30 unterstützten Sprachen spezifiziert. In der darunterliegenden werden diese Schritte in echten Testcode implementiert. \\
 Im Folgenden sei ein Trivialbeispiel einer Anwendung, die Addieren implementiert, gezeigt.
 \lstinputlisting[label=Cucumber: Additionsfeature in Deutsch,caption=Cucumber: Additionsfeature in Deutsch]{listings/addition.feature}
 \begin{ruby}[label=addition.feature]
@@ -71,7 +71,7 @@ Im Folgenden sei ein Trivialbeispiel einer Anwendung, die Addieren implementiert
 \end{ruby}
 \codecaption{Cucumber: Defintion eines Additionsfeature (in Deutsch)}
 
-Wenn man nun die Datei mittels Cucumber ausführt, so wird darauf hingewiesen, dass die Testschritte noch nicht implementiert sind.
+Wenn man nun die Datei mittels Cucumber\index{Cucumber} ausführt, so wird darauf hingewiesen, dass die Testschritte noch nicht implementiert sind.
 
 Eine Beispielimplementation (ohne Verwendung einer GUI-Anwendung) der Testschritte wäre:
 \begin{ruby}[label=steps.rb]
@@ -89,15 +89,15 @@ Eine Beispielimplementation (ohne Verwendung einer GUI-Anwendung) der Testschrit
  
 \end{ruby}
 \codecaption{Cucumber: Implementierung der Additionstestschritte in Ruby}
-Die Anweisungen des Akzeptanztest\index{Test!Akzeptanztest}s werden auf die definierten Testschritte gemappt, die Cucumber dann sequentiell ausführt. 
+Die Anweisungen des Akzeptanztest\index{Test!Akzeptanztest}s werden auf die definierten Testschritte gemappt, die Cucumber\index{Cucumber} dann sequentiell ausführt. 
 Jeder dieser Testschritte kann nun eine beliebige Implementierung besitzen. Meist ist es entweder eine Initialisierung, eine Aktion oder eine Erwartung, ausgedrückt durch die Schlüsselwörter \texttt{Angenommen}, \texttt{Wenn} und \texttt{Dann}, bzw. \texttt{Given}, \texttt{When} und \texttt{Then} im englischen Originaldialekt. Die Einteilung in klare Testschritte fördert die Wiederverwendbarkeit der Testschritte in anderen Szenarien.
 
-Der Vorteil von Cucumber ist nun, dass diese Feature-Datei zusammen mit dem Kunden durchgesprochen werden kann, und dass man damit an Ende eine funktionale Validierung gegenüber der Spezifikation automatisiert durchführen kann. \\ 
-Cucumber ist von der Syntax so generisch, dass damit beliebige Anwendungen getestet werden, da keine Annahmen über die darunterliegende Implementierung der Testschritte gemacht wird.
+Der Vorteil von Cucumber\index{Cucumber} ist nun, dass diese Feature-Datei zusammen mit dem Kunden durchgesprochen werden kann, und dass man damit an Ende eine funktionale Validierung gegenüber der Spezifikation automatisiert durchführen kann. \\ 
+Cucumber\index{Cucumber} ist von der Syntax so generisch, dass damit beliebige Anwendungen getestet werden, da keine Annahmen über die darunterliegende Implementierung der Testschritte gemacht wird.
 Neben Ruby\index{Ruby} wird auch die Implementierung der Testschritte in Java und C\# unterstützt.
 
 \paragraph{Testen von Webanwendungen}
-Eine Einsatzmöglichkeit von Cucumber, besonders im Zusammenhang mit \glossar{rails}, ist das Testen von Webanwendungen. Dabei ist es üblich, einen Browser zu automatisieren bzw. simulieren (vgl. Abschnitt \ref{sec:acceptance}), um den Test so authentisch am echten Nutzungsprozess wie möglich zu orientieren. 
+Eine Einsatzmöglichkeit von Cucumber\index{Cucumber}, besonders im Zusammenhang mit \glossar{rails}, ist das Testen von Webanwendungen. Dabei ist es üblich, einen Browser zu automatisieren bzw. simulieren (vgl. Abschnitt \ref{sec:acceptance}), um den Test so authentisch am echten Nutzungsprozess wie möglich zu orientieren. 
 
 Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen, verwenden wir verschiedene Middlewars. Wir haben uns für Capybara\index{Capybara} entschieden, welches sehr flexibel bei der Wahl der Browser-Engine ist. Den eigentlichen Test, d.h. die Auswertung der Zusicherung kann durch ein beliebiges Testframework durchgeführt werden, in unserem Falle wieder mit Test/Unit\index{Test/Unit-Framwork}. Durch Capybara haben wir nun die Möglichkeit, zwischen einem simulierten Browser (z.B. RackTest) und automatisierten Browser (Firefox, Chrome, etc. durch eine weitere Middleware: Selenium\index{Selenium}) je nach Bedarf zu wechseln, ohne viele am Testcode zu ändern.
 \begin{figure}[htbp]
@@ -108,4 +108,4 @@ Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen
  \label{fig:cucumber}
 \end{figure}
 
-Der gesamte Ablauf eines CucumberAkzeptanztest\index{Test!Akzeptanztest} in Verbindung mit Capybara\index{Capybara} ist in Abbildung \ref{fig:cucumber} abgebildet. Cucumber matcht die definierten Testanweisungen auf die Testschritte, und führt den darin enthalten Code aus. Dies kann zum einen die Steuerung eines Webbrowsers durch Capybara sein, oder zum anderen eine Zusicherung.
+Der gesamte Ablauf eines Cucumber\index{Cucumber}Akzeptanztest\index{Test!Akzeptanztest} in Verbindung mit Capybara\index{Capybara} ist in Abbildung \ref{fig:cucumber} abgebildet. Cucumber matcht die definierten Testanweisungen auf die Testschritte, und führt den darin enthalten Code aus. Dies kann zum einen die Steuerung eines Webbrowsers durch Capybara sein, oder zum anderen eine Zusicherung.
