@@ -1,6 +1,6 @@
 \newglossaryentry{test} {
   name={Test},
-  description= {oder Testfall ist eine, meist automatisierte, Prüfung des Programmverhaltens bei definierten Eingabeparametern},
+  description= {\index{Test}oder Testfall ist eine, meist automatisierte, Prüfung des Programmverhaltens bei definierten Eingabeparametern},
   plural=Tests
 }
 
@@ -28,6 +28,7 @@ first={Software-Fehler}
 \newglossaryentry{metrik} {
   name={Code-Metrik},
   plural={Code-Metriken},
+  description={Eine Softwaremetrik ist das Ergebnis einer statischen oder dynamischen Codeanalyse zur Generierung von Informationen über den Quelltext. Beispiele: Testabdeckung, Anzahl Codezeilen, Anzahl \glossarpl{smell} pro Codezeile}
 }
 \newglossaryentry{refaktorisieren} {
   name = {Refaktorisieren},
@@ -35,6 +36,7 @@ first={Software-Fehler}
 }
 \newglossaryentry{Testabdeckung} {
   name=Testabdeckung,
+  description={auch: \index{Test!Testabdeckung}Testausführungsabdeckung, Überdeckungsgrad, Testfallabdeckung. Eine dynamische Code-Metrik, die angibt, welche Codezeilen durch keinen Test abgedeckt wurde. Es wird unterschieden in die Stufen C0, C1 und C2 mit steigender Komplexität der Messung. Details im Abschnitt \ref{sec:metrics}},
   first = {Testabdeckung}
 }
 \newglossaryentry{TDD}{
@@ -52,7 +54,7 @@ first={Software-Fehler}
   description={Create, Read, Update, Delete sind die vier Basisoperationen, die auf persistente Speicherung ausgeführt werden können.},
   first={Create Read Update Delete (CRUD)}
 }
-
+\newglossaryentry{smell}{
   name={Code Smell},
   description={oder Bad Smell\index{Code-Smell}. Ist ein Anzeichen für eine suboptimale Quelltextstelle, die auch ein Hinweis auf ein größeres Designproblem sein kann. Oft auch ein Kandidat für ein Refaktoring. Informationen zu Smells und deren Refaktorisierung\index{Refaktorisierung} sind im Buch von M.Fowler zu finden \citep{fowler_refactoring_1999}},
   plural={Code Smells}

@@ -49,7 +49,7 @@ files.each do |file|
   changed = false
   text.each_line do |line|
 
-    if line.match(options[:pattern])
+    if line.include?(options[:pattern])
       if line.include? index_line
         puts "found, but already be there ... skipping"
         next

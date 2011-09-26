@@ -1,7 +1,7 @@
 latex:
 	- pdflatex -synctex=1 -interaction=nonstopmode 'main.tex' | egrep "(Warning|Error)" -i | grep -v "Incompatible color definition"
 	- bibtex main
-	- makeindex -g -s index.ist main
+	- makeindex -g -l -s index.ist main
 	- makeglossaries main
 	- pdflatex -synctex=1 -interaction=nonstopmode 'main.tex' | grep -i error
 	- pdflatex -synctex=1 -interaction=nonstopmode 'main.tex' | egrep "(Warning|Error)" -i | grep -v "Incompatible color definition"
