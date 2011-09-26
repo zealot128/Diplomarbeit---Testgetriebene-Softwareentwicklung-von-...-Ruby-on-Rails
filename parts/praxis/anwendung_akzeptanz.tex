@@ -5,7 +5,7 @@ Nun wollen wir am Beispiel einer Suche nach Stellenanzeigen die Entwicklung von 
 
 Zum Einsatz kommt dabei die für Systemtests entwickelte domainspezifische Sprache Cucumber\index{Cucumber} in Verbindung mit der Browser-Steuerung Capybara\index{Capybara}, die beide bereits in Abschnitt \ref{sec:cucumber} vorgestellt wurde. 
 
-Ein Cucumber\index{Cucumber}-Verzeichnis ist qua Konvention immer gleich aufgebaut. In Abbildung \ref{fig:cucumberDir} ist der Verzeichnisbaum, wie er in den Beispielen dieses Kapitels benutzt wird, zu sehen. Innerhalb unseres Projektverzeichnisses existiert ein Unterverzeichnis "`features"' in dem alle Feature-Dateien mit der Endung "`.feature"' lagern. Ebenfalls existiert ein Unterverzeichnis "`step\_definitions"', das die Implementation der Testschritt\index{Cucumber!Testschritt}e beinhaltet, sowie ein Verzeichnis "`support"', für z.B. Standardmethoden, Aktionen die vor jedem Feature-Durchlauf ausgeführt werden, oder die Definition der Browser-Engine. Cucumber lädt automatisch alle Ruby-Dateien in den beiden Verzeichnissen.
+Ein Cucumber\index{Cucumber}-Verzeichnis ist qua Konvention immer gleich aufgebaut. In Abbildung \ref{fig:cucumberDir} ist der Verzeichnisbaum, wie er in den Beispielen dieses Kapitels benutzt wird, zu sehen. Innerhalb unseres Projektverzeichnisses existiert ein Unterverzeichnis "`features"' in dem alle Feature-Dateien mit der Endung "`.feature"' lagern. Ebenfalls existiert ein Unterverzeichnis "`step\_definitions"', das die Implementation der Testschritt\index{Cucumber!Testschritt}e beinhaltet sowie ein Verzeichnis "`support"', für z.B. Standardmethoden, Aktionen die vor jedem Feature-Durchlauf ausgeführt werden oder die Definition der Browser-Engine. Cucumber lädt automatisch alle Ruby-Dateien in den beiden Verzeichnissen.
 
 \begin{figure}[hbtp]
  \centering
@@ -19,7 +19,7 @@ Ein Cucumber\index{Cucumber}-Verzeichnis ist qua Konvention immer gleich aufgeba
 
 \paragraph{1. Definition des gesamten Akzeptanztest\index{Akzeptanztest}}
 
-Zusammen mit dem Kunden, oder basierend auf den Anforderungen entwickeln wir zuerst eine Spezifikation für ein Feature, und darauf aufbauend, Da die Akzeptanztest\index{Akzeptanztest}s in erster Linie dazu dienen, die Software gegenüber den Anfordungen des Kunden zu validieren, und auch als Kommunikationsmittel genutzt wird, orientert sich das Vokabular an gebräuchlichen Begriffen. So ist ein einzelner Testfall\index{Test} ein "`Szenario"' und eine Test-Suite\index{Test!Test-Suite} ein "`Feature"'. Statt "`Assertions"' (Zusicherungen) gibt es Vor- und Nachbedingungen.
+Zusammen mit dem Kunden oder basierend auf den Anforderungen entwickeln wir zuerst eine Spezifikation für ein Feature und darauf aufbauend, Da die Akzeptanztest\index{Akzeptanztest}s in erster Linie dazu dienen, die Software gegenüber den Anfordungen des Kunden zu validieren und auch als Kommunikationsmittel genutzt wird, orientert sich das Vokabular an gebräuchlichen Begriffen. So ist ein einzelner Testfall\index{Test} ein "`Szenario"' und eine Test-Suite\index{Test!Test-Suite} ein "`Feature"'. Statt "`Assertions"' (Zusicherungen) gibt es Vor- und Nachbedingungen.
 
 Nachfolgend sei ein erstes Szenario für eine Suche nach Stellenanzeigen gezeigt.
 
@@ -158,9 +158,9 @@ Während die ersten 3 Schritte Aktionen ausführen, hat der 4. eine andere Funkt
 \end{ruby}
 \codecaption{Testschritt zum Anlegen von Testdaten auf Basis der Cucumber Definition}
 
-Der Testschritt\index{Cucumber!Testschritt} für die Implementation des Testschrittes mit der Tabelle, ist etwas umfangreicher. Wir bekommen von Cucumber\index{Cucumber} ein Array von Hashes übergeben, die die geparste Tabelle beinhaltet. Über diese können wir nun mit dem Iterator "`each"' iterieren, und die definierten Attribute mit denen unserer Job-Fixture\footnote{Anmerkung: Für diese Aufgabe eignen sich Factories deutlich besser. Da mit Fixtures schon eine Testdaten\index{Test!Testdaten}generierung eingeführt wurde, bleiben wir aber aus Konsistenzgründen dabei.} vereinigt wird, um somit einen neuen Job in der Testdatenbank anzulegen. Wir haben den Testschritt so allgemein gehaltet, dass wir ihn in späteren Szenarien gut verwenden können, um weitere Jobs mit speziellen Attributen zu generieren.
+Der Testschritt\index{Cucumber!Testschritt} für die Implementation des Testschrittes mit der Tabelle, ist etwas umfangreicher. Wir bekommen von Cucumber\index{Cucumber} ein Array von Hashes übergeben, die die geparste Tabelle beinhaltet. Über diese können wir nun mit dem Iterator "`each"' iterieren und die definierten Attribute mit denen unserer Job-Fixture\footnote{Anmerkung: Für diese Aufgabe eignen sich Factories deutlich besser. Da mit Fixtures schon eine Testdaten\index{Test!Testdaten}generierung eingeführt wurde, bleiben wir aber aus Konsistenzgründen dabei.} vereinigt wird, um somit einen neuen Job in der Testdatenbank anzulegen. Wir haben den Testschritt so allgemein gehaltet, dass wir ihn in späteren Szenarien gut verwenden können, um weitere Jobs mit speziellen Attributen zu generieren.
 
-Nun können wir Cucumber\index{Cucumber} erneut ausführen, und das Ergebnis ist ein anderes:
+Nun können wir Cucumber\index{Cucumber} erneut ausführen und das Ergebnis ist ein anderes:
 
 \begin{lstlisting}
 Wenn wir "Rails" für "search" eintippen    # features/step_definitions/job_steps.rb:5
@@ -198,7 +198,7 @@ Dies lösen wir, indem wir auf der View\index{Ruby-on-Rails!View} der Startseite
 \end{ruby}
 \codecaption{Implementation eines Suchfeld im Layout der Webseite}
 
-Wir implementieren im Layout der Applikation ein Suchfeld mit den Form-Hilfsfunktionen, die Rails\index{Ruby-on-Rails} anbietet. Das Layout ist eine Basisview, die für alle Webseiten generiert wird. Diese beinhaltet Elemente der Website, die überall benutzt werden, z.B. eine Navigation, Einbindung von Stylesheets oder wie hier, ein Suchfeld, das auf jeder Seite erscheinen soll. Dabei verwenden wir  ERB\footnote{Embedded Ruby, eine Syntax für Rails Views}, eine Template-Sprache, die normalerweise HTML-Code erzeugt, und es ermöglicht innerhalb der "`\verb|<%= ... \%>|"' Ruby-Code auszuführen.
+Wir implementieren im Layout der Applikation ein Suchfeld mit den Form-Hilfsfunktionen, die Rails\index{Ruby-on-Rails} anbietet. Das Layout ist eine Basisview, die für alle Webseiten generiert wird. Diese beinhaltet Elemente der Website, die überall benutzt werden, z.B. eine Navigation, Einbindung von Stylesheets oder wie hier, ein Suchfeld, das auf jeder Seite erscheinen soll. Dabei verwenden wir  ERB\footnote{Embedded Ruby, eine Syntax für Rails Views}, eine Template-Sprache, die normalerweise HTML-Code erzeugt und es ermöglicht innerhalb der "`\verb|<%= ... \%>|"' Ruby-Code auszuführen.
 
 Jetzt folgt die Implementierung der Suche im Jobs-Controller\index{Ruby-on-Rails!Controller}:
 
@@ -218,7 +218,7 @@ Jetzt folgt die Implementierung der Suche im Jobs-Controller\index{Ruby-on-Rails
 \end{ruby}
 \codecaption{JobsController am Ende der Testphase}
 
-Im Jobs-Controller\index{Ruby-on-Rails!Controller} implementieren wir die Bereitstellung der Jobs mittels einer Datenbankabfrage. Dabei nutzen wir die Datenbankfunktion von ActiveRecord\index{ActiveRecord} und führen eine partielle Match-Suche der Suchparameter über die Tabellenspalte "`title"' aus. ActiveRecord übernimmt das sichere Escapen des übergeben Strings selbstständig in den dafür vorgesehenen Platzhalter "`?"'. Das Ergebnis speichern wir in der Instanzvariable @jobs, und stellen es so der View zur Verfügung.
+Im Jobs-Controller\index{Ruby-on-Rails!Controller} implementieren wir die Bereitstellung der Jobs mittels einer Datenbankabfrage. Dabei nutzen wir die Datenbankfunktion von ActiveRecord\index{ActiveRecord} und führen eine partielle Match-Suche der Suchparameter über die Tabellenspalte "`title"' aus. ActiveRecord übernimmt das sichere Escapen des übergeben Strings selbstständig in den dafür vorgesehenen Platzhalter "`?"'. Das Ergebnis speichern wir in der Instanzvariable @jobs und stellen es so der View zur Verfügung.
 
 
 Damit nun der Test \index{Test}besteht, muss als letztes noch eine View\index{Ruby-on-Rails!View} implementiert werden, die (zumindest) die Titel aller in der Suche gefundenen Jobs ausgibt, hier z.B. als Überschrift.

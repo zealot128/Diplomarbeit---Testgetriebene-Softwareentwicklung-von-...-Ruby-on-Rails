@@ -2,7 +2,7 @@
 \label{sec:awmock}
 Fast alle Webapplikationen sind auf Kommunikation mit anderen Servern angewiesen. Als Beispiel seien die diversen APIs der sozialen Netzwerke genannt oder Webservices. Für die vorliegende Jobanwendung war gewünscht, ein Feedimport-Feature zu implementieren, sodass bestimmte Kunden ihre Stellenanzeigen automatisiert einlesen lassen könnten.
 
-Die genannten Partner stellen einen XML-Feed nach dem \glossar{RSS} 2.0 Format\footnote{Spezifikation des RSS 2.0 Formats: \url{http://cyber.law.harvard.edu/rss/rss.html}} bereit, der ein häufig verwendetes Format zum Austausch von Informationen ist, und durch eine Vielzahl von Werkzeugen und \glossar{CMS} unterstützt wird.
+Die genannten Partner stellen einen XML-Feed nach dem \glossar{RSS} 2.0 Format\footnote{Spezifikation des RSS 2.0 Formats: \url{http://cyber.law.harvard.edu/rss/rss.html}} bereit, der ein häufig verwendetes Format zum Austausch von Informationen ist und durch eine Vielzahl von Werkzeugen und \glossar{CMS} unterstützt wird.
 Dabei wird der Inhalt des Haupttextfeldes "`description"' um weitere Informationen in einem Subdialekt angereichert.
 
 Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
@@ -38,9 +38,9 @@ Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
 \end{ruby}
 \captionsetup{type=lstlisting}
 \caption{Feedimport Beispiel-XML Datei mit einem Job}
-Der RSS-Feed in dem oben genannten Beispiel enthält eine Stellenanzeige (item). Die description beinhaltet einen HTML-Kommentar, in dem nummer, tags, ort, kontakt und link für die Stellenanzeige definiert werden. Das ganze wurde mit einem Kommentar, und nicht mit einer Erweiterung der Syntax durch eine DDT oder XSD, realisiert, da sich eine Eingliederung der Syntaxelemente mittels DDTs und XSDs in einige der Systeme der Kunden als problematisch herausgestellt hat.
+Der RSS-Feed in dem oben genannten Beispiel enthält eine Stellenanzeige (item). Die description beinhaltet einen HTML-Kommentar, in dem nummer, tags, ort, kontakt und link für die Stellenanzeige definiert werden. Das ganze wurde mit einem Kommentar und nicht mit einer Erweiterung der Syntax durch eine DDT oder XSD, realisiert, da sich eine Eingliederung der Syntaxelemente mittels DDTs und XSDs in einige der Systeme der Kunden als problematisch herausgestellt hat.
 
-Diese Art des Feedimports ist bereits in den Community-Job-Portalen in Funktion. Allerdings besitzt dieser, in PHP geschriebene Code, keinerlei automatisierte Tests, und war in der Vergangenheit schon oft die Ursache von Fehlern. So ist es notwendig, den Feedimport nun in Ruby\index{Ruby} als Bibliothek im Rahmen von IT-Jobs\index{IT-Jobs-Projekt} neu zu schreiben, und für die bereits laufenden Portale schnellstmöglich einzubauen.
+Diese Art des Feedimports ist bereits in den Community-Job-Portalen in Funktion. Allerdings besitzt dieser, in PHP geschriebene Code, keinerlei automatisierte Tests und war in der Vergangenheit schon oft die Ursache von Fehlern. So ist es notwendig, den Feedimport nun in Ruby\index{Ruby} als Bibliothek im Rahmen von IT-Jobs\index{IT-Jobs-Projekt} neu zu schreiben und für die bereits laufenden Portale schnellstmöglich einzubauen.
 Diese Bibliothek soll also unabhängig von Rails\index{Ruby-on-Rails} funktionieren.
 
 Ziel diesen Abschnittes ist es, zu zeigen, wie das Einlesen eines externen XML-Feeds getestet werden kann.
@@ -104,7 +104,7 @@ Die Implementierung wäre:
 % label{fig:bf345c}
 
 \tddgreen
-Die Funktion initialize stellt innerhalb von Ruby\index{Ruby} den Konstruktor dar. Dort rufen wir unseren Netzwerkzugriff auf, der allerdings durch unser definiertes Mock\index{Test-Double!Mock}-Objekt abgefangen wird. Dies stellt die definierte Erwartung zufrieden, und der Test \index{Test}besteht.
+Die Funktion initialize stellt innerhalb von Ruby\index{Ruby} den Konstruktor dar. Dort rufen wir unseren Netzwerkzugriff auf, der allerdings durch unser definiertes Mock\index{Test-Double!Mock}-Objekt abgefangen wird. Dies stellt die definierte Erwartung zufrieden und der Test \index{Test}besteht.
 
 
 
@@ -131,7 +131,7 @@ Wir haben zwar den Netzwerkzugriff abgefangen, geben aber nun keinerlei Antwort,
 Wir bilden das Antwortobjekt, das HTTParty normalerweise generieren würde, beschränken uns hierbei aber nur auf die für uns notwendigen Methoden von "`body"' und "`code"' (Dem HTTP-Status Code). Wir nutzen dazu die Klasse OpenStruct, die Getter und Setter für das Objekt beim Benutzen erstellt. Unserem Mock\index{Test-Double!Mock} können wir dann anweisen, diese Antwort zurückzugeben.
 \tddred
 
-Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wurde, aber unser ImportedFeed noch kein Attribut "`body"' besitzt (Fehler), und dass dieser keine String beinhaltet.
+Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wurde, aber unser ImportedFeed noch kein Attribut "`body"' besitzt (Fehler) und dass dieser keine String beinhaltet.
 
 \begin{ruby}[label=app/models/job.rb]
 \PY{k}{class} \PY{n+nc}{ImportedFeed}
@@ -149,7 +149,7 @@ Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wur
 Mitfhile des Makros "`attr\_reader"' generieren wir ein Attribut body und gleichzeitig einen Getter für den Zugriff von außen. Innerhalb unseres Konstruktors speichern wir den Body der HTTP-Antwort in diesem Attribut.
 
 \tddrefactor
-Da unser Testfall\index{Test} nun ziemlich lang geworden ist, und beide Testfälle ein Mock\index{Test-Double!Mock} initialisieren, ist dies eine gute Gelegenheit, den Mock zentral zu definieren. Dazu nutzen wir z.B. eine Datei "`test\_helper.rb"', in der wir Anweisungen schreiben, die alle Testfälle nutzen können:
+Da unser Testfall\index{Test} nun ziemlich lang geworden ist und beide Testfälle ein Mock\index{Test-Double!Mock} initialisieren, ist dies eine gute Gelegenheit, den Mock zentral zu definieren. Dazu nutzen wir z.B. eine Datei "`test\_helper.rb"', in der wir Anweisungen schreiben, die alle Testfälle nutzen können:
 
 \begin{ruby}[label=test/test\_helper.rb]
 \PY{k}{class} \PY{n+nc}{ActiveSupport}\PY{o}{::}\PY{n+no}{TestCase}
@@ -219,7 +219,7 @@ Um den Test \index{Test}zu bestehen, reicht es, eine leere Methode zu definieren
 % label{fig:31ed87}
 
 \tddgreen
-Nun werden wir etwas konkreter, und erwarten, dass falls der kontaktierte Server einen Status-Code 404 (Dokument nicht gefunden -- Ein wahrscheinlicher Fehlerfall, falls das XML-Dokument verschoben wurde) erhalten.
+Nun werden wir etwas konkreter und erwarten, dass falls der kontaktierte Server einen Status-Code 404 (Dokument nicht gefunden -- Ein wahrscheinlicher Fehlerfall, falls das XML-Dokument verschoben wurde) erhalten.
 \begin{ruby}[label=test/test\_imported\_job.rb]
 \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{not validate if the user server reports a problem}\PY{l+s+s2}{"} \PY{k}{do}
   \PY{n}{mock\PYZus{}feed} \PY{l+s+ss}{:code} \PY{o}{=}\PY{o}{>} \PY{l+m+mi}{404}
@@ -296,11 +296,11 @@ Durch die Zusicherung "`assert\_nothing\_raised(exception, message, block)"' tes
 % label{fig:7b7690}
 
 \tddgreen
-Alle Exceptions die innerhalb des Konstruktors geworfen werden, werden abgefangen, und das neue Attribut @error\_thrown auf true gesetzt. Dies kann dann unsere valid Funktion verwenden.
+Alle Exceptions die innerhalb des Konstruktors geworfen werden, werden abgefangen und das neue Attribut @error\_thrown auf true gesetzt. Dies kann dann unsere valid Funktion verwenden.
 
 \tddrefactor
 
-Unser Konstruktor ist nun schon relativ lang geworden, und hat inzwischen schon mehrere Aufgaben: Abruf eines Feeds und setzten der HTTP-Antwort. Jede unserer Methoden sollte eine klar umrissene Aufgabe haben. Dies erreichen wir nun durch das Auslagern in eine neue (private) Funktion.
+Unser Konstruktor ist nun schon relativ lang geworden und hat inzwischen schon mehrere Aufgaben: Abruf eines Feeds und setzten der HTTP-Antwort. Jede unserer Methoden sollte eine klar umrissene Aufgabe haben. Dies erreichen wir nun durch das Auslagern in eine neue (private) Funktion.
 
 \begin{ruby}[label=lib/imported\_job.rb]
 \PY{k}{class} \PY{n+nc}{ImportedFeed}
@@ -326,7 +326,7 @@ Unser Konstruktor ist nun schon relativ lang geworden, und hat inzwischen schon 
 \codecaption{Feed Implementation Vb - nach Refaktorisierung}
 % label{fig:b6b9b2}
 
-Diese private Methode hat nun keine eigenen Tests, ist aber aus einer Refaktorisierung\index{Refaktorisierung} hervorgegangen, und damit innerhalb von TDD ein erlaubter Schritt (Das scheinbare Dilemma des Testens privater Methoden wurde bereit auf S. \pageref{sec:tddspecialcircumstances} erläutert).
+Diese private Methode hat nun keine eigenen Tests, ist aber aus einer Refaktorisierung\index{Refaktorisierung} hervorgegangen und damit innerhalb von TDD ein erlaubter Schritt (Das scheinbare Dilemma des Testens privater Methoden wurde bereit auf S. \pageref{sec:tddspecialcircumstances} erläutert).
 
 
 In diesem Abschnitt wurden einige Spezialfälle beim Umsetzen von TDD\index{TDD} praktisch erläutert. Dies waren:

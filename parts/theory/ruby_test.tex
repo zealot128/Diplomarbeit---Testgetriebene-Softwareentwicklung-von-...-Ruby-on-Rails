@@ -4,7 +4,7 @@
 
 Rails\index{Ruby-on-Rails} liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit\index{Test/Unit-Framwork} mit. In der Version 1.9.x bringt Ruby\index{Ruby} das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest\index{Akzeptanztest} ist Cucumber\index{Cucumber}, welches eine Business-readable \glossar{DSL}\footnote{Eine Domain-Spezifische-Sprache, welche durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen.
 \subsection{Test/Unit}
-Test/Unit\index{Test/Unit-Framwork} basiert auf dem xUnit-, bzw. SUnit-Design von Kent Beck, und ist für Nutzer von z.B. JUnit oder NUnit leicht nachvollziehbar.
+Test/Unit\index{Test/Unit-Framwork} basiert auf dem xUnit-, bzw. SUnit-Design von Kent Beck und ist für Nutzer von z.B. JUnit oder NUnit leicht nachvollziehbar.
 
 Für eine zu testende Klasse wird analog eine Testklasse erstellt. Diese trägt per Definition denselben Namen wie die zu testende Klasse mit einem \texttt{Test} am Anfang. Um z.B. eine Klasse \texttt{Job} zu testen, wird eine Datei \texttt{job\_test.rb}  erstellt. Dort wiederrum wird eine Klasse mit Namen \texttt{TestJob} definiert.
 
@@ -48,7 +48,7 @@ Einige dieser Zusicherungen sind z.B.:
 Natürlich lassen sich beliebige weitere Zusicherungen definieren. \glossar{rails} z.B. definiert Zusicherungen, um zu testen, ob ein Objekt eine gültige Instanz hinsichtlich der definierten Validierung\index{Ruby-on-Rails!Validierung}en ist (Validierungen wurden bereits im Abschnitt \ref{sec:railsconcepts} erläutert).
 
 \paragraph{Testdatengenerierung}
-Nachdem Testdaten\index{Test!Testdaten} (vgl. Abschnitt \ref{sec:test}) einmal in zentraler Form definiert wurden, erledigt \glossar{rails} das Management, d.h. Laden und Löschen dieser, selbständig. Diese Art der Testdatenbereitstellung wird bei Rails \textbf{Fixtures} bezeichnet. Rails setzt selbstständig die Datenbank nach jedem einzelnen Test \index{Test}auf die Fixtures zurück, oder kapselt die Tests innerhalb von Transaktionen, insofern die verwendete Datenbank dies unterstützt.\\
+Nachdem Testdaten\index{Test!Testdaten} (vgl. Abschnitt \ref{sec:test}) einmal in zentraler Form definiert wurden, erledigt \glossar{rails} das Management, d.h. Laden und Löschen dieser, selbständig. Diese Art der Testdatenbereitstellung wird bei Rails \textbf{Fixtures} bezeichnet. Rails setzt selbstständig die Datenbank nach jedem einzelnen Test \index{Test}auf die Fixtures zurück oder kapselt die Tests innerhalb von Transaktionen, insofern die verwendete Datenbank dies unterstützt.\\
 
 Zur Generierung von größeren Mengen an zufälligen Daten einer bestimmten Domän (z.B. für Stresstests) existieren ebenfalls Lösungen. Mittels der \glossarpl{gem}\index{Gem} "`populator"' und "`faker"' lassen sich beispielsweise eine beliebige Menge an gültig-anscheinenden Personendaten (Name, Vorname, Adresse, E-Mail-Adresse, Passwort,...) oder Blind-Texten generieren\footnote{Eine sehr gute Erklärung zur Nutzung beider Gems ist im Railscast \#128 zu finden \url{http://railscasts.com/episodes/126-populating-a-database}}.
 
@@ -91,7 +91,7 @@ Eine Beispielimplementation (ohne Verwendung einer GUI-Anwendung) der Testschrit
 Die Anweisungen des Akzeptanztest\index{Akzeptanztest}s werden auf die definierten Testschritt\index{Cucumber!Testschritt}e gemappt, die Cucumber\index{Cucumber} dann sequentiell ausführt.
 Jeder dieser Testschritt\index{Cucumber!Testschritt}e kann nun eine beliebige Implementierung besitzen. Meist ist es entweder eine Initialisierung, eine Aktion oder eine Erwartung, ausgedrückt durch die Schlüsselwörter \texttt{Angenommen}, \texttt{Wenn} und \texttt{Dann}, bzw. \texttt{Given}, \texttt{When} und \texttt{Then} im englischen Originaldialekt. Die Einteilung in klare Testschritte fördert die Wiederverwendbarkeit der Testschritte in anderen Szenarien.
 
-Der Vorteil von Cucumber\index{Cucumber} ist nun, dass diese Feature-Datei zusammen mit dem Kunden durchgesprochen werden kann, und dass man damit an Ende eine funktionale Validierung gegenüber der Spezifikation automatisiert durchführen kann. \\
+Der Vorteil von Cucumber\index{Cucumber} ist nun, dass diese Feature-Datei zusammen mit dem Kunden durchgesprochen werden kann und dass man damit an Ende eine funktionale Validierung gegenüber der Spezifikation automatisiert durchführen kann. \\
 Cucumber\index{Cucumber} ist von der Syntax so generisch, dass damit beliebige Anwendungen getestet werden, da keine Annahmen über die darunterliegende Implementierung der Testschritt\index{Cucumber!Testschritt}e gemacht wird.
 Neben Ruby\index{Ruby} wird auch die Implementierung der Testschritt\index{Cucumber!Testschritt}e in Java und C\# unterstützt.
 
@@ -107,4 +107,4 @@ Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen
  \label{fig:cucumber}
 \end{figure}
 
-Der gesamte Ablauf eines Cucumber\index{Cucumber}Akzeptanztest\index{Akzeptanztest} in Verbindung mit Capybara\index{Capybara} ist in Abbildung \ref{fig:cucumber} abgebildet. Cucumber matcht die definierten Testanweisungen auf die Testschritt\index{Cucumber!Testschritt}e, und führt den darin enthalten Code aus. Dies kann zum einen die Steuerung eines Webbrowsers durch Capybara sein, oder zum anderen eine Zusicherung.
+Der gesamte Ablauf eines Cucumber\index{Cucumber}Akzeptanztest\index{Akzeptanztest} in Verbindung mit Capybara\index{Capybara} ist in Abbildung \ref{fig:cucumber} abgebildet. Cucumber matcht die definierten Testanweisungen auf die Testschritt\index{Cucumber!Testschritt}e und führt den darin enthalten Code aus. Dies kann zum einen die Steuerung eines Webbrowsers durch Capybara sein oder zum anderen eine Zusicherung.

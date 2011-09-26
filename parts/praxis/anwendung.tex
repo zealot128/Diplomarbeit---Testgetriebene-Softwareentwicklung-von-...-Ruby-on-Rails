@@ -6,7 +6,7 @@ Besonderes Augenmerk soll dabei auf den Entwicklungsfluss von \glossar{TDD}\inde
 
 Ziel dieses Kapitels wird es sein, einen Überblick über die Art und Weise zu erhalten, mit denen die verschiedenen Teilbereiche einer Webanwendung testgetrieben entwickelt werden können.
 Die ersten beiden Abschnitte richten sich an zwei der Grundbausteine einer \glossar{MVC} (vgl. Abschnitt \ref{sec:railsconcepts}).
-Webanwendung, den Modell\index{Ruby-on-Rails!Modell}- und Controller\index{Ruby-on-Rails!Controller}tests. Im Dritten Abschnitt sehen wir, wie Test Doubles verwendet werden können, um Zugriffe auf externe Datenlieferanten zu simulieren. Danach betrachten wir die Anwendung aus Anwendersicht, und widmen wir uns der Implementierung von Akzeptanz\index{Akzeptanztest}- und Systemtests (vgl. Abschnitt \ref{sec:acceptance}). 
+Webanwendung, den Modell\index{Ruby-on-Rails!Modell}- und Controller\index{Ruby-on-Rails!Controller}tests. Im Dritten Abschnitt sehen wir, wie Test Doubles verwendet werden können, um Zugriffe auf externe Datenlieferanten zu simulieren. Danach betrachten wir die Anwendung aus Anwendersicht und widmen wir uns der Implementierung von Akzeptanz\index{Akzeptanztest}- und Systemtests (vgl. Abschnitt \ref{sec:acceptance}). 
 Zum Schluss gibt es einen Ausblick auf das Testen von Javascript\index{Javascript}-Ereignissen.
 
 \input{parts/praxis/anwendung_unittest}
@@ -18,12 +18,12 @@ Zum Schluss gibt es einen Ausblick auf das Testen von Javascript\index{Javascrip
 
 Mit dem ständig zunehmenden Grad der Entwicklung von Javascript\index{Javascript}-Frameworks und den in den letzten Jahren zunehmenden Ausführungsgeschwindigkeiten von Javascript in den einzelnen Browsern, ist Javascript bei der Programmierung von modernen Webanwendung ein immer wichtigerer Teil geworden. Das Aufkommen von Cloud-Computing propagiert die Ablösung traditioneller Desktop-Software durch browserbasierte Anwendungen. So beinhaltet fast jede moderne Webanwendung Javascript-Funktionalität.
 
-Meist geschieht dies durch \textbf{Ajax}\footnote{Asynchrones Javascript\index{Javascript} und XML (oder JSON)}, also durch asynchrone Kommunikation mit einem Server und Aktualisieren der Seite ohne dass diese neugeladen werden muss. Durch sehr gute Frameworks, wie z.B. \textbf{jQuery}, dass ab Rails\index{Ruby-on-Rails} 3 standardmäßig Teil der Rails-Distribution ist, sind solche Aktualierungen meist in sehr wenigen Zeilen zu implementieren. Aber auch diese Zeilen sind Teil unseres Applikationscodes, und es existiert ein Bedürfnis diesen Teil ebenfalls zu testen.
+Meist geschieht dies durch \textbf{Ajax}\footnote{Asynchrones Javascript\index{Javascript} und XML (oder JSON)}, also durch asynchrone Kommunikation mit einem Server und Aktualisieren der Seite ohne dass diese neugeladen werden muss. Durch sehr gute Frameworks, wie z.B. \textbf{jQuery}, dass ab Rails\index{Ruby-on-Rails} 3 standardmäßig Teil der Rails-Distribution ist, sind solche Aktualierungen meist in sehr wenigen Zeilen zu implementieren. Aber auch diese Zeilen sind Teil unseres Applikationscodes und es existiert ein Bedürfnis diesen Teil ebenfalls zu testen.
 
 
 \paragraph{Dedizierte Unittest\index{Test!Unittest}s für Javascript} Falls eine Anwendung nicht nur einfache Ajax-Funktionen der Art "`Klicke Link -- Sende Anfrage an Server -- setzte fertiggenerierten HTML Code der Antwort direkt in den DOM ein"', sondern Funktionen, die klassische Desktopanwendungen nachbilden, gefordert sind, ist der Einsatz von eigenen Unittests für Javascript angebracht.
 Diese Art der Anwendungsgestaltung gewinnt zunehmend an Popularität, z.B. das aktuelle Twitter-Layout oder Google Mail machen nach dem initialen Laden der Webseite keine weitere komplette Seitenaktualisierung mehr. 
-Auch hier bieten sich einige Javascript\index{Javascript} Test-Frameworks an, z.B. JsUnit\footnote{http://www.jsunit.net/}, einem Vertreter der xUnit-Reihe, und Jasmine\footnote{\url{http://pivotal.github.com/jasmine/}}, einem Vertreter aus dem \glossar{BDD}-Kontext (vgl. Abschnitt \ref{sec:tddBdd}). 
+Auch hier bieten sich einige Javascript\index{Javascript} Test-Frameworks an, z.B. JsUnit\footnote{http://www.jsunit.net/}, einem Vertreter der xUnit-Reihe und Jasmine\footnote{\url{http://pivotal.github.com/jasmine/}}, einem Vertreter aus dem \glossar{BDD}-Kontext (vgl. Abschnitt \ref{sec:tddBdd}). 
 
 Bei IT-Jobs\index{IT-Jobs-Projekt} beschränkt sich der Einsatz von Javascript\index{Javascript} allerdings auf die erwähnten einfachen DOM-Manipulationen.
 

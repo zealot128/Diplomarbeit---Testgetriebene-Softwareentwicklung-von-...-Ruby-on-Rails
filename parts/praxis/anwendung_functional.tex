@@ -3,7 +3,7 @@
 
 
 Neben den Unittest\index{Test!Unittest}s stellt Ruby on Rails\index{Ruby-on-Rails} eine weitere Testart nativ bereit. Technisch gesehen handelt es sich bei diesen Functional Tests aber auch um Unittests, da deren Testobjekt eine Klasse, der Controller\index{Ruby-on-Rails!Controller}, ist. 
-Ein Controller\index{Ruby-on-Rails!Controller} hat bei Ruby on Rails\index{Ruby-on-Rails} die Aufgabe, Anfragen für bestimmte Routen, also Web-Adressen, anzunehmen, die Arbeit an eine Modelklasse auszulagern, und eine View\index{Ruby-on-Rails!View} aufzurufen, die letztendlich HTML-Code generiert.
+Ein Controller\index{Ruby-on-Rails!Controller} hat bei Ruby on Rails\index{Ruby-on-Rails} die Aufgabe, Anfragen für bestimmte Routen, also Web-Adressen, anzunehmen, die Arbeit an eine Modelklasse auszulagern und eine View\index{Ruby-on-Rails!View} aufzurufen, die letztendlich HTML-Code generiert.
 
 Im ersten Beispiel wollen wir testen, dass ein Gast-Nutzer, also z.B. ein Bewerber, eine sichtbare Stellenanzeige aufrufen darf (\texttt{visible = true}). Hierbei verwenden wir wieder unser oben definiertes Fixture für einen gültigen Job.
 % SNIPPET: 
@@ -41,7 +41,7 @@ Im ersten Beispiel wollen wir testen, dass ein Gast-Nutzer, also z.B. ein Bewerb
 
 \tddred
 Zuerst loggen wir jeglichen Nutzer aus, der eventuell eingeloggt war, dann laden wir das Fixture und führen einen simulierten HTTP Request auf die Detailansicht der Stellenanzeige aus (Die Aktion \texttt{show} mit der ID des Jobs).
-Nun erwarten wir, dass wir einen HTTP-Status Code 200 (Erfolg) erhalten, und dass der Controller\index{Ruby-on-Rails!Controller} eine Variable \texttt{@jobs} bereitstellt, die mit unserem Fixture identisch ist.
+Nun erwarten wir, dass wir einen HTTP-Status Code 200 (Erfolg) erhalten und dass der Controller\index{Ruby-on-Rails!Controller} eine Variable \texttt{@jobs} bereitstellt, die mit unserem Fixture identisch ist.
 
 Die Implementation dieser Anforderung könnte wie folgt umgesetzt werden:
 % -------------------------------
@@ -68,9 +68,9 @@ Die Implementation dieser Anforderung könnte wie folgt umgesetzt werden:
 \codecaption{JobsController: Erfüllung des Tests durch eine Fake-Implementierung}
 
 \tddgreen
-Das Laden des erstem Jobs aus unserer Datenbank genügt zum Erfüllen der Anforderungen, und ist ein schneller Weg, den Test \index{Test}bestehen zu lassen. Allerdings handelt es sich hierbei um eine \textbf{Fake-Implementierung}, da zwar unser Test erfüllt wird, aber die Anwendung nicht das macht, was man sich erhofft hat. Solche Zwischenschritte sind aber ausdrücklich vorgesehen, da das Ziel ist, so schnell wir möglich einen funktionierenden Test zu erhalten mit dem man arbeiten kann.
+Das Laden des erstem Jobs aus unserer Datenbank genügt zum Erfüllen der Anforderungen und ist ein schneller Weg, den Test \index{Test}bestehen zu lassen. Allerdings handelt es sich hierbei um eine \textbf{Fake-Implementierung}, da zwar unser Test erfüllt wird, aber die Anwendung nicht das macht, was man sich erhofft hat. Solche Zwischenschritte sind aber ausdrücklich vorgesehen, da das Ziel ist, so schnell wir möglich einen funktionierenden Test zu erhalten mit dem man arbeiten kann.
 
-Wenn wir nun weitere Tests schreiben, so wird es immer schwieriger, die Fake-Implementierung beizubehalten, und früher oder später wird eine korrekte Implementierung folgen. 
+Wenn wir nun weitere Tests schreiben, so wird es immer schwieriger, die Fake-Implementierung beizubehalten und früher oder später wird eine korrekte Implementierung folgen. 
 Aber wir können auch die nun folgende Refaktorisierung\index{Refaktorisierung}sphase nutzen, um diesen Makel zu beseitigen:
 \tddrefactor
 % -------------------------------
@@ -117,7 +117,7 @@ Nun wollen wir testen, ob ein Gast von einer nicht-sichtbaren Stellenanzeige wei
 
 \tddred
 
-Wir laden unser zweites definiertes Fixture, dass eine unsichtbaren Stellenanzeige. Dieses mal erwarten wir einen HTTP Statuscode 301 (Redirect/Weiterleitung), und dass unser Controller\index{Ruby-on-Rails!Controller} eine Hinweisnachricht generiert.
+Wir laden unser zweites definiertes Fixture, dass eine unsichtbaren Stellenanzeige. Dieses mal erwarten wir einen HTTP Statuscode 301 (Redirect/Weiterleitung) und dass unser Controller\index{Ruby-on-Rails!Controller} eine Hinweisnachricht generiert.
 
 % -------------------------------
 % SNIPPET: 
@@ -168,7 +168,7 @@ Nun möchten wir, dass ein Kunde dieser Anwendung, also ein Unternehmen seine St
 \codecaption{JobController-Test: Neuer Testfall}
 
 \tddred
-Über die globale Session Variable simulieren wir das Einloggen durch setzen der User-ID in dieses Array. Die genaue Implementation hängt natürlich davon ab, wie man die Authentifizierung implementiert hat, oder welche Bibliothek man verwendet. In diesem Beispiel sei darauf hingewiesen, dass die Definition, ob ein Nutzer eingeloggt ist oder nicht, davon abhängt, ob in seiner Session-Variable eine User-ID enthalten ist.
+Über die globale Session Variable simulieren wir das Einloggen durch setzen der User-ID in dieses Array. Die genaue Implementation hängt natürlich davon ab, wie man die Authentifizierung implementiert hat oder welche Bibliothek man verwendet. In diesem Beispiel sei darauf hingewiesen, dass die Definition, ob ein Nutzer eingeloggt ist oder nicht, davon abhängt, ob in seiner Session-Variable eine User-ID enthalten ist.
 
 % SNIPPET: 
 %                                                                                                                                                                    
