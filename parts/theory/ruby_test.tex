@@ -57,8 +57,8 @@ Zur Generierung von größeren Mengen an zufälligen Daten einer bestimmten Dom�
 \label{sec:cucumber}
 Cucumber\index{Cucumber} ist ein relativ neues Framework (2008), um mittels einer domainspezifischen Sprache  (\glossar{DSL}) verständliche automatisierte Tests zu schreiben. Dabei gibt es 2 Ebenen: In der oberen werden \textit{Testschritt\index{Cucumber!Testschritt}e} in Englisch, Deutsch oder einer anderen der mehr als 30 unterstützten Sprachen spezifiziert. In der darunterliegenden werden diese Schritte in echten Testcode implementiert. \\
 Im Folgenden sei ein Trivialbeispiel einer Anwendung, die Addieren implementiert, gezeigt.
-\lstinputlisting[label=Cucumber: Additionsfeature in Deutsch,caption=Cucumber: Additionsfeature in Deutsch]{listings/addition.feature}
-\begin{ruby}[label=addition.feature]
+%\lstinputlisting[label=Cucumber: Additionsfeature in Deutsch,caption=Cucumber: Additionsfeature in Deutsch]{listings/addition.feature}
+\begin{ruby}[label=features/addition.feature]
 \PY{c}{# language: de}
 \PY{n+nc}{Funktionalität}\PY{n+nc}{:}\PY{n+no}{ Addition zweier Zahlen}
 \PY{n+nb}{ }\PY{n+nb}{ }\PY{n+nb}{H}\PY{n+nb}{i}\PY{n+nb}{e}\PY{n+nb}{r}\PY{n+nb}{ }\PY{n+nb}{w}\PY{n+nb}{ü}\PY{n+nb}{r}\PY{n+nb}{d}\PY{n+nb}{e}\PY{n+nb}{ }\PY{n+nb}{e}\PY{n+nb}{i}\PY{n+nb}{n}\PY{n+nb}{e}\PY{n+nb}{ }\PY{n+nb}{g}\PY{n+nb}{r}\PY{n+nb}{o}\PY{n+nb}{b}\PY{n+nb}{e}\PY{n+nb}{ }\PY{n+nb}{B}\PY{n+nb}{e}\PY{n+nb}{s}\PY{n+nb}{c}\PY{n+nb}{h}\PY{n+nb}{r}\PY{n+nb}{e}\PY{n+nb}{i}\PY{n+nb}{b}\PY{n+nb}{u}\PY{n+nb}{n}\PY{n+nb}{g}\PY{n+nb}{ }\PY{n+nb}{d}\PY{n+nb}{e}\PY{n+nb}{s}\PY{n+nb}{ }\PY{n+nb}{B}\PY{n+nb}{u}\PY{n+nb}{s}\PY{n+nb}{i}\PY{n+nb}{n}\PY{n+nb}{e}\PY{n+nb}{s}\PY{n+nb}{s}\PY{n+nb}{v}\PY{n+nb}{a}\PY{n+nb}{l}\PY{n+nb}{u}\PY{n+nb}{e}\PY{n+nb}{s}
@@ -73,7 +73,7 @@ Im Folgenden sei ein Trivialbeispiel einer Anwendung, die Addieren implementiert
 Wenn man nun die Datei mittels Cucumber\index{Cucumber} ausführt, so wird darauf hingewiesen, dass die Testschritt\index{Cucumber!Testschritt}e noch nicht implementiert sind.
 
 Eine Beispielimplementation (ohne Verwendung einer GUI-Anwendung) der Testschritt\index{Cucumber!Testschritt}e wäre:
-\begin{ruby}[label=steps.rb]
+\begin{ruby}[label=features/step\_definitions/steps.rb]
 \PY{n+no}{Wenn}\PY{l+s+sr}{ /\PYZca{}}\PY{l+s+sr}{ich "([\PYZca{}"]*)" für a und "([\PYZca{}"]*)" für b eingebe\$}\PY{l+s+sr}{/} \PY{k}{do} \PY{o}{|}\PY{n}{arg1}\PY{p}{,} \PY{n}{arg2}\PY{o}{|}
   \PY{n+nv+vi}{@addierer} \PY{o}{=} \PY{n+no}{Addierer}\PY{o}{.}\PY{n}{new}\PY{p}{(}\PY{n}{arg1}\PY{p}{,} \PY{n}{arg2}\PY{p}{)}
 \PY{k}{end}
@@ -88,17 +88,17 @@ Eine Beispielimplementation (ohne Verwendung einer GUI-Anwendung) der Testschrit
 
 \end{ruby}
 \codecaption{Cucumber: Implementierung der Additionstestschritte in Ruby}
-Die Anweisungen des Akzeptanztest\index{Akzeptanztest}s werden auf die definierten Testschritt\index{Cucumber!Testschritt}e gemappt, die Cucumber\index{Cucumber} dann sequentiell ausführt.
+Die Anweisungen\randbem{Funktionsweise} des Akzeptanztest\index{Akzeptanztest}s werden auf die definierten Testschritt\index{Cucumber!Testschritt}e gemappt, die Cucumber\index{Cucumber} dann sequentiell ausführt.
 Jeder dieser Testschritt\index{Cucumber!Testschritt}e kann nun eine beliebige Implementierung besitzen. Meist ist es entweder eine Initialisierung, eine Aktion oder eine Erwartung, ausgedrückt durch die Schlüsselwörter \texttt{Angenommen}, \texttt{Wenn} und \texttt{Dann}, bzw. \texttt{Given}, \texttt{When} und \texttt{Then} im englischen Originaldialekt. Die Einteilung in klare Testschritte fördert die Wiederverwendbarkeit der Testschritte in anderen Szenarien.
 
-Der Vorteil von Cucumber\index{Cucumber} ist nun, dass diese Feature-Datei zusammen mit dem Kunden durchgesprochen werden kann und dass man damit an Ende eine funktionale Validierung gegenüber der Spezifikation automatisiert durchführen kann. \\
+Der Vorteil von Cucumber\index{Cucumber} ist nun,\randbem{Vorteile für Kundenzusammenarbeit} dass diese Feature-Datei zusammen mit dem Kunden durchgesprochen werden kann und dass man damit an Ende eine funktionale Validierung gegenüber der Spezifikation automatisiert durchführen kann. \\
 Cucumber\index{Cucumber} ist von der Syntax so generisch, dass damit beliebige Anwendungen getestet werden, da keine Annahmen über die darunterliegende Implementierung der Testschritt\index{Cucumber!Testschritt}e gemacht wird.
 Neben Ruby\index{Ruby} wird auch die Implementierung der Testschritt\index{Cucumber!Testschritt}e in Java und C\# unterstützt.
 
 \paragraph{Testen von Webanwendungen}
 Eine Einsatzmöglichkeit von Cucumber\index{Cucumber}, besonders im Zusammenhang mit \glossar{rails}, ist das Testen von Webanwendungen. Dabei ist es üblich, einen Browser zu automatisieren\index{Browser!Automatisierter} bzw. simulieren (vgl. Abschnitt \ref{sec:acceptance}), um den Test \index{Test}so authentisch am echten Nutzungsprozess wie möglich zu orientieren.
 
-Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen, verwenden wir verschiedene Middlewars. Wir haben uns für Capybara\index{Capybara} entschieden, welches sehr flexibel bei der Wahl der Browser-Engine ist. Den eigentlichen Test, d.h. die Auswertung der Zusicherung kann durch ein beliebiges Testframework durchgeführt werden, in unserem Falle wieder mit Test/Unit\index{Test/Unit-Framwork}. Durch Capybara haben wir nun die Möglichkeit, zwischen einem simulierten Browser\index{Browser!Simulierter} (z.B. RackTest) und automatisierten Browser\index{Browser!Automatisierter} (Firefox, Chrome, etc. durch eine weitere Middleware: Selenium\index{Selenium}) je nach Bedarf zu wechseln, ohne viele am Testcode zu ändern.
+Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen, verwenden wir verschiedene Middlewares. Wir haben uns für Capybara\index{Capybara} entschieden, welches sehr flexibel bei der Wahl der Browser-Engine ist. Den eigentlichen Test, d.h. die Auswertung der Zusicherung kann durch ein beliebiges Testframework durchgeführt werden, in unserem Falle wieder mit Test/Unit\index{Test/Unit-Framwork}. Durch Capybara haben wir nun die Möglichkeit, zwischen einem simulierten Browser\index{Browser!Simulierter} (z.B. RackTest) und automatisierten Browser\index{Browser!Automatisierter} (Firefox, Chrome, etc. durch eine weitere Middleware: Selenium\index{Selenium}) je nach Bedarf zu wechseln, ohne große Änderungen am Testcode.
 \begin{figure}[htbp]
  \centering
  \includegraphics[width=\linewidth]{./diagrams/cucumber.pdf}

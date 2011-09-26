@@ -2,18 +2,22 @@
 		a4paper,
 		12pt,
 		twoside,
- 		openany,    % Chapter beginnen auf rechter Seite
+		openany,        % Chapter beginnen auf rechter Seite
 		parskip,
-% 		tocbasic,
-  		final,    		% DEBUG modus
-% draft,
+    % tocbasic,
+		final,          % DEBUG modus
+		11pt,
+    % draft, # DEBUG MOUS
 		appendixprefix,
-% 	headsepline,%         Linie nach Kopfzeile.
-% 	footsepline,%         Linie vor Fusszeile.
-% 	bibtotocnumbered,%    Literaturverzeichnis im Inhaltsverzeichnis nummeriert einfügen.
- 		chapterprefix,%       Kapitel anschreiben als Kapitel
+    % headsepline,                       % Linie nach Kopfzeile.
+    % footsepline,                       % Linie vor Fusszeile.
+    % bibtotocnumbered,                  % Literaturverzeichnis im Inhaltsverzeichnis nummeriert einfügen.
+		chapterprefix,  % Kapitel anschreiben als Kapitel
 ]{scrreprt}
-%\usepackage{draftcopy}  % TODO Draft
+\usepackage[twoside,width=14cm, height=24cm,left=1.75cm, right=4cm]{geometry}
+\setlength{\marginparwidth}{2.25cm}
+\clubpenalty = 10000
+\widowpenalty = 10000 \displaywidowpenalty = 10000
 
 \usepackage[ngerman, german]{babel}
 
@@ -101,13 +105,13 @@
 % \usepackage{palatino}    % 111 pages, Arial'y sehr langweilig in den Ueberschriften
 % \usepackage{cmbright}    % 111 pages, Wie ein modernes Buch. Gut fuer ne Doku oder so
  \usepackage{charter}    % 109 pages, Wie ein modernes Buch. Gut fuer ne Doku oder so
-\fontsize{12}{15}
+%\fontsize{12}{15}
 
 \usepackage{hyphenat}
 \usepackage[T1]{fontenc}
 
 
-\hyphenation{De-zi-mal-trenn-zeichen In-stal-la-ti-ons-as-sis-tent
+\hyphenation{
 Com-mu-ni-ty
 Soft-ware-Ent-wick-lung
 Soft-ware
@@ -116,6 +120,8 @@ Um-for-mu-lie-rung
 Test-fall-ab-deck-ung
 Test-Unit
 Test/Unit
+Da-ten-bank-an-bin-dung
+
 }
 
 

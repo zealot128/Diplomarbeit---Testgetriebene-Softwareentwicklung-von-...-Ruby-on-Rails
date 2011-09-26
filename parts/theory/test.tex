@@ -26,10 +26,10 @@ Tests können nach verschiedenen Gesichtspunkten eingeteilt werden. In vielen ko
  \label{fig:testArten}
 \end{figure}
 
-\paragraph{Einteilung nach Sichtbarkeit des Quellcodes} Tests werden in \textbf{Whitebox} und \textbf{Blackbox}-Tests eingeteilt.
+\paragraph{Einteilung nach Sichtbarkeit des Quellcodes} Tests werden in \textbf{Whitebox}- und \textbf{Blackbox}-Tests eingeteilt.
 Whitebox-Tests finden mit Wissen über den zugrundeliegenden Code statt. Ziel eines Whitebox-basierten Testverfahrens ist es, soviele Codeabschnitt wie möglich zu testen.\\
-Blackboxtests dagegen ignorieren den inneren Aufbau der Klassen und testen entweder nur Schnittstellen oder das Gesamtsystem und beobachten Rückmeldungen des Systems auf bestimmte Aktionen. Das Ziel eines Blackbox-basierten Tests, ist die Korrektheit der Software gegenüber den Spezifikationen zu bestimmen.\\
-Ein Spezialfall sind die sogenannten \textbf{Greybox}-Tests, die insbesondere bei der Testgetriebene\index{TDD}n Entwicklung auftreten. Da der Test \index{Test}zuerst entwickelt wird, ist noch kein Wissen über den Zielquellcode vorhanden, der Entwickler aber natürlich Einblick in den Quellcode hat.
+Blackbox-tests dagegen ignorieren den inneren Aufbau der Klassen und testen entweder nur Schnittstellen oder das Gesamtsystem und beobachten Rückmeldungen des Systems auf bestimmte Aktionen. Das Ziel eines Blackbox-basierten Tests ist die Korrektheit der Software gegenüber den Spezifikationen zu bestimmen.\\
+Ein Spezialfall ist der sogenannte \textbf{Greybox}-Test, der insbesondere bei der Testgetriebene\index{TDD}n Entwicklung auftritt. Da hier der Test \index{Test}zuerst entwickelt wird, ist noch kein Wissen über den Zielquellcode vorhanden, der Entwickler aber natürlich Einblick in den Quellcode hat.
 
 \paragraph{Einteilung nach Testziel} (nach \citep[S. 238ff]{hunt_pragmatic_1999})
 \begin{description}
@@ -67,7 +67,7 @@ Ein solcher Test \index{Test}besteht in der Regel aus 4 Teilen \citep{rappin_rai
 Als Faustregel für übersichtliche und nachvollziehbare Tests, gilt das Arrange-Act-Assert Konzept: Dabei werden die oben genannten Phasen als Arrange (1. u. 4.), Act (2.), Assert (3.) oder auch Given-When-Then (Angenommen, Wenn, Dann) bezeichnet \citep[Karte 46]{langr_agile_2011}. Nicht immer sind alle drei bzw. vier Teile notwendig.
 
 \paragraph{Komponententest}
-Ziel des Komponententest ist es, verschiedene Units in Kombination als eine vollständige Komponente zu testen \citep{goodliffe_code_2006}.
+Ziel des Komponententests ist es, verschiedene Units in Kombination als eine vollständige Komponente zu testen \citep{goodliffe_code_2006}.
 
  \section{Test Doubles -- Mocks und Stubs}
   \label{sec:mocks}

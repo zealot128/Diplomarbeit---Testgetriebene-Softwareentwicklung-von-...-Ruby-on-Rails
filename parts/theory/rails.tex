@@ -1,10 +1,11 @@
+\newpage
 
 \section{Ruby on Rails}
 \label{sec:rails}
 \epigraph{Ruby on Rails is a breakthrough in lowering the barriers of entry to programming. Powerful web applications that formerly might have taken weeks or months to develop can be produced in a matter of days.}{Tim O'Reilly, Gründer von O'Reilly Media}
 
 
-Für das Projekt IT-jobs-und-stellen.de soll das Webframework Ruby-on-Rails\index{Ruby-on-Rails} verwendet werden. Rails wurde 2006 von der Firma 37signals unter der Leitung von David Heinemeier Hansson entwickelt und erlangte seitdem eine wachsende Popularität. Rails inspirierte viele andere Frameworks, wie z.B. cakePHP, Symfony, Groovy on Grails und ASP.NET MVC.
+Für das Projekt IT-jobs-und-stellen.de soll das Webframework Ruby-on-Rails\index{Ruby-on-Rails} verwendet werden. Rails wurde 2006 von der Firma 37signals\footnote{\url{http://37signals.com/}} unter der Leitung von David Heinemeier Hansson entwickelt und erlangte seitdem eine wachsende Popularität. Rails inspirierte viele andere Frameworks, wie z.B. cakePHP, Symfony, Groovy on Grails und ASP.NET MVC.
 % \footnote{ Sowie weitere PHP-Frameworks -- \url{http://www.h3rald.com/articles/rails-inspired-php-frameworks/}}
 
 \bordergraphic{material/rails.png}
@@ -62,7 +63,7 @@ rails generate scaffold job title:string description:text \PY{l+s+se}{\PYZbs{}}
 % label{fig:df19f5}
   Damit wird das Model Job, eine Migration zur Erstellung der Datenbank\index{Datenbank}tabelle "`jobs"', ein Controller\index{Ruby-on-Rails!Controller} "`jobs"' mit den REST-Standardaktionen und entsprechenden Beispielviews sowie Testfälle für Unit- und Funktionale Tests angelegt. \\
    \borderquote{Rails will have strong defaults. They might change over time but Rails will remain opinionated.}{D. Hansson, Begründer von Rails}
- \item[Full-Stack Webframework] Rails\index{Ruby-on-Rails} bringt out-of-the-box alles mit, was zur Webentwicklung benötigt wird. Im Gegensatz zu anderen Webframeworks wurde für Datenbank\index{Datenbank}anbindung, Templatesystem, Javascript\index{Javascript}framework, Testframework und Webserver-API bereits eine Vorauswahl getroffen. Im aktuellen Rails 3.1 sind dies ActiveRecord\index{ActiveRecord}, ERB, JQuery sowie Test/Unit\index{Test/Unit-Framwork} und Rack. Die meisten dieser Teil-Frameworks lassen sich zwar leicht austauschen, Rails selbst aber behauptet "`opinionated"', also rechthaberisch/eigensinnig, zu sein und den Entwickler Standards vorzugeben \citep{david_heinemeier_hansson_railsconf_2011}.
+ \item[Full-Stack Webframework] Rails\index{Ruby-on-Rails} bringt out-of-the-box alles mit, was zur Webentwicklung benötigt wird. Im Gegensatz zu anderen Webframeworks wurde für Datenbankanbindung\index{Datenbank}, Templatesystem, Javascriptframework\index{Javascript}, Testframework und Webserver-API bereits eine Vorauswahl getroffen. Im aktuellen Rails 3.1 sind dies ActiveRecord\index{ActiveRecord}, ERB, JQuery sowie Test/Unit\index{Test/Unit-Framwork} und Rack. Die meisten dieser Teil-Frameworks lassen sich zwar leicht austauschen, Rails selbst aber behauptet "`opinionated"', also rechthaberisch/eigensinnig, zu sein und den Entwickler Standards vorzugeben \citep{david_heinemeier_hansson_railsconf_2011}.
 
 \end{description}
 
@@ -82,28 +83,28 @@ Nach einem kurzen Überblick über Rails\index{Ruby-on-Rails}, sollen nun die Ei
 
 \paragraph{Nachteile}
 
-Oft wird angeführt, dass Ruby\index{Ruby} als Skriptsprache und Rails\index{Ruby-on-Rails} als darauf aufbauendes Framework eine schlechte Performanz hat und dadurch ungeeignet für große Webanwendungen ist.\randbem{Performanz}\\
+Oft wird angeführt,\randbem{Performanz} dass Ruby\index{Ruby} als Skriptsprache und Rails\index{Ruby-on-Rails} als darauf aufbauendes Framework eine schlechte Performanz hat und dadurch ungeeignet für große Webanwendungen ist.\\
 Anderseits existieren Erfahrungen, dass eine clevere Architektur und Caching für skalierende Anwendung entscheidender ist, als die letztendliche Ausführungszeit \citep{kirk_haines_ruby_2010}.
 Das eine Skalierung mit Rails\index{Ruby-on-Rails} möglich ist, zeigen z.B. Groupon, der führende Online-Coupon-Anbieter mit mehr als 50 Mio Abonnenten und Twitter, die jeweils Rails verwenden bzw. verwendet haben \citep{ruby_on_rails_2011}.
 %http://www.socialshopping.com/Groupon/news/Groupon-hits-50m-Subscribers-Shopping-site-sensation-201101210398/
 
- Da Rails\index{Ruby-on-Rails} ein komplettes Webframework ist, wurden bei der Auswahl der einzelnen Komponenten bereits Entscheidungen getroffen. \randbem{Auswahl der Komponenten} Erst jüngst gab dazu es Kritik aus Teilen der Community, da ab der Version 3.1 "`CoffeeScript"' und "`SASS"' Bestandteil einer Rails-Distribution sind \citep{peter_cooper_rails_2011}. Beide sind Zwischensprachen, die in Javascript\index{Javascript} respektive CSS kompilieren und diese um Funktionalität erweitern. Allerdings kann jeder selbst wählen, ob er diese verwenden möchte.
+ Da Rails\index{Ruby-on-Rails} ein komplettes Webframework ist,\randbem{Auswahl der Komponenten} wurden bei der Auswahl der einzelnen Komponenten bereits Entscheidungen getroffen.  Erst jüngst gab dazu es Kritik aus Teilen der Community, da ab der Version 3.1 "`CoffeeScript"' und "`SASS"' Bestandteil einer Rails-Distribution sind \citep{peter_cooper_rails_2011}. Beide sind Zwischensprachen, die in Javascript\index{Javascript} respektive CSS kompilieren und diese um Funktionalität erweitern. Allerdings kann jeder selbst wählen, ob er diese verwenden möchte.
 
 
 Interaktion mit Legacy-Software ist nicht immer möglich. \randbem{Integration in bestehende Software}ActiveRecord\index{ActiveRecord} reserviert einige Spaltennamen, wie \texttt{type} und \texttt{class}. Eine Benennung der Spalten sollte der Ruby\index{Ruby}-Namenskonvention entsprechen, also nur Buchstaben Zahlen und Unterstriche enthalten. Ansonsten können die Spalten nur über Umwege angesprochen werden. Rails\index{Ruby-on-Rails} ist äußerst effektiv, wenn man den gegebenen Konventionen folgt. Im Umkehrschluss bedeutet dies, dass man deutlich ineffektiver ist, wenn man die Konventionen von Rails ignoriert, z.B. wegen äußerer Umstände und Anforderungen.\\
 Rails\index{Ruby-on-Rails} verzichtet auf die Verwendung von Constraints innerhalb der Datenbank\index{Datenbank}. In einigen Fällen, z.B. Bankensoftware, sind diese aber unbedingt erforderlich.
 
-Ein Nachteil aus Sicht des Projektmanagement ist der Mangel an freien Ruby-on-Rails\index{Ruby-on-Rails} Programmierern auf dem Arbeitsmarkt\footnote{z.B. \url{http://rubypays.blogspot.com/2011/04/rubyruby-on-rails-development-job.html}}. \randbem{Lock-In und Mangel an Entwicklern}So kann bei einem langfristig angesetzten Projekt u.U. die Wartung nicht garantiert werden.
+Ein Nachteil aus Sicht des Projektmanagement ist der Mangel\randbem{Mangel an Entwicklern} an freien Ruby-on-Rails\index{Ruby-on-Rails} Programmierern auf dem Arbeitsmarkt\footnote{z.B. \url{http://rubypays.blogspot.com/2011/04/rubyruby-on-rails-development-job.html}}. So kann bei einem langfristig angesetzten Projekt u.U. die Wartung nicht garantiert werden.
 
 \paragraph{Vorteile}
-Rails\index{Ruby-on-Rails} unterstützt den Software-Lebenszyklus, indem es von Haus aus drei Umgebungen definiert: Development, Test und Production. Diese unterscheiden sich in der Datenbank\index{Datenbank} die sich benutzen und Konfigurationsparametern zu Caching und Performanz. Weitere Umgebungen (z.B. Staging) können jederzeit definiert werden.
+Rails\index{Ruby-on-Rails} unterstützt den Software-Lebenszyklus,\randbem{Software\hyp{}Lebenszyklus} indem es von Haus aus drei Umgebungen definiert: Development, Test und Production. Diese unterscheiden sich in der Datenbank\index{Datenbank} die sich benutzen und Konfigurationsparametern zu Caching und Performanz. Weitere Umgebungen (z.B. Staging) können jederzeit definiert werden.
 
 
-Dank der Modularität können als Persistenzgrundlage sowohl relationale Datenbank\index{Datenbank}en, wie MySQL, SQlite und Oracle, aber auch andere Formen, wie NoSQL-Datenbanken transparent verwendet werden. Dank einer einfach zu verstehenden Syntax, ist das Schreiben von SQL in vielen Fälle überflüssig und zudem auch sicherer. Bei relationalen Datenbanken verwendet ActiveRecord\index{ActiveRecord} verwendet standardmäßig Transaktionen, insofern die Datenbank dies unterstützt.
+Dank der Modularität können als Persistenzgrundlage sowohl \randbem{Flexible Datenanbindung}relationale Datenbank\index{Datenbank}en, wie MySQL, SQlite und Oracle, aber auch andere Formen, wie NoSQL-Datenbanken transparent verwendet werden. Dank einer einfach zu verstehenden Syntax, ist das Schreiben von SQL in vielen Fällen überflüssig und zudem auch sicherer. Bei relationalen Datenbanken verwendet ActiveRecord\index{ActiveRecord} standardmäßig Transaktionen, insofern die Datenbank dies unterstützt.
 
 
 
-\randbem{Sicherheit} Rails\index{Ruby-on-Rails} bietet eine gute Ausgangsbasis um sichere Websoftware zu entwickeln. Das Verwenden eines Datenbank\index{Datenbank}frameworks macht SQL-Injections unmöglich. \\
+Rails\index{Ruby-on-Rails} bietet eine gute Ausgangsbasis um sichere Websoftware zu entwickeln.\randbem{Sicherheit} Das Verwenden eines Datenbank\index{Datenbank}frameworks macht SQL-Injections unmöglich. \\
 Cross-Site-Request-Forgery und Session-Angriffe werden erschwert, da Session und Cookie-Variablen standardmäßig verschlüsselt werden und bei Nutzung der Formulargeneratoren ein CSRF-Token generiert wird, um Replay-Angriffe zu unterbinden.
 
 

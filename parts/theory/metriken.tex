@@ -3,7 +3,7 @@
 Eine \glossar{metrik}\index{Code-Metrik} ist eine Maßzahl, die zum Vergleich dient und ein Qualitätsmerkmal für ein Stück Code oder ein Programm darstellt. Sie ist wird den Software-Metriken und Produkt-Metriken zugeordnet.
 
 \epigraph{A function whose inputs are software data and whose output is a single
-numerical value that can be interpreted as the degree to which software possesses a given attribute that affects its quality}{\citep{ieee_1998}}
+numerical value that can be interpreted as the degree to which software possesses a given attribute that affects its quality}{Definition Software-Metrik \citep{ieee_1998}}
 
 Dem Verwenden von Code-Metrik\index{Code-Metrik}en liegt der Wunsch zugrunde, komplexe Codeteile auf einfache Zahlen automatisiert beurteilen zu lassen, um potenziell suboptimale Codestellen schnell zu finden, welche möglicherweise in Zukunft Defekte verursachen könnten. Aus Business-Sicht stellen Code-Metriken auch eine Methode dar, Entwicklungsfortschritt zu messen und zu beurteilen.
 \section{Überblick über Code-Metriken und Skalen}
@@ -27,8 +27,11 @@ Diese Größe erhält eine größere Aussage, wenn man sie ins Verhältnis z.B. 
 
 In einem normalen Programm ist die Zyklomatische Komplexität die Anzahl der Entscheidungspunkte + 1 \citep[S. 314]{mccabe_complexity_1976}.
 
-Ein daraus abgeleitetes Test\index{Test}verfahren "`Basis Path Testing"' schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte, wie die Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) (Mehr zu Testabdeckung\index{Test!Testabdeckung} im nächsten Unterabschnitt).
+Ein daraus abgeleitetes Test\index{Test}verfahren "`Basis Path Testing"' schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte, wie die Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) (Mehr zu Testabdeckung später im Abschnitt \ref{sec:coverage}).
 
+\subsubsection{Code-Smells}
+
+Als Code-Smells werden alle Symptome innerhalb des Quelltextes bezeichnet, die Anzeichen für ein tieferes, zugrundeliegendes Problem sein können. Die Einordnung von Code-Smells variiert aber abhängig von der Programmiersprache oder Framework und ist oft subjektiv. Code-Smells werden meist automatisiert durch Werkzeuge gefunden und geben dem Programmier Hinweise für mögliche Refaktorisierungen.
 
 \begin{description}
  \item[Geringe Kohäsion] Ist ein Oberbegriff für verschiedene andere Smell\index{Code-Smell}s anzuwenden bei objektorientierten Programmen. Einer davon ist z.B.. "`Feature Envy"' (deutsch: Neid). Eine Klasse weiß zuviel über die internen Strukturen einer anderen Klasse und implementiert Funktionalität, die eigentlich in jene Klasse gehören sollten. \\
@@ -72,6 +75,7 @@ Neben den Lines of Code kann auf dieselbe (einfache) Weise die Anzahl der Codeze
 Sollte dieser deutlich kleiner als 1 sein, so ist dies ein Symptom für zu wenige Test\index{Test}s. Diese Zahl ist von dem Testframework und dem Programmframework stark abhängig. Gute Projekte sollten (deutlich) mehr Test-Code, als Programmcode besitzen \citep[S. 238]{hunt_pragmatic_1999}.
 
 \subsection{Testausführungsabdeckung}
+\label{sec:coverage}
 Die Test\index{Test}abdeckung\index{Test!Testabdeckung}, misst den Grad, inwieweit ein Programm durch die Tests berührt wurde. Dabei wird die vorhandene Test-Suite\index{Test!Test-Suite} ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"' und 0\% "`Das Programm wurde durch die Tests überhaupt nicht berührt"'  Es wird festgehalten, welche Anweisungen, Zweige oder sogar Programmpfade ausgeführt wurden. Diese 3 Abstufungen, sind im Detail;
 \begin{description}
  \item[C0] (Anweisungsüberdeckung, Statement Coverage) ist die am einfachsten zu bestimmende Abdeckung. Dabei wird geprüft, ob jede Zeile des Quellcodes während der Codeausführung mindestens einmal ausgeführt wurde
@@ -88,7 +92,7 @@ Die Test\index{Test}abdeckung\index{Test!Testabdeckung}, misst den Grad, inwiewe
  Falls dem TDD\index{TDD}-Prozess minutiös gefolgt wurde, so müssste die C0 Testabdeckung\index{Test!Testabdeckung} immer 100\% sein \citep{beck_test_2002}. Für ein Rails\index{Ruby-on-Rails} Projekt sei es auch relativ leicht, 100\% oder nahe 100\% zu erreichen \citep{rappin_rails_2011}. Die Zahl "`100\%"' sei für sich genommen nutzlos, aber sie zu erreichen, sei für den Prozess der Testgetriebenen Entwicklung nützlich \citep[S. 270]{rappin_rails_2011}. Vielen Autoren bringen aber zum Ausdruck, dass es von der Situation abhängt wieviel Testabdeckung sinnvoll ist \citep{infoq_2007}. Test-Anfänger sollten sich zuerst überhaupt ans Testen gewöhnen und erfahrene Entwickler sollte wissen, dass es keine einzige einfache Antwort auf diese Frage gäbe \citep{infoq_2007}. Zudem gebe eine hohe Abdeckung keinen Aufschluss darüber, dass die Tests "`gut"' sind. Aber eine niedrige Testabdeckung zeigt deutlich auf Missstände hin.\\
  Einem pragmatischen Ansatz von Savoia folgend, kann man aus dem Verhältnis der Zyklomatischen Komplexität mit der Testabdeckung\index{Test!Testabdeckung} eines Codestückes suboptimale Teile finden. Je mehr Verzweigung eine Methode hat, desto höher sollte ihre Testabdeckung sein \citep{alberto_savoia_code_2007}. In einem Artikel empfiehlt Cornett eine Liste von Zielen, die es je nach vorhandenen Budget und Zeit zu erreichen gilt, beginnend damit, dass mindestens eine Funktion in 90\% der Quelltextdateien durch die Tests aufgerufen wird bis zum finalen Schritt einer vollständigen C1-Testabdeckung \citep{steve_cornett_code_1996}.
 
- Zusammenfassend kann man sagen, dass es keine eindeutige Antwort gibt. Eine niedrige C0-Abdeckung von 50\% oder weniger zeigt allerdings deutliche Missstände beim Test\index{Test}verfahren an.
+ Zusammenfassend kann man sagen, dass es keine eindeutige Antwort gibt. Eine niedrige C0-Abdeckung von 50\% oder weniger zeigt allerdings deutliche Missstände beim Testverfahren an.
 
  \subsection{Mutations/Pertubationstests -- Defect insertion}
  \label{sec:mutation}

@@ -2,7 +2,7 @@
 \label{sec:ruby}
 \epigraph{Sometimes people jot down pseudo-code on paper. If that pseudo-code runs directly on their computers, it's best, isn't it? Ruby tries to be like that, like pseudo-code that runs.}{Yukihiro Matsumoto}
 
-Ruby\index{Ruby} ist eine Programmiersprache, die von 1993 von Yukihiro Matsumoto bis heute entwickelt wurde. Dabei ließ er sich von seinen Lieblingsprogrammiersprachen Perl, Smalltalk, Eiffel, Ada und Lisp inspirieren, um eine neue Programmiersprache zu entwickeln, die sowohl funktionale, objektorientierte als auch prozedurale Programmierung ermöglicht \citep{ruby_visual_identity_team_about_2011}. 
+Ruby\index{Ruby} ist eine Programmiersprache, die von 1993 von Yukihiro Matsumoto bis heute entwickelt wurde. Dabei ließ er sich von seinen Lieblingsprogrammiersprachen Perl, Smalltalk, Eiffel, Ada und Lisp inspirieren, um eine neue Programmiersprache zu entwickeln, die sowohl funktionale, objektorientierte als auch prozedurale Programmierung ermöglicht \citep{ruby_visual_identity_team_about_2011}.
 
 Eine vollständige Einführung in Ruby\index{Ruby} zu geben würde den Rahmen dieser Diplomarbeit sprengen. Stattdessen legen wir einen Querschnitt durch die Sprache an und stellen die Hauptmerkmale und Unterschiede zu anderen Sprachen heraus. Auch werden Auswirkungen auf das Testen diskutiert und mögliche Testwerkzeuge vorgestellt.
 
@@ -48,23 +48,23 @@ Das letzte Beispiel zeigt den Einsatz von Kontrollstrukturen. Als Besonderheit s
 Weiterhin erlaubt Ruby\index{Ruby} die Arbeit mit Lambdas, also anonymen Funktionen. Eine beliebte Verwendungsmöglichkeit ist die Bearbeitung von Arrays und listenähnlichen Strukturen.
 
 % SNIPPET: [language=Ruby,label=Ruby Beispiel: Lambdas,caption=Ruby Beispiel: Lambdas]
-% >> adder = lambda { |a,b|  a + b }                                                                                                         
-% >> adder.call(1,2)                                                                                                                         
-% => 3                                                                                                                                       
-%                                                                                                                                            
-% # Sortiere nach Standardvergleichsoperator                                                                                                 
-% >> [4,5,7,3].sort()                                                                                                                        
-% => [3, 4, 5, 7]                                                                                                                            
-%                                                                                                                                            
-% # Es kann auch eine benutzerdefinierte Sortierfunktion                                                                                     
-% # angegeben werden                                                                                                                         
-% >> [ "string",  "rails",  "ruby" ].sort_by{ |item| item.length }                                                                           
-% => ["ruby", "rails", "string"]                                                                                                             
-%                                                                                                                                            
-% # Die Quadratzahlen von 1 bis 5                                                                                                            
-% >> (1..5).map{|element| element * 2}                                                                                                       
-% => [2, 4, 6, 8, 10]                                                                                                                        
-%                                                                                                                                            
+% >> adder = lambda { |a,b|  a + b }
+% >> adder.call(1,2)
+% => 3
+%
+% # Sortiere nach Standardvergleichsoperator
+% >> [4,5,7,3].sort()
+% => [3, 4, 5, 7]
+%
+% # Es kann auch eine benutzerdefinierte Sortierfunktion
+% # angegeben werden
+% >> [ "string",  "rails",  "ruby" ].sort_by{ |item| item.length }
+% => ["ruby", "rails", "string"]
+%
+% # Die Quadratzahlen von 1 bis 5
+% >> (1..5).map{|element| element * 2}
+% => [2, 4, 6, 8, 10]
+%
 
 \begin{ruby}[label=IRB]
 \PY{g+gp}{>> }\PY{n}{adder} \PY{o}{=} \PY{n+nb}{lambda} \PY{p}{\PYZob{}} \PY{o}{|}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{o}{|}  \PY{n}{a} \PY{o}{+} \PY{n}{b} \PY{p}{\PYZcb{}}
@@ -93,25 +93,25 @@ Im letzten Beispiel wird demonstriert, wie die Funktion \texttt{map} verwendet w
 
 \paragraph{Typ- und Objektsystem}
 Wie schon erwähnt, sind bei Ruby\index{Ruby} alle Datentypen ein Objekt. Dies schließt insbesondere Klassen und primitive Datentypen mit ein, wie wir im folgenden Beispiel sehen können
-% SNIPPET: 
-% >> 2.class                                                                                                                                 
-% => Fixnum                                                                                                                                  
-% >> Fixnum.class                                                                                                                            
-% => Class                                                                                                                                   
-% >> Class.class                                                                                                                             
-% => Class                                                                                                                                   
-%                                                                                                                                            
-% >> Fixnum.superclass                                                                                                                       
-% => Integer                                                                                                                                 
-% >> Fixnum.ancestors                                                                                                                        
-% => [Fixnum, Integer, Precision, Numeric, Comparable, Object, Kernel]                                                                       
-%                                                                                                                                            
+% SNIPPET:
+% >> 2.class
+% => Fixnum
+% >> Fixnum.class
+% => Class
+% >> Class.class
+% => Class
+%
+% >> Fixnum.superclass
+% => Integer
+% >> Fixnum.ancestors
+% => [Fixnum, Integer, Precision, Numeric, Comparable, Object, Kernel]
+%
 \begin{ruby}[label=IRB]
-\PY{g+gp}{>> }\PY{l+m+mi}{2}\PY{o}{.}\PY{n}{class} 
+\PY{g+gp}{>> }\PY{l+m+mi}{2}\PY{o}{.}\PY{n}{class}
 \PY{g+go}{=> Fixnum}
-\PY{g+gp}{>> }\PY{n+no}{Fixnum}\PY{o}{.}\PY{n}{class} 
+\PY{g+gp}{>> }\PY{n+no}{Fixnum}\PY{o}{.}\PY{n}{class}
 \PY{g+go}{=> Class}
-\PY{g+gp}{>> }\PY{n+no}{Class}\PY{o}{.}\PY{n}{class} 
+\PY{g+gp}{>> }\PY{n+no}{Class}\PY{o}{.}\PY{n}{class}
 \PY{g+go}{=> Class}
 
 \PY{g+gp}{>> }\PY{n+no}{Fixnum}\PY{o}{.}\PY{n}{superclass}
@@ -124,8 +124,9 @@ Wie schon erwähnt, sind bei Ruby\index{Ruby} alle Datentypen ein Objekt. Dies s
 
 Das Literal \texttt{2} ist somit ein Objekt vom Typ \texttt{Fixnum}. Die Klasse Fixnum ist ihrerseits vom Typ \texttt{Class}. Da Ruby\index{Ruby} sowohl (Einfach-)Ableitungen als auch sogenannte Includes bzw. Mixins unterstützt, kann eine Klasse auch eine Menge von "`Vorfahren"' haben. Die gezeigte Klasse \texttt{Fixnum} verfügt somit standardmäßig sogar über 7 Oberklassen.
 
-\borderquote{"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."}{James Whitcomb Riley}
+
 Ruby\index{Ruby} ist \textbf{dynamisch stark} typisiert. \textit{Dynamisch} bedeutet, dass die Prüfung des Typs einer Variable zur Laufzeit stattfindet und sich dieser Typ ausschließlich aus dem aktuell beinhalteten Objekt ergibt. Durch die \textit{starke} Typisierung ist es aber nicht möglich, invalide Operationen auf typ-inkompatible Objekte auszuführen, beispielsweise eine Addition von Integer mit String. \\
+\borderquote{"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."}{James Whitcomb Riley}
 Rubys Typsystem ist "`Duck-typed"', d.h. dass die Semantiken eines Objekts nicht durch seine Klasse und Ableitungshierarchie, sondern seine Methoden und Attributen bestimmt wird.
 
 Ruby\index{Ruby} verfügt über lexikalische und dynamische Bindung\footnote{
@@ -133,19 +134,19 @@ Ruby\index{Ruby} verfügt über lexikalische und dynamische Bindung\footnote{
 \textbf{Dynamic Scoping}: Variablen-Bindung kann nur im Moment der Ausführung des Codes festgestellt werden}, letztere wird allerdings seltener verwendet. In der Basissyntax verwendet Ruby\index{Ruby} statische Bindung. Es existiert eine im Ruby-Core enthaltene Bibliothek \texttt{Dynamic} zum dynamischen binden, falls dies gewünscht sein sollte.
 
 
-\paragraph{Reflektion und Introspection} Sprachen mit Reflektion erlauben es ihre Strukturen zur Laufzeit zu analysieren und zu verändern. So können in Ruby\index{Ruby} z.B. Objekte Informationen über ihre vorhandenen Instanzvariablen oder Methoden abfragen. Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern. 
+\paragraph{Reflektion und Introspection} Sprachen mit Reflektion erlauben es ihre Strukturen zur Laufzeit zu analysieren und zu verändern. So können in Ruby\index{Ruby} z.B. Objekte Informationen über ihre vorhandenen Instanzvariablen oder Methoden abfragen. Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern.
 
 % SNIPPET: [language=Ruby,label=Ruby Beispiel offene Klassen,caption=Ruby Beispiel offene Klassen]
-% >> class String                                                                                                                            
-% >>   def remove_whitespace                                                                                                                 
-% >>     self.gsub(/\s+/, "")                                                                                                                
-% >>   end                                                                                                                                   
-% >> end                                                                                                                                     
-%                                                                                                                                            
-% >> "Dies ist ein Test".remove_whitespace                                                                                                   
-% => "DiesisteinTest"                                                                                                                        
-%                                                                                                                                            
-%                                                                                                                                         
+% >> class String
+% >>   def remove_whitespace
+% >>     self.gsub(/\s+/, "")
+% >>   end
+% >> end
+%
+% >> "Dies ist ein Test".remove_whitespace
+% => "DiesisteinTest"
+%
+%
 \begin{ruby}[label=IRB]
 \PY{g+gp}{>> }\PY{k}{class} \PY{n+nc}{String}
 \PY{g+gp}{>> }  \PY{k}{def} \PY{n+nf}{remove\PYZus{}whitespace}
@@ -162,10 +163,10 @@ Ruby\index{Ruby} verfügt über lexikalische und dynamische Bindung\footnote{
 \paragraph{Generische Programmierung und Aspekte der Metaprogrammierung}
 Metaprogrammierung umfasst die Analyse, Transformation und Generierung von Objektprogrammen durch Metaprogramme \citep{herrmann_2005}.  Sie ermöglicht es, Probleme effektiv zu lösen, die andernfalls nur mit erheblichem Aufwand oder gar nicht zu lösen sind.\\
 Ein beliebtes Idiom innerhalb der Ruby-Community ist es, verwendete Methoden auf Basis des Methodennamens zur Laufzeit zu erstellen (Generierung). Dies verwendet z.B. das beliebte ORM\footnote{\glossar{ORM}}-Datenbank\index{Datenbank}framework ActiveRecord\index{ActiveRecord}, um einfache SQL-Statements anhand des Funktionsnamens zu erstellen (Ruby on Rails\index{Ruby-on-Rails} verwendet standardmäßig ActiveRecord als Schnittstelle zur Datenbank).
-% SNIPPET: 
-% >> Person.find_by_first_name("Stefan")                                                                                                     
-% #  Person Load (0.2ms)  SELECT persons.* FROM persons                                                                                      
-% #    WHERE users.first_name = 'Stefan' LIMIT 1       
+% SNIPPET:
+% >> Person.find_by_first_name("Stefan")
+% #  Person Load (0.2ms)  SELECT persons.* FROM persons
+% #    WHERE users.first_name = 'Stefan' LIMIT 1
 \begin{ruby}[label=IRB]
 \PY{g+gp}{>> }\PY{n+no}{Person}\PY{o}{.}\PY{n}{find\PYZus{}by\PYZus{}first\PYZus{}name}\PY{p}{(}\PY{l+s+s2}{"}\PY{l+s+s2}{Stefan}\PY{l+s+s2}{"}\PY{p}{)}
 \PY{g+go}{#  Person Load (0.2ms)  SELECT persons.* FROM persons}
@@ -196,26 +197,26 @@ Für eine weitere Vertiefung sei das Buch "`Programming Ruby 1.9"' empfohlen, da
 \section{Diskussion}
 
 % Typunsicherheit, Geschwindigkeitsnachteil
-\randbem{Dynamische Typisierung und Performanz}
-Dynamisch-typisierte Sprachen, wie Ruby\index{Ruby}, haben gegenüber statisch-typisierten Sprachen einige Nachteile. Oft wird der Geschwindigkeitsnachteil angesprochen, den der Prozess des Interpretierens und die dynamische Typisierung verursachen. 
+
+Dynamisch-typisierte Sprachen, wie Ruby\index{Ruby}, haben gegenüber statisch-typisierten Sprachen einige Nachteile.\randbem{Dynamische Typisierung und Performanz} Oft wird der Geschwindigkeitsnachteil angesprochen, den der Prozess des Interpretierens und die dynamische Typisierung verursachen.
 Der genaue Faktor variiert allerdings je nach Algorithmus und Implementierung, stark. Ein beliebter Benchmark, "`shootout.alioth"', vergleicht beliebte Algorithmen der Informatik, implementiert in verschiedenen Sprachen, miteinander. So ergibt sich z.B. in der Gegenüberstellung von Ruby\index{Ruby} mit C ein 4-fach bis 300-fach langsamere Ausführungszeit. Dem gegenüber steht allerdings nur die Hälfte bis $1/7$ der Menge an benötigtem Code \citep{computer_language_benchmarks_game_ruby_2011}. \\
 Wichtig ist auch die verwendete Laufzeitumgebung. Neben der Referenzimplementierung von Matsumotu (Ruby MRI), existieren noch JRuby, eine Implementierung auf Basis der Java Virtuellen Maschine und Rubinius. Die letzten beiden unterstützen auch eine sogenannte Just-in-time (JIT)-Kompilierung zur Verbesserung der Performanz bei längerer Ausführungszeit des Programms. Desweiteren gibt es gerade im Bereich Laufzeitoptimierung viel Bewegung innerhalb der Ruby-Implementierungen und fast alle Ruby-Implementierungen nehmen stetig an Geschwindigkeit zu \citep{antonio_cangiano_great_2010}.
 
-\randbem{... und fehlende Typsicherheit}
-Allerdings bleiben Fehler, die der Compiler bereits entdeckt hätte, bis zur Ausführung oder schlimmstenfalls noch länger unentdeckt. Dazu gehören z.B. Tippfehler, bei denen der Wert einer nicht deklarierten Variable ausgelesen wird. Im Gegensatz zu z.B. PHP, wirft Ruby\index{Ruby} aber dann eine Exception.\\
-Auf das Testen hat dies eine direkte Auswirkung. Viele Meinungen belegen, dass eine dynamisch typisierte Sprache mehr Tests benötigt, als eine statisch typisierte \citep{daniel_spiewak_dynamic_2010}. 
+
+Allerdings\randbem{... und fehlende Typsicherheit} bleiben Fehler, die der Compiler bereits entdeckt hätte, bis zur Ausführung oder schlimmstenfalls noch länger unentdeckt. Dazu gehören z.B. Tippfehler, bei denen der Wert einer nicht deklarierten Variable ausgelesen wird. Im Gegensatz zu z.B. PHP, wirft Ruby\index{Ruby} aber dann eine Exception.\\
+Auf das Testen hat dies eine direkte Auswirkung. Viele Meinungen belegen, dass eine dynamisch typisierte Sprache mehr Tests benötigt, als eine statisch typisierte \citep{daniel_spiewak_dynamic_2010}.
 
 
-\randbem{Vorteile aus der dynamischen Typisierung}
-Ein Vorteil des Interpretierens, also der Übersetzung zur Laufzeit, ist eine hohe Plattformunabhängigkeit und ein leichterer Buildprozess, da das Kompilieren entfällt. 
+
+Ein Vorteil des Interpretierens,\randbem{Vorteile aus der dynamischen Typisierung also der Übersetzung zur Laufzeit, ist eine hohe Plattformunabhängigkeit und ein leichterer Buildprozess, da das Kompilieren entfällt.
 Verfechter dynamischer Sprachen erklären weiterhin, dass diese sich ideal für prototypische Implementierungen eignen, da sich Anforderungen ständig ändern können. Weiterhin hätten Programme dynamischer Sprache eine potenziell hohe Wiederverwendbarkeit und eine höhere Lesbarkeit \citep{meijer_static_2005} \citep{ousterhout_scripting:_1998}.
 
 
-% 
+%
 % All diese Methoden können, richtig angewendet, zur Verbesserung der Lesbarkeit der Programme und damit zur Erhöhrung der Wartbarkeit, führen.
-% 
+%
 % Auch das sehr beliebte Testframework Rspec, verwendet Metaprogrammierung, um Testfälle und Zusicherungen wie fast in der englischen Sprache zu formulieren. Dazu werden sämtliche Objekte von Ruby um Funktionen erweitert. Dies ist möglich, da die Klasse "`Objekt"', die Basisklasse (fast) aller Ruby-Klasse ist, um diese Methoden erweitert wurde.
-% 
+%
 
 
 
