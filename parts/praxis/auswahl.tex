@@ -10,7 +10,7 @@ Diese Bedürfnisse umfassen
  \item Arbeit meist aus der Ferne ohne direkte Kommunikation mit den anderen Teammitgliedern. Daraus folgt ein äußerst selbstständiger Arbeitsstil
  \item möglichst fehlerfreie Software
  \item Kontinuierliche Integration
- \item pragmatisches Testen, 100\% \glossar{Testabdeckung} ist nicht erforderlich. Wichtige Systemlogiken, wie Bezahlvorgang und Suche müssen dagegen getestet werden. Offensichtliche \glossar{CRUD}-Operationen müssen nicht getestet werden
+ \item pragmatisches Testen, 100\% \glossar{Testabdeckung}\index{Test!Testabdeckung} ist nicht erforderlich. Wichtige Systemlogiken, wie Bezahlvorgang und Suche müssen dagegen getestet werden. Offensichtliche \glossar{CRUD}-Operationen müssen nicht getestet werden
 
 \end{itemize}
 
@@ -63,9 +63,9 @@ Für ein unmittelbares Feedback sind auch automatische Test-Runner erwünscht. H
 Durch \textbf{spork} lässt sich eine \glossar{rails}-Anwendung starten und im Hintergrund halten, so dass eine erneute Testausführung deutlich schneller von statten geht, als wenn die komplette Anwendung neu geladen werden müsste.
 
 
-\paragraph{Werkzeuge für Code-Metriken}  Für die Generierung von \glossarpl{metrik} dient das \glossar{gem} \textbf{metric-fu}, welches seinerseits über verschiedene Code-Metriken Zusammenfassungen bildet und diese auch in der zeitlichen Entwicklung darstellt. Darunter fallen z.B. die Zyklomatische Komplexität, den Grad der Duplikationen, verschiedene Code-Smells, Nutzung der Versionsverwaltung und \glossar{Testabdeckung}.
+\paragraph{Werkzeuge für Code-Metriken}  Für die Generierung von \glossarpl{metrik} dient das \glossar{gem} \textbf{metric-fu}, welches seinerseits über verschiedene Code-Metriken Zusammenfassungen bildet und diese auch in der zeitlichen Entwicklung darstellt. Darunter fallen z.B. die Zyklomatische Komplexität, den Grad der Duplikationen, verschiedene Code-Smells, Nutzung der Versionsverwaltung und \glossar{Testabdeckung}\index{Test!Testabdeckung}.
 
-Die Testabdeckung wird durch \textbf{simple-cov} berechnet, welches eine C0-Code-Coverage bestimmt.
+Die Testabdeckung\index{Test!Testabdeckung} wird durch \textbf{simple-cov} berechnet, welches eine C0-Code-Coverage bestimmt.
 
 % \paragraph{Texteditoren} Innerhalb der Entwickler der pludoni GmbH besteht ein Konsens für die Verwendung von \textbf{vim}, da hier bereits eine große Basis an Plugins gesammelt wurde, die die Entwicklung von Webanwendungen und insbesondere Ruby on Rails\index{Ruby-on-Rails} erleichtern. Ein weiterer Vorteil ist es, dass vim ohne ein graphisches Interface auskommt, und so direkt von der Shell auf dem Webserver ausgeführt werden kann.\\
 % Nichtsdestotrotz sei es zukünftigen Entwicklern freigestellt, eine IDE, wie Eclipse mit dem Plugin RadRails oder Netbeans zu verwenden.
