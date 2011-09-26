@@ -55,7 +55,7 @@ Ziel des Unittests ist es, frühzeitig \glossar{fehler} im Code zu finden. Der U
 
 
 
-Unittests werden fast immer durch sog. \glossar{testrunner} automatisiert ausgeführt. Außerdem werden meist Test-Frameworks verwendet, welche häufige Aufgaben beim Testen unterstützen, z.B. Auswertung der Testergebnisse, Integration der Tests mit dem Programmcode, Anlage und Löschen von Testdaten.  Eine der meist-verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test::Unit/MiniTest in Ruby\index{Ruby}, JUnit in Java oder NUnit in C\#.
+Unittests werden fast immer durch sog. \glossar{testrunner} automatisiert ausgeführt. Außerdem werden meist Test-Frameworks verwendet, welche häufige Aufgaben beim Testen unterstützen, z.B. Auswertung der Testergebnisse, Integration der Tests mit dem Programmcode, Anlage und Löschen von Testdaten.  Eine der meist-verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test/Unit\index{Test/Unit-Framwork}/MiniTest in Ruby\index{Ruby}, JUnit in Java oder NUnit in C\#.
 
 Ein solcher Test besteht in der Regel aus 4 Teilen \citep{rappin_rails_2011} \citep[Karte 46]{langr_agile_2011}:
 \begin{enumerate}
@@ -75,17 +75,17 @@ Ziel des Komponententest ist es, verschiedene Units in Kombination als eine voll
 
   Ein \textbf{Stub} ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfalls ersetzt. Im Beispiel ist dies der Bezahlprozess einer Bestellung.
 % -------------------------------
-% SNIPPET: 
-%                                                                                                                                                                                                                                            
-% def test_report_failed_payment                                                                                                                                                                                                             
-%   Payment.stubs(:pay).returns(true)                                                                                                                                                                                                        
-%                                                                                                                                                                                                                                            
-%   bestellung = Bestellung.new()                                                                                                                                                                                                            
-%   bestellung.abschliessen()                                                                                                                                                                                                                
-%                                                                                                                                                                                                                                            
-%   assert bestellung.successful?                                                                                                                                                                                                            
-% end                                                                                                                                                                                                                                        
-%                                                                                                                                                                                                                                            
+% SNIPPET:
+%
+% def test_report_failed_payment
+%   Payment.stubs(:pay).returns(true)
+%
+%   bestellung = Bestellung.new()
+%   bestellung.abschliessen()
+%
+%   assert bestellung.successful?
+% end
+%
 \begin{ruby}[label=test\_bestellung.rb]
 \PY{k}{def} \PY{n+nf}{test\PYZus{}report\PYZus{}failed\PYZus{}payment}
   \PY{n+no}{Payment}\PY{o}{.}\PY{n}{stubs}\PY{p}{(}\PY{l+s+ss}{:pay}\PY{p}{)}\PY{o}{.}\PY{n}{returns}\PY{p}{(}\PY{k+kp}{true}\PY{p}{)}
@@ -103,14 +103,14 @@ Ziel des Komponententest ist es, verschiedene Units in Kombination als eine voll
 
   Als Ergänzung dazu gibt es \textbf{Mocks}. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst aber als eine Zusicherung. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich innerhalb des Tests aufgerufen wurde.
 
-  Hier z.B. ein Mock um einen Netzwerkzugriff zu testen und abzufangen. 
-% SNIPPET: 
-%                                                                                                                                                                                                                                            
-% def test_always_fail                                                                                                                                                                                                                       
-%   HTTP.expects(:get).with("http://www.google.com")                                                                                                                                                                                         
-%   HTTP.get("http://www.example.com")                                                                                                                                                                                                       
-% end                                                                                                                                                                                                                                        
-%                                                                                                                                                                                                                                            
+  Hier z.B. ein Mock um einen Netzwerkzugriff zu testen und abzufangen.
+% SNIPPET:
+%
+% def test_always_fail
+%   HTTP.expects(:get).with("http://www.google.com")
+%   HTTP.get("http://www.example.com")
+% end
+%
 \begin{ruby}[label=test\_http.rb]
 \PY{k}{def} \PY{n+nf}{test\PYZus{}always\PYZus{}fail}
   \PY{n+no}{HTTP}\PY{o}{.}\PY{n}{expects}\PY{p}{(}\PY{l+s+ss}{:get}\PY{p}{)}\PY{o}{.}\PY{n}{with}\PY{p}{(}\PY{l+s+s2}{"}\PY{l+s+s2}{http://www.google.com}\PY{l+s+s2}{"}\PY{p}{)}

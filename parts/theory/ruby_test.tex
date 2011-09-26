@@ -2,9 +2,9 @@
 \section{Testframeworks für Ruby}
 \epigraph{Ruby has laid the way in having a test-infected culture around the language}{Nathaniel Talbott (Entwickler von Test/Unit)}
 
-Rails\index{Ruby-on-Rails} liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit mit. In der Version 1.9.x bringt Ruby\index{Ruby} das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest ist Cucumber, welches eine Business-readable \glossar{DSL}\footnote{Eine Domain-Spezifische-Sprache, welche durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen.
+Rails\index{Ruby-on-Rails} liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit\index{Test/Unit-Framwork} mit. In der Version 1.9.x bringt Ruby\index{Ruby} das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest ist Cucumber, welches eine Business-readable \glossar{DSL}\footnote{Eine Domain-Spezifische-Sprache, welche durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen.
 \subsection{Test/Unit}
-Test/Unit basiert auf dem xUnit-, bzw. SUnit-Design von Kent Beck, und ist für Nutzer von z.B. JUnit oder NUnit leicht nachvollziehbar. 
+Test/Unit\index{Test/Unit-Framwork} basiert auf dem xUnit-, bzw. SUnit-Design von Kent Beck, und ist für Nutzer von z.B. JUnit oder NUnit leicht nachvollziehbar. 
 
 Für eine zu testende Klasse wird analog eine Testklasse erstellt. Diese trägt per Definition denselben Namen wie die zu testende Klasse mit einem \texttt{Test} am Anfang. Um z.B. eine Klasse \texttt{Job} zu testen, wird eine Datei \texttt{job\_test.rb}  erstellt. Dort wiederrum wird eine Klasse mit Namen \texttt{TestJob} definiert. 
 
@@ -99,7 +99,7 @@ Neben Ruby\index{Ruby} wird auch die Implementierung der Testschritte in Java un
 \paragraph{Testen von Webanwendungen}
 Eine Einsatzmöglichkeit von Cucumber, besonders im Zusammenhang mit \glossar{rails}, ist das Testen von Webanwendungen. Dabei ist es üblich, einen Browser zu automatisieren bzw. simulieren (vgl. Abschnitt \ref{sec:acceptance}), um den Test so authentisch am echten Nutzungsprozess wie möglich zu orientieren. 
 
-Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen, verwenden wir verschiedene Middlewars. Wir haben uns für Capybara entschieden, welches sehr flexibel bei der Wahl der Browser-Engine ist. Den eigentlichen Test, d.h. die Auswertung der Zusicherung kann durch ein beliebiges Testframework durchgeführt werden, in unserem Falle wieder mit Test/Unit. Durch Capybara haben wir nun die Möglichkeit, zwischen einem simulierten Browser (z.B. RackTest) und automatisierten Browser (Firefox, Chrome, etc. durch eine weitere Middleware: Selenium) je nach Bedarf zu wechseln, ohne viele am Testcode zu ändern.
+Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen, verwenden wir verschiedene Middlewars. Wir haben uns für Capybara entschieden, welches sehr flexibel bei der Wahl der Browser-Engine ist. Den eigentlichen Test, d.h. die Auswertung der Zusicherung kann durch ein beliebiges Testframework durchgeführt werden, in unserem Falle wieder mit Test/Unit\index{Test/Unit-Framwork}. Durch Capybara haben wir nun die Möglichkeit, zwischen einem simulierten Browser (z.B. RackTest) und automatisierten Browser (Firefox, Chrome, etc. durch eine weitere Middleware: Selenium) je nach Bedarf zu wechseln, ohne viele am Testcode zu ändern.
 \begin{figure}[htbp]
  \centering
  \includegraphics[width=\linewidth]{./diagrams/cucumber.pdf}
