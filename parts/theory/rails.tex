@@ -122,7 +122,7 @@ Rails\index{Ruby-on-Rails} bietet ausgezeichnete Vorraussetzungen zum Softwarete
 
 Rails\index{Ruby-on-Rails} unterstützt verschiedene Testarten out-of-the-box
 \begin{description}
- \item[Unittests] oder Modelltests (model test)\\
+ \item[Unittest\index{Test!Unittest}s] oder Modelltests (model test)\\
  Testziel: alle (komplexeren) Methoden die das Modell anbietet, seine Validierungen und Beziehungen zu anderen Objekten
  \item[Funktionale Tests] Untersuchungsgegenstand sind die Controller. \\
  Testziel: Getestet wird meist der Arbeitsablauf innerhalb eines Controllers, also Weiterleitungen, Benachrichtigungen und welches Template gerendert wird.
@@ -130,7 +130,7 @@ Rails\index{Ruby-on-Rails} unterstützt verschiedene Testarten out-of-the-box
  \item[Integrationstests] es wird ein Browser simuliert, der von außen auf die Applikation zugreift
  Zielstellung: Testen komplexer Interaktionen zwischen verschiedenen Teilen der Software\\
  Beispiel: Ein User loggt sich ein und legt einen neuen Job an
- \item[Performanz-Tests] Eine Testart, die alle Methoden aus Unittests und Funktionalen Tests beinhaltet\\
+ \item[Performanz-Tests] Eine Testart, die alle Methoden aus Unittest\index{Test!Unittest}s und Funktionalen Tests beinhaltet\\
  Zielstellung: Herausfinden von Performanz-Flaschenhälsen in allen Ebenen. \\
  Beispiel: Es werden 1000 Jobs generiert und geprüft, ob die Anzeige schnell genug läuft
 \end{description}
