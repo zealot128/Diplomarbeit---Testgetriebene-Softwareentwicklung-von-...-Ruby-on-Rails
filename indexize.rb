@@ -1,0 +1,69 @@
+#!/usr/bin/env ruby
+
+
+
+require "rubygems"
+require "colorize"
+require "optparse"
+require "action_view"
+require "readline"
+include ActionView::Helpers::TextHelper
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{__FILE__} [options]"
+
+  opts.on("-p", "--pattern PATTERN", "Das Pattern das ersetzt wird, Case sensitiv") do |v|
+    options[:pattern] = v
+  end
+  opts.on("-i", "--index INDEX", "Der Indexbezeichner, z.B. Test oder 'Test!Umgebung'") do |v|
+    options[:index] = v
+  end
+end.parse!
+raise ArgumentError if options[:pattern].nil?
+raise ArgumentError if options[:index].nil?
+
+def ask(frage)
+  answer = Readline.readline(frage).strip
+  puts "Answer was: '#{answer}'"
+  answer
+end
+
+def preview(line, pattern)
+  puts excerpt(line, pattern).gsub(pattern, pattern.dup.light_yellow)
+end
+
+def user_confirmed(index_line)
+  ask("Fuege #{index_line} (einmal) hinzu? (y|[n])".blue) == "y"
+end
+
+index_line = "\\index{#{options[:index]}}"
+
+files = Dir.glob("**/**.tex")
+files.each do |file|
+  puts "Datei: #{file}".green
+  text = open(file).read
+
+  i = 1
+  out = []
+  changed = false
+  text.each_line do |line|
+
+    if line.match options[:pattern]
+      puts "Zeile: #{i}"
+      preview(line, options[:pattern])
+      if user_confirmed(index_line)
+        changed = true
+        line.sub! options[:pattern], options[:pattern] + index_line
+        puts line
+      end
+    end
+    out << line
+    i=i+1
+  end
+  if changed
+    b = File.open(file, "w+") {|f| f.write{out.join}}
+    puts "file written #{b}"
+  end
+
+end
