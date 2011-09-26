@@ -23,7 +23,7 @@
 
 
 \section{Ablauf}
-  Ziel ist es, vor der Implementation eines Codes, einen Unittest\index{Test!Unittest} (vgl. Abschnitt \ref{sec:testUnit}) zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test besteht. Als Letztes folgt die Refaktorisierung\index{Refaktorisierung}, bei TDD\index{TDD} als Designphase genutzt. Danach beginnt der Kreislauf von neuem.
+  Ziel ist es, vor der Implementation eines Codes, einen Unittest\index{Test!Unittest} (vgl. Abschnitt \ref{sec:testUnit}) zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test \index{Test}besteht. Als Letztes folgt die Refaktorisierung\index{Refaktorisierung}, bei TDD\index{TDD} als Designphase genutzt. Danach beginnt der Kreislauf von neuem.
 
   \begin{figure}[htbp]
  \centering
@@ -35,14 +35,14 @@
   Im Detail sind das also folgende Phasen, vgl. Abbildung \ref{fig:redgreenrefactor}:
   \begin{enumerate}
    \item Schreibe einen neuen \glossar{test}. Dies kann der erste eines neuen Features sein, oder aber ein weiterer Test, um das aktuelle Feature umzusetzen
-   \item \textbf{Red}: Führe alle Tests aus, um sicherzugehen, dass der neue Test fehlschlägt. Andernfalls ist der Test überflüssig, da er keine neuen Informationen über das System gibt
-   \item \textbf{Green}: Nachdem der Test fehlschlägt, implementiere nun den einfachsten Code, damit der Test besteht\\
+   \item \textbf{Red}: Führe alle Tests aus, um sicherzugehen, dass der neue Test \index{Test}fehlschlägt. Andernfalls ist der Test überflüssig, da er keine neuen Informationen über das System gibt
+   \item \textbf{Green}: Nachdem der Test \index{Test}fehlschlägt, implementiere nun den einfachsten Code, damit der Test besteht\\
    Dies kann ausdrücklich auch eine Fake-Implementierung sein, also z.B. die Rückgabe eines konstanten Wertes anstelle einer Berechnung. Wichtig ist, dass diese Phase so schnell wie möglich verlassen wird.
-   \item \textbf{Refactor}: Nachdem der Test bestanden wird, folgt nun die \textbf{wichtigste Phase}, die Refaktorisierung\index{Refaktorisierung}sphase.\\
+   \item \textbf{Refactor}: Nachdem der Test \index{Test}bestanden wird, folgt nun die \textbf{wichtigste Phase}, die Refaktorisierung\index{Refaktorisierung}sphase.\\
   \end{enumerate}
 
 
-  Ein genau spezifizierter Ablauf ist in Abbildung \ref{fig:tddflow} zu finden. Auch dort ist zu sehen, dass die Testerstellungs- und Refaktorisierung\index{Refaktorisierung}sphase strikt getrennt sind. Innerhalb ersterer solle nur möglichst schnell ein funktionierender Test erstellt und zum Bestehen gebracht werden. Die eigentliche Arbeit findet dann innerhalb der Refaktorisierungsphase statt, in der die wahrscheinlich suboptimale Implementierung verbessert wird, indem iterativ Design hinzugefügt wird.
+  Ein genau spezifizierter Ablauf ist in Abbildung \ref{fig:tddflow} zu finden. Auch dort ist zu sehen, dass die Testerstellungs- und Refaktorisierung\index{Refaktorisierung}sphase strikt getrennt sind. Innerhalb ersterer solle nur möglichst schnell ein funktionierender Test \index{Test}erstellt und zum Bestehen gebracht werden. Die eigentliche Arbeit findet dann innerhalb der Refaktorisierungsphase statt, in der die wahrscheinlich suboptimale Implementierung verbessert wird, indem iterativ Design hinzugefügt wird.
   \begin{figure}[hp]
  \centering
  \includegraphics[width=0.6\textwidth]{./diagrams/tdd-flowchart.pdf}
@@ -79,7 +79,7 @@
    \item Behebe den Fehler im Programmcode
    \item Führe alle Tests aus
   \end{enumerate}
-  Somit wird sichergestellt, das jeder bisher gefundene Fehler durch einen Test abgesichert wird, und jeder Programmfehler nur einmal auftritt.
+  Somit wird sichergestellt, das jeder bisher gefundene Fehler durch einen Test \index{Test}abgesichert wird, und jeder Programmfehler nur einmal auftritt.
 
   \paragraph{Testen von privaten Methoden/Attributen} Da die objektorienterte Modell\index{Rails!Modell}ierung das Konzept des Information Hiding und der Kapselung vorsieht, soll der interne Aufbau einer Klasse nach außen nicht sichtbar sein. Dies erreicht man mit den privaten Methoden und Attributen, die nur von Klasseneigenen Methoden benutzt werden dürfen. Da Tests aber von außen auf eine Klasse zugreifen, stellt dies scheinbar ein Problem dar. In einigen Sprachen löst man sich dieses Problem mittels Reflections, um über Umwege auf private Felder zuzugreifen. \\
   Dies spielt allerdings nur für das nachträgliche Testen von Legacy-Anwendungen eine Rolle. TDD\index{TDD} in der Reinform betrieben sieht keine dedizierten Tests von privaten Methoden oder Attributen vor, da diese ausschließlich durch Refaktorisierung\index{Refaktorisierung} enstanden sein könnten \citep{caroli_agile_2008}. Die Tests der privaten Methoden erfolgt also nur implizit über das Testen der öffentlich-sichtbaren Methoden.
@@ -161,8 +161,8 @@ Die Entwicklung von Unittest\index{Test!Unittest}s lässt sich aber einbetten, w
  \item Implementiere das Feature. Da die Features teilweise komplex sind, verfahre nun nach dem TDD\index{TDD}-Schema, um benötigte Klassen zu entwickeln, die notwendig sind, um das Feature zu realisieren:
   \begin{enumerate}
    \item Schreibe einen Unittest\index{Test!Unittest}
-   \item Prüfe, ob der Test fehlschlägt, andernfalls zurück zu 1.
-   \item Implementiere mit so wenig wie Code möglich, so dass der Test besteht
+   \item Prüfe, ob der Test \index{Test}fehlschlägt, andernfalls zurück zu 1.
+   \item Implementiere mit so wenig wie Code möglich, so dass der Test \index{Test}besteht
    \item Refaktorisiere
   \end{enumerate}
 \end{enumerate}

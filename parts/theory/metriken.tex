@@ -27,7 +27,7 @@ Diese Größe erhält eine größere Aussage, wenn man sie ins Verhältnis z.B. 
 
 In einem normalen Programm ist die Zyklomatische Komplexität die Anzahl der Entscheidungspunkte + 1 \citep[S. 314]{mccabe_complexity_1976}.
 
-Ein daraus abgeleitetes Testverfahren "`Basis Path Testing"' schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte, wie die Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) (Mehr zu Testabdeckung\index{Test!Testabdeckung} im nächsten Unterabschnitt).
+Ein daraus abgeleitetes Test\index{Test}verfahren "`Basis Path Testing"' schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte, wie die Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) (Mehr zu Testabdeckung\index{Test!Testabdeckung} im nächsten Unterabschnitt).
 
 
 \begin{description}
@@ -50,11 +50,11 @@ Weitere Informationen zu Smell\index{Code-Smell}s und deren Beseitigung finden s
 
 \section{Code-Metriken für Tests}
 \label{sec:metrics}
-Tests haben (auch) die Aufgabe, ein Programm oder Codestück auf Korrektheit\footnote{Korrektheit gegenüber den Spezifikationen, keine mathematische Korrektheit} zu untersuchen. Die Tests allerdings haben ihrerseits meistens keine Tests. Um ein Mittel zu haben, Tests zumindest in ihrer Nützlichkeit zu untersuchen, existieren auch hier verschiedene Code-Metriken.\\
-Tests sind in erster Linie natürlich auch Code und können mit den oben genannten Metriken beurteilt werden. Zudem gibt es aber einige weitere exklusive Methoden, Qualität von Tests zu beurteilen.
+Test\index{Test}s haben (auch) die Aufgabe, ein Programm oder Codestück auf Korrektheit\footnote{Korrektheit gegenüber den Spezifikationen, keine mathematische Korrektheit} zu untersuchen. Die Tests allerdings haben ihrerseits meistens keine Tests. Um ein Mittel zu haben, Tests zumindest in ihrer Nützlichkeit zu untersuchen, existieren auch hier verschiedene Code-Metriken.\\
+Test\index{Test}s sind in erster Linie natürlich auch Code und können mit den oben genannten Metriken beurteilt werden. Zudem gibt es aber einige weitere exklusive Methoden, Qualität von Tests zu beurteilen.
 
 \subsection{Verhältnis von Lines of Test zu Lines of Code}
-Neben den Lines of Code kann auf dieselbe (einfache) Weise die Anzahl der Codezeilen der Testklassen ermittelt werden. Daraus ermittelt sich das Verhältnis:
+Neben den Lines of Code kann auf dieselbe (einfache) Weise die Anzahl der Codezeilen der Test\index{Test}klassen ermittelt werden. Daraus ermittelt sich das Verhältnis:
 
 \shadebox{
   $$    R = \frac{\text{Lines of Code}}{\text{Lines of Test}}$$
@@ -69,14 +69,14 @@ Neben den Lines of Code kann auf dieselbe (einfache) Weise die Anzahl der Codeze
 
 }
 
-Sollte dieser deutlich kleiner als 1 sein, so ist dies ein Symptom für zu wenige Tests. Diese Zahl ist von dem Testframework und dem Programmframework stark abhängig. Gute Projekte sollten (deutlich) mehr Test-Code, als Programmcode besitzen \citep[S. 238]{hunt_pragmatic_1999}.
+Sollte dieser deutlich kleiner als 1 sein, so ist dies ein Symptom für zu wenige Test\index{Test}s. Diese Zahl ist von dem Testframework und dem Programmframework stark abhängig. Gute Projekte sollten (deutlich) mehr Test-Code, als Programmcode besitzen \citep[S. 238]{hunt_pragmatic_1999}.
 
 \subsection{Testausführungsabdeckung}
-Die Testabdeckung\index{Test!Testabdeckung}, misst den Grad, inwieweit ein Programm durch die Tests berührt wurde. Dabei wird die vorhandene Test-Suite\index{Test!Test-Suite} ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"', und 0\% "`Das Programm wurde durch die Tests überhaupt nicht berührt"'  Es wird festgehalten, welche Anweisungen, Zweige oder sogar Programmpfade ausgeführt wurden. Diese 3 Abstufungen, sind im Detail;
+Die Test\index{Test}abdeckung\index{Test!Testabdeckung}, misst den Grad, inwieweit ein Programm durch die Tests berührt wurde. Dabei wird die vorhandene Test-Suite\index{Test!Test-Suite} ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"', und 0\% "`Das Programm wurde durch die Tests überhaupt nicht berührt"'  Es wird festgehalten, welche Anweisungen, Zweige oder sogar Programmpfade ausgeführt wurden. Diese 3 Abstufungen, sind im Detail;
 \begin{description}
  \item[C0] (Anweisungsüberdeckung, Statement Coverage) ist die am einfachsten zu bestimmende Abdeckung. Dabei wird geprüft, ob jede Zeile des Quellcodes während der Codeausführung mindestens einmal ausgeführt wurde
  \item[C1] (Zweigüberdeckung, Branch Coverage) prüft zusätzlich, ob jeder Zweig jeder Zeile ausgeführt wurde. Dies ist wichtig,falls man ternäre Ausdrücke\footnote{if-then-else in einer Zeile: int a = (1==1) ? 5 : 3} verwendet
- \item[C2] (Pfadüberdeckung, Path Coverage) prüft, ob jeder mögliche Codepfad durchlaufen wurde. Ein Codepfad sei eine einmalige Abfolge von Zweigen innerhalb einer Funktion von Eintritt bis Rücksprung \citep{steve_cornett_code_1996}. So werden z.B. bei 10 Bedingungen 1024 Pfade generiert, denen bei einer 100\% Abdeckung auch 1024 Tests entgegenstehen müssten.
+ \item[C2] (Pfadüberdeckung, Path Coverage) prüft, ob jeder mögliche Codepfad durchlaufen wurde. Ein Codepfad sei eine einmalige Abfolge von Zweigen innerhalb einer Funktion von Eintritt bis Rücksprung \citep{steve_cornett_code_1996}. So werden z.B. bei 10 Bedingungen 1024 Pfade generiert, denen bei einer 100\% Abdeckung auch 1024 Test\index{Test}s entgegenstehen müssten.
  \end{description}
  Anmerkung: In der Literatur startet in einigen Fällen die Nummerierung bei C0 \citep{catherine_powell_abakas_2008}, in anderen Fällen aber bei C1 \citep{steve_cornett_code_1996}.
 
@@ -88,15 +88,15 @@ Die Testabdeckung\index{Test!Testabdeckung}, misst den Grad, inwieweit ein Progr
  Falls dem TDD\index{TDD}-Prozess minutiös gefolgt wurde, so müssste die C0 Testabdeckung\index{Test!Testabdeckung} immer 100\% sein \citep{beck_test_2002}. Für ein Rails\index{Ruby-on-Rails} Projekt sei es auch relativ leicht, 100\% oder nahe 100\% zu erreichen \citep{rappin_rails_2011}. Die Zahl "`100\%"' sei für sich genommen nutzlos, aber sie zu erreichen, sei für den Prozess der Testgetriebenen Entwicklung nützlich \citep[S. 270]{rappin_rails_2011}. Vielen Autoren bringen aber zum Ausdruck, dass es von der Situation abhängt wieviel Testabdeckung sinnvoll ist \citep{infoq_2007}. Test-Anfänger sollten sich zuerst überhaupt ans Testen gewöhnen, und erfahrene Entwickler sollte wissen, dass es keine einzige einfache Antwort auf diese Frage gäbe \citep{infoq_2007}. Zudem gebe eine hohe Abdeckung keinen Aufschluss darüber, dass die Tests "`gut"' sind. Aber eine niedrige Testabdeckung zeigt deutlich auf Missstände hin.\\
  Einem pragmatischen Ansatz von Savoia folgend, kann man aus dem Verhältnis der Zyklomatischen Komplexität mit der Testabdeckung\index{Test!Testabdeckung} eines Codestückes suboptimale Teile finden. Je mehr Verzweigung eine Methode hat, desto höher sollte ihre Testabdeckung sein \citep{alberto_savoia_code_2007}. In einem Artikel empfiehlt Cornett eine Liste von Zielen, die es je nach vorhandenen Budget und Zeit zu erreichen gilt, beginnend damit, dass mindestens eine Funktion in 90\% der Quelltextdateien durch die Tests aufgerufen wird bis zum finalen Schritt einer vollständigen C1-Testabdeckung \citep{steve_cornett_code_1996}.
 
- Zusammenfassend kann man sagen, dass es keine eindeutige Antwort gibt. Eine niedrige C0-Abdeckung von 50\% oder weniger zeigt allerdings deutliche Missstände beim Testverfahren an.
+ Zusammenfassend kann man sagen, dass es keine eindeutige Antwort gibt. Eine niedrige C0-Abdeckung von 50\% oder weniger zeigt allerdings deutliche Missstände beim Test\index{Test}verfahren an.
 
  \subsection{Mutations/Pertubationstests -- Defect insertion}
  \label{sec:mutation}
- Eine weitere Methode, um die Qualität von Testcode zu bestimmen, ist der Mutationstest. Dies ist ein diversifizierendes, fehlerbasiertes Testverfahren \citep{liggesmeyer_modultest_1990}. Hierbei werden (automatisiert oder manuell) nacheinander Anweisungen des Programmcodes geändert, und geprüft, ob danach ein Test fehlschlägt \citep{beck_test_2002}. Sollte nämlich kein Test fehlgeschlagen sein, dann seien die Tests zu oberflächlich.
+ Eine weitere Methode, um die Qualität von Test\index{Test}code zu bestimmen, ist der Mutationstest. Dies ist ein diversifizierendes, fehlerbasiertes Testverfahren \citep{liggesmeyer_modultest_1990}. Hierbei werden (automatisiert oder manuell) nacheinander Anweisungen des Programmcodes geändert, und geprüft, ob danach ein Test fehlschlägt \citep{beck_test_2002}. Sollte nämlich kein Test fehlgeschlagen sein, dann seien die Tests zu oberflächlich.
 
- Für Ruby\index{Ruby} gibt es ein Werkzeug, \textbf{Heckle}\footnote{\url{http://ruby.sadi.st/Heckle.html}}, welches dieses Verfahren implementiert. Im Detail werden Bedingungen negiert, konstante Zahlen und Funktionsaufrufe verändert, Zuweisungen verändert usw. \citep{ruby_sadists_confessions_2010}. Dabei wird immer eine Änderung (Mutation) vorgenommen, und dann alle Tests ausgeführt. Sollten dennoch in einer Mutation kein Test fehlschlagen, dass ein Test fehle, so ist die Annahme des Testverfahrens.
+ Für Ruby\index{Ruby} gibt es ein Werkzeug, \textbf{Heckle}\footnote{\url{http://ruby.sadi.st/Heckle.html}}, welches dieses Verfahren implementiert. Im Detail werden Bedingungen negiert, konstante Zahlen und Funktionsaufrufe verändert, Zuweisungen verändert usw. \citep{ruby_sadists_confessions_2010}. Dabei wird immer eine Änderung (Mutation) vorgenommen, und dann alle Test\index{Test}s ausgeführt. Sollten dennoch in einer Mutation kein Test fehlschlagen, dass ein Test fehle, so ist die Annahme des Testverfahrens.
 
- Um hieraus eine Metrik zu gewinnen, kann die Anzahl der Mutationen gemessen werden, bei denen der Test nicht fehlschlug. Im Verhältnis zu den Klassen gesetzt lassen sich auf diese Weise diejenigen Klassen finden, die zu oberflächlich getestet wurden.
+ Um hieraus eine Metrik zu gewinnen, kann die Anzahl der Mutationen gemessen werden, bei denen der Test\index{Test} nicht fehlschlug. Im Verhältnis zu den Klassen gesetzt lassen sich auf diese Weise diejenigen Klassen finden, die zu oberflächlich getestet wurden.
  \section{Notwendigkeit von Code Metriken}
 
  Code-Metriken geben dem Programmierer automatisiert und schnell ein Feedback über die Qualität seiner Arbeit. Sie helfen dabei, Probleme frühzeitig zu erkennen und die Wartbarkeit durch gezielte Refaktorisierung\index{Refaktorisierung}en nachhaltig zu verbessern. Auch psychlogische Auswirkungen dürfen nicht unterschätzt werden. Alleine der Fakt, dass Codemetriken in einem Unternehmen regelmäßig verwendet werden, motiviert den Programmierer keinen sogenannten "`Big Ball of Mud"'\footnote{Ein Antipattern, in dem ein System keinerlei offensichtliche Architektur zu haben scheint} zu schreiben. Insbesondere in kleinen Projektteams, die keine dedizierte Qualitätssicherung haben, sind Codemetriken als kostengünstiges Kontrollinstrument unerlässlich. Studien zeigen, dass der konsequente Einsatz von Code-Metriken und Analysebenchmarks die Fehlerdichte und Entwicklungskosten stark verringen kann \citep[S.10f]{baggen_standardized_2011}.

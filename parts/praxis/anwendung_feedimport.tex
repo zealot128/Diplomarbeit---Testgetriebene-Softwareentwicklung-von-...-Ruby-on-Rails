@@ -71,7 +71,7 @@ Da wir unsere Tests nicht davon abhängig machen wollen, ob ein solcher Feed ber
 
 
 
-Hier definieren wir einen ersten Test für den ImportedFeed. Für die HTTP-Zugriffe wollen wir die Bibliothek HTTParty\footnote{https://github.com/jnunemaker/httparty} benutzen. In der ersten Zeile des Tests nutzen wir das Mock\index{Test-Double!Mock}-Framework wie folgt: Wir legen eine Erwartung fest, dass innerhalb dieses Tests die Klassenmethode "`get"' der Klasse HTTParty aufgerufen wird, mit einem Parameter der die URL angibt.
+Hier definieren wir einen ersten Test \index{Test}für den ImportedFeed. Für die HTTP-Zugriffe wollen wir die Bibliothek HTTParty\footnote{https://github.com/jnunemaker/httparty} benutzen. In der ersten Zeile des Tests nutzen wir das Mock\index{Test-Double!Mock}-Framework wie folgt: Wir legen eine Erwartung fest, dass innerhalb dieses Tests die Klassenmethode "`get"' der Klasse HTTParty aufgerufen wird, mit einem Parameter der die URL angibt.
 
 Dann rufen wir unsere (noch nicht existente) ImportedFeed Klasse mit dem einzulesenden Feed.
 \tddred
@@ -88,7 +88,7 @@ In der reinen TDD\index{TDD}-Lehre würde nun als erstes eine Behebung aller Feh
   unsatisfied expectations:
   - expected exactly once, not yet invoked: HTTParty.get('http://www.example.com/feed.xml')
 \end{lstlisting}
-Das Mock\index{Test-Double!Mock}objekt hat unseren Test fehlschlagen lassen, ohne dass wir selbst eine Assertion festgelegt hätten. Da wir bisher noch keine Implementation eines Netzwerkzugriffes durch HTTParty implementiert haben, schlägt der Test fehl.
+Das Mock\index{Test-Double!Mock}objekt hat unseren Test \index{Test}fehlschlagen lassen, ohne dass wir selbst eine Assertion festgelegt hätten. Da wir bisher noch keine Implementation eines Netzwerkzugriffes durch HTTParty implementiert haben, schlägt der Test fehl.
 
 Die Implementierung wäre:
 \begin{ruby}[label=lib/imported\_feed.rb]
@@ -104,13 +104,13 @@ Die Implementierung wäre:
 % label{fig:bf345c}
 
 \tddgreen
-Die Funktion initialize stellt innerhalb von Ruby\index{Ruby} den Konstruktor dar. Dort rufen wir unseren Netzwerkzugriff auf, der allerdings durch unser definiertes Mock\index{Test-Double!Mock}-Objekt abgefangen wird. Dies stellt die definierte Erwartung zufrieden, und der Test besteht.
+Die Funktion initialize stellt innerhalb von Ruby\index{Ruby} den Konstruktor dar. Dort rufen wir unseren Netzwerkzugriff auf, der allerdings durch unser definiertes Mock\index{Test-Double!Mock}-Objekt abgefangen wird. Dies stellt die definierte Erwartung zufrieden, und der Test \index{Test}besteht.
 
 
 
 \paragraph{2. Komplexe Objekte durch Mocks zurückgeben}
 
-Wir haben zwar den Netzwerkzugriff abgefangen, geben aber nun keinerlei Antwort, d.h. ein XML-Dokument zurück. Für den nächsten Test müssen wir unsere Mock\index{Test-Double!Mock}anweisung also modifizieren.
+Wir haben zwar den Netzwerkzugriff abgefangen, geben aber nun keinerlei Antwort, d.h. ein XML-Dokument zurück. Für den nächsten Test \index{Test}müssen wir unsere Mock\index{Test-Double!Mock}anweisung also modifizieren.
 
 \begin{ruby}[label=test/test\_imported\_feed.rb]
 \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{really get content from an feed}\PY{l+s+s2}{"} \PY{k}{do}
@@ -149,7 +149,7 @@ Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wur
 Mitfhile des Makros "`attr\_reader"' generieren wir ein Attribut body und gleichzeitig einen Getter für den Zugriff von außen. Innerhalb unseres Konstruktors speichern wir den Body der HTTP-Antwort in diesem Attribut.
 
 \tddrefactor
-Da unser Testfall nun ziemlich lang geworden ist, und beide Testfälle ein Mock\index{Test-Double!Mock} initialisieren, ist dies eine gute Gelegenheit, den Mock zentral zu definieren. Dazu nutzen wir z.B. eine Datei "`test\_helper.rb"', in der wir Anweisungen schreiben, die alle Testfälle nutzen können:
+Da unser Testfall\index{Test} nun ziemlich lang geworden ist, und beide Testfälle ein Mock\index{Test-Double!Mock} initialisieren, ist dies eine gute Gelegenheit, den Mock zentral zu definieren. Dazu nutzen wir z.B. eine Datei "`test\_helper.rb"', in der wir Anweisungen schreiben, die alle Testfälle nutzen können:
 
 \begin{ruby}[label=test/test\_helper.rb]
 \PY{k}{class} \PY{n+nc}{ActiveSupport}\PY{o}{::}\PY{n+no}{TestCase}
@@ -209,7 +209,7 @@ Als zusätzliche Maßnahmen haben wir die Definition der URL in eine gemeinsame 
 
 Nun testen wir lediglich darauf, ob das ImportedFeed Objekt eine Methode oder ein Attribut mit dem Namen "`valid?"' besitzt.
 
-Um den Test zu bestehen, reicht es, eine leere Methode zu definieren:
+Um den Test \index{Test}zu bestehen, reicht es, eine leere Methode zu definieren:
 \begin{ruby}[label=lib/imported\_job.rb]
 \PY{o}{.}\PY{n}{.}\PY{o}{.}
   \PY{k}{def} \PY{n+nf}{valid?}
