@@ -2,12 +2,12 @@
 
 \section{Code-Quality-Benchmark mit anderen Ruby-Projekten}
 
-Um die Ergebnisse besser einordnen zu können, vergleichen wir die Ergebnisse aus den Code-Quality-Benchmark mit vergangenen Ruby\index{Ruby}-Projekten in der pludoni GmbH und mit bekannten Ruby/Rails-OpenSource Applikationen und Bibliotheken.
+Um die Ergebnisse besser einordnen zu können, vergleichen wir die Ergebnisse aus den Code-Quality-Benchmark mit vergangenen Ruby\index{Ruby}-Projekten in der pludoni GmbH und mit bekannten Ruby/Rails\index{Ruby-on-Rails}-OpenSource Applikationen und Bibliotheken.
 
 Eine vollständige Metrik wie oben an IT-Jobs, war in vielen Fällen nicht möglich, da die Testwerkzeuge in vielen Fällen Inkompatibilitäten mit neueren Rubyversionen haben. Wir beschränken uns deshalb auf eine exemplarische Überblicksmetrik, bestehend aus:
 
 \begin{description}
- \item[LOC] Anzahl der Quellcodezeilen, gemessen durch das Rails-Kommando "`rake stats"'. 
+ \item[LOC] Anzahl der Quellcodezeilen, gemessen durch das Rails\index{Ruby-on-Rails}-Kommando "`rake stats"'. 
  \item[LOT] Anzahl der Quellcodezeilen aller Tests, gemessen durch das Rails-Kommando "`rake stats"'. 
  \item[LOT/TOC] Verhältnis aus Testzeilen und Quellcodezeilen
  \item[AVGCmplx] Durchschnittliche Komplexität aller Klassen, gemessen durch \textbf{Flog}\footnote{\url{https://github.com/seattlerb/flog}}. Flog besitzt ein eigenes Maß für Code-Komplexität. Es vergibt für jede Zuweisungen, Verzweigungen und Funktionsaufrufe unterschiedlich viele Punkte, und bildet so eine Summe per Funktion oder per Klasse. Dabei vergibt Flog besonders viele Punkte für schwer nachzuvollziehende Funktionsaufrufe, wie z.B. "`eval(string)"', welches einen String als Ruby\index{Ruby}-Code auswertet.
@@ -27,10 +27,10 @@ Eine vollständige Metrik wie oben an IT-Jobs, war in vielen Fällen nicht mögl
 
 \subsection{Vergleich von IT-Jobs mit eigenen Projekten}
 
-Bisherige Projekte der pludoni GmbH und des Autors basierend auf Ruby\index{Ruby}/ Ruby on Rails
+Bisherige Projekte der pludoni GmbH und des Autors basierend auf Ruby\index{Ruby}/ Ruby on Rails\index{Ruby-on-Rails}
 \begin{description}
  \item[feedimport] Ist die fertiggestellte Bibliothek, die im Rahmen der Entwicklung von IT-Jobs ausgelagert wurde, um den Community-Portalen bereits jetzt zur Verfügung zu stehen. Die Grundzüge wurden in Abschnitt \ref{sec:awmock} vorgestellt.
- \item[feedmerger] Eine Rails-Anwendung\footnote{ Als OpenSource unter \url{https://github.com/zealot128/WenShanWenHai} zu finden.} zur Verwalten, Cachen, Filtern und Zusammenfügen von RSS und Atom-Feeds.
+ \item[feedmerger] Eine Rails\index{Ruby-on-Rails}-Anwendung\footnote{ Als OpenSource unter \url{https://github.com/zealot128/WenShanWenHai} zu finden.} zur Verwalten, Cachen, Filtern und Zusammenfügen von RSS und Atom-Feeds.
  \item[pludonidb] Ist eine auf ActiveRecord basierende Bibliothek zur Anbindung der Datenbanken der Communityportale an Ruby-Skripte. Beinhaltet außerdem weitere Hilfsfunktionen für Berechnung von Tag-Wolken, Häufigkeiten u.ä.
  \item[backlinks] Backlink und SEO-Success-Control ist eine Rails-2.3 Anwendung, zum Messen der sogenannten Backlinks\footnote{Backlinks sind Links anderer Webseiten auf die eigenen. In den Communityportalen sind die Mitglieder vertraglich verpflichtet, einen Backlink auf die Communityportale anzulegen.} der Communitymitglieder und der Platzierung für relevante Sucheingaben in den großen Suchmaschinen (konkret: Welchen Platz hatte ein Communityportal an einem bestimmten Tag für "`it jobs dresden"', usw.). Details dazu sind im Praktikumsbericht des Autors zu finden. %TODO Verweis auf meinen Praktikumsbericht
  
@@ -76,9 +76,9 @@ CSmell/KLOC&33.80&80.70&71.80&60.70&49.00&58.50\\
 
 
 \subsection{Vergleich von IT-Jobs mit anderen Rails-Projekten}
-Weiterhin wird das Projekt mit folgenden beliebten Webprojekten, welche ebenfalls auf Ruby on Rails basieren, verglichen:
+Weiterhin wird das Projekt mit folgenden beliebten Webprojekten, welche ebenfalls auf Ruby on Rails\index{Ruby-on-Rails} basieren, verglichen:
 \begin{description}
-\item[lpp] Linkpartnerprogramm ist eine Studenteninitiative der TU Dresden, um ausländische Studenten mit deutschen Sprach- und Lernpartnern zusammenzubringen. Dazu wurde 2008 von einem Studententeam im Rahmen einer Semesterarbeit eine Rails-Webanwendung geschrieben. Der Autor dieser Arbeit war zwar nicht an der Entwicklung beteiligt, übernahm aber die Pflege und Weiterentwicklung selbiger.
+\item[lpp] Linkpartnerprogramm ist eine Studenteninitiative der TU Dresden, um ausländische Studenten mit deutschen Sprach- und Lernpartnern zusammenzubringen. Dazu wurde 2008 von einem Studententeam im Rahmen einer Semesterarbeit eine Rails\index{Ruby-on-Rails}-Webanwendung geschrieben. Der Autor dieser Arbeit war zwar nicht an der Entwicklung beteiligt, übernahm aber die Pflege und Weiterentwicklung selbiger.
  \item[diaspora] Ist ein verteiltes soziales Netzwerk. \\
  Code: \url{https://github.com/diaspora/diaspora}
  \item[bucketwise (bucket)] ist ein web-basierter persönlicher Finanzmanager mit Budgetierung nach dem Briefumschlagsystem\\
@@ -93,7 +93,7 @@ Weiterhin wird das Projekt mit folgenden beliebten Webprojekten, welche ebenfall
  Code: \url{https://github.com/rails/rails.git}
 \end{description}
 
-Die Auswahl erfolgt z.T. sehr willkürlich. Als Ansatzpunkt diente die Liste der beliebtesten Rails-Projekte, die auf Github gehostet sind. Weiterhin wurde ActiveSupport und ActionPack ausgewählt, um die Code-Qualität von Rails selbst mit zu beurteilen.
+Die Auswahl erfolgt z.T. sehr willkürlich. Als Ansatzpunkt diente die Liste der beliebtesten Rails\index{Ruby-on-Rails}-Projekte, die auf Github gehostet sind. Weiterhin wurde ActiveSupport und ActionPack ausgewählt, um die Code-Qualität von Rails selbst mit zu beurteilen.
 
 \begin{table}[hbp]
  \caption{Vergleich von IT-jobs mit Ruby/Rails Projekten aus der Community}\label{table:cmpother}

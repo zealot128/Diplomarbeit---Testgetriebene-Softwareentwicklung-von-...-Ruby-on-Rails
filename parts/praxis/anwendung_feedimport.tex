@@ -41,7 +41,7 @@ Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
 Der RSS-Feed in dem oben genannten Beispiel enthält eine Stellenanzeige (item). Die description beinhaltet einen HTML-Kommentar, in dem nummer, tags, ort, kontakt und link für die Stellenanzeige definiert werden. Das ganze wurde mit einem Kommentar, und nicht mit einer Erweiterung der Syntax durch eine DDT oder XSD, realisiert, da sich eine Eingliederung der Syntaxelemente mittels DDTs und XSDs in einige der Systeme der Kunden als problematisch herausgestellt hat.
 
 Diese Art des Feedimports ist bereits in den Community-Job-Portalen in Funktion. Allerdings besitzt dieser, in PHP geschriebene Code, keinerlei automatisierte Tests, und war in der Vergangenheit schon oft die Ursache von Fehlern. So ist es notwendig, den Feedimport nun in Ruby\index{Ruby} als Bibliothek im Rahmen von IT-Jobs neu zu schreiben, und für die bereits laufenden Portale schnellstmöglich einzubauen.
-Diese Bibliothek soll also unabhängig von Rails funktionieren.
+Diese Bibliothek soll also unabhängig von Rails\index{Ruby-on-Rails} funktionieren.
 
 Ziel diesen Abschnittes ist es, zu zeigen, wie das Einlesen eines externen XML-Feeds getestet werden kann.
 
