@@ -51,7 +51,7 @@ Ein Spezialfall sind die sogenannten \textbf{Greybox}-Tests, die insbesondere be
 \label{sec:testUnit}
 Da die Testgetriebene Entwicklung in ihrer Reinform auf dem Unittest\index{Test!Unittest} basiert, soll diese Testgattung im Vorfeld etwas näher beleuchtet werden.
 
-Ziel des Unittest\index{Test!Unittest}s ist es, frühzeitig \glossar{fehler} im Code zu finden. Der Unit-, oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen, oder bei einer objektorientierten Sprache, die Klassen sein. Die Objekte unter Beobachtung (Objects under Test) werden beim Unittest in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double} simuliert. Dies ist notwendig um sicherzustellen, dass gefundende Fehler von dem betreffendem Modul verursacht wurden, und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen einfacher \citep{goodliffe_code_2006,liggesmeyer_modultest_1990}.
+Ziel des Unittest\index{Test!Unittest}s ist es, frühzeitig \glossar{fehler} im Code zu finden. Der Unit-, oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen, oder bei einer objektorientierten Sprache, die Klassen sein. Die Objekte unter Beobachtung (Objects under Test) werden beim Unittest in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double}\index{Test-Double} simuliert. Dies ist notwendig um sicherzustellen, dass gefundende Fehler von dem betreffendem Modul verursacht wurden, und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen einfacher \citep{goodliffe_code_2006,liggesmeyer_modultest_1990}.
 
 
 
@@ -71,7 +71,6 @@ Ziel des Komponententest ist es, verschiedene Units in Kombination als eine voll
 
  \section{Test Doubles -- Mocks und Stubs}
   \label{sec:mocks}
-  Das isolierte Testen wird durch Abhängigkeiten aller Art erschwert. Dies können z.B. Klassen sein, die noch nicht implementiert wurden, externe Ressourcen (Netzwerkzugriffe, Versenden von Mails) oder andere unterliegende Prozesse (Bezahlen in einem Onlineshop, Datenbanken) sein. In diesen Situationen ist es angebracht, auf sogenannte Test-Doubles zurückzugreifen. Diese werden u.a. in Mocks und Stubs eingeteilt.
 
   Ein \textbf{Stub} ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfalls ersetzt. Im Beispiel ist dies der Bezahlprozess einer Bestellung.
 % -------------------------------
