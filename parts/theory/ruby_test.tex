@@ -99,7 +99,7 @@ Neben Ruby\index{Ruby} wird auch die Implementierung der Testschritte in Java un
 \paragraph{Testen von Webanwendungen}
 Eine Einsatzmöglichkeit von Cucumber, besonders im Zusammenhang mit \glossar{rails}, ist das Testen von Webanwendungen. Dabei ist es üblich, einen Browser zu automatisieren bzw. simulieren (vgl. Abschnitt \ref{sec:acceptance}), um den Test so authentisch am echten Nutzungsprozess wie möglich zu orientieren. 
 
-Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen, verwenden wir verschiedene Middlewars. Wir haben uns für Capybara entschieden, welches sehr flexibel bei der Wahl der Browser-Engine ist. Den eigentlichen Test, d.h. die Auswertung der Zusicherung kann durch ein beliebiges Testframework durchgeführt werden, in unserem Falle wieder mit Test/Unit\index{Test/Unit-Framwork}. Durch Capybara haben wir nun die Möglichkeit, zwischen einem simulierten Browser (z.B. RackTest) und automatisierten Browser (Firefox, Chrome, etc. durch eine weitere Middleware: Selenium\index{Selenium}) je nach Bedarf zu wechseln, ohne viele am Testcode zu ändern.
+Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen, verwenden wir verschiedene Middlewars. Wir haben uns für Capybara\index{Capybara} entschieden, welches sehr flexibel bei der Wahl der Browser-Engine ist. Den eigentlichen Test, d.h. die Auswertung der Zusicherung kann durch ein beliebiges Testframework durchgeführt werden, in unserem Falle wieder mit Test/Unit\index{Test/Unit-Framwork}. Durch Capybara haben wir nun die Möglichkeit, zwischen einem simulierten Browser (z.B. RackTest) und automatisierten Browser (Firefox, Chrome, etc. durch eine weitere Middleware: Selenium\index{Selenium}) je nach Bedarf zu wechseln, ohne viele am Testcode zu ändern.
 \begin{figure}[htbp]
  \centering
  \includegraphics[width=\linewidth]{./diagrams/cucumber.pdf}
@@ -108,4 +108,4 @@ Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen
  \label{fig:cucumber}
 \end{figure}
 
-Der gesamte Ablauf eines CucumberAkzeptanztest in Verbindung mit Capybara ist in Abbildung \ref{fig:cucumber} abgebildet. Cucumber matcht die definierten Testanweisungen auf die Testschritte, und führt den darin enthalten Code aus. Dies kann zum einen die Steuerung eines Webbrowsers durch Capybara sein, oder zum anderen eine Zusicherung.
+Der gesamte Ablauf eines CucumberAkzeptanztest in Verbindung mit Capybara\index{Capybara} ist in Abbildung \ref{fig:cucumber} abgebildet. Cucumber matcht die definierten Testanweisungen auf die Testschritte, und führt den darin enthalten Code aus. Dies kann zum einen die Steuerung eines Webbrowsers durch Capybara sein, oder zum anderen eine Zusicherung.
