@@ -4,7 +4,7 @@ Zum Prüfen der Richtigkeit seiner Arbeit macht jeder Programmierer mindestens m
 
 Stattdessen werden \textbf{automatisierte Softwaretests} genutzt, um auf Knopfdruck alle bisher programmierten Tests auszuführen und so ein Bild über den Zustand der Anwendung zu erhalten. So ist automatisiertes Testen dem manuellem Testen, das auch \textbf{Ad-Hoc-Testen} genannt wird, in kürzester Zeit zeitlich überlegen \citep{rappin_rails_2011}.
 
-Dynamische Testverfahren, also Tests die Programmcode ausführen und Ergebnisse beobachten, haben gemeinsam, dass sie stichpunktartig testen, damit die Korrektheit des Programmes nicht beweisen können und stattdessen den Programmcodes mit konkreten Eingabewerten ausführen \citep[S. 49]{liggesmeyer_modultest_1990}. Diese Stichproben werden als \textbf{Testdaten} bezeichnet, die optimalerweise repräsentativ, fehlersensitiv, redundanzarm und ökonomisch sind \citep[S. 51]{liggesmeyer_modultest_1990}.
+Dynamische Testverfahren, also Tests die Programmcode ausführen und Ergebnisse beobachten, haben gemeinsam, dass sie stichpunktartig testen, damit die Korrektheit des Programmes nicht beweisen können und stattdessen den Programmcodes mit konkreten Eingabewerten ausführen \citep[S. 49]{liggesmeyer_modultest_1990}. Diese Stichproben werden als \textbf{Testdaten\index{Test!Testdaten}} bezeichnet, die optimalerweise repräsentativ, fehlersensitiv, redundanzarm und ökonomisch sind \citep[S. 51]{liggesmeyer_modultest_1990}.
 
 Neben den \textbf{dynamischen Tests}, gibt es statische Analyseverfahren, wie formale Verifikation, symbolische Testverfahren oder statische Analysen. Einige statische Anaylsen werden später im Abschnitt \ref{sec:metrics} vorgestellt. Andere statische Testverfahren sind nicht Gegenstand dieser Diplomarbeit.
 
@@ -55,7 +55,7 @@ Ziel des Unittest\index{Test!Unittest}s ist es, frühzeitig \glossar{fehler} im 
 
 
 
-Unittest\index{Test!Unittest}s werden fast immer durch sog. \glossar{testrunner} automatisiert ausgeführt. Außerdem werden meist Test-Frameworks verwendet, welche häufige Aufgaben beim Testen unterstützen, z.B. Auswertung der Testergebnisse, Integration der Tests mit dem Programmcode, Anlage und Löschen von Testdaten.  Eine der meist-verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test/Unit\index{Test/Unit-Framwork}/MiniTest in Ruby\index{Ruby}, JUnit in Java oder NUnit in C\#.
+Unittest\index{Test!Unittest}s werden fast immer durch sog. \glossar{testrunner} automatisiert ausgeführt. Außerdem werden meist Test-Frameworks verwendet, welche häufige Aufgaben beim Testen unterstützen, z.B. Auswertung der Testergebnisse, Integration der Tests mit dem Programmcode, Anlage und Löschen von Testdaten\index{Test!Testdaten}.  Eine der meist-verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test/Unit\index{Test/Unit-Framwork}/MiniTest in Ruby\index{Ruby}, JUnit in Java oder NUnit in C\#.
 
 Ein solcher Test besteht in der Regel aus 4 Teilen \citep{rappin_rails_2011} \citep[Karte 46]{langr_agile_2011}:
 \begin{enumerate}

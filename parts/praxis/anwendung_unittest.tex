@@ -3,9 +3,9 @@
 
 Ein Rails\index{Ruby-on-Rails}-Modell, wie in \ref{sec:railsconcepts} auf S. \pageref{sec:railsconcepts} beschrieben, repräsentiert die Daten der Anwendung, und die Regeln, wie diese zu verändern sind. Bei Rails werden sie hauptsächlich dazu verwendet, um mit der zugrundeliegenden Datenbanktabelle zu interagieren. Per Konvention von Rails findet hier die Hauptarbeit, also die Business-Logik, statt.
 
-Fast jeder Unittest\index{Test!Unittest} bei Rails\index{Ruby-on-Rails} beinhaltet das Testen auf Validierungskritieren seines korrespondierenden Modells, d.h. wann eine Instanz dieses Modells gültig ist und damit gespeichert werden darf (man denke z.B. an Pflichtfelder für ein Modell "`Nutzer"` oder die Validierung des Formates seiner E-Mail-Adresse). Weiterhin sollten natürlich alle weiteren, selbstdefinierten, Methoden getestet werden.
+Fast jeder Unittest\index{Test!Unittest} bei Rails\index{Ruby-on-Rails} beinhaltet das Testen auf Validierung\index{Rails!Validierung}skritieren seines korrespondierenden Modells, d.h. wann eine Instanz dieses Modells gültig ist und damit gespeichert werden darf (man denke z.B. an Pflichtfelder für ein Modell "`Nutzer"` oder die Validierung des Formates seiner E-Mail-Adresse). Weiterhin sollten natürlich alle weiteren, selbstdefinierten, Methoden getestet werden.
 
-Diese Validierungen werden durch das \glossar{ORM}-Framework ActiveRecord\index{ActiveRecord}, welches Rails\index{Ruby-on-Rails} standardmäßig nutzt, bereitgestellt. Bevor wir weiter auf die 
+Diese Validierung\index{Rails!Validierung}en werden durch das \glossar{ORM}-Framework ActiveRecord\index{ActiveRecord}, welches Rails\index{Ruby-on-Rails} standardmäßig nutzt, bereitgestellt. Bevor wir weiter auf die 
 
 \paragraph{1. Der Anfang}
 \begin{figure}[htbp]
@@ -45,7 +45,7 @@ Es wurden erstellt:
  \item Eine Migration (\verb|db/migrate/2011xxxxxx_create_jobs.rb|). Dies stellt eine datenbankunabhängige Repräsentation einer Änderung an der Struktur unserer Datenbank dar. In diesem ist es die Erstellung einer Tabelle \texttt{jobs} (beachte: Plural!), mit den Spalten Titel, Link als String, Description als Textfeld, eine User\_ID als Referenz auf ein anderes Modell usw.
  \item Die Modelklasse (\verb|app/models/job.rb|). Trotz unserer Definition der Spalten und deren Typen über die Kommandozeile, ist diese Klasse leer. Da wir ActiveRecord\index{ActiveRecord} verwenden, definieren wir die Attribute, die unser Modell hat, nicht in der Modellklasse, sondern ausschließ in der Datenbank. Die Migration erspart uns die manuelle Arbeit, selbst in unserer Datenbank Spalten anzulegen. Bei Initialisierung eines Modells lädt ActiveRecord die Spalteninformationen aus der Datenbank, und generiert dafür Getter und Setter Methoden. 
  \item Die dazugehörige Testklasse (\verb|app/unit/job_test.rb|)
- \item und Fixtures-Datei (\verb|test/fixtures/jobs.yml|), zur Definition von Testdaten. 
+ \item und Fixtures-Datei (\verb|test/fixtures/jobs.yml|), zur Definition von Testdaten\index{Test!Testdaten}. 
 \end{itemize}
 
 Die Migration liegt nun zwar vor, aber es existiert noch keine Datenbank und demnach auch noch keine Tabelle mit dem Namen \texttt{jobs}. 
@@ -69,7 +69,7 @@ $ rake db:migrate
 ==  CreateJobs: migrated (0.0021s) ================
 \end{lstlisting}
 
-Danach können wir die Rails\index{Ruby-on-Rails}-Test-Suite\index{Test!Test-Suite} mithile eines weitere Rake-Tasks auch schon ausführen. Dieser Rake-Task legt selbsständig eine Testdatenbank an, führt offene Migrationen darauf aus und führt dann alle vorhanden Tests aus.
+Danach können wir die Rails\index{Ruby-on-Rails}-Test-Suite\index{Test!Test-Suite} mithile eines weitere Rake-Tasks auch schon ausführen. Dieser Rake-Task legt selbsständig eine Testdaten\index{Test!Testdaten}bank an, führt offene Migrationen darauf aus und führt dann alle vorhanden Tests aus.
 
 \begin{lstlisting}
 $ rake test
@@ -101,7 +101,7 @@ Es wurde also schon ein Testfall erfolgreich ausgeführt, nämlich ein Dummytest
 
 \paragraph{2. Testen auf Validierung}
 
-Ein Feature von Rails\index{Ruby-on-Rails} umfassen die sogenannten Validierungen. Diese stellen sicher, dass eine Instanz eines Modells nur dann gespeichert ist, wenn es gewissen Kritieren entspricht. Viele der Validations sind vergleichbar mit den Datenbank-Constraints einiger Datenbanken. Rails nutzt diese standardmäßig nicht, da es auch andere Persistenzsysteme unterstützt, wie z.B. Key-Value-Store oder sogenannte NoSQL Datenbanken. So stellt Rails die Konsistenz und referenzielle Integrität innerhalb der Applikationsschicht sicher.
+Ein Feature von Rails\index{Ruby-on-Rails} umfassen die sogenannten Validierung\index{Rails!Validierung}en. Diese stellen sicher, dass eine Instanz eines Modells nur dann gespeichert ist, wenn es gewissen Kritieren entspricht. Viele der Validations sind vergleichbar mit den Datenbank-Constraints einiger Datenbanken. Rails nutzt diese standardmäßig nicht, da es auch andere Persistenzsysteme unterstützt, wie z.B. Key-Value-Store oder sogenannte NoSQL Datenbanken. So stellt Rails die Konsistenz und referenzielle Integrität innerhalb der Applikationsschicht sicher.
 
 Nun möchten wir sicherstellen, dass eine Stellenanzeige nur dann gespeichert wird, wenn sie einen Titel beinhaltet. Der Test dazu würde wie folgt lauten:
 
@@ -118,7 +118,7 @@ Nun möchten wir sicherstellen, dass eine Stellenanzeige nur dann gespeichert wi
 \end{ruby}
 \codecaption{Test auf Vorhandensein eines Titels}
 \tddred
-Zuerst instanziieren wir einen Job, und geben ihm explizit einen leeren Titel, um das Testziel nochmal herauszustellen. Danach rufen wir die \texttt{save}-Methode auf, die prüft, ob alle Validierungskritierien erfolgt sind, und speichert das Objekt persistent in der Datenbank im Erfolgsfall. Dann gibt \texttt{save} ein \texttt{true} zurück, anderfalls, d.h. wenn die Validierung fehlschlug, \texttt{false}.
+Zuerst instanziieren wir einen Job, und geben ihm explizit einen leeren Titel, um das Testziel nochmal herauszustellen. Danach rufen wir die \texttt{save}-Methode auf, die prüft, ob alle Validierung\index{Rails!Validierung}skritierien erfolgt sind, und speichert das Objekt persistent in der Datenbank im Erfolgsfall. Dann gibt \texttt{save} ein \texttt{true} zurück, anderfalls, d.h. wenn die Validierung fehlschlug, \texttt{false}.
 Der Ablauf ist in der Abbildung \ref{fig:activerecordsave} noch einmal erläutert.
 
 \begin{figure}[hbp]
@@ -129,9 +129,9 @@ Der Ablauf ist in der Abbildung \ref{fig:activerecordsave} noch einmal erläuter
  \label{fig:activerecordsave}
 \end{figure}
 
-Da wir noch keine Validierungskritieren implementiert haben, schlägt dieser Test fehl, da das Objekt gespeichert wurde.
+Da wir noch keine Validierung\index{Rails!Validierung}skritieren implementiert haben, schlägt dieser Test fehl, da das Objekt gespeichert wurde.
 
-Unser nächstes Ziel ist es nun, mit so wenig Code wie möglich den Test bestehen zu lassen. Das können wir mittels der eingebauten wie schon erwähnten Validierungen:
+Unser nächstes Ziel ist es nun, mit so wenig Code wie möglich den Test bestehen zu lassen. Das können wir mittels der eingebauten wie schon erwähnten Validierung\index{Rails!Validierung}en:
 
 \begin{ruby}[label=app/models/job.rb]
 \PY{k}{class} \PY{n+nc}{Job} \PY{o}{<} \PY{n+no}{ActiveRecord}\PY{o}{::}\PY{n+no}{Base}
@@ -139,7 +139,7 @@ Unser nächstes Ziel ist es nun, mit so wenig Code wie möglich den Test bestehe
 \PY{k}{end}
 \end{ruby}
 \codecaption{Implementierung der Validierung in die Klasse Job}
-\texttt{validates} ist eine Funktion aus der ActiveRecord\index{ActiveRecord} Bibliothek, die zwei Parameter entgegennimmt: Der erste ist die Spalte, auf der sich die Validierung bezieht, als Zweites folgt eine Liste an Validierungskritieren. Hier ist das Kritierum \texttt{presence}, also das Vorhandensein eines nicht-leeren Attributs. Weitere Kritieren sind z.B. Format, Länge, Minimum, Maximum, oder selbst definierte Kriterien.
+\texttt{validates} ist eine Funktion aus der ActiveRecord\index{ActiveRecord} Bibliothek, die zwei Parameter entgegennimmt: Der erste ist die Spalte, auf der sich die Validierung\index{Rails!Validierung} bezieht, als Zweites folgt eine Liste an Validierungskritieren. Hier ist das Kritierum \texttt{presence}, also das Vorhandensein eines nicht-leeren Attributs. Weitere Kritieren sind z.B. Format, Länge, Minimum, Maximum, oder selbst definierte Kriterien.
 
 \tddgreen
 Nach erneuter Ausführung der Testsuite, besteht der Test nun. Jetzt folgt die Refaktorisierung\index{Refaktorisierung}sphase. Der Programmcode lässt sich nicht weiter vereinfachen. Aber der Testcode ist ausdrücklich nicht von Refaktorisierungen befreit, und eine Refaktorisierung wäre z.B.:
@@ -195,7 +195,7 @@ Nun fehlt aber noch die Definition eines Positiv-Beispiel für einen gültigen J
 \PY{k}{end}
 \end{ruby}
 \tddgreen
-Dieser Test besteht sofort, macht also genau genommen keine weitere Aussage über unser System. Nach der "`reinen"' Testgetriebene\index{TDD}n Leere sollte dieser entfernt werden. Es ist allerdings eine gute Strategie, bei Validierungen mindestens ein Beispiel zu präsentieren, dass angenommen wird. Nichtsdestotrotz können wir nun Refaktorisieren. Insbesondere unsere Testfunktionen enthalten unnötige Redundanzien:
+Dieser Test besteht sofort, macht also genau genommen keine weitere Aussage über unser System. Nach der "`reinen"' Testgetriebene\index{TDD}n Leere sollte dieser entfernt werden. Es ist allerdings eine gute Strategie, bei Validierung\index{Rails!Validierung}en mindestens ein Beispiel zu präsentieren, dass angenommen wird. Nichtsdestotrotz können wir nun Refaktorisieren. Insbesondere unsere Testfunktionen enthalten unnötige Redundanzien:
 
 \begin{ruby}[label=test/unit/job\_test.rb]
 \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{ein Job muss einen Titel haben}\PY{l+s+s2}{"} \PY{k}{do}
@@ -213,7 +213,7 @@ Dieser Test besteht sofort, macht also genau genommen keine weitere Aussage übe
 \end{ruby}
 \codecaption{Alle bisherigen Testmethoden in der Klasse JobTest}
 \tddrefactor
-In allen drei Methoden wird ein Job instanziiert, und lediglich verschiedene Attribute überprüft. Auch haben unsere ersten beiden Tests keine gültige Aussage mehr, da der jeweilige Job sowieso nicht gültig ist, da jeweils das andere Attribut fehlt\footnote{Im ersten Test ist nicht nur der Titel nicht gesetzt, sondern auch die E-Mail entspricht nicht dem Format}. Es ist also höchste Zeit, die Tests zu refaktorisieren. Dies geschieht am Besten durch die Verwendung einer Testdaten-Generation, z.B. den eingebauten Fixtures, die Rails\index{Ruby-on-Rails} uns bei der Codegeneration schon mit generiert hatte. Dabei definieren wir zentralisiert unsere (gültigen) Testdaten, die von Rails vor jedem einzelnen Test in der Datenbank bereitgestellt werden:
+In allen drei Methoden wird ein Job instanziiert, und lediglich verschiedene Attribute überprüft. Auch haben unsere ersten beiden Tests keine gültige Aussage mehr, da der jeweilige Job sowieso nicht gültig ist, da jeweils das andere Attribut fehlt\footnote{Im ersten Test ist nicht nur der Titel nicht gesetzt, sondern auch die E-Mail entspricht nicht dem Format}. Es ist also höchste Zeit, die Tests zu refaktorisieren. Dies geschieht am Besten durch die Verwendung einer Testdaten\index{Test!Testdaten}-Generation, z.B. den eingebauten Fixtures, die Rails\index{Ruby-on-Rails} uns bei der Codegeneration schon mit generiert hatte. Dabei definieren wir zentralisiert unsere (gültigen) Testdaten, die von Rails vor jedem einzelnen Test in der Datenbank bereitgestellt werden:
 
 \begin{ruby}[label=test/fixtures/jobs.yml]
 \PY{l+lScalar+lScalarPlain}{valid\PYZus{}job}\PY{p+pIndicator}{:}
