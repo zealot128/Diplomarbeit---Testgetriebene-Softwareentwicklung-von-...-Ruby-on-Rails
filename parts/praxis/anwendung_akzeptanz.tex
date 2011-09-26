@@ -177,7 +177,7 @@ cucumber features/suche.feature:6 # Scenario: Auffinden durch Titel
 
 \tddred
 Der Test \index{Test}schlug also fehl, da noch kein Suchfeld eingebaut wurde. 
-Dies lösen wir, indem wir auf der View\index{Rails!View} der Startseite eines einbauen:
+Dies lösen wir, indem wir auf der View\index{Ruby-on-Rails!View} der Startseite eines einbauen:
 
 % SNIPPET: 
 %                                                                                                                                          
@@ -200,7 +200,7 @@ Dies lösen wir, indem wir auf der View\index{Rails!View} der Startseite eines e
 
 Wir implementieren im Layout der Applikation ein Suchfeld mit den Form-Hilfsfunktionen, die Rails\index{Ruby-on-Rails} anbietet. Das Layout ist eine Basisview, die für alle Webseiten generiert wird. Diese beinhaltet Elemente der Website, die überall benutzt werden, z.B. eine Navigation, Einbindung von Stylesheets oder wie hier, ein Suchfeld, das auf jeder Seite erscheinen soll. Dabei verwenden wir  ERB\footnote{Embedded Ruby, eine Syntax für Rails Views}, eine Template-Sprache, die normalerweise HTML-Code erzeugt, und es ermöglicht innerhalb der "`\verb|<%= ... \%>|"' Ruby-Code auszuführen.
 
-Jetzt folgt die Implementierung der Suche im Jobs-Controller\index{Rails!Controller}:
+Jetzt folgt die Implementierung der Suche im Jobs-Controller\index{Ruby-on-Rails!Controller}:
 
 % SNIPPET: 
 %                                                                                                                                          
@@ -218,10 +218,10 @@ Jetzt folgt die Implementierung der Suche im Jobs-Controller\index{Rails!Control
 \end{ruby}
 \codecaption{JobsController am Ende der Testphase}
 
-Im Jobs-Controller\index{Rails!Controller} implementieren wir die Bereitstellung der Jobs mittels einer Datenbankabfrage. Dabei nutzen wir die Datenbankfunktion von ActiveRecord\index{ActiveRecord} und führen eine partielle Match-Suche der Suchparameter über die Tabellenspalte "`title"' aus. ActiveRecord übernimmt das sichere Escapen des übergeben Strings selbstständig in den dafür vorgesehenen Platzhalter "`?"'. Das Ergebnis speichern wir in der Instanzvariable @jobs, und stellen es so der View zur Verfügung.
+Im Jobs-Controller\index{Ruby-on-Rails!Controller} implementieren wir die Bereitstellung der Jobs mittels einer Datenbankabfrage. Dabei nutzen wir die Datenbankfunktion von ActiveRecord\index{ActiveRecord} und führen eine partielle Match-Suche der Suchparameter über die Tabellenspalte "`title"' aus. ActiveRecord übernimmt das sichere Escapen des übergeben Strings selbstständig in den dafür vorgesehenen Platzhalter "`?"'. Das Ergebnis speichern wir in der Instanzvariable @jobs, und stellen es so der View zur Verfügung.
 
 
-Damit nun der Test \index{Test}besteht, muss als letztes noch eine View\index{Rails!View} implementiert werden, die (zumindest) die Titel aller in der Suche gefundenen Jobs ausgibt, hier z.B. als Überschrift.
+Damit nun der Test \index{Test}besteht, muss als letztes noch eine View\index{Ruby-on-Rails!View} implementiert werden, die (zumindest) die Titel aller in der Suche gefundenen Jobs ausgibt, hier z.B. als Überschrift.
 % SNIPPET: 
 % SNIPPET: 
 %                                                                                                                                          
@@ -256,7 +256,7 @@ Cucumber\index{Cucumber} bestätigt uns nun die erfolgreiche Implementation des 
 
 
 Auch innerhalb der Akzeptanztest\index{Test!Akzeptanztest}getriebenen Entwicklung ist Refaktorisieren ein fester Bestandteil innerhalb des Entwicklungszyklus.
-Ein guter Ansatz wäre z.B. die Suchlogik aus dem Controller\index{Rails!Controller} in die Job-Modelklasse auszulagern.
+Ein guter Ansatz wäre z.B. die Suchlogik aus dem Controller\index{Ruby-on-Rails!Controller} in die Job-Modelklasse auszulagern.
 
 \tddrefactor
 % SNIPPET: 
@@ -294,7 +294,7 @@ Wir lagern die Suchmethode in eine neue Klassenmethode der Job-Klasse aus. Klass
 \codecaption{Finaler Jobcontroller nach Refaktorisierung}
 % label{fig:88cbd9}
 
-Nun können wir die neu implementierte Funktion in unserem Controller\index{Rails!Controller} verwenden.
+Nun können wir die neu implementierte Funktion in unserem Controller\index{Ruby-on-Rails!Controller} verwenden.
 
 \paragraph{Ausblick}
 Nun haben wir ein erstes Szenario mit Cucumber\index{Cucumber} implementiert. Da wir schon ein paar Testschritt\index{Cucumber!Testschritt}e implementiert haben, ist die Entwicklung von weiteren Szenarien leichter. 

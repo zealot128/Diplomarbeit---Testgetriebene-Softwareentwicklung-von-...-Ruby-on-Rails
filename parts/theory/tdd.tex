@@ -81,7 +81,7 @@
   \end{enumerate}
   Somit wird sichergestellt, das jeder bisher gefundene Fehler durch einen Test \index{Test}abgesichert wird, und jeder Programmfehler nur einmal auftritt.
 
-  \paragraph{Testen von privaten Methoden/Attributen} Da die objektorienterte Modell\index{Rails!Modell}ierung das Konzept des Information Hiding und der Kapselung vorsieht, soll der interne Aufbau einer Klasse nach außen nicht sichtbar sein. Dies erreicht man mit den privaten Methoden und Attributen, die nur von Klasseneigenen Methoden benutzt werden dürfen. Da Tests aber von außen auf eine Klasse zugreifen, stellt dies scheinbar ein Problem dar. In einigen Sprachen löst man sich dieses Problem mittels Reflections, um über Umwege auf private Felder zuzugreifen. \\
+  \paragraph{Testen von privaten Methoden/Attributen} Da die objektorienterte Modell\index{Ruby-on-Rails!Modell}ierung das Konzept des Information Hiding und der Kapselung vorsieht, soll der interne Aufbau einer Klasse nach außen nicht sichtbar sein. Dies erreicht man mit den privaten Methoden und Attributen, die nur von Klasseneigenen Methoden benutzt werden dürfen. Da Tests aber von außen auf eine Klasse zugreifen, stellt dies scheinbar ein Problem dar. In einigen Sprachen löst man sich dieses Problem mittels Reflections, um über Umwege auf private Felder zuzugreifen. \\
   Dies spielt allerdings nur für das nachträgliche Testen von Legacy-Anwendungen eine Rolle. TDD\index{TDD} in der Reinform betrieben sieht keine dedizierten Tests von privaten Methoden oder Attributen vor, da diese ausschließlich durch Refaktorisierung\index{Refaktorisierung} enstanden sein könnten \citep{caroli_agile_2008}. Die Tests der privaten Methoden erfolgt also nur implizit über das Testen der öffentlich-sichtbaren Methoden.
 
 
