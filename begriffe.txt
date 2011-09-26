@@ -21,5 +21,48 @@ Job, Stellenanzeige, Stellenangebot
 Bewerber
 Arbeitgeber
 
-
 Rake
+Test
+Ruby
+Rails
+TDD
+Code-Metriken
+Testgetrieben
+Cucumber
+Test/Unit
+Feed
+Unittest
+Akzeptanztest
+RackTest
+Browser
+Simulierter Browser
+pludoni GmbH
+ActiveRecord
+Feature
+Smell
+Refaktorisierung
+Testabdeckung
+Datenbank
+Testschritt
+Javascript
+Funktion
+Klasse
+Anforderung
+IT-Jobs
+Capybara
+Fixtures
+Feedimport
+Job / Stellenanzeige
+Selenium
+Gem
+Framework
+Testdaten
+Testfall
+Test-Double
+Stubs
+Mocks
+Validierung
+Modell
+Test-Suite
+Codegenerator
+MVC
