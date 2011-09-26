@@ -2,7 +2,7 @@
 		a4paper,
 		12pt,
 		twoside,
-% 		openright,    % Chapter beginnen auf rechter Seite
+ 		openany,    % Chapter beginnen auf rechter Seite
 		parskip,
 % 		tocbasic,
   		final,    		% DEBUG modus
@@ -10,10 +10,10 @@
 		appendixprefix,
 % 	headsepline,%         Linie nach Kopfzeile.
 % 	footsepline,%         Linie vor Fusszeile.
-% 	bibtotocnumbered,%    Literaturverzeichnis im Inhaltsverzeichnis nummeriert einfügen. 		
-% 		chapterprefix,%       Kapitel anschreiben als Kapitel
+% 	bibtotocnumbered,%    Literaturverzeichnis im Inhaltsverzeichnis nummeriert einfügen.
+ 		chapterprefix,%       Kapitel anschreiben als Kapitel
 ]{scrreprt}
-\usepackage{draftcopy}  % TODO Draft
+%\usepackage{draftcopy}  % TODO Draft
 
 \usepackage[ngerman, german]{babel}
 
@@ -35,7 +35,7 @@
   plainpages=false,
   hypertexnames=false,
   citecolor=black,linkcolor=black,menucolor=black,urlcolor=darkblue]
-  {hyperref}	
+  {hyperref}
 			%clickable TOC
 \usepackage{multirow}	%linebreak in Table
 \usepackage{enumerate}	% \begin{enumerate}[a.]     Custom Nummerierung
@@ -78,7 +78,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% HEAD AND FOOTLINES 
+%% HEAD AND FOOTLINES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagestyle{headings}
 \definecolor{Gray}{rgb}{0.85,0.85,0.90}
@@ -89,15 +89,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%% STYLINGS & FONTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\footrulewidth}{0.5pt}
-\let\cleardoublepage\clearpage
+%\let\cleardoublepage\clearpage
 \parskip 5pt       % sets spacing between paragraphs
-\parindent 0pt	   
+\parindent 0pt
 
 
 \usepackage{bookman}  % 118 pages, sehr sauber
 % \usepackage{newcent}  % 116 pages, nice aber etwas zu kraeftig
 % \usepackage{lmodern}  % 109 pages, standardmaessig
-% \usepackage{boisik}    % 113 pages, gewagt aber sehr detailiert, etwas ungerade 
+% \usepackage{boisik}    % 113 pages, gewagt aber sehr detailiert, etwas ungerade
 % \usepackage{palatino}    % 111 pages, Arial'y sehr langweilig in den Ueberschriften
 % \usepackage{cmbright}    % 111 pages, Wie ein modernes Buch. Gut fuer ne Doku oder so
  \usepackage{charter}    % 109 pages, Wie ein modernes Buch. Gut fuer ne Doku oder so
@@ -122,31 +122,35 @@ Test/Unit
 % \listfiles  DEBUG
 \begin{document}
  \include{parts/00-frontpage}
- \newpage \thispagestyle{empty} \mbox{}
- 
+ \cleardoublepage
+
  \pagenumbering{Roman}
  \include{parts/intro/preambel}
  \include{parts/intro/glossar}
- 
+
   % Table -- Zebrastreifen und 1.25 Row Abstand
   \rowcolors{1}{lightgray!50!white}{white}
   \colorlet{tableheadcolor}{gray!40}
   \renewcommand\arraystretch{1.25}% (MyValue=1.0 is for standard spacing)
 
-  \newpage
-  \setcounter{page}{1}
+
+  \thispagestyle{empty} \mbox{}
+  %\newpage
+  %\setcounter{page}{-1}
+  %\clearpage
+  \cleardoublepage
   \pagenumbering{arabic}
  \input{parts/gliederung}
  \include{parts/99-appendix}
- 
+
 \begin{raggedright}
  \bibliography{bibo}
-\end{raggedright} 
+\end{raggedright}
 
-\end{document} 
- 
- 
-pygmentize  -f latex -l xml beispiel_job.xml 
+\end{document}
+
+
+pygmentize  -f latex -l xml beispiel_job.xml
 %\begin{lstlisting}[language=Ruby,label=Ruby Beispiele,caption=Ruby Beispiele]
  %\end{lstlisting}
 

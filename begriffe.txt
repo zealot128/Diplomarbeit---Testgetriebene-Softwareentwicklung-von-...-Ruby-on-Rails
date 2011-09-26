@@ -71,3 +71,9 @@ MVC
 ack-grep ", und"
 
 ", oder" ->> alle ersetzten wahrscheinlich
+
+
+Teststrategien
+
+Akzeptanztests -> Happy Path
+Abhaengig von Bedeutung

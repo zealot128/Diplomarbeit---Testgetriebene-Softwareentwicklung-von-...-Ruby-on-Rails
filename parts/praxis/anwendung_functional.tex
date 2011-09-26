@@ -2,26 +2,26 @@
 \epigraph{Skinny Controller\index{Ruby-on-Rails!Controller}, Fat Model [...] Try to keep your controller actions and views as slim as possible.}{Jamis Buck, Programmierer bei 37signals}
 
 
-Neben den Unittest\index{Test!Unittest}s stellt Ruby on Rails\index{Ruby-on-Rails} eine weitere Testart nativ bereit. Technisch gesehen handelt es sich bei diesen Functional Tests aber auch um Unittests, da deren Testobjekt eine Klasse, der Controller\index{Ruby-on-Rails!Controller}, ist. 
+Neben den Unittest\index{Test!Unittest}s stellt Ruby on Rails\index{Ruby-on-Rails} eine weitere Testart nativ bereit. Technisch gesehen handelt es sich bei diesen Functional Tests aber auch um Unittests, da deren Testobjekt eine Klasse, der Controller\index{Ruby-on-Rails!Controller}, ist.
 Ein Controller\index{Ruby-on-Rails!Controller} hat bei Ruby on Rails\index{Ruby-on-Rails} die Aufgabe, Anfragen für bestimmte Routen, also Web-Adressen, anzunehmen, die Arbeit an eine Modelklasse auszulagern und eine View\index{Ruby-on-Rails!View} aufzurufen, die letztendlich HTML-Code generiert.
 
 Im ersten Beispiel wollen wir testen, dass ein Gast-Nutzer, also z.B. ein Bewerber, eine sichtbare Stellenanzeige aufrufen darf (\texttt{visible = true}). Hierbei verwenden wir wieder unser oben definiertes Fixture für einen gültigen Job.
-% SNIPPET: 
-%                                                                                                                                                                    
-% /test/functional/jobs_controller_test.rb                                                                                                                           
-% require 'test_helper'                                                                                                                                              
-%                                                                                                                                                                    
-% class JobsControllerTest < ActionController::TestCase                                                                                                              
-%   test "Gast Nutzer kann Stellen betrachten" do                                                                                                                    
-%     session[:user_id] = nil                                                                                                                                        
-%     job = jobs(:valid_job)                                                                                                                                         
-%                                                                                                                                                                    
-%     get :show, :id => job.id                                                                                                                                       
-%                                                                                                                                                                    
-%     assert_response :success                                                                                                                                       
-%     assert_equal job, assigns(:job)                                                                                                                                
-%   end                                                                                                                                                              
-% end                                                                                                                                                                
+% SNIPPET:
+%
+% /test/functional/jobs_controller_test.rb
+% require 'test_helper'
+%
+% class JobsControllerTest < ActionController::TestCase
+%   test "Gast Nutzer kann Stellen betrachten" do
+%     session[:user_id] = nil
+%     job = jobs(:valid_job)
+%
+%     get :show, :id => job.id
+%
+%     assert_response :success
+%     assert_equal job, assigns(:job)
+%   end
+% end
 \begin{ruby}[label=test/functional/jobs\_controller\_test.rb]
 \PY{n+nb}{require} \PY{l+s+s1}{'test\PYZus{}helper'}
 
@@ -29,9 +29,9 @@ Im ersten Beispiel wollen wir testen, dass ein Gast-Nutzer, also z.B. ein Bewerb
   \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{Gast Nutzer kann Stellen betrachten}\PY{l+s+s2}{"} \PY{k}{do}
     \PY{n}{session}\PY{o}{[}\PY{l+s+ss}{:user\PYZus{}id}\PY{o}{]} \PY{o}{=} \PY{k+kp}{nil}
     \PY{n}{job} \PY{o}{=} \PY{n}{jobs}\PY{p}{(}\PY{l+s+ss}{:valid\PYZus{}job}\PY{p}{)}
-    
+
     \PY{n}{get} \PY{l+s+ss}{:show}\PY{p}{,} \PY{l+s+ss}{:id} \PY{o}{=}\PY{o}{>} \PY{n}{job}\PY{o}{.}\PY{n}{id}
-    
+
     \PY{n}{assert\PYZus{}response} \PY{l+s+ss}{:success}
     \PY{n}{assert\PYZus{}equal} \PY{n}{job}\PY{p}{,} \PY{n}{assigns}\PY{p}{(}\PY{l+s+ss}{:job}\PY{p}{)}
   \PY{k}{end}
@@ -45,17 +45,17 @@ Nun erwarten wir, dass wir einen HTTP-Status Code 200 (Erfolg) erhalten und dass
 
 Die Implementation dieser Anforderung könnte wie folgt umgesetzt werden:
 % -------------------------------
-% SNIPPET: 
-%                                                                                                                                                                    
-% # app/controllers/jobs_controller.rb                                                                                                                               
-% class JobsController < ApplicationController                                                                                                                       
-%   ...                                                                                                                                                              
-%   def show                                                                                                                                                         
-%     @job = Job.first                                                                                                                                               
-%   end                                                                                                                                                              
-%   ...                                                                                                                                                              
-%                                                                                                                                                                    
-% end                                                                                                                                                                
+% SNIPPET:
+%
+% # app/controllers/jobs_controller.rb
+% class JobsController < ApplicationController
+%   ...
+%   def show
+%     @job = Job.first
+%   end
+%   ...
+%
+% end
 \begin{ruby}[label=app/controllers/jobs\_controller.rb]
 \PY{k}{class} \PY{n+nc}{JobsController} \PY{o}{<} \PY{n+no}{ApplicationController}
   \PY{o}{.}\PY{n}{.}\PY{o}{.}
@@ -70,16 +70,16 @@ Die Implementation dieser Anforderung könnte wie folgt umgesetzt werden:
 \tddgreen
 Das Laden des erstem Jobs aus unserer Datenbank\index{Datenbank} genügt zum Erfüllen der Anforderungen und ist ein schneller Weg, den Test \index{Test}bestehen zu lassen. Allerdings handelt es sich hierbei um eine \textbf{Fake-Implementierung}, da zwar unser Test erfüllt wird, aber die Anwendung nicht das macht, was man sich erhofft hat. Solche Zwischenschritte sind aber ausdrücklich vorgesehen, da das Ziel ist, so schnell wir möglich einen funktionierenden Test zu erhalten mit dem man arbeiten kann.
 
-Wenn wir nun weitere Tests schreiben, so wird es immer schwieriger, die Fake-Implementierung beizubehalten und früher oder später wird eine korrekte Implementierung folgen. 
+Wenn wir nun weitere Tests schreiben, so wird es immer schwieriger, die Fake\hyp{}Implementierung beizubehalten und früher oder später wird eine korrekte Implementierung folgen.
 Aber wir können auch die nun folgende Refaktorisierung\index{Refaktorisierung}sphase nutzen, um diesen Makel zu beseitigen:
 \tddrefactor
 % -------------------------------
-% SNIPPET: 
-%                                                                                                                                                                    
-% # app/controllers/jobs_controller.rb                                                                                                                               
-% def show                                                                                                                                                           
-%   @job = Job.find(params[:id])                                                                                                                                     
-% end                                                                                                                                                                
+% SNIPPET:
+%
+% # app/controllers/jobs_controller.rb
+% def show
+%   @job = Job.find(params[:id])
+% end
 \begin{ruby}[label=app/controllers/jobs\_controller.rb]
 \PY{k}{def} \PY{n+nf}{show}
   \PY{n+nv+vi}{@job} \PY{o}{=} \PY{n+no}{Job}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{n}{params}\PY{o}{[}\PY{l+s+ss}{:id}\PY{o}{]}\PY{p}{)}
@@ -91,22 +91,22 @@ Aber wir können auch die nun folgende Refaktorisierung\index{Refaktorisierung}s
 Nun wollen wir testen, ob ein Gast von einer nicht-sichtbaren Stellenanzeige weitergeleitet wird und einen Hinweis erhält.
 
 % -------------------------------
-% SNIPPET: 
-%                                                                                                                                                                    
-% test "Gast Nutzer kann nicht-sichtbare Stellen nicht betrachten" do                                                                                                
-%   session[:user_id] = nil                                                                                                                                          
-%   job = jobs(:invisible_job)                                                                                                                                       
-%                                                                                                                                                                    
-%   get :show, :id => job.id                                                                                                                                         
-%                                                                                                                                                                    
-%   assert_response :redirect                                                                                                                                        
-%   assert flash[:notice].present?                                                                                                                                   
-% end                                                                                                                                                                
+% SNIPPET:
+%
+% test "Gast Nutzer kann nicht-sichtbare Stellen nicht betrachten" do
+%   session[:user_id] = nil
+%   job = jobs(:invisible_job)
+%
+%   get :show, :id => job.id
+%
+%   assert_response :redirect
+%   assert flash[:notice].present?
+% end
 \begin{ruby}[label=test/functional/jobs\_controller\_test.rb]
 \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{Gast Nutzer kann nicht-sichtbare Stellen nicht betrachten}\PY{l+s+s2}{"} \PY{k}{do}
   \PY{n}{session}\PY{o}{[}\PY{l+s+ss}{:user\PYZus{}id}\PY{o}{]} \PY{o}{=} \PY{k+kp}{nil}
   \PY{n}{job} \PY{o}{=} \PY{n}{jobs}\PY{p}{(}\PY{l+s+ss}{:invisible\PYZus{}job}\PY{p}{)}
-  
+
   \PY{n}{get} \PY{l+s+ss}{:show}\PY{p}{,} \PY{l+s+ss}{:id} \PY{o}{=}\PY{o}{>} \PY{n}{job}\PY{o}{.}\PY{n}{id}
 
   \PY{n}{assert\PYZus{}response} \PY{l+s+ss}{:redirect}
@@ -120,14 +120,14 @@ Nun wollen wir testen, ob ein Gast von einer nicht-sichtbaren Stellenanzeige wei
 Wir laden unser zweites definiertes Fixture, dass eine unsichtbaren Stellenanzeige. Dieses mal erwarten wir einen HTTP Statuscode 301 (Redirect/Weiterleitung) und dass unser Controller\index{Ruby-on-Rails!Controller} eine Hinweisnachricht generiert.
 
 % -------------------------------
-% SNIPPET: 
-%                                                                                                                                                                    
-% def show                                                                                                                                                           
-%   @job = Job.find(params[:id])                                                                                                                                     
-%   if not @job.visible?                                                                                                                                             
-%     redirect_to root_path, :notice => "Diese Stelle ist zur Zeit nicht sichtbar"                                                                                   
-%   end                                                                                                                                                              
-% end                                                                                                                                                                
+% SNIPPET:
+%
+% def show
+%   @job = Job.find(params[:id])
+%   if not @job.visible?
+%     redirect_to root_path, :notice => "Diese Stelle ist zur Zeit nicht sichtbar"
+%   end
+% end
 \begin{ruby}[label=app/controllers/jobs\_controller.rb]
 \PY{k}{def} \PY{n+nf}{show}
   \PY{n+nv+vi}{@job} \PY{o}{=} \PY{n+no}{Job}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{n}{params}\PY{o}{[}\PY{l+s+ss}{:id}\PY{o}{]}\PY{p}{)}
@@ -145,21 +145,21 @@ Da auch hier der Quelltext wieder sehr kurz ist, ist ein Refaktorisieren nicht n
 
 Nun möchten wir, dass ein Kunde dieser Anwendung, also ein Unternehmen seine Stellenanzeige betrachten kann, auch wenn diese unsichtbar ist, sei es aus Gründen der Archivierung als auch der Vorbereitung für eine Veröffentlichung.
 
-% SNIPPET: 
-%                                                                                                                                                                    
-% test "Ein Kunde darf aber seine unsichtbaren Jobs betrachten" do                                                                                                   
-%   job = jobs(:invisible_job)                                                                                                                                       
-%   session[:user_id] = job.user_id                                                                                                                                  
-%                                                                                                                                                                    
-%   get :show, :id => job.id                                                                                                                                         
-%                                                                                                                                                                    
-%   assert_response :success                                                                                                                                         
-% end                                                                                                                                                                
+% SNIPPET:
+%
+% test "Ein Kunde darf aber seine unsichtbaren Jobs betrachten" do
+%   job = jobs(:invisible_job)
+%   session[:user_id] = job.user_id
+%
+%   get :show, :id => job.id
+%
+%   assert_response :success
+% end
 \begin{ruby}[label=test/functional/job\_controller\_test.rb]
 \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{Ein Kunde darf aber seine unsichtbaren Jobs betrachten}\PY{l+s+s2}{"} \PY{k}{do}
   \PY{n}{job} \PY{o}{=} \PY{n}{jobs}\PY{p}{(}\PY{l+s+ss}{:invisible\PYZus{}job}\PY{p}{)}
   \PY{n}{session}\PY{o}{[}\PY{l+s+ss}{:user\PYZus{}id}\PY{o}{]} \PY{o}{=} \PY{n}{job}\PY{o}{.}\PY{n}{user\PYZus{}id}
-  
+
   \PY{n}{get} \PY{l+s+ss}{:show}\PY{p}{,} \PY{l+s+ss}{:id} \PY{o}{=}\PY{o}{>} \PY{n}{job}\PY{o}{.}\PY{n}{id}
 
   \PY{n}{assert\PYZus{}response} \PY{l+s+ss}{:success}
@@ -170,14 +170,14 @@ Nun möchten wir, dass ein Kunde dieser Anwendung, also ein Unternehmen seine St
 \tddred
 Über die globale Session Variable simulieren wir das Einloggen durch setzen der User-ID in dieses Array. Die genaue Implementation hängt natürlich davon ab, wie man die Authentifizierung implementiert hat oder welche Bibliothek man verwendet. In diesem Beispiel sei darauf hingewiesen, dass die Definition, ob ein Nutzer eingeloggt ist oder nicht, davon abhängt, ob in seiner Session-Variable eine User-ID enthalten ist.
 
-% SNIPPET: 
-%                                                                                                                                                                    
-% def show                                                                                                                                                           
-%   @job = Job.find(params[:id])                                                                                                                                     
-%   if !@job.visible? and @job.user != User.find(session[:user_id])                                                                                                  
-%     redirect_to root_path, :notice => "Diese Stelle ist zur Zeit nicht sichtbar"                                                                                   
-%   end                                                                                                                                                              
-% end                                                                                                                                                                
+% SNIPPET:
+%
+% def show
+%   @job = Job.find(params[:id])
+%   if !@job.visible? and @job.user != User.find(session[:user_id])
+%     redirect_to root_path, :notice => "Diese Stelle ist zur Zeit nicht sichtbar"
+%   end
+% end
 \begin{ruby}[label=app/controllers/job\_controller.rb]
 \PY{k}{def} \PY{n+nf}{show}
   \PY{n+nv+vi}{@job} \PY{o}{=} \PY{n+no}{Job}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{n}{params}\PY{o}{[}\PY{l+s+ss}{:id}\PY{o}{]}\PY{p}{)}
@@ -193,29 +193,29 @@ Wir lösen diesen Test \index{Test}damit, dass wir in der Weiterleitungsbedingun
 
 Nun können wir refaktorisieren. Was auffällt, ist z.B. dass unser Controller\index{Ruby-on-Rails!Controller} und die Klasse Job nicht lose gekoppelt sind, da die Bedingung zweimal auf Attribute des Jobs zurückgreift. Eine Lösung wäre die Auslagerung in die Modelklasse von Job:
 \tddrefactor
-% SNIPPET: 
-%                                                                                                                                                                    
-% # app/models/job.rb                                                                                                                                                
-% class Job < ActiveRecord::Base                                                                                                                                     
-%   ...                                                                                                                                                              
-%   def visible_for_user?(user)                                                                                                                                      
-%     self.visible and self.user != user                                                                                                                             
-%   end                                                                                                                                                              
-% end                                                                                                                                                                
-%                                                                                                                                                                    
-% # app/controllers/jobs_controller.rb                                                                                                                               
-% def show                                                                                                                                                           
-%   @job = Job.find(params[:id])                                                                                                                                     
-%   unless @job.visible_for_user?(User.find(session[:user_id]))                                                                                                      
-%     redirect_to root_path, :notice => "Diese Stelle ist zur Zeit nicht sichtbar"                                                                                   
-%   end                                                                                                                                                              
-% end                                                                                                                                                                
+% SNIPPET:
+%
+% # app/models/job.rb
+% class Job < ActiveRecord::Base
+%   ...
+%   def visible_for_user?(user)
+%     self.visible and self.user != user
+%   end
+% end
+%
+% # app/controllers/jobs_controller.rb
+% def show
+%   @job = Job.find(params[:id])
+%   unless @job.visible_for_user?(User.find(session[:user_id]))
+%     redirect_to root_path, :notice => "Diese Stelle ist zur Zeit nicht sichtbar"
+%   end
+% end
 \begin{ruby}[label=app/models/job.rb]
 \PY{k}{class} \PY{n+nc}{Job} \PY{o}{<} \PY{n+no}{ActiveRecord}\PY{o}{::}\PY{n+no}{Base}
   \PY{o}{.}\PY{n}{.}\PY{o}{.}
   \PY{k}{def} \PY{n+nf}{visible\PYZus{}for\PYZus{}user?}\PY{p}{(}\PY{n}{user}\PY{p}{)}
     \PY{n+nb}{self}\PY{o}{.}\PY{n}{visible} \PY{o+ow}{and} \PY{n+nb}{self}\PY{o}{.}\PY{n}{user} \PY{o}{!=} \PY{n}{user}
-  \PY{k}{end} 
+  \PY{k}{end}
 \PY{k}{end}
 \end{ruby}
 \codecaption{Job: Einführung einer Methode zur Bestimmung der Sichtbarkeit eines Jobs im Job-Modell}
@@ -233,22 +233,22 @@ Ebenfalls wurde das syntaktische Element \texttt{unless} verwendet, welches ein 
 Weiterhin könnte die Suche nach dem aktuell eingeloggten Nutzer in eine für alle Controller\index{Ruby-on-Rails!Controller} sichtbare Funktion ausgegliedert werden
 \tddrefactor
 
-% SNIPPET: 
-%                                                                                                                                                                    
-%                                                                                                                                                                    
-% # app/controllers/application_controller.rb                                                                                                                        
-% ...                                                                                                                                                                
-%   def current_user                                                                                                                                                 
-%     User.find(session[:user_id]                                                                                                                                    
-%   end                                                                                                                                                              
-%                                                                                                                                                                    
-% # app/controllers/jobs_controller.rb                                                                                                                               
-% def show                                                                                                                                                           
-%   @job = Job.find(params[:id])                                                                                                                                     
-%   unless @job.visible_for_user? current_user                                                                                                                       
-%     redirect_to root_path, :notice => "Diese Stelle ist zur Zeit nicht sichtbar"                                                                                   
-%   end                                                                                                                                                              
-% end                                                                                                                                                                
+% SNIPPET:
+%
+%
+% # app/controllers/application_controller.rb
+% ...
+%   def current_user
+%     User.find(session[:user_id]
+%   end
+%
+% # app/controllers/jobs_controller.rb
+% def show
+%   @job = Job.find(params[:id])
+%   unless @job.visible_for_user? current_user
+%     redirect_to root_path, :notice => "Diese Stelle ist zur Zeit nicht sichtbar"
+%   end
+% end
 \begin{ruby}[label=app/controllers/application\_controller.rb]
 \PY{o}{.}\PY{n}{.}\PY{o}{.}
   \PY{k}{def} \PY{n+nf}{current\PYZus{}user}
@@ -273,7 +273,7 @@ Weiterhin könnte die Suche nach dem aktuell eingeloggten Nutzer in eine für al
 
 
 \paragraph{Zusammenfassung}
-Funktionale Tests und deren Controller\index{Ruby-on-Rails!Controller}-Implementierungen sind häufig nicht länger als ein paar Zeilen. Qua Konventation des \glossar{MVC}-Patterns und Rails\index{Ruby-on-Rails} sollen komplexe Abläufe in den Modell\index{Ruby-on-Rails!Modell}en oder auch in Bibliotheken stattfinden. 
+Funktionale Tests und deren Controller\index{Ruby-on-Rails!Controller}-Implementierungen sind häufig nicht länger als ein paar Zeilen. Qua Konventation des \glossar{MVC}-Patterns und Rails\index{Ruby-on-Rails} sollen komplexe Abläufe in den Modell\index{Ruby-on-Rails!Modell}en oder auch in Bibliotheken stattfinden.
 Die Aspekte, die üblicherweise bei Controller\index{Ruby-on-Rails!Controller}n getestet werden, sind:
 \begin{itemize}
  \item HTTP Statuscodes und Weiterleitungen,
