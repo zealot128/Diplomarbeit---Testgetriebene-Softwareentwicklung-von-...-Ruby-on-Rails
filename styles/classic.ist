@@ -1,0 +1,7 @@
+headings_flag 1
+heading_prefix "\n \\item \\large{\\textbf{"
+heading_suffix "}} \\hline"
+symhead_positive "Simboli"
+symhead_negative "simboli"
+numhead_positive "Numeri"
+numhead_negative "numeri"
