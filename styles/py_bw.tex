@@ -1,0 +1,55 @@
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\def\PY@tok@gu{\let\PY@bf=\textbf}
+\def\PY@tok@gs{\let\PY@bf=\textbf}
+\def\PY@tok@cm{\let\PY@it=\textit}
+\def\PY@tok@gp{\let\PY@bf=\textbf}
+\def\PY@tok@ge{\let\PY@it=\textit}
+\def\PY@tok@cs{\let\PY@it=\textit}
+\def\PY@tok@gh{\let\PY@bf=\textbf}
+\def\PY@tok@ni{\let\PY@bf=\textbf}
+\def\PY@tok@nn{\let\PY@bf=\textbf}
+\def\PY@tok@s2{\let\PY@it=\textit}
+\def\PY@tok@s1{\let\PY@it=\textit}
+\def\PY@tok@nc{\let\PY@bf=\textbf}
+\def\PY@tok@ne{\let\PY@bf=\textbf}
+\def\PY@tok@si{\let\PY@bf=\textbf\let\PY@it=\textit}
+\def\PY@tok@nt{\let\PY@bf=\textbf}
+\def\PY@tok@ow{\let\PY@bf=\textbf}
+\def\PY@tok@c1{\let\PY@it=\textit}
+\def\PY@tok@kc{\let\PY@bf=\textbf}
+\def\PY@tok@c{\let\PY@it=\textit}
+\def\PY@tok@sx{\let\PY@it=\textit}
+\def\PY@tok@err{\def\PY@bc##1{\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{##1}}}
+\def\PY@tok@kd{\let\PY@bf=\textbf}
+\def\PY@tok@ss{\let\PY@it=\textit}
+\def\PY@tok@sr{\let\PY@it=\textit}
+\def\PY@tok@k{\let\PY@bf=\textbf}
+\def\PY@tok@kn{\let\PY@bf=\textbf}
+\def\PY@tok@kr{\let\PY@bf=\textbf}
+\def\PY@tok@s{\let\PY@it=\textit}
+\def\PY@tok@sh{\let\PY@it=\textit}
+\def\PY@tok@sc{\let\PY@it=\textit}
+\def\PY@tok@sb{\let\PY@it=\textit}
+\def\PY@tok@se{\let\PY@bf=\textbf\let\PY@it=\textit}
+\def\PY@tok@sd{\let\PY@it=\textit}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
