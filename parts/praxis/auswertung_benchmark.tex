@@ -7,8 +7,8 @@ Um die Ergebnisse besser einordnen zu können, vergleichen wir die Ergebnisse au
 Eine vollständige Metrik wie oben an IT-Jobs\index{IT-Jobs-Projekt}, war in vielen Fällen nicht möglich, da die Testwerkzeuge in vielen Fällen Inkompatibilitäten mit neueren Rubyversionen haben. Wir beschränken uns deshalb auf eine exemplarische Überblicksmetrik, bestehend aus:
 
 \begin{description}
- \item[LOC] Anzahl der Quellcodezeilen, gemessen durch das Rails\index{Ruby-on-Rails}-Kommando "`rake stats"'. 
- \item[LOT] Anzahl der Quellcodezeilen aller Tests, gemessen durch das Rails-Kommando "`rake stats"'. 
+ \item[LOC] Anzahl der Quellcodezeilen, gemessen durch das \glossar{rake}-Tasks "`rake stats"'\index{Ruby!Rake}.
+ \item[LOT] Anzahl der Quellcodezeilen aller Tests, gemessen durch das Rails-Kommando "`rake stats"'.
  \item[LOT/TOC] Verhältnis aus Testzeilen und Quellcodezeilen
  \item[AVGCmplx] Durchschnittliche Komplexität aller Klassen, gemessen durch \textbf{Flog}\footnote{\url{https://github.com/seattlerb/flog}}. Flog besitzt ein eigenes Maß für Code-Komplexität. Es vergibt für jede Zuweisungen, Verzweigungen und Funktionsaufrufe unterschiedlich viele Punkte und bildet so eine Summe per Funktion oder per Klasse. Dabei vergibt Flog besonders viele Punkte für schwer nachzuvollziehende Funktionsaufrufe, wie z.B. "`eval(string)"', welches einen String als Ruby\index{Ruby}-Code auswertet.
  \item[H5Cmplx] Komplexität der 5\% komplexesten Klassen, nach Flog
@@ -32,15 +32,15 @@ Bisherige Projekte der pludoni GmbH und des Autors basierend auf Ruby\index{Ruby
  \item[feedmerger] Eine Rails\index{Ruby-on-Rails}-Anwendung\footnote{ Als OpenSource unter \url{https://github.com/zealot128/WenShanWenHai} zu finden.} zur Verwalten, Cachen, Filtern und Zusammenfügen von RSS und Atom-Feeds.
  \item[pludonidb] Ist eine auf ActiveRecord\index{ActiveRecord} basierende Bibliothek zur Anbindung der Datenbank\index{Datenbank}en der Communityportale an Ruby-Skripte. Beinhaltet außerdem weitere Hilfsfunktionen für Berechnung von Tag-Wolken, Häufigkeiten u.ä.
  \item[backlinks] Backlink und SEO-Success-Control ist eine Rails-2.3 Anwendung, zum Messen der sogenannten Backlinks\footnote{Backlinks sind Links anderer Webseiten auf die eigenen. In den Communityportalen sind die Mitglieder vertraglich verpflichtet, einen Backlink auf die Communityportale anzulegen.} der Communitymitglieder und der Platzierung für relevante Sucheingaben in den großen Suchmaschinen (konkret: Welchen Platz hatte ein Communityportal an einem bestimmten Tag für "`it jobs dresden"', usw.). Details dazu sind im Praktikumsbericht des Autors zu finden. %TODO Verweis auf meinen Praktikumsbericht
- 
- \item[SiteAnalyzer (SAnalyzer)] ist ein Werkzeuge zur Analyse von kompletten Websites/Webdomains, mit dem Ziel tote Links zu finden, alle Seiten auf HTML-Gültigkeit zu prüfen und insgesamt die Link-Architektur zu analysieren\footnote{Auch dieses Projekt ist als OpenSource verfügbar: \url{https://github.com/zealot128/Site-Structure-Analyzer}}. 
+
+ \item[SiteAnalyzer (SAnalyzer)] ist ein Werkzeuge zur Analyse von kompletten Websites/Webdomains, mit dem Ziel tote Links zu finden, alle Seiten auf HTML-Gültigkeit zu prüfen und insgesamt die Link-Architektur zu analysieren\footnote{Auch dieses Projekt ist als OpenSource verfügbar: \url{https://github.com/zealot128/Site-Structure-Analyzer}}.
 \end{description}
 
 
 \begin{table}[hbp]
  \caption{Vergleich von IT-jobs mit anderen Ruby Projekten des Autors/der pludoni GmbH}\label{table:cmpmy}
  \begin{center}
- 
+
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline\rowcolor{tableheadcolor}
 
@@ -85,7 +85,7 @@ Weiterhin wird das Projekt mit folgenden beliebten Webprojekten, welche ebenfall
  \item[chiliproject (chilli)] Ist ein Fork\footnote{In der (Open-Source) Software-Entwicklung ist ein Fork eine legale Kopie eines bestehendes Software-Produktes, um von nun an eine unabhängige Entwicklung zu betreiben} des sehr beliebten Bugtrackers Redmine\footnote{https://github.com/edavis10/redmine}. Statt des originalen Redmines wurde dieser Fork genommen, da er eine neuere Codebasis hat\\
  Code: \url{https://github.com/chiliproject/chiliproject}
  \item[railscast (rCasts)] Ist der Code der Website \url{http://www.railscasts.com}, in welche allwöchentlich ein Screencast zum Thema Ruby und Rails veröffentlich wird (bis dato 283 Episoden).\\
- Code: \url{https://github.com/ryanb/railscasts} 
+ Code: \url{https://github.com/ryanb/railscasts}
  \item[ActiveSupport [aSupport]] Beinhaltet Hilfsklassen und Erweiterungen der Ruby-Standardbibliothek und ist Kernbestandteil von Ruby on Rails \\
  Code: \url{https://github.com/rails/rails.git}
  \item[ActionPack (aPack)]  ist ein Framework um Anfragen und Antworten eines Webservers zu verarbeiten und ist ein weiterer Kernbestandteil von Rails.\\
