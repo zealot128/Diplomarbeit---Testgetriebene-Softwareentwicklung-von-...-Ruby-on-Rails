@@ -3,8 +3,19 @@
 
 \epigraph{TDD is also good for geeks who form emotional attachments to code. }{\cite{beck_test_2002}}Extreme Programming ist eine Agile Software-Entwicklungs Methodik, welche das Ziel hat, die Qualität der Software zu verbessern und flexibel auf Änderungen in den Anforderungen zu reagieren. Dazu implementiert sie einige Kernpraktiken. Eine Wesentliche, auf der viele der anderen Praktiken gründen, ist die "`Test-First"'-Praktik, die ab 2002 durch Kent Beck als Test-Driven-Development bekannt geworden ist \citep{beck_test_2002}.
 
+Diese als Testgetrieben Entwicklung oder Test-Driven-Design bekannte Entwicklungstechnik basiert auf der Wiederholung von sehr kurzen Entwicklungszyklen, jeder nur wenige Minuten lang. Dabei ist es das Ziel, dass sich Test schreiben/Implementation und Refaktorisierung\index{Refaktorisierung}en, d.h. das konstante Verbessern des Systemdesigns und des Quellcodes, abwechseln. Mittlerweile werden die Begriffe Test-First Development und \glossar{TDD} oft synonym verwendet, allerdings gibt es manchmal Unterschiede in der Herangehensweise in Punkto Design der Software: TDD findet seine Anwendung, wenn nur eine vage Idee der Funktionalität einer Klasse besteht, während TFD kein Design oder Redesign der Klassen vorsieht, sondern dieses bereits im Vorfeld der Entwicklung stattfand \citep{stackoverflow_testing_2008}.
+
+
+
+Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und danach am Beispiel von Ruby\index{Ruby}/\glossar{rails} typische Testwerkzeuge aufzeigen.
+
+
+
 
 \section{Motivation}
+ Das Erstellen einer gut abdeckenden \glossar{testsuite} ist für ein jedes größeres Softwareprojekt eine wichtige Voraussetzungen um interne Qualitäten, wie Wartbarkeit und Zuverlässigkeit zu aktivieren. \glossar{TDD} soll nicht dazu dienen, die Software zu validieren und die Umsetzung der funktionalen Anforderungen zu belegen. Das Hauptziel ist es nämlich, den Code in Einklang mit dem Test zu schreiben, so dass der Test den Code antreibt (Test drives the code), und letztendlich Design auf diese Art zum System hinzuzufügen. Die Auswirkung davon sei ein gut testbarer Code, welcher in der Regel auch ein gut wartbarer und verständlicher Code ist \citep{beck_test_2002}. \glossarpl{smell}, wie God-Methode und geringe Kohäsion, zu programmieren, wird alleine dadurch schon erschwert, da diese nur äußerst schwer zu testen sind.
+
+
 
   \paragraph{Psychologische Aspekte und Aspekte des Projektmanagements}
 

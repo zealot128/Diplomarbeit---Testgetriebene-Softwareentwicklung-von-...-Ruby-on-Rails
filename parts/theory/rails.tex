@@ -60,8 +60,10 @@ Neben diesem architektonischen Konzept verfolgt Rails\index{Ruby-on-Rails} noch 
 rails generate scaffold job title:string description:text \PY{l+s+se}{\PYZbs{}}
   start\PYZus{}date:datetime active:boolean user:references
 \end{ruby}
+\codecaption{Nutzung der Codegeneratoren von der Kommandozeile}
 % label{fig:df19f5}
   Damit wird das Model Job, eine Migration zur Erstellung der Datenbank\index{Datenbank}tabelle "`jobs"', ein Controller\index{Ruby-on-Rails!Controller} "`jobs"' mit den REST-Standardaktionen und entsprechenden Beispielviews sowie Testfälle für Unit- und Funktionale Tests angelegt. \\
+  Wie mithilfe der Codegeneratoren praktisch gearbeitet wird, wird später in Kapitel 7 dargelegt werden.
    \borderquote{Rails will have strong defaults. They might change over time but Rails will remain opinionated.}{D. Hansson, Begründer von Rails}
  \item[Full-Stack Webframework] Rails\index{Ruby-on-Rails} bringt out-of-the-box alles mit, was zur Webentwicklung benötigt wird. Im Gegensatz zu anderen Webframeworks wurde für Datenbankanbindung\index{Datenbank}, Templatesystem, Javascriptframework\index{Javascript}, Testframework und Webserver-API bereits eine Vorauswahl getroffen. Im aktuellen Rails 3.1 sind dies ActiveRecord\index{ActiveRecord} (Datenbank-Framework), ERB (Templating-Sprache), JQuery (Javascript-Framework) sowie Test/Unit\index{Test/Unit-Framwork} und Rack (Kommunikationsinterface für Komponenten). Die meisten dieser Teil-Frameworks lassen sich zwar leicht austauschen, Rails selbst aber behauptet "`opinionated"', also rechthaberisch/eigensinnig, zu sein und den Entwickler Standards vorzugeben \citep{david_heinemeier_hansson_railsconf_2011}.
 
@@ -107,11 +109,14 @@ Dank der Modularität können als Persistenzgrundlage sowohl \randbem{Flexible D
 Rails\index{Ruby-on-Rails} bietet eine gute Ausgangsbasis um sichere Websoftware zu entwickeln.\randbem{Sicherheit} Das Verwenden eines Datenbank\index{Datenbank}frameworks macht SQL-Injections unmöglich. \\
 Cross-Site-Request-Forgery und Session-Angriffe werden erschwert, da Session und Cookie-Variablen standardmäßig verschlüsselt werden und bei Nutzung der Formulargeneratoren ein CSRF-Token generiert wird, um Replay-Angriffe zu unterbinden.
 
+\borderquote{I needed to be way more productive...}{D. Hansson}Die Codegeneratoren, die Aufteilung in \glossar{MVC} und die mitgelieferten Werkzeuge machen Rails\index{Ruby-on-Rails} äußerst produktiv und in wenigen Minuten lassen sich so bereits erste Anwendungen bauen. Der Begründer von Rails z.B. führte in einer Konferenz vor, wie man mit Rails einen Blog in 15 Minuten bauen könnte\footnote{http://media.rubyonrails.org/video/rubyonrails.mov}.
+
 
 \paragraph{Testen mit Rails}
 Rails\index{Ruby-on-Rails} bietet ausgezeichnete Vorraussetzungen zum Softwaretest. Dafür sprechen, dass...
 
 \begin{itemize}
+  \item die Verwendung stark erleichtert wird, da Rails\index{Ruby-on-Rails} beim Nutzen der Codegeneratoren analoge Testdateien gleich mitgeneriert,
  \item neben den mitgelieferten Tools das Rails\index{Ruby-on-Rails} Ökosystem eine Vielzahl von Testtools bereitstellt, u.a. Rspec (\glossar{BDD}-Testframework), Rcov (Testabdeckung\index{Test!Testabdeckung}), diverse Mock\index{Test-Double!Mock}bibliotheken (mocha, FlexMock, RR, Rspec Mocks), Tools zum Generieren und Bereitstellen von Testdaten\index{Test!Testdaten} (Fixtures, Factories, Faker) und \glossarpl{metrik}\index{Code-Metrik} (metric-fu)
  \item das Testen einen sehr hohen Stellenwert in der Ruby und Rails-Comumnity hat. Nahezu alle namhaften Ruby-Programmierer schreiben umfassende Tests \citep{devries_rails_2008}. Das Resultat ist, dass auch fast alle \glossarpl{gem}\index{Gem} bei Ruby eine "`solid suite of tests"' haben \citep{devries_rails_2008}.
 \end{itemize}
