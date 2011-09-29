@@ -31,7 +31,8 @@ Ein daraus abgeleitetes Test\index{Test}verfahren "`Basis Path Testing"' schläg
 
 \subsubsection{Code-Smells}
 
-Als Code-Smells werden alle Symptome innerhalb des Quelltextes bezeichnet, die Anzeichen für ein tieferes, zugrundeliegendes Problem sein können. Die Einordnung von Code-Smells variiert aber abhängig von der Programmiersprache oder Framework und ist oft subjektiv. Code-Smells werden meist automatisiert durch Werkzeuge gefunden und geben dem Programmier Hinweise für mögliche Refaktorisierungen.
+  Ein Code-Smell ist ein oberflächliches Symptom für ein möglicherweise tieferliegendes Designproblem. Ob ein konkreter Smell relevant ist, muss im Einzelfall entschieden werden. Für eine grobe Übersicht genügt aber z.B. auch einfach die Summe, oder die Anzahl der Codesmells relativ zur Codemenge (Smells pro Tausend LOC). Welche Bad Smells für die Entwicklung entscheidend sind hängt von der gewählten Sprache, dem damit einhergehenden Programmierparadigma und manchmal auch den verwendeten Frameworks. Einige für Ruby\index{Ruby} relevante Smells sind z.B. (Nach \citep{kevin_rutherford_code_2010}):
+    Die Anzahl der Code-Smells ist eine aggregierte Metrik über Anzahl und Vorkommen dieser suboptimalen Codestellen (\glossarpl{smell}).
 
 \begin{description}
  \item[Geringe Kohäsion] Ist ein Oberbegriff für verschiedene andere Smell\index{Code-Smell}s anzuwenden bei objektorientierten Programmen. Einer davon ist z.B.. "`Feature Envy"' (deutsch: Neid). Eine Klasse weiß zuviel über die internen Strukturen einer anderen Klasse und implementiert Funktionalität, die eigentlich in jene Klasse gehören sollten. \\
