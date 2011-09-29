@@ -50,6 +50,7 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und da
    \item \textbf{Green}: Nachdem der Test \index{Test}fehlschlägt, implementiere nun den einfachsten Code, damit der Test besteht\\
    Dies kann ausdrücklich auch eine Fake-Implementierung sein, also z.B. die Rückgabe eines konstanten Wertes anstelle einer Berechnung. Wichtig ist, dass diese Phase so schnell wie möglich verlassen wird.
    \item \textbf{Refactor}: Nachdem der Test \index{Test}bestanden wird, folgt nun die \textbf{wichtigste Phase}, die Refaktorisierung\index{Refaktorisierung}sphase.\\
+   Da wir bereits einen Test haben, der unser gewünschtes Systemverhalten widerspiegelt, können wir gefahrlos \glossar{refaktorisieren}, d.h. Design iterativ zum System hinzufügen und Duplikation zu eliminieren. Nun macht sich der Programmierer Gedanken, wie die vorhanden Klassen optimal refaktorisiert werden können, um \glossarpl{smell} zu eliminieren, und welches \glossar{patterns} ggf. angewendet werden kann.
   \end{enumerate}
 
 
