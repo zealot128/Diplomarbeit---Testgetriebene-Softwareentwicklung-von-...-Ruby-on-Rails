@@ -11,13 +11,13 @@ Eine vollständige Einführung in Ruby\index{Ruby} zu geben würde den Rahmen di
 Ruby ist eine Multiparadigma-Sprache}
 Ruby\index{Ruby} ist eine interpretierte Sprache, auch Skriptsprache genannt. Dies bedeutet, dass der Programmcode zur Laufzeit analysiert und ausgeführt wird. Ruby ist auch eine Multiparadigma-Sprache, die Objektorientierung, prozedurale und funktionale Programmierung unterstützt.
 \begin{description}
- \item[Prozedural] Funktionen und Variablen können außerhalb von Klassen definiert werden, in dem sogenannten \texttt{main}-Objekt
- \item[Objektorientierung] Alle Datentypen sind Objekte. Alle Variablen beinhalten Referenzen auf ein Objekt. Dies betrifft auch die primitiven Datentypen wie Integer und String
- \item[Funktional] Anonyme Funktionen und Closures sind Sprachbestandteil. Alle Statements haben einen Rückgabewert. Innerhalb einer Funktion ist dies immer das letzte Statement, falls kein expliziter Rücksprungpunkt gesetzt wurde
+ \item[Prozedural] Funktionen und Variablen können außerhalb von Klassen definiert werden, in dem sogenannten \texttt{main}-Objekt.
+ \item[Objektorientierung] Alle Datentypen sind Objekte. Alle Variablen beinhalten Referenzen auf ein Objekt. Dies betrifft auch die primitiven Datentypen wie Integer und String.
+ \item[Funktional] Anonyme Funktionen und Closures sind Sprachbestandteil. Alle Statements haben einen Rückgabewert. Innerhalb einer Funktion ist dies immer das letzte Statement, falls kein expliziter Rücksprungpunkt gesetzt wurde.
 \end{description}
 
 
-Das Ziel von Ruby\index{Ruby} ist es nicht (nur) maschinenlesbar zu sein, sondern vor allem die Lesbarkeit und Nutzbarkeit durch Menschen zu verbessern. Dies drückt sich durch eine Syntax aus, die oft laut als englische Sprache gelesen werden kann und an vielen Stellen auf den Einsatz von Sonderzeichen verzichtet. So ist die Klammerung von Funktionsaufrufen optional und kann weggelassen werden, solange die Zuordnung der Parameter eindeutig ist. Auch hält Ruby eine Vielzahl von redundanten Keywords bereit (Syntaktischer Zucker), um dem Programmierer mehrere Wege zur Lösung seines Problems zu ermöglichen.
+Das Ziel von Ruby\index{Ruby} ist es, nicht (nur) maschinenlesbar zu sein, sondern vor allem die Lesbarkeit und Nutzbarkeit durch Menschen zu verbessern. Dies drückt sich durch eine Syntax aus, die oft laut als englische Sprache gelesen werden kann und an vielen Stellen auf den Einsatz von Sonderzeichen verzichtet. So ist die Klammerung von Funktionsaufrufen optional und kann weggelassen werden, solange die Zuordnung der Parameter eindeutig ist. Auch hält Ruby eine Vielzahl von redundanten Keywords bereit ("syntaktischer Zucker"), um dem Programmierer mehrere Wege zur Lösung seines Problems zu eröffnen.
 
 \setlength{\epigraphwidth}{\marginparwidth}
 \marginline{\epigraph{Ruby is simple in appearance, but is very complex inside, just like our human body}{Yukihiro Matsumoto}}
@@ -41,9 +41,9 @@ Im Nachfolgenden sind einige Beispiele für die Verwendung von Ruby\index{Ruby} 
  \end{ruby}
 \codecaption{Ruby Beispiele}
 
-In den ersten beiden Beispielen sieht man, dass Integer und String Objekte sind und über Instanzmethoden verfügen. Im ersten Beispiel wird geprüft, ob die Zahl gerade ist. Dabei existiert eine Konvention, dass boolsche Methoden mit einem Fragezeichen am Ende notiert werden. Im Dritten Beispiel wird eine Klassenmethode \texttt{today} auf die Klasse \texttt{Date} ausgeführt, welche ein Datumsobjekt konstruiert und zurückliefert. Da auch die Nutzung von Operatoren letzendlich nur syntaktischer Zucker für Methodenaufrufe sind, wird die Instanz-Methode \texttt{.+()} auf dieses Datums-Objekt ausgeführt und liefert ein neues Datumsobjekt, welches zwei Tage in der Zukunft liegt.\\
-Im Vierten Beispiel wird der Einsatz von Variablen demonstriert
-Das letzte Beispiel zeigt den Einsatz von Kontrollstrukturen. Als Besonderheit seien hier auf den Ausdruck vom Typ \texttt{Range} \texttt{(0..10)} hingewiesen, der ein Intervall für den Integerzahlenbereich von 0 bis einschließlich 10 liefert. Die Methode \texttt{.include?(a)} testet nun, ob die Variable \texttt{a} in diesem Intervall liegt. Bei Eindeutigkeit können, wie oben bereits angesprochen, die Klammern eines Methodenaufrufes weggelassen werden.
+In den ersten beiden Beispielen sieht man, dass Integer und Strings Objekte sind und über Instanzmethoden verfügen. Im ersten Beispiel wird geprüft, ob die Zahl gerade ist. Dabei existiert eine Konvention, dass bool'sche Methoden mit einem Fragezeichen am Ende notiert werden. Im dritten Beispiel wird eine Klassenmethode \texttt{today} auf die Klasse \texttt{Date} ausgeführt, welche ein Datumsobjekt konstruiert und zurückliefert. Da auch die Nutzung von Operatoren letztendlich nur syntaktischer Zucker für Methodenaufrufe sind, wird die Instanz-Methode \texttt{.+()} auf dieses Datums-Objekt ausgeführt und liefert ein neues Datumsobjekt, welches zwei Tage in der Zukunft liegt.\\
+Im vierten Beispiel wird der Einsatz von Variablen demonstriert.
+Das letzte Beispiel zeigt den Einsatz von Kontrollstrukturen. Als Besonderheit sei hier auf den Ausdruck vom Typ \texttt{Range} \texttt{(0..10)} hingewiesen, der ein Intervall für den Integerzahlenbereich von 0 bis einschließlich 10 liefert. Die Methode \texttt{.include?(a)} testet nun, ob die Variable \texttt{a} in diesem Intervall liegt. Bei Eindeutigkeit können, wie oben bereits angesprochen, die Klammern eines Methodenaufrufes weggelassen werden.
 
 Weiterhin erlaubt Ruby\index{Ruby} die Arbeit mit Lambdas, also anonymen Funktionen. Eine beliebte Verwendungsmöglichkeit ist die Bearbeitung von Arrays und listenähnlichen Strukturen.
 
@@ -87,12 +87,12 @@ Weiterhin erlaubt Ruby\index{Ruby} die Arbeit mit Lambdas, also anonymen Funktio
 \codecaption{Ruby Beispiel: Blöcke}
 Das erste Beispiel zeigt, wie Funktionsausdrücke in Variablen gespeichert werden können, um später aufgerufen zu werden. Hier wird eine Addierfunktion definiert und aufgerufen.\\
 Das zweite Beispiel zeigt, wie Arrays verwendet werden und durch eine bereits eingebaute Methode \texttt{sort} sortiert werden können. Falls die enthaltenen Objekte nicht trivial verglichen werden können, ermöglicht die Methode \texttt{sort\_by} des dritten Beispiels die Angabe einer benutzerdefinierten Sortierfunktion, hier z.B. die Sortierung nach der Länge eines Strings.\\
-Im letzten Beispiel wird demonstriert, wie die Funktion \texttt{map} verwendet wird, die eine beliebige Funktion auf alle Elemente der Liste ausführt. Hier quadrieren wir alle Elemente unserer Liste und erhalten die quadrierte Liste als Rückgabewert von Map (Die originale Liste bleibt dabei unverändert).
+Im letzten Beispiel wird demonstriert, wie die Funktion \texttt{map} verwendet wird, die eine beliebige Funktion auf alle Elemente der Liste ausführt. Hier quadrieren wir alle Elemente unserer Liste und erhalten die quadrierte Liste als Rückgabewert von \texttt{map} (Die originale Liste bleibt dabei unverändert).
 
 
 
 \paragraph{Typ- und Objektsystem}
-Wie schon erwähnt, sind bei Ruby\index{Ruby} alle Datentypen ein Objekt. Dies schließt insbesondere Klassen und primitive Datentypen mit ein, wie wir im folgenden Beispiel sehen können
+Wie schon erwähnt, sind bei Ruby\index{Ruby} alle Datentypen ein Objekt. Dies schließt insbesondere Klassen und primitive Datentypen mit ein, wie wir im folgenden Beispiel sehen können:
 % SNIPPET:
 % >> 2.class
 % => Fixnum
