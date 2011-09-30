@@ -9,13 +9,13 @@ Für das Projekt IT-jobs-und-stellen.de soll das Webframework Ruby-on-Rails\inde
 % \footnote{ Sowie weitere PHP-Frameworks -- \url{http://www.h3rald.com/articles/rails-inspired-php-frameworks/}}
 
 \bordergraphic{material/rails.png}
-Viele professionelle Websites, die meist als Startup begannen, setzen bis heute auf Rails\index{Ruby-on-Rails}. Darunter Github, eine sehr beliebte Community für OpenSource Programmierer,  Groupon, dem führenden Unternehmen bei Online-Gutscheinen, XING, einer deutschen Online-Community für Business-Kontakte aber auch nicht-StartUps z.B. Yellow Pages, die Gelben Seiten der USA \citep{ruby_on_rails_2011}. Viele bekannte Firmen nutzen Rails auch auf die eine oder andere Weise, z.B. zur Entwicklung ihrer internen Webanwendungen. Dazu gehören BBC, Cisco, IBM, Oracle, Nasa, Siemens oder Yahoo\footnote{Weitere Firmen: \url{http://www.workingwithrails.com/high-profile-organisations}}.
+Viele professionelle Websites, die meist als Startup begannen, setzen bis heute auf Rails\index{Ruby-on-Rails}. Darunter Github, eine sehr beliebte Community für OpenSource-Programmierer,  Groupon, das führenden Unternehmen bei Online-Gutscheinen, XING, eine deutsche Online-Community für Business-Kontakte, aber auch nicht-StartUps z.B. Yellow Pages, die Gelben Seiten der USA \citep{ruby_on_rails_2011}. Viele bekannte Firmen nutzen Rails auch auf die eine oder andere Weise, z.B. zur Entwicklung ihrer internen Webanwendungen. Dazu gehören BBC, Cisco, IBM, Oracle, die NASA, Siemens oder Yahoo\footnote{Weitere Firmen: \url{http://www.workingwithrails.com/high-profile-organisations}}.
 
 Im Folgenden werden die Grundprinzipien und -konzepte von Ruby on Rails\index{Ruby-on-Rails} näher erläutert.
 
 \subsection{Konzepte von Rails}
 \label{sec:railsconcepts}
-Rails\index{Ruby-on-Rails} ist ein Applikationsframework für Webanwendungen und basiert auf dem \glossar{MVC} \glossar{patterns}, welches eine 3-Schichten Architektur darstellt. Jede Schicht hat fest definierte Aufgaben und sie bilden bei Rails normalerweise zusammen ein Dreigespann, \textbf{Ressource} genannt. Im folgenden werden die Schichten kurz erläutert und am Beispiel einer Ressource "`Job"' erklärt.
+Rails\index{Ruby-on-Rails} ist ein Applikationsframework für Webanwendungen und basiert auf dem \glossar{MVC} \glossar{patterns}, welches eine 3-Schichten-Architektur darstellt. Jede Schicht hat fest definierte Aufgaben und sie bilden bei Rails normalerweise zusammen ein Dreigespann, \textbf{Ressource} genannt. Im folgenden werden die Schichten kurz erläutert und am Beispiel einer Ressource "`Job"' erklärt.
 \begin{description}
  \item[Model] In Klassen dieser Schicht werden Zugriffe auf die Persistenzschicht vorgenommen. Meist geschieht dies durch Ausführung von SQL-Befehlen auf eine relationale Datenbank\index{Datenbank}. Innerhalb von Rails\index{Ruby-on-Rails} ist das Schreiben von SQL aber meist nicht notwendig, da das \glossar{ORM}-\textit{ActiveRecord\index{ActiveRecord}} häufig verwendete SQL-Befehle abstrahiert. Die Geschäftslogik soll per Definition zu großem Teil in dieser Schicht erfolgen.
 
