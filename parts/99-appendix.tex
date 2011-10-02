@@ -6,10 +6,10 @@ Das Vorhandensein von zahlreichen Tests reicht nicht aus, um die Qualität der T
 
 \begin{description}
  \item[Unabhängigkeit (Independence) und Isolation] Ein Test \index{Test}ist unabhängig, falls er nicht durch andere Tests beeinflusst wird. Auch die Reihenfolge, in der die Tests ausgeführt werden, darf auf das Ergebnis keinen Einfluss üben. Siehe auch \citep{beck_test_2002}, \citep{palermo_guidelines_2006} sowie \citep[Karte 45]{langr_agile_2011}.
- \item[Wiederholbarkeit (Repeatability] Ein Test \index{Test}wird als wiederholbar bezeichnet, wenn er mehrmals hintereinander ausgeführt werden kann und dabei jedes mal dasselbe Ergebnis liefert \citep[Karte 45]{langr_agile_2011} \citep{rappin_rails_2011}. Problematisch sind dabei z.B. Datum und Zeit sowie Zufallsfunktionen
- \item[Klarheit (Clarity)] Ein Test \index{Test}ist klar, wenn sein Zweck sofort verständlich wird \citep{rappin_rails_2011}, \citep{palermo_guidelines_2006}. Damit wird einerseits die Lesbarkeit gemeint. Anderseits schließt dies auch ein, ob der Test genau eine Eigenschaft testet und nicht redundant zu anderen Tests ist. Dies hat zur Folge, dass die Tests wartbarer werden und als Code Dokumenation dienen können.
+ \item[Wiederholbarkeit (Repeatability] Ein Test \index{Test}wird als wiederholbar bezeichnet, wenn er mehrmals hintereinander ausgeführt werden kann und dabei jedes mal dasselbe Ergebnis liefert \citep[Karte 45]{langr_agile_2011} \citep{rappin_rails_2011}. Problematisch sind dabei z.B. Datum und Zeit sowie Zufallsfunktionen.
+ \item[Klarheit (Clarity)] Ein Test \index{Test}ist klar, wenn sein Zweck sofort verständlich wird \citep{rappin_rails_2011}, \citep{palermo_guidelines_2006}. Damit wird einerseits die Lesbarkeit gemeint, anderseits schließt dies auch ein, ob der Test genau eine Eigenschaft testet und nicht redundant zu anderen Tests ist. Dies hat zur Folge, dass die Tests wartbarer werden und als Codedokumentation dienen können.
  \item[Präzise (Conciseness)] Ein Test \index{Test}ist präzise, wenn er so wenig Code und so wenige Objekte wie möglich benötigt, um sein Ziel zu erreichen \citep{palermo_guidelines_2006} \citep{rappin_rails_2011}. Eine Auswirkung ist, dass der Test schneller wird.
- \item[Robustheit (Robustness)] Ein Test \index{Test}ist robust, wenn es eine direkte Korrelation zum zu testenden Code gibt: Ist der Code korrekt, so ist der Test erfolgreich. Ist der Code falsch, so schlägt der Test fehl. Nicht-robuste Tests werden auch "`zerbrechlich"' (brittle) genannt. Dazu zählen auch sogenannte tautologische Tests, die immer erfolgreich Verlaufen und keine Aussage über den zugrunde liegenden Programmcode geben
+ \item[Robustheit (Robustness)] Ein Test \index{Test}ist robust, wenn es eine direkte Korrelation zum zu testenden Code gibt: Ist der Code korrekt, so ist der Test erfolgreich. Ist der Code falsch, so schlägt der Test fehl. Nicht-robuste Tests werden auch "`zerbrechlich"' (brittle) genannt. Dazu zählen auch sogenannte tautologische Tests, die immer erfolgreich verlaufen und keine Aussage über den zugrunde liegenden Programmcode geben.
  \item[Schnelligkeit] Gute Tests sollten schnell sein, da die Test-Suite\index{Test!Test-Suite} ansonsten deutlich seltener ausgeführt würd \citep{langr_agile_2011} \citep{palermo_guidelines_2006} \citep{nagappan_realizing_2008}. Siehe auch Präzision.
  \item[Zeitliche Nähe] Gute Tests entstehen in zeitlicher Nähe zu dem zugrunde liegenden Programmstück \citep{langr_agile_2011}. Innerhalb von TDD\index{TDD} ist dieses Kritierium immer erfüllt.
  \end{description}
@@ -63,12 +63,12 @@ Das Vorhandensein von zahlreichen Tests reicht nicht aus, um die Qualität der T
 % %  Code Craft S 144
 
 \chapter{Nutzung von Cucumber in Verbindung mit Selenium für Firefox und Guard ohne X-Server}
-Für ein effektives Test-Setup wurden folgende Testtools benutzt
+Für ein effektives Test-Setup wurden folgende Testtools benutzt:
 \begin{description}
- \item[Guard] Automatische Testausführung bei Änderungen der Dateien
- \item[Xvfb] Ist ein X-Server, der ohne Grafikausgabe arbeitet. Er eignet sich also für die Ausführung von GUI-Programmen, wie Mozilla Firefox auf Remote-Servern.
- \item[Selenium\index{Selenium}] Interface zur Fernsteuerung von Browsern
- \item[Spork] Erhöht die Testausführungsgeschwindigkeit, da Teile von Rails\index{Ruby-on-Rails} im Hintergrund gehalten werden und zwischen den Tests nicht neu geladen werden müssen
+ \item[Guard] automatische Testausführung bei Änderungen der Dateien.
+ \item[Xvfb] Ein X-Server, der ohne Grafikausgabe arbeitet. Er eignet sich also für die Ausführung von GUI-Programmen wie Mozilla Firefox auf Remote-Servern.
+ \item[Selenium\index{Selenium}] Interface zur Fernsteuerung von Browsern.
+ \item[Spork] Erhöht die Testausführungsgeschwindigkeit, da Teile von Rails\index{Ruby-on-Rails} im Hintergrund gehalten werden und zwischen den Tests nicht neu geladen werden müssen.
 \end{description}
 
 \subsection*{Installation}
@@ -98,7 +98,7 @@ rails g cucumber:install
  \end{verbatim}
 
 
- \item Eine Datei Guardfile anlegen. Hier kommen alle Anweisungen zur Steuerung von guard hinein
+ \item Eine Datei Guardfile anlegen. Hier kommen alle Anweisungen zur Steuerung von guard hinein.
  \begin{lstlisting}[caption=RAILS\_ROOT/Guardfile]
 group "cucumber" do
   guard 'spork' do
@@ -119,7 +119,7 @@ end
 \item In der Datei \texttt{config/cucumber.yml} die Option \texttt{--drb} für "`default"' und "`wip"' setzen.
 
 
-\item Die Datei \texttt{features/support/env.rb} anpassen, um sie mit Spork kompatibel zu machen
+\item Die Datei \texttt{features/support/env.rb} anpassen, um sie mit Spork kompatibel zu machen:
 \begin{lstlisting}[caption=features/support/env.rb]
 require 'cucumber/rails'
 require "spork"
@@ -168,7 +168,7 @@ end
  \end{verbatim}
 \end{enumerate}
 
-Nun werden automatisch alle Cucumber\index{Cucumber}-Features getestet. Falls Selenium\index{Selenium} verwendet wird, dann wird der Firefox im Hintergrund gestartet, ohne dass dies sichtbar wird.
+Nun werden automatisch alle Cucumber\index{Cucumber}-Features getestet. Falls Selenium\index{Selenium} verwendet wird, dann wird Firefox im Hintergrund gestartet, ohne dass dies sichtbar wird.
 
 
 
