@@ -1,11 +1,11 @@
 \chapter{Code-Metriken}
 \label{sec:metriken}
-Eine \glossar{metrik}\index{Code-Metrik} ist eine Maßzahl, die zum Vergleich dient und ein Qualitätsmerkmal für ein Stück Code oder ein Programm darstellt. Sie ist wird den Software-Metriken und Produkt-Metriken zugeordnet.
-
-\epigraph{A function whose inputs are software data and whose output is a single
+\epigraph{[A Software-metric is a] function whose inputs are software data and whose output is a single
 numerical value that can be interpreted as the degree to which software possesses a given attribute that affects its quality.}{Definition Software-Metrik \citep{ieee_1998}}
 
-Dem Verwenden von Code-Metrik\index{Code-Metrik}en liegt der Wunsch zugrunde, komplexe Codeteile auf einfache Zahlen automatisiert beurteilen zu lassen, um potenziell suboptimale Codestellen schnell zu finden, welche möglicherweise in Zukunft Defekte verursachen könnten. Aus Business-Sicht stellen Code-Metriken auch eine Methode dar, Entwicklungsfortschritt zu messen und zu beurteilen.
+Eine \glossar{metrik}\index{Code-Metrik} ist eine Maßzahl, die zum Vergleich dient und ein Qualitätsmerkmal für ein Stück Code oder ein Programm darstellt. Sie ist wird den Software-Metriken und Produkt-Metriken zugeordnet.
+
+Dem Verwenden von Code-Metrik\index{Code-Metrik}en liegt der Wunsch zugrunde, komplexe Codeteile auf einfache Zahlen zu reduzieren, um potenziell suboptimale Codestellen schnell zu finden, welche möglicherweise in Zukunft Defekte verursachen könnten. Aus Business-Sicht stellen Code-Metriken auch eine Methode dar, Entwicklungsfortschritt zu messen und zu beurteilen.
 \section{Überblick über Code-Metriken und Skalen}
 Hier seien nun einige der geläufigsten Code-Metrik\index{Code-Metrik}en vorgestellt.
 \paragraph{Lines of Code (LOC)} ist eine häufig verwendete und die am leichtesten zu bestimmende Größe. Sie repräsentiert den Umfang eines Programmes. Es werden alle Zeilen einer Datei gezählt, die nicht leer und keine Kommentare sind. Kommentare wiederum können als eigene Metrik verwendet werden, um den Grad der Quelltextdokumentation zu bestimmen.
@@ -27,7 +27,7 @@ Diese Größe erhält eine größere Aussage, wenn man sie ins Verhältnis z.B. 
 
 In einem normalen Programm ist die zyklomatische Komplexität die Anzahl der Entscheidungspunkte + 1 \citep[S. 314]{mccabe_complexity_1976}.
 
-Ein daraus abgeleitetes Test\index{Test}verfahren "`Basis Path Testing"' schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte wie der Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) (Mehr zu Testabdeckung später im Abschnitt \ref{sec:coverage}).
+Ein daraus abgeleitetes Test\index{Test}verfahren \textit{Basis Path Testing} schlägt vor, dass die Anzahl der Tests mindestens genauso groß sein sollte wie der Grad der Komplexität \citep[S. 318]{mccabe_complexity_1976}. Dadurch erreicht man Branch-Coverage (C1) (Mehr zu Testabdeckung später im Abschnitt \ref{sec:coverage}).
 
 \subsubsection{Code-Smells}
 
@@ -35,22 +35,22 @@ Ein daraus abgeleitetes Test\index{Test}verfahren "`Basis Path Testing"' schläg
     Die Anzahl der Code-Smells ist eine aggregierte Metrik über Anzahl und Vorkommen dieser suboptimalen Codestellen (\glossarpl{smell}).
 
 \begin{description}
- \item[Geringe Kohäsion] Ist ein Oberbegriff für verschiedene andere Smell\index{Code-Smell}s, anzuwenden bei objektorientierten Programmen. Einer davon ist z.B. "`Feature Envy"' (deutsch: Neid). Eine Klasse weiß zu viel über die internen Strukturen einer anderen Klasse und implementiert Funktionalität, die eigentlich in jene Klasse gehören sollte. \\
+ \item[Geringe Kohäsion] ist ein Oberbegriff für verschiedene andere Smell\index{Code-Smell}s, anzuwenden bei objektorientierten Programmen. Einer davon ist z.B. \textit{Feature Envy} (deutsch: Neid). Eine Klasse weiß zu viel über die internen Strukturen einer anderen Klasse und implementiert Funktionalität, die eigentlich in jene Klasse gehören sollte. \\
  Im Beispiel würde die Berechnung eines Gesamtpreises z.B. in die Klasse \texttt{Checkout} gehören.
  \begin{lstlisting}
     @checkout.total = @checkout.total_price * MWST
  \end{lstlisting}
- \item[Nichtssagender Name] gilt für alle Programmiersprachen. Falls Bezeichner weniger als 3 Zeichen lang sind oder Funktionen den Namen "`do"' oder "`run"' haben. Ausnahmen könnte man z.B. für die Schleifenvariable $i$ rechtfertigen
- \item[Gesetz von Demeter] bzw. die Verletzung desselben. Objekte sollten nur mit den Objekten in ihren unmittelbaren Nähe kommunizieren und nicht etwa in Nachrichtenketten, wie z.B.:
+ \item[Nichtssagender Name] gilt für alle Programmiersprachen. Falls Bezeichner weniger als 3 Zeichen lang sind oder Funktionen den Namen \texttt{do} oder \texttt{run} haben. Ausnahmen könnte man z.B. für die Schleifenvariable $i$ rechtfertigen
+ \item[Gesetz von Demeter] bzw. die Verletzung desselben. Objekte sollten nur mit den Objekten in ihrer unmittelbaren Nähe kommunizieren und nicht etwa in Nachrichtenketten, wie z.B.:
  \begin{lstlisting}
   @job.user.address.street
  \end{lstlisting}
- Beim Law of Demeter ist eine solche Kette bis maximal Länge 1 erlaubt.
- \item[Duplikation] Offensichtliche Ähnlichkeiten zwischen Programmstücken (oder sogar Deckungsgleichheit bei Anwendung von Copy \& Paste). Fortgeschrittene Analysemethoden betrachten den abstrakten Syntaxbaum und können so strukturelle Ähnlichkeiten feststellen.
+ Das Gesetz von Demeter erlaubt eine solche Kette bis maximal Länge 1.
+ \item[Duplikation] und offensichtliche Ähnlichkeiten zwischen Programmstücken (oder sogar Deckungsgleichheit bei Anwendung von Copy \& Paste). Fortgeschrittene Analysemethoden betrachten den abstrakten Syntaxbaum und können so strukturelle Ähnlichkeiten feststellen.
  \end{description}
 
 Diese und weitere Smell\index{Code-Smell}s können mit dem Tool reek\footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}} festgestellt werden.\\
-Weitere Informationen zu Smell\index{Code-Smell}s und deren Beseitigung finden sie in dem Buch "`Refactoring"' von M. Fowler \citep{fowler_refactoring_1999}.
+Weitere Informationen zu Smell\index{Code-Smell}s und deren Beseitigung sind in "`Refactoring"' von M. Fowler \citep{fowler_refactoring_1999} zu finden.
 
 \section{Code-Metriken für Tests}
 \label{sec:metrics}
@@ -65,10 +65,10 @@ Neben den Lines of Code kann auf dieselbe (einfache) Weise die Anzahl der Codeze
   \begin{center}
 \begin{tabular}{ll}
 
-   $R \ll 1$ & \small Falls es deutlich weniger Testzeile (LoT), als Codezeilen (LoC) geben sollte\\
+   $R \ll 1$ & \small Falls es deutlich weniger Testzeile (LoT), als Codezeilen (LoC) geben sollte,\\
 	     & \small so ist dies ein Indiz für zu wenige Tests\\
-   $R > 1$   &\small Eine große Anzahl an Tests ist zwar wünschenswert, aber dies macht\\
-	      & \small keine Aussage über den Vollständigkeit oder die Qualität der Tests
+   $R > 1$   &\small Eine große Anzahl an Tests ist zwar wünschenswert, aber dies stellt\\
+	      & \small keine Aussage über den Vollständigkeit oder die Qualität der Tests dar
   \end{tabular}  \end{center}
 
 }
@@ -77,11 +77,11 @@ Sollte dieser deutlich kleiner als 1 sein, so ist dies ein Symptom für zu wenig
 
 \subsection{Testausführungsabdeckung}
 \label{sec:coverage}
-Die Test\index{Test}abdeckung\index{Test!Testabdeckung} misst den Grad, inwieweit ein Programm durch die Tests berührt wurde. Dabei wird die vorhandene Test-Suite\index{Test!Test-Suite} ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"' und 0\% "`Das Programm wurde durch die Tests überhaupt nicht berührt"'  Es wird festgehalten, welche Anweisungen, Zweige oder sogar Programmpfade ausgeführt wurden. Diese 3 Abstufungen sind im Detail:
+Die Test\index{Test}abdeckung\index{Test!Testabdeckung} misst den Grad, inwieweit ein Programm durch die Tests berührt wurde. Dabei wird die vorhandene Test-Suite\index{Test!Test-Suite} ausgeführt und währenddessen der entsprechende Quellcode beobachtet. Die Angabe erfolgt in Prozent, wobei 100\% bedeuten, "`das Programm wurde durch die Tests komplett ausgeführt"' und 0\% "`Das Programm wurde durch die Tests überhaupt nicht berührt"'.  Es wird festgehalten, welche Anweisungen, Zweige oder sogar Programmpfade ausgeführt wurden. Diese 3 Abstufungen sind im Detail:
 \begin{description}
  \item[C0] (Anweisungsüberdeckung, Statement Coverage) ist die am Einfachsten zu bestimmende Abdeckung. Dabei wird geprüft, ob jede Zeile des Quellcodes während der Codeausführung mindestens einmal ausgeführt wurde.
- \item[C1] (Zweigüberdeckung, Branch Coverage) prüft zusätzlich, ob jeder Zweig jeder Zeile ausgeführt wurde. Dies ist wichtig,falls man ternäre Ausdrücke\footnote{if-then-else in einer Zeile: int a = (1==1) ? 5 : 3} verwendet.
- \item[C2] (Pfadüberdeckung, Path Coverage) prüft, ob jeder mögliche Codepfad durchlaufen wurde. Ein Codepfad sei eine einmalige Abfolge von Zweigen innerhalb einer Funktion von Eintritt bis Rücksprung \citep{steve_cornett_code_1996}. So werden z.B. bei 10 Bedingungen 1024 Pfade generiert, denen bei einer 100\% Abdeckung auch 1024 Test\index{Test}s entgegenstehen müssten.
+ \item[C1] (Zweigüberdeckung, Branch Coverage) prüft zusätzlich, ob jeder Zweig jeder Zeile ausgeführt wurde. Dies ist wichtig, falls man ternäre Ausdrücke\footnote{if-then-else in einer Zeile: int a = (1==1) ? 5 : 3} verwendet.
+ \item[C2] (Pfadüberdeckung, Path Coverage) prüft, ob jeder mögliche Codepfad durchlaufen wurde. Ein Codepfad ist eine einmalige Abfolge von Zweigen innerhalb einer Funktion von Eintritt bis Rücksprung \citep{steve_cornett_code_1996}. So werden z.B. bei 10 Bedingungen 1024 Pfade generiert, denen bei einer 100\% Abdeckung auch 1024 Test\index{Test}s entgegenstehen müssten.
  \end{description}
  Anmerkung: In der Literatur startet in einigen Fällen die Nummerierung bei C0 \citep{catherine_powell_abakas_2008}, in anderen Fällen aber bei C1 \citep{steve_cornett_code_1996}.
 
@@ -90,7 +90,8 @@ Die Test\index{Test}abdeckung\index{Test!Testabdeckung} misst den Grad, inwiewei
 
  Beim Messen der Abdeckung stellt sich schnell die Frage, wieviel Testabdeckung\index{Test!Testabdeckung} sinnvoll oder gar notwendig ist. Zuerst ist die Art des Messverfahrens, also C0 bis C2, wichtig. Je komplexer das Messen erfolgte, desto geringer kann die Testabdeckung am Ende ausfallen \citep{catherine_powell_abakas_2008}.
 
- Falls dem TDD\index{TDD}-Prozess minutiös gefolgt wurde, so müssste die C0 Testabdeckung\index{Test!Testabdeckung} immer 100\% sein \citep{beck_test_2002}. Für ein Rails\index{Ruby-on-Rails}-Projekt ist es auch relativ leicht, 100\% oder nahezu 100\% zu erreichen \citep{rappin_rails_2011}. Die Zahl "`100\%"' ist für sich genommen nutzlos, aber sie zu erreichen, ist für den Prozess der Testgetriebenen Entwicklung nützlich \citep[S. 270]{rappin_rails_2011}. Vielen Autoren bringen aber zum Ausdruck, dass es von der Situation abhängt, wie viel Testabdeckung sinnvoll ist \citep{infoq_2007}. Test-Anfänger sollten sich zuerst überhaupt ans Testen gewöhnen und erfahrene Entwickler sollte wissen, dass es keine einzige einfache Antwort auf diese Frage gibt \citep{infoq_2007}. Zudem gibt eine hohe Abdeckung keinen Aufschluss darüber, dass die Tests "`gut"' sind. Eine niedrige Testabdeckung zeigt aber deutlich auf Missstände hin.\\
+ Falls dem TDD\index{TDD}-Prozess minutiös gefolgt wurde, so müssste die C0 Testabdeckung\index{Test!Testabdeckung} immer 100\% sein \citep{beck_test_2002}. Für ein Rails\index{Ruby-on-Rails}-Projekt ist es auch relativ leicht, 100\% oder nahezu 100\% zu erreichen \citep{rappin_rails_2011}. Die Zahl "`100\%"' ist für sich genommen nutzlos, aber sie zu erreichen, ist für den Prozess der Testgetriebenen Entwicklung nützlich \citep[S. 270]{rappin_rails_2011}. \\
+ Viele Autoren bringen zum Ausdruck, dass es von der Situation abhängt, wie viel Testabdeckung sinnvoll ist \citep{infoq_2007}. Test-Anfänger sollten sich zuerst überhaupt ans Testen gewöhnen und erfahrene Entwickler sollte wissen, dass es keine einzige einfache Antwort auf diese Frage gibt \citep{infoq_2007}. Zudem gibt eine hohe Abdeckung keinen Aufschluss darüber, dass die Tests "`gut"' sind. Eine niedrige Testabdeckung zeigt aber deutlich auf Missstände hin.\\
  Einem pragmatischen Ansatz von Savoia folgend, kann man aus dem Verhältnis der zyklomatischen Komplexität mit der Testabdeckung\index{Test!Testabdeckung} eines Codestückes suboptimale Teile finden. Je mehr Verzweigungen eine Methode hat, desto höher sollte ihre Testabdeckung sein \citep{alberto_savoia_code_2007}. In einem Artikel empfiehlt Cornett eine Liste von Zielen, die es je nach vorhandenen Budget und Zeit zu erreichen gilt, beginnend damit, dass mindestens eine Funktion in 90\% der Quelltextdateien durch die Tests aufgerufen wird bis zum finalen Schritt einer vollständigen C1-Testabdeckung \citep{steve_cornett_code_1996}.
 
  Zusammenfassend kann man sagen, dass es keine eindeutige Antwort gibt. Eine niedrige C0-Abdeckung von 50\% oder weniger zeigt allerdings deutliche Missstände beim Testverfahren an.
@@ -99,13 +100,13 @@ Die Test\index{Test}abdeckung\index{Test!Testabdeckung} misst den Grad, inwiewei
  \label{sec:mutation}
  Eine weitere Methode, um die Qualität von Test\index{Test}code zu bestimmen, ist der Mutationstest. Dies ist ein diversifizierendes, fehlerbasiertes Testverfahren \citep{liggesmeyer_modultest_1990}. Hierbei werden (automatisiert oder manuell) nacheinander Anweisungen des Programmcodes geändert und geprüft, ob danach ein Test fehlschlägt \citep{beck_test_2002}. Sollte nämlich kein Test fehlgeschlagen sein, dann sind die Tests zu oberflächlich.
 
- Für Ruby\index{Ruby} gibt es ein Werkzeug, \textbf{Heckle}\footnote{\url{http://ruby.sadi.st/Heckle.html}}, welches dieses Verfahren implementiert. Im Detail werden Bedingungen negiert, konstante Zahlen und Funktionsaufrufe verändert, Zuweisungen verändert usw. \citep{ruby_sadists_confessions_2010}. Dabei wird immer eine Änderung (Mutation) vorgenommen und dann alle Test\index{Test}s ausgeführt. Sollte dennoch in einer Mutation kein Test fehlschlagen so ist die Annahme des Testverfahrens falsch.
+ Für Ruby\index{Ruby} gibt es ein Werkzeug, \textbf{Heckle}\footnote{\url{http://ruby.sadi.st/Heckle.html}}, welches dieses Verfahren implementiert. Im Detail werden Bedingungen negiert, konstante Zahlen und Funktionsaufrufe verändert, Zuweisungen verändert usw. \citep{ruby_sadists_confessions_2010}. Dabei wird immer eine Änderung (Mutation) vorgenommen und dann alle Test\index{Test}s ausgeführt. Sollte dennoch in einer Mutation kein Test fehlschlagen so waren die Tests für diese Codezeile zu oberflächlich.
 
  Um hieraus eine Metrik zu gewinnen, kann die Anzahl der Mutationen gemessen werden, bei denen der Test\index{Test} nicht fehlschlug. Im Verhältnis zu den Klassen gesetzt, lassen sich auf diese Weise diejenigen Klassen finden, die zu oberflächlich getestet wurden.
  \section{Notwendigkeit von Code Metriken}
 
- Code-Metrik\index{Code-Metrik}en geben dem Programmierer automatisiert und schnell ein Feedback über die Qualität seiner Arbeit. Sie helfen dabei, Probleme frühzeitig zu erkennen und die Wartbarkeit durch gezielte Refaktorisierung\index{Refaktorisierung}en nachhaltig zu verbessern. Auch psychlogische Auswirkungen dürfen nicht unterschätzt werden. Alleine der Fakt, dass Code-Metriken in einem Unternehmen regelmäßig verwendet werden, motiviert den Programmierer, keinen sogenannten "`Big Ball of Mud"'\footnote{Ein Antipattern, in dem ein System keinerlei offensichtliche Architektur zu haben scheint.} zu schreiben. Insbesondere in kleinen Projektteams, die keine dedizierte Qualitätssicherung haben, sind Code-Metriken als kostengünstiges Kontrollinstrument unerlässlich. Studien zeigen, dass der konsequente Einsatz von Code-Metriken und Analysebenchmarks die Fehlerdichte und Entwicklungskosten stark verringern kann \citep[S.10f]{baggen_standardized_2011}.
+ Code-Metrik\index{Code-Metrik}en geben dem Programmierer automatisiert und schnell ein Feedback über die Qualität seiner Arbeit. Sie helfen dabei, Probleme frühzeitig zu erkennen und die Wartbarkeit durch gezielte Refaktorisierung\index{Refaktorisierung}en nachhaltig zu verbessern. Auch psychologische Auswirkungen dürfen nicht unterschätzt werden. Alleine der Fakt, dass Code-Metriken in einem Unternehmen regelmäßig verwendet werden, motiviert den Programmierer, keinen sogenannten "`Big Ball of Mud"'\footnote{Ein Antipattern, in dem ein System keinerlei offensichtliche Architektur zu haben scheint.} zu schreiben. Insbesondere in kleinen Projektteams, die keine dedizierte Qualitätssicherung haben, sind Code-Metriken als kostengünstiges Kontrollinstrument unerlässlich. Studien zeigen, dass der konsequente Einsatz von Code-Metriken und Analysebenchmarks die Fehlerdichte und Entwicklungskosten stark verringern kann \citep[S.10f]{baggen_standardized_2011}.
 
- Für die Testgetriebene Softwareentwicklung dient insbesondere in der Anfangsphase die Testabdeckung\index{Test!Testabdeckung} als Kontrollinstrument um zu prüfen, ob der TDD-Prozess korrekt umgesetzt wird \citep[S. 300]{nagappan_realizing_2008}. Außerdem sollte der zeitliche Verlauf der Metriken beobachtet werden, um Trends abzuschätzen und frühzeitig gegensteuern zu können. Für in \glossar{TDD} erfahrene Programmierer mag die Beobachtung der Testabdeckung nicht notwendig sein, für Einsteiger ist es allerdings eine effektive Kontrollmöglichkeit.
+ Für die Testgetriebene Software-Entwicklung dient insbesondere in der Anfangsphase die Testabdeckung\index{Test!Testabdeckung} als Kontrollinstrument um zu prüfen, ob der TDD-Prozess korrekt umgesetzt wird \citep[S. 300]{nagappan_realizing_2008}. Außerdem sollte der zeitliche Verlauf der Metriken beobachtet werden, um Trends abzuschätzen und frühzeitig gegensteuern zu können. Für in \glossar{TDD} erfahrene Programmierer mag die Beobachtung der Testabdeckung nicht notwendig sein, für Einsteiger ist es allerdings eine effektive Kontrollmöglichkeit.
 
- Nach Erfahrungen in der pludoni GmbH sind Code-Metrik\index{Code-Metrik}en ein wichtiges Feedbackinstrument und unterstützen damit das Schreiben sauberen Codes. Wichtig ist, dass die Metriken regelmäßig berechnet werden, entweder als Cronjob oder nach jedem Einchecken in den Hauptentwicklungszweig der Versionsverwaltung, und in regelmäßigen Abständen von den Programmierern und Teamleitern gelesen und besprochen werden. Allerdings besteht bei einer zu hohen Beobachtung der Metriken die Gefahr eines Hawthorne-Effektes, d.h. dass die unter Beobachtung stehenden Programmierer ihr Verhalten den Code-Metriken anpassen, um optimale Ergebnisse zu erhalten \citep[52. Karte]{langr_agile_2011} und so nur eine scheinbare Verbesserung erzielen.
+ Nach Erfahrungen in der pludoni GmbH sind Code-Metrik\index{Code-Metrik}en ein wichtiges Feedbackinstrument und unterstützen damit das Schreiben sauberen Codes. Wichtig ist, dass die Metriken regelmäßig berechnet werden, entweder als Cronjob oder nach jedem Einchecken in den Hauptentwicklungszweig der Versionsverwaltung, und in regelmäßigen Abständen von den Programmierern und Teamleitern gelesen und besprochen werden. Allerdings besteht bei einer zu hohen Beachtung der Metriken die Gefahr eines Hawthorne-Effektes, d.h. dass die unter Beobachtung stehenden Programmierer ihr Verhalten den Code-Metriken anpassen, um optimale Ergebnisse zu erhalten \citep[52. Karte]{langr_agile_2011} und so nur eine scheinbare Verbesserung erzielen.

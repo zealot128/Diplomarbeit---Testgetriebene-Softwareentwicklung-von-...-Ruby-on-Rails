@@ -8,16 +8,16 @@ Eine vollständige Einführung in Ruby\index{Ruby} zu geben würde den Rahmen di
 
 \section{Einführung in Ruby}
 \marginline{\includegraphics[width=0.8\marginparwidth]{material/ruby.png}
-Ruby ist eine Multiparadigma-Sprache}
+Ruby, zu dt. Rubin}
 Ruby\index{Ruby} ist eine interpretierte Sprache, auch Skriptsprache genannt. Dies bedeutet, dass der Programmcode zur Laufzeit analysiert und ausgeführt wird. Ruby ist auch eine Multiparadigma-Sprache, die Objektorientierung, prozedurale und funktionale Programmierung unterstützt.
 \begin{description}
  \item[Prozedural] Funktionen und Variablen können außerhalb von Klassen definiert werden, in dem sogenannten \texttt{main}-Objekt.
  \item[Objektorientierung] Alle Datentypen sind Objekte. Alle Variablen beinhalten Referenzen auf ein Objekt. Dies betrifft auch die primitiven Datentypen wie Integer und String.
- \item[Funktional] Anonyme Funktionen und Closures sind Sprachbestandteil. Alle Statements haben einen Rückgabewert. Innerhalb einer Funktion ist dies immer das letzte Statement, falls kein expliziter Rücksprungpunkt gesetzt wurde.
+ \item[Funktional] Anonyme Funktionen und Closures sind Sprachbestandteil. Alle Anweisungen haben einen Rückgabewert. Für eine Funktion ist dies immer ihr letztes Statement, falls kein expliziter Rücksprungpunkt gesetzt wurde.
 \end{description}
 
 
-Das Ziel von Ruby\index{Ruby} ist es, nicht (nur) maschinenlesbar zu sein, sondern vor allem die Lesbarkeit und Nutzbarkeit durch Menschen zu verbessern. Dies drückt sich durch eine Syntax aus, die oft laut als englische Sprache gelesen werden kann und an vielen Stellen auf den Einsatz von Sonderzeichen verzichtet. So ist die Klammerung von Funktionsaufrufen optional und kann weggelassen werden, solange die Zuordnung der Parameter eindeutig ist. Auch hält Ruby eine Vielzahl von redundanten Keywords bereit ("syntaktischer Zucker"), um dem Programmierer mehrere Wege zur Lösung seines Problems zu eröffnen.
+Das Ziel von Ruby\index{Ruby} ist es, nicht (nur) maschinenlesbar zu sein, sondern vor allem die Lesbarkeit und Nutzbarkeit durch Menschen zu verbessern. Dies drückt sich durch eine Syntax aus, die oft laut als englische Sprache gelesen werden kann und an vielen Stellen auf den Einsatz von Sonderzeichen verzichtet. So ist die Klammerung von Funktionsaufrufen optional und kann weggelassen werden, solange die Zuordnung der Parameter eindeutig ist. Auch hält Ruby eine Vielzahl von redundanten Keywords bereit, um dem Programmierer mehrere Wege zur Lösung seines Problems zu eröffnen ("syntaktischer Zucker").
 
 \setlength{\epigraphwidth}{\marginparwidth}
 \marginline{\epigraph{Ruby is simple in appearance, but is very complex inside, just like our human body}{Yukihiro Matsumoto}}
@@ -41,7 +41,7 @@ Im Nachfolgenden sind einige Beispiele für die Verwendung von Ruby\index{Ruby} 
  \end{ruby}
 \codecaption{Ruby Beispiele}
 
-In den ersten beiden Beispielen sieht man, dass Integer und Strings Objekte sind und über Instanzmethoden verfügen. Im ersten Beispiel wird geprüft, ob die Zahl gerade ist. Dabei existiert eine Konvention, dass bool'sche Methoden mit einem Fragezeichen am Ende notiert werden. Im dritten Beispiel wird eine Klassenmethode \texttt{today} auf die Klasse \texttt{Date} ausgeführt, welche ein Datumsobjekt konstruiert und zurückliefert. Da auch die Nutzung von Operatoren letztendlich nur syntaktischer Zucker für Methodenaufrufe sind, wird die Instanz-Methode \texttt{.+()} auf dieses Datums-Objekt ausgeführt und liefert ein neues Datumsobjekt, welches zwei Tage in der Zukunft liegt.\\
+In den ersten beiden Beispielen sieht man, dass Zahlen und Strings Objekte sind und Instanzmethoden besitzen. Im ersten Beispiel wird geprüft, ob die Zahl gerade ist. Dabei existiert eine Konvention, dass Methoden mit boolschen Rückgabewerten mit einem Fragezeichen am Ende notiert werden. Im dritten Beispiel wird eine Klassenmethode \texttt{today} auf die Klasse \texttt{Date} ausgeführt, welche ein Datumsobjekt, dass den heutigen Tage beinhaltet, konstruiert und zurückliefert. Da auch die Nutzung von Operatoren letztendlich nur syntaktischer Zucker für Methodenaufrufe sind, wird die Instanz-Methode \texttt{.+()} auf dieses Datumsobjekt ausgeführt und liefert ein neues Datumsobjekt, welches zwei Tage in der Zukunft liegt.\\
 Im vierten Beispiel wird der Einsatz von Variablen demonstriert.
 Das letzte Beispiel zeigt den Einsatz von Kontrollstrukturen. Als Besonderheit sei hier auf den Ausdruck vom Typ \texttt{Range} \texttt{(0..10)} hingewiesen, der ein Intervall für den Integerzahlenbereich von 0 bis einschließlich 10 liefert. Die Methode \texttt{.include?(a)} testet nun, ob die Variable \texttt{a} in diesem Intervall liegt. Bei Eindeutigkeit können, wie oben bereits angesprochen, die Klammern eines Methodenaufrufes weggelassen werden.
 
@@ -80,7 +80,7 @@ Weiterhin erlaubt Ruby\index{Ruby} die Arbeit mit Lambdas, also anonymen Funktio
 \PY{g+gp}{>> }\PY{o}{[} \PY{l+s+s2}{"}\PY{l+s+s2}{string}\PY{l+s+s2}{"}\PY{p}{,}  \PY{l+s+s2}{"}\PY{l+s+s2}{rails}\PY{l+s+s2}{"}\PY{p}{,}  \PY{l+s+s2}{"}\PY{l+s+s2}{ruby}\PY{l+s+s2}{"} \PY{o}{]}\PY{o}{.}\PY{n}{sort\PYZus{}by}\PY{p}{\PYZob{}} \PY{o}{|}\PY{n}{item}\PY{o}{|} \PY{n}{item}\PY{o}{.}\PY{n}{length} \PY{p}{\PYZcb{}}
 \PY{g+go}{=> ["ruby", "rails", "string"]}
 
-\PY{g+go}{# Die Quadratzahlen von 1 bis 5}
+\PY{g+go}{# Die ersten Zahlen der 2er Multiplikationsreihe}
 \PY{g+gp}{>> }\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{.}\PY{n}{.}\PY{l+m+mi}{5}\PY{p}{)}\PY{o}{.}\PY{n}{map}\PY{p}{\PYZob{}}\PY{o}{|}\PY{n}{element}\PY{o}{|} \PY{n}{element} \PY{o}{*} \PY{l+m+mi}{2}\PY{p}{\PYZcb{}}
 \PY{g+go}{=> [2, 4, 6, 8, 10]}
 \end{ruby}
@@ -91,7 +91,7 @@ Im letzten Beispiel wird demonstriert, wie die Funktion \texttt{map} verwendet w
 
 
 
-\paragraph{Typ- und Objektsystem}
+\paragraph{Typ- und Objektsystem} %TODO MOF in 7 languages
 Wie schon erwähnt, sind bei Ruby\index{Ruby} alle Datentypen ein Objekt. Dies schließt insbesondere Klassen und primitive Datentypen mit ein, wie wir im folgenden Beispiel sehen können:
 % SNIPPET:
 % >> 2.class
@@ -122,7 +122,7 @@ Wie schon erwähnt, sind bei Ruby\index{Ruby} alle Datentypen ein Objekt. Dies s
 \codecaption{Klassenhierarchien}
 % label{fig:f37300}
 
-Das Literal \texttt{2} ist somit ein Objekt vom Typ \texttt{Fixnum}. Die Klasse Fixnum ist ihrerseits vom Typ \texttt{Class}. Da Ruby\index{Ruby} sowohl (Einfach-)Ableitungen als auch sogenannte Includes bzw. Mixins unterstützt, kann eine Klasse auch eine Menge von "`Vorfahren"' haben. Die gezeigte Klasse \texttt{Fixnum} verfügt somit standardmäßig sogar über 7 Oberklassen.
+Das Literal \texttt{2} ist somit ein Objekt vom Typ \texttt{Fixnum}. Die Klasse \texttt{Fixnum} ist ihrerseits vom Typ \texttt{Class}. Da Ruby\index{Ruby} sowohl (Einfach-)Ableitungen als auch sogenannte Includes bzw. Mixins unterstützt, kann eine Klasse auch eine Menge von "`Vorfahren"' haben. Die gezeigte Klasse \texttt{Fixnum} verfügt somit standardmäßig sogar über 7 Oberklassen, die entweder aus einer direkten Ableitung entstammen oder aber durch das einmischen eines Mixins.
 
 
 Ruby\index{Ruby} ist \textbf{dynamisch stark} typisiert. \textit{Dynamisch} bedeutet, dass die Prüfung des Typs einer Variable zur Laufzeit stattfindet und sich dieser Typ ausschließlich aus dem aktuell beinhalteten Objekt ergibt. Durch die \textit{starke} Typisierung ist es aber nicht möglich, invalide Operationen auf Typ-inkompatible Objekte auszuführen, beispielsweise eine Addition von Integer mit String. \\
@@ -130,8 +130,8 @@ Ruby\index{Ruby} ist \textbf{dynamisch stark} typisiert. \textit{Dynamisch} bede
 Rubys Typsystem ist "`Duck-typed"', d.h. dass die Semantiken eines Objekts nicht durch seine Klasse und Ableitungshierarchie, sondern durch seine Methoden und Attribute bestimmt wird.
 
 Ruby\index{Ruby} verfügt über lexikalische und dynamische Bindung\footnote{
-\textbf{Static Scoping}: Variablen werden zur Compilezeit gebunden, ohne den aufrufenden Code zu berücksichtigen.\\
-\textbf{Dynamic Scoping}: Variablen-Bindung kann nur im Moment der Ausführung des Codes festgestellt werden.}, letztere wird allerdings seltener verwendet. In der Basissyntax verwendet Ruby\index{Ruby} statische Bindung. Es existiert eine im Ruby-Core enthaltene Bibliothek \texttt{Dynamic} zum dynamischen Binden, falls dies gewünscht sein sollte.
+\textbf{Statische Bindung}: Variablen werden zur Compilezeit gebunden, ohne den aufrufenden Code zu berücksichtigen.\\
+\textbf{Dynamische Bindung}: Variablen-Bindung kann nur im Moment der Ausführung des Codes festgestellt werden.}, letztere wird allerdings seltener verwendet. In der Basissyntax verwendet Ruby\index{Ruby} statische Bindung. Es existiert eine im Ruby-Core enthaltene Bibliothek \texttt{Dynamic} zum dynamischen Binden, falls dies gewünscht sein sollte.
 
 
 \paragraph{Reflektion und Introspection} Sprachen mit Reflektion erlauben es, ihre Strukturen zur Laufzeit zu analysieren und zu verändern. So können in Ruby\index{Ruby} z.B. Objekte Informationen über ihre vorhandenen Instanzvariablen oder Methoden abfragen. Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern.
@@ -176,9 +176,9 @@ Ein beliebtes Idiom innerhalb der Ruby-Community ist es, verwendete Methoden auf
 % label{fig:d0ee1e}
 
 
-Die Methode \texttt{find\_by\_first\_name} existiert nicht und wird zur Laufzeit auf Basis des Namens gebaut. Dies ist möglich, da Ruby\index{Ruby} sogennante Hooks (Callbacks) bereitstellt. Der Hook \texttt{method\_missing} z.B. wird immer dann aufgerufen, wenn eine nicht-existierende Funktion aufgerufen wurde (wie in unserem Beispiel \texttt{find\_by\_first\_name}). Hier können wir nun die neue Methode auf Basis des gewünschten Funktionsnamens zur Laufzeit erstellen oder andernfalls selbst eine Exception werfen. Ein weiterer Hook ist z.B. auch \texttt{method\_added}, der aufgerufen wird, wenn in einer Klasse eine Methode definiert wird\footnote{Einen guten Überblick über die Callbacks, die Ruby bereitstellt, und was man damit tun kann, finden sie hier: \url{http://www.khelll.com/blog/ruby/ruby-callbacks/}}. Auf diese Weise sind z.B. die Modifikatoren \texttt{private} und \texttt{public} implementiert.
+Die Methode \texttt{find\_by\_first\_name} existiert nicht und wird zur Laufzeit auf Basis des Namens gebaut. Dies ist möglich, da Ruby\index{Ruby} sogennante Hooks (Callbacks) bereitstellt. Der Hook \texttt{method\_missing} z.B. wird immer dann aufgerufen, wenn eine nicht-existierende Funktion aufgerufen wurde (wie in unserem Beispiel \texttt{find\_by\_first\_name}). Hier können wir nun die neue Methode auf Basis des gewünschten Funktionsnamens zur Laufzeit erstellen oder andernfalls selbst eine Exception werfen. Ein weiterer Hook ist \texttt{method\_added}, der aufgerufen wird, wenn in einer Klasse eine Methode definiert wird\footnote{Einen guten Überblick über die Callbacks, die Ruby bereitstellt, und was man damit tun kann, finden sie hier: \url{http://www.khelll.com/blog/ruby/ruby-callbacks/}}. Auf diese Weise könnten z.B. die Modifikatoren \texttt{private} und \texttt{public} implementiert werden.
 
-Ein weiteres Beispiel ist die Definition der relationalen Beziehungen zwischen den einzelnen Modell\index{Ruby-on-Rails!Modell}en innerhalb von \glossar{rails} (ebenfalls unter der Verwendung von ActiveRecord\index{ActiveRecord}).
+Ein weiteres Beispiel für generische Programmierung ist die Definition der relationalen Beziehungen zwischen den einzelnen Modell\index{Ruby-on-Rails!Modell}en innerhalb von \glossar{rails} (ebenfalls unter der Verwendung von ActiveRecord\index{ActiveRecord}).
 \begin{ruby}[label=app/models/job.rb]
 \PY{k}{class} \PY{n+nc}{Job} \PY{o}{<} \PY{n+no}{ActiveRecord}\PY{o}{::}\PY{n+no}{Base}
   \PY{n}{belongs\PYZus{}to} \PY{l+s+ss}{:user}
@@ -209,7 +209,7 @@ Auf das Testen hat dies eine direkte Auswirkung. Viele Meinungen belegen [EINE M
 
 
 Ein Vorteil des Interpretierens,\randbem{Vorteile aus der dynamischen Typisierung} also der Übersetzung zur Laufzeit, ist eine hohe Plattformunabhängigkeit und ein leichterer Buildprozess, da das Kompilieren entfällt.
-Verfechter dynamischer Sprachen erklären weiterhin, dass diese sich ideal für prototypische Implementierungen eignen, da sich Anforderungen ständig ändern können. Weiterhin hätten Programme dynamischer Sprache eine potenziell hohe Wiederverwendbarkeit und eine höhere Lesbarkeit \citep{meijer_static_2005} \citep{ousterhout_scripting:_1998}.
+Verfechter dynamischer Sprachen erklären weiterhin, dass diese sich ideal für prototypische Implementierungen eignen, da sich Anforderungen ständig ändern können. Weiterhin hätten Programme dynamischer Sprache eine potenziell hohe Wiederverwendbarkeit und eine höhere Lesbarkeit \citep{meijer_static_2005,ousterhout_scripting:_1998}.
 
 
 %
@@ -217,11 +217,6 @@ Verfechter dynamischer Sprachen erklären weiterhin, dass diese sich ideal für 
 %
 % Auch das sehr beliebte Testframework Rspec verwendet Metaprogrammierung, um Testfälle und Zusicherungen wie fast in der englischen Sprache zu formulieren. Dazu werden sämtliche Objekte von Ruby um Funktionen erweitert. Dies ist möglich, da die Klasse "`Objekt"', die Basisklasse (fast) aller Ruby-Klasse ist, um diese Methoden erweitert wurde.
 %
-
-
-
-
-
 \paragraph{Schlussfolgerung}
 Die Verwendung von Ruby\index{Ruby} und anderen dynamischen Sprachen birgt durchaus Risiken, die zu beachten sind. Falls man sich dieser Risiken bewusst ist und die Möglichkeiten der Sprache nutzt, um die Lesbarkeit zu verbessern, sind sie gerechtfertigt. Gerade bei der Entwicklung mit kleinen Entwicklerteams und Projekten mit engem Budget können dynamische Sprachen ihre Vorteile ausspielen, da sie eine schnellere Entwicklung ermöglichen. Im Gegensatz zu den meisten auf der Syntax von C basierenden Sprachen (z.B. Java oder C\#) ist die Syntax von Ruby äußerst leserlich, da nur wenige Sonderzeichen verwendet werden. Auch ist Ruby sehr ausdrucksstark, weil die Deklaration entfällt, es viel sogenannten syntaktischen Zucker gibt und das flexible Objektsystem viele Möglichkeiten eröffnet. Alles dies kann, richtig angewendet, der Lesbarkeit zuträglich sein.
 

@@ -1,7 +1,7 @@
 \section{Testframeworks für Ruby}
 \epigraph{Ruby has laid the way in having a test-infected culture around the language.}{Nathaniel Talbott (Entwickler von Test/Unit)}
 
-Rails\index{Ruby-on-Rails} liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit\index{Test/Unit-Framework} mit. In der Version 1.9.x bringt Ruby\index{Ruby} das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest\index{Akzeptanztest} ist Cucumber\index{Cucumber}, welches eine Business-readable \glossar{DSL}\footnote{Eine domainspezifische Sprache, die durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen darstellt.
+Rails\index{Ruby-on-Rails} liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit\index{Test/Unit-Framework} mit. In der Version 1.9.x bringt Ruby\index{Ruby} das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest\index{Akzeptanztest} ist Cucumber\index{Cucumber}, welches eine Business-readable \glossar{DSL}\footnote{Eine domänspezifische Sprache, die durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen darstellt.
 \subsection{Test/Unit}
 Test/Unit\index{Test/Unit-Framwork} basiert auf dem xUnit-, bzw. SUnit-Design von Kent Beck und ist für Nutzer von z.B. JUnit oder NUnit leicht nachvollziehbar.
 
@@ -23,7 +23,7 @@ Eine solche Testklasse kann wie folgt aussehen:
 
   \PY{k}{def} \PY{n+nf}{test\PYZus{}job\PYZus{}exists}
     \PY{n+nv+vi}{@job}\PY{o}{.}\PY{n}{title} \PY{o}{=}  \PY{l+s+s2}{"}\PY{l+s+s2}{Ruby on Rails in Entwickler}\PY{l+s+s2}{"}
-    \PY{n+nv+vi}{@job}\PY{o}{.}\PY{n}{add\PYZus{}location\PYZus{}to\PYZus{}title}\PY{p}{(} \PY{l+s+s2}{"}\PY{l+s+s2}{Dresden}\PY{l+s+s2}{"}\PY{p}{)}
+    \PY{n+nv+vi}{@job}\PY{o}{.}\PY{n}{save}
 
     \PY{n}{assert\PYZus{}equal}\PY{p}{(} \PY{l+s+s2}{"}\PY{l+s+s2}{Ruby on Rails Entwickler in Dresden}\PY{l+s+s2}{"}\PY{p}{,}  \PY{n+no}{Job}\PY{o}{.}\PY{n}{first}\PY{o}{.}\PY{n}{title}\PY{p}{)}
   \PY{k}{end}
@@ -34,8 +34,8 @@ Eine solche Testklasse kann wie folgt aussehen:
 Unsere Klasse \texttt{TestJob} erbt von der \texttt{TestUnit}-Basisklasse. Sie beinhaltet die besonderen Methoden \texttt{setup} und \texttt{teardown}, die jeweils vor bzw. nach jedem einzelnen Testfall\index{Test} aufgerufen werden.
 In der \texttt{setup}-Methode nehmen wir z.B. das Anlegen eines Jobs vor, in der teardown-Methode löschen wir alle Jobs in der Datenbank\index{Datenbank}, um einen sauberen Test \index{Test}zu gewährleisten (Isolation).
 
-Danach können nun beliebig viele Testmethoden folgen, deren Namen mit \texttt{test\_} beginnen müssen.
-Jede Testmethode besteht in der Regel aus einer Initialisierung, der Ausführung einer zu testenden Aktion und dem Prüfen der danach geltenden Eigenschaften mittels Assertions. Diese Assertions, also zu Deutsch "Zusicherungen", sind vom Testframework bereitgestellt Funktionen, die übergebene Parameter auf gewisse Eigenschaften testen und daraus einen Testerfolg oder Fehlschlag ableiten. Sollte eine Assertion innerhalb eines Tests fehlschlagen, so gilt der gesamte Testfall\index{Test} als fehlgeschlagen. \\
+Danach können nun beliebig viele Testmethoden folgen, deren Namen mit \texttt{test} beginnen müssen.
+Jede Testmethode besteht in der Regel aus einer Initialisierung, der Ausführung einer zu testenden Aktion und dem Prüfen der danach geltenden Eigenschaften mittels Assertions (vgl. ebenfalls Abschnitt \ref{sec:testUnit}. Diese Assertions, also zu Deutsch "Zusicherungen", sind vom Testframework bereitgestellt Funktionen, die übergebene Parameter auf gewisse Eigenschaften testen und daraus einen Testerfolg oder Fehlschlag ableiten. Sollte eine Assertion innerhalb eines Tests fehlschlagen, so gilt der gesamte Testfall\index{Test} als fehlgeschlagen. \\
 Einige dieser Zusicherungen sind z.B.:
 \begin{description}
  \item[\texttt{assert(statement)}] Prüft, ob der angegebene Ausdruck wahr ist (In Ruby\index{Ruby} sind alle Ausdrücke außer \texttt{false} und \texttt{nil} wahr).
@@ -98,7 +98,7 @@ Neben Ruby\index{Ruby} wird auch die Implementierung der Testschritt\index{Cucum
 \paragraph{Testen von Webanwendungen}
 Eine Einsatzmöglichkeit von Cucumber\index{Cucumber}, besonders im Zusammenhang mit \glossar{rails}, ist das Testen von Webanwendungen. Dabei ist es üblich, einen Browser zu automatisieren\index{Browser!Automatisierter} bzw. simulieren (vgl. Abschnitt \ref{sec:acceptance}), um den Test \index{Test}so authentisch am echten Nutzungsprozess wie möglich zu orientieren.
 
-Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen, verwenden wir verschiedene Middlewares. Wir haben uns für Capybara\index{Capybara} entschieden, welches sehr flexibel bei der Wahl der Browser-Engine ist. Der eigentliche Test, d.h. die Auswertung der Zusicherung, kann durch ein beliebiges Testframework durchgeführt werden; in unserem Falle wieder mit Test/Unit\index{Test/Unit-Framwork}. Durch Capybara haben wir nun die Möglichkeit, zwischen einem simulierten Browser\index{Browser!Simulierter} (z.B. \textbf{\glossar{racktest}}) und automatisierten Browsern\index{Browser!Automatisierter} (Firefox, Chrome, etc. durch eine weitere Middleware: Selenium\index{Selenium}) je nach Bedarf ohne große Änderungen am Testcode zu wechseln.
+Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen, verwenden wir verschiedene Middlewares. Wir haben uns für Capybara\index{Capybara} entschieden, welches sehr flexibel bei der Wahl der Browser-Engine ist. Der eigentliche Test, d.h. die Auswertung der Zusicherung kann durch ein beliebiges Testframework durchgeführt werden; in unserem Falle wieder mit Test/Unit\index{Test/Unit-Framwork}. Durch Capybara haben wir nun die Möglichkeit, zwischen einem simulierten Browser\index{Browser!Simulierter} (z.B. \textbf{\glossar{racktest}}) und automatisierten Browsern\index{Browser!Automatisierter} (Firefox, Chrome, etc. durch eine weitere Middleware, Selenium\index{Selenium}) je nach Bedarf ohne große Änderungen am Testcode zu wechseln.
 \begin{figure}[htbp]
  \centering
  \includegraphics[width=\linewidth]{./diagrams/cucumber.pdf}
@@ -107,4 +107,4 @@ Um unsere Tests von der Steuerung eines konkreten Browsers unabhängig zu machen
  \label{fig:cucumber}
 \end{figure}
 
-Der gesamte Ablauf eines Cucumber\index{Cucumber}Akzeptanztest\index{Akzeptanztest} in Verbindung mit Capybara\index{Capybara} ist in Abbildung \ref{fig:cucumber} abgebildet. Cucumber matcht die definierten Testanweisungen auf die Testschritt\index{Cucumber!Testschritt}e und führt den darin enthalten Code aus. Dies kann zum Einen die Steuerung eines Webbrowsers durch Capybara sein oder zum Anderen eine Zusicherung.
+Der gesamte Ablauf eines Cucumber\index{Cucumber}-Akzeptanztests\index{Akzeptanztest} in Verbindung mit Capybara\index{Capybara} ist in Abbildung \ref{fig:cucumber} abgebildet. Cucumber matcht die definierten Testanweisungen auf die Testschritt\index{Cucumber!Testschritt}e und führt den darin enthalten Code aus. Dies kann zum Einen die Steuerung eines Webbrowsers durch Capybara sein oder zum Anderen eine Zusicherung.
