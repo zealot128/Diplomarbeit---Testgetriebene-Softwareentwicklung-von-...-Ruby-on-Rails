@@ -1,7 +1,7 @@
 
-\section{Code Quality Benchmark mit anderen Ruby-Projekten}
+\section{Code-Quality-Benchmark mit anderen Ruby-Projekten}
 
-Um die Ergebnisse besser einordnen zu können, vergleichen wir die Ergebnisse aus den Code Quality Benchmarks mit vergangenen Ruby\index{Ruby}-Projekten in der pludoni GmbH und mit bekannten Ruby/Rails\index{Ruby-on-Rails}-OpenSource-Applikationen und -Bibliotheken.
+Um die Ergebnisse besser einordnen zu können, vergleichen wir die Ergebnisse aus den Code-Quality-Benchmarks mit vergangenen Ruby\index{Ruby}-Projekten in der pludoni GmbH und mit bekannten Ruby/Rails\index{Ruby-on-Rails}-OpenSource-Applikationen und -Bibliotheken.
 
 Eine vollständige Metrik wie oben an IT-Jobs\index{IT-Jobs-Projekt} war in vielen Fällen nicht möglich, da die Testwerkzeuge in vielen Fällen Inkompatibilitäten mit neueren Rubyversionen haben. Wir beschränken uns deshalb auf eine exemplarische Überblicksmetrik, bestehend aus:
 
@@ -13,7 +13,7 @@ Eine vollständige Metrik wie oben an IT-Jobs\index{IT-Jobs-Projekt} war in viel
  \item[H5Cmplx] Komplexität der 5\% komplexesten Klassen, nach Flog.
  \item[DSmell] Anzahl der Code Smells nach Roodi. Beinhaltet u.a.: hohe zyclomatische Komplexität in einer Methode (min. 4), lange Methoden, lange Parameterlisten, u.v.m.\footnote{\url{http://roodi.rubyforge.org/files/README_txt.html}}
  \item[DSmell/KLOC] Anzahl der Code Smells nach Roodi pro tausend Codezeilen.
- \item[CSmell] Anzahl der Code Smells nach Reek. Diese beinhalten: geringe Kohäsion, Duplikation, Control Couple, unkommunikativer Name von Methoden / Variablen / Parameter, verschachtelte Iteratoren, u.v.m  \footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}}.
+ \item[CSmell] Anzahl der Code Smells nach Reek. Diese beinhalten: geringe Kohäsion, Duplikation, Control Couple, unkommunikativer Name von Methoden/Variablen/Parameter, verschachtelte Iteratoren, u.v.m  \footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}}.
  \item[CSmell/KLOC] Anzahl der Code Smells nach Reek pro tausend Codezeilen.
 \end{description}
 
@@ -32,7 +32,7 @@ Bisherige Projekte der pludoni GmbH und des Autors basierend auf Ruby\index{Ruby
  \item[pludonidb] Eine auf ActiveRecord\index{ActiveRecord} basierende Bibliothek zur Anbindung der Datenbank\index{Datenbank}en der Communityportale an Ruby-Skripte. Beinhaltet außerdem weitere Hilfsfunktionen für Berechnung von Tag-Wolken, Häufigkeiten u.ä.
  \item[backlinks] Backlink und SEO-Success-Control ist eine Rails-2.3 Anwendung zum Messen der sogenannten Backlinks\footnote{Backlinks sind Links anderer Webseiten auf die Eigene. In den Communityportalen sind die Mitglieder vertraglich verpflichtet, einen Backlink auf die Communityportale anzulegen.} der Communitymitglieder und der Platzierung für relevante Sucheingaben in den großen Suchmaschinen (konkret: Welchen Platz hatte ein Communityportal an einem bestimmten Tag für "`it jobs dresden"', usw.). Details dazu sind im Praktikumsbericht des Autors zu finden. %TODO Verweis auf meinen Praktikumsbericht
 
- \item[SiteAnalyzer (SAnalyzer)] Ein Werkzeuge zur Analyse von kompletten Websites / Webdomains mit dem Ziel, tote Links zu finden, alle Seiten auf HTML-Gültigkeit zu prüfen und insgesamt die Link-Architektur zu analysieren\footnote{Auch dieses Projekt ist als OpenSource verfügbar: \url{https://github.com/zealot128/Site-Structure-Analyzer}}.
+ \item[SiteAnalyzer (SAnalyzer)] Ein Werkzeuge zur Analyse von kompletten Websites/Webdomains mit dem Ziel, tote Links zu finden, alle Seiten auf HTML-Gültigkeit zu prüfen und insgesamt die Link-Architektur zu analysieren\footnote{Auch dieses Projekt ist als OpenSource verfügbar: \url{https://github.com/zealot128/Site-Structure-Analyzer}}.
 \end{description}
 
 
@@ -91,7 +91,7 @@ Weiterhin wird das Projekt mit folgenden beliebten Webprojekten, welche ebenfall
  Code: \url{https://github.com/rails/rails.git}
 \end{description}
 
-Die Auswahl erfolgt z. T. sehr willkürlich. Als Ansatzpunkt diente die Liste der beliebtesten Rails\index{Ruby-on-Rails}-Projekte, die auf Github gehostet sind. Weiterhin wurde ActiveSupport und ActionPack ausgewählt, um die Code-Qualität von Rails selbst mit zu beurteilen.
+Die Auswahl erfolgt z.T. sehr willkürlich. Als Ansatzpunkt diente die Liste der beliebtesten Rails\index{Ruby-on-Rails}-Projekte, die auf Github gehostet sind. Weiterhin wurde ActiveSupport und ActionPack ausgewählt, um die Code-Qualität von Rails selbst mit zu beurteilen.
 
 \begin{table}[hbp]
  \caption{Vergleich von IT-jobs mit Ruby/Rails Projekten aus der Community}\label{table:cmpother}
@@ -142,7 +142,7 @@ Abbildung \ref{fig:cpm-loclot} zeigt das Verhältnis aus Testcode zu Programmcod
  \label{fig:cpm-complex}
 \end{figure}
 In Abbildung \ref{fig:cpm-complex} wurde die durchschnittliche Komplexität nach dem Flog-Verfahren gegenübergestellt. Der Median war hier 13,1. Unter den eigenen Projekten sind hier Backlinks und der Feedimport die komplexesten Projekte. IT-Jobs\index{IT-Jobs-Projekt} und Feedmerger, die beide Rails-Projekte sind, haben dagegeben eine geringere Code-Komplexität. Die Ursache ist hier, dass während der Entwicklung von IT-Jobs ständig die Code-Qualität durch die Metriken gemessen wurde und im Falle von Ausreißern gegengesteuert wurde. Bei dem Feedimport, der ebenfalls durch TDD\index{TDD} entwickelt wurde, wurde eine solche Analyse erst am Ende der Entwicklung durchgeführt. Für uns ist das ein Indiz, dass die Nutzung einer testgetriebenen Entwicklung kein alleiniger Garant für eine gute Code-Qualität ist.\\
-Bei den externen Projekten war der Bugtracker-Anwendung Chiliproject / Redmine die komplexeste Anwendung, dicht gefolgt von der Sprachpartnervermittlung Linkpartnerprogramm. Gerade wenn man das Verhältnis aus Testcode zu Programmcode mit einbezieht, kann man eine Tendenz ableiten: beide Projekte haben gegenüber den anderen Externen eine relativ geringe Anzahl an Testcode und beide haben eine relativ hohe Komplexität.
+Bei den externen Projekten war der Bugtracker-Anwendung Chiliproject/Redmine die komplexeste Anwendung, dicht gefolgt von der Sprachpartnervermittlung Linkpartnerprogramm. Gerade wenn man das Verhältnis aus Testcode zu Programmcode mit einbezieht, kann man eine Tendenz ableiten: beide Projekte haben gegenüber den anderen Externen eine relativ geringe Anzahl an Testcode und beide haben eine relativ hohe Komplexität.
 
 \begin{figure}[htbp]
  \centering
