@@ -125,16 +125,16 @@ Wie schon erwähnt, sind bei Ruby\index{Ruby} alle Datentypen ein Objekt. Dies s
 Das Literal \texttt{2} ist somit ein Objekt vom Typ \texttt{Fixnum}. Die Klasse Fixnum ist ihrerseits vom Typ \texttt{Class}. Da Ruby\index{Ruby} sowohl (Einfach-)Ableitungen als auch sogenannte Includes bzw. Mixins unterstützt, kann eine Klasse auch eine Menge von "`Vorfahren"' haben. Die gezeigte Klasse \texttt{Fixnum} verfügt somit standardmäßig sogar über 7 Oberklassen.
 
 
-Ruby\index{Ruby} ist \textbf{dynamisch stark} typisiert. \textit{Dynamisch} bedeutet, dass die Prüfung des Typs einer Variable zur Laufzeit stattfindet und sich dieser Typ ausschließlich aus dem aktuell beinhalteten Objekt ergibt. Durch die \textit{starke} Typisierung ist es aber nicht möglich, invalide Operationen auf typ-inkompatible Objekte auszuführen, beispielsweise eine Addition von Integer mit String. \\
+Ruby\index{Ruby} ist \textbf{dynamisch stark} typisiert. \textit{Dynamisch} bedeutet, dass die Prüfung des Typs einer Variable zur Laufzeit stattfindet und sich dieser Typ ausschließlich aus dem aktuell beinhalteten Objekt ergibt. Durch die \textit{starke} Typisierung ist es aber nicht möglich, invalide Operationen auf Typ-inkompatible Objekte auszuführen, beispielsweise eine Addition von Integer mit String. \\
 \borderquote{"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."}{James Whitcomb Riley}
-Rubys Typsystem ist "`Duck-typed"', d.h. dass die Semantiken eines Objekts nicht durch seine Klasse und Ableitungshierarchie, sondern seine Methoden und Attributen bestimmt wird.
+Rubys Typsystem ist "`Duck-typed"', d.h. dass die Semantiken eines Objekts nicht durch seine Klasse und Ableitungshierarchie, sondern durch seine Methoden und Attribute bestimmt wird.
 
 Ruby\index{Ruby} verfügt über lexikalische und dynamische Bindung\footnote{
-\textbf{Static Scoping}: Variablen werden zur Compilezeit gebunden ohne den aufrufenden Code zu berücksichtigen\\
-\textbf{Dynamic Scoping}: Variablen-Bindung kann nur im Moment der Ausführung des Codes festgestellt werden}, letztere wird allerdings seltener verwendet. In der Basissyntax verwendet Ruby\index{Ruby} statische Bindung. Es existiert eine im Ruby-Core enthaltene Bibliothek \texttt{Dynamic} zum dynamischen binden, falls dies gewünscht sein sollte.
+\textbf{Static Scoping}: Variablen werden zur Compilezeit gebunden, ohne den aufrufenden Code zu berücksichtigen.\\
+\textbf{Dynamic Scoping}: Variablen-Bindung kann nur im Moment der Ausführung des Codes festgestellt werden.}, letztere wird allerdings seltener verwendet. In der Basissyntax verwendet Ruby\index{Ruby} statische Bindung. Es existiert eine im Ruby-Core enthaltene Bibliothek \texttt{Dynamic} zum dynamischen Binden, falls dies gewünscht sein sollte.
 
 
-\paragraph{Reflektion und Introspection} Sprachen mit Reflektion erlauben es ihre Strukturen zur Laufzeit zu analysieren und zu verändern. So können in Ruby\index{Ruby} z.B. Objekte Informationen über ihre vorhandenen Instanzvariablen oder Methoden abfragen. Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern.
+\paragraph{Reflektion und Introspection} Sprachen mit Reflektion erlauben es, ihre Strukturen zur Laufzeit zu analysieren und zu verändern. So können in Ruby\index{Ruby} z.B. Objekte Informationen über ihre vorhandenen Instanzvariablen oder Methoden abfragen. Wichtig anzumerken sei noch, dass Klassen in Ruby nie geschlossen sind, sondern jederzeit erweitert werden können und vorhandene Methoden überschrieben werden können. So ist es z.B. möglich, die String-Klasse um eigene Funktionen zu erweitern.
 
 % SNIPPET: [language=Ruby,label=Ruby Beispiel offene Klassen,caption=Ruby Beispiel offene Klassen]
 % >> class String
@@ -172,13 +172,13 @@ Ein beliebtes Idiom innerhalb der Ruby-Community ist es, verwendete Methoden auf
 \PY{g+go}{#  Person Load (0.2ms)  SELECT persons.* FROM persons}
 \PY{g+go}{#    WHERE users.first\PYZus{}name = 'Stefan' LIMIT 1}
 \end{ruby}
-\codecaption{Demonstration von generischen}
+\codecaption{Demonstration von generischen ==> VON GENERISCHEN WAS??? METHODEN?}
 % label{fig:d0ee1e}
 
 
-Die Methode \texttt{find\_by\_first\_name} existiert nicht und wird zur Laufzeit auf Basis des Namens gebaut. Dies ist möglich, da Ruby\index{Ruby} sogennante Hooks (Callbacks) bereitstellt. Der Hook \texttt{method\_missing} z.B. wird immer dann aufgerufen, wenn eine nicht-existierende Funktion aufgerufen wurde (wie in unserem Beispiel \texttt{find\_by\_first\_name}). Hier können wir nun die neue Methode auf Basis des gewünschten Funktionsnamens zur Laufzeit erstellen oder andernfalls selbst eine Exception werfen. Ein weiterer Hook ist z.B. auch \texttt{method\_added}, der aufgerufen wird, wenn in einer Klasse eine Methode definiert wird\footnote{Einen guten Überblick über die Callbacks, die Ruby bereitstellt, und was man damit kann, finden sie hier: \url{http://www.khelll.com/blog/ruby/ruby-callbacks/}}. Auf diese Weise sind z.B. die Modifikatoren \texttt{private} und \texttt{public} implementiert.
+Die Methode \texttt{find\_by\_first\_name} existiert nicht und wird zur Laufzeit auf Basis des Namens gebaut. Dies ist möglich, da Ruby\index{Ruby} sogennante Hooks (Callbacks) bereitstellt. Der Hook \texttt{method\_missing} z.B. wird immer dann aufgerufen, wenn eine nicht-existierende Funktion aufgerufen wurde (wie in unserem Beispiel \texttt{find\_by\_first\_name}). Hier können wir nun die neue Methode auf Basis des gewünschten Funktionsnamens zur Laufzeit erstellen oder andernfalls selbst eine Exception werfen. Ein weiterer Hook ist z.B. auch \texttt{method\_added}, der aufgerufen wird, wenn in einer Klasse eine Methode definiert wird\footnote{Einen guten Überblick über die Callbacks, die Ruby bereitstellt, und was man damit tun kann, finden sie hier: \url{http://www.khelll.com/blog/ruby/ruby-callbacks/}}. Auf diese Weise sind z.B. die Modifikatoren \texttt{private} und \texttt{public} implementiert.
 
-Ein weiteres Beispiel ist Beziehungen zwischen den einzelnen Modell\index{Ruby-on-Rails!Modell}en innerhalb von \glossar{rails} (ebenfalls unter der Verwendung von ActiveRecord\index{ActiveRecord}).
+Ein weiteres Beispiel ist die Definition der relationalen Beziehungen zwischen den einzelnen Modell\index{Ruby-on-Rails!Modell}en innerhalb von \glossar{rails} (ebenfalls unter der Verwendung von ActiveRecord\index{ActiveRecord}).
 \begin{ruby}[label=app/models/job.rb]
 \PY{k}{class} \PY{n+nc}{Job} \PY{o}{<} \PY{n+no}{ActiveRecord}\PY{o}{::}\PY{n+no}{Base}
   \PY{n}{belongs\PYZus{}to} \PY{l+s+ss}{:user}
