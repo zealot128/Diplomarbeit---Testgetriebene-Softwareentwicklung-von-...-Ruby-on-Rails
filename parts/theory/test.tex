@@ -2,14 +2,14 @@
 \label{sec:test}
 Zum Prüfen der Richtigkeit seiner Arbeit macht jeder Programmierer mindestens manuelle Tests. Bei einer Webanwendung hieße dies konkret, den Webserver zu starten und mittels eines Browsers durch die Anwendung zu navigieren, Daten anzulegen und Ausgaben der Anwendung zu kontrollieren. Mit zunehmender Größe einer Anwendung wird es immer aufwändiger, die Software zu testen, da nach jedem Hinzufügen von Funktionalität eigentlich alle Aspekte wieder getestet werden müssten, um Regressionsfehler auszuschließen.
 
-Stattdessen werden \textbf{automatisierte Softwaretests} genutzt, um auf Knopfdruck alle bisher programmierten Tests auszuführen und so ein Bild über den Zustand der Anwendung zu erhalten. So ist automatisiertes Testen dem manuellem Testen, das auch \textbf{Ad-Hoc-Testen} genannt wird, in kürzester Zeit zeitlich überlegen \citep{rappin_rails_2011}.
+Stattdessen werden \textbf{automatisierte Softwaretests} genutzt, um auf Knopfdruck alle bisher programmierten Tests auszuführen und so ein Bild über den Zustand der Anwendung zu erhalten. So ist automatisiertes Testen dem manuellem Testen, das auch \textbf{Ad-Hoc-Testen} genannt wird, in kürzester Zeit zeitlich überlegen \citep[S.4]{rappin_rails_2011}.
 
-Dynamische Testverfahren, also Tests die Programmcode ausführen und Ergebnisse beobachten, haben gemeinsam, dass sie stichpunktartig testen, damit die Korrektheit des Programmes nicht beweisen können und stattdessen den Programmcodes mit konkreten Eingabewerten ausführen \citep[S. 49]{liggesmeyer_modultest_1990}. Diese Stichproben werden als \textbf{Testdaten\index{Test!Testdaten}} bezeichnet, die optimalerweise repräsentativ, fehlersensitiv, redundanzarm und ökonomisch sind \citep[S. 51]{liggesmeyer_modultest_1990}.
+\textbf{Dynamische Testverfahren}, also Tests die Programmcode ausführen und Ergebnisse beobachten, haben gemeinsam, dass sie stichpunktartig testen, damit die Korrektheit des Programmes nicht beweisen können und stattdessen den Programmcodes mit konkreten Eingabewerten ausführen \citep[S. 49]{liggesmeyer_modultest_1990}. Diese Stichproben werden als \textbf{Testdaten\index{Test!Testdaten}} bezeichnet, die optimalerweise repräsentativ, fehlersensitiv, redundanzarm und ökonomisch sind \citep[S. 51]{liggesmeyer_modultest_1990}.
 
-Neben den \textbf{dynamischen Tests}, gibt es statische Analyseverfahren, wie formale Verifikation, symbolische Testverfahren oder statische Analysen. Einige statische Analysen werden später im Abschnitt \ref{sec:metrics} vorgestellt. Andere statische Testverfahren sind nicht Gegenstand dieser Diplomarbeit.
+Neben den dynamischen Tests existieren statische Analyseverfahren, wie formale Verifikation, symbolische Testverfahren oder statische Analysen. Einige statische Analysen werden später im Abschnitt \ref{sec:metrics} vorgestellt. Andere statische Testverfahren sind nicht Gegenstand dieser Diplomarbeit.
 
 \section{Motivation zum Testen}
-Weshalb sollte überhaupt Zeit dafür aufgewendet werden, um Software zu Testen?\\
+Weshalb sollte überhaupt Zeit dafür aufgewendet werden, Software zu testen?\\
 Aus funktionaler Sicht dienen Tests in erster Linie dazu, das Vorhandensein bzw. Nichtvorhandensein von Software-Fehlern zu belegen \citep{goodliffe_code_2006}.\\
 Aber das Testen hat auch weitere Auswirkungen auf die Software-Entwicklung: Testen führe zu einer Minimierung der Debugphase und mache die Software\hyp{}Entwicklung für Programmierer attraktiver und für Projektleiter leichter zu planen \citep{orsini_rails_2007} und insgesamt preiswerter \citep[S.13]{liggesmeyer_modultest_1990}.\\
 Außerdem gilt getester Code im Allgemeinen als robuster, korrekter und leichter zu warten \citep{rappin_rails_2011}. Im Umkehrschluss bedeutet dies, dass ungetestete Software mit sehr hoher Wahrscheinlichkeit \glossar{fehler} beinhaltet \citep{goodliffe_code_2006}.
@@ -20,24 +20,24 @@ Außerdem gilt getester Code im Allgemeinen als robuster, korrekter und leichter
 Tests können nach verschiedenen Gesichtspunkten eingeteilt werden. In vielen konkreten Fällen reich eine eindimensionale Einordnung nicht aus und Test \index{Test}können ebenso Teil mehrerer Kategorien sein. Einige der gängisten Einordnungen werden hier vorgestellt.
 \begin{figure}[hp]
  \centering
- \includegraphics[width=\textwidth]{./diagrams/testarten.png}
+ \includegraphics[width=0.9\textwidth]{./diagrams/testarten.png}
  % testarten.pdf: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
  \caption{Einteilung der Tests}
  \label{fig:testArten}
 \end{figure}
 
 \paragraph{Einteilung nach Sichtbarkeit des Quellcodes} Tests werden in \textbf{Whitebox}- und \textbf{Blackbox}-Tests eingeteilt.
-Whitebox-Tests finden mit Wissen über den zugrundeliegenden Code statt. Ziel eines Whitebox-basierten Testverfahrens ist es, soviele Codeabschnitt wie möglich zu testen.\\
-Blackbox-tests dagegen ignorieren den inneren Aufbau der Klassen und testen entweder nur Schnittstellen oder das Gesamtsystem und beobachten Rückmeldungen des Systems auf bestimmte Aktionen. Das Ziel eines Blackbox-basierten Tests ist es, die Korrektheit der Software gegenüber den Spezifikationen zu bestimmen.\\
+Whitebox-Tests finden mit Wissen über den zugrundeliegenden Code statt. Ziel eines Whitebox-basierten Testverfahrens ist es, soviele Codeabschnitt wie möglich zu testen (wie man Testabdeckung testen kann, dazu später mehr).\\
+Blackbox-tests dagegen ignorieren den inneren Aufbau des Codes und testen entweder nur Schnittstellen oder das Gesamtsystem und beobachten Rückmeldungen des Systems auf bestimmte Aktionen. Das Ziel eines Blackbox-basierten Tests ist es, die Korrektheit der Software gegenüber den Spezifikationen zu bestimmen.\\
 Ein Spezialfall ist der sogenannte \textbf{Greybox}-Test, der insbesondere bei der Testgetriebene\index{TDD}n Entwicklung auftritt. Da hier der Test \index{Test}zuerst entwickelt wird, ist noch kein Wissen über den Zielquellcode vorhanden, aber der Entwickler hat natürlich Einblick in den Quellcode.
 
-\paragraph{Einteilung nach Testziel} (nach \citep[S. 238ff]{hunt_pragmatic_1999})
+\paragraph{Einteilung nach Testziel} (nach \citep[S. 238ff]{hunt_pragmatic_1999}) \nolinebreak
 \begin{description}
- \item[Unittest\index{Test!Unittest}s] Hierbei werden die Einheiten des Programmes auf ihr Verhalten getestet. Dies stellt die Basis für die meist darauffolgenden Integrationstests dar. Diese werden ausführlich im nächsten Abschnitt behandelt
+ \item[Unittest\index{Test!Unittest}s] Hierbei werden die Einheiten des Programmes auf ihr Verhalten getestet. Dies stellt die Basis für die meist darauffolgenden Integrationstests dar. Der Unittest wird im Detail im nächsten Abschnitt erkläutert.
  \item[Integrationstests] Das Zusammenspiel zwischen Klassen wird getestet, welche ein gemeinsames Subsystem darstellen (Modul). Hier kann eine Bottom-Up oder Top-Down\hyp{}Integrationsstrategie verfolgt werden, d.h. ob man mit denjenigen Modulen beginnt, die keine Abhängigkeiten haben und im Ableitungsbaum immer weiter nach oben integriert (Bottom-Up) oder mit dem zentralen Modul anfängt und nach und nach alle abhängigen oder abgeleiteten Module testet (Top-Down) \citep{liggesmeyer_modultest_1990}.
- \item[Validierung und Verifikation] Testet den Fortschritt der Anwendung in Bezug auf die funktionalen Anforderungen. Dies ist meist ein Blackboxtest und testet das System als Ganzes (=Systemtest). Ein Spezialfall ist der \textbf{Akzeptanztest\index{Akzeptanztest}}. Hierbei nimmt der Kunde eine Anforderung/ein Feature ab. Auch diesem Testtyp ist ein Unterabschnitt gewidmet.
+ \item[Validierung] Desweiteren existiert der \textbf{Systemtest}, der die Korrektheit der Anwendung hinsichtlich der Anforderungsspezifikationen bestimmt. Dies ist meist ein Blackboxtest und testet das System als Ganzes (=Systemtest). Ein Spezialfall ist der \textbf{Akzeptanztest\index{Akzeptanztest}}. Hierbei nimmt der Kunde eine Anforderung/ein Feature ab. Auch diesem Testtyp ist ein Unterabschnitt gewidmet.
  \item[Ressourcennutzung, Performanz, Verhalten im Fehlerfall] Die vorherigen genannten Testarten finden i.d.R. unter idealen Bedingungen statt. Diese Testkategorie nun versucht, das Applikationsverhalten unter realen Bedingungen zu simulieren. Beim Verhalten im Fehlerfall soll getestet werden, dass der Nutzer nicht durch kryptische Fehlermeldungen verwirrt wird oder z.B. sein Fortschritt gespeichert wurde. Last-/ und Performanztests stellen sicher, dass die Anwendung eine große Zahl von Nutzern oder eine große Menge an Daten verarbeiten kann.
- \item[Usability Testing] Diese Testmethode kann gegenüber den bisher genannten nicht automatisiert werden und benötigt immer einen zukünftigen Endanwender. Ziel ist es, die Benutzbarkeit und Handhabung zu testen. Dies wird durch Beobachtung von Kandidaten, meist in einer präperierten Umgebung (Usability Labor), geprüft.
+ \item[Usability Testing] Diese Testmethode kann gegenüber den bisher genannten nicht automatisiert werden und benötigt immer einen (zukünftigen) Endanwender. Ziel ist es, die Benutzbarkeit und Handhabung zu testen. Dies wird durch Beobachtung von Kandidaten, meist in einer präperierten Umgebung (Usability Labor), geprüft.
 \end{description}
 
 \paragraph{Einteilung nach Testvollständigkeit} Auf welche Art die sogenante Testvollständigkeit beurteilt wird und notwendige Testfälle generiert werden, ist ebenfalls eine Möglichkeit, Tests \index{Test}einzuordnen \citep{liggesmeyer_modultest_1990}:
@@ -51,29 +51,29 @@ Ein Spezialfall ist der sogenannte \textbf{Greybox}-Test, der insbesondere bei d
 \label{sec:testUnit}
 Da die Testgetriebene\index{TDD} Entwicklung in ihrer Reinform auf dem Unittest\index{Test!Unittest} basiert, soll diese Testgattung im Vorfeld etwas näher beleuchtet werden.
 
-Ziel des Unittest\index{Test!Unittest}s ist es, frühzeitig \glossar{fehler} im Code zu finden. Der Unit- oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen oder bei einer objektorientierten Sprache, die Klassen sein. Die Objekte unter Beobachtung (Objects under Test) werden beim Unittest in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double}\index{Test-Double} simuliert. Dies ist notwendig um sicherzustellen, dass gefundende Fehler von dem betreffenden Modul verursacht wurden und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen einfacher \citep{goodliffe_code_2006,liggesmeyer_modultest_1990}.
+Ziel des Unittest\index{Test!Unittest}s ist es, frühzeitig \glossar{fehler} im Code zu finden. Der Unit- oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen oder bei einer objektorientierten Sprache die Klassen sein. Die Objekte unter Beobachtung (\textit{Objects under Test}) werden beim Unittest in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double}\index{Test-Double} simuliert. Dies ist notwendig, um sicherzustellen, dass gefundende Fehler von dem betreffenden Modul verursacht wurden und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen auch einfacher \citep{goodliffe_code_2006,liggesmeyer_modultest_1990}.
 
 
 
-Unittest\index{Test!Unittest}s werden fast immer durch sog. \glossar{testrunner} automatisiert ausgeführt. Außerdem werden meist Test-Frameworks verwendet, welche häufige Aufgaben beim Testen unterstützen, z.B. Auswertung der Testergebnisse, Integration der Tests mit dem Programmcode, Anlage und Löschen von Testdaten\index{Test!Testdaten}.  Eine der meist-verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test/Unit\index{Test/Unit-Framwork}/MiniTest in Ruby\index{Ruby}, JUnit in Java oder NUnit in C\#.
+Unittest\index{Test!Unittest}s werden fast immer durch sog. \glossar{testrunner} automatisiert ausgeführt. Außerdem werden meist Test-Frameworks verwendet, welche häufige Aufgaben beim Testen unterstützen, z.B. Auswertung der Testergebnisse, Integration der Tests mit dem Programmcode, Anlage und Löschen von Testdaten\index{Test!Testdaten}.  Eine der meist verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test/Unit\index{Test/Unit-Framwork} / MiniTest in Ruby\index{Ruby}, JUnit in Java oder NUnit in C\#.
 
-Ein solcher Test \index{Test}besteht in der Regel aus 4 Teilen \citep{rappin_rails_2011} \citep[Karte 46]{langr_agile_2011}:
+Ein Test \index{Test}besteht in der Regel aus 4 Teilen \citep{rappin_rails_2011} \citep[Karte 46]{langr_agile_2011}:
 \begin{enumerate}
  \item Initialisierung der \glossar{Test-Umgebung} und der Objekte. Man arrangiert einen Kontext, der notwendig ist, um den zu Code ausführen zu können.
  \item Ausführung der zu testenden Aktion, die den Systemzustand ändert
- \item Prüfen der spezifizierten Erwartungen durch Zusicherungen (Assertions): prüfen, ob das System under Test/Object under Test \index{Test}sich wie erwartet verhalten hat.
+ \item Prüfen der spezifizierten Erwartungen durch Zusicherungen (Assertions): prüfen, ob das Object under Test \index{Test}sich wie erwartet verhalten hat.
  \item Aufräumen nicht mehr benötigter Objekte, File-Pointer, Sockets, Leeren der Datenbank\index{Datenbank} u.ä
 \end{enumerate}
-Als Faustregel für übersichtliche und nachvollziehbare Tests, gilt das Arrange-Act-Assert-Konzept: Dabei werden die oben genannten Phasen als Arrange (1. u. 4.), Act (2.), Assert (3.) oder auch Given-When-Then (Angenommen, Wenn, Dann) bezeichnet \citep[Karte 46]{langr_agile_2011}. Nicht immer sind alle drei bzw. vier Teile notwendig.
+Als Faustregel für übersichtliche und nachvollziehbare Tests, gilt das \textbf{Arrange-Act-Assert}-Konzept: Dabei werden die oben genannten Phasen als Arrange (1. u. 4.), Act (2.), Assert (3.) oder auch Given-When-Then (Angenommen, Wenn, Dann) bezeichnet \citep[Karte 46]{langr_agile_2011}. Nicht immer sind alle drei bzw. vier Teile notwendig.
 
-\paragraph{Komponententest}
-Ziel des Komponententests ist es, verschiedene Units in Kombination als eine vollständige Komponente zu testen \citep{goodliffe_code_2006}.
+%\paragraph{Komponententest}
+%Ziel des Komponententests ist es, verschiedene Units in Kombination als eine vollständige Komponente zu testen \citep{goodliffe_code_2006}.
 
  \section{Test Doubles -- Mocks und Stubs}
   \label{sec:mocks}
   Das isolierte Testen wird durch Abhängigkeiten aller Art erschwert. Dies können z.B. Klassen sein, die noch nicht implementiert wurden, externe Ressourcen (Netzwerkzugriffe, Versenden von Mails) oder andere unterliegende Prozesse (Bezahlen in einem Onlineshop, Datenbanken) sein. In diesen Situationen ist es angebracht, auf sogenannte Test-Doubles zurückzugreifen. Diese werden u.a. in Mocks und Stubs eingeteilt.
 
-  Ein \textbf{Stub\index{Test-Double!Stub}} ist eine nachahmende Funktion oder Objekt, welches die schwer zu isolierende Klasse während des Testfall\index{Test}s ersetzt. Im Beispiel ist dies der Bezahlprozess einer Bestellung.
+  Ein \textbf{Stub\index{Test-Double!Stub}} ist eine nachahmende Funktion oder ein Objekt, welches ein schwer zu isolierende Klasse während des Testfall\index{Test}s ersetzt. Im Beispiel ist dies der Bezahlprozess einer Bestellung.
 % -------------------------------
 % SNIPPET:
 %
@@ -120,6 +120,9 @@ Ziel des Komponententests ist es, verschiedene Units in Kombination als eine vol
 \codecaption{Beispiel für den Einsatz eines Mocks zum Test eines Netzwerkzugriffes}
 
   Der gezeigte Test \index{Test}würde nun fehlschlagen, da von einem Mock\index{Test-Double!Mock} erwartet wird, dass die nachgeahmte Funktion während des Tests genau einmal mit den genannten Parametern aufgerufen wird. Ist dies nicht der Fall, gilt der Test als nicht bestanden. Mocks fungieren somit als zusätzliche Möglichkeit, Interna des Programmflusses zu testen.
+
+
+  Neben den Mocks und Stubs existieren weitere Einordnungen von Test-Doubles: Spies, Fakes und Dummies. Da Mocks und Stubs als die am Häufigsten benutzten Test-Double-Klassen bereits erklärt wurden, wird auf eine tiefere Betrachtung der Test-Doubles verzichtet. Weitere Informationen sind z.B. bei Martin Fowler \url{http://martinfowler.com/bliki/TestDouble.html} zu entnehmen.
 
 \section{System- und Akzeptanztests}
 \label{sec:acceptance}
