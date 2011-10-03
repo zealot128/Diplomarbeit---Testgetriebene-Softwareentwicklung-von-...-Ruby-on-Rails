@@ -26,14 +26,15 @@ Rails\index{Ruby-on-Rails} ist ein Applikationsframework für Webanwendungen und
 %  \url{http://en.wikipedia.org/wiki/Representational_State_Transfer}}
  \item[View\index{Ruby-on-Rails!View}] Eine View ist in der Regel ein Stück HTML-Code, welches einem Model zugeordnet ist, das dem Clienten bei einer bestimmten Aktion ausgeliefert wird. Neben HTML ist auch JavaScript\index{JavaScript} oder XML eine mögliche Auslieferungsform.\\
  Für den Job wären Beispiele für eine View\index{Ruby-on-Rails!View} die Auflistung aller Jobs, einen Job im Detail anzeigen sowie das Formular zum Anlegen und Bearbeiten eines Jobs.
- \end{description}
+\end{description}
  \begin{figure}[h]
   \centering
   \includegraphics[width=0.7\textwidth]{./material/mvc-rails.png}
   % mvc-rails.png: 500x472 pixel, 72dpi, 17.64x16.65 cm, bb=
   % SOURCE
   \caption{MVC Modell von Rails}
-  \caption*{Quelle: \href{http://betterexplained.com/articles/intermediate-rails-understanding-models-views-and-controllers/}{betterexpl
+  \caption*{Quelle: \href{http://betterexplained.com/articles/intermediate-rails-understanding-models-views-and-controllers/}{betterexplained}}
+\end{figure}
 In Abbildung \ref{fig:mvcrails} ist der Ablauf einer Anfrage an den Server dargestellt. Die Anfrage des Browsers an die Website \texttt{http://localhost/jobs/12} wird über den Webserver, z.B. Apache2, an die Railsanwendung gestellt. Innerhalb von Rails wird dieser Anforderungsstring anhand der Routen, die die Anwendung anbietet, gematcht. In unserem Falle würde \texttt{/jobs/12} auf den Controller\index{Ruby-on-Rails!Controller} jobs aufgelöst werden. Innerhalb dieses Controllers wird eine Methode (Aktion) \texttt{show} erwartet.
 Diese Methode wird nun ihrerseits eine Anfrage an das Model Job stellen, den Job mit der ID 12 aus der Datenbank\index{Datenbank} zu holen. Danach wird ein HTML-Template zur Detailanzeige des Jobs generiert.
 
@@ -107,7 +108,8 @@ Dank der Modularität können als Persistenzgrundlage sowohl \randbem{Flexible D
 Rails\index{Ruby-on-Rails} bietet eine gute Ausgangsbasis, um sichere Websoftware zu entwickeln.\randbem{Sicherheit} Das Verwenden eines Datenbank\index{Datenbank}frameworks macht SQL-Injections unmöglich. \\
 Cross-Site-Request-Forgery und Session-Angriffe werden erschwert, da Session und Cookie-Variablen standardmäßig verschlüsselt werden und bei Nutzung der Formulargeneratoren ein CSRF-Token generiert wird, um Replay-Angriffe zu unterbinden.
 
-\borderquote{I needed to be way more productive...}{D. Hansson}Die Codegeneratoren, die Aufteilung in \glossar{MVC} und die mitgelieferten Werkzeuge machen Rails\index{Ruby-on-Rails} äußerst produktiv und in wenigen Minuten lassen sich so bereits erste Anwendungen bauen. Der Begründer von Rails führte z.B. in einer Konferenz vor, wie man mit Rails ein Blog in 15 Minuten bauen könnte\footnote{http://media.rubyonrails.org/video/rubyonrails.mov}.
+\borderquote{I needed to be way more productive...}{D. Hansson}
+Die Codegeneratoren, die Aufteilung in \glossar{MVC} und die mitgelieferten Werkzeuge machen Rails\index{Ruby-on-Rails} äußerst produktiv und in wenigen Minuten lassen sich so bereits erste Anwendungen bauen. Der Begründer von Rails führte z.B. in einer Konferenz vor, wie man mit Rails ein Blog in 15 Minuten bauen könnte\footnote{http://media.rubyonrails.org/video/rubyonrails.mov}.
 
 
 \paragraph{Testen mit Rails}
