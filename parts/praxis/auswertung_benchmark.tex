@@ -1,21 +1,20 @@
 
+\section{Code Quality Benchmark mit anderen Ruby-Projekten}
 
-\section{Code-Quality-Benchmark mit anderen Ruby-Projekten}
+Um die Ergebnisse besser einordnen zu können, vergleichen wir die Ergebnisse aus den Code Quality Benchmarks mit vergangenen Ruby\index{Ruby}-Projekten in der pludoni GmbH und mit bekannten Ruby/Rails\index{Ruby-on-Rails}-OpenSource-Applikationen und -Bibliotheken.
 
-Um die Ergebnisse besser einordnen zu können, vergleichen wir die Ergebnisse aus den Code-Quality-Benchmark mit vergangenen Ruby\index{Ruby}-Projekten in der pludoni GmbH und mit bekannten Ruby/Rails\index{Ruby-on-Rails}-OpenSource Applikationen und Bibliotheken.
-
-Eine vollständige Metrik wie oben an IT-Jobs\index{IT-Jobs-Projekt}, war in vielen Fällen nicht möglich, da die Testwerkzeuge in vielen Fällen Inkompatibilitäten mit neueren Rubyversionen haben. Wir beschränken uns deshalb auf eine exemplarische Überblicksmetrik, bestehend aus:
+Eine vollständige Metrik wie oben an IT-Jobs\index{IT-Jobs-Projekt} war in vielen Fällen nicht möglich, da die Testwerkzeuge in vielen Fällen Inkompatibilitäten mit neueren Rubyversionen haben. Wir beschränken uns deshalb auf eine exemplarische Überblicksmetrik, bestehend aus:
 
 \begin{description}
  \item[LOC] Anzahl der Quellcodezeilen, gemessen durch das \glossar{rake}-Tasks "`rake stats"'\index{Ruby!Rake}.
  \item[LOT] Anzahl der Quellcodezeilen aller Tests, gemessen durch das Rails-Kommando "`rake stats"'.
- \item[LOT/TOC] Verhältnis aus Testzeilen und Quellcodezeilen
+ \item[LOT/TOC] Verhältnis aus Testzeilen und Quellcodezeilen.
  \item[AVGCmplx] Durchschnittliche Komplexität aller Klassen, gemessen durch \textbf{Flog}\footnote{\url{https://github.com/seattlerb/flog}}. Flog besitzt ein eigenes Maß für Code-Komplexität. Es vergibt für jede Zuweisungen, Verzweigungen und Funktionsaufrufe unterschiedlich viele Punkte und bildet so eine Summe per Funktion oder per Klasse. Dabei vergibt Flog besonders viele Punkte für schwer nachzuvollziehende Funktionsaufrufe, wie z.B. "`eval(string)"', welches einen String als Ruby\index{Ruby}-Code auswertet.
- \item[H5Cmplx] Komplexität der 5\% komplexesten Klassen, nach Flog
- \item[DSmell] Anzahl der Code-Smells nach Roodi. Beinhaltet u.a.: hohe Cyclomatische Komplexität in einer Methode (min. 4), lange Methoden, lange Parameterlisten, u.v.m.\footnote{\url{http://roodi.rubyforge.org/files/README_txt.html}}
- \item[DSmell/KLOC] Anzahl der Code-Smells nach Roodi pro tausend Codezeilen
- \item[CSmell] Anzahl der Code-Smells nach Reek. Diese beinhalten: Geringe Kohäsion, Duplikation, Control-Couple, Unkommunikativer Name von Methoden/Variablen/Parameter, verschachtelte Iteratoren, u.v.m  \footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}}
- \item[CSmell/KLOC] Anzahl der Code-Smells nach Reek pro tausend Codezeilen
+ \item[H5Cmplx] Komplexität der 5\% komplexesten Klassen, nach Flog.
+ \item[DSmell] Anzahl der Code Smells nach Roodi. Beinhaltet u.a.: hohe zyclomatische Komplexität in einer Methode (min. 4), lange Methoden, lange Parameterlisten, u.v.m.\footnote{\url{http://roodi.rubyforge.org/files/README_txt.html}}
+ \item[DSmell/KLOC] Anzahl der Code Smells nach Roodi pro tausend Codezeilen.
+ \item[CSmell] Anzahl der Code Smells nach Reek. Diese beinhalten: geringe Kohäsion, Duplikation, Control Couple, unkommunikativer Name von Methoden / Variablen / Parameter, verschachtelte Iteratoren, u.v.m  \footnote{\url{https://github.com/kevinrutherford/reek/wiki/Code-Smells}}.
+ \item[CSmell/KLOC] Anzahl der Code Smells nach Reek pro tausend Codezeilen.
 \end{description}
 
 
@@ -26,14 +25,14 @@ Eine vollständige Metrik wie oben an IT-Jobs\index{IT-Jobs-Projekt}, war in vie
 
 \subsection{Vergleich von IT-Jobs mit eigenen Projekten}
 
-Bisherige Projekte der pludoni GmbH und des Autors basierend auf Ruby\index{Ruby}/ Ruby on Rails\index{Ruby-on-Rails}
+Bisherige Projekte der pludoni GmbH und des Autors basierend auf Ruby\index{Ruby}/ Ruby on Rails\index{Ruby-on-Rails}:
 \begin{description}
- \item[feedimport] Ist die fertiggestellte Bibliothek, die im Rahmen der Entwicklung von IT-Jobs\index{IT-Jobs-Projekt} ausgelagert wurde, um den Community-Portalen bereits jetzt zur Verfügung zu stehen. Die Grundzüge wurden in Abschnitt \ref{sec:awmock} vorgestellt.
- \item[feedmerger] Eine Rails\index{Ruby-on-Rails}-Anwendung\footnote{ Als OpenSource unter \url{https://github.com/zealot128/WenShanWenHai} zu finden.} zur Verwalten, Cachen, Filtern und Zusammenfügen von RSS und Atom-Feeds.
- \item[pludonidb] Ist eine auf ActiveRecord\index{ActiveRecord} basierende Bibliothek zur Anbindung der Datenbank\index{Datenbank}en der Communityportale an Ruby-Skripte. Beinhaltet außerdem weitere Hilfsfunktionen für Berechnung von Tag-Wolken, Häufigkeiten u.ä.
- \item[backlinks] Backlink und SEO-Success-Control ist eine Rails-2.3 Anwendung, zum Messen der sogenannten Backlinks\footnote{Backlinks sind Links anderer Webseiten auf die eigenen. In den Communityportalen sind die Mitglieder vertraglich verpflichtet, einen Backlink auf die Communityportale anzulegen.} der Communitymitglieder und der Platzierung für relevante Sucheingaben in den großen Suchmaschinen (konkret: Welchen Platz hatte ein Communityportal an einem bestimmten Tag für "`it jobs dresden"', usw.). Details dazu sind im Praktikumsbericht des Autors zu finden. %TODO Verweis auf meinen Praktikumsbericht
+ \item[feedimport] Die fertiggestellte Bibliothek, die im Rahmen der Entwicklung von IT-Jobs\index{IT-Jobs-Projekt} ausgelagert wurde, um den Community-Portalen bereits jetzt zur Verfügung zu stehen. Die Grundzüge wurden in Abschnitt \ref{sec:awmock} vorgestellt.
+ \item[feedmerger] Eine Rails\index{Ruby-on-Rails}-Anwendung\footnote{ Als OpenSource unter \url{https://github.com/zealot128/WenShanWenHai} zu finden.} zur Verwalten, Cachen, Filtern und Zusammenfügen von RSS- und Atom-Feeds.
+ \item[pludonidb] Eine auf ActiveRecord\index{ActiveRecord} basierende Bibliothek zur Anbindung der Datenbank\index{Datenbank}en der Communityportale an Ruby-Skripte. Beinhaltet außerdem weitere Hilfsfunktionen für Berechnung von Tag-Wolken, Häufigkeiten u.ä.
+ \item[backlinks] Backlink und SEO-Success-Control ist eine Rails-2.3 Anwendung zum Messen der sogenannten Backlinks\footnote{Backlinks sind Links anderer Webseiten auf die Eigene. In den Communityportalen sind die Mitglieder vertraglich verpflichtet, einen Backlink auf die Communityportale anzulegen.} der Communitymitglieder und der Platzierung für relevante Sucheingaben in den großen Suchmaschinen (konkret: Welchen Platz hatte ein Communityportal an einem bestimmten Tag für "`it jobs dresden"', usw.). Details dazu sind im Praktikumsbericht des Autors zu finden. %TODO Verweis auf meinen Praktikumsbericht
 
- \item[SiteAnalyzer (SAnalyzer)] ist ein Werkzeuge zur Analyse von kompletten Websites/Webdomains, mit dem Ziel tote Links zu finden, alle Seiten auf HTML-Gültigkeit zu prüfen und insgesamt die Link-Architektur zu analysieren\footnote{Auch dieses Projekt ist als OpenSource verfügbar: \url{https://github.com/zealot128/Site-Structure-Analyzer}}.
+ \item[SiteAnalyzer (SAnalyzer)] Ein Werkzeuge zur Analyse von kompletten Websites / Webdomains mit dem Ziel, tote Links zu finden, alle Seiten auf HTML-Gültigkeit zu prüfen und insgesamt die Link-Architektur zu analysieren\footnote{Auch dieses Projekt ist als OpenSource verfügbar: \url{https://github.com/zealot128/Site-Structure-Analyzer}}.
 \end{description}
 
 
@@ -77,22 +76,22 @@ CSmell/KLOC&33.80&80.70&71.80&60.70&49.00&58.50\\
 \subsection{Vergleich von IT-Jobs mit anderen Rails-Projekten}
 Weiterhin wird das Projekt mit folgenden beliebten Webprojekten, welche ebenfalls auf Ruby on Rails\index{Ruby-on-Rails} basieren, verglichen:
 \begin{description}
-\item[lpp] Linkpartnerprogramm ist eine Studenteninitiative der TU Dresden, um ausländische Studenten mit deutschen Sprach- und Lernpartnern zusammenzubringen. Dazu wurde 2008 von einem Studententeam im Rahmen einer Semesterarbeit eine Rails\index{Ruby-on-Rails}-Webanwendung geschrieben. Der Autor dieser Arbeit war zwar nicht an der Entwicklung beteiligt, übernahm aber die Pflege und Weiterentwicklung selbiger.
- \item[diaspora] Ist ein verteiltes soziales Netzwerk. \\
+\item[lpp] Das Linkpartnerprogramm ist eine Studenteninitiative der TU Dresden, um ausländische Studenten mit deutschen Sprach- und Lernpartnern zusammenzubringen. Dazu wurde 2008 von einem Studententeam im Rahmen einer Semesterarbeit eine Rails\index{Ruby-on-Rails}-Webanwendung geschrieben. Der Autor dieser Arbeit war zwar nicht an der Entwicklung beteiligt, übernahm aber die Pflege und Weiterentwicklung selbiger.
+ \item[diaspora] Ein verteiltes soziales Netzwerk. \\
  Code: \url{https://github.com/diaspora/diaspora}
- \item[bucketwise (bucket)] ist ein web-basierter persönlicher Finanzmanager mit Budgetierung nach dem Briefumschlagsystem\\
+ \item[bucketwise (bucket)] Ein web-basierter persönlicher Finanzmanager mit Budgetierung nach dem Briefumschlagsystem.\\
  Code: \url{https://github.com/jamis/bucketwise}
- \item[chiliproject (chilli)] Ist ein Fork\footnote{In der (Open-Source) Software-Entwicklung ist ein Fork eine legale Kopie eines bestehendes Software-Produktes, um von nun an eine unabhängige Entwicklung zu betreiben} des sehr beliebten Bugtrackers Redmine\footnote{https://github.com/edavis10/redmine}. Statt des originalen Redmines wurde dieser Fork genommen, da er eine neuere Codebasis hat\\
+ \item[chiliproject (chilli)] Ein Fork\footnote{In der (Open-Source)-Software-Entwicklung ist ein Fork eine legale Kopie eines bestehendes Software-Produktes, um von nun an eine unabhängige Entwicklung zu betreiben.} des sehr beliebten Bugtrackers Redmine\footnote{https://github.com/edavis10/redmine}. Statt des originalen Redmines wurde dieser Fork verwendet, da er eine neuere Codebasis hat.\\
  Code: \url{https://github.com/chiliproject/chiliproject}
- \item[railscast (rCasts)] Ist der Code der Website \url{http://www.railscasts.com}, in welche allwöchentlich ein Screencast zum Thema Ruby und Rails veröffentlich wird (bis dato 283 Episoden).\\
+ \item[railscast (rCasts)] Der Code der Website \url{http://www.railscasts.com}, in welche allwöchentlich ein Screencast zum Thema Ruby und Rails veröffentlich wird (bis dato 283 Episoden).\\
  Code: \url{https://github.com/ryanb/railscasts}
- \item[ActiveSupport [aSupport]] Beinhaltet Hilfsklassen und Erweiterungen der Ruby-Standardbibliothek und ist Kernbestandteil von Ruby on Rails \\
+ \item[ActiveSupport [aSupport]] Beinhaltet Hilfsklassen und Erweiterungen der Ruby-Standardbibliothek und ist Kernbestandteil von Ruby on Rails. \\
  Code: \url{https://github.com/rails/rails.git}
- \item[ActionPack (aPack)]  ist ein Framework um Anfragen und Antworten eines Webservers zu verarbeiten und ist ein weiterer Kernbestandteil von Rails.\\
+ \item[ActionPack (aPack)] Ein Framework, um Anfragen und Antworten eines Webservers zu verarbeiten und ein weiterer Kernbestandteil von Rails.\\
  Code: \url{https://github.com/rails/rails.git}
 \end{description}
 
-Die Auswahl erfolgt z.T. sehr willkürlich. Als Ansatzpunkt diente die Liste der beliebtesten Rails\index{Ruby-on-Rails}-Projekte, die auf Github gehostet sind. Weiterhin wurde ActiveSupport und ActionPack ausgewählt, um die Code-Qualität von Rails selbst mit zu beurteilen.
+Die Auswahl erfolgt z. T. sehr willkürlich. Als Ansatzpunkt diente die Liste der beliebtesten Rails\index{Ruby-on-Rails}-Projekte, die auf Github gehostet sind. Weiterhin wurde ActiveSupport und ActionPack ausgewählt, um die Code-Qualität von Rails selbst mit zu beurteilen.
 
 \begin{table}[hbp]
  \caption{Vergleich von IT-jobs mit Ruby/Rails Projekten aus der Community}\label{table:cmpother}
@@ -142,8 +141,8 @@ Abbildung \ref{fig:cpm-loclot} zeigt das Verhältnis aus Testcode zu Programmcod
  \caption{Vergleich der durchschnittlichen Komplexität}
  \label{fig:cpm-complex}
 \end{figure}
-In Abbildung \ref{fig:cpm-complex} wurde die durchschnittliche Komplexität nach dem Flog-Verfahren gegenübergestellt. Der Median war hier 13,1. Unter den eigenen Projekten sind hier Backlinks und der Feedimport die komplexesten Projekte. IT-Jobs\index{IT-Jobs-Projekt} und Feedmerger, die beide Rails-Projekte sind, haben dagegeben eine geringere Code-Komplexität. Die Ursache ist hierbei, dass während der Entwicklung von IT-Jobs ständig die Code-Qualität durch die Metriken gemessen wurde und im Falle von Ausreißern gegengesteuert wurde. Bei dem Feedimport, der zwar durch TDD\index{TDD} entwickelt wurde, wurde eine solche Analyse erst am Ende der Entwicklung durchgeführt. Für uns ist das ein Indiz, dass das Nutzen einer Testgetriebenen Entwicklung kein alleiniger Garant für eine gute Code-Qualität ist.\\
-Bei den externen Projekten war der Bugtracker-Anwendung Chiliproject/Redmine die komplexeste Anwendung, dicht gefolgt von der Sprachpartnervermittlung Linkpartnerprogramm. Gerade wenn man das Verhältnis aus Testcode zu Programmcode mit einbezieht, kann man eine Tendenz ableiten: Beide Projekte haben gegenüber den anderen externen eine relativ geringe Anzahl an Testcode und beide haben eine relativ hohe Komplexität.
+In Abbildung \ref{fig:cpm-complex} wurde die durchschnittliche Komplexität nach dem Flog-Verfahren gegenübergestellt. Der Median war hier 13,1. Unter den eigenen Projekten sind hier Backlinks und der Feedimport die komplexesten Projekte. IT-Jobs\index{IT-Jobs-Projekt} und Feedmerger, die beide Rails-Projekte sind, haben dagegeben eine geringere Code-Komplexität. Die Ursache ist hier, dass während der Entwicklung von IT-Jobs ständig die Code-Qualität durch die Metriken gemessen wurde und im Falle von Ausreißern gegengesteuert wurde. Bei dem Feedimport, der ebenfalls durch TDD\index{TDD} entwickelt wurde, wurde eine solche Analyse erst am Ende der Entwicklung durchgeführt. Für uns ist das ein Indiz, dass die Nutzung einer testgetriebenen Entwicklung kein alleiniger Garant für eine gute Code-Qualität ist.\\
+Bei den externen Projekten war der Bugtracker-Anwendung Chiliproject / Redmine die komplexeste Anwendung, dicht gefolgt von der Sprachpartnervermittlung Linkpartnerprogramm. Gerade wenn man das Verhältnis aus Testcode zu Programmcode mit einbezieht, kann man eine Tendenz ableiten: beide Projekte haben gegenüber den anderen Externen eine relativ geringe Anzahl an Testcode und beide haben eine relativ hohe Komplexität.
 
 \begin{figure}[htbp]
  \centering
@@ -152,11 +151,11 @@ Bei den externen Projekten war der Bugtracker-Anwendung Chiliproject/Redmine die
  \caption{Vergleich der Anzahl Smells pro KLOC}
  \label{fig:cpm-smells}
 \end{figure}
-Die Abbildung \ref{fig:cpm-smells} zeigt zwei verschiedene Arten von Smell\index{Code-Smell}s: Einerseits durch Reek gemessen (Rot) und andererseits durch Roodi gemessen (Blau). Zu bemerken sei, dass IT-Jobs\index{IT-Jobs-Projekt} eine deutlich geringere Code-Smell-Dichte (1/2 Median) besitzt. Auch der Feedimport ist noch im Rahmen und leicht unter dem Schnitt. Dagegen hat das interne Projekt Backlinks die höchste Dichte an Code-Smells. Interessanterweise hat dieses Projekt auch so gut wie gar keine automatisierten Tests, was eine nachträgliche Refaktorisierung\index{Refaktorisierung} sehr erschwert. Für das Projekt Feedimport existiert allerdings eine gute Testabdeckung\index{Test!Testabdeckung} und so ließen sich leicht weitere Refaktorisierungen durchführen, sollte das gewünscht sein. \\
-Actionpack verfügt unter den externen Projekten die höchste Smell\index{Code-Smell}-Dichte, trotz der großen Menge an Tests und der relativ geringen Komplexität. Da Actionpack auf das umfangreichste Projekt unter den untersuchten ist, wäre hier ein guter Ansatzpunkt für weitere Untersuchungen in der Sinnhaftigkeit gewissen Code-Smells. Die mit Abstand größte Code-Smell hierbei war Geringe Kohäsion bzw. starke Kopplung unter den Klassen. Eventuell lassen sich einige der Smells bei großen Modulen nicht vermeiden, da diese zwangsweise untereinander gekoppelt sein müssen.
+Die Abbildung \ref{fig:cpm-smells} zeigt zwei verschiedene Arten von Smell\index{Code-Smell}s: einerseits durch Reek gemessen (Rot) und andererseits durch Roodi gemessen (Blau). Zu bemerken ist, dass IT-Jobs\index{IT-Jobs-Projekt} eine deutlich geringere Code-Smell-Dichte (1/2 Median) besitzt. Auch der Feedimport ist noch im Rahmen und leicht unter dem Schnitt. Dagegen hat das interne Projekt Backlinks die höchste Dichte an Code Smells. Interessanterweise hat dieses Projekt auch so gut wie gar keine automatisierten Tests, was eine nachträgliche Refaktorisierung\index{Refaktorisierung} sehr erschwert. Für das Projekt Feedimport existiert allerdings eine gute Testabdeckung\index{Test!Testabdeckung} und so ließen sich leicht weitere Refaktorisierungen durchführen, sollte das gewünscht sein. \\
+Actionpack weist trotz der großen Menge an Tests und der relativ geringen Komplexität unter den externen Projekten die höchste Smell\index{Code-Smell}-Dichte auf. Da Actionpack das umfangreichste Projekt unter den Untersuchten ist, wäre hier ein guter Ansatzpunkt für weitere Untersuchungen in der Sinnhaftigkeit gewisser Code Smells. Die mit Abstand größte Code Smell hierbei war geringe Kohäsion bzw. starke Kopplung unter den Klassen. Eventuell lassen sich einige der Smells bei großen Modulen nicht vermeiden, da diese zwangsweise untereinander gekoppelt sein müssen.
 
 
 
-Für statistisch signifikante Ergebnisse reichen die hier präsentierten Daten nicht aus, stattdessen sollte nur eine Tendenz untersucht werden. Insbesondere der Vergleich mit den internen Projekten hinsichtlich Code-Qualität. Das Gefühl der Programmierer, das z.B. das Projekt Backlinks eine relativ schlechte Codebasis verfügt, wurde durch die hier gezeigten Metriken bestätigt. Der aktuelle Stand von IT-Jobs\index{IT-Jobs-Projekt} dagegen lässt eine gute Ausgangsbasis für eine Weiterentwicklung vermuten.
+Für statistisch signifikante Ergebnisse reichen die hier präsentierten Daten nicht aus, stattdessen sollte nur eine Tendenz untersucht werden, insbesondere der Vergleich mit den internen Projekten hinsichtlich Code-Qualität. Das Gefühl der Programmierer, dass z.B. das Projekt Backlinks eine relativ schlechte Codebasis verfügt, wurde durch die hier gezeigten Metriken bestätigt. Der aktuelle Stand von IT-Jobs\index{IT-Jobs-Projekt} dagegen lässt eine gute Ausgangsbasis für eine Weiterentwicklung vermuten.
 
 
