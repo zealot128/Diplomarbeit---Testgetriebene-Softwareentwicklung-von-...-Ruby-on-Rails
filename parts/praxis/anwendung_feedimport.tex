@@ -2,8 +2,8 @@
 \label{sec:awmock}
 Fast alle Webapplikationen sind auf Kommunikation mit anderen Servern angewiesen. Als Beispiel seien die diversen APIs der sozialen Netzwerke genannt oder Webservices. Für die vorliegende Jobanwendung war gewünscht, ein Feedimport-Feature zu implementieren, sodass bestimmte Kunden ihre Stellenanzeigen automatisiert einlesen lassen könnten.
 
-Die genannten Partner stellen einen XML-Feed nach dem \glossar{RSS} 2.0 Format\footnote{Spezifikation des RSS 2.0 Formats: \url{http://cyber.law.harvard.edu/rss/rss.html}} bereit, der ein häufig verwendetes Format zum Austausch von Informationen ist und durch eine Vielzahl von Werkzeugen und \glossar{CMS} unterstützt wird.
-Dabei wird der Inhalt des Haupttextfeldes "`description"' um weitere Informationen in einem Subdialekt angereichert.
+Die genannten Partner stellen einen XML-Feed nach dem \glossar{RSS} 2.0 Format\footnote{Spezifikation des RSS 2.0 Formats: \url{http://cyber.law.harvard.edu/rss/rss.html}} bereit, der ein häufig verwendetes Format zum Austausch von Informationen ist und durch eine Vielzahl von Werkzeugen und \glossar{CMS}en unterstützt wird.
+Dabei wird der Inhalt des Haupttextfeldes \verb|<description>| um weitere Informationen in einem Subdialekt angereichert.
 
 Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
 
@@ -38,7 +38,7 @@ Im Nachfolgenden sei z.B. eine Stellenanzeige in dem Format beschrieben:
 \end{ruby}
 \captionsetup{type=lstlisting}
 \caption{Feedimport Beispiel-XML Datei mit einem Job}
-Der RSS-Feed in dem oben genannten Beispiel enthält eine Stellenanzeige (item). Die description beinhaltet einen HTML-Kommentar, in dem nummer, tags, ort, kontakt und link für die Stellenanzeige definiert werden. Das ganze wurde mit einem Kommentar und nicht mit einer Erweiterung der Syntax durch eine DDT oder XSD, realisiert, da sich eine Eingliederung der Syntaxelemente mittels DDTs und XSDs in einige der Systeme der Kunden als problematisch herausgestellt hat.
+Der RSS-Feed in dem oben genannten Beispiel enthält eine Stellenanzeige (\verb|<item>|). Die \verb|description| beinhaltet einen HTML-Kommentar, in dem \verb|nummer|, \verb|tags|, \verb|ort|, \verb|kontakt| und \verb|link| für die Stellenanzeige definiert werden. Das ganze wurde mit einem Kommentar und nicht mit einer Erweiterung der Syntax durch eine DDT oder XSD, realisiert, da sich eine Eingliederung der Syntaxelemente mittels DDTs und XSDs in einige der Systeme der Kunden als problematisch herausgestellt hat. Da alle Spezialtags innerhalb eines HTML-Kommentars und damit bei normaler Betrachtung des Feeds nicht sichtbar sind, kann dieser Feed von dem Arbeitgeber gleichzeitig seinen Bewerbern angeboten werden, um sich über neue Jobs dieses Unternehmens auf dem Laufenden zu bleiben.
 
 Diese Art des Feedimports ist bereits in den Community-Job-Portalen in Funktion. Allerdings besitzt dieser, in PHP geschriebene Code, keinerlei automatisierte Tests und war in der Vergangenheit schon oft die Ursache von Fehlern. So ist es notwendig, den Feedimport nun in Ruby\index{Ruby} als Bibliothek im Rahmen von IT-Jobs\index{IT-Jobs-Projekt} neu zu schreiben und für die bereits laufenden Portale schnellstmöglich einzubauen.
 Diese Bibliothek soll also unabhängig von Rails\index{Ruby-on-Rails} funktionieren.
@@ -47,14 +47,14 @@ Ziel diesen Abschnittes ist es, zu zeigen, wie das Einlesen eines externen XML-F
 
 \paragraph{1. Initialier Test}
 
-Bevor man anfängt zu implementieren, ist es sinnvoll sich Gedanken darum zu machen, was von den zu implementieren Objekten erwartet wird. Da wir letztendlich eine gewisse Menge von RSS-Feeds einlesen wollen, ist es angebracht, ein entsprechendes Objekt, z.B. "`ImportedFeed"' einzuführen.
+Bevor wir anfangen zu implementieren, ist es sinnvoll sich Gedanken darum zu machen, was von den zu implementierenden Objekten erwartet wird. Da wir letztendlich eine gewisse Menge von RSS-Feeds einlesen wollen, ist es angebracht, ein entsprechendes Objekt, z.B. "`ImportedFeed"' einzuführen.
 
 Auch wenn wir noch nicht genau wissen, wie ein Feed funktioniert, so können wir doch zumindest annehmen, dass ein HTTP-Zugriff auf eine URL erfolgt, um den Feed vom Kunden abzuholen.
 
 Da wir unsere Tests nicht davon abhängig machen wollen, ob ein solcher Feed bereitsteht und sich stets im selben Zustand befindet, müssen wir diesen HTTP-Zugriff simulieren.
 
 \begin{ruby}[label=test/test\_imported\_feed.rb]
-\PY{n+nb}{require} \PY{l+s+s2}{"}\PY{l+s+s2}{test\PYZus{}helper}\PY{l+s+s2}{"}   \PY{c+c1}{# Stuff that we need for convenient tests}
+\PY{n+nb}{require} \PY{l+s+s2}{"}\PY{l+s+s2}{test\PYZus{}helper}\PY{l+s+s2}{"}   \PY{c+c1}{# Hilfsfunktionen und eigene Assertions}
 \PY{n+nb}{require} \PY{l+s+s2}{"}\PY{l+s+s2}{imported\PYZus{}feed}\PY{l+s+s2}{"} \PY{c+c1}{# Object under Test}
 
 \PY{k}{class} \PY{n+nc}{TestImportedFeed} \PY{o}{<} \PY{n+no}{ActiveSupport}\PY{o}{::}\PY{n+no}{TestCase}
@@ -71,9 +71,9 @@ Da wir unsere Tests nicht davon abhängig machen wollen, ob ein solcher Feed ber
 
 
 
-Hier definieren wir einen ersten Test \index{Test}für den ImportedFeed. Für die HTTP-Zugriffe wollen wir die Bibliothek HTTParty\footnote{https://github.com/jnunemaker/httparty} benutzen. In der ersten Zeile des Tests nutzen wir das Mock\index{Test-Double!Mock}-Framework wie folgt: Wir legen eine Erwartung fest, dass innerhalb dieses Tests die Klassenmethode "`get"' der Klasse HTTParty aufgerufen wird, mit einem Parameter der die URL angibt.
+Hier definieren wir einen ersten Test \index{Test}für den ImportedFeed. Für die HTTP-Zugriffe wollen wir die Bibliothek HTTParty\footnote{https://github.com/jnunemaker/httparty} benutzen. In der ersten Zeile des Tests nutzen wir das Mock\index{Test-Double!Mock}-Framework wie folgt: Wir legen eine Erwartung fest, dass innerhalb dieses Tests die Klassenmethode \textbf{get} der Klasse \textbf{HTTParty} aufgerufen wird, mit einem Parameter der die URL angibt.
 
-Dann rufen wir unsere (noch nicht existente) ImportedFeed Klasse mit dem einzulesenden Feed.
+Dann rufen wir unsere (noch nicht existente) \textbf{ImportedFeed}-Klasse mit dem einzulesenden Feed.
 \tddred
 
 Nach der Ausführung des Tests erhalten wir einen Fehler.
@@ -88,7 +88,7 @@ In der reinen TDD\index{TDD}-Lehre würde nun als erstes eine Behebung aller Feh
   unsatisfied expectations:
   - expected exactly once, not yet invoked: HTTParty.get('http://www.example.com/feed.xml')
 \end{lstlisting}
-Das Mock\index{Test-Double!Mock}objekt hat unseren Test \index{Test}fehlschlagen lassen, ohne dass wir selbst eine Assertion festgelegt hätten. Da wir bisher noch keine Implementation eines Netzwerkzugriffes durch HTTParty implementiert haben, schlägt der Test fehl.
+Das Mock\index{Test-Double!Mock}objekt hat unseren Test \index{Test}fehlschlagen lassen, ohne dass wir selbst eine Assertion festgelegt haben. Da wir bisher noch keine Implementation eines Netzwerkzugriffes durch HTTParty implementiert haben, schlägt der Test fehl.
 
 Die Implementierung wäre:
 \begin{ruby}[label=lib/imported\_feed.rb]
@@ -104,7 +104,7 @@ Die Implementierung wäre:
 % label{fig:bf345c}
 
 \tddgreen
-Die Funktion initialize stellt innerhalb von Ruby\index{Ruby} den Konstruktor dar. Dort rufen wir unseren Netzwerkzugriff auf, der allerdings durch unser definiertes Mock\index{Test-Double!Mock}-Objekt abgefangen wird. Dies stellt die definierte Erwartung zufrieden und der Test \index{Test}besteht.
+Die Funktion \textbf{initialize} stellt innerhalb von Ruby\index{Ruby} den Konstruktor dar. Dort führen wir unseren Netzwerkzugriff durch, der allerdings durch unser definiertes Mock\index{Test-Double!Mock}-Objekt abgefangen wird. Dies stellt die definierte Erwartung zufrieden und der Test \index{Test}besteht.
 
 
 
@@ -113,7 +113,7 @@ Die Funktion initialize stellt innerhalb von Ruby\index{Ruby} den Konstruktor da
 Wir haben zwar den Netzwerkzugriff abgefangen, geben aber nun keinerlei Antwort, d.h. ein XML-Dokument zurück. Für den nächsten Test \index{Test}müssen wir unsere Mock\index{Test-Double!Mock}anweisung also modifizieren.
 
 \begin{ruby}[label=test/test\_imported\_feed.rb]
-\PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{really get content from an feed}\PY{l+s+s2}{"} \PY{k}{do}
+\PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{really get content from a feed}\PY{l+s+s2}{"} \PY{k}{do}
     \PY{n}{fake\PYZus{}response} \PY{o}{=} \PY{n+no}{OpenStruct}\PY{o}{.}\PY{n}{new}
     \PY{n}{fake\PYZus{}response}\PY{o}{.}\PY{n}{code} \PY{o}{=} \PY{l+m+mi}{200}  \PY{c+c1}{# HTTP OK!}
     \PY{n}{fake\PYZus{}response}\PY{o}{.}\PY{n}{body} \PY{o}{=} \PY{l+s+s2}{"}\PY{l+s+s2}{<?xml version='1.0'?><Hallo/>}\PY{l+s+s2}{"}
@@ -128,7 +128,7 @@ Wir haben zwar den Netzwerkzugriff abgefangen, geben aber nun keinerlei Antwort,
 \codecaption{Feed Test II}
 % label{fig:fc3e79}
 
-Wir bilden das Antwortobjekt, das HTTParty normalerweise generieren würde, beschränken uns hierbei aber nur auf die für uns notwendigen Methoden von "`body"' und "`code"' (Dem HTTP-Status Code). Wir nutzen dazu die Klasse OpenStruct, die Getter und Setter für das Objekt beim Benutzen erstellt. Unserem Mock\index{Test-Double!Mock} können wir dann anweisen, diese Antwort zurückzugeben.
+Wir bilden das Antwortobjekt, das HTTParty normalerweise generieren würde, beschränken uns hierbei aber nur auf die für uns notwendigen Attribute von "`body"' und "`code"' (Dem HTTP-Status Code). Da Ruby Duck-Typed ist, reicht es, wenn ein Objekt die benötigten Methoden und Attribute implementiert, es muss nicht von einem gewissen Interface erben um Semantiken zu erhalten. Darum nutzen wir die Klasse OpenStruct, die sehr einfach Getter und Setter für das Objekt beim Benutzen erstellt. Unserem Mock\index{Test-Double!Mock} können wir dann anweisen, diese Antwort zurückzugeben.
 \tddred
 
 Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wurde, aber unser ImportedFeed noch kein Attribut "`body"' besitzt (Fehler) und dass dieser keine String beinhaltet.
@@ -145,11 +145,11 @@ Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wur
 \codecaption{Feed Implementation II}
 % label{fig:7381c3}
 
+Mitfhile des Makros \textbf{attr\_reader} generieren wir ein Attribut body und gleichzeitig einen Getter für den Zugriff von außen. Innerhalb unseres Konstruktors speichern wir den Body der HTTP-Antwort in diesem Attribut.
 \tddgreen
-Mitfhile des Makros "`attr\_reader"' generieren wir ein Attribut body und gleichzeitig einen Getter für den Zugriff von außen. Innerhalb unseres Konstruktors speichern wir den Body der HTTP-Antwort in diesem Attribut.
 
+Da unser Testfall\index{Test} nun ziemlich lang geworden ist und beide Testfälle ein Mock\index{Test-Double!Mock} initialisieren, ist dies eine gute Gelegenheit, den Mock zentral zu definieren. Dazu nutzen wir z.B. eine Datei \textbf{test\_helper.rb}, in der wir Anweisungen schreiben, die alle Testfälle nutzen können:
 \tddrefactor
-Da unser Testfall\index{Test} nun ziemlich lang geworden ist und beide Testfälle ein Mock\index{Test-Double!Mock} initialisieren, ist dies eine gute Gelegenheit, den Mock zentral zu definieren. Dazu nutzen wir z.B. eine Datei "`test\_helper.rb"', in der wir Anweisungen schreiben, die alle Testfälle nutzen können:
 
 \begin{ruby}[label=test/test\_helper.rb]
 \PY{k}{class} \PY{n+nc}{ActiveSupport}\PY{o}{::}\PY{n+no}{TestCase}
@@ -169,7 +169,7 @@ Da unser Testfall\index{Test} nun ziemlich lang geworden ist und beide Testfäll
 \codecaption{Zentrale Implementierung des Mocks in der Test Helper}
 % label{fig:13b997}
 
-Da Ruby\index{Ruby} offene Klassen unterstützt öffnen wir die Basisklasse der Testfälle und definieren eine neue Methode. Diese erhält einen Hash als Parameter, den wir mit unseren Standardwerten zusammenmergen. Diese Art der Parameterübergabe ist ein sehr gebräuchliches Idiom innerhalb der Ruby-Community.
+Da Ruby\index{Ruby} offene Klassen unterstützt öffnen wir die Basisklasse der Testfälle und definieren eine neue Methode. Diese erhält einen Hash als Parameter, den wir mit unseren Standardwerten zusammenführen (merge). Diese Art der Parameterübergabe ist ein sehr gebräuchliches Idiom innerhalb der Ruby-Community.
 \tddrefactor
 
 Der Aufruf unsere neuen Hilfsfunktion erfolgt dann mittels:
@@ -179,16 +179,15 @@ Der Aufruf unsere neuen Hilfsfunktion erfolgt dann mittels:
   \PY{k}{end}
 
   \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{get an feed through httparty}\PY{l+s+s2}{"} \PY{k}{do}
-    \PY{n}{should} \PY{l+s+s2}{"}\PY{l+s+s2}{perform a get request when initializing}\PY{l+s+s2}{"} \PY{k}{do}
-      \PY{n}{mock\PYZus{}feed} \PY{l+s+ss}{:url} \PY{o}{=}\PY{o}{>} \PY{n+nv+vi}{@url}
-      \PY{n+no}{ImportedFeed}\PY{o}{.}\PY{n}{new}\PY{p}{(}\PY{n+nv+vi}{@url}\PY{p}{)}
-    \PY{k}{end}
+    \PY{n}{mock\PYZus{}feed} \PY{l+s+ss}{:url} \PY{o}{=}\PY{o}{>} \PY{n+nv+vi}{@url}
+    \PY{n+no}{ImportedFeed}\PY{o}{.}\PY{n}{new}\PY{p}{(}\PY{n+nv+vi}{@url}\PY{p}{)}
+  \PY{k}{end}
 
-    \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{really get content from an feed}\PY{l+s+s2}{"} \PY{k}{do}
-      \PY{n}{mock\PYZus{}feed} \PY{l+s+ss}{:url} \PY{o}{=}\PY{o}{>} \PY{n+nv+vi}{@url}\PY{p}{,} \PY{n+nv+vi}{@body} \PY{o}{=}\PY{o}{>} \PY{l+s+s2}{"}\PY{l+s+s2}{`Hallo}\PY{l+s+s2}{"}
-      \PY{n}{import} \PY{o}{=} \PY{n+no}{ImportedFeed}\PY{o}{.}\PY{n}{new}\PY{p}{(}\PY{n+nv+vi}{@url}\PY{p}{)}
-      \PY{n}{assert\PYZus{}match} \PY{l+s+s2}{"}\PY{l+s+s2}{Hallo}\PY{l+s+s2}{"}\PY{p}{,} \PY{n}{import}\PY{o}{.}\PY{n}{body}
-    \PY{k}{end}
+  \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{really get content from an feed}\PY{l+s+s2}{"} \PY{k}{do}
+    \PY{n}{mock\PYZus{}feed} \PY{l+s+ss}{:url} \PY{o}{=}\PY{o}{>} \PY{n+nv+vi}{@url}\PY{p}{,} \PY{n+nv+vi}{@body} \PY{o}{=}\PY{o}{>} \PY{l+s+s2}{"}\PY{l+s+s2}{Hallo}\PY{l+s+s2}{"}
+    \PY{n}{import} \PY{o}{=} \PY{n+no}{ImportedFeed}\PY{o}{.}\PY{n}{new}\PY{p}{(}\PY{n+nv+vi}{@url}\PY{p}{)}
+    \PY{n}{assert\PYZus{}match} \PY{l+s+s2}{"}\PY{l+s+s2}{Hallo}\PY{l+s+s2}{"}\PY{p}{,} \PY{n}{import}\PY{o}{.}\PY{n}{body}
+  \PY{k}{end}
 \end{ruby}
 \codecaption{Feed Test IIb nach Refaktorisierung}
 
@@ -207,7 +206,7 @@ Als zusätzliche Maßnahmen haben wir die Definition der URL in eine gemeinsame 
 \codecaption{Feed Test III}
 % label{fig:ff7704}
 
-Nun testen wir lediglich darauf, ob das ImportedFeed Objekt eine Methode oder ein Attribut mit dem Namen "`valid?"' besitzt.
+Nun testen wir lediglich darauf, ob das ImportedFeed Objekt eine Methode oder ein Attribut mit dem Namen \textbf{valid?} besitzt.
 
 Um den Test \index{Test}zu bestehen, reicht es, eine leere Methode zu definieren:
 \begin{ruby}[label=lib/imported\_job.rb]
@@ -253,7 +252,8 @@ Implementieren können wir das so:
 
 
 \tddgreen
-Zu bemerken ist, dass wir den Funktionsrückgabewert nicht explizit mit "`return "' kennzeichnen müssen. Bei Ruby\index{Ruby} hat jeder Ausdruck einen Rückgabewert. Innerhalb einer Funktion ist dies das letzte Statement, falls nicht mit return spezifiziert.
+Zu bemerken ist, dass wir den Funktionsrückgabewert nicht explizit mit \textbf{return} kennzeichnen müssen. Bei Ruby\index{Ruby} hat jeder Ausdruck einen Rückgabewert. Innerhalb einer Funktion ist dies das letzte Statement, falls nicht mit return spezifiziert.
+%TODO zu spaet, muss in unittest anwendung imo
 
 \paragraph{4. Testen auf Exceptions}
 
@@ -275,7 +275,7 @@ Zum Abschluss dieses Kapitels möchten wir noch sicher gehen, dass unser Importe
 % label{fig:0d6ebd}
 
 \tddred
-Durch die Zusicherung "`assert\_nothing\_raised(exception, message, block)"' testen wir, dass innerhalb des übergebenen Blocks keine Exception vom Typ exception (Hier: "`ArgumentError"') geworfen wird. Wir möchten in diesem Fall auch sichergehen, dass unser Feed als nicht-valide markiert wird.
+Durch die Zusicherung \textbf{assert\_nothing\_raised(exception, message, block)} testen wir, dass innerhalb des übergebenen Blocks keine Exception vom Typ \textbf{exception} (Hier: \textbf{ArgumentError}) geworfen wird. Wir möchten in diesem Fall auch sichergehen, dass unser Feed als nicht-valide markiert wird.
 
 \begin{ruby}[label=lib/imported\_job.rb]
 \PY{k}{class} \PY{n+nc}{ImportedFeed}
@@ -296,7 +296,7 @@ Durch die Zusicherung "`assert\_nothing\_raised(exception, message, block)"' tes
 % label{fig:7b7690}
 
 \tddgreen
-Alle Exceptions die innerhalb des Konstruktors geworfen werden, werden abgefangen und das neue Attribut @error\_thrown auf true gesetzt. Dies kann dann unsere valid Funktion verwenden.
+Alle Exceptions die innerhalb des Konstruktors geworfen werden, werden abgefangen und das neue Attribut \textbf{@error\_thrown} auf \textbf{true} gesetzt. Dies kann dann unsere valid Funktion verwenden.
 
 \tddrefactor
 

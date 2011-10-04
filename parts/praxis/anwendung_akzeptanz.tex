@@ -1,11 +1,11 @@
 \section{System/Akzeptanztests}
 \label{sec:system}
 
-Nun wollen wir am Beispiel einer Suche nach Stellenanzeigen die Entwicklung von Akzeptanztest\index{Akzeptanztest}s und damit die Akzeptanztestgetriebene Software-Entwicklung (vgl. Abschnitt \ref{sec:attd} betrachten.
+Nun wollen wir am Beispiel einer Suche nach Stellenanzeigen die Entwicklung von Akzeptanztest\index{Akzeptanztest}s und damit die Akzeptanztestgetriebene Software-Entwicklung (vgl. Abschnitt \ref{sec:attd}) betrachten.
 
-Zum Einsatz kommt dabei die für Systemtests entwickelte domainspezifische Sprache Cucumber\index{Cucumber} in Verbindung mit der Browser-Steuerung Capybara\index{Capybara}, die beide bereits in Abschnitt \ref{sec:cucumber} vorgestellt wurde. 
+Zum Einsatz kommt dabei die für Systemtests entwickelte domainspezifische Sprache Cucumber\index{Cucumber} in Verbindung mit der Browser-Steuerung Capybara\index{Capybara}, die beide bereits in Abschnitt \ref{sec:cucumber} vorgestellt wurde.
 
-Ein Cucumber\index{Cucumber}-Verzeichnis ist qua Konvention immer gleich aufgebaut. In Abbildung \ref{fig:cucumberDir} ist der Verzeichnisbaum, wie er in den Beispielen dieses Kapitels benutzt wird, zu sehen. Innerhalb unseres Projektverzeichnisses existiert ein Unterverzeichnis "`features"' in dem alle Feature-Dateien mit der Endung "`.feature"' lagern. Ebenfalls existiert ein Unterverzeichnis "`step\_definitions"', das die Implementation der Testschritt\index{Cucumber!Testschritt}e beinhaltet sowie ein Verzeichnis "`support"', für z.B. Standardmethoden, Aktionen die vor jedem Feature-Durchlauf ausgeführt werden oder die Definition der Browser-Engine. Cucumber lädt automatisch alle Ruby-Dateien in den beiden Verzeichnissen.
+Ein Cucumber\index{Cucumber}-Verzeichnis ist qua Konvention immer gleich aufgebaut. In Abbildung \ref{fig:cucumberDir} ist der Verzeichnisbaum, wie er in den Beispielen dieses Kapitels benutzt wird, zu sehen. Innerhalb unseres Projektverzeichnisses existiert ein Unterverzeichnis "`features"' in dem alle Feature-Dateien mit der Endung "`.feature"' lagern. Ebenfalls existiert ein Unterverzeichnis "`step\_definitions"', das die Implementation der Testschritt\index{Cucumber!Testschritt}e beinhaltet sowie ein Verzeichnis "`support"', für z.B. Standardmethoden, Aktionen die vor jedem Feature-Durchlauf ausgeführt werden oder die Definition der verwendeten Browser-Engine. Cucumber lädt automatisch alle Ruby-Dateien in den beiden Verzeichnissen.
 
 \begin{figure}[hbtp]
  \centering
@@ -19,27 +19,27 @@ Ein Cucumber\index{Cucumber}-Verzeichnis ist qua Konvention immer gleich aufgeba
 
 \paragraph{1. Definition des gesamten Akzeptanztest\index{Akzeptanztest}}
 
-Zusammen mit dem Kunden oder basierend auf den Anforderungen entwickeln wir zuerst eine Spezifikation für ein Feature und darauf aufbauend, Da die Akzeptanztest\index{Akzeptanztest}s in erster Linie dazu dienen, die Software gegenüber den Anfordungen des Kunden zu validieren und auch als Kommunikationsmittel genutzt wird, orientert sich das Vokabular an gebräuchlichen Begriffen. So ist ein einzelner Testfall\index{Test} ein "`Szenario"' und eine Test-Suite\index{Test!Test-Suite} ein "`Feature"'. Statt "`Assertions"' (Zusicherungen) gibt es Vor- und Nachbedingungen.
+Zusammen mit dem Kunden oder basierend auf den Anforderungen entwickeln wir zuerst eine Spezifikation für ein Feature. Da die Akzeptanztest\index{Akzeptanztest}s in erster Linie dazu dienen, die Software gegenüber den Anfordungen des Kunden zu validieren und auch als Kommunikationsmittel genutzt wird, orientert sich das Vokabular an gebräuchlichen Begriffen. So ist ein einzelner Testfall\index{Test} ein "`Szenario"' und eine Test-Suite\index{Test!Test-Suite} ein "`Feature"'. Statt "`Assertions"' (Zusicherungen) gibt es Vor- und Nachbedingungen.
 
 Nachfolgend sei ein erstes Szenario für eine Suche nach Stellenanzeigen gezeigt.
 
 % Datei: features/suche.feature
-% SNIPPET: 
-% # language: de                                                                                                                             
-% Funktionalität: Job-Suche                                                                                                                  
-%   Um Jobs zu finden                                                                                                                        
-%   Als ein Gast                                                                                                                             
-%   Soll es möglich sein mittels einer Suche Jobs zu finden                                                                                  
-%   Szenario: Auffinden durch Titel                                                                                                          
-%     Angenommen wir befinden uns auf der Startseite                                                                                         
-%     Und die folgenden Jobs sind vorhanden:                                                                                                 
-%        | title                    |  visible  |                                                                                            
-%        | Ruby on Rails Entwickler |   true    |                                                                                            
-%        | Java Programmierer       |   true    |                                                                                            
-%     Wenn wir "Rails" für "search" eintippen                                                                                                
-%     Und wir auf den Button "Suchen" klicken                                                                                                
-%     Dann sehen wir "Ruby on Rails Entwickler"                                                                                              
-%                                                                                                                                            
+% SNIPPET:
+% # language: de
+% Funktionalität: Job-Suche
+%   Um Jobs zu finden
+%   Als ein Gast
+%   Soll es möglich sein mittels einer Suche Jobs zu finden
+%   Szenario: Auffinden durch Titel
+%     Angenommen wir befinden uns auf der Startseite
+%     Und die folgenden Jobs sind vorhanden:
+%        | title                    |  visible  |
+%        | Ruby on Rails Entwickler |   true    |
+%        | Java Programmierer       |   true    |
+%     Wenn wir "Rails" für "search" eintippen
+%     Und wir auf den Button "Suchen" klicken
+%     Dann sehen wir "Ruby on Rails Entwickler"
+%
 \begin{ruby}[label=features/job.feature]
 \PY{c}{# language: de}
 \PY{n+nc}{Funktionalität}\PY{n+nc}{:}\PY{n+no}{ Job-Suche}
@@ -65,6 +65,7 @@ Die ersten drei Zeilen des Features ("`Funktionaliät"') beinhalten hier einen K
 Wenn wir dieses Feature nun ausführen, erhalten wir folgende Ausgabe:
 
 \begin{lstlisting}
+$ cucumber features/suche.feature
 1 scenario (1 undefined)
 5 steps (5 undefined)
 
@@ -91,27 +92,27 @@ end
 
 
 
-Bevor wir also beginnen können das Feature zu entwickeln, müssen wir erst die Testschritt\index{Cucumber!Testschritt}e implementieren. Cucumber\index{Cucumber} hat uns schon ein paar Codeschnipsel generiert, mit denen wir unsere eigenen Testschritte implementieren können. 
+Bevor wir also beginnen können das Feature zu entwickeln, müssen wir erst die Testschritt\index{Cucumber!Testschritt}e implementieren. Cucumber\index{Cucumber} hat uns schon ein paar Codeschnipsel generiert, mit denen wir unsere eigenen Testschritte implementieren können.
 
 Hier zuerst die Basis-Testschritt\index{Cucumber!Testschritt}e, die für fast jedes Feature benötigt werden. Falls wir die englische Testschrittdefinition nutzen, entfällt dieser Schritt, da Capybara\index{Capybara} bereits häufig gebrauchte Testschritte mitliefert.
 
-% SNIPPET: 
-%                                                                                                                                          
-% Angenommen /^wir befinden uns auf der Startseite$/ do                                                                                    
-%   visit "/"                                                                                                                              
-% end                                                                                                                                      
-% Wenn /^wir "([^"]*)" für "([^"]*)" eintippen$/ do |text, input_name|                                                                     
-%   fill_in input_name, :with => text                                                                                                      
-% end                                                                                                                                      
-% Und /^wir auf den Button "([^"]*)" klicken$/ do |text|                                                                                   
-%   click_button text                                                                                                                      
-% end                                                                                                                                      
-%                                                                                                                                          
-% Dann /^sehen wir "([^"]*)"$/ do |string|                                                                                                 
-%   assert page.has_content?(string)                                                                                                       
-% end                                                                                                                                      
+% SNIPPET:
+%
+% Angenommen /^wir befinden uns auf der Startseite$/ do
+%   visit "/"
+% end
+% Wenn /^wir "([^"]*)" für "([^"]*)" eintippen$/ do |text, input_name|
+%   fill_in input_name, :with => text
+% end
+% Und /^wir auf den Button "([^"]*)" klicken$/ do |text|
+%   click_button text
+% end
+%
+% Dann /^sehen wir "([^"]*)"$/ do |string|
+%   assert page.has_content?(string)
+% end
 \begin{ruby}[label=features/step\_defintions/job\_steps.rb]
-\PY{n+no}{Angenommen}\PY{l+s+sr}{ /\PYZca{}}\PY{l+s+sr}{wir befinden uns auf der Startseite$}\PY{l+s+sr}{/} \PY{k}{do} 
+\PY{n+no}{Angenommen}\PY{l+s+sr}{ /\PYZca{}}\PY{l+s+sr}{wir befinden uns auf der Startseite$}\PY{l+s+sr}{/} \PY{k}{do}
   \PY{n}{visit} \PY{l+s+s2}{"}\PY{l+s+s2}{/}\PY{l+s+s2}{"}
 \PY{k}{end}
 \PY{n+no}{Wenn}\PY{l+s+sr}{ /\PYZca{}}\PY{l+s+sr}{wir "([\PYZca{}"]*)" für "([\PYZca{}"]*)" eintippen$}\PY{l+s+sr}{/} \PY{k}{do} \PY{o}{|}\PY{n}{text}\PY{p}{,} \PY{n}{input\PYZus{}name}\PY{o}{|}
@@ -128,22 +129,22 @@ Hier zuerst die Basis-Testschritt\index{Cucumber!Testschritt}e, die für fast je
 \codecaption{Implementierung der Testschritte zur Interaktion mit einem Browser}
 
 Der erste Testschritt\index{Cucumber!Testschritt} gibt unserem simulierten Browser\index{Browser!Simulierter} die Anweisung, die Startseite zu besuchen. Der Zweite Testschritt spezifiziert  einen Testschritt mit 2 variablen Texten, die an unseren Block mit übergeben werden. Wir möchten, dass der erste Begriff in "`..."' als Text in ein Formularelement mit dem Bezeichner des zweiten Begriffes eingetragen wird.
-Der Dritte implementiert den Klick auf einen HTML-Button mit dem angegebenen Inhalt. 
+Der Dritte implementiert den Klick auf einen HTML-Button mit dem angegebenen Inhalt.
 Während die ersten 3 Schritte Aktionen ausführen, hat der 4. eine andere Funktion: Er spezifiert eine Zusicherung, dass auch unserer aktuellen Webseite irgendwo ein gewisser Inhalt steht.
 
 
-% SNIPPET: 
-%                                                                                                                                          
-% # table.hashes ->                                                                                                                        
-% #  [ {:title => "Ruby on Rails Entwickler",  :visible => true},                                                                          
-% #    {:title => "Java Programmierer",        :visible => true}]                                                                          
-% Angenommen /^die folgenden Jobs sind vorhanden:$/ do |table|                                                                             
-%   valid_job = jobs(:visible_job).attributes                                                                                              
-%   table.hashes.each do |hash|                                                                                                            
-%     attributes = valid_job.merge(hash)                                                                                                   
-%     Job.create(attributes)                                                                                                               
-%   end                                                                                                                                    
-% end                                                                                                                                      
+% SNIPPET:
+%
+% # table.hashes ->
+% #  [ {:title => "Ruby on Rails Entwickler",  :visible => true},
+% #    {:title => "Java Programmierer",        :visible => true}]
+% Angenommen /^die folgenden Jobs sind vorhanden:$/ do |table|
+%   valid_job = jobs(:visible_job).attributes
+%   table.hashes.each do |hash|
+%     attributes = valid_job.merge(hash)
+%     Job.create(attributes)
+%   end
+% end
 \begin{ruby}[label=features/step\_defintions/job\_steps.rb]
 \PY{c+c1}{# table.hashes ->}
 \PY{c+c1}{#  [ \PYZob{}:title => "Ruby on Rails Entwickler",  :visible => true\PYZcb{},}
@@ -176,17 +177,17 @@ cucumber features/suche.feature:6 # Scenario: Auffinden durch Titel
 
 
 \tddred
-Der Test \index{Test}schlug also fehl, da noch kein Suchfeld eingebaut wurde. 
+Der Test \index{Test}schlug also fehl, da noch kein Suchfeld eingebaut wurde.
 Dies lösen wir, indem wir auf der View\index{Ruby-on-Rails!View} der Startseite eines einbauen:
 
-% SNIPPET: 
-%                                                                                                                                          
-% <div id='search-field'>                                                                                                                  
-%   <%= form_tag "/jobs" do %>                                                                                                             
-%     <%= text_field_tag(:search) %>                                                                                                       
-%     <%= submit_tag("Suchen") %>                                                                                                          
-%   <% end %>                                                                                                                              
-% </div>                                                                                                                                   
+% SNIPPET:
+%
+% <div id='search-field'>
+%   <%= form_tag "/jobs" do %>
+%     <%= text_field_tag(:search) %>
+%     <%= submit_tag("Suchen") %>
+%   <% end %>
+% </div>
 \begin{ruby}[label=app/views/layouts/appplication.html.erb]
 ...
 \PY{x}{<div id='search-field'>}
@@ -202,13 +203,13 @@ Wir implementieren im Layout der Applikation ein Suchfeld mit den Form-Hilfsfunk
 
 Jetzt folgt die Implementierung der Suche im Jobs-Controller\index{Ruby-on-Rails!Controller}:
 
-% SNIPPET: 
-%                                                                                                                                          
-% class JobsController                                                                                                                     
-%   def index                                                                                                                              
-%     @jobs = Job.where("title like ?", "%#{params[:search]}%")                                                                            
-%   end                                                                                                                                    
-% end                                                                                                                                      
+% SNIPPET:
+%
+% class JobsController
+%   def index
+%     @jobs = Job.where("title like ?", "%#{params[:search]}%")
+%   end
+% end
 \begin{ruby}[label=app/controllers/jobs\_controller]
 \PY{k}{class} \PY{n+nc}{JobsController}
   \PY{k}{def} \PY{n+nf}{index}
@@ -222,14 +223,14 @@ Im Jobs-Controller\index{Ruby-on-Rails!Controller} implementieren wir die Bereit
 
 
 Damit nun der Test \index{Test}besteht, muss als letztes noch eine View\index{Ruby-on-Rails!View} implementiert werden, die (zumindest) die Titel aller in der Suche gefundenen Jobs ausgibt, hier z.B. als Überschrift.
-% SNIPPET: 
-% SNIPPET: 
-%                                                                                                                                          
-% <% @jobs.each do |job| %>                                                                                                                
-%    <div class='job'>                                                                                                                     
-%      <h3><%= job.title %></h3>                                                                                                           
-%    </div>                                                                                                                                
-%  <% end %>                                                                                                                               
+% SNIPPET:
+% SNIPPET:
+%
+% <% @jobs.each do |job| %>
+%    <div class='job'>
+%      <h3><%= job.title %></h3>
+%    </div>
+%  <% end %>
 \begin{ruby}[label=app/views/jobs/index.html.erb]
 \PY{x}{                                                                                                                                      }
 \PY{c+cp}{<%} \PY{n+nv+vi}{@jobs}\PY{o}{.}\PY{n}{each} \PY{k}{do} \PY{o}{|}\PY{n}{job}\PY{o}{|} \PY{c+cp}{%>}
@@ -241,7 +242,7 @@ Damit nun der Test \index{Test}besteht, muss als letztes noch eine View\index{Ru
 \codecaption{View-Implementation für eine Liste von Jobs}
 
 
-                                                                                                  
+
 
 Mittels des Iterators "`each"', geben wir für jeden gefundenen Job ein DIV mit einer darin enthaltenen H3-Überschrift des Titels aus.
 
@@ -259,31 +260,31 @@ Auch innerhalb der Akzeptanztest\index{Akzeptanztest}getriebenen Entwicklung ist
 Ein guter Ansatz wäre z.B. die Suchlogik aus dem Controller\index{Ruby-on-Rails!Controller} in die Job-Modelklasse auszulagern.
 
 \tddrefactor
-% SNIPPET: 
-%                                                                                                                                          
-% class Job                                                                                                                                
-%   ...                                                                                                                                    
-%   def self.perform_search(params)                                                                                                        
-%     where("title like ?", "#{params[:search]}")                                                                                          
-%   end                                                                                                                                    
+% SNIPPET:
+%
+% class Job
+%   ...
+%   def self.perform_search(params)
+%     where("title like ?", "#{params[:search]}")
+%   end
 \begin{ruby}[label=app/models/job.rb]
 \PY{k}{class} \PY{n+nc}{Job}
   \PY{o}{.}\PY{n}{.}\PY{o}{.}
   \PY{k}{def} \PY{n+nc}{self}\PY{o}{.}\PY{n+nf}{perform\PYZus{}search}\PY{p}{(}\PY{n}{params}\PY{p}{)}
-    \PY{n}{where}\PY{p}{(}\PY{l+s+s2}{"}\PY{l+s+s2}{title like ?}\PY{l+s+s2}{"}\PY{p}{,} \PY{l+s+s2}{"}\PY{l+s+si}{#\PYZob{}}\PY{n}{params}\PY{o}{[}\PY{l+s+ss}{:search}\PY{o}{]}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{"}\PY{p}{)} 
+    \PY{n}{where}\PY{p}{(}\PY{l+s+s2}{"}\PY{l+s+s2}{title like ?}\PY{l+s+s2}{"}\PY{p}{,} \PY{l+s+s2}{"}\PY{l+s+si}{#\PYZob{}}\PY{n}{params}\PY{o}{[}\PY{l+s+ss}{:search}\PY{o}{]}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{"}\PY{p}{)}
   \PY{k}{end}
 \end{ruby}
 \codecaption{Auslagerung der Suchlogik in die Job-Klasse}
 
 Wir lagern die Suchmethode in eine neue Klassenmethode der Job-Klasse aus. Klassenmethoden werden definiert, indem "`self."' vor den Methodennamen geschrieben wird.
 
-% SNIPPET: 
-%                                                                                                                                          
-% class JobsController                                                                                                                     
-%   def index                                                                                                                              
-%     @jobs = Job.perform_search(params)                                                                                                   
-%   end                                                                                                                                    
-% end                                                                                                                                      
+% SNIPPET:
+%
+% class JobsController
+%   def index
+%     @jobs = Job.perform_search(params)
+%   end
+% end
 \begin{ruby}[label=app/controllers/jobs\_controller.rb]
 \PY{k}{class} \PY{n+nc}{JobsController}
   \PY{k}{def} \PY{n+nf}{index}
@@ -297,5 +298,5 @@ Wir lagern die Suchmethode in eine neue Klassenmethode der Job-Klasse aus. Klass
 Nun können wir die neu implementierte Funktion in unserem Controller\index{Ruby-on-Rails!Controller} verwenden.
 
 \paragraph{Ausblick}
-Nun haben wir ein erstes Szenario mit Cucumber\index{Cucumber} implementiert. Da wir schon ein paar Testschritt\index{Cucumber!Testschritt}e implementiert haben, ist die Entwicklung von weiteren Szenarien leichter. 
+Nun haben wir ein erstes Szenario mit Cucumber\index{Cucumber} implementiert. Da wir schon ein paar Testschritt\index{Cucumber!Testschritt}e implementiert haben, ist die Entwicklung von weiteren Szenarien leichter.
 Die Tests wurden bisher durch einen simulierten Browser\index{Browser!Simulierter} RackTest ausgeführt. Da wir Capybara\index{Capybara} als Abstraktion des Browsers genutzt haben, wäre eine Umstellung auf eine reale Browserumgebung, z.B: Firefox oder Chrome, kein Problem. Deren Ausführung ist zwar deutlich langsamer als bei RackTest, dafür findet hier der Test unter realen Bedingungen, nämlich in einem Browser, wie ihn auch später Nutzer der Web-Anwendung besitzen.

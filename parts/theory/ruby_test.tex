@@ -3,6 +3,7 @@
 
 Rails\index{Ruby-on-Rails} liefert standardmäßig das auf dem xUnit-Schema basierende Testframework Test/Unit\index{Test/Unit-Framework} mit. In der Version 1.9.x bringt Ruby\index{Ruby} das Testframework Minitest in der Standardbibliothek mit, welches ebenfalls Tests nach dem xUnit-Schema unterstützt. Darüber hinaus existieren zahllose weitere Testframeworks für Ruby. Eines für den Akzeptanztest\index{Akzeptanztest} ist Cucumber\index{Cucumber}, welches eine Business-readable \glossar{DSL}\footnote{Eine domänspezifische Sprache, die durch Kunden nachvollzogen werden kann. Siehe \url{http://martinfowler.com/bliki/BusinessReadableDSL.html}} für die Definition von Spezifikationen darstellt.
 \subsection{Test/Unit}
+\label{sec:rubyTestUnit}
 Test/Unit\index{Test/Unit-Framwork} basiert auf dem xUnit-, bzw. SUnit-Design von Kent Beck und ist für Nutzer von z.B. JUnit oder NUnit leicht nachvollziehbar.
 
 Für eine zu testende Klasse wird analog eine Testklasse erstellt. Diese trägt per Definition den selben Namen wie die zu testende Klasse mit einem \texttt{Test} am Anfang. Um z.B. eine Klasse \texttt{Job} zu testen, wird eine Datei \texttt{job\_test.rb}  erstellt. Dort wiederum wird eine Klasse mit Namen \texttt{TestJob} definiert.
