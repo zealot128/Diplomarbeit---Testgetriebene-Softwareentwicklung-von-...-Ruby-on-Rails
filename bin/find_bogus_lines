@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+# Bugfixer:
+#  Find all lines in given file,
+#  where there is an unequal number of { and }
+#  [ and ]
+
+lines = IO.read(ARGV[0]).split("\n")
+lines.each_with_index do |line,index|
+
+  if line.count("{") != line.count("}")
+    puts <<-DOC
+    Line #{index + 1}:
+    - #{line}
+    DOC
+  end
+
+  if line.count("[") != line.count("]")
+    puts <<-DOC
+    Line #{index + 1}:
+    - #{line}
+    DOC
+  end
+
+end
+

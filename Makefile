@@ -11,5 +11,8 @@ todo:
 special:
 	- ack-grep \cite | grep '}\['
 	ack-grep \cite{
+clean:
+	rm *.aux
+	rm */**/*.aux
 
 
