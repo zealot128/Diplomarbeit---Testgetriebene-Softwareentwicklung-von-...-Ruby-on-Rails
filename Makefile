@@ -14,6 +14,9 @@ special:
 clean:
 	rm *.aux
 	rm */**/*.aux
+	ls *.backup */**/*backup | xargs rm
+	ls *~ */**/*~ | xargs rm
+
 open:
 	vim *tex `find parts | grep "tex$$"`
 
