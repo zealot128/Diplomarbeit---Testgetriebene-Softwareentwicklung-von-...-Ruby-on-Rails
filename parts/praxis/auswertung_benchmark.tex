@@ -1,4 +1,5 @@
 \section{Code-Quality-Benchmark mit anderen Ruby-Projekten}
+\label{sec:benchmarkAll}
 
 Um die Ergebnisse besser einordnen zu können, vergleichen wir die Ergebnisse aus den Code-Quality-Benchmarks mit vergangenen Ruby\index{Ruby}-Projekten in der pludoni GmbH und mit bekannten Ruby/Rails\index{Ruby-on-Rails}-OpenSource-Applikationen und -Bibliotheken.
 
@@ -36,38 +37,37 @@ Bisherige Projekte der pludoni GmbH und des Autors basierend auf Ruby\index{Ruby
 
 
 \begin{table}[hbp]
- \caption{Vergleich von IT-jobs mit anderen Ruby Projekten des Autors/der pludoni GmbH}\label{table:cmpmy}
- \begin{center}
+  \caption{Vergleich von IT-jobs mit anderen Ruby Projekten des Autors/der pludoni GmbH}\label{table:cmpmy}
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+      \hline\rowcolor{tableheadcolor}
 
-\begin{tabular}{|l|l|l|l|l|l|l|}
-\hline\rowcolor{tableheadcolor}
-
-Projekt&ItJobs&Backlinks&Feedmerger&SAnalyzer&Feedimport&PludoniDb\\
-\hline
-Technologie&Rails3&Rails2&Rails3&Rails3&Ruby&Ruby\\
-\hline
-Testverfahren&TDD&manuell&manuell&manuell&TDD&manuell\\
-\hline
-LOC&1570&1884&724&214&571&1933\\
-\hline
-LOT&1750&75&137&0&865&126\\
-\hline
-LOT/LOC&1.11&0.04&0.19&0.00&1.51&0.07\\
-\hline
-AVGCmplx&8.00&19.90&10.50&14.80&16.80&13.70\\
-\hline
-H5Cmplx&43.80&70.60&26.90&39.70&25.10&113.20\\
-\hline
-DSemll&11&69&11&11&8&25\\
-\hline
-DSmell/KLOC&7.00&36.60&15.20&51.40&14.00&12.90\\
-\hline
-CSmell&53&152&52&13&28&113\\
-\hline
-CSmell/KLOC&33.80&80.70&71.80&60.70&49.00&58.50\\
-\hline
-\end{tabular}
-\end{center}
+      Projekt&ItJobs&Backlinks&Feedmerger&SAnalyzer&Feedimport&PludoniDb\\
+      \hline
+      Technologie&Rails3&Rails2&Rails3&Rails3&Ruby&Ruby\\
+      \hline
+      Testverfahren&TDD&manuell&manuell&manuell&TDD&manuell\\
+      \hline
+      LOC&1570&1884&724&214&571&1933\\
+      \hline
+      LOT&1750&75&137&0&865&126\\
+      \hline
+      LOT/LOC&1.11&0.04&0.19&0.00&1.51&0.07\\
+      \hline
+      AVGCmplx&8.00&19.90&10.50&14.80&16.80&13.70\\
+      \hline
+      H5Cmplx&43.80&70.60&26.90&39.70&25.10&113.20\\
+      \hline
+      DSemll&11&69&11&11&8&25\\
+      \hline
+      DSmell/KLOC&7.00&36.60&15.20&51.40&14.00&12.90\\
+      \hline
+      CSmell&53&152&52&13&28&113\\
+      \hline
+      CSmell/KLOC&33.80&80.70&71.80&60.70&49.00&58.50\\
+      \hline
+    \end{tabular}
+  \end{center}
 
 \end{table}
 
@@ -122,6 +122,7 @@ CSmell\newline~/KLOC&33.80&65.20&54.20&72.40&75.60&30.90&43.40&64.30\\
 \end{table}
 
 \subsection{Auswertung und Visualisierung}
+\label{sec:auswertungFinal}
 In den Abbildungen \ref{fig:cpm-loclot}, \ref{fig:cpm-complex} und \ref{fig:cpm-smells} werden die gesammelten Ergebnisse für alle genannten Projekte visualisiert. Der obere Teil jeder Abbildung enthält die externen Projekte, der untere alle Projekte der pludoni GmbH.
 \begin{figure}[htbp]
  \centering

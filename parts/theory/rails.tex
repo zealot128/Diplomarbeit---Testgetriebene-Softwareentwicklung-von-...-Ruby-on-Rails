@@ -35,6 +35,7 @@ Rails\index{Ruby-on-Rails} ist ein Applikationsframework für Webanwendungen und
   % SOURCE
   \caption{MVC Modell von Rails}
   \caption*{Quelle: \href{http://betterexplained.com/articles/intermediate-rails-understanding-models-views-and-controllers/}{betterexplained}}
+  \label{fig:mvcrails}
 \end{figure}
 In Abbildung \ref{fig:mvcrails} ist der Ablauf einer Anfrage an den Server dargestellt. Die Anfrage des Browsers an die Website \texttt{http://localhost/jobs/12} wird über den Webserver, z.B. Apache2, an die Railsanwendung gestellt. Innerhalb von Rails wird dieser Anforderungsstring anhand der Routen, die die Anwendung anbietet, gematcht. In unserem Falle würde \texttt{/jobs/12} auf den Controller\index{Ruby-on-Rails!Controller} jobs aufgelöst werden. Innerhalb dieses Controllers wird eine Methode (Aktion) \texttt{show} erwartet.
 Diese Methode wird nun ihrerseits eine Anfrage an das Model Job stellen, den Job mit der ID 12 aus der Datenbank\index{Datenbank} zu holen. Danach wird ein HTML-Template zur Detailanzeige des Jobs generiert.
