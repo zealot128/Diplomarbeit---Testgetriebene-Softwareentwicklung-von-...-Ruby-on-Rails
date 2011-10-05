@@ -15,7 +15,7 @@
    height="602.34741"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.0 r9654"
+   inkscape:version="0.48.1 r9760"
    sodipodi:docname="red-green-refactor.svg"
    inkscape:export-filename="/home/stefan/Desktop/diplom/Diplomarbeit---Testgetriebene-Softwareentwicklung-von-...-Ruby-on-Rails/diagrams/red-green-refactor.png"
    inkscape:export-xdpi="90"
@@ -355,7 +355,8 @@
        y1="367.71304"
        x2="376.75668"
        y2="424.8559"
-       gradientUnits="userSpaceOnUse" />
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(2.0203051,10.606602)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5068-7"
@@ -518,16 +519,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="495.15214"
-     inkscape:cy="266.42438"
+     inkscape:zoom="1.979899"
+     inkscape:cx="551.71716"
+     inkscape:cy="164.4361"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="950"
-     inkscape:window-x="0"
-     inkscape:window-y="39"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="1280"
+     inkscape:window-y="45"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -541,7 +542,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -595,42 +596,42 @@
          style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.38315201;stroke-miterlimit:4;stroke-dasharray:none" />
     </g>
     <path
-       style="fill:#ffffff;stroke:#000000;stroke-width:1.00884151;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       d="m 426.99383,124.22413 c -3.81982,-10.15182 -16.71806,-8.63447 -17.52132,1.13761 l 11.23621,54.77426 c 1.78384,5.10762 14.681,5.97791 15.87023,-3.99451 l -7.67842,-37.48659 -2.55288,0.89565 7.50397,35.92479 c 0.58629,4.52453 -7.46276,9.11583 -10.94877,2.47751 l -10.70302,-52.22682 c 0.22373,-5.51612 8.74269,-9.10969 11.89225,-1.20757 z"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.74458057;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 422.3264,124.22413 c -2.80227,-7.53796 -12.26461,-6.41129 -12.85389,0.8447 l 8.24304,40.67113 c 1.30865,3.79252 10.77019,4.43874 11.64263,-2.96601 l -5.633,-27.83465 -1.87283,0.66504 5.50502,26.67498 c 0.43011,3.35956 -5.47478,6.76871 -8.03217,1.8396 l -7.85189,-38.7796 c 0.16413,-4.09584 6.41376,-6.76415 8.72432,-0.89664 z"
        id="path7100"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccccc" />
     <text
        sodipodi:linespacing="125%"
        id="text4675"
-       y="146.6479"
-       x="442.85715"
+       y="147.15298"
+       x="433.76578"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        xml:space="preserve"><tspan
          style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
-         y="146.6479"
-         x="442.85715"
+         y="147.15298"
+         x="433.76578"
          id="tspan4677"
          sodipodi:role="line">Wähle einen neues Feature </tspan><tspan
          style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
-         y="166.6479"
-         x="442.85715"
+         y="167.15298"
+         x="433.76578"
          sodipodi:role="line"
          id="tspan4876">oder einen neuen Test </tspan><tspan
          style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
-         y="186.6479"
-         x="442.85715"
+         y="187.15298"
+         x="433.76578"
          sodipodi:role="line"
          id="tspan4878">von der Liste</tspan><tspan
          style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
-         y="206.6479"
-         x="442.85715"
+         y="207.15298"
+         x="433.76578"
          sodipodi:role="line"
          id="tspan4874">         Schreibe einen Test, </tspan><tspan
          id="tspan4679"
          style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
-         y="226.6479"
-         x="442.85715"
+         y="227.15298"
+         x="433.76578"
          sodipodi:role="line">           der <tspan
    style="font-weight:bold;-inkscape-font-specification:TeXGyreBonum Bold"
    id="tspan4880">fehlschlägt</tspan>!</tspan></text>
@@ -715,12 +716,12 @@
          sodipodi:role="line"
          x="366.7486"
          y="232.36218"
-         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:87.00000048%;text-anchor:middle;fill:#ffffff;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold"
+         style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:87.00000047999998287%;text-anchor:middle;fill:#ffffff;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold"
          id="tspan3946">Rot</tspan><tspan
          sodipodi:role="line"
          x="366.7486"
          y="267.48526"
-         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:87.00000048%;text-anchor:middle;fill:#cccccc;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:87.00000047999999708%;text-anchor:middle;fill:#cccccc;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan3950">(red)</tspan></text>
     <path
        transform="translate(259.2857,277.85714)"
@@ -746,25 +747,25 @@
        d="m 461.42858,238.79076 c 0,34.32055 -52.76644,62.14285 -117.85714,62.14285 -65.0907,0 -117.85714,-27.8223 -117.85714,-62.14285 0,-34.32056 52.76644,-62.14286 117.85714,-62.14286 65.0907,0 117.85714,27.8223 117.85714,62.14286 z" />
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:93.99999976%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:93.99999976%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
        x="603.5415"
-       y="505.93365"
+       y="513.50983"
        id="text3819-2"
        sodipodi:linespacing="94%"><tspan
          sodipodi:role="line"
          id="tspan3821-4"
          x="603.5415"
-         y="505.93365"
-         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:93.99999976%;text-anchor:middle;fill:#ffd5d5;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold">Grün</tspan><tspan
+         y="513.50983"
+         style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:93.99999976%;text-anchor:middle;fill:#ffffff;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold">Grün</tspan><tspan
          sodipodi:role="line"
          x="603.5415"
-         y="543.88275"
-         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:93.99999976%;text-anchor:middle;fill:#ffd5d5;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="536.35333"
+         style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:93.99999976%;text-anchor:middle;fill:#ffffff;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan3952">(green)</tspan><tspan
          sodipodi:role="line"
          x="603.5415"
-         y="581.48273"
-         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:93.99999976%;text-anchor:middle;fill:#ffd5d5;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         y="557.03333"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:93.99999976%;text-anchor:middle;fill:#ffffff;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan3954" /></text>
     <g
        transform="matrix(0.83922466,0,0,0.71952195,-307.48932,286.25895)"
@@ -813,18 +814,18 @@
     <text
        xml:space="preserve"
        style="font-size:22px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
-       x="151.16646"
-       y="500.21933"
+       x="149.14615"
+       y="508.80563"
        id="text3819-9"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="151.16646"
-         y="500.21933"
-         style="font-size:22px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ffffff;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold"
-         id="tspan3924">Refaktorisieren</tspan><tspan
+         x="149.14615"
+         y="508.80563"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ffffff;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold"
+         id="tspan3924">Refaktoriseren</tspan><tspan
          sodipodi:role="line"
-         x="151.16646"
-         y="527.97461"
+         x="149.14615"
+         y="538.13391"
          style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ffffff;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan3944">(refactor)</tspan></text>
     <path
@@ -869,24 +870,24 @@
          id="tspan4872">  torisierungen abzusichern</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient5074);fill-opacity:1;stroke:none;filter:url(#filter5054);font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold"
-       x="298.57144"
-       y="418.07648"
+       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient5074);fill-opacity:1;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum Bold"
+       x="300.59174"
+       y="428.68307"
        id="text4882"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4884"
-         x="298.57144"
-         y="418.07648"
+         x="300.59174"
+         y="428.68307"
          style="fill:url(#linearGradient5074);fill-opacity:1">TDD</tspan><tspan
          sodipodi:role="line"
-         x="298.57144"
-         y="498.07648"
+         x="300.59174"
+         y="508.68307"
          style="fill:url(#linearGradient5074);fill-opacity:1"
          id="tspan5078" /></text>
     <text
        xml:space="preserve"
-       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter5054-2);font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
        x="321.73666"
        y="458.43991"
        id="text4882-5"
@@ -895,15 +896,15 @@
          id="tspan4884-2"
          x="321.73666"
          y="458.43991"
-         style="font-size:32px;font-weight:normal;fill:#000000;fill-opacity:1;-inkscape-font-specification:TeXGyreBonum">Zyklus</tspan><tspan
+         style="font-size:32px;font-weight:normal;fill:#000000;fill-opacity:1;-inkscape-font-specification:TeXGyreBonum;">Zyklus</tspan><tspan
          sodipodi:role="line"
          x="321.73666"
          y="498.43991"
-         style="font-size:32px;font-weight:normal;fill:#000000;fill-opacity:1;-inkscape-font-specification:TeXGyreBonum"
+         style="font-size:32px;font-weight:normal;fill:#000000;fill-opacity:1;-inkscape-font-specification:TeXGyreBonum;"
          id="tspan5078-1" /></text>
     <path
        sodipodi:type="arc"
-       style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;filter:url(#filter5264)"
+       style="fill:none;stroke:#000000;stroke-width:1.20000005000000010;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;"
        id="path5234"
        sodipodi:cx="373.57144"
        sodipodi:cy="425.21933"
@@ -920,5 +921,5 @@
            height="57.142857"
            x="530"
            y="598.07648" /></flowRegion><flowPara
-         id="flowPara5353"></flowPara></flowRoot>  </g>
+         id="flowPara5353" /></flowRoot>  </g>
 </svg>
