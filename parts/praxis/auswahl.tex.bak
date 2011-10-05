@@ -2,7 +2,7 @@
 \label{sec:auswahl}
 \section{Definition eines Entwicklungsmodells für die Bedürfnisse der pludoni GmbH}
 Viele der gängigen Vorgehensmodelle wie das \textit{V-Modell}\footnote{\url{http://v-modell.iabg.de/}} oder der \textit{Rational Unified Process}\footnote{\url{http://www.ibm.com/software/awdtools/rup/}} finden ihre Anwendung in großen Projektteams. Für mittelgroße und kleine Projektteams gibt es seit ca. 10 Jahren die \textit{agilen Vorgehensmodelle}. Sie haben einen eher pragmatischen Ansatz mit dem Ziel, gemeinsam mit dem Kunden eine funktionierende Software zu bauen. Sie machen sich dabei kurze Releasezyklen zu Eigen, welche ein regelmäßiges Feedback erlauben. Damit wird der klassische GAU am Ende des Projektes, wenn die Wünsche des Kunden mit den tatsächlichen Umsetzungen doch nicht konform gehen, vermieden. Viele dieser Methoden wie z.B. \textit{SCRUM}\footnote{\url{http://www.scrumalliance.org/pages/what_is_scrum}} erfordern jedoch eine Schulung für das gesamte Team, die nicht immer finanzierbar ist.\\
-Für die Arbeit von sehr kleinen Teams mit weniger als 4 Mitgliedern wird nun ein Konzept auf Basis der Testgetriebene\index{TDD}n Entwicklung mit Ruby on Rails\index{Ruby-on-Rails} vorgestellt, das auf die Bedürfnisse der pludoni GmbH zugeschnitten ist.
+Für die Arbeit von sehr kleinen Teams mit weniger als 4 Mitgliedern wird nun ein Konzept auf Basis der tTestgetriebene\index{TDD}n Entwicklung mit Ruby on Rails\index{Ruby-on-Rails} vorgestellt, das auf die Bedürfnisse der pludoni GmbH zugeschnitten ist.
 
 Diese Bedürfnisse umfassen:
 \begin{itemize}
@@ -19,7 +19,7 @@ Grundsätzlich teilt die pludoni GmbH Features in zwei Kategorien ein:
 \begin{enumerate}[A.]
 
  \item Features, die in der Ansicht für Kunden und Besucher der Website sichtbar sind $\to$ Detailansichten, Listen, Bezahlvorgänge, ...
- \item Features, die nur für den Admin sichtbar sind oder im Backend ausgeführt werden $\to$ Reporting, Statistiken, Indizierung der Datenbank\index{Datenbank}, Cron-Skripte, Caching, ...
+ \item Features, die nur für den Admin sichtbar sind oder im Backend ausgeführt werden $\to$ Reporting, Statistiken, Indizierung der Datenbank\index{Datenbank}, Cron-Scripte, Caching, ...
 \end{enumerate}
 
 Features der \textbf{Kategorie A} sollen in Zukunft Akzeptanztest\index{Akzeptanztest}-getrieben entwickelt werden. Die Entwicklung verläuft nach dem Schema, das in Abschnitt \ref{sec:attd} vorgestellt wurde. Die Akzeptanztests sollen in Cucumber\index{Cucumber} geschrieben werden und mittels Capybara\index{Capybara} auf simulierten Browser\index{Browser!Simulierter}n ausgeführt werden (vgl. Abschnitt \ref{sec:cucumber}).

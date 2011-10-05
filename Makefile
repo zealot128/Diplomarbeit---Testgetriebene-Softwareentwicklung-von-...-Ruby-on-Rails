@@ -12,10 +12,10 @@ special:
 	- ack-grep \cite | grep '}\['
 	ack-grep \cite{
 clean:
-	rm *.aux
-	rm */**/*.aux
-	ls *.backup */**/*backup | xargs rm
-	ls *~ */**/*~ | xargs rm
+	rm *.aux -f
+	rm */**/*.aux -f
+	ls *.backup */**/*backup | xargs rm -f
+	ls *~ */**/*~ | xargs rm -f
 
 open:
 	vim *tex `find parts | grep "tex$$"`
