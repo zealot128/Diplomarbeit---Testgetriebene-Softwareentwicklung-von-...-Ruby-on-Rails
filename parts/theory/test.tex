@@ -17,7 +17,7 @@ Außerdem gilt getester Code im Allgemeinen als robuster, korrekter und leichter
 %TODO Kent Beck?
 
 \section{Arten von Tests}
-Tests können nach verschiedenen Gesichtspunkten eingeteilt werden. In vielen konkreten Fällen reich eine eindimensionale Einordnung nicht aus und Test \index{Test}können ebenso Teil mehrerer Kategorien sein. Einige der gängisten Einordnungen werden hier vorgestellt.
+Tests können nach verschiedenen Gesichtspunkten eingeteilt werden. In vielen konkreten Fällen reich eine eindimensionale Einordnung nicht aus und Test \index{Test}können ebenso Teil mehrerer Kategorien sein. Einige der gängigsten Einordnungen werden hier vorgestellt.
 \begin{figure}[hp]
  \centering
  \includegraphics[width=0.9\textwidth]{./diagrams/testarten.png}
@@ -27,20 +27,20 @@ Tests können nach verschiedenen Gesichtspunkten eingeteilt werden. In vielen ko
 \end{figure}
 
 \paragraph{Einteilung nach Sichtbarkeit des Quellcodes} Tests werden in \textbf{Whitebox}- und \textbf{Blackbox}-Tests eingeteilt.
-Whitebox-Tests finden mit Wissen über den zugrundeliegenden Code statt. Ziel eines Whitebox-basierten Testverfahrens ist es, soviele Codeabschnitt wie möglich zu testen (wie man Testabdeckung testen kann, dazu später mehr).\\
+Whitebox-Tests finden mit Wissen über den zugrundeliegenden Code statt. Ziel eines Whitebox-basierten Testverfahrens ist es, so viele Codeabschnitte wie möglich zu testen (wie man Testabdeckung testen kann, dazu später mehr).\\
 Blackbox-tests dagegen ignorieren den inneren Aufbau des Codes und testen entweder nur Schnittstellen oder das Gesamtsystem und beobachten Rückmeldungen des Systems auf bestimmte Aktionen. Das Ziel eines Blackbox-basierten Tests ist es, die Korrektheit der Software gegenüber den Spezifikationen zu bestimmen.\\
 Ein Spezialfall ist der sogenannte \textbf{Greybox}-Test, der insbesondere bei der Testgetriebene\index{TDD}n Entwicklung auftritt. Da hier der Test \index{Test}zuerst entwickelt wird, ist noch kein Wissen über den Zielquellcode vorhanden, aber der Entwickler hat natürlich Einblick in den Quellcode.
 
 \paragraph{Einteilung nach Testziel} (nach \citep[S. 238ff]{hunt_pragmatic_1999}) \nolinebreak
 \begin{description}
- \item[Unittest\index{Test!Unittest}s] Hierbei werden die Einheiten des Programmes auf ihr Verhalten getestet. Dies stellt die Basis für die meist darauffolgenden Integrationstests dar. Der Unittest wird im Detail im nächsten Abschnitt erkläutert.
+ \item[Unittest\index{Test!Unittest}s] Hierbei werden die Einheiten des Programmes auf ihr Verhalten getestet. Dies stellt die Basis für die meist darauffolgenden Integrationstests dar. Der Unittest wird im Detail im nächsten Abschnitt erläutert.
  \item[Integrationstests] Das Zusammenspiel zwischen Klassen wird getestet, welche ein gemeinsames Subsystem darstellen (Modul). Hier kann eine Bottom-Up oder Top-Down\hyp{}Integrationsstrategie verfolgt werden, d.h. ob man mit denjenigen Modulen beginnt, die keine Abhängigkeiten haben und im Ableitungsbaum immer weiter nach oben integriert (Bottom-Up) oder mit dem zentralen Modul anfängt und nach und nach alle abhängigen oder abgeleiteten Module testet (Top-Down) \citep{liggesmeyer_modultest_1990}.
  \item[Validierung] Des Weiteren existiert der \textbf{Systemtest}, der die Korrektheit der Anwendung hinsichtlich der Anforderungsspezifikationen bestimmt. Dies ist meist ein Blackboxtest und testet das System als Ganzes (=Systemtest). Ein Spezialfall ist der \textbf{Akzeptanztest\index{Akzeptanztest}}. Hierbei nimmt der Kunde eine Anforderung/ein Feature ab. Auch diesem Testtyp ist ein Unterabschnitt gewidmet.
  \item[Ressourcennutzung, Performanz, Verhalten im Fehlerfall] Die vorherigen genannten Testarten finden i.d.R. unter idealen Bedingungen statt. Diese Testkategorie nun versucht, das Applikationsverhalten unter realen Bedingungen zu simulieren. Beim Verhalten im Fehlerfall soll getestet werden, dass der Nutzer nicht durch kryptische Fehlermeldungen verwirrt wird oder z.B. sein Fortschritt gespeichert wurde. Last-/ und Performanztests stellen sicher, dass die Anwendung eine große Zahl von Nutzern oder eine große Menge an Daten verarbeiten kann.
- \item[Usability Testing] Diese Testmethode kann gegenüber den bisher genannten nicht automatisiert werden und benötigt immer einen (zukünftigen) Endanwender. Ziel ist es, die Benutzbarkeit und Handhabung zu testen. Dies wird durch Beobachtung von Kandidaten, meist in einer präperierten Umgebung (Usability Labor), geprüft.
+ \item[Usability Testing] Diese Testmethode kann gegenüber den bisher genannten nicht automatisiert werden und benötigt immer einen (zukünftigen) Endanwender. Ziel ist es, die Benutzbarkeit und Handhabung zu testen. Dies wird durch Beobachtung von Kandidaten, meist in einer präparierten Umgebung (Usability Labor), geprüft.
 \end{description}
 
-\paragraph{Einteilung nach Testvollständigkeit} Auf welche Art die sogenante Testvollständigkeit beurteilt wird und notwendige Testfälle generiert werden, ist ebenfalls eine Möglichkeit, Tests \index{Test}einzuordnen \citep{liggesmeyer_modultest_1990}:
+\paragraph{Einteilung nach Testvollständigkeit} Auf welche Art die sogenannte Testvollständigkeit beurteilt wird und notwendige Testfälle generiert werden, ist ebenfalls eine Möglichkeit, Tests \index{Test}einzuordnen \citep{liggesmeyer_modultest_1990}:
 \begin{description}
  \item[Kontrollflussorientierter Test] betrachtet den Quelltext und leitet daraus notwendige Unittest\index{Test!Unittest}s ab
  \item[Datenflussorientierter Test] Beobachtet die Variablendefinitionen, Zugriffe und Entscheidungen anhand der Variablen
@@ -51,7 +51,7 @@ Ein Spezialfall ist der sogenannte \textbf{Greybox}-Test, der insbesondere bei d
 \label{sec:testUnit}
 Da die Testgetriebene\index{TDD} Entwicklung in ihrer Reinform auf dem Unittest\index{Test!Unittest} basiert, soll diese Testgattung im Vorfeld etwas näher beleuchtet werden.
 
-Ziel des Unittest\index{Test!Unittest}s ist es, frühzeitig \glossar{fehler} im Code zu finden. Der Unit- oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen oder bei einer objektorientierten Sprache die Klassen sein. Die Objekte unter Beobachtung (\textit{Objects under Test}) werden beim Unittest in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double}\index{Test-Double} simuliert. Dies ist notwendig, um sicherzustellen, dass gefundende Fehler von dem betreffenden Modul verursacht wurden und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen auch einfacher \citep{goodliffe_code_2006,liggesmeyer_modultest_1990}.
+Ziel des Unittest\index{Test!Unittest}s ist es, frühzeitig \glossar{fehler} im Code zu finden. Der Unit- oder Modultest beschreibt das Testen der Einheiten eines Programms, die im Sinne der Testung nicht weiter zerlegt werden können. Dies können die Funktionen oder bei einer objektorientierten Sprache die Klassen sein. Die Objekte unter Beobachtung (\textit{Objects under Test}) werden beim Unittest in strenger Isolation zu den restlichen Units ausgeführt. Abhängigkeiten der Module untereinander und von unterlagerten Diensten werden durch \glossarpl{Test-Double}\index{Test-Double} simuliert. Dies ist notwendig, um sicherzustellen, dass gefundene Fehler von dem betreffenden Modul verursacht wurden und nicht durch äußere Einflüsse. Diese Isolierung macht das Testen auch einfacher \citep{goodliffe_code_2006,liggesmeyer_modultest_1990}.
 
 
 
@@ -98,7 +98,7 @@ Als Faustregel für übersichtliche und nachvollziehbare Tests, gilt das \textbf
 \end{ruby}
 \codecaption{Beispiel für den Einsatz eines Stubs in einem Bestellprozess}
 
-  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock\index{Test-Double!Mock}-Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stub\index{Test-Double!Stub}objekt erzeugen, welches den Bezahlprozess nachahmt und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess für unseren aktuellen Test \index{Test}keine Auswirkungen hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
+  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock\index{Test-Double!Mock}-Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stub\index{Test-Double!Stub}objekt erzeugen, welches den Bezahlprozess nachahmt und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess auf unseren aktuellen Test \index{Test}keine Auswirkung hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
   Außerdem machen Stub\index{Test-Double!Stub}s den Test \index{Test}meist schneller, da statt der potentiell komplexen und langsamen Operationen statische Werte geliefert werden.
 
   Als Ergänzung dazu gibt es \textbf{Mock\index{Test-Double!Mock}s}. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst aber als eine Zusicherung. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich innerhalb des Tests aufgerufen wurde.
