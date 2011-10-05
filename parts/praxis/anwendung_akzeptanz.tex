@@ -19,7 +19,7 @@ Ein Cucumber\index{Cucumber}-Verzeichnis ist qua Konvention immer gleich aufgeba
 
 \paragraph{1. Definition des gesamten Akzeptanztest\index{Akzeptanztest}}
 
-Zusammen mit dem Kunden oder basierend auf den Anforderungen entwickeln wir zuerst eine Spezifikation für ein Feature. Da die Akzeptanztest\index{Akzeptanztest}s in erster Linie dazu dienen, die Software gegenüber den Anfordungen des Kunden zu validieren und auch als Kommunikationsmittel genutzt wird, orientert sich das Vokabular an gebräuchlichen Begriffen. So ist ein einzelner Testfall\index{Test} ein "`Szenario"' und eine Test-Suite\index{Test!Test-Suite} ein "`Feature"'. Statt "`Assertions"' (Zusicherungen) gibt es Vor- und Nachbedingungen.
+Zusammen mit dem Kunden oder basierend auf den Anforderungen entwickeln wir zuerst eine Spezifikation für ein Feature. Da die Akzeptanztest\index{Akzeptanztest}s in erster Linie dazu dienen, die Software gegenüber den Anforderungen des Kunden zu validieren und auch als Kommunikationsmittel genutzt wird, orientiert sich das Vokabular an gebräuchlichen Begriffen. So ist ein einzelner Testfall\index{Test} ein "`Szenario"' und eine Test-Suite\index{Test!Test-Suite} ein "`Feature"'. Statt "`Assertions"' (Zusicherungen) gibt es Vor- und Nachbedingungen.
 
 Nachfolgend sei ein erstes Szenario für eine Suche nach Stellenanzeigen gezeigt.
 
@@ -128,9 +128,9 @@ Hier zuerst die Basis-Testschritt\index{Cucumber!Testschritt}e, die für fast je
 \end{ruby}
 \codecaption{Implementierung der Testschritte zur Interaktion mit einem Browser}
 
-Der erste Testschritt\index{Cucumber!Testschritt} gibt dem simulierten Browser\index{Browser!Simulierter} die Anweisung, die Startseite zu besuchen. Der zweite Testschritt "`Wenn wir <text> für <input\_name> eingeben'" besitzt zwei variable Texte, die an den Funktionsblock mit übergeben werden. Wir möchten, dass der erste Begriff in "`..."' als Text in ein Formularelement mit dem Bezeichner des zweiten Begriffes eingetragen wird.
+Der erste Testschritt\index{Cucumber!Testschritt} gibt dem simulierten Browser\index{Browser!Simulierter} die Anweisung, die Startseite zu besuchen. Der zweite Testschritt "`Wenn wir <text> für <input\_name> eingeben"' besitzt zwei variable Texte, die an den Funktionsblock mit übergeben werden. Wir möchten, dass der erste Begriff in "`..."' als Text in ein Formularelement mit dem Bezeichner des zweiten Begriffes eingetragen wird.
 Der dritte Schritt implementiert den Klick auf einen HTML-Button, der den angegebenen Text enthält.\\
-Während die ersten 3 Schritte Aktionen ausführen, hat der 4. eine andere Funktion: Er spezifiert eine Zusicherung, dass auf der aktuellen Webseite irgendwo ein gewisser Inhalt steht.
+Während die ersten 3 Schritte Aktionen ausführen, hat der 4. eine andere Funktion: Er spezifiziert eine Zusicherung, dass auf der aktuellen Webseite irgendwo ein gewisser Inhalt steht.
 
 Ein weiterer Testschritt fehlt noch:
 % SNIPPET:
@@ -159,7 +159,7 @@ Ein weiterer Testschritt fehlt noch:
 \end{ruby}
 \codecaption{Testschritt zum Anlegen von Testdaten auf Basis der Cucumber Definition}
 
-Dieser Testschritt\index{Cucumber!Testschritt} für das Anlegen der definierten Stellenanzeigen durch das Tabellen-Syntaxelement von Cucumber ist etwas umfangreicher. Wir bekommen von Cucumber\index{Cucumber} ein Array von Hashes übergeben, die die im Szenario angegebene Tabelle beinhaltet. Über diese können wir nun mit dem Iterator \texttt{each} iterieren und die definierten Attribute mit denen unserer Job-Fixture\footnote{Anmerkung: Für diese Aufgabe eignen sich Factories deutlich besser. Da mit Fixtures schon eine Testdaten\index{Test!Testdaten}generierung eingeführt wurde, bleiben wir aber aus Konsistenzgründen dabei.} vereinigt wird, um somit einen neuen Job in der Testdatenbank anzulegen. Wir haben den Testschritt so allgemein gehaltet, dass wir ihn in späteren Szenarien gut verwenden können, um weitere Jobs mit speziellen Attributen zu generieren.
+Dieser Testschritt\index{Cucumber!Testschritt} für das Anlegen der definierten Stellenanzeigen durch das Tabellen-Syntaxelement von Cucumber ist etwas umfangreicher. Wir bekommen von Cucumber\index{Cucumber} ein Array von Hashes übergeben, die die im Szenario angegebene Tabelle beinhaltet. Über diese können wir nun mit dem Iterator \texttt{each} iterieren und die definierten Attribute mit denen unserer Job-Fixture\footnote{Anmerkung: Für diese Aufgabe eignen sich Factories deutlich besser. Da mit Fixtures schon eine Testdaten\index{Test!Testdaten}generierung eingeführt wurde, bleiben wir aber aus Konsistenzgründen dabei.} vereinigt wird, um somit einen neuen Job in der Testdatenbank anzulegen. Wir haben den Testschritt so allgemein gehalten, dass wir ihn in späteren Szenarien gut verwenden können, um weitere Jobs mit speziellen Attributen zu generieren.
 
 Nun können wir Cucumber\index{Cucumber} erneut ausführen und das Ergebnis ist ein anderes:
 
@@ -197,7 +197,7 @@ Dies lösen wir, indem wir auf der View\index{Ruby-on-Rails!View} der Startseite
 \PY{x}{  }\PY{c+cp}{<%} \PY{k}{end} \PY{c+cp}{%>}\PY{x}{ }
 \PY{x}{</div>}
 \end{ruby}
-\codecaption{Implementation eines Suchfeld im Layout der Webseite}
+\codecaption{Implementation eines Suchfeldes im Layout der Webseite}
 
 Wir implementieren im Layout der Applikation ein Suchfeld mit den Form\hyp{}Hilfsfunktionen, die Rails\index{Ruby-on-Rails} anbietet. Das Layout ist eine Basisview, die für alle Webseiten generiert wird. Diese beinhaltet Elemente der Website, die überall benutzt werden, z.B. eine Navigation, Einbindung von Stylesheets oder wie hier, ein Suchfeld, das auf jeder Seite erscheinen soll. Dabei verwenden wir  ERB\footnote{Embedded Ruby, eine Syntax für Rails Views}, eine Template-Sprache, die normalerweise HTML-Code erzeugt und es ermöglicht innerhalb der "`\verb|<%= ... %>|"' Ruby-Code auszuführen.
 

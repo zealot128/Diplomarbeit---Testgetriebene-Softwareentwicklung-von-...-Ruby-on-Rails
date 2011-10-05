@@ -45,7 +45,7 @@ Diese Bibliothek soll also unabhängig von Rails\index{Ruby-on-Rails} funktionie
 
 Ziel diesen Abschnittes ist es, zu zeigen, wie das Einlesen eines externen XML-Feeds getestet werden kann.
 
-\paragraph{1. Initialier Test}
+\paragraph{1. Initialer Test}
 
 Bevor wir anfangen zu implementieren, ist es sinnvoll sich Gedanken darum zu machen, was von den zu implementierenden Objekten erwartet wird. Da wir letztendlich eine gewisse Menge von RSS-Feeds einlesen wollen, ist es angebracht, ein entsprechendes Objekt, z.B. "`ImportedFeed"' einzuführen.
 
@@ -145,7 +145,7 @@ Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wur
 \codecaption{Feed Implementation II}
 % label{fig:7381c3}
 
-Mitfhile des Makros \textbf{attr\_reader} generieren wir ein Attribut body und gleichzeitig einen Getter für den Zugriff von außen. Innerhalb unseres Konstruktors speichern wir den Body der HTTP-Antwort in diesem Attribut.
+Mithilfe des Makros \textbf{attr\_reader} generieren wir ein Attribut body und gleichzeitig einen Getter für den Zugriff von außen. Innerhalb unseres Konstruktors speichern wir den Body der HTTP-Antwort in diesem Attribut.
 \tddgreen
 
 Da unser Testfall\index{Test} nun ziemlich lang geworden ist und beide Testfälle ein Mock\index{Test-Double!Mock} initialisieren, ist dies eine gute Gelegenheit, den Mock zentral zu definieren. Dazu nutzen wir z.B. eine Datei \textbf{test\_helper.rb}, in der wir Anweisungen schreiben, die alle Testfälle nutzen können:

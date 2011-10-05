@@ -2,16 +2,16 @@
 
 \chapter{Eigenschaften erfolgreicher Tests}
 
-Das Vorhandensein von zahlreichen Tests reicht nicht aus, um die \glossar{quality} der Tests zu beuteilen. Stattdessen existieren einige Qualitätskriterien, um Tests auf ihre Sinnhafigkeit und Wartbarkeit zu untersuchen:
+Das Vorhandensein von zahlreichen Tests reicht nicht aus, um die \glossar{quality} der Tests zu beuteilen. Stattdessen existieren einige Qualitätskriterien, um Tests auf ihre Sinnhaftigkeit und Wartbarkeit zu untersuchen:
 
 \begin{description}
  \item[Unabhängigkeit (Independence) und Isolation] Ein Test \index{Test}ist unabhängig, falls er nicht durch andere Tests beeinflusst wird. Auch die Reihenfolge, in der die Tests ausgeführt werden, darf auf das Ergebnis keinen Einfluss üben. Siehe auch \citep{beck_test_2002}, \citep{palermo_guidelines_2006} sowie \citep[Karte 45]{langr_agile_2011}.
- \item[Wiederholbarkeit (Repeatability] Ein Test \index{Test}wird als wiederholbar bezeichnet, wenn er mehrmals hintereinander ausgeführt werden kann und dabei jedes mal dasselbe Ergebnis liefert \citep[Karte 45]{langr_agile_2011} \citep{rappin_rails_2011}. Problematisch sind dabei z.B. Datum und Zeit sowie Zufallsfunktionen.
+ \item[Wiederholbarkeit (Repeatability] Ein Test \index{Test}wird als wiederholbar bezeichnet, wenn er mehrmals hintereinander ausgeführt werden kann und dabei jedes Mal dasselbe Ergebnis liefert \citep[Karte 45]{langr_agile_2011} \citep{rappin_rails_2011}. Problematisch sind dabei z.B. Datum und Zeit sowie Zufallsfunktionen.
  \item[Klarheit (Clarity)] Ein Test \index{Test}ist klar, wenn sein Zweck sofort verständlich wird \citep{rappin_rails_2011}, \citep{palermo_guidelines_2006}. Damit wird einerseits die Lesbarkeit gemeint, anderseits schließt dies auch ein, ob der Test genau eine Eigenschaft testet und nicht redundant zu anderen Tests ist. Dies hat zur Folge, dass die Tests wartbarer werden und als Codedokumentation dienen können.
  \item[Präzise (Conciseness)] Ein Test \index{Test}ist präzise, wenn er so wenig Code und so wenige Objekte wie möglich benötigt, um sein Ziel zu erreichen \citep{palermo_guidelines_2006} \citep{rappin_rails_2011}. Eine Auswirkung ist, dass der Test schneller wird.
  \item[Robustheit (Robustness)] Ein Test \index{Test}ist robust, wenn es eine direkte Korrelation zum zu testenden Code gibt: Ist der Code korrekt, so ist der Test erfolgreich. Ist der Code falsch, so schlägt der Test fehl. Nicht-robuste Tests werden auch "`zerbrechlich"' (brittle) genannt. Dazu zählen auch sogenannte tautologische Tests, die immer erfolgreich verlaufen und keine Aussage über den zugrunde liegenden Programmcode geben.
  \item[Schnelligkeit] Gute Tests sollten schnell sein, da die Test-Suite\index{Test!Test-Suite} ansonsten deutlich seltener ausgeführt würd \citep{langr_agile_2011} \citep{palermo_guidelines_2006} \citep{nagappan_realizing_2008}. Siehe auch Präzision.
- \item[Zeitliche Nähe] Gute Tests entstehen in zeitlicher Nähe zu dem zugrunde liegenden Programmstück \citep{langr_agile_2011}. Innerhalb von TDD\index{TDD} ist dieses Kritierium immer erfüllt.
+ \item[Zeitliche Nähe] Gute Tests entstehen in zeitlicher Nähe zu dem zugrunde liegenden Programmstück \citep{langr_agile_2011}. Innerhalb von TDD\index{TDD} ist dieses Kriterium immer erfüllt.
  \end{description}
 
 % Microsoft Vorgehensweise:

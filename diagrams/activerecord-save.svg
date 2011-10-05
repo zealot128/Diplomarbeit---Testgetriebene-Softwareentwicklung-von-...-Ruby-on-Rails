@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.1 r9760"
-   sodipodi:docname="activerecord-save.svg">
+   sodipodi:docname="activerecord-save.pdf">
   <defs
      id="defs4">
     <linearGradient
@@ -473,16 +473,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="-10.443712"
-     inkscape:cy="467.71561"
+     inkscape:cx="273.81492"
+     inkscape:cy="296.28704"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="997"
-     inkscape:window-x="0"
-     inkscape:window-y="56"
-     inkscape:window-maximized="1"
+     inkscape:window-width="1049"
+     inkscape:window-height="782"
+     inkscape:window-x="84"
+     inkscape:window-y="65"
+     inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -495,7 +495,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -619,7 +619,7 @@
        inkscape:connector-curvature="0" />
     <path
        style="color:#000000;fill:none;stroke:#000000;stroke-width:2.23184228;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m 202.85715,513.79076 0,125.42185"
+       d="m 202.85715,515.79076 0,125.42185"
        id="path3638"
        inkscape:connector-curvature="0" />
     <g
@@ -699,68 +699,68 @@
        inkscape:connector-curvature="0" />
     <path
        style="color:#000000;fill:none;stroke:#000000;stroke-width:1.67200005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m 203.05298,645.21932 -38.97355,0 0,207.14286"
+       d="m 203.05298,639.21932 -38.97355,0 0,207.14286"
        id="path3675"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:none;stroke:#000000;stroke-width:1.67200005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
        x="278.00677"
-       y="704.93365"
+       y="700.93365"
        id="text3677"><tspan
          sodipodi:role="line"
          id="tspan3679"
          x="278.00677"
-         y="704.93365"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono">gültig;</tspan><tspan
+         y="700.93365"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum">gültig;</tspan><tspan
          sodipodi:role="line"
          x="278.00677"
-         y="729.93365"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         y="725.93365"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         id="tspan4042" /><tspan
+         sodipodi:role="line"
+         x="278.00677"
+         y="750.93365"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4763">Objekt wird </tspan><tspan
          sodipodi:role="line"
          x="278.00677"
-         y="754.93365"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         y="775.93365"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4765">persistent</tspan><tspan
          sodipodi:role="line"
          x="278.00677"
-         y="779.93365"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
-         id="tspan4767">gespeichert</tspan><tspan
+         y="800.93365"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+         id="tspan4769">gespeichert</tspan><tspan
          sodipodi:role="line"
          x="278.00677"
-         y="804.93365"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
-         id="tspan4769" /><tspan
-         sodipodi:role="line"
-         x="278.00677"
-         y="829.93365"
+         y="825.93365"
          id="tspan3681"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono" /><tspan
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum" /><tspan
          sodipodi:role="line"
          x="278.00677"
-         y="854.93365"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         y="850.93365"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4840">save gibt true </tspan><tspan
          sodipodi:role="line"
          x="278.00677"
-         y="879.93365"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         y="875.93365"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4532">zurück</tspan><tspan
          sodipodi:role="line"
          x="278.00677"
-         y="904.93365"
+         y="900.93365"
          id="tspan3683"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono" /><tspan
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum" /><tspan
          sodipodi:role="line"
          x="278.00677"
-         y="929.93365"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         y="925.93365"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4756" /></text>
     <path
        style="color:#000000;fill:none;stroke:#000000;stroke-width:1.67200005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m 203.50524,645.21933 65.41796,0 0,205.17173"
+       d="m 191.50524,639.21933 65.41796,0 0,205.17173"
        id="path4536"
        inkscape:connector-curvature="0" />
     <image
@@ -780,83 +780,91 @@
          id="tspan4592"
          x="425.71426"
          y="518.07648"
-         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;stroke:none;stroke-width:1.67200005;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono">ruft auf</tspan></text>
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;stroke:none;stroke-width:1.67200005000000007;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum">ruft auf</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:none;stroke:#000000;stroke-width:1.67200005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:#000000;stroke:none;stroke-width:1.67200005000000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum;text-indent:0;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline"
        x="444.60733"
        y="649.71918"
        id="text3677-2"><tspan
          sodipodi:role="line"
          x="444.60733"
          y="649.71918"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum;text-indent:0;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;color:#000000;stroke-width:1.67200005000000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
          id="tspan4507-0">prüft die definierten</tspan><tspan
          sodipodi:role="line"
          x="444.60733"
          y="674.71918"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
-         id="tspan4691">Validierungskritieren</tspan><tspan
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum;text-indent:0;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;color:#000000;stroke-width:1.67200005000000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="tspan4691">Validierungskriterien</tspan><tspan
          sodipodi:role="line"
          x="444.60733"
          y="699.71918"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum;text-indent:0;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;color:#000000;stroke-width:1.67200005000000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
          id="tspan3122">-&gt; falls keine </tspan><tspan
          sodipodi:role="line"
          x="444.60733"
          y="724.71918"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum;text-indent:0;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;color:#000000;stroke-width:1.67200005000000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
          id="tspan3124">   -&gt; immer gültig</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:none;stroke:#000000;stroke-width:1.67200005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
        x="154.77957"
-       y="704.862"
+       y="702.862"
        id="text3677-0"><tspan
          sodipodi:role="line"
          id="tspan3679-7"
          x="154.77957"
-         y="704.862"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono">Nicht gültig</tspan><tspan
+         y="702.862"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum">Nicht gültig</tspan><tspan
          sodipodi:role="line"
          x="154.77957"
-         y="729.862"
+         y="727.862"
          id="tspan3683-0"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono" /><tspan
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum" /><tspan
          sodipodi:role="line"
-         x="166.81082"
-         y="754.862"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         x="161.18582"
+         y="752.862"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4534-3">Objekt </tspan><tspan
          sodipodi:role="line"
-         x="166.81082"
-         y="779.862"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         x="161.18582"
+         y="777.862"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4828">verbleibt </tspan><tspan
          sodipodi:role="line"
          x="154.77957"
-         y="804.862"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         y="802.862"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4507-1">im Speicher</tspan><tspan
          sodipodi:role="line"
          x="154.77957"
-         y="829.862"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         y="827.862"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4838" /><tspan
          sodipodi:role="line"
-         x="166.81082"
-         y="854.862"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         x="161.18582"
+         y="852.862"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4834">save gibt </tspan><tspan
          sodipodi:role="line"
          x="154.77957"
-         y="879.862"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+         y="877.862"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#000000;stroke:none;font-family:TeXGyreBonum;-inkscape-font-specification:TeXGyreBonum"
          id="tspan4836">false zurück</tspan></text>
     <path
        style="color:#000000;fill:none;stroke:#000000;stroke-width:1.67200005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Lend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        d="m 278.57142,813.79075 224.28572,0"
        id="path4771"
        inkscape:connector-curvature="0" />
+    <rect
+       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.36317563;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3124"
+       width="44.285713"
+       height="42.857143"
+       x="574.43451"
+       y="285.34723"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
   </g>
 </svg>
