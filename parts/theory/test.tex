@@ -55,16 +55,16 @@ Ziel des Unittest\index{Test!Unittest}s ist es, frühzeitig \glossar{fehler} im 
 
 
 
-Unittest\index{Test!Unittest}s werden fast immer durch sog. \glossar{testrunner} automatisiert ausgeführt. Außerdem werden meist Test-Frameworks verwendet, welche häufige Aufgaben beim Testen unterstützen, z.B. Auswertung der Testergebnisse, Integration der Tests mit dem Programmcode, Anlage und Löschen von Testdaten\index{Test!Testdaten}.  Eine der meist verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test/Unit\index{Test/Unit-Framework} / MiniTest in Ruby\index{Ruby}, JUnit in Java oder NUnit in C\#.
+Unittest\index{Test!Unittest}s werden fast immer durch sog. \glossar{testrunner} automatisiert ausgeführt. Außerdem werden meistens Test-Frameworks verwendet, welche häufige Aufgaben beim Testen unterstützen, z.B. Auswertung der Testergebnisse, Integration der Tests mit dem Programmcode, Anlage und Löschen von Testdaten\index{Test!Testdaten}.  Eine der meist-verbreiteten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test/Unit\index{Test/Unit-Framework} / MiniTest in Ruby\index{Ruby}, JUnit in Java oder NUnit in C\#.
 
 Ein Test \index{Test}besteht in der Regel aus 4 Teilen \citep{rappin_rails_2011} \citep[Karte 46]{langr_agile_2011}:
 \begin{enumerate}
  \item Initialisierung der \glossar{Test-Umgebung} und der Objekte. Man arrangiert einen Kontext, der notwendig ist, um den zu Code ausführen zu können.
- \item Ausführung der zu testenden Aktion, die den Systemzustand ändert
+ \item Ausführung der zu testenden Aktion, die den Systemzustand ändert.
  \item Prüfen der spezifizierten Erwartungen durch Zusicherungen (Assertions): prüfen, ob das Object under Test \index{Test}sich wie erwartet verhalten hat.
  \item Aufräumen nicht mehr benötigter Objekte, File-Pointer, Sockets, Leeren der Datenbank\index{Datenbank} u.ä.
 \end{enumerate}
-Als Faustregel für übersichtliche und nachvollziehbare Tests, gilt das \textbf{Arrange-Act-Assert}-Konzept: Dabei werden die oben genannten Phasen als Arrange (1. u. 4.), Act (2.), Assert (3.) oder auch Given-When-Then (Angenommen, Wenn, Dann) bezeichnet \citep[Karte 46]{langr_agile_2011}. Nicht immer sind alle drei bzw. vier Teile notwendig.
+Als Faustregel für übersichtliche und nachvollziehbare Tests gilt das \textbf{Arrange-Act-Assert}-Konzept: Dabei werden die oben genannten Phasen als Arrange (1. u. 4.), Act (2.), Assert (3.) oder auch Given-When-Then (Angenommen, Wenn, Dann) bezeichnet \citep[Karte 46]{langr_agile_2011}. Nicht immer sind alle drei bzw. vier Teile notwendig.
 
 Innerhalb \randbem{Vererbung}von Programmiersprachen mit Objekt-Orientierung spielt die Frage, wie im Falle einer Vererbung getestet wird. Für diesen Integrationsfall gilt dann die Grundregel, erst alle Elternklassen zu testen, bevor eine konkretet Klasse getestet wird \citep{fritzsche_sqm_2005}.
 %\paragraph{Komponententest}
@@ -99,12 +99,12 @@ Innerhalb \randbem{Vererbung}von Programmiersprachen mit Objekt-Orientierung spi
 \end{ruby}
 \codecaption{Beispiel für den Einsatz eines Stubs in einem Bestellprozess}
 
-Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock\index{Test-Double!Mock}\hyp{}Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stub\index{Test-Double!Stub}objekt erzeugen, welches den Bezahlprozess nachahmt und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess auf unseren aktuellen Test \index{Test}keine Auswirkung hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
+Mit dem oben angegeben (Pseudo-)Rubycode würde man z.B. mittels des Mock\index{Test-Double!Mock}\hyp{}Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stub\index{Test-Double!Stub}objekt erzeugen, welches den Bezahlprozess nachahmt und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess auf unseren aktuellen Test \index{Test}keine Auswirkung hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
   Außerdem machen Stub\index{Test-Double!Stub}s den Test \index{Test}meist schneller, da statt der potentiell komplexen und langsamen Operationen statische Werte geliefert werden.
 
   Als Ergänzung dazu gibt es \textbf{Mock\index{Test-Double!Mock}s}. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst aber als eine Zusicherung. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich innerhalb des Tests aufgerufen wurde.
 
-  Hier z.B. ein Mock\index{Test-Double!Mock} um einen Netzwerkzugriff zu testen und abzufangen.
+  Hier z.B. ein Mock,\index{Test-Double!Mock} um einen Netzwerkzugriff zu testen und abzufangen.
 % SNIPPET:
 %
 % def test_always_fail
@@ -127,10 +127,10 @@ Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock\index
 
 \section{System- und Akzeptanztests}
 \label{sec:acceptance}
-Der Unittest\index{Test!Unittest} ist als Whitebox-Test auf Wissen über den Quelltext angewiesen und sein Zweck ist es, frühezeitig Fehler in den isolierten Modulen zu finden. Der \textbf{Systemtest} dagegen testet, meist aus der Sicht eines Anwenders, das gesamte integrierte System. Er hat das Ziel, die Software gegenüber den Anforderungen zu validieren. Diese Tests finden oft unter realen Bedingungen mit realen Daten statt, meist sogar auf einer den Parametern der Produktionsumgebung nahekommende Hard- und Softwareumgebung.
+Der Unittest\index{Test!Unittest} ist als Whitebox-Test auf Wissen über den Quelltext angewiesen und sein Zweck ist es, frühezeitig Fehler in den isolierten Modulen zu finden. Der \textbf{Systemtest} dagegen testet, meist aus der Sicht eines Anwenders, das gesamte integrierte System. Er hat das Ziel, die Software gegenüber den Anforderungen zu validieren. Diese Tests finden oft unter realen Bedingungen mit realen Daten statt, meist sogar auf einer den Parametern der Produktionsumgebung nahe kommende Hard- und Softwareumgebung.
 
 Der \textbf{Akzeptanztest\index{Akzeptanztest}} ist ein Spezialfall des Systemtests. Hier führt der Auftraggeber der Software den Test \index{Test}selbst durch. Er nutzt den Akzeptanztest, um zu entscheiden, ob er die Software akzeptiert, woher auch der Name dieser Testkategorie rührt.
 Innerhalb des Kontextes der \textit{Agilen Software-Entwicklung}, dem auch die Testgetriebene\index{TDD} Software zuzurechnen ist, dienen Akzeptanztest\index{Akzeptanztest}s dazu, den Fortschritt bei der Bearbeitung der "`Geschichten"' (\textit{user stories}) zu überwachen.
 
-Für das Testen von Webserveranwendungen spielt die Simulation und Automatisierung von Browsern eine große Rolle. \textbf{Simulierte Browser\index{Browser!Simulierter}} sind meist kleine schnelle HTTP-Clienten, die auf Skripting und Fernsteuerung optimiert sind und dabei auf viele Features von realen Browsern verzichten, z.B. Ausführung von JavaScript\index{JavaScript} und Rendering des HTML-Codes. \\
-\textbf{Automatisierte Browser\index{Browser!Automatisierter}} dagegen ermöglichen Tests unter möglichst realen Bedingungen. Hierbei bedient man sich meist einer Middleware, die es ermöglicht, innerhalb eines Testfall\index{Test}s einen Webbrowser zu starten und fernzusteuern. Eine der bekanntesten dieser Middlewares ist das Framework \textbf{Selenium\index{Selenium}}\footnote{\url{http://seleniumhq.org/}}, welches Firefox, Internet Explorer und Google Chrome fernsteuern kann. Dies ermöglicht eine sehr detaillierte Testung auf Browserinkompatibilitäten, da es unter den Browsern gewisse Unterschiede in der Ausführung von JavaScript\index{JavaScript} und Darstellung von Elementen gibt. Dieses Tool wird u.a. von Google, Oracle und eBay zum Tests ihrer Anwendungen verwendet und weiterentwickelt \citep{selenium_hq_selenium_2010}.
+Für das Testen von Webserveranwendungen spielt die Simulation und Automatisierung von Browsern eine große Rolle. \textbf{Simulierte Browser\index{Browser!Simulierter}} sind meist kleine schnelle HTTP-Clients, die auf Skripting und Fernsteuerung optimiert sind und dabei auf viele Features von realen Browsern verzichten, z.B. Ausführung von JavaScript\index{JavaScript} und Rendering des HTML-Codes. \\
+\textbf{Automatisierte Browser\index{Browser!Automatisierter}} dagegen ermöglichen Tests unter möglichst realen Bedingungen. Hierbei bedient man sich meist einer Middleware, die es ermöglicht, innerhalb eines Testfall\index{Test}s einen Webbrowser zu starten und fernzusteuern. Eine der bekanntesten dieser Middlewares ist das Framework \textbf{Selenium\index{Selenium}}\footnote{\url{http://seleniumhq.org/}}, welches Firefox, Internet Explorer und Google Chrome fernsteuern kann. Dies ermöglicht eine sehr detaillierte Testung auf Browserinkompatibilitäten, da es unter den Browsern gewisse Unterschiede in der Ausführung von JavaScript\index{JavaScript} und Darstellung von Elementen gibt. Dieses Tool wird u.a. von Google, Oracle und eBay zum testen ihrer Anwendungen verwendet und weiterentwickelt \citep{selenium_hq_selenium_2010}.

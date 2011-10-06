@@ -8,11 +8,11 @@ Eine \glossar{metrik}\index{Code-Metrik} ist eine Maßzahl, die zum Vergleich di
 Dem Verwenden von Code-Metrik\index{Code-Metrik}en liegt der Wunsch zugrunde, komplexe Codeteile auf einfache Zahlen zu reduzieren, um potenziell suboptimale Codestellen schnell zu finden, welche möglicherweise in Zukunft Defekte verursachen könnten. Aus Business-Sicht stellen Code-Metriken auch eine Methode dar, Entwicklungsfortschritt zu messen und zu beurteilen.
 \section{Überblick über Code-Metriken und Skalen}
 Hier seien nun einige der geläufigsten Code-Metrik\index{Code-Metrik}en vorgestellt.
-\paragraph{Lines of Code (LOC)} ist eine häufig verwendete und die am leichtesten zu bestimmende Größe. Sie repräsentiert den Umfang eines Programmes. Es werden alle Zeilen einer Datei gezählt, die nicht leer und keine Kommentare sind. Kommentare wiederum können als eigene Metrik verwendet werden, um den Grad der Quelltextdokumentation zu bestimmen.
+\paragraph{Lines of Code (LOC)} Ist eine häufig verwendete und die am leichtesten zu bestimmende Größe. Sie repräsentiert den Umfang eines Programmes. Es werden alle Zeilen einer Datei gezählt, die nicht leer und keine Kommentare sind. Kommentare wiederum können als eigene Metrik verwendet werden, um den Grad der Quelltextdokumentation zu bestimmen.
 
 Diese Größe erhält eine größere Aussage, wenn man sie ins Verhältnis z.B. der Klasse oder eines Codefiles setzt. So kann man mit "`LOC / Klasse"' schon diejenigen Klassen finden, die wahrscheinlich zu komplex sind. \\
 
-\paragraph{Zyklomatische Komplexität} ist ein Indikator für die Komplexität auf Basis des Kontrollflussgraphen eines Programms. Gemessen wird die Anzahl der linear unabhängigen Programmpfade. Sie ist für einen Graphen definiert durch:
+\paragraph{Zyklomatische Komplexität} Ist ein Indikator für die Komplexität auf Basis des Kontrollflussgraphen eines Programms. Gemessen wird die Anzahl der linear unabhängigen Programmpfade. Sie ist für einen Graphen definiert durch:
 
 \shadebox{
   $$    M = E - N + 2P $$
@@ -41,8 +41,8 @@ Ein daraus abgeleitetes Test\index{Test}verfahren \textit{Basis Path Testing} sc
  \begin{lstlisting}
     @checkout.total = @checkout.total_price * MWST
  \end{lstlisting}
- \item[Nichtssagender Name] gilt für alle Programmiersprachen. Falls Bezeichner weniger als 3 Zeichen lang sind oder Funktionen den Namen \texttt{do} oder \texttt{run} haben. Ausnahmen könnte man z.B. für die Schleifenvariable $i$ rechtfertigen
- \item[Gesetz von Demeter] bzw. die Verletzung desselben. Objekte sollten nur mit den Objekten in ihrer unmittelbaren Nähe kommunizieren und nicht etwa in Nachrichtenketten, wie z.B.:
+ \item[Nichtssagender Name] Gilt für alle Programmiersprachen. Falls Bezeichner weniger als 3 Zeichen lang sind oder Funktionen den Namen \texttt{do} oder \texttt{run} haben. Ausnahmen könnte man z.B. für die Schleifenvariable $i$ rechtfertigen
+ \item[Gesetz von Demeter] Objekte sollten nur mit den Objekten in ihrer unmittelbaren Nähe kommunizieren und nicht etwa in Nachrichtenketten, wie z.B.:
  \begin{lstlisting}
   @job.user.address.street
  \end{lstlisting}
@@ -55,7 +55,7 @@ Weitere Informationen zu Smell\index{Code-Smell}s und deren Beseitigung sind in 
 
 \section{Code-Metriken für Tests}
 \label{sec:metrics}
-Test\index{Test}s haben (auch) die Aufgabe, ein Programm oder Codestück auf Korrektheit\footnote{Korrektheit gegenüber den Spezifikationen, keine mathematische Korrektheit} zu untersuchen. Die Tests allerdings haben ihrerseits meistens keine Tests. Um ein Mittel zu haben, Tests zumindest in ihrer Nützlichkeit zu untersuchen, existieren auch hier verschiedene Code-Metrik\index{Code-Metrik}en.\\
+Test\index{Test}s haben (auch) die Aufgabe, ein Programm oder Codestück auf Korrektheit\footnote{Korrektheit gegenüber den Spezifikationen, keine mathematische Korrektheit} zu untersuchen. Die Tests allerdings verfügen ihrerseits meistens keine Tests. Um ein Mittel zu haben, Tests zumindest in ihrer Nützlichkeit zu untersuchen, existieren auch hier verschiedene Code-Metrik\index{Code-Metrik}en.\\
 Test\index{Test}s sind in erster Linie natürlich auch Code und können mit den oben genannten Metriken beurteilt werden. Zudem gibt es aber einige weitere exklusive Methoden, die Qualität von Tests zu beurteilen.
 
 \subsection{Verhältnis von Lines of Test zu Lines of Code}
