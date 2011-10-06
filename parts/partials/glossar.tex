@@ -1,7 +1,7 @@
 \newglossaryentry{test} {
-  name={Test},
-  description= {\index{Test}oder Testfall ist eine, meist automatisierte, Prüfung des Programmverhaltens bei definierten Eingabeparametern},
-  plural=Tests
+  name={Testfall},
+  description= { oder \index{Test} ist eine, meist automatisierte, Prüfung des Programmverhaltens bei definierten Eingabeparametern},
+  plural={Tests}
 }
 
 \newglossaryentry{testrunner} {
@@ -24,9 +24,9 @@
 
 \newglossaryentry{fehler} {
   name={Software-Fehler},
-  description= {oder Defekt, ist ein unerwartetes Verhalten der Software, der zu einem Versagen der Software führen kann},
-text=Fehler,
-first={Software-Fehler}
+  description= {ist jede Abweichung der Implementation von der Spezifikation \citep[IEEE/ANSI]{fritzsche_sqm_2005}. Diese Abweichungen können zu fehlerhaftem Verhalten der Anwendung führen},
+  text=Fehler,
+  first={Software-Fehler}
 }
 \newglossaryentry{quality} {
   name={Code-Qualität},
@@ -125,13 +125,9 @@ first={Software-Fehler}
   description={Content Management System (Inhaltsverwaltungssystem) ist eine, meist Web-basierte Software, die es Nutzern ermöglicht einfach statische Inhalte anzulegen und zu bearbeiten},
 first = {Content Management System}
 }
-\newcommand{\glossar}[1]{$^\uparrow$\gls{#1}}
-
-\newcommand{\glossarpl}[1]{$^\uparrow$\glspl{#1}}
 % \glsaddall % Enable all glossar entries, even if not used yet
 
 \renewcommand{\glossarypreamble}{Im Folgenden werden einige oft verwendete Begriffe näher erläutert. Innerhalb des Hauptteils dieser Arbeit sind diese Begriffe mit einem $^\uparrow$ gekennzeichnet.}
 % \renewcommand{\glossarymark}{Glossar}
 
-\printglossary[toctitle=Glossar]
 

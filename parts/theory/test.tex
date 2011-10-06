@@ -12,12 +12,12 @@ Neben den dynamischen Tests existieren statische Analyseverfahren, wie formale V
 Weshalb sollte überhaupt Zeit dafür aufgewendet werden, Software zu testen?\\
 Aus funktionaler Sicht dienen Tests in erster Linie dazu, das Vorhandensein bzw. Nichtvorhandensein von Software-Fehlern zu belegen \citep{goodliffe_code_2006}.\\
 Aber das Testen hat auch weitere Auswirkungen auf die Software-Entwicklung: Testen führe zu einer Minimierung der Debugphase und mache die Software\hyp{}Entwicklung für Programmierer attraktiver und für Projektleiter leichter zu planen \citep{orsini_rails_2007} und insgesamt preiswerter \citep[S.13]{liggesmeyer_modultest_1990}.\\
-Außerdem gilt getester Code im Allgemeinen als robuster, korrekter und leichter zu warten \citep{rappin_rails_2011}. Im Umkehrschluss bedeutet dies, dass ungetestete Software mit sehr hoher Wahrscheinlichkeit \glossar{fehler} beinhaltet \citep{goodliffe_code_2006}.
+Außerdem gilt getester Code im Allgemeinen als robuster, fehlerärmer und leichter zu warten \citep{rappin_rails_2011}. Im Umkehrschluss bedeutet dies, dass ungetestete Software mit sehr hoher Wahrscheinlichkeit \glossar{fehler} beinhaltet \citep{goodliffe_code_2006}.
 
 %TODO Kent Beck?
 
 \section{Arten von Tests}
-Tests können nach verschiedenen Gesichtspunkten eingeteilt werden. In vielen konkreten Fällen reich eine eindimensionale Einordnung nicht aus und Test \index{Test}können ebenso Teil mehrerer Kategorien sein. Einige der gängigsten Einordnungen werden hier vorgestellt.
+Tests können nach verschiedenen Gesichtspunkten eingeteilt werden. Einige der gängigsten Einordnungen werden hier vorgestellt.
 \begin{figure}[hp]
  \centering
  \includegraphics[width=0.9\textwidth]{./diagrams/testarten.png}
@@ -40,7 +40,7 @@ Ein Spezialfall ist der sogenannte \textbf{Greybox}-Test, der insbesondere bei d
  \item[Usability Testing] Diese Testmethode kann gegenüber den bisher genannten nicht automatisiert werden und benötigt immer einen (zukünftigen) Endanwender. Ziel ist es, die Benutzbarkeit und Handhabung zu testen. Dies wird durch Beobachtung von Kandidaten, meist in einer präparierten Umgebung (Usability Labor), geprüft.
 \end{description}
 
-\paragraph{Einteilung nach Testvollständigkeit} Auf welche Art die sogenannte Testvollständigkeit beurteilt wird und notwendige Testfälle generiert werden, ist ebenfalls eine Möglichkeit, Tests \index{Test}einzuordnen \citep{liggesmeyer_modultest_1990}:
+\paragraph{Einteilung nach Prüfverfahren} Eine Klassifikation nach Art des gewählten Prüfverfahrens ist die Einteilung in \citep{liggesmeyer_modultest_1990}:
 \begin{description}
  \item[Kontrollflussorientierter Test] betrachtet den Quelltext und leitet daraus notwendige Unittest\index{Test!Unittest}s ab
  \item[Datenflussorientierter Test] Beobachtet die Variablendefinitionen, Zugriffe und Entscheidungen anhand der Variablen
@@ -55,7 +55,7 @@ Ziel des Unittest\index{Test!Unittest}s ist es, frühzeitig \glossar{fehler} im 
 
 
 
-Unittest\index{Test!Unittest}s werden fast immer durch sog. \glossar{testrunner} automatisiert ausgeführt. Außerdem werden meist Test-Frameworks verwendet, welche häufige Aufgaben beim Testen unterstützen, z.B. Auswertung der Testergebnisse, Integration der Tests mit dem Programmcode, Anlage und Löschen von Testdaten\index{Test!Testdaten}.  Eine der meist verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test/Unit\index{Test/Unit-Framwork} / MiniTest in Ruby\index{Ruby}, JUnit in Java oder NUnit in C\#.
+Unittest\index{Test!Unittest}s werden fast immer durch sog. \glossar{testrunner} automatisiert ausgeführt. Außerdem werden meist Test-Frameworks verwendet, welche häufige Aufgaben beim Testen unterstützen, z.B. Auswertung der Testergebnisse, Integration der Tests mit dem Programmcode, Anlage und Löschen von Testdaten\index{Test!Testdaten}.  Eine der meist verbreitetsten sind die Frameworks auf Basis von xUnit, die in nahezu allen (objektorientierten) Sprachen Vertreter haben, so z.B. Test/Unit\index{Test/Unit-Framework} / MiniTest in Ruby\index{Ruby}, JUnit in Java oder NUnit in C\#.
 
 Ein Test \index{Test}besteht in der Regel aus 4 Teilen \citep{rappin_rails_2011} \citep[Karte 46]{langr_agile_2011}:
 \begin{enumerate}
@@ -66,6 +66,7 @@ Ein Test \index{Test}besteht in der Regel aus 4 Teilen \citep{rappin_rails_2011}
 \end{enumerate}
 Als Faustregel für übersichtliche und nachvollziehbare Tests, gilt das \textbf{Arrange-Act-Assert}-Konzept: Dabei werden die oben genannten Phasen als Arrange (1. u. 4.), Act (2.), Assert (3.) oder auch Given-When-Then (Angenommen, Wenn, Dann) bezeichnet \citep[Karte 46]{langr_agile_2011}. Nicht immer sind alle drei bzw. vier Teile notwendig.
 
+Innerhalb \randbem{Vererbung}von Programmiersprachen mit Objekt-Orientierung spielt die Frage, wie im Falle einer Vererbung getestet wird. Für diesen Integrationsfall gilt dann die Grundregel, erst alle Elternklassen zu testen, bevor eine konkretet Klasse getestet wird \citep{fritzsche_sqm_2005}.
 %\paragraph{Komponententest}
 %Ziel des Komponententests ist es, verschiedene Units in Kombination als eine vollständige Komponente zu testen \citep{goodliffe_code_2006}.
 
@@ -98,7 +99,7 @@ Als Faustregel für übersichtliche und nachvollziehbare Tests, gilt das \textbf
 \end{ruby}
 \codecaption{Beispiel für den Einsatz eines Stubs in einem Bestellprozess}
 
-  Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock\index{Test-Double!Mock}-Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stub\index{Test-Double!Stub}objekt erzeugen, welches den Bezahlprozess nachahmt und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess auf unseren aktuellen Test \index{Test}keine Auswirkung hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
+Mit dem oben angegeben (Pseudo-) Rubycode würde man z.B. mittels des Mock\index{Test-Double!Mock}\hyp{}Frameworks \textbf{mocha}\footnote{\url{http://mocha.rubyforge.org/}} ein Stub\index{Test-Double!Stub}objekt erzeugen, welches den Bezahlprozess nachahmt und die Methode \texttt{pay} ersetzt, so dass sie immer \texttt{true} zurückgibt. So können wir simulieren, dass der extern stattfindende und möglicherweise komplexe Bezahlprozess auf unseren aktuellen Test \index{Test}keine Auswirkung hat. Für diesen Test interessiert uns nämlich nur, was im Falle eines erfolgreichen Bezahlens mit der weiteren Bestellung passiert.\\
   Außerdem machen Stub\index{Test-Double!Stub}s den Test \index{Test}meist schneller, da statt der potentiell komplexen und langsamen Operationen statische Werte geliefert werden.
 
   Als Ergänzung dazu gibt es \textbf{Mock\index{Test-Double!Mock}s}. Ähnlich wie die Stubs ersetzen sie Methoden oder Objekte, um statt komplexer Operationen fixe Werte zurückzugeben. Zusätzlich dienen Mocks selbst aber als eine Zusicherung. Ein Mock wartet darauf, ob die Methode, wie sie definiert wurde, auch tatsächlich innerhalb des Tests aufgerufen wurde.
@@ -126,7 +127,7 @@ Als Faustregel für übersichtliche und nachvollziehbare Tests, gilt das \textbf
 
 \section{System- und Akzeptanztests}
 \label{sec:acceptance}
-Der Unittest\index{Test!Unittest} ist als Whitebox-Test auf Wissen über den Quelltext angewiesen und sein Zweck ist es, Fehlerfreiheit zu gewähren. Der \textbf{Systemtest} dagegen testet, meist aus der Sicht eines Anwenders, das gesamte integrierte System. Er hat das Ziel, die Software gegenüber den Anforderungen zu validieren. Diese Tests finden unter realen Bedingungen mit realen Daten statt, meist sogar auf einer den Parametern der Produktionsumgebung nahekommende Hard- und Softwareumgebung.
+Der Unittest\index{Test!Unittest} ist als Whitebox-Test auf Wissen über den Quelltext angewiesen und sein Zweck ist es, frühezeitig Fehler in den isolierten Modulen zu finden. Der \textbf{Systemtest} dagegen testet, meist aus der Sicht eines Anwenders, das gesamte integrierte System. Er hat das Ziel, die Software gegenüber den Anforderungen zu validieren. Diese Tests finden oft unter realen Bedingungen mit realen Daten statt, meist sogar auf einer den Parametern der Produktionsumgebung nahekommende Hard- und Softwareumgebung.
 
 Der \textbf{Akzeptanztest\index{Akzeptanztest}} ist ein Spezialfall des Systemtests. Hier führt der Auftraggeber der Software den Test \index{Test}selbst durch. Er nutzt den Akzeptanztest, um zu entscheiden, ob er die Software akzeptiert, woher auch der Name dieser Testkategorie rührt.
 Innerhalb des Kontextes der \textit{Agilen Software-Entwicklung}, dem auch die Testgetriebene\index{TDD} Software zuzurechnen ist, dienen Akzeptanztest\index{Akzeptanztest}s dazu, den Fortschritt bei der Bearbeitung der "`Geschichten"' (\textit{user stories}) zu überwachen.

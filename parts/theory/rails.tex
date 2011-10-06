@@ -9,7 +9,7 @@ Für das Projekt IT-jobs-und-stellen.de soll das Webframework Ruby-on-Rails\inde
 % \footnote{ Sowie weitere PHP-Frameworks -- \url{http://www.h3rald.com/articles/rails-inspired-php-frameworks/}}
 
 \bordergraphic{material/rails.png}
-Viele professionelle Websites, die meist als Startup begannen, setzen bis heute auf Rails\index{Ruby-on-Rails}. Darunter Github, eine sehr beliebte Community für OpenSource-Programmierer,  Groupon, das führenden Unternehmen bei Online-Gutscheinen, XING, eine deutsche Online-Community für Business-Kontakte, aber auch nicht-StartUps z.B. Yellow Pages, die Gelben Seiten der USA \citep{ruby_on_rails_2011}. Viele bekannte Firmen nutzen Rails auch auf die eine oder andere Weise, z.B. zur Entwicklung ihrer internen Webanwendungen. Dazu gehören BBC, Cisco, IBM, Oracle, die NASA, Siemens oder Yahoo\footnote{Weitere Firmen: \url{http://www.workingwithrails.com/high-profile-organisations}}.
+Viele professionelle Websites, die meist als Startup begannen, setzen bis heute auf Rails\index{Ruby-on-Rails}. Darunter Github, eine sehr beliebte Community für OpenSource-Programmierer,  Groupon, das führenden Unternehmen bei Online-Gutscheinen, XING, eine deutsche Online\hyp{}Community für Business-Kontakte, aber auch nicht-StartUps z.B. Yellow Pages, die Gelben Seiten der USA \citep{ruby_on_rails_2011}. Viele bekannte Firmen nutzen Rails auch auf die eine oder andere Weise, z.B. zur Entwicklung ihrer internen Webanwendungen. Dazu gehören BBC, Cisco, IBM, Oracle, die NASA, Siemens oder Yahoo\footnote{Weitere Firmen: \url{http://www.workingwithrails.com/high-profile-organisations}}.
 
 Im Folgenden werden die Grundprinzipien und -konzepte von Ruby on Rails\index{Ruby-on-Rails} näher erläutert.
 
@@ -30,11 +30,10 @@ Rails\index{Ruby-on-Rails} ist ein Applikationsframework für Webanwendungen und
 % TODO Graphik konkretisieren auf /jobs/12
  \begin{figure}[h]
   \centering
-  \includegraphics[width=0.7\textwidth]{./material/mvc-rails.png}
+  \includegraphics[width=0.7\textwidth]{./diagrams/mvc.pdf}
   % mvc-rails.png: 500x472 pixel, 72dpi, 17.64x16.65 cm, bb=
   % SOURCE
-  \caption{MVC Modell von Rails}
-  \caption*{Quelle: \href{http://betterexplained.com/articles/intermediate-rails-understanding-models-views-and-controllers/}{betterexplained}}
+  \caption{MVC-Modell von Rails am Beispiel einer Anfrage /jobs/12}
   \label{fig:mvcrails}
 \end{figure}
 In Abbildung \ref{fig:mvcrails} ist der Ablauf einer Anfrage an den Server dargestellt. Die Anfrage des Browsers an die Website \texttt{http://localhost/jobs/12} wird über den Webserver, z.B. Apache2, an die Railsanwendung gestellt. Innerhalb von Rails wird dieser Anforderungsstring anhand der Routen, die die Anwendung anbietet, gematcht. In unserem Falle würde \texttt{/jobs/12} auf den Controller\index{Ruby-on-Rails!Controller} jobs aufgelöst werden. Innerhalb dieses Controllers wird eine Methode (Aktion) \texttt{show} erwartet.
@@ -58,7 +57,7 @@ Neben diesem architektonischen Konzept verfolgt Rails\index{Ruby-on-Rails} noch 
  Rails macht das Arbeiten im Kontext dieser Architektur sehr einfach und REST gilt als die bevorzugte Methode in der Community APIs\footnote{Application Programming Interface --  Eine Schnittstelle, um extern mit der Anwendung zu kommunizieren} zu erstellen.
  \item[Codegeneratoren] Rails bietet viele Codegeneratoren an, um schnell benötigte Klassen, Testfälle und Datenbanktabellen anzulegen.  Wie mit Hilfe der Codegeneratoren praktisch gearbeitet wird, wird später in Kapitel 7 dargelegt werden.
  \item[Full-Stack Webframework] Rails\index{Ruby-on-Rails} \borderquote{Rails will have strong defaults. They might change over time but Rails will remain opinionated.}{D. Hansson, Begründer von Rails}
-bringt out-of-the-box alles mit, was zur Webentwicklung benötigt wird. Im Gegensatz zu anderen Webframeworks wurde für Datenbankanbindung\index{Datenbank}, Templatesystem, JavaScript-Framework\index{JavaScript}, Testframework und Webserver-API bereits eine Vorauswahl getroffen. Im aktuellen Rails 3.1 sind dies ActiveRecord\index{ActiveRecord} (Datenbank-Framework), ERB (Templating-Sprache), JQuery (JavaScript-Framework) sowie Test/Unit\index{Test/Unit-Framwork} und Rack (Kommunikationsinterface für Komponenten). Die meisten dieser Komponenten lassen sich zwar leicht austauschen, Rails selbst aber behauptet "`opinionated"', also rechthaberisch / eigensinnig, zu sein und dem Entwickler Standards vorzugeben \citep{david_heinemeier_hansson_railsconf_2011}.
+bringt out-of-the-box alles mit, was zur Webentwicklung benötigt wird. Im Gegensatz zu anderen Webframeworks wurde für Datenbankanbindung\index{Datenbank}, Templatesystem, JavaScript-Framework\index{JavaScript}, Testframework und Webserver-API bereits eine Vorauswahl getroffen. Im aktuellen Rails 3.1 sind dies ActiveRecord\index{ActiveRecord} (Datenbank-Framework), ERB (Templating-Sprache), JQuery (JavaScript-Framework) sowie Test/Unit\index{Test/Unit-Framework} und Rack (Kommunikationsinterface für Komponenten). Die meisten dieser Komponenten lassen sich zwar leicht austauschen, Rails selbst aber behauptet "`opinionated"', also rechthaberisch / eigensinnig, zu sein und dem Entwickler Standards vorzugeben \citep{david_heinemeier_hansson_railsconf_2011}.
 
 \end{description}
 

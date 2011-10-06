@@ -3,7 +3,7 @@
 
 \epigraph{TDD is also good for geeks who form emotional attachments to code. }{\cite{beck_test_2002}}Extreme Programming ist eine Methodik der Agilen Software-Entwicklung\footnote{\url{http://martinfowler.com/bliki/TestDouble.html}}, welche das Ziel hat, die \glossar{quality} der Software zu verbessern und flexibel auf Änderungen in den Anforderungen zu reagieren. Dazu implementiert sie einige Kernpraktiken. Eine Wesentliche, auf der viele der anderen Praktiken gründen, ist die \textit{Test-First}-Praktik, die ab 2002 durch Kent Beck als \textit{Test-Driven-Development} beschrieben wurde \citep{beck_test_2002}.
 
-Diese als Testgetrieben Entwicklung oder Test-Driven-Design (TDD) bekannte Entwicklungstechnik basiert auf der Wiederholung von sehr kurzen Entwicklungszyklen, jeder nur wenige Minuten lang. Dabei ist es das Ziel, dass sich Test schreiben, Implementation und Refaktorisierung\index{Refaktorisierung}en, d.h. das konstante Verbessern des Systemdesigns und des Quellcodes, abwechseln. Mittlerweile werden die Begriffe Test-First Development und \glossar{TDD} oft synonym verwendet, allerdings gibt es manchmal Unterschiede in der Herangehensweise in Punkto Design der Software: TDD findet seine Anwendung, wenn nur eine vage Idee der Funktionalität einer Klasse besteht, während TFD kein Design oder Redesign der Klassen vorsieht, sondern dieses bereits im Vorfeld der Entwicklung stattfand \citep{stackoverflow_testing_2008}.
+Diese als Testgetriebe Entwicklung oder Test-Driven-Design (TDD) bekannte Entwicklungstechnik basiert auf der Wiederholung von sehr kurzen Entwicklungszyklen, jeder nur wenige Minuten lang. Dabei ist es das Ziel, dass sich Test schreiben, Implementation und Refaktorisierung\index{Refaktorisierung}en, d.h. das konstante Verbessern des Systemdesigns und des Quellcodes, abwechseln. Mittlerweile werden die Begriffe Test-First Development und \glossar{TDD} oft synonym verwendet, allerdings gibt es manchmal Unterschiede in der Herangehensweise in Punkto Design der Software: TDD findet seine Anwendung, wenn nur eine vage Idee der Funktionalität einer Klasse besteht, während TFD kein Design oder Redesign der Klassen vorsieht, sondern dieses bereits im Vorfeld der Entwicklung stattfand \citep{stackoverflow_testing_2008}.
 
 
 Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und danach am Beispiel von Ruby\index{Ruby}/\glossar{rails} typische Testwerkzeuge aufzeigen.
@@ -17,14 +17,14 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und da
 
   \paragraph{Psychologische Aspekte und Aspekte des Projektmanagements}
 
-  Kent Beck beschreibt die Hauptmotivation für TDD\index{TDD}, als das "`managing fear during programming"', also dem Management von Furcht. So hat Furcht verschiedene Auswirkungen auf die Entwicklung. Sie mache zögerlich, führe zu weniger Kommunikation und damit Feedback und mache den Programmierer "`mürrisch"' \citep[S. xi]{beck_test_2002}.
+  Kent Beck erklärt die Hauptmotivation für TDD\index{TDD} als das "`managing fear during programming"', also dem Management von Furcht. So hat Furcht verschiedene Auswirkungen auf die Entwicklung. Sie mache zögerlich, führe zu weniger Kommunikation und damit Feedback und mache den Programmierer "`mürrisch"' \citep[S. xi]{beck_test_2002}.
   % - ebd: "Sie mache zögerlich, führe zu" => Verwendung von indirekter Rede falsch. Entweder entfernen oder Satzende modizifieren: "...mürrisch, so Beck."
 
 
   TDD\index{TDD} fördert die Entwicklung in kleinen Schritten und ermöglicht durch bestandene Tests kleine "`Belohnungen"' für den Programmierer. Dadurch ist es leichter, einen gewissen Arbeitsrhythmus zu erhalten, was zu dem \textbf{Flow}\footnote{Schaffen-, Tätigkeitssrausch} führen kann und damit eine effektivere Entwicklung ermöglicht \citep{roger_brown_test_2008}.
   %Die Motivation für die Wahl von Test-getriebener Entwicklung als primäre Entwicklungsstrategie wird mit dem
 
-  Falls TDD\index{TDD} die Fehlerdichte signifikant verringern würde und nur Code entstünde, der getestet wurde, so hätte dies wohl auch soziale Auswirkungen auf die Software-Entwicklung \citep[S. x]{beck_test_2002}.
+  Falls TDD\index{TDD} die Dichte an Defekten\footnote{Beck spricht von \textit{defect density}, bezieht sich also auf die Anzahl pro Codemenge. Ein Defekt ist ein abnormaler Programmzusatand der zu Programmversagen führen kann (ISO/CD 10303-226)} signifikant verringern würde und nur Code entstünde, der getestet wurde, so hätte dies wohl auch soziale Auswirkungen auf die Software-Entwicklung \citep[S. x]{beck_test_2002}.
   \begin{enumerate}
    \item Die Qualitätssicherung könnte von einer reaktiven auf eine proaktive Arbeit umstellen.
    \item Der Projektmanager kann den Ablauf der Entwicklung besser planen, da weniger überraschende Regressionsfehler im Laufe der Entwicklung auftreten.
@@ -34,7 +34,7 @@ Im Folgenden wird die Entwicklungsmethode \glossar{TDD} näher beleuchtet und da
 
 
 \section{Ablauf}
-  Ziel ist es, vor der Implementation eines Codes einen Unittest\index{Test!Unittest} (vgl. Abschnitt \ref{sec:testUnit}) zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test \index{Test}besteht. Als Letztes folgt die Refaktorisierung\index{Refaktorisierung}, bei TDD\index{TDD} als Designphase genutzt. Danach beginnt der Kreislauf von Neuem.
+Ziel ist es, vor der Implementation eines Codes einen \glossar{test}\index{Test} (vgl. Abschnitt \ref{sec:testUnit}) zu implementieren. Davon ausgehend soll der geringstmögliche Code implementiert werden, damit der Test \index{Test}besteht. Als Letztes folgt die Refaktorisierung\index{Refaktorisierung}, bei TDD\index{TDD} als Designphase genutzt. Danach beginnt der Kreislauf von Neuem.
 
   \begin{figure}[htbp]
  \centering

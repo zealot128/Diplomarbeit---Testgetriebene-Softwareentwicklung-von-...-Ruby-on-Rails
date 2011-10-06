@@ -54,7 +54,7 @@ Da allerdings Paarprogrammierung nicht immer möglich ist, sind regelmäßige Ab
 
 Für die zukünftige Entwicklung von zumeist Webanwendungen werden folgende Werkzeuge berücksichtigt.
 
-\paragraph{Werkzeuge für Tests} Die Spezifikationssprache \textbf{Cucumber\index{Cucumber}} dient als Schnittstelle zwischen den Anforderungen des Kunden und den vom Programmierer entwickelten Testschritt\index{Cucumber!Testschritt}e. Diese könnten in einem von vielen Testframeworks geschrieben werden. Die Entscheidung fiel hierbei auf \textbf{Test/Unit}\index{Test/Unit-Framwork}, da die Syntax und Prädikate denen von JUnit und NUnit sehr ähneln und so den Übergang zu Ruby\index{Ruby} leichter machen. Da es auch das Standard-Testframework von Ruby on Rails\index{Ruby-on-Rails} ist, ist eine gute Unterstützung durch gängige Werkzeuge garantiert.
+\paragraph{Werkzeuge für Tests} Die Spezifikationssprache \textbf{Cucumber\index{Cucumber}} dient als Schnittstelle zwischen den Anforderungen des Kunden und den vom Programmierer entwickelten Testschritt\index{Cucumber!Testschritt}e. Diese könnten in einem von vielen Testframeworks geschrieben werden. Die Entscheidung fiel hierbei auf \textbf{Test/Unit}\index{Test/Unit-Framework}, da die Syntax und Prädikate denen von JUnit und NUnit sehr ähneln und so den Übergang zu Ruby\index{Ruby} leichter machen. Da es auch das Standard-Testframework von Ruby on Rails\index{Ruby-on-Rails} ist, ist eine gute Unterstützung durch gängige Werkzeuge garantiert.
 
 Für die Simulation eines Browsers gibt es ebenfalls verschiedene Ansätze. Als Basis fungiert dabei \textbf{Capybara\index{Capybara}}, welches unterschiedliche Browsersimulation\index{Browser!Simulierter}en abstrahiert. Damit lässt sich z.B. \textbf{Selenium\index{Selenium}} ansteuern, welches wiederum Mozilla Firefox, Internet Explorer oder Google Chrome fernsteuern kann. Dies ist allerdings sehr langsam, da ein kompletter Browser gestartet und ferngesteuert wird. Daher ist die Nutzung von Selenium nur für das Testen von möglicherweise problematischen Interaktionen und das Testen von JavaScript\index{JavaScript} notwendig. Für alle anderen Fälle kann man auf \textbf{\glossar{racktest}} zurückgreifen, welches extrem schnell eine Rack-Anwendung startet und testet.
 Falls in Zukunft mehr Geschwindigkeit in der Testausführung, insbesondere bei den Selenium\index{Selenium}-Tests, gewünscht wird, so kann man auf Parallelisierung auf mehreren Computern zurückgreifen.
@@ -66,7 +66,7 @@ Durch \textbf{spork}\footnote{\url{https://github.com/timcharper/spork}} lässt 
 
 \paragraph{Werkzeuge für Code-Metrik\index{Code-Metrik}en} Für die Generierung von \glossarpl{metrik} dient das \glossar{gem}\index{Gem} \textbf{metric-fu}, welches seinerseits über verschiedene Code-Metriken Zusammenfassungen bildet und diese auch in der zeitlichen Entwicklung darstellt. Darunter fallen z.B. die zyklomatische Komplexität, den Grad der Duplikationen, verschiedene Code Smell\index{Code-Smell}s, Nutzung der Versionsverwaltung und \glossar{Testabdeckung}\index{Test!Testabdeckung}.
 
-Die Testabdeckung\index{Test!Testabdeckung} wird durch \textbf{simple-cov} berechnet, welches eine C0-Anweisungsüberdeckung bestimmt.
+Die Testabdeckung\index{Test!Testabdeckung} wird durch \textbf{simple-cov} berechnet, welches eine C0\hyp{}Anweisungsüberdeckung bestimmt.
 
 Einige Code-Metriken wurden im Kapitel \fullref{sec:metriken} vorgestellt.
 

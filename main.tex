@@ -19,7 +19,7 @@
 \clubpenalty = 10000
 \widowpenalty = 10000 \displaywidowpenalty = 10000
 
-\usepackage[ngerman, german]{babel}
+\usepackage[ngerman]{babel}
 
 \usepackage[utf8]{inputenc}		%Damit kann man auch Umlaute direkt eintippen  \o/
 \usepackage{textcomp}
@@ -55,7 +55,7 @@
 \usepackage[dvipsnames,table]{xcolor}
 \usepackage[nottoc]{tocbibind}	% TOC Plugin -> ??
 \usepackage{relsize}
-\usepackage{glossaries}
+\usepackage[toc]{glossaries}
 %\usepackage{marginnote}
 %\usepackage{minted}  % TODO Pygments wrapper... ohje :)
 
@@ -78,7 +78,6 @@
  /Keywords()
 }
 \date{\today}
-\onehalfspacing
 \setlength{\epigraphwidth}{.8\textwidth}
 
 
@@ -88,7 +87,6 @@
 \pagestyle{headings}
 \definecolor{Gray}{rgb}{0.85,0.85,0.90}
 
-\include{custom_commands}
 \makeindex 	%start Aufzeichnung eines Stichwortverzeichnisses
 \makeglossary  	%start Aufzeichnung eines Glossars
 
@@ -128,17 +126,25 @@ Pro-gram-ming
 Active-Record
 Ini-ti-ali-sie-rung
 Sys-tem
+be-schreibt
+De-ckungs-gleich-heit
 }
 
+\usepackage{setspace}
+\setstretch{1,15} % Mein TOC ist zu lang!!
+\newcommand{\fullref}[1]{\ref{#1} -- \glqq\,\textit{\nameref{#1}}\grqq}
+\include{custom_commands}
+\include{parts/partials/glossar}  % Glossar definitions
 
-% \listfiles  DEBUG
 \begin{document}
- \include{parts/00-frontpage}
+ \include{parts/partials/frontpage}
  \cleardoublepage
 
  \pagenumbering{Roman}
+ \tableofcontents		%Inhaltsverzeichnis
+ \newpage
+ \setstretch{1,25}  % Entspricht \onehalfspacing
  \include{parts/intro/preambel}
- \include{parts/intro/glossar}
 
   % Table -- Zebrastreifen und 1.25 Row Abstand
   \rowcolors{1}{lightgray!50!white}{white}
@@ -154,19 +160,10 @@ Sys-tem
   \pagenumbering{arabic}
  \input{parts/gliederung}
  \include{parts/99-appendix}
+ \newpage
+ \printglossary[toctitle=Glossar]
+ \input{parts/partials/listen}
+ \input{parts/partials/erklaerung.tex}
 
-\begin{raggedright}
- \bibliography{bibo}
-\end{raggedright}
 
 \end{document}
-
-
-pygmentize  -f latex -l xml beispiel_job.xml
-%\begin{lstlisting}[language=Ruby,label=Ruby Beispiele,caption=Ruby Beispiele]
- %\end{lstlisting}
-
-btw mit \nameref{sec:marker}  kannst du statt der nummer also "Abbildung 1" den Namen nehmen.
-Also falls du kapitel mit \label{sec:rails} hast kannst du:
-
-Siehe im abschnitt \ref{sec:rails} \nameref{sec:rails}

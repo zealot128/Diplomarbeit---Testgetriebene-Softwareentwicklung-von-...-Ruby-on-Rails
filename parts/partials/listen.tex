@@ -1,0 +1,18 @@
+%\setstretch{1,0} % Mein TOC ist zu lang!!
+\listoffigures
+%\setstretch{1,25} % Mein TOC ist zu lang!!
+
+\addcontentsline{toc}{chapter}{Quellcode-Listings}
+\lstlistoflistings
+
+%  \cite{*} % Alles Zitieren DEBUG
+\bibliographystyle{alphadin}     % Kurz
+%\bibliographystyle{natbib}     % Verbos
+
+\renewcommand{\indexname}{Stichwortverzeichnis}
+%\addcontentsline{toc}{chapter}{Stichwortverzeichnis}
+\printindex
+
+\begin{raggedright}
+  \bibliography{bibo}
+\end{raggedright}
