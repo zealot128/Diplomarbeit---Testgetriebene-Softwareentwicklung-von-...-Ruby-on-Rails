@@ -16,18 +16,18 @@ Ziel soll es sein, den regionalen Organisationen auch eine Alternative zu den Co
 
 
 \subsection{Anwendungsfälle}
-Es gibt zwei verschiedene Nutzertypen. Zum einen, ein \textit{Bewerber}, der das Ziel hat, einen Job zu suchen, zu finden und sich darauf zu bewerben. Zum anderen ein Mitarbeiter eines Kundenunternehmenes (\textit{Arbeitgeber}), der Stellenanzeigen auf der Webseite schalten möchte.
+Es gibt zwei verschiedene Nutzertypen. Zum einen der \textit{Bewerber}, der das Ziel hat, einen Job zu suchen, zu finden und sich darauf zu bewerben. Zum anderen der Mitarbeiter eines Kundenunternehmenes (\textit{Arbeitgeber}), der Stellenanzeigen auf der Webseite schalten möchte.
 Verbal formuliert sind die Anwendungsfälle die Folgenden:
 \begin{itemize}
  \item Ein Bewerber kann die Webseite nach sichtbaren Stellenangeboten durchsuchen.
  \item Ein Bewerber kann die Detailanzeige einer Stelle betrachten.
  \item Ein Bewerber kann sich auf eine Stelle über das System bewerben. Dabei kann er auch eine Verbindung zu seinem Facebook- oder LinkedIn-Account herstellen, falls er das möchte, um so automatisch einen Lebenslauf generieren zu lassen und Stammdaten eintragen zu lassen.
- \item Ein Kunde kann sich am Portal registrieren und dann anmelden und wird so zum \textit{Arbeitgeber}.
+ \item Ein Kunde kann sich am Portal registrieren, dann anmelden und wird so zum \textit{Arbeitgeber}.
  \item Ein Arbeitgeber kann eine Stellenanzeige für ein Vielfaches von 30 Tagen schalten. Damit wird ein Bezahlvorgang über ein Drittanbieterportal (z.B. PayPal) ausgelöst und bei Bestätigung die Stelle sichtbar geschaltet. Er kann dazu zwischen 5 verschiedenen Designs wählen sowie Logo und Bild hinzufügen.
  \item Ein Arbeitgeber kann eine Stelle verlängern oder kopieren, um als sie als Vorlage für ein neues Stellenangebot zu nutzen.
  \item Ein Arbeitgeber kann eine laufende Stelle erneuern (refresh), um so seine Platzierung verbessern. Dies ist möglich, weil die Aktualität einer Stelle Auswirkungen auf die Platzierung in den Suchergebnissen hat. Ein Refresh kostet Geld und löst somit wieder einen Bezahlvorgang aus.
  \item Ein Arbeitgeber kann Statistiken über seine geschalteten Stellenanzeigen einsehen. Dies beinhaltet die Anzahl der Zugriffe pro Tag und Anzahl der Bewerbungen je Stelle.
- \item Ein Arbeitgeber kann seine Stellen mittels eines XML-Feed-Imports automatisiert einlesen. Dazu bezahlt er einen Pauschalbetrag je Kalenderjahr. Das System liest alle 6h automatisiert diesen Feed ein, der durch HTTP erreichbar sein muss und überträgt gültige Stellenanzeigen in die Datenbank\index{Datenbank}. Nicht mehr in dem Feed enthaltene Stellenanzeigen des Arbeitgebers werden in der Datenbank auf "`unsichtbar"' gesetzt. Das Format ist eine Modifikation von \glossar{RSS} 2.0.
+ \item Ein Arbeitgeber kann seine Stellen mittels eines XML-Feed-Imports automatisiert einlesen. Dazu bezahlt er einen Pauschalbetrag je Kalenderjahr. Das System liest alle 6 Stunden automatisiert diesen Feed ein, der durch HTTP erreichbar sein muss und überträgt gültige Stellenanzeigen in die Datenbank\index{Datenbank}. Nicht mehr in dem Feed enthaltene Stellenanzeigen des Arbeitgebers werden in der Datenbank auf "`unsichtbar"' gesetzt. Das Format ist eine Modifikation von \glossar{RSS} 2.0.
 \end{itemize}
 
 
