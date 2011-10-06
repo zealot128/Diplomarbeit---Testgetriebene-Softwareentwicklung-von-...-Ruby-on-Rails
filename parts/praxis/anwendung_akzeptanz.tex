@@ -5,7 +5,7 @@ Nun wollen wir am Beispiel einer Suche nach Stellenanzeigen die Entwicklung von 
 
 Zum Einsatz kommt dabei die für Systemtests entwickelte domainspezifische Sprache Cucumber\index{Cucumber} in Verbindung mit der Browser-Steuerung Capybara\index{Capybara}, die beide bereits in Abschnitt \ref{sec:cucumber} vorgestellt wurde.
 
-Ein Cucumber\index{Cucumber}-Verzeichnis ist qua Konvention immer gleich aufgebaut. In Abbildung \ref{fig:cucumberDir} ist der Verzeichnisbaum, wie er in den Beispielen dieses Kapitels benutzt wird, zu sehen. Innerhalb unseres Projektverzeichnisses existiert ein Unterverzeichnis "`features"' in dem alle Feature-Dateien mit der Endung "`.feature"' lagern. Ebenfalls existiert ein Unterverzeichnis "`step\_definitions"', das die Implementation der Testschritt\index{Cucumber!Testschritt}e beinhaltet sowie ein Verzeichnis "`support"', für z.B. Standardmethoden, Aktionen die vor jedem Feature-Durchlauf ausgeführt werden oder die Definition der verwendeten Browser-Engine. Cucumber lädt automatisch alle Ruby-Dateien in den beiden Verzeichnissen.
+Ein Cucumber\index{Cucumber}-Verzeichnis ist qua Konvention immer gleich aufgebaut. In Abbildung \ref{fig:cucumberDir} ist der Verzeichnisbaum, wie er in den Beispielen dieses Kapitels benutzt wird, zu sehen. Innerhalb unseres Projektverzeichnisses existiert ein Unterverzeichnis "`features"' in dem alle Feature-Dateien mit der Endung "`.feature"' lagern. Ebenfalls existiert ein Unterverzeichnis "`step\_definitions"', das die Implementierung der Testschritt\index{Cucumber!Testschritt}e beinhaltet sowie ein Verzeichnis "`support"', für z.B. Standardmethoden, Aktionen die vor jedem Feature-Durchlauf ausgeführt werden oder die Definition der verwendeten Browser-Engine. Cucumber lädt automatisch alle Ruby-Dateien in den beiden Verzeichnissen.
 
 \begin{figure}[hbtp]
  \centering
@@ -197,7 +197,7 @@ Dies lösen wir, indem wir auf der View\index{Ruby-on-Rails!View} der Startseite
 \PY{x}{  }\PY{c+cp}{<%} \PY{k}{end} \PY{c+cp}{%>}\PY{x}{ }
 \PY{x}{</div>}
 \end{ruby}
-\codecaption{Implementation eines Suchfeldes im Layout der Webseite}
+\codecaption{Implementierung eines Suchfeldes im Layout der Webseite}
 
 Wir implementieren im Layout der Applikation ein Suchfeld mit den Form\hyp{}Hilfsfunktionen, die Rails\index{Ruby-on-Rails} anbietet. Das Layout ist eine Basisview, die für alle Webseiten generiert wird. Diese beinhaltet Elemente der Website, die überall benutzt werden, z.B. eine Navigation, Einbindung von Stylesheets oder wie hier, ein Suchfeld, das auf jeder Seite erscheinen soll. Dabei verwenden wir  ERB\footnote{Embedded Ruby, eine Syntax für Rails Views}, eine Template-Sprache, die normalerweise HTML-Code erzeugt und es ermöglicht innerhalb der "`\verb|<%= ... %>|"' Ruby-Code auszuführen.
 
@@ -240,7 +240,7 @@ Damit nun der Test \index{Test}besteht, muss als letztes noch eine View\index{Ru
 \PY{x}{   </div>}
 \PY{x}{ }\PY{c+cp}{<%} \PY{k}{end} \PY{c+cp}{%>}
 \end{ruby}
-\codecaption{View-Implementation für eine Liste von Jobs}
+\codecaption{View-Implementierung für eine Liste von Jobs}
 
 
 
@@ -250,7 +250,7 @@ Mittels des Iterators \texttt{each}, geben wir für jeden gefundenen Job ein \te
 
 \tddgreen
 
-Cucumber\index{Cucumber} bestätigt uns nun die erfolgreiche Implementation des Features:
+Cucumber\index{Cucumber} bestätigt uns nun die erfolgreiche Implementierung des Features:
 \begin{lstlisting}
 1 scenario (1 passed)
 5 steps (0 failed, 0 skipped, 5 passed)

@@ -40,7 +40,7 @@ Jede Testmethode besteht in der Regel aus einer Initialisierung, der Ausführung
 Einige dieser Zusicherungen sind z.B.:
 \begin{description}
  \item[\texttt{assert(statement)}] Prüft, ob der angegebene Ausdruck wahr ist (In Ruby\index{Ruby} sind alle Ausdrücke außer \texttt{false} und \texttt{nil} wahr).
- \item[\texttt{assert\_equal(expected, actually)}] Prüft, ob die beiden Statements hinsichtlich des \texttt{==}-Operators gleich sind\footnote{Viele eingebaute Klassen prüfen auf Strukturgleichheit. Eigene Objekte werden ansonsten auf Adressengleichheit getestet. Man kann allerdings eine eigene Vergleichsoperation durch die Implementation der Instanzmethode \texttt{.==()} definieren}
+ \item[\texttt{assert\_equal(expected, actually)}] Prüft, ob die beiden Statements hinsichtlich des \texttt{==}-Operators gleich sind\footnote{Viele eingebaute Klassen prüfen auf Strukturgleichheit. Eigene Objekte werden ansonsten auf Adressengleichheit getestet. Man kann allerdings eine eigene Vergleichsoperation durch die Implementierung der Instanzmethode \texttt{.==()} definieren}
 
  \item[\texttt{assert\_raise(exception, \&block)}] Prüft, ob innerhalb des übergebenen Codeblocks eine Exception vom Typ exception geworfen wird.
  \item[\texttt{assert\_match(regexp, string)}] Prüft, dass der Ausdruck vom Typ String mit dem spezifizierten regulären Ausdruck matcht.

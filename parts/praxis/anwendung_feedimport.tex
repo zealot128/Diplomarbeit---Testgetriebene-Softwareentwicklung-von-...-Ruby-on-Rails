@@ -88,7 +88,7 @@ In der reinen TDD\index{TDD}-Lehre würde nun als erstes eine Behebung aller Feh
   unsatisfied expectations:
   - expected exactly once, not yet invoked: HTTParty.get('http://www.example.com/feed.xml')
 \end{lstlisting}
-Das Mock\index{Test-Double!Mock}objekt hat unseren Test \index{Test}fehlschlagen lassen, ohne dass wir selbst eine Assertion festgelegt haben. Da wir bisher noch keine Implementation eines Netzwerkzugriffes durch HTTParty implementiert haben, schlägt der Test fehl.
+Das Mock\index{Test-Double!Mock}objekt hat unseren Test \index{Test}fehlschlagen lassen, ohne dass wir selbst eine Assertion festgelegt haben. Da wir bisher noch keine Implementierung eines Netzwerkzugriffes durch HTTParty implementiert haben, schlägt der Test fehl.
 
 Die Implementierung wäre:
 \begin{ruby}[label=lib/imported\_feed.rb]
@@ -100,7 +100,7 @@ Die Implementierung wäre:
   \PY{k}{end}
 \PY{k}{end}
 \end{ruby}
-\codecaption{Feed Implementation I.}
+\codecaption{Feed Implementierung I.}
 % label{fig:bf345c}
 
 \tddgreen
@@ -142,7 +142,7 @@ Bei Ausführung des Tests stellen wir fest, dass zwar die Erwartung erfüllt wur
   \PY{k}{end}
 \PY{k}{end}
 \end{ruby}
-\codecaption{Feed Implementation II}
+\codecaption{Feed Implementierung II}
 % label{fig:7381c3}
 
 Mithilfe des Makros \textbf{attr\_reader} generieren wir ein Attribut body und gleichzeitig einen Getter für den Zugriff von außen. Innerhalb unseres Konstruktors speichern wir den Body der HTTP-Antwort in diesem Attribut.
@@ -214,7 +214,7 @@ Um den Test \index{Test}zu bestehen, reicht es, eine leere Methode zu definieren
   \PY{k}{def} \PY{n+nf}{valid?}
   \PY{k}{end}
 \end{ruby}
-\codecaption{Feed Implementation III - Fake Implementierung}
+\codecaption{Feed Implementierung III - Fake Implementierung}
 % label{fig:31ed87}
 
 \tddgreen
@@ -247,7 +247,7 @@ Implementieren können wir das so:
   \PY{k}{end}
 \PY{k}{end}
 \end{ruby}
-\codecaption{Feed Implementation IV - Implementation der Validierung}
+\codecaption{Feed Implementierung IV - Implementierung der Validierung}
 % label{fig:1c5fd7}
 
 
@@ -292,7 +292,7 @@ Durch die Zusicherung \textbf{assert\_nothing\_raised(exception, message, block)
     \PY{o}{!}\PY{n+nv+vi}{@error\PYZus{}thrown}   \PY{o+ow}{and} \PY{n+nv+vi}{@status\PYZus{}code} \PY{o}{==} \PY{l+m+mi}{200}
   \PY{k}{end}
 \end{ruby}
-\codecaption{Feed Implementation V}
+\codecaption{Feed Implementierung V}
 % label{fig:7b7690}
 
 \tddgreen
@@ -323,7 +323,7 @@ Unser Konstruktor ist nun schon relativ lang geworden und hat inzwischen schon m
   \PY{k}{end}
 \PY{k}{end}
 \end{ruby}
-\codecaption{Feed Implementation Vb - nach Refaktorisierung}
+\codecaption{Feed Implementierung Vb - nach Refaktorisierung}
 % label{fig:b6b9b2}
 
 Diese private Methode hat nun keine eigenen Tests, ist aber aus einer Refaktorisierung\index{Refaktorisierung} hervorgegangen und damit innerhalb von TDD ein erlaubter Schritt (Das scheinbare Dilemma des Testens privater Methoden wurde bereit auf S. \pageref{sec:tddspecialcircumstances} erläutert).

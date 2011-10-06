@@ -43,7 +43,7 @@ Im ersten Beispiel wollen wir testen, dass ein Gast-Nutzer, also z.B. ein Bewerb
 Zuerst loggen wir jeglichen Nutzer aus, der eventuell eingeloggt war, dann laden wir das Fixture und führen einen simulierten HTTP-Request auf die Detailansicht der Stellenanzeige \texttt{http://localhost/jobs/12} aus (Die Aktion \texttt{show} mit der ID des Jobs).
 Nun erwarten wir, dass wir einen HTTP-Status-Code 200 (Erfolg) erhalten (Zeile 10) und dass der Controller\index{Ruby-on-Rails!Controller} eine Variable \texttt{@jobs} bereitstellt, die mit unserem Fixture identisch ist (Zeile 11).
 
-Die Implementation dieser Anforderung könnte wie folgt umgesetzt werden:
+Die Implementierung dieser Anforderung könnte wie folgt umgesetzt werden:
 % -------------------------------
 % SNIPPET:
 %
@@ -168,7 +168,7 @@ Nun möchten wir, dass ein Kunde dieser Anwendung, also ein Arbeitgeber seine St
 \codecaption{JobController-Test: Neuer Testfall}
 
 \tddred
-Über die globale Session Variable simulieren wir das Einloggen durch Setzen der User-ID in dieses Array. Die genaue Implementation hängt natürlich davon ab, wie man die Authentifizierung implementiert hat oder welche Bibliothek man verwendet. In diesem Beispiel sei darauf hingewiesen, dass die Definition, ob ein Nutzer eingeloggt ist oder nicht, davon abhängt, ob in seiner Session-Variable eine User-ID enthalten ist.
+Über die globale Session Variable simulieren wir das Einloggen durch Setzen der User-ID in dieses Array. Die genaue Implementierung hängt natürlich davon ab, wie man die Authentifizierung implementiert hat oder welche Bibliothek man verwendet. In diesem Beispiel sei darauf hingewiesen, dass die Definition, ob ein Nutzer eingeloggt ist oder nicht, davon abhängt, ob in seiner Session-Variable eine User-ID enthalten ist.
 
 % SNIPPET:
 %
