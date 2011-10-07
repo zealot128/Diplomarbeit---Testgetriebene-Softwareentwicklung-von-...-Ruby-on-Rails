@@ -19,10 +19,10 @@ OptionParser.new do |opts|
   opts.on("-s", "--syntax LEXER", "Syntaxlexer fuer pygmentize") do |v|
     options[:syntax] = v
   end
-  opts.on("-e", "--env", "Latex-Environment zum Kapseln") do |v|
+  opts.on("-e", "--env ENV", "Latex-Environment zum Kapseln") do |v|
     options[:env] = v
   end
-  opts.on("-c", "--label", "Standard Label/Dateiname") do |v|
+  opts.on("-c", "--label LABEL", "Standard Label/Dateiname") do |v|
     options[:label] = v
   end
 end.parse!

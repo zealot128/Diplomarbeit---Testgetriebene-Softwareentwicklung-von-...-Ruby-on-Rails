@@ -3,7 +3,7 @@
 
 Ein Rails\index{Ruby-on-Rails}-Modell\index{Ruby-on-Rails!Modell}, wie in \ref{sec:railsconcepts} auf S. \pageref{sec:railsconcepts} beschrieben, repräsentiert die Daten der Anwendung und die Regeln, wie diese zu verändern sind. Bei Rails werden sie hauptsächlich dazu verwendet, um mit der zugrundeliegenden Datenbank\index{Datenbank}tabelle zu interagieren. Per Konvention von Rails findet hier die Hauptarbeit, also die Business-Logik, statt.
 
-Fast jeder Unittest\index{Test!Unittest} bei Rails\index{Ruby-on-Rails} beinhaltet das Testen auf Validierung\index{Ruby-on-Rails!Validierung}skriterien seines korrespondierenden Modell\index{Ruby-on-Rails!Modell}s, d.h. wann eine Instanz dieses Modells gültig ist und damit gespeichert werden darf (man denke z.B. an Pflichtfelder für ein Modell "`Nutzer"` oder die Validierung des Formates seiner E-Mail-Adresse).
+Fast jeder Unittest\index{Test!Unittest} bei Rails\index{Ruby-on-Rails} beinhaltet das Testen auf Validierung\index{Ruby-on-Rails!Validierung}skriterien seines korrespondierenden Modell\index{Ruby-on-Rails!Modell}s, d.h. wann eine Instanz dieses Modells gültig ist und damit gespeichert werden darf (man denke z.B. an Pflichtfelder für ein Modell "`Nutzer"' oder die Validierung des Formates seiner E-Mail-Adresse).
 
 Diese Validierung\index{Ruby-on-Rails!Validierung}en werden durch das \glossar{ORM}-Framework ActiveRecord\index{ActiveRecord}, welches Rails\index{Ruby-on-Rails} standardmäßig nutzt, bereitgestellt.
 
@@ -19,26 +19,38 @@ Diese Validierung\index{Ruby-on-Rails!Validierung}en werden durch das \glossar{O
 
 Während der Analyse wurden die benötigten Attribute eines Jobs bestimmt. In Abbildung \ref{fig:job-erm} ist ein Fragment des Grobdesigns dargestellt, welches die Basisattribute der Jobs-Tabelle aufzeigt. Neben den einfachen Attributen, wie Title, Description und Link existieren auch Referenzen auf andere Objekte (d.h. dies stellen Fremdschlüssel zu anderen Tabellen dar), wie z.B. Schlagwörter (Tags), ein Besitzer einer Stellenanzeige (User) und so weiter.
 
-Einer der häufigsten Wege, ein Modell\index{Ruby-on-Rails!Modell} und dessen Datenbank\index{Datenbank}schema zu generieren, ist die Nutzung des mitgelieferten Codegenerator\index{Code-Generator}s. Mittels des Kommandos:
+Einer der häufigsten Wege ein Modell\index{Ruby-on-Rails!Modell} und dessen Datenbank\index{Datenbank}schema zu generieren, ist die Nutzung des mitgelieferten Codegenerator\index{Code-Generator}s. Mittels des Kommandos:
 
 \shadebox{
   rails generate model \textit{MODELLNAME} spalte1:datentyp1 spalte2:datentyp2 ...
 }
 
 generieren wir ein Modell\index{Ruby-on-Rails!Modell} mit dem angegebenen Modellnamen. Dazu geben wir paarweise die gewünschten Spaltennamen und deren Datentypen an (\texttt{string, text, datetime, references, integer, boolean, decimal}, ...).
-\begin{lstlisting}
-~/it-jobs$ rails generate model job title:string link:string \
+% SNIPPET: 
+%                                                                                                                                                      
+% ~/it-jobs$ rails generate model job title:string link:string \                                                                                       
+%     description:text user:references visible:boolean                                                                                                 
+%                                                                                                                                                      
+%       invoke  active_record                                                                                                                          
+%       create    db/migrate/20110828160636_create_jobs.rb                                                                                             
+%       create    app/models/job.rb                                                                                                                    
+%       invoke    test_unit                                                                                                                            
+%       create      test/unit/job_test.rb                                                                                                              
+%       create      test/fixtures/jobs.yml                                                                                                             
+\begin{ruby}[label=Shell]
+~/it-jobs\PY{n+nv}{\$ }rails generate model job title:string link:string \PY{l+s+se}{\PYZbs{}}
     description:text user:references visible:boolean
 
-      invoke  active_record
-      create    db/migrate/20110828160636_create_jobs.rb
+      invoke  active\PYZus{}record
+      create    db/migrate/20110828160636\PYZus{}create\PYZus{}jobs.rb
       create    app/models/job.rb
-      invoke    test_unit
-      create      test/unit/job_test.rb
-      create      test/fixtures/jobs.yml
+      invoke    test\PYZus{}unit
+      create      \PY{n+nb}{test}/unit/job\PYZus{}test.rb
+      create      \PY{n+nb}{test}/fixtures/jobs.yml
+\end{ruby}
+\codecaption{Nutzung des Modell-Codegenerators}
 
-\end{lstlisting}
-Mit der Anweisung uns ein Modell\index{Ruby-on-Rails!Modell} \texttt{job} mit den nachfolgenden Attributen zu generieren, hat Rails\index{Ruby-on-Rails} uns nun schon ein Stück Arbeit abgenommen. Dabei delegiert der Codegenerator\index{Code-Generator} \texttt{model} nun die Arbeit an den Codegenerator für ein ActiveRecord\index{ActiveRecord}-Model (erkennbar an dem \texttt{invoke active\_record}). Dieser wiederum generiert 2 Dateien und ruft seinerseits einen Codegenerator zum Generieren der Tests auf (\texttt{invoke test\_unit})
+Mit der Anweisung, ein Modell\index{Ruby-on-Rails!Modell} \texttt{job} mit den nachfolgenden Attributen zu generieren, hat Rails\index{Ruby-on-Rails} uns nun schon ein Stück Arbeit abgenommen. Dabei delegiert der Codegenerator\index{Code-Generator} \texttt{model} nun die Arbeit an den Codegenerator für ein ActiveRecord\index{ActiveRecord}-Model (erkennbar an dem \texttt{invoke active\_record}). Dieser wiederum generiert 2 Dateien und ruft seinerseits einen Codegenerator zum Generieren der Tests auf (\texttt{invoke test\_unit})
 
 Es wurden erstellt:
 \begin{itemize}
@@ -57,30 +69,56 @@ Rails\index{Ruby-on-Rails} stellt uns mittels des Kommandozeilenwerkzeugs \textb
   rake \textit{TASK} [RAILS\_ENV=production]
 }
 
-Dazu weisen wir nun Rails\index{Ruby-on-Rails} an, alle offenen Migrationen auszuführen. Standardmäßig erstellt Rails dann selbstständig eine SQLite Datenbank\index{Datenbank} unter \texttt{db/development.sqlite3}.
+Nun weisen wir Rails\index{Ruby-on-Rails} an, alle offenen Migrationen auszuführen. Standardmäßig erstellt Rails dann selbstständig eine SQLite Datenbank\index{Datenbank} unter \texttt{db/development.sqlite3}.
 
 
-\begin{lstlisting}[caption=Shell]
-$ rake db:migrate
+% -------------------------------
+% SNIPPET: 
+%                                                                                                                                                      
+% $ rake db:migrate                                                                                                                                    
+%                                                                                                                                                      
+% ==  CreateJobs: migrating =========================                                                                                                  
+% -- create_table(:jobs)                                                                                                                               
+%    -> 0.0020s                                                                                                                                        
+% ==  CreateJobs: migrated (0.0021s) ================                                                                                                  
+\begin{ruby}[label=Shell]
+\PY{n+nv}{\$ }rake db:migrate
 
-==  CreateJobs: migrating =========================
--- create_table(:jobs)
+\PY{o}{=}\PY{o}{=}  CreateJobs: \PY{n+nv}{migrating} \PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}
+-- create\PYZus{}table\PY{o}{(}:jobs\PY{o}{)}
    -> 0.0020s
-==  CreateJobs: migrated (0.0021s) ================
-\end{lstlisting}
+\PY{o}{=}\PY{o}{=}  CreateJobs: migrated \PY{o}{(}0.0021s\PY{o}{)} \PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}\PY{o}{=}
+\end{ruby}
+\codecaption{Ausführung der offenen Migrationen auf die Datenbank}
+% label{fig:4ed21e}
+
 
 Danach können wir die Rails\index{Ruby-on-Rails}-Test-Suite\index{Test!Test-Suite} mithilfe eines weiteren Rake\index{Ruby!Rake}-Tasks auch schon ausführen. Dieser Rake-Task legt selbstständig eine Testdaten\index{Test!Testdaten}bank an, führt offene Migrationen darauf aus und führt dann alle vorhanden Tests aus.
 
-\begin{lstlisting}[caption=Shell]
-$ rake test
-(in /home/zealot64/TEST)
-Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
+
+% -------------------------------
+% SNIPPET: 
+%                                                                                                                                                      
+% $ rake test                                                                                                                                          
+% (in /home/zealot64/TEST)                                                                                                                             
+% Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader                                                                        
+% Started                                                                                                                                              
+% .                                                                                                                                                    
+% Finished in 0.043818 seconds.                                                                                                                        
+%                                                                                                                                                      
+% 1 tests, 1 assertions, 0 failures, 0 errors                                                                                                          
+\begin{ruby}[label=Shell]
+\PY{n+nv}{\$ }rake \PY{n+nb}{test}
+\PY{o}{(}in /home/zealot64/TEST\PY{o}{)}
+Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake\PYZus{}test\PYZus{}loader
 Started
 .
 Finished in 0.043818 seconds.
 
 1 tests, 1 assertions, 0 failures, 0 errors
-\end{lstlisting}
+\end{ruby}
+\codecaption{Ausführung des ersten Rails Tests}
+
 
 Es wurde also schon ein Testfall\index{Test} erfolgreich ausgeführt, nämlich ein Dummytestfall von Rails\index{Ruby-on-Rails}:
 
@@ -101,7 +139,7 @@ Es wurde also schon ein Testfall\index{Test} erfolgreich ausgeführt, nämlich e
 
 \paragraph{2. Testen auf Validierung}
 
-Ein Feature von Rails\index{Ruby-on-Rails} umfassen die sogenannten Validierung\index{Ruby-on-Rails!Validierung}en. Diese stellen sicher, dass eine Instanz eines Modell\index{Ruby-on-Rails!Modell}s nur dann gespeichert wird, wenn es gewissen Kriterien entspricht. Viele der Validations sind vergleichbar mit den Datenbank\index{Datenbank}-Constraints einiger Datenbanken. Rails nutzt diese standardmäßig nicht, da es auch andere Persistenzsysteme unterstützt, wie z.B. Key-Value-Store oder sogenannte NoSQL Datenbanken. So stellt Rails die Konsistenz und referenzielle Integrität innerhalb der Applikationsschicht sicher.
+Ein Feature von Rails\index{Ruby-on-Rails} umfassen die sogenannten Validierung\index{Ruby-on-Rails!Validierung}en. Diese stellen sicher, dass eine Instanz eines Modell\index{Ruby-on-Rails!Modell}s nur dann gespeichert wird, wenn es gewissen Kriterien entspricht. Viele der Validierungen sind vergleichbar mit den Datenbank\index{Datenbank}-Constraints einiger Datenbanken. Rails nutzt diese standardmäßig nicht, da es auch andere Persistenzsysteme unterstützt, wie z.B. Key-Value-Store oder sogenannte NoSQL-Datenbanken. So stellt Rails die Konsistenz und auch referenzielle Integrität innerhalb der Applikationsschicht sicher.
 
 Nun möchten wir sicherstellen, dass eine Stellenanzeige nur dann gespeichert wird, wenn sie einen Titel beinhaltet. Der Test \index{Test}dazu würde wie folgt lauten:
 
@@ -139,7 +177,7 @@ Unser nächstes Ziel ist es nun, mit so wenig Code wie möglich den Test \index{
 \PY{k}{end}
 \end{ruby}
 \codecaption{Implementierung der Validierung in die Klasse Job}
-\texttt{validates} ist eine Funktion aus der ActiveRecord\index{ActiveRecord} Bibliothek, die zwei Parameter entgegennimmt: Der erste ist die Spalte, auf der sich die Validierung\index{Ruby-on-Rails!Validierung} bezieht, als Zweites folgt eine Liste an Validierungskriterien. Hier ist das Kriterium \texttt{presence}, also das Vorhandensein eines nicht-leeren Wertes für diese Spalte. Weitere Kriterien sind z.B. Format, Länge, Minimum, Maximum oder auch selbst definierte Kriterien.
+\texttt{validates} ist eine Funktion aus der ActiveRecord\index{ActiveRecord} Bibliothek, die zwei Parameter entgegennimmt: Der erste ist die Spalte, auf der sich die Validierung\index{Ruby-on-Rails!Validierung} bezieht, danach folgt eine Liste an Validierungskriterien. Hier ist das Kriterium \texttt{presence}, also das Vorhandensein eines nicht-leeren Wertes für diese Spalte. Weitere Kriterien sind z.B. Format, Länge, Minimum, Maximum oder auch selbst definierte Kriterien.
 
 \tddgreen
 Nach erneuter Ausführung der Testsuite besteht der Test \index{Test}nun. Jetzt folgt die Refaktorisierung\index{Refaktorisierung}sphase. Der Programmcode lässt sich nicht weiter vereinfachen. Aber der Testcode ist ausdrücklich nicht von Refaktorisierungen befreit und eine Refaktorisierung wäre z.B.:
@@ -169,7 +207,7 @@ Die Implementierung wäre dann:
 \PY{k}{end}
 \end{ruby}
 \tddgreen
-Eine Refaktorisierung\index{Refaktorisierung} ist aufgrund der Einfachheit des Beispiels hier nur gering möglich. Man könnte z.B. den regulären Ausdruck, der das Format der E-Mail Adresse beschreibt in eine neue Klasse oder zumindest eine Konstante auslagern. Wir wählen eine Konstante, die beim Laden von Rails\index{Ruby-on-Rails} bereitgestellt wird.
+Eine Refaktorisierung\index{Refaktorisierung} ist aufgrund der Einfachheit des Beispiels hier nur gering möglich. Man könnte z.B. den regulären Ausdruck, der das Format der E-Mail-Adresse beschreibt in eine neue Klasse oder zumindest eine Konstante auslagern. Wir wählen eine Konstante, die beim Laden von Rails\index{Ruby-on-Rails} bereitgestellt wird.
 \tddrefactor
 \begin{ruby}[label=config/initializers/regex.rb und app/models/job.rb]
 \PY{c+c1}{# config/initializers/regex.rb}
@@ -182,10 +220,10 @@ Eine Refaktorisierung\index{Refaktorisierung} ist aufgrund der Einfachheit des B
 \PY{k}{end}
 \end{ruby}
 \codecaption{Auslagerung des Regulären Ausdrucks in einen Initalisierer}
-Ein erneutes Ausführen der Tests betätigt den Erfolg der Refaktorisierung\index{Refaktorisierung}.
+Ein erneutes Ausführen der Tests bestätigt den Erfolg der Refaktorisierung\index{Refaktorisierung}.
 
 \paragraph{3. Refaktorisierungen der Testklasse}
-Nun fehlt aber noch die Definition eines Positiv-Beispiel für einen gültigen Job.
+Nun fehlt aber noch die Definition eines Positiv-Beispiels für einen gültigen Job.
 
 \begin{ruby}[label=test/unit/job\_test.rb]
 ...
@@ -195,7 +233,7 @@ Nun fehlt aber noch die Definition eines Positiv-Beispiel für einen gültigen J
 \PY{k}{end}
 \end{ruby}
 \tddgreen
-Dieser Test \index{Test}besteht sofort, macht also genau genommen keine weitere Aussage über unser System. Nach der "`reinen"' Testgetriebene\index{TDD}n Lehre sollte dieser entfernt werden. Es ist allerdings eine gute Strategie, bei Validierung\index{Ruby-on-Rails!Validierung}en mindestens ein Beispiel zu präsentieren, das den Kriterien entspricht und angenommen wird. Nichtsdestotrotz können wir nun refaktorisieren. Insbesondere unsere Testfunktionen enthalten unnötige Redundanzen:
+Dieser Test \index{Test}besteht sofort, ergibt also genau genommen keine weitere Aussage über unser System. Nach der "`reinen"' Testgetriebene\index{TDD}n Lehre sollte dieser entfernt werden. Es ist allerdings eine gute Strategie bei Validierung\index{Ruby-on-Rails!Validierung}en mindestens ein Beispiel zu präsentieren, welches den Kriterien entspricht und angenommen wird. Nichtsdestotrotz können wir nun refaktorisieren. Insbesondere unsere Testfunktionen enthalten unnötige Redundanzen:
 
 \begin{ruby}[label=test/unit/job\_test.rb]
 \PY{n+nb}{test} \PY{l+s+s2}{"}\PY{l+s+s2}{ein Job muss einen Titel haben}\PY{l+s+s2}{"} \PY{k}{do}
@@ -257,6 +295,12 @@ Nun können wir diese Fixtures in unseren Tests verwenden und das ganze in einer
 
 Am Ende dieser Refaktorisierung\index{Refaktorisierung}en ist es notwendig, die Tests noch einmal auszuführen.
 \tddgreen
-Danach würde die Implementierung einer nächsten Teilanforderung sein.
+Danach würde die Implementierung einer nächsten Teilanforderung folgen, bis das Feature komplett umgesetzt wurde.
 
-In diesem Abschnitt war zu sehen, dass die Testgetriebene\index{TDD} Entwicklung das Arbeiten und Testen in kleinen Schritten favorisiert.
+In diesem Abschnitt wurde gezeigt:
+\begin{itemize}
+ \item dass die Testgetriebene\index{TDD} Entwicklung das Arbeiten und Testen in kleinen Schritten favorisiert,
+ \item wie der Codegenerator benutzt wird, um ein Dateien und Klassen zu generieren,
+ \item wie die Validierungen und das Speichern bei ActiveRecord funktioniert,
+ \item dass auch Testklassen von Refaktorisierungen nicht ausgenommen sind.
+\end{itemize}

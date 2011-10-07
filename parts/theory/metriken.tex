@@ -38,14 +38,25 @@ Ein daraus abgeleitetes Test\index{Test}verfahren \textit{Basis Path Testing} sc
 \begin{description}
  \item[Geringe Kohäsion] ist ein Oberbegriff für verschiedene andere Smell\index{Code-Smell}s, anzuwenden bei objektorientierten Programmen. Einer davon ist z.B. \textit{Feature Envy} (deutsch: Neid). Eine Klasse weiß zu viel über die internen Strukturen einer anderen Klasse und implementiert Funktionalität, die eigentlich in jene Klasse gehören sollte. \\
  Im Beispiel würde die Berechnung eines Gesamtpreises z.B. in die Klasse \texttt{Checkout} gehören.
- \begin{lstlisting}
-    @checkout.total = @checkout.total_price * MWST
- \end{lstlisting}
+% SNIPPET: 
+%                                                                                                                                                      
+%     @checkout.total = @checkout.total_price * MWST                                                                                                   
+%                                                                                                                                                      
+\begin{ruby}[label=Ruby-Beispiel]
+\PY{n+nv+vi}{@checkout}\PY{o}{.}\PY{n}{total} \PY{o}{=} \PY{n+nv+vi}{@checkout}\PY{o}{.}\PY{n}{total\PYZus{}price} \PY{o}{*} \PY{n+no}{MWST}
+\end{ruby}
+\codecaption{Ruby-Beispiel für ein Feature-Envy}
+
  \item[Nichtssagender Name] Gilt für alle Programmiersprachen. Falls Bezeichner weniger als 3 Zeichen lang sind oder Funktionen den Namen \texttt{do} oder \texttt{run} haben. Ausnahmen könnte man z.B. für die Schleifenvariable $i$ rechtfertigen
  \item[Gesetz von Demeter] Objekte sollten nur mit den Objekten in ihrer unmittelbaren Nähe kommunizieren und nicht etwa in Nachrichtenketten, wie z.B.:
- \begin{lstlisting}
-  @job.user.address.street
- \end{lstlisting}
+% SNIPPET: 
+%                                                                                                                                                      
+%   @job.user.address.street                                                                                                                           
+%                                                                                                                                                      
+\begin{ruby}[label=Ruby-Beispiel]
+\PY{n+nv+vi}{@job}\PY{o}{.}\PY{n}{user}\PY{o}{.}\PY{n}{address}\PY{o}{.}\PY{n}{street}
+\end{ruby}
+\codecaption{Ruby-Beispiel für eine Verletzung des Gesetz von Demeter}
  Das Gesetz von Demeter erlaubt eine solche Kette bis maximal Länge 1.
  \item[Duplikation] und offensichtliche Ähnlichkeiten zwischen Programmstücken (oder sogar Deckungsgleichheit bei Anwendung von Copy \& Paste). Fortgeschrittene Analysemethoden betrachten den abstrakten Syntaxbaum und können so strukturelle Ähnlichkeiten feststellen.
  \end{description}

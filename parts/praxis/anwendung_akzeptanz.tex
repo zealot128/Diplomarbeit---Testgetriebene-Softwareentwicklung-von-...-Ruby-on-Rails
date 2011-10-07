@@ -19,7 +19,7 @@ Ein Cucumber\index{Cucumber}-Verzeichnis ist qua Konvention immer gleich aufgeba
 
 \paragraph{1. Definition des gesamten Akzeptanztest\index{Akzeptanztest}}
 
-Zusammen mit dem Kunden oder basierend auf den Anforderungen entwickeln wir zuerst eine Spezifikation für ein Feature. Da die Akzeptanztest\index{Akzeptanztest}s in erster Linie dazu dienen, die Software gegenüber den Anforderungen des Kunden zu validieren und auch als Kommunikationsmittel genutzt wird, orientiert sich das Vokabular an gebräuchlichen Begriffen. So ist ein einzelner Testfall\index{Test} ein "`Szenario"' und eine Test-Suite\index{Test!Test-Suite} ein "`Feature"'. Statt "`Assertions"' (Zusicherungen) gibt es Vor- und Nachbedingungen.
+Zusammen mit dem Kunden oder basierend auf den Anforderungen wurde zuerst eine Spezifikation für ein Feature entwickelt. Da die Akzeptanztest\index{Akzeptanztest}s in erster Linie dazu dienen, die Software gegenüber den Anforderungen des Kunden zu validieren und auch als Kommunikationsmittel genutzt wird, orientiert sich das Vokabular an gebräuchlichen Begriffen. So ist ein einzelner Testfall\index{Test} ein "`Szenario"' und eine Test-Suite\index{Test!Test-Suite} ein "`Feature"'. Statt "`Assertions"' (Zusicherungen) gibt es Vor- und Nachbedingungen.
 
 Nachfolgend sei ein erstes Szenario für eine Suche nach Stellenanzeigen gezeigt.
 
@@ -62,9 +62,9 @@ Nachfolgend sei ein erstes Szenario für eine Suche nach Stellenanzeigen gezeigt
 
 Die ersten drei Zeilen des Features ("`Funktionaliät"') beinhalten hier einen Kommentar, der lediglich die Testziele und Rahmenbedingungen definiert. Danach folgen die Testschritt\index{Cucumber!Testschritt}e. Eine Besonderheit ist der zweite: "`Und die folgenden Jobs sind vorhanden"'. Dort ermöglicht es ein Syntaxelement von Cucumber\index{Cucumber} über eine Tabelle mehrere Datensätze zu definieren. Alle anderen Elemente sollten aus dem Abschnitt \ref{sec:cucumber} bereits bekannt sein.
 
-Wenn wir dieses Feature nun ausführen, erhalten wir folgende Ausgabe:
+Wenn wir dieses Feature nun ausführen, erhalten wir die folgende Ausgabe:
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Cucumber ausführen}]
 $ cucumber features/suche.feature
 1 scenario (1 undefined)
 5 steps (5 undefined)
@@ -92,9 +92,9 @@ end
 
 
 
-Bevor wir also beginnen können das Feature zu entwickeln, müssen wir erst die Testschritt\index{Cucumber!Testschritt}e implementieren. Cucumber\index{Cucumber} hat schon ein paar Codeschnipsel generiert, mit denen wir eigene Testschritte implementieren können.
+Bevor begonnen werden kann, das Feature zu entwickeln, müssen erst die Testschritt\index{Cucumber!Testschritt}e implementiert werden. Cucumber\index{Cucumber} hat schon ein paar Codeschnipsel generiert, die als Grundlage für eigene Testschritte genutzt werden können.
 
-Hier zuerst die Basis-Testschritt\index{Cucumber!Testschritt}e, die für fast jedes Feature benötigt werden. Falls wir die englische Testschrittdefinition nutzen, entfällt dieser Schritt, da Capybara\index{Capybara} bereits häufig gebrauchte Testschritte mitliefert.
+Nun betrachten wir zuerst die Basis-Testschritt\index{Cucumber!Testschritt}e, die für fast jedes Feature benötigt werden. Falls englische Testschrittdefinition genutzt werden, entfällt dieser Schritt, da Capybara\index{Capybara} bereits häufig gebrauchte Testschritte mitliefert.
 
 % SNIPPET:
 %
@@ -159,11 +159,12 @@ Ein weiterer Testschritt fehlt noch:
 \end{ruby}
 \codecaption{Testschritt zum Anlegen von Testdaten auf Basis der Cucumber Definition}
 
-Dieser Testschritt\index{Cucumber!Testschritt} für das Anlegen der definierten Stellenanzeigen durch das Tabellen\hyp{}Syntaxelement von Cucumber ist etwas umfangreicher. Wir bekommen von Cucumber\index{Cucumber} ein Array von Hashes übergeben, die die im Szenario angegebene Tabelle beinhaltet. Über diese können wir nun mit dem Iterator \texttt{each} iterieren und die definierten Attribute mit denen unserer Job-Fixture\footnote{Anmerkung: Für diese Aufgabe eignen sich Factories deutlich besser. Da mit Fixtures schon eine Testdaten\index{Test!Testdaten}generierung eingeführt wurde, bleiben wir aber aus Konsistenzgründen dabei.} vereinigt wird, um somit einen neuen Job in der Testdatenbank anzulegen. Wir haben den Testschritt so allgemein gehalten, dass wir ihn in späteren Szenarien gut verwenden können, um weitere Jobs mit speziellen Attributen zu generieren.
+Dieser Testschritt\index{Cucumber!Testschritt} für das Anlegen der definierten Stellenanzeigen durch das Tabellen\hyp{}Syntaxelement von Cucumber ist etwas umfangreicher. Cucumber übergibt dem Funktionsblock \index{Cucumber} ein Array von Hashes, das die im Szenario angegebene Tabelle beinhaltet. Über diese wird nun mittels \texttt{each} iteriert und die definierten Attribute mit denen des Job-Fixtures\footnote{Anmerkung: Für diese Aufgabe eignen sich Factories deutlich besser. Da mit Fixtures schon eine Testdaten\index{Test!Testdaten}generierung eingeführt wurde, bleiben wir aber aus Konsistenzgründen dabei.} vereinigt, um somit einen neuen Job in der Testdatenbank anzulegen. Wir haben den Testschritt so allgemein gehalten, dass wir ihn in späteren Szenarien gut wiederverwenden können, um weitere Jobs mit speziellen Attributen zu generieren.
 
 Nun können wir Cucumber\index{Cucumber} erneut ausführen und das Ergebnis ist ein anderes:
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Cucumber-Szenario schlägt fehl}]
+$ cucumber features/suche.feature
 Wenn wir "Rails" für "search" eintippen    # features/step_definitions/job_steps.rb:5
   cannot fill in, no text field, text area or password field with id, name, or label 'search' found (Capybara::ElementNotFound)
       (eval):2:in `fill_in'
@@ -245,16 +246,22 @@ Damit nun der Test \index{Test}besteht, muss als letztes noch eine View\index{Ru
 
 
 
-Mittels des Iterators \texttt{each}, geben wir für jeden gefundenen Job ein \texttt{DIV} mit einer darin enthaltenen \texttt{H3}-Überschrift des Titels aus.
+Mittels des Iterators \texttt{each} geben wir für jeden gefundenen Job ein \texttt{DIV} mit einer darin enthaltenen \texttt{H3}-Überschrift des Titels aus.
 
 
 \tddgreen
 
-Cucumber\index{Cucumber} bestätigt uns nun die erfolgreiche Implementierung des Features:
-\begin{lstlisting}
-1 scenario (1 passed)
-5 steps (0 failed, 0 skipped, 5 passed)
-\end{lstlisting}
+Cucumber\index{Cucumber} bestätigt nun die erfolgreiche Implementierung des Features:
+% SNIPPET: 
+%                                                                                                                                                      
+% 1 scenario (1 passed)                                                                                                                                
+% 5 steps (0 failed, 0 skipped, 5 passed)                                                                                                              
+\begin{ruby}[label=Shell]
+1 scenario \PY{o}{(}1 passed\PY{o}{)}
+5 steps \PY{o}{(}0 failed, 0 skipped, 5 passed\PY{o}{)}
+\end{ruby}
+\codecaption{Ausführung von Cucumber -- Das Szenario besteht nun}
+
 
 
 Auch innerhalb der Akzeptanztest\index{Akzeptanztest}getriebenen Entwicklung ist Refaktorisieren ein fester Bestandteil innerhalb des Entwicklungszyklus.
@@ -303,7 +310,7 @@ Nun haben wir ein erstes Szenario mit Cucumber\index{Cucumber} implementiert. Da
 
 In diesem Abschnitt wurde gezeigt:
 \begin{itemize}
-\item wie Cucumber zur Definition von Testschritten in deutscher Sprache geschrieben werden,
+\item wie Cucumber-Szenarien und -Testschritte in deutscher Sprache geschrieben werden,
 \item wie diese Testschritte auf reale Testanweisungen übertragen werden, um einen Browser zu steuern und Erwartungen zu definieren,
 \item wie ein Testen des vollständigen Rails-Software-Stacks möglich ist, und wie Model, Controller und View dabei zusammen agieren.
 \end{itemize}
